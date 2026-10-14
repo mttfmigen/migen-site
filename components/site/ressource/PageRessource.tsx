@@ -345,7 +345,7 @@ export default function PageRessource({ titre, contenu, chemin }: ProprietesPage
               <div className={styles.photoHeros} style={H.PHOTO_HEROS}>
                 <Image
                   src={contenu.image}
-                  alt={altPhoto(contenu.image)}
+                  alt={contenu.imageAlt ?? altPhoto(contenu.image)}
                   fill
                   preload
                   sizes="(max-width: 980px) 100vw, 520px"

@@ -1,0 +1,105 @@
+{
+  "url": "/ressources/articles/savoye-dimomaint/",
+  "seo": {
+    "meta_title": "Offre intégrée Migen, Savoye et DimoMaint | Migen",
+    "meta_description": "Voici comment Migen, DimoMaint et Savoye unissent leurs expertises pour optimiser la performance des équipements industriels"
+  },
+  "titre_h1": "Migen, Savoye et DimoMaint : une offre de solutions intégrées pour une performance industrielle et logistique durable",
+  "contenu": {
+    "gabarit": "ressource",
+    "rayon": "articles",
+    "chapo": [],
+    "parties": [
+      {
+        "titre": "Une coopération stratégique au service de la performance opérationnelle",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Face aux exigences croissantes de souveraineté, de résilience et de compétitivité dans l’industrie et la supply chain, Migen, Savoye et DimoMaint ont uni leurs forces pour proposer une réponse globale aux besoins industriels et logistiques."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "DimoMaint, spécialiste de la GMAO, Migen, expert en maintenance industrielle, et Savoye, concepteur et intégrateur de solutions intralogistiques, fédèrent leurs expertises au sein d’une coopération stratégique visant à accompagner la performance opérationnelle des sites sur le long terme."
+          }
+        ]
+      },
+      {
+        "titre": "Une synergie pour répondre aux défis de la maintenance et de la supply chain",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Ce partenariat est né d’un constat partagé : la pénurie de techniciens qualifiés, la complexité croissante des installations et la nécessité d’anticiper les risques de défaillance imposent une approche globale."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "En unissant nos expertises, nous avons l’ambition de mettre la donnée maintenance au cœur des projets industriels et logistiques, dès la conception des installations et jusqu’à leur exploitation. La GMAO en est un élément clé. », explique Jean-Luc Sanjosé, Directeur commercial de DIMOMAINT."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Dans les faits, l’offre repose sur une articulation coordonnée des métiers et savoir-faire des trois partenaires :"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "SAVOYE conçoit et intègre des solutions d’automatisation adaptées"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "MIGEN déploie ses équipes sur le terrain pour assurer la maintenance, la disponibilité et l’évolutivité des systèmes"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "DIMOMAINT centralise les données et pilote les interventions via sa solution GMAO connectée"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Les clients bénéficient ainsi d’un accompagnement complet, avec des techniciens qualifiés pour assurer la modernisation et la pérennité de leurs installations tout en répondant aux évolutions du marché."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Avec MIGEN et DIMOMAINT, nous franchissons un cap : nous ne nous contentons plus de maintenir les équipements, nous les faisons vivre dans une dynamique d’amélioration continue », souligne Frédéric Fragne, Directeur Life Cycle Services chez SAVOYE."
+          }
+        ]
+      },
+      {
+        "titre": "Une expérience client simplifiée pour améliorer la performance",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Cette approche intégrée permet aux responsables industriels ou logistiques de bénéficier d’un accompagnement structuré et continu :"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Dès la conception, SAVOYE coordonne les opérations et assure la continuité du projet"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Une fois l’exploitation lancée, les équipes MIGEN prennent le relais pour la maintenance quotidienne grâce à des techniciens formés aux équipements et outils des partenaires"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "La plateforme DIMOMAINT complète le dispositif en offrant une gestion à 360° du cycle de vie des installations"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Les bénéfices sont immédiats : meilleure disponibilité des équipements critiques, réduction des arrêts non planifiés, et gain de temps et de ressources dans la gestion des interventions."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Sur le terrain, cette synergie opérationnelle fait réellement la différence : nos techniciens maîtrisent les équipements SAVOYE, travaillent au quotidien avec les outils de DIMOMAINT et interviennent plus vite », précise Nathan Jorez, Président de MIGEN."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Dans un contexte industriel en tension, cette approche intégrée constitue un moyen stratégique pour renforcer la compétitivité et la résilience des sites."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "À terme, les trois partenaires ambitionnent de devenir une référence dans l’accompagnement global des sites industriels et logistiques, d’intégrer toujours plus de services à forte valeur ajoutée et d’étendre leur offre commune avec des solutions de maintenance prédictive basées sur l’IA."
+          }
+        ]
+      }
+    ],
+    "minutes": 2,
+    "image": "/assets/blog/savoye-dimomaint/savoye-dimomaint.webp",
+    "imageAlt": "Visuel du partenariat Migen x Savoye, smartphone affichant l'application DimoMaint"
+  }
+}

@@ -119,8 +119,8 @@ export const REDIRECTIONS_ANCIEN_SITE: ReadonlyArray<
   ["/regie-vs-salarie-le-guide-complet-des-avantages-dun-mainteneur-industriel-pour-votre-entreprise/", "/offres/residence/prestataire-ou-salarie/"],
   ["/retrofit-machine-industriel/", "/offres/retrofit/"],
   // Recrutement, métiers et vie chez Migen : vers Carrière ou la fiche métier.
-  ["/femmes-dans-lindustrie-migen-soutient-la-diversite-dans-le-secteur-de-la-maintenance-industrielle/", "/carriere/"],
-  ["/migen-la-ou-le-bien-etre-au-travail-nest-pas-juste-un-slogan/", "/carriere/"],
+  ["/femmes-dans-lindustrie-migen-soutient-la-diversite-dans-le-secteur-de-la-maintenance-industrielle/", "/ressources/articles/femmes-dans-l-industrie/"], // billet republié le 14/10
+  ["/migen-la-ou-le-bien-etre-au-travail-nest-pas-juste-un-slogan/", "/ressources/articles/bien-etre-au-travail/"], // billet republié le 14/10
   ["/nos-techniciens/", "/carriere/"], // à valider : ou /nous-connaitre/
   ["/nousrejoindre/", "/carriere/"],
   ["/recrutement-techniciens-de-maintenance-industrielle/", "/carriere/"],
@@ -131,17 +131,17 @@ export const REDIRECTIONS_ANCIEN_SITE: ReadonlyArray<
   ["/quels-sont-les-competences-dun-electromecanicien/", "/carriere/electromecanicien/competences/"],
   ["/recrutement-chef-service-maintenance-industrielle/", "/carriere/responsable-maintenance/"],
   ["/recrutement-technicien-en-robotique/", "/carriere/roboticien/"],
-  ["/les-qualites-essentielles-dun-mainteneur-industriel-migen/", "/carriere/technicien-de-maintenance/"],
+  ["/les-qualites-essentielles-dun-mainteneur-industriel-migen/", "/ressources/articles/qualites-du-mainteneur/"], // billet republié le 14/10
   // Suivi de positions du 14/10 : « technicien de maintenance industrielle »
   // (2 400 par mois, 31e) porte sur le métier, pas sur la formation.
   ["/comment-devenir-technicien-de-maintenance-industrielle/", "/carriere/technicien-de-maintenance/"],
   ["/quelles-sont-les-competences-cles-necessaires-pour-les-professionnels-de-la-maintenance-industrielle-aujourdhui-et-comment-se-former-efficacement-dans-ce-domaine/", "/carriere/technicien-de-maintenance/formation/"],
   // Articles, guides et fiches de l'ancien blog : vers la ressource du même sujet, sinon le hub.
-  ["/guide-maintenance-industrielle/", "/ressources/"],
+  ["/guide-maintenance-industrielle/", "/ressources/articles/guide-maintenance-industrielle/"], // billet republié le 14/10
   ["/tout-savoir-sur-la-maintenance-industrielle/", "/ressources/"],
   ["/category/articles/", "/ressources/articles/"],
-  ["/vers-une-france-reindustrialisee-avantages-defis-et-strategies/", "/ressources/articles/"],
-  ["/la-digitalisation-des-manuels-de-maintenance-industrielle/", "/ressources/articles/digitalisation-maintenance/"],
+  ["/vers-une-france-reindustrialisee-avantages-defis-et-strategies/", "/ressources/articles/reindustrialisation/"], // billet republié le 14/10
+  ["/la-digitalisation-des-manuels-de-maintenance-industrielle/", "/ressources/articles/digitalisation-des-manuels/"], // billet republié le 14/10
   ["/comment-fonctionne-la-gestion-de-maintenance-assistee-par-ordinateur/", "/ressources/articles/gmao/"],
   ["/comment-lintelligence-artificielle-va-impacter-le-secteur-de-la-maintenance-industrielle/", "/ressources/articles/ia-maintenance/"],
   ["/le-futur-de-la-maintenance-industrielle-une-perspective-a-10-ans/", "/ressources/articles/maintenance-4-0/"],
@@ -155,7 +155,7 @@ export const REDIRECTIONS_ANCIEN_SITE: ReadonlyArray<
   ["/tout-savoir-sur-les-automates-programmables-industriels-siemens/", "/ressources/fiches-techniques/automates-siemens/"],
   ["/analyse-performances-maintenance/", "/ressources/fiches-techniques/indicateurs-maintenance/"],
   ["/les-meilleurs-outils-de-diagnostic-pour-une-maintenance-industrielle-efficace/", "/ressources/fiches-techniques/outils-de-diagnostic/"],
-  ["/vous-connaissez-lexpression-le-temps-cest-de-largent/", "/ressources/fiches-techniques/trs/"],
+  ["/vous-connaissez-lexpression-le-temps-cest-de-largent/", "/ressources/articles/machines-goulots/"], // billet republié le 14/10
   ["/comment-recruter-technicien-maintenance-industrielle/", "/ressources/process/selection-des-techniciens/"],
   // Pages institutionnelles et de conversion.
   ["/accueil-cloned/", "/"], // clone WordPress de l'accueil
@@ -163,8 +163,8 @@ export const REDIRECTIONS_ANCIEN_SITE: ReadonlyArray<
   ["/remerciement/", "/contact/"],
   ["/entreprise-de-maintenance/", "/entreprise-maintenance-industrielle/"],
   ["/a-propos/", "/nous-connaitre/"], // à valider : /nous-connaitre/ ou /entreprise-maintenance-industrielle/
-  ["/migen-une-vision-innovante-de-la-maintenance-industrielle-par-nathan-jorez-ceo/", "/nous-connaitre/"],
-  ["/certifications-mase-ecovadis/", "/rse/"],
+  ["/migen-une-vision-innovante-de-la-maintenance-industrielle-par-nathan-jorez-ceo/", "/ressources/articles/interview-nathan-jorez/"], // billet republié le 14/10
+  ["/certifications-mase-ecovadis/", "/ressources/articles/certifications-mase-ecovadis/"], // billet republié le 14/10
 
   // Déjà en base (supabase/import/0003_redirections.sql) : la base l'emporte,
   // ces copies servent quand elle est injoignable. Deux CORRIGENT leur ligne de
@@ -183,12 +183,12 @@ export const REDIRECTIONS_ANCIEN_SITE: ReadonlyArray<
   ["/maintenance-industrielle-pneumatique/", "/expertises/pneumatique/"],
   ["/maintenance-industrielle/", "/entreprise-maintenance-industrielle/"],
   ["/migen-et-danone-maintenance-continu-sur-site/", "/preuves/danone-lignes-de-production/"],
-  ["/migen-et-dimomaint-en-alliance-strategique/", "/partenaires/"], // à valider : /preuves/dimomaint/ existe
+  ["/migen-et-dimomaint-en-alliance-strategique/", "/ressources/articles/partenariat-dimomaint/"], // billet republié le 14/10
   ["/migen-et-suez-remise-en-etat-site-industriel/", "/preuves/suez-remise-en-etat/"],
-  ["/migen-savoye-et-dimomaint-une-cooperation-strategique-au-service-de-la-performance-industrielle/", "/partenaires/"], // à valider : /preuves/dimomaint/ existe
+  ["/migen-savoye-et-dimomaint-une-cooperation-strategique-au-service-de-la-performance-industrielle/", "/ressources/articles/savoye-dimomaint/"], // billet republié le 14/10
   ["/nos-offres/", "/offres/"],
   ["/nous-rejoindre/", "/carriere/"],
   ["/politique-de-confidentialite/", "/confidentialite/"],
-  ["/pourquoi-faire-appel-a-une-entreprise-de-maintenance-externalisee/", "/offres/full-service/"], // corrige la ligne de base qui vise /offres/maintenance-externalisee/
+  ["/pourquoi-faire-appel-a-une-entreprise-de-maintenance-externalisee/", "/ressources/articles/pourquoi-externaliser/"], // billet republié le 14/10
   ["/technicien-de-maintenance/", "/carriere/technicien-de-maintenance/"],
 ];

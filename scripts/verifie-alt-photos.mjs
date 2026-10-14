@@ -47,6 +47,10 @@ const attendu = new Map((reg.photos ?? reg).map(p => [p.fichier, (p.description 
 const PHOTO_DE_VILLE =
   /\/assets\/villes\/|\/accueil\/hubs\/|media\/(?:lyon|paris|lille|strasbourg|nantes|toulouse|marseille|bordeaux|metz|dijon)\./
 
+/** Les photos des billets repris de l'ancien blog (14/10) : hors registre,
+ *  leur texte alternatif est ecrit dans leur fiche (`imageAlt`, `galerie`). */
+const PHOTO_DU_BLOG = /\/assets\/blog\//
+
 /** Rend un attribut HTML lisible : sans ce decodage la porte prend la bonne
  *  description pour une etrangere, parce que l'apostrophe sort en `&#x27;`. */
 function decodeHtml(s) {
@@ -94,9 +98,10 @@ function examine(html, url, defauts, stats) {
     const brut = decodeSrc(tag.match(/\bsrc="([^"]*)"/i)?.[1] ?? '');
     const duRegistre = fichierDuRegistre(brut);
     const deVille = !duRegistre && PHOTO_DE_VILLE.test(brut);
-    if (!duRegistre && !deVille) continue;
-    const fichier = duRegistre ?? brut.split(/[?&#]/).find(x => PHOTO_DE_VILLE.test(x))?.split('/').pop() ?? brut;
-    if (stats) stats[deVille ? 'villes' : 'photos']++;
+    const duBlog = !duRegistre && !deVille && PHOTO_DU_BLOG.test(brut);
+    if (!duRegistre && !deVille && !duBlog) continue;
+    const fichier = duRegistre ?? brut.split(/[?&#]/).find(x => PHOTO_DE_VILLE.test(x) || PHOTO_DU_BLOG.test(x))?.split('/').pop() ?? brut;
+    if (stats) stats[deVille ? 'villes' : duBlog ? 'blog' : 'photos']++;
     const alt = decodeHtml(tag.match(/\balt="([^"]*)"/i)?.[1] ?? '');
     const quoi = defautDuTexte(alt, fichier);
     if (quoi) { defauts.push({ url, fichier, quoi }); continue; }
@@ -116,6 +121,8 @@ if (CONTROLE) {
     ['carte de l accueil muette',   `<img alt="" src="/_next/image/?url=%2Fassets%2Fphotos%2F${carte}&amp;w=3840">`, true],
     ['ville sans alt',              `<img alt="" src="/_next/image/?url=%2Fassets%2Fvilles%2Fhub-lyon.jpg&amp;w=3840">`, true],
     ['ville sans attribut alt',     `<img src="/assets/villes/ville-rouen.jpg">`, true],
+    ['photo du blog muette',        `<img alt="" src="/_next/image/?url=%2Fassets%2Fblog%2Fbien-etre-au-travail%2Ffuerteventura-01.webp&amp;w=640">`, true],
+    ['photo du blog decrite',       `<img alt="L'équipe Migen gravit le sentier d'un volcan" src="/assets/blog/bien-etre-au-travail/fuerteventura-13.webp">`, false],
     ['hub importe sans alt',        `<img alt="" src="/_next/image/?url=%2F_next%2Fstatic%2Fimmutable%2Fmedia%2Fbordeaux.12peidexp8lr6.jpg&amp;w=3840">`, true],
     ['hub importe, chemin bun',     `<img alt="" src="/x/components/site/accueil/hubs/metz.jpg">`, true],
     ['ville au nom de fichier',     `<img src="/assets/villes/ville-rouen.jpg" alt="ville-rouen.jpg">`, true],
@@ -149,7 +156,7 @@ try {
 if (!urls.length) { console.error(`porte non concluante : plan du site vide sur ${BASE}`); process.exit(2) }
 
 const defauts = []; const injoignables = []
-const stats = { photos: 0, villes: 0, duRegistre: 0 }
+const stats = { photos: 0, villes: 0, blog: 0, duRegistre: 0 }
 
 for (let i = 0; i < urls.length; i += LOT) {
   await Promise.all(urls.slice(i, i + LOT).map(async url => {
@@ -181,5 +188,5 @@ if (defauts.length) {
   if (defauts.length > 40) console.error(`  ... et ${defauts.length - 40} autre(s)`)
   process.exit(1)
 }
-console.log(`ALT_PHOTOS_PRESENTS  ${stats.photos} photos du registre et ${stats.villes} photos de ville sur ${urls.length} pages, toutes decrites`)
+console.log(`ALT_PHOTOS_PRESENTS  ${stats.photos} photos du registre, ${stats.villes} photos de ville et ${stats.blog} photos du blog sur ${urls.length} pages, toutes decrites`)
 console.log(`TOUTES_LES_PHOTOS_DECRITES  dont ${stats.duRegistre} portent mot pour mot la description du registre (${Math.round(stats.duRegistre / stats.photos * 100)} %)`)

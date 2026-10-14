@@ -1,0 +1,93 @@
+{
+  "url": "/ressources/articles/pourquoi-externaliser/",
+  "seo": {
+    "meta_title": "Pourquoi externaliser sa maintenance industrielle | Migen",
+    "meta_description": "Manque d’effectif, recrutement, absences ou pics d’activité : voici pourquoi faire appel à une entreprise de maintenance externalisée."
+  },
+  "titre_h1": "Pourquoi faire appel à une entreprise de maintenance externalisée ?",
+  "contenu": {
+    "gabarit": "ressource",
+    "rayon": "articles",
+    "chapo": [],
+    "parties": [
+      {
+        "titre": "Une solution flexible pour répondre aux enjeux industriels",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Dans un contexte industriel de plus en plus exigeant, les entreprises doivent garantir la disponibilité de leurs équipements tout en faisant face à des contraintes humaines et organisationnelles."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Le recours à une entreprise de maintenance externalisée apparaît comme une solution efficace pour assurer la continuité des opérations, tout en gagnant en flexibilité."
+          }
+        ]
+      },
+      {
+        "titre": "Une réponse concrète aux besoins en ressources et en compétences de la maintenance industrielle",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Faire appel à une entreprise de maintenance externalisée permet de répondre efficacement aux différentes situations qui peuvent fragiliser un service maintenance. Qu’il s’agisse d’un manque d’effectif, souvent lié aux difficultés de recrutement ou à un turn-over élevé, ou d’une période de transition entre deux embauches, l’externalisation offre la possibilité de renforcer rapidement les équipes sans impacter la production."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Cette solution est également particulièrement adaptée pour faire face aux absences ponctuelles, telles que les arrêts maladie, les congés ou les formations, en garantissant la continuité des interventions et le respect des plans de maintenance."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Par ailleurs, lors de pics d’activité, d’arrêts techniques ou de projets spécifiques, l’intervention de techniciens externes permet d’ajuster les ressources en fonction des besoins réels du site, sans alourdir durablement la structure interne."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Enfin, les entreprises bénéficient de techniciens de maintenance immédiatement opérationnels, capables de s’intégrer rapidement, de diagnostiquer les pannes et d’intervenir efficacement sur les équipements. Cette réactivité permet de limiter les temps d’arrêt et de maintenir un haut niveau de performance industrielle."
+          }
+        ]
+      },
+      {
+        "titre": "Externalisation de la maintenance : un facteur de performance",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Au-delà de la gestion des ressources, l’externalisation de la maintenance industrielle est un véritable moyen pour :"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Optimiser la disponibilité des équipements"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Réduire les arrêts non planifiés"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Améliorer l’organisation du service maintenance"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Gagner en flexibilité opérationnelle"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Elle permet aux industriels de se concentrer sur leur cœur de métier tout en sécurisant leurs opérations techniques."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Faire appel à une entreprise de maintenance externalisée permet de répondre efficacement aux contraintes humaines et opérationnelles des sites industriels."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Qu’il s’agisse de combler un manque d’effectif, de gérer une période de recrutement, d’anticiper des absences ou de faire face à un pic d’activité, cette solution offre réactivité, flexibilité et performance."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Dans un environnement industriel en constante évolution, l’externalisation devient un atout stratégique pour garantir la continuité et la fiabilité des installations."
+          }
+        ]
+      }
+    ],
+    "minutes": 2,
+    "image": "/assets/blog/pourquoi-externaliser/pourquoi-externaliser.webp",
+    "imageAlt": "Technicien en visière de protection face à une armoire électrique"
+  }
+}

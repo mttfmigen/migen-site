@@ -1,0 +1,105 @@
+{
+  "url": "/ressources/articles/certifications-mase-ecovadis/",
+  "seo": {
+    "meta_title": "Certifications MASE et EcoVadis | Migen",
+    "meta_description": "Certifications MASE et EcoVadis : comment Migen structure une maintenance industrielle fiable, sécurisée et alignée avec les enjeux RSE."
+  },
+  "titre_h1": "Qualité et responsabilité : comment Migen valorise ses certifications MASE et EcoVadis",
+  "contenu": {
+    "gabarit": "ressource",
+    "rayon": "articles",
+    "chapo": [],
+    "parties": [
+      {
+        "titre": "Migen, une entreprise de maintenance industrielle engagée",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Dans le secteur de la maintenance industrielle, la performance technique ne suffit plus. Les industriels recherchent aujourd’hui des partenaires capables de garantir la sécurité des interventions, la qualités des prestations et une démarche responsable, tant sur le plan social qu’environnemental."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Chez Migen, cet engagement se traduit dans les faits par l’obtention et la valorisation de certifications reconnues, telles que le MASE et EcoVadis."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Ces certifications ne sont pas de simples labels. Elles reflètent une démarche structurée, un haut niveau d’exigence et une volonté constante d’amélioration. Elles permettent à Migen de proposer une maintenance industrielle fiable, sécurisée et alignée avec les enjeux actuels de responsabilité sociétale des entreprises (RSE)."
+          }
+        ]
+      },
+      {
+        "titre": "Certification MASE : garantir la sécurité et la performance des interventions",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "La certification MASE (Manuel d’Amélioration Sécurité des Entreprises) valorise la capacité d’une entreprise à délivrer des prestations performantes, sûres et conformes aux exigences industrielles."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Chez Migen, elle confirme notre engagement à améliorer la Sécurité, la Santé au poste de travail et l’Environnement (SSE)."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Dans les faits, la démarche MASE permet à Migen de :"
+          },
+          {
+            "type": "puces",
+            "items": [
+              "Améliorer les conditions d’intervention de ses techniciens, pour garantir des interventions plus sûres et plus efficaces",
+              "Gérer les risques liés à la coactivité, en particulier sur les sites industriels complexes avec plusieurs intervenants",
+              "Optimiser la performance opérationnelle, en standardisant les méthodes de maintenance et en assurant la traçabilité des interventions"
+            ]
+          },
+          {
+            "type": "paragraphe",
+            "texte": "En appliquant ces principes, Migen garantit à ses clients une maintenance industrielle structurée et sécurisée, tout en réduisant les risques pour les personnes et les installations."
+          }
+        ]
+      },
+      {
+        "titre": "Certification EcoVadis : inscrire la maintenance industrielle dans une démarche RSE",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "L’évaluation EcoVadis évalue les entreprises sur quatre piliers majeurs de la responsabilité sociétale : l’environnement, le social et les droits humains, l’éthique et les achats responsables."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Avec un score global de 55/100, Migen obtient la médaille de bronze attestant de pratiques RSE déjà bien établies et inscrites dans une dynamique de progression continue."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Cette évaluation met en évidence les actions menées par Migen pour :"
+          },
+          {
+            "type": "puces",
+            "items": [
+              "Renforcer la sécurité et les conditions de travail, en particulier à travers la formation des équipes, l’utilisation d’équipements de protection adaptés et la réalisation d’audits réguliers",
+              "Réduire l’impact environnemental des activités de maintenance, via le tri des déchets, une gestion optimisée des flux et le respect de certifications spécifiques",
+              "Encourager la formalisation des politiques RSE, le développement du reporting et l’intégration d’achats responsables"
+            ]
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Autant d’éléments qui permettent aux clients de Migen de s’appuyer sur un partenaire conscient des enjeux sociaux, environnementaux et éthiques de la maintenance industrielle."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Grâce à ses certifications MASE et EcoVadis, Migen confirme sa position d’acteur engagé de la maintenance industrielle, capable de concilier performance opérationnelle, sécurité des interventions et responsabilité sociétale."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Ces reconnaissances témoignent d’un engagement constant à améliorer les conditions de travail, à maitriser les risques sur les sites industriels et à inscrire la maintenance dans une démarche durable et structurée."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "En intégrant ces exigences au cœur de son organisation, Migen contribue à faire de la maintenance industrielle un facteur de fiabilité, de sécurité et de progrès, en phase avec les attentes actuelles et futures du secteur industriel."
+          }
+        ]
+      }
+    ],
+    "minutes": 2,
+    "image": "/assets/blog/certifications-mase-ecovadis/certifications-mase-ecovadis.webp",
+    "imageAlt": "Tampon posé sur une liasse de documents, image des certifications MASE et EcoVadis"
+  }
+}

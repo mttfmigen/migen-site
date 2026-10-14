@@ -48,7 +48,12 @@ export type BlocRessource =
   /** Tableau en carte blanche, cellules en texte brut. */
   | { type: "tableau"; entetes: string[]; lignes: string[][] }
   /** Encadré en lavis orange (une citation `> ` du texte), texte en ligne. */
-  | { type: "encadre"; texte: string };
+  | { type: "encadre"; texte: string }
+  /**
+   * Photos du corps d'un billet repris de l'ancien blog (14/10), dans leur
+   * ordre d'origine. Hors maquette : aucune des 35 fiches ne le porte.
+   */
+  | { type: "galerie"; images: { src: string; alt: string; largeur: number; hauteur: number }[] };
 
 /** Une partie `## ` du texte : une entrée de sommaire, un H2 numéroté. */
 export interface PartieRessource {
@@ -79,6 +84,11 @@ export interface ContenuRessource {
    * de téléchargement à la place.
    */
   image?: string;
+  /**
+   * Le texte alternatif de `image` quand elle n'est pas au registre des photos
+   * (billets repris de l'ancien blog, `/assets/blog/`). Sinon `altPhoto`.
+   */
+  imageAlt?: string;
   /** Les blocs d'introduction qui ne sont pas le chapo, avant la partie 01. */
   avant?: BlocRessource[];
   parties?: PartieRessource[];

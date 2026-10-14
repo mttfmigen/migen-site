@@ -211,8 +211,14 @@ for (const chemin of [
   });
 }
 
-/* LA COPIE RÉDIGÉE. Une fiche par page, et c'est elle que le visiteur lit. */
-const FICHES = join(RACINE, "supabase", "import", "gabarits-maquette");
+/* LA COPIE RÉDIGÉE. Une fiche par page, et c'est elle que le visiteur lit.
+   `blog-repris` : les billets de l'ancien blog, servis par le même relais
+   disque (`lib/contenu.ts`, DOSSIERS_DU_RELAIS). */
+const FICHES = ["gabarits-maquette", "blog-repris"].flatMap((dossier) =>
+  readdirSync(join(RACINE, "supabase", "import", dossier))
+    .filter((f) => f.endsWith(".json"))
+    .map((f) => join(RACINE, "supabase", "import", dossier, f)),
+);
 
 /* Les champs qui DÉCLARENT un écart au lieu de le rendre. Ils doivent citer
    la formulation écartée, c'est leur raison d'être : `verification-ressource`
@@ -233,15 +239,15 @@ function chaines(valeur, chemin = "") {
   return [];
 }
 
-for (const entree of readdirSync(FICHES).filter((f) => f.endsWith(".json"))) {
-  const fiche = JSON.parse(readFileSync(join(FICHES, entree), "utf8"));
+for (const cheminFiche of FICHES) {
+  const fiche = JSON.parse(readFileSync(cheminFiche, "utf8"));
   for (const [chemin, texte] of chaines(fiche)) {
     for (const [motif, remede] of INTERDITS) {
       const interdit =
         typeof motif === "string" ? texte.includes(motif) && motif : texte.match(motif)?.[0];
       if (interdit) {
         trouvailles.push({
-          ou: `${relative(RACINE, join(FICHES, entree))} → ${chemin}`,
+          ou: `${relative(RACINE, cheminFiche)} → ${chemin}`,
           interdit,
           remede,
           ligne: texte.trim().slice(0, 100),
@@ -262,7 +268,7 @@ for (const entree of readdirSync(FICHES).filter((f) => f.endsWith(".json"))) {
         : undefined;
     if (defaut) {
       trouvailles.push({
-        ou: `${relative(RACINE, join(FICHES, entree))} → contenu.mention`,
+        ou: `${relative(RACINE, cheminFiche)} → contenu.mention`,
         interdit: defaut,
         remede: "la phrase entière du corpus, proposition initiale et point final compris",
         ligne: mention.trim().slice(0, 100),
@@ -279,5 +285,5 @@ if (trouvailles.length > 0) {
   process.exit(1);
 }
 
-const nbFiches = readdirSync(FICHES).filter((f) => f.endsWith(".json")).length;
+const nbFiches = FICHES.length;
 console.log(`copie conforme aux interdits du contrat (code + ${nbFiches} fiches de contenu)`);

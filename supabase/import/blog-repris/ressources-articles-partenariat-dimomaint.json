@@ -1,0 +1,73 @@
+{
+  "url": "/ressources/articles/partenariat-dimomaint/",
+  "seo": {
+    "meta_title": "Partenariat DimoMaint et GMAO | Migen",
+    "meta_description": "Optimisez votre maintenance industrielle : GMAO intégrée, planification, traçabilité et optimisation de la performance."
+  },
+  "titre_h1": "Migen et DimoMaint : la complémentarité entre interviention terrain et pilotage de la maintenance",
+  "contenu": {
+    "gabarit": "ressource",
+    "rayon": "articles",
+    "chapo": [
+      "Dans un contexte industriel où la performance des équipements repose de plus en plus sur la digitalisation de la maintenance, les entreprises doivent s’appuyer sur des outils capables de structurer, piloter et analyser leurs interventions.",
+      "C’est dans cette logique que Migen, expert de la maintenance industrielle externalisée, a noué un partenariat avec DimoMaint, éditeur reconnu de solutions de GMAO pour l’industrie.",
+      "Cette coopération vise à accompagner les industriels dans la mise en place d’une maintenance plus proactive, plus lisible et orientée performance."
+    ],
+    "parties": [
+      {
+        "titre": "Pourquoi Migen s’associe à DimoMaint pour la GMAO ?",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Cette collaboration repose une complémentarité forte entre l’expertise terrain des équipes Migen et la puissance digitale de la GMAO DimoMaint."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "L’objectif est clair : permettre aux industriels de passer d’une maintenance souvent réactive à une organisation structurée et pilotée par la donnée."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Grâce à cette approche, chaque intervention de maintenance, qu’elle soit préventive ou corrective, est planifiée, tracée et analysée dans un outil centralisé, facilitant le pilotage opérationnel et la prise de décision."
+          }
+        ]
+      },
+      {
+        "titre": "Quels bénéficies d’une GMAO intégrée à la maintenance industrielle ?",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "La collaboration entre Migen et DimoMaint apporte des bénéfices concrets aux industriels souhaitant optimiser leur maintenance industrielle."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "En effet, la GMAO DimoMaint permet de centraliser le suivi des interventions réalisées par les techniciens Migen, offrant une visibilité complète sur l’état des équipements et l’historique des actions de maintenance. Cette traçabilité facilite l’identification des équipements sensibles, la priorisation des interventions et l’anticipation des pannes."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Grâce à cette organisation, les responsables maintenance disposent d’un outil de pilotage fiable, capable de consolider les données terrain, d’analyser les performances (MTBF, MTTR, coûts de maintenance) et d’améliorer la planification des opérations. La maintenance devient ainsi un facteur de performance industrielles durable."
+          }
+        ]
+      },
+      {
+        "titre": "Un partenariat au service de la performance et de la fiabilité industrielle",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Le partenariat entre Migen et DimoMaint illustre l’évolution des pratiques de maintenance industrielle vers des modèles plus digitaux, mesurables et orientés performance."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "En associant une expertise terrain reconnue à une GMAO performante, les industriels disposent d’un cadre structurant pour piloter leurs interventions, analyser leurs performances et anticiper les défaillances."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Cette alliance stratégique positionne la maintenance non plus comme une contrainte opérationnelle, mais comme un véritable facteur de fiabilité, de disponibilité et de compétitivité industrielle."
+          }
+        ]
+      }
+    ],
+    "minutes": 2,
+    "image": "/assets/blog/partenariat-dimomaint/partenariat-dimomaint.webp",
+    "imageAlt": "Deux techniciens Migen devant un ordinateur, logo DimoMaint au premier plan"
+  }
+}

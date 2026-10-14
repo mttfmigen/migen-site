@@ -130,18 +130,28 @@ interface RelaisGabarit {
 // Rechargé le 07/10 : /bureau-etudes/bureau-etude-electronique/, phrase de la carte phare du maillage.
 // Rechargé le 07/10 : /bureau-etudes/mise-en-conformite-machine/ porté contre sa capture (19 sections, rail de marques, 5 trous déclarés).
 // relais relu : 2026-10-14T07:52:27.375Z
+/**
+ * `blog-repris` : les 12 billets de l'ancien blog republiés le 14/10 (décision
+ * de Mehdi, voir `docs/ARTICLES-BLOG-REPRISE.md`). Dossier À PART parce que
+ * `components/site/ressources-hub/catalogue.ts` range dans le hub /ressources/
+ * toute fiche ressource de `gabarits-maquette` : les y ajouter est une étape
+ * suivante, pas encore décidée.
+ */
+const DOSSIERS_DU_RELAIS = ["gabarits-maquette", "blog-repris"];
+
 const CONTENUS_SUR_DISQUE: ReadonlyMap<string, RelaisGabarit> = (() => {
-  const dossier = join(process.cwd(), "supabase", "import", "gabarits-maquette");
   const par = new Map<string, RelaisGabarit>();
-  let fichiers: string[];
-  try {
-    fichiers = readdirSync(dossier);
-  } catch {
-    // Le dossier peut ne pas exister : ce n'est pas une erreur, c'est l'état
-    // normal une fois l'import fait et les fichiers archivés.
-    return par;
+  const fichiers: [dossier: string, nom: string][] = [];
+  for (const nomDossier of DOSSIERS_DU_RELAIS) {
+    const dossier = join(process.cwd(), "supabase", "import", nomDossier);
+    try {
+      fichiers.push(...readdirSync(dossier).map((nom) => [dossier, nom] as [string, string]));
+    } catch {
+      // Le dossier peut ne pas exister : ce n'est pas une erreur, c'est l'état
+      // normal une fois l'import fait et les fichiers archivés.
+    }
   }
-  for (const nom of fichiers) {
+  for (const [dossier, nom] of fichiers) {
     if (!nom.endsWith(".json")) continue;
     try {
       const lu = JSON.parse(readFileSync(join(dossier, nom), "utf8")) as {
@@ -178,6 +188,15 @@ const CONTENUS_SUR_DISQUE: ReadonlyMap<string, RelaisGabarit> = (() => {
  */
 export function cheminsDuRelais(): string[] {
   return [...CONTENUS_SUR_DISQUE.keys()];
+}
+
+/** Les H1 que le relais disque sert, par chemin (plan du site). */
+export function titresDuRelais(): ReadonlyMap<string, string> {
+  return new Map(
+    [...CONTENUS_SUR_DISQUE].flatMap(([chemin, relais]) =>
+      relais.titreH1 ? [[chemin, relais.titreH1] as const] : [],
+    ),
+  );
 }
 
 /**

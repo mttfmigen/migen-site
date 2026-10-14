@@ -1,9 +1,7 @@
-import { readFileSync, readdirSync } from "node:fs";
-import { join } from "node:path";
 import "server-only";
 
 import { TITRE_HUB_EXPERTISES } from "@/components/site/expertises/expertises-donnees";
-import { cheminsArticles, cheminsDuRelais } from "@/lib/contenu";
+import { cheminsArticles, cheminsDuRelais, titresDuRelais } from "@/lib/contenu";
 import { cheminNormalise } from "@/lib/redirections";
 import { ROUTES_STATIQUES } from "@/lib/routes-statiques";
 import { lectureContenu } from "@/lib/supabase";
@@ -89,32 +87,10 @@ const TITRES_STATIQUES: Record<(typeof ROUTES_STATIQUES)[number], string> = {
 /**
  * Les H1 que le relais disque fait servir, par chemin. MÊME RÈGLE que
  * `pageParChemin()` (`lib/contenu.ts`) : quand le relais porte un `titre_h1`,
- * il l'emporte sur celui de la base.
- *
- * ponytail: relu ici parce que `lib/contenu.ts` n'exporte que les chemins du
- * relais et reste en lecture seule pour ce chantier. Le jour où il exporte ses
- * titres, ce bloc se remplace par cet export.
+ * il l'emporte sur celui de la base. Lus dans `lib/contenu.ts`, qui connaît
+ * tous les dossiers du relais (dont `blog-repris`, 14/10).
  */
-const TITRES_DU_RELAIS: ReadonlyMap<string, string> = (() => {
-  const dossier = join(process.cwd(), "supabase", "import", "gabarits-maquette");
-  const titres = new Map<string, string>();
-  let fichiers: string[];
-  try {
-    fichiers = readdirSync(dossier);
-  } catch {
-    return titres; // Pas de relais : `cheminsDuRelais()` est vide lui aussi.
-  }
-  for (const nom of fichiers) {
-    if (!nom.endsWith(".json")) continue;
-    const lu = JSON.parse(readFileSync(join(dossier, nom), "utf8")) as {
-      url?: string;
-      titre_h1?: string;
-      contenu?: unknown;
-    };
-    if (lu.url && lu.contenu && lu.titre_h1) titres.set(lu.url, lu.titre_h1);
-  }
-  return titres;
-})();
+const TITRES_DU_RELAIS: ReadonlyMap<string, string> = titresDuRelais();
 
 /**
  * Les pages dont le COMPOSANT remplace le H1 de la base.

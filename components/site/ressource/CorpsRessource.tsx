@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Fragment, type CSSProperties, type ReactNode } from "react";
 
@@ -184,8 +185,32 @@ function Bloc({ bloc }: { bloc: BlocRessource }) {
           <EnLigne texte={bloc.texte} lien={H.LIEN_PUCE} gras={H.GRAS_ENCADRE} />
         </p>
       );
+    case "galerie":
+      return (
+        <div style={GALERIE}>
+          {bloc.images.map((image) => (
+            <Image
+              key={image.src}
+              src={image.src}
+              alt={image.alt}
+              width={image.largeur}
+              height={image.hauteur}
+              sizes="(max-width: 880px) 50vw, 260px"
+              style={{ width: "100%", height: "auto", borderRadius: 12 }}
+            />
+          ))}
+        </div>
+      );
   }
 }
+
+/** Les photos d'un billet repris : une grille qui passe à deux colonnes au téléphone. */
+const GALERIE: CSSProperties = {
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))",
+  gap: 10,
+  margin: "8px 0 24px",
+};
 
 function BandeAppel() {
   return (

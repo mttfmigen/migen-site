@@ -1,0 +1,147 @@
+{
+  "url": "/ressources/articles/machines-goulots/",
+  "seo": {
+    "meta_title": "Machines goulots et temps de production | Migen",
+    "meta_description": "Le temps, c'est de l'argent. Identifiez et éliminez les goulots d’étranglement de votre production pour maximiser l’efficacité et réduire les pertes de temps."
+  },
+  "titre_h1": "Vous connaissez l’expression “Le temps, c’est de l’argent” ?",
+  "contenu": {
+    "gabarit": "ressource",
+    "rayon": "articles",
+    "chapo": [],
+    "parties": [
+      {
+        "titre": "Comment trouver les machines goulot dans votre ligne de production",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Les goulots d’étranglement de la production sont des points de congestion qui réduisent la capacité de production d’une entreprise. Ils peuvent entraîner des retards, une augmentation des coûts et une baisse de la qualité du produit. Il est donc essentiel de les identifier et de les résoudre pour optimiser votre ligne de production."
+          }
+        ]
+      },
+      {
+        "titre": "Méthodologie pour identifier les goulots d’étranglement",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "1. Analyse des processus de production"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Pour identifier les goulots d’étranglement, commencez par analyser les processus de production en place. Cela implique de comprendre les différentes étapes de la production, les machines impliquées et les interactions entre elles."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "2. Évaluation des capacités de production"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Il est important d’évaluer la capacité de production de chaque machine et de chaque étape. Cela vous permet de déterminer si une machine fonctionne à pleine capacité ou si elle est sous-utilisée, ce qui pourrait indiquer un goulot d’étranglement."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "3. Suivi des indicateurs clés de performance"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Les indicateurs clés de performance (KPI) sont des mesures quantitatives qui vous permettent d’évaluer la performance de votre ligne de production. Les KPI tels que le temps de cycle, le taux de défectuosité et le taux d’utilisation des machines peuvent vous aider à identifier les goulots d’étranglement."
+          }
+        ]
+      },
+      {
+        "titre": "Techniques pour résoudre les goulots d’étranglement",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "1. Augmentation de la capacité"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "L’une des méthodes les plus simples pour résoudre un goulot d’étranglement est d’augmenter la capacité de production. Cela peut être réalisé en ajoutant des machines supplémentaires, en augmentant les heures de travail ou en améliorant l’efficacité des machines existantes."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "2. Redistribution des tâches"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Une autre solution pour résoudre les goulots d’étranglement est de redistribuer les tâches entre les différentes machines et les étapes de production. Cela permet de répartir la charge de travail de manière plus équilibrée et de réduire la pression sur les machines en goulot d’étranglement."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "3. Amélioration continue"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "L’amélioration continue est un processus qui vise à optimiser les processus de production en identifiant et en résolvant les problèmes de manière continue. Cela peut inclure la formation du personnel, la mise en œuvre de nouvelles technologies et l’analyse des données pour identifier les domaines d’amélioration."
+          }
+        ]
+      },
+      {
+        "titre": "Exemple d’identification et de résolution d’un goulot d’étranglement",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "1. Analyse des processus de production"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Dans cet exemple, une entreprise de fabrication de produits électroniques a identifié un problème de production. Les délais de livraison augmentent et les coûts de production sont en hausse. L’équipe décide d’analyser les processus de production pour identifier les goulots d’étranglement potentiels."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "2. Évaluation des capacités de production"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "L’équipe évalue la capacité de production de chaque machine et découvre que l’une des machines d’assemblage fonctionne qu’à 60 % de sa capacité. Ce goulot d’étranglement ralentit l’ensemble de la ligne de production et entraîne des coûts supplémentaires."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "3. Suivi des indicateurs clés de performance"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "L’équipe suit les KPI tels que le temps de cycle, le taux de défectuosité et le taux d’utilisation des machines pour mieux comprendre le goulot d’étranglement. Ils constatent que le temps de cycle de la machine d’assemblage est plus long que prévu et que le taux de défectuosité est élevé."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "4. Augmentation de la capacité"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Pour résoudre ce goulot d’étranglement, l’entreprise décide d’investir dans une nouvelle machine d’assemblage pour augmenter la capacité de production. Cette décision permet de réduire les délais de livraison et les coûts de production."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "5. Redistribution des tâches"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "L’équipe décide également de redistribuer les tâches entre les différentes machines et les étapes de production pour équilibrer la charge de travail. Cette stratégie permet de réduire la pression sur la machine d’assemblage en goulot d’étranglement et d’améliorer l’efficacité de l’ensemble de la ligne de production."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "6. Amélioration continue"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Enfin, l’entreprise met en place un processus d’amélioration continue pour optimiser ses processus de production. Cela inclut la formation du personnel, la mise en œuvre de nouvelles technologies et l’analyse des données pour identifier les domaines d’amélioration."
+          }
+        ]
+      },
+      {
+        "titre": "À retenir",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Identifier et résoudre les goulots d’étranglement dans votre ligne de production est essentiel pour optimiser votre capacité de production, réduire les coûts et améliorer la qualité de vos produits. En analysant les processus de production, en évaluant les capacités de production, en suivant les KPI et en mettant en œuvre des techniques telles que l’augmentation de la capacité, la redistribution des tâches et l’amélioration continue, vous pouvez améliorer considérablement l’efficacité de votre ligne de production et renforcer la compétitivité de votre entreprise sur le marché."
+          }
+        ]
+      }
+    ],
+    "minutes": 4,
+    "image": "/assets/blog/machines-goulots/machines-goulots.webp",
+    "imageAlt": "Technicien consultant une tablette devant une machine industrielle"
+  }
+}

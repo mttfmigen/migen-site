@@ -215,3 +215,32 @@ Le suivi de positions de Mehdi (`Position Tracking Rankings Overview Oct 14.csv`
 Motifs vérifiés le même jour sur la préproduction : archives paginées (`/actualites/page/N/`, `/category/articles/page/N/`, `/page/N/`), archive d'auteur, `/feed/` et fichiers de `/wp-content/uploads/` répondent 404, comme prévu pour les adresses techniques ; `/nos-offres/` et `/entreprise-de-maintenance/`, deux chaînes de l'ancien WordPress, arrivent en un seul saut.
 
 Reste ouvert : la page `/cgv/` (section 5), en cours de publication à l'identique.
+
+## 8. Les 12 billets de l'ancien blog, republiés le 14/10
+
+Décision de Mehdi, le 14/10 vers 15h10 : « Publie, on fera des modifs plus tard ». Les 12 billets que le nouveau site avait perdus (inventaire : `docs/ARTICLES-BLOG-REPRISE.md`) sont republiés mot pour mot sous `/ressources/articles/`, servis par le relais disque (`supabase/import/blog-repris/`). Chaque ancienne adresse les rejoint en une seule 301 (`lib/redirections-ancien-site.ts`, `docs/redirections/plan-redirections.csv`).
+
+| ancienne adresse | avant | désormais |
+|---|---|---|
+| `/certifications-mase-ecovadis/` | `/rse/` | `/ressources/articles/certifications-mase-ecovadis/` |
+| `/migen-et-dimomaint-en-alliance-strategique/` | `/partenaires/` | `/ressources/articles/partenariat-dimomaint/` (ligne en base, voir plus bas) |
+| `/migen-savoye-et-dimomaint-une-cooperation-strategique-au-service-de-la-performance-industrielle/` | `/partenaires/` | `/ressources/articles/savoye-dimomaint/` (ligne en base, voir plus bas) |
+| `/pourquoi-faire-appel-a-une-entreprise-de-maintenance-externalisee/` | `/offres/full-service/` | `/ressources/articles/pourquoi-externaliser/` (ligne en base, voir plus bas) |
+| `/migen-une-vision-innovante-de-la-maintenance-industrielle-par-nathan-jorez-ceo/` | `/nous-connaitre/` | `/ressources/articles/interview-nathan-jorez/` |
+| `/migen-la-ou-le-bien-etre-au-travail-nest-pas-juste-un-slogan/` | `/carriere/` | `/ressources/articles/bien-etre-au-travail/` |
+| `/femmes-dans-lindustrie-migen-soutient-la-diversite-dans-le-secteur-de-la-maintenance-industrielle/` | `/carriere/` | `/ressources/articles/femmes-dans-l-industrie/` |
+| `/vers-une-france-reindustrialisee-avantages-defis-et-strategies/` | `/ressources/articles/` | `/ressources/articles/reindustrialisation/` |
+| `/les-qualites-essentielles-dun-mainteneur-industriel-migen/` | `/carriere/technicien-de-maintenance/` | `/ressources/articles/qualites-du-mainteneur/` |
+| `/vous-connaissez-lexpression-le-temps-cest-de-largent/` | `/ressources/fiches-techniques/trs/` | `/ressources/articles/machines-goulots/` |
+| `/guide-maintenance-industrielle/` | `/ressources/` | `/ressources/articles/guide-maintenance-industrielle/` |
+| `/la-digitalisation-des-manuels-de-maintenance-industrielle/` | `/ressources/articles/digitalisation-maintenance/` | `/ressources/articles/digitalisation-des-manuels/` |
+
+**Trois lignes de la table `redirects` l'emportent encore sur le code** (lues en base le 14/10, rien n'y a été écrit). Tant qu'elles ne changent pas, ces trois adresses gardent leur ancienne cible, toujours en un seul saut :
+
+| source | en base aujourd'hui | valeur à poser |
+|---|---|---|
+| `/migen-et-dimomaint-en-alliance-strategique/` | `/partenaires/` | `/ressources/articles/partenariat-dimomaint/` |
+| `/migen-savoye-et-dimomaint-une-cooperation-strategique-au-service-de-la-performance-industrielle/` | `/partenaires/` | `/ressources/articles/savoye-dimomaint/` |
+| `/pourquoi-faire-appel-a-une-entreprise-de-maintenance-externalisee/` | `/offres/maintenance-externalisee/` (le proxy la mène à `/offres/full-service/`) | `/ressources/articles/pourquoi-externaliser/` |
+
+Les neuf autres n'ont pas de ligne en base : le code s'applique dès le déploiement.

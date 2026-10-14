@@ -1,0 +1,92 @@
+{
+  "url": "/ressources/articles/interview-nathan-jorez/",
+  "seo": {
+    "meta_title": "Nathan Jorez sur BFMTV : la maintenance industrielle | Migen",
+    "meta_description": "Nathan Jorez, CEO de Migen, révolutionne la maintenance industrielle avec une approche innovante, entièrement tournée vers l’avenir. Voici sa vision."
+  },
+  "titre_h1": "Migen : Une Vision Innovante de la Maintenance Industrielle par Nathan Jorez, CEO",
+  "contenu": {
+    "gabarit": "ressource",
+    "rayon": "articles",
+    "chapo": [
+      "La maintenance industrielle est un secteur crucial pour l’économie, mais souvent méconnu et sous-évalué. Nathan Jorez, CEO de l’entreprise Migen, s’est récemment exprimé sur BFMTV à propos des défis et des opportunités dans ce domaine. Cet article se propose d’explorer les points clés de cette interview, mettant en lumière l’approche novatrice de Migen dans un secteur traditionnel."
+    ],
+    "parties": [
+      {
+        "titre": "Migen : Une Entreprise Innovante dans la Maintenance Industrielle",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Fondée en 2021, Migen est une PME française spécialisée dans la maintenance industrielle. Leur mission principale est de fournir des services de maintenance, de réparation et d’entretien pour diverses industries à travers le pays. Nathan Jorez met en avant l’importance de la maintenance pour le bon fonctionnement et la longévité des machines industrielles."
+          }
+        ]
+      },
+      {
+        "titre": "Les Défis de Recrutement dans la Maintenance Industrielle",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "L’un des problèmes majeurs auxquels Migen est confronté est le recrutement. Avec une pénurie de 40 postes à pourvoir d’ici la fin de l’année, le défi est de taille. Nathan Jorez explique que cette difficulté est due à un manque de candidats qualifiés dans le domaine, en particulier des techniciens de maintenance."
+          }
+        ]
+      },
+      {
+        "titre": "Profils Recherchés chez Migen",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Migen recherche des techniciens avec des compétences en mécanique et en électricité. L’entreprise valorise non seulement les compétences techniques, mais aussi le savoir-être des candidats. Les diplômes tels que BTS ou Bac pro sont appréciés, mais l’accent est mis sur la qualité et l’attitude des individus."
+          }
+        ]
+      },
+      {
+        "titre": "Combattre les Stéréotypes de l’Industrie",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Nathan Jorez souligne une image dépassée de l’industrie, souvent perçue comme bruyante et sale, ce qui peut décourager les jeunes. Il insiste sur la nécessité de changer cette perception pour attirer de nouveaux talents."
+          }
+        ]
+      },
+      {
+        "titre": "Stratégies de Migen pour Attirer et Retenir les Talents",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Pour rendre les postes plus attrayants, Migen offre un package salarial compétitif, avec des salaires 20% au-dessus de la moyenne du marché. De plus, l’entreprise propose des avantages tels que des cartes essence et des véhicules de fonction."
+          }
+        ]
+      },
+      {
+        "titre": "Le Bien-être des Employés : Une Priorité",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Migen place le bien-être de ses employés au cœur de sa stratégie. Nathan Jorez partage sa vision d’une entreprise avec une ambiance positive, favorisant l’entraide et le collectif. Cette approche semble porter ses fruits, avec une augmentation des candidatures suite à ces initiatives."
+          }
+        ]
+      },
+      {
+        "titre": "Migen : Un Modèle de Culture d’Entreprise",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Inspirée par des modèles tels que LDLC, Migen s’engage à offrir des voyages annuels à ses employés, contribuant ainsi à leur bien-être et à leur fidélisation."
+          }
+        ]
+      },
+      {
+        "titre": "À retenir",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Nathan Jorez et Migen démontrent qu’avec une vision innovante et une approche centrée sur les employés, il est possible de transformer un secteur traditionnel comme la maintenance industrielle. En brisant les stéréotypes et en valorisant ses employés, Migen se positionne comme un exemple à suivre."
+          }
+        ]
+      }
+    ],
+    "minutes": 2,
+    "image": "/assets/blog/interview-nathan-jorez/interview-nathan-jorez.webp",
+    "imageAlt": "Nathan Jorez, CEO de Migen, invité de l'émission C votre emploi sur BFM Lyon"
+  }
+}

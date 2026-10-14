@@ -1,7 +1,7 @@
 # Reprise des articles de blog de l'ancien site
 
 Mesuré le 14/10/2026 sur l'ancien WordPress encore en ligne (https://migen.fr, API `wp-json/wp/v2/posts`, 64 billets, soit tout `post-sitemap.xml`).
-Rien n'est publié, rien n'est écrit en base : la publication attend l'accord de Mehdi.
+**Publié le 14/10** sur décision de Mehdi (« Publie, on fera des modifs plus tard ») : les 12 reprises sont servies sous `/ressources/articles/<slug>/` par le relais disque (`supabase/import/blog-repris/`), leurs anciennes adresses y mènent en une 301 (`docs/PLAN-REDIRECTIONS.md`, section 8). Rien n'est écrit en base. Les mots interdits ont été remplacés au plus près du sens (13 occurrences, plus 3 dans des meta descriptions d'origine) ; tout le reste est mot pour mot. Pas encore dans les cartes du hub `/ressources/`.
 
 ## En bref
 
