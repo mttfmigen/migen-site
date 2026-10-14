@@ -42,11 +42,7 @@ const EXCEPTIONS = new Map([
   [0, { ecart: 62, marge: 14, pourquoi: "mention RGPD sous le bouton du formulaire du héros (50 px) plus l'écart de grille (12 px). Exigée au point de collecte, articles 13 et 14 ; absente de la maquette." }],
   [11, { ecart: -35, marge: 14, pourquoi: "note de travail de la maquette retirée : « Verbatims reformulés à partir de retours clients · à valider avec les intéressés avant publication ». Elle n'était pas destinée aux visiteurs." }],
   [12, { ecart: -43, marge: 14, pourquoi: "note de travail de la maquette retirée : « Jalons à confirmer · dates et chiffres à valider »." }],
-  /* Section 13 (« Pourquoi externaliser ») : l'exception de -28 px est RETIRÉE
-     le 14/10. La phrase « sur mesure » coupée lui retirait une ligne ; le
-     paragraphe porte depuis une phrase du brouillon SEO validé de septembre
-     (« Tout ce qui touche à la maintenance… est notre terrain »), et la section
-     mesure de nouveau la hauteur de la maquette, au pixel (0 px à 1280). */
+  [13, { ecart: -28, marge: 14, pourquoi: "la phrase de la maquette finit par « pour des prestations sur mesure », formulation interdite par le contrat. Coupée après « validés par vos soins » : une ligne de moins, à 16,5/1,7." }],
   [19, { ecart: 45, marge: 14, pourquoi: "mention RGPD du formulaire de bas de page, même raison que la section 0." }],
 ]);
 
