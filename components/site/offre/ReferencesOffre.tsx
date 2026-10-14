@@ -35,7 +35,14 @@ export interface ProprietesReferencesOffre {
   section: SectionPreuves;
   /** La page Ville de la maquette garde la date telle qu'écrite (« d'un site… »). */
   dateBrute?: boolean;
+  /**
+   * Les photos que d'AUTRES blocs de la page servent déjà : le rail ne les
+   * reprend pas quand c'est lui qui choisit la photo. Voir `photosDuRail`.
+   */
+  photosPrises?: readonly string[];
 }
+
+type Preuve = SectionPreuves["preuves"][number];
 
 /** Une photo par carte, dans l'ordre des preuves du corpus. */
 /**
@@ -140,6 +147,39 @@ const PHOTOS: readonly string[] = [
   "/assets/web/team-grind-close.jpg",
   "/assets/web/x-soudure.jpg",
 ];
+
+/**
+ * La photo de chaque carte : celle de la fiche, sinon celle de son rang dans
+ * `PHOTOS`.
+ *
+ * LE RANG NE SAVAIT PAS CE QUE LA PAGE MONTRE DÉJÀ. Mesuré le 14/10 par
+ * `scripts/verifie-photos-du-bloc.mjs` : sur /offres/chantier/,
+ * /offres/depannage-industriel/ et /offres/retrofit/, dont les preuves n'ont
+ * pas de photo, les rangs 1 et 3 servaient `team-grind-front` et `team-duo`,
+ * que le maillage « Un autre besoin ? » sert aussi, trois sections plus bas,
+ * pour les cartes Arrêt technique et Résidence.
+ *
+ * Une photo de RANG déjà servie ailleurs (`prises`) cède donc sa place à la
+ * première photo de `PHOTOS` que ni la page ni le rail ne montrent encore.
+ * Sans `prises`, le rail est exactement celui d'avant. Une photo DÉCLARÉE par
+ * la fiche n'est jamais remplacée ici : c'est une donnée, elle se corrige dans
+ * la donnée.
+ *
+ * ponytail: la comparaison se fait par CHEMIN. Or 60 paires de fichiers de
+ * `public/assets/web/` sont la même prise sous deux noms (mesuré le 14/10,
+ * vignettes 32x32 en niveaux de gris, écart moyen < 1), par exemple
+ * `team-grind-close` et `mq-17e2f3bce95f`. Vérifié sur les 30 pages du
+ * gabarit : ce remplacement n'en crée aucune. Si un jour il en créait, passer
+ * `prises` par une table des prises jumelles plutôt que par les chemins.
+ */
+function photosDuRail(preuves: readonly Preuve[], prises: readonly string[]): string[] {
+  const ailleurs = new Set(prises);
+  const voulues = preuves.map((preuve, rang) => preuve.photo ?? PHOTOS[rang % PHOTOS.length]);
+  const libres = PHOTOS.filter((p) => !ailleurs.has(p) && !voulues.includes(p));
+  return voulues.map((photo, rang) =>
+    preuves[rang].photo || !ailleurs.has(photo) ? photo : (libres.shift() ?? photo),
+  );
+}
 
 const ENTETE: CSSProperties = {
   display: "flex",
@@ -305,10 +345,15 @@ const FLECHE: CSSProperties = {
   font: "600 15px var(--fb)",
 };
 
-export default function ReferencesOffre({ section, dateBrute = false }: ProprietesReferencesOffre) {
+export default function ReferencesOffre({
+  section,
+  dateBrute = false,
+  photosPrises = [],
+}: ProprietesReferencesOffre) {
   const preuves = section.preuves.filter(
     (preuve) => !!preuve.lienHref && estCheminInterne(preuve.lienHref),
   );
+  const photos = photosDuRail(preuves, photosPrises);
 
   return (
     <section style={SECTION}>
@@ -375,15 +420,15 @@ export default function ReferencesOffre({ section, dateBrute = false }: Propriet
             >
               <div style={CADRE_PHOTO}>
                 <Image
-                  src={preuve.photo ?? PHOTOS[rang % PHOTOS.length]}
-                  alt={altPhoto(preuve.photo ?? PHOTOS[rang % PHOTOS.length])}
+                  src={photos[rang]}
+                  alt={altPhoto(photos[rang])}
                   fill
                   sizes="320px"
                   style={{
                     objectFit: "cover",
                     /* Cadre 320x150, ratio 2,13, et 951 placements : l'emplacement
                        le plus destructeur du site pour une photo portrait. */
-                    objectPosition: cadragePhoto(preuve.photo ?? PHOTOS[rang % PHOTOS.length], 320 / 150),
+                    objectPosition: cadragePhoto(photos[rang], 320 / 150),
                     filter: "saturate(var(--sat)) contrast(1.05)",
                   }}
                 />

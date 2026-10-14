@@ -3,6 +3,7 @@ import replis from "./replis-accueil.module.css";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import styles from "./DernieresRealisations.module.css";
 
+import { altPhoto } from "@/lib/descriptions-photos";
 import { photoDeLaPage } from "@/lib/photo-par-page";
 
 export interface Realisation {
@@ -10,7 +11,12 @@ export interface Realisation {
   href: string;
   /** Visuel de couverture : chemin public (« /assets/web/… ») ou URL. */
   image: string;
-  /** Décoratif sur la maquette, donc vide par défaut. */
+  /**
+   * Forçage seulement. Sans valeur, la description du registre de la photo
+   * servie (`altPhoto`) : décorative sur la maquette, la vignette était servie
+   * avec `alt=""` jusqu'au 14/10, alors que la photo vient du registre et y a
+   * sa description.
+   */
   alt?: string;
   /** Client et offre, en une ligne : « SUEZ IWT · migen© Résidence ». */
   client: string;
@@ -171,7 +177,7 @@ export default function DernieresRealisations({
                     l'image se placerait par rapport à la page. */}
                 <Image
                   src={r.image}
-                  alt={r.alt ?? ""}
+                  alt={r.alt ?? altPhoto(r.image)}
                   fill
                   sizes="(max-width: 760px) 100vw, (max-width: 1000px) 50vw, 380px"
                   style={{

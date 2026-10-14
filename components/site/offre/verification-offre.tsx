@@ -53,6 +53,8 @@ import AppelFinal from "./AppelFinal";
 import MarquesOffre from "./MarquesOffre";
 import PageOffre from "./PageOffre";
 import Reassurance from "./Reassurance";
+import ReferencesOffre from "./ReferencesOffre";
+import type { SectionPreuves } from "@/types/contenu";
 import { BLOCS_LECTURE } from "./generique/BlocsLecture";
 import { BLOCS_VENTE, INTERNES_VENTE } from "./generique/BlocsVente";
 import type { Bloc } from "./generique/types";
@@ -686,7 +688,47 @@ for (const [libelle, tenu] of vus) {
   );
 }
 
+/* ----- 10. LE RAIL « Nos références » NE RESSERT PAS UNE PHOTO DU MAILLAGE
+
+   Défaut mesuré le 14/10 par `scripts/verifie-photos-du-bloc.mjs` sur les
+   trois offres dont les preuves n'ont pas de photo : le rail choisissait la
+   sienne par rang et retombait sur `team-grind-front` et `team-duo`, que le
+   maillage sert trois sections plus bas. Voir `photosDuRail`.
+   Ce contrôle lit la page entière, section par section. Son témoin rend le
+   MÊME rail sans `photosPrises` : il doit y retrouver le défaut, sans quoi le
+   contrôle ne prouverait plus rien et la tolérance serait à retirer. */
+const photosDeLaSection = (html: string): Set<string> =>
+  new Set(
+    [...html.matchAll(/<img\b[^>]*?\bsrc="([^"]*)"/g)]
+      .map((m) => decodeURIComponent(m[1].match(/[?&]url=([^&]+)/)?.[1] ?? m[1]).split("?")[0])
+      .filter((f) => /^\/assets\/(web|photos)\//.test(f)),
+  );
+const sectionAvec = (html: string, titre: string): string =>
+  html.split(/<section\b/).find((s) => s.includes(titre)) ?? "";
+let railsControles = 0;
+for (const nom of ["offres-chantier.json", "offres-depannage-industriel.json", "offres-retrofit.json"]) {
+  const page = litPage(nom);
+  const html = renderToStaticMarkup(
+    <PageOffre titre={page.titre_h1 ?? page.url} contenu={page.contenu} formulaire="controle" chemin={page.url} />,
+  );
+  const maillage = photosDeLaSection(sectionAvec(html, "Un autre besoin ?"));
+  const rail = photosDeLaSection(sectionAvec(html, "Nos références"));
+  assert.ok(maillage.size > 0 && rail.size > 0, `${nom} : rail ou maillage introuvable, contrôle vide`);
+  const preuves = page.contenu.sections?.find((s) => s.type === "preuves") as SectionPreuves;
+  const temoin = photosDeLaSection(renderToStaticMarkup(<ReferencesOffre section={preuves} />));
+  assert.ok(
+    [...temoin].some((f) => maillage.has(f)),
+    `${nom} : sans photosPrises, le rail ne ressert plus le maillage ; le témoin n'a plus d'objet`,
+  );
+  const communes = [...rail].filter((f) => maillage.has(f));
+  assert.equal(communes.length, 0, `${nom} : le rail ressert ${communes.join(", ")}, déjà au maillage`);
+  railsControles += 1;
+}
+
 console.log(`gabarit offre : toutes les vérifications passent.`);
+console.log(
+  `  rail des références : ${railsControles} offres sans photo du maillage, témoin sans photosPrises vu en défaut.`,
+);
 console.log(
   `  capture relue (${CAPTURE.split("\n").length} lignes), ` +
     `${fichiers.length} pages réelles rendues, ${INTERDITS.length} interdits vérifiés absents.`,

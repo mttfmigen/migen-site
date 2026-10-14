@@ -29,7 +29,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import PageCasClients from "@/components/site/casclients/PageCasClients";
-import { vuesPreuves } from "@/components/site/casclients/vues-preuves";
+import { NEUTRES, PHOTOS_DU_HEROS, photosPropres, vuesPreuves } from "@/components/site/casclients/vues-preuves";
 import { appliqueDecisions } from "@/lib/decisions-copie";
 import {
   estCasClients,
@@ -261,13 +261,67 @@ interface LogiqueMaquette {
   };
   SHORT(t: string): string;
   pvAssign(liste: { url: string }[]): string[];
+  pvPool(url: string): string[];
   CLIENT_LOGO(client: string): string;
 }
 // La maquette du client, exécutée telle quelle : c'est elle qui fait foi.
 const maquette = new Function(
   `${SOURCE_MAQUETTE.slice(debutLogique, finLogique)}
-   return { parse, SHORT, pvAssign, CLIENT_LOGO };`,
+   return { parse, SHORT, pvAssign, pvPool, CLIENT_LOGO };`,
 )() as LogiqueMaquette;
+
+/**
+ * LES PHOTOS DU HÉROS, LUES DANS LA MAQUETTE, et l'écart du 14/10 qui en sort.
+ *
+ * Cette porte exigeait `pvAssign` tel quel. Or `pvAssign` puise dans `PVPH`,
+ * qui contient les trois photos de la mosaïque du héros : la maquette servait
+ * donc `team-duo`, `team-grind-front` et `ph-robots-solaire` deux fois sur la
+ * même page, dans le héros puis dans la grille, ce que
+ * `scripts/verifie-photos-du-bloc.mjs` refuse. Le site écarte désormais ces
+ * trois photos de la grille (`PHOTOS_DU_HEROS` dans `vues-preuves.ts`).
+ *
+ * L'attente reste `pvAssign` de la maquette, exécuté tel quel, à une seule
+ * différence près : une carte tombée sur une photo du héros prend la première
+ * photo de SON `pvPool` (celui de la maquette) qui n'en est pas, libre si
+ * possible. Toutes les autres cartes doivent garder la photo de la maquette.
+ * Et la liste du héros est relue dans la SOURCE de la maquette, puis comparée
+ * à celle du site : si l'une bouge sans l'autre, la porte tombe au lieu de
+ * suivre la dérive.
+ */
+const debutMosaique = SOURCE_MAQUETTE.indexOf('class="pv-mos"');
+assert.ok(debutMosaique > 0, "mosaïque du héros introuvable dans MigenPreuves");
+const HEROS_MAQUETTE = [
+  ...SOURCE_MAQUETTE.slice(debutMosaique, SOURCE_MAQUETTE.indexOf("left:-22px", debutMosaique)).matchAll(
+    /src="assets\/web\/([^"]+)\.jpg"/g,
+  ),
+].map((m) => m[1]);
+assert.deepEqual(
+  PHOTOS_DU_HEROS.map((p) => p.replace("/assets/web/", "").replace(".jpg", "")),
+  HEROS_MAQUETTE,
+  "les photos du héros du site ne sont plus celles de la maquette",
+);
+const AU_HEROS = new Set(HEROS_MAQUETTE);
+
+const nomSansJpg = (p: string) => p.split("/").pop()!.replace(".jpg", "");
+
+/** `pvAssign` de la maquette, puis la carte tombée sur le héros cède. */
+function pvAssignSansHeros(liste: { url: string }[]): string[] {
+  const brut = maquette.pvAssign(liste).map(nomSansJpg);
+  const prises = new Set(brut);
+  return brut.map((pris, i) => {
+    if (!AU_HEROS.has(pris)) return `assets/web/${pris}.jpg`;
+    /* Le remplaçant : la photo propre du cas, puis une photo de l'équipe Migen
+       (`NEUTRES`), puis le pool de la maquette. Sans l'étage du milieu, McCain
+       recevait une étagère de pièces en caoutchouc dans un onglet, et la photo
+       d'une autre carte de la même grille dans « Tous » (relecture du 14/10). */
+    const pool = [...photosPropres(liste[i].url), ...NEUTRES, ...maquette.pvPool(liste[i].url)].filter(
+      (y) => !AU_HEROS.has(y),
+    );
+    const remplacante = pool.find((y) => !prises.has(y)) ?? pool[0];
+    prises.add(remplacante);
+    return `assets/web/${remplacante}.jpg`;
+  });
+}
 
 const corpus = maquette.parse(
   readFileSync("maquette/contenu/site/Preuves/preuves.md", "utf8"),
@@ -407,7 +461,7 @@ for (const [v, ordreCorpus] of listesCorpus.entries()) {
      chaque carte emporte la sienne, seule sa place change ». Ma première
      version promouvait AVANT d'appeler `pvAssign`, et la porte refusait alors
      la photo de GLS : elle mesurait une règle que le site n'applique pas. */
-  const imagesCorpus = maquette.pvAssign(ordreCorpus);
+  const imagesCorpus = pvAssignSansHeros(ordreCorpus);
   const appariees = ordreCorpus.map((x, i) => ({ ...x, photoAttendue: imagesCorpus[i] }));
   const liste = promu(appariees);
   const images = liste.map((x) => x.photoAttendue);
@@ -420,6 +474,22 @@ for (const [v, ordreCorpus] of listesCorpus.entries()) {
     assert.equal(carte.logo, logo ? `/${logo}` : "", `${carte.url} : logo`);
     if (carte.logo) assert.ok(existsSync(`public${carte.logo}`), `public${carte.logo} introuvable`);
     assert.ok(existsSync(`public${carte.photo}`), `public${carte.photo} introuvable`);
+  }
+}
+
+/* L'ÉCART DU 14/10 A UN OBJET, et le site le tient. Témoin : la maquette brute
+   sert bien une photo du héros dans la grille « Tous » (sans quoi l'écart ne
+   protégerait plus rien et devrait partir), et aucune vue du site n'en sert. */
+assert.ok(
+  maquette.pvAssign(listesCorpus[0]).some((p) => AU_HEROS.has(nomSansJpg(p))),
+  "la maquette ne ressert plus les photos du héros dans sa grille : retirer l'écart du 14/10",
+);
+for (const vue of vues) {
+  for (const carte of [...vue.une, ...vue.grille]) {
+    assert.ok(
+      !AU_HEROS.has(nomSansJpg(carte.photo)),
+      `vue ${vue.libelle}, ${carte.url} : ${carte.photo} est déjà dans le héros`,
+    );
   }
 }
 

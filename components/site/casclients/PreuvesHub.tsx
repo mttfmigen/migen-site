@@ -6,7 +6,7 @@ import type { ContenuHubPreuves } from "@/types/casclients";
 
 import FiltrePreuves from "./FiltrePreuves";
 import styles from "./PreuvesHub.module.css";
-import { vuesPreuves } from "./vues-preuves";
+import { PHOTOS_DU_HEROS, vuesPreuves } from "./vues-preuves";
 
 /**
  * Le hub /preuves/, gabarit « 10 Hub de rubrique », porté de
@@ -149,7 +149,7 @@ export default function PreuvesHub({ titre, contenu }: ProprietesPreuvesHub) {
             >
               <div style={{ ...CASE_MOSAIQUE, gridRow: "span 2" }}>
                 <Image
-                  src="/assets/web/team-duo.jpg"
+                  src={PHOTOS_DU_HEROS[0]}
                   alt="Techniciens migen sur un site client"
                   fill
                   priority
@@ -162,7 +162,7 @@ export default function PreuvesHub({ titre, contenu }: ProprietesPreuvesHub) {
               </div>
               <div style={CASE_MOSAIQUE}>
                 <Image
-                  src="/assets/web/team-grind-front.jpg"
+                  src={PHOTOS_DU_HEROS[1]}
                   alt=""
                   fill
                   priority
@@ -172,7 +172,7 @@ export default function PreuvesHub({ titre, contenu }: ProprietesPreuvesHub) {
               </div>
               <div style={CASE_MOSAIQUE}>
                 <Image
-                  src="/assets/web/ph-robots-solaire.jpg"
+                  src={PHOTOS_DU_HEROS[2]}
                   alt=""
                   fill
                   priority

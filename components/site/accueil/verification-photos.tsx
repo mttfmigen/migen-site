@@ -53,6 +53,13 @@
  *  7. TEXTE ALTERNATIF D'UNE PHOTO DU REGISTRE : celui du registre, mot pour
  *     mot. Une description retapée à la main finit par dériver de sa photo.
  *
+ *  8. UNE PHOTO DE HUB OU DE RÉALISATION N'EST JAMAIS MUETTE. Mesuré le 14/10
+ *     en production : le second passage du rail des hubs (huit villes) et les
+ *     trois cartes « Nos dernières réalisations » sortaient avec `alt=""`. La
+ *     règle 7 ne le voyait pas, elle saute un texte vide. Celle-ci exige un
+ *     texte sur CHAQUE image de ces deux blocs, doublon décoratif compris : il
+ *     est `aria-hidden` pour un lecteur d'écran, pas pour un moteur d'images.
+ *
  * ELLE SAIT ÉCHOUER, et elle le prouve : `--controle` rejoue chaque règle sur un
  * jeu fabriqué qui la viole et refuse de conclure si la règle l'accepte, puis
  * sur un jeu conforme et refuse de conclure si la règle le rejette. Une porte
@@ -295,6 +302,13 @@ export function tuilesAvecPhotoInterdite(html: string, villes: readonly string[]
   return defauts;
 }
 
+/** Les images d'un fragment HTML sorties sans texte alternatif, absent ou vide. */
+export function photosSansTexte(html: string): string[] {
+  return [...html.matchAll(/<img\b[^>]*>/g)]
+    .filter((m) => !(m[0].match(/\balt="([^"]*)"/)?.[1] ?? "").trim())
+    .map((m) => fichierDe(m[0].match(/\bsrc="([^"]+)"/)?.[1] ?? "") ?? "image sans adresse");
+}
+
 /* Le vocabulaire du registre, partagé en trois.
    `technicien` et `site-industriel` ne décident rien : 291 photos sur 385
    portent la première, elle ne discrimine pas (même constat que
@@ -511,6 +525,14 @@ if (CONTROLE) {
   accepte("la même tuile en panneau sombre", tuilesAvecPhotoInterdite(carte("Metz", ""), ["Metz"]));
   nie("la tuile disparue du rail", tuilesAvecPhotoInterdite(carte("Lyon", ""), ["Metz"]));
 
+  // Règle 8 : une photo de hub ou de réalisation sans texte.
+  nie("une photo de hub servie avec alt vide", photosSansTexte('<a><img src="/hubs/lyon.jpg" alt=""></a>'));
+  nie("une photo de réalisation sans attribut alt", photosSansTexte('<img src="/assets/photos/a.jpg">'));
+  accepte(
+    "la même photo décrite",
+    photosSansTexte('<img alt="Lyon, la basilique de Fourvière" src="/hubs/lyon.jpg">'),
+  );
+
   // Règle 6 : une case sur une photo de secteur pur.
   const themesTemoin = new Map<string, string[]>([
     ["metal-fonderie-coulee.jpg", ["metallurgie", "technicien"]],
@@ -656,6 +678,14 @@ for (const [bloc, html] of htmlParBloc) {
   }
 }
 rapport.push(`${alts} texte(s) alternatif(s) de photo du registre conformes`);
+
+// 8. Aucune photo de hub ni de réalisation muette, doublon du rail compris.
+for (const bloc of ["HubsAccueil", "DernieresRealisations"]) {
+  const html = htmlParBloc.get(bloc)!;
+  const muettes = photosSansTexte(html);
+  assert.deepEqual(muettes, [], `${bloc} : photo(s) sans texte alternatif : ${muettes.join(", ")}`);
+  rapport.push(`${bloc} : ${(html.match(/<img\b/g) ?? []).length} photo(s), toutes décrites`);
+}
 
 console.log("Photos de l'accueil, toutes les assertions passent :");
 for (const ligne of rapport) console.log(`  - ${ligne}`);

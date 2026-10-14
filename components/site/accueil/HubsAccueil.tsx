@@ -5,7 +5,7 @@ import type { CSSProperties } from "react";
 import styles from "./HubsAccueil.module.css";
 import replis from "./replis-accueil.module.css";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
-import { PHOTO_DU_HUB } from "@/components/site/implantations/photos-hubs";
+import { ALT_DU_HUB, PHOTO_DU_HUB } from "@/components/site/implantations/photos-hubs";
 
 export interface HubAccueil {
   /** Ville, affichée dans la pastille blanche. Sert aussi de clé photo. */
@@ -15,7 +15,14 @@ export interface HubAccueil {
   couverture: string;
   chemin: string;
   /**
-   * Description de la photo de la ville, pour un lecteur d'écran.
+   * Description de la photo de la ville, pour un lecteur d'écran. FORÇAGE
+   * SEULEMENT : sans valeur, le texte est lu dans `ALT_DU_HUB`
+   * (`photos-hubs.ts`), source unique depuis le 14/10. Les huit textes qui
+   * vivaient ici y ont été déplacés mot pour mot, parce que la même photo est
+   * servie par `/carriere/` et `/implantations/`, qui la laissaient muette.
+   * Le second passage du rail porte le même texte : il reste `aria-hidden`,
+   * donc rien n'est annoncé deux fois, mais un moteur ne lit pas `aria-hidden`
+   * et y voyait seize images de ville dont huit sans description.
    *
    * ABSENTE QUAND LE HUB N'A PAS DE PHOTO, et ce n'est pas un oubli : décrire
    * une image qui n'est pas là reviendrait à l'inventer. Les deux `alt` qui
@@ -76,56 +83,48 @@ const HUBS: readonly HubAccueil[] = [
     titre: "Hub Lyon",
     couverture: "Siège · Grenoble, Saint-Étienne, Valence, Haute-Savoie",
     chemin: "/implantations/lyon/",
-    alt: "Lyon, la basilique de Fourvière au coucher du soleil",
   },
   {
     ville: "Paris",
     titre: "Hub Paris",
     couverture: "Essonne, Rouen",
     chemin: "/implantations/paris/",
-    alt: "Paris et la tour Eiffel",
   },
   {
     ville: "Lille",
     titre: "Hub Lille",
     couverture: "Hauts-de-France",
     chemin: "/implantations/lille/",
-    alt: "Façades du centre de Lille",
   },
   {
     ville: "Strasbourg",
     titre: "Hub Strasbourg",
     couverture: "Alsace, Mulhouse",
     chemin: "/implantations/strasbourg/",
-    alt: "Strasbourg, les Ponts couverts",
   },
   {
     ville: "Nantes",
     titre: "Hub Nantes",
     couverture: "Loire-Atlantique, Rennes, Brest",
     chemin: "/implantations/nantes/",
-    alt: "Vue aérienne de Nantes",
   },
   {
     ville: "Toulouse",
     titre: "Hub Toulouse",
     couverture: "Haute-Garonne, Albi, Tarbes, Agen",
     chemin: "/implantations/toulouse/",
-    alt: "Toulouse, la Garonne et la ville rose",
   },
   {
     ville: "Marseille",
     titre: "Hub Marseille",
     couverture: "Fos, Toulon, Nîmes, Perpignan",
     chemin: "/implantations/marseille/",
-    alt: "Marseille, le Vieux-Port",
   },
   {
     ville: "Bordeaux",
     titre: "Hub Bordeaux",
     couverture: "Gironde, Mérignac, Charente",
     chemin: "/implantations/bordeaux/",
-    alt: "Bordeaux, les quais de la Garonne",
     /* LE CADRAGE DE BORDEAUX, mesuré le 14/10 et non estimé.
        La photo fait 2000x1335, le cadre 300x400. En `cover`, elle est agrandie
        au facteur 0,2996 : 599 px de large pour 400 de haut. Le débordement est
@@ -293,7 +292,7 @@ export default function HubsAccueil({ hubs = HUBS }: Proprietes) {
               {photo ? (
                 <Image
                   src={photo}
-                  alt={passe === 0 ? (hub.alt ?? "") : ""}
+                  alt={hub.alt ?? ALT_DU_HUB[hub.ville] ?? ""}
                   fill
                   sizes="(max-width: 760px) 86vw, 320px"
                   style={{

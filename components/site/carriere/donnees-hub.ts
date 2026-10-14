@@ -212,7 +212,13 @@ export const HUB_CARRIERE: ContenuHubCarriere = {
           "titre": "Technicien de maintenance",
           "texte": "Polyvalence électrique, mécanique, méthode",
           "href": "/carriere/technicien-de-maintenance/",
-          "photo": "/assets/web/faq-offre.jpg"
+          // ÉCART À LA CAPTURE, 14/10. Ses octets sont ceux de `faq-offre.jpg`,
+          // la photo du panneau des questions plus bas (`QuestionsHub`) : la même
+          // image dans deux sections, refusée par
+          // `scripts/verifie-photos-du-bloc.mjs`. Le panneau garde la sienne, que
+          // tout le site partage ; la carte prend une photo du registre sur son
+          // sujet, ouverte et vérifiée. Pas `sv-portrait.jpg` : même prise.
+          "photo": "/assets/photos/il-technicien-maintenance-photo-3-1600.jpg"
         },
         {
           "titre": "Électromécanicien",

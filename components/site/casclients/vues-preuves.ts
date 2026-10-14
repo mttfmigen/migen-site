@@ -20,7 +20,38 @@ import type { ContenuHubPreuves } from "@/types/casclients";
  * Mehdi du 12/10, « tu dois également mettre en case mise en avant celui de
  * Norvège » (G44 de GATES.md), et il ne change rien tant que le corpus ne
  * marque personne. La porte dédiée est `scripts/verifie-cas-en-avant.mjs`.
+ *
+ * UN SECOND ÉCART, LE 14/10 : la grille ne reprend plus les trois photos du
+ * héros. Voir `PHOTOS_DU_HEROS`.
  */
+
+/**
+ * Les trois photos de la mosaïque du héros (`PreuvesHub`), dans l'ordre de la
+ * maquette. Le héros les lit ici, et la grille les écarte.
+ *
+ * POURQUOI LA GRILLE LES ÉCARTE. `pvAssign` de la maquette puise aussi dans
+ * `PVPH`, qui contient ces trois photos : la grille « Tous » resservait
+ * `team-duo` (AKTID), `team-grind-front` (McCAIN) et `ph-robots-solaire`
+ * (EIFFAGE), déjà vues dans le héros quelques centimètres plus haut. Le défaut
+ * est celui de la maquette elle-même, mesuré le 14/10 par
+ * `scripts/verifie-photos-du-bloc.mjs`. Le héros est fixe et garde ses photos ;
+ * c'est la grille, calculée, qui cède.
+ *
+ * ELLE CÈDE CARTE PAR CARTE, APRÈS `pvAssign`, et pas en amont. Retirer ces
+ * photos du pool avant l'attribution décalait toute la chaîne gloutonne :
+ * 27 cartes sur 82 changeaient de photo (mesuré le 14/10), dont 23 qui n'en
+ * montraient aucune du héros. Ici, seule une carte tombée sur une photo du
+ * héros en change, pour la première photo de SON pool qui n'y est pas : sa
+ * photo propre (`CASE_PH`) quand elle en a une. Les autres gardent celle de la
+ * maquette.
+ */
+export const PHOTOS_DU_HEROS = [
+  "/assets/web/team-duo.jpg",
+  "/assets/web/team-grind-front.jpg",
+  "/assets/web/ph-robots-solaire.jpg",
+] as const;
+
+const DU_HEROS: ReadonlySet<string> = new Set(PHOTOS_DU_HEROS);
 
 /** Photos de terrain migen, dernier recours de la maquette. */
 const PVPH = [
@@ -157,9 +188,19 @@ export function logoClient(client: string): string {
   return trouve ? `/assets/clients/${trouve[1]}` : "";
 }
 
-function pool(url: string): string[] {
+export function photosPropres(url: string): string[] {
   const cle = Object.keys(CASE_PH).find((x) => url.includes(`/preuves/${x}`));
-  const propre = cle ? CASE_PH[cle] : [];
+  return cle ? CASE_PH[cle] : [];
+}
+
+/** Les photos de l'équipe Migen hors héros : un remplaçant juste pour tout
+    client, quand ses photos propres sont prises. Sans elles, la cession
+    retombait dans l'ordre d'ALL_X, et McCain recevait une étagère de pièces en
+    caoutchouc (relecture adverse du 14/10). */
+export const NEUTRES = ["team-electric", "team-grind-impact", "team-grind-sparks", "team-grind-close"];
+
+function pool(url: string): string[] {
+  const propre = photosPropres(url);
   const secteur = /amazon|gls|veepee|aktid|alstef|savoye|dimomaint/.test(url)
     ? ALL_X.filter((x) => /logistique/.test(x))
     : /stellantis|valeo|autoliv|eaton|washtec/.test(url)
@@ -174,14 +215,27 @@ function pool(url: string): string[] {
   );
 }
 
-/** Une photo par carte, sans doublon dans la grille : `pvAssign`. */
+/**
+ * Une photo par carte, sans doublon dans la grille : `pvAssign`. Puis l'écart
+ * du 14/10 : une carte tombée sur une photo du héros prend la première photo
+ * de son pool qui n'en est pas, libre si possible (`PHOTOS_DU_HEROS`).
+ */
 function photos(urls: string[]): string[] {
   const prises = new Set<string>();
-  return urls.map((url) => {
+  const choix = urls.map((url) => {
     const p = pool(url);
-    const choix = p.find((y) => !prises.has(y)) ?? p[0];
-    prises.add(choix);
-    return cheminPhoto(choix);
+    const pris = p.find((y) => !prises.has(y)) ?? p[0];
+    prises.add(pris);
+    return pris;
+  });
+  return choix.map((pris, i) => {
+    if (!DU_HEROS.has(cheminPhoto(pris))) return cheminPhoto(pris);
+    const p = [...photosPropres(urls[i]), ...NEUTRES, ...pool(urls[i])].filter(
+      (y) => !DU_HEROS.has(cheminPhoto(y)),
+    );
+    const remplacante = p.find((y) => !prises.has(y)) ?? p[0];
+    prises.add(remplacante);
+    return cheminPhoto(remplacante);
   });
 }
 

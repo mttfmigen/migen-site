@@ -104,6 +104,15 @@ const CARTES_GABARIT: Readonly<Record<string, CarteMaillage>> = {
   },
 };
 
+/**
+ * Les photos que ce maillage pose pour `cartes`, pour que les autres blocs de
+ * la page les évitent (`ReferencesOffre`, prop `photosPrises`). Même filtre que
+ * le rendu : une cible absente du dictionnaire ne pose aucune photo.
+ */
+export function photosDuMaillage(cartes: readonly CarteOffre[]): string[] {
+  return cartes.flatMap((carte) => CARTES_GABARIT[carte.href]?.photo ?? []);
+}
+
 const TITRE: CSSProperties = {
   font: "600 calc(clamp(26px,2.8vw,38px) * var(--ts))/1.1 var(--ft)",
   letterSpacing: "-.04em",

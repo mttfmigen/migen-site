@@ -18,7 +18,7 @@ import ComplementsOffre from "./ComplementsOffre";
 import DerouleOffre from "./DerouleOffre";
 import GarantiesOffre from "./GarantiesOffre";
 import LogosClients from "./LogosClients";
-import MaillageOffres from "./MaillageOffres";
+import MaillageOffres, { photosDuMaillage } from "./MaillageOffres";
 import MarquesOffre from "./MarquesOffre";
 import PagesLiees from "./PagesLiees";
 import PanneauFormulaire from "./PanneauFormulaire";
@@ -492,7 +492,11 @@ export default function PageOffre({
 
         {/* ---------------------------------------- 12. « 08 Références » */}
 
-        {preuves ? <ReferencesOffre section={preuves} /> : null}
+        {/* Le rail évite les photos du maillage de bas de page (section 15),
+            qu'il rendait aussi sur trois offres : voir `photosDuRail`. */}
+        {preuves ? (
+          <ReferencesOffre section={preuves} photosPrises={photosDuMaillage(autres)} />
+        ) : null}
 
         {/* --------------------------------------- 13. Appel · références */}
 

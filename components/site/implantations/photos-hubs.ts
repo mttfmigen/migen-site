@@ -1,5 +1,7 @@
 import type { StaticImageData } from "next/image";
 
+import { altPhoto } from "@/lib/descriptions-photos";
+
 import bordeaux from "@/components/site/accueil/hubs/bordeaux.jpg";
 import lille from "@/components/site/accueil/hubs/lille.jpg";
 import lyon from "@/components/site/accueil/hubs/lyon.jpg";
@@ -59,6 +61,23 @@ export const PHOTO_DU_HUB: Readonly<Record<string, StaticImageData>> = {
   Toulouse: toulouse,
   Bordeaux: bordeaux,
 };
+
+/**
+ * LE TEXTE ALTERNATIF DE CHAQUE PHOTO DE HUB, lu et non recopié.
+ *
+ * Les huit fichiers de `components/site/accueil/hubs/` sont les mêmes octets
+ * que `public/assets/villes/hub-<ville>.jpg` (md5 identiques, 14/10) : leur
+ * description vit donc à UN endroit, `lib/descriptions-villes.ts`, et sert
+ * l'accueil, la mosaïque de `/implantations/` et les cartes de `/carriere/`.
+ * Mesuré le 14/10 en production : la mosaïque et le second passage du rail de
+ * l'accueil les servaient avec `alt=""`, seize photos muettes.
+ */
+export const ALT_DU_HUB: Readonly<Record<string, string>> = Object.fromEntries(
+  Object.keys(PHOTO_DU_HUB).map((ville) => [
+    ville,
+    altPhoto(`/assets/villes/hub-${ville.toLowerCase()}.jpg`),
+  ]),
+);
 
 /** Les hubs dont la photo de ville manque encore, nommés et non devinés. */
 export const HUBS_SANS_PHOTO: readonly string[] = ["Metz", "Dijon"];

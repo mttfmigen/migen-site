@@ -8,7 +8,7 @@ import type { NosVilles as DonneesNosVilles } from "@/types/implantations";
 import styles from "./PageImplantations.module.css";
 
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
-import { PHOTO_DU_HUB } from "./photos-hubs";
+import { ALT_DU_HUB, PHOTO_DU_HUB } from "./photos-hubs";
 
 /**
  * L'écran « Nos villes » du hub `/implantations/` : les dix cartes de hub et
@@ -308,7 +308,12 @@ export default function NosVilles({ villes }: { villes: DonneesNosVilles }) {
                   {photo ? (
                     <Image
                       src={photo}
-                      alt=""
+                      /* Le texte de la photo, et non `alt=""` comme jusqu'au
+                         14/10 : `aria-hidden` la tait déjà au lecteur d'écran,
+                         qui lit le nom du hub dans le lien, mais un moteur
+                         d'images, lui, ne lit que `alt`. Source unique,
+                         `ALT_DU_HUB` de `photos-hubs.ts`. */
+                      alt={ALT_DU_HUB[hub.hub] ?? ""}
                       aria-hidden="true"
                       fill
                       sizes="(max-width: 880px) 100vw, 480px"

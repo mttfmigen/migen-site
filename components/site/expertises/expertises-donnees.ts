@@ -24,7 +24,8 @@ import { photosDesCibles } from "@/lib/photo-de-la-cible";
  * LES PHOTOS sont celles que la capture nomme (`url(...)` des cartes) ou, pour
  * celles qu'elle sert en `blob:`, les fichiers dont les OCTETS sont ceux de la
  * maquette vivante (empreinte relevée par XHR depuis son cadre, 08/10) :
- * `mq-17e2f3bce95f.jpg` (panneau des types et carte EATON), et deux fichiers
+ * `mq-17e2f3bce95f.jpg` (panneau des types ; la carte EATON en a changé le
+ * 14/10, voir sa ligne), et deux fichiers
  * rapatriés tels quels, `mq-1ef16ef335a6.jpg` (STELLANTIS fonderie) et
  * `mq-29ebb1b81ced.jpg` (VEEPEE), nommés comme les autres `mq-` par le début
  * de leur SHA-256. La photo du problème est celle de `ProblemeOffre` par
@@ -380,7 +381,15 @@ const CONTENU_HUB_EXPERTISES_DECLARE: ContenuHubExpertises = {
           texte: "Six techniciens mobilisés.",
           lienLibelle: "Étude de cas EATON",
           lienHref: "/preuves/eaton-mise-en-production/",
-          photo: "/assets/web/mq-17e2f3bce95f.jpg",
+          /* ÉCART À LA CAPTURE, 14/10. La maquette pose ici `mq-17e2f3bce95f`,
+             la photo qu'elle sert déjà au panneau « Quel type de maintenance »
+             (`types.photo`) : la même image dans deux sections de la page,
+             refusée par `scripts/verifie-photos-du-bloc.mjs`. Le panneau est
+             fixe et la garde ; la carte prend une photo du registre sur le
+             sujet du cas, une ligne automobile, ouverte et vérifiée. Ni
+             `team-grind-close` ni `x-meuleuse-etau` : ce sont la même prise
+             sous d'autres noms. */
+          photo: "/assets/photos/env-assemblage-chassis-automobile.jpg",
         },
         {
           titre: "Monter, déplacer, renforcer, chantier après chantier",

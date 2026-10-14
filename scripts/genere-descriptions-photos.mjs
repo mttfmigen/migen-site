@@ -34,6 +34,8 @@ await writeFile('lib/descriptions-photos.ts', `/**
  * description est muette pour un lecteur d'ecran et pour un moteur.
  */
 
+import { descriptionVille } from "./descriptions-villes";
+
 const DESCRIPTIONS: Record<string, string> = {
 ${lignes.join('\n')}
 };
@@ -60,12 +62,13 @@ export function descriptionPhoto(chemin: string | null | undefined): string | nu
 
 /**
  * Le texte alternatif a poser sur une image de contenu : la description du
- * registre quand elle existe, sinon la chaine vide, qui annonce correctement
- * une image decorative plutot que de laisser un lecteur d'ecran enoncer le
- * nom du fichier.
+ * registre quand elle existe, puis celle d'une photo de ville sous licence
+ * (\`lib/descriptions-villes.ts\`), sinon la chaine vide, qui annonce
+ * correctement une image decorative plutot que de laisser un lecteur d'ecran
+ * enoncer le nom du fichier.
  */
 export function altPhoto(chemin: string | null | undefined): string {
-  return descriptionPhoto(chemin) ?? "";
+  return descriptionPhoto(chemin) ?? descriptionVille(chemin) ?? "";
 }
 
 /** Le nombre de photos decrites, pour les portes. */

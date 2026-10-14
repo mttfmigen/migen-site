@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Porte : toute photo du registre servie par une page porte sa description.
+ * Porte : toute photo qui porte du sens sort avec un texte alternatif.
  *
  * Origine : le 10/10/2026, 1 495 des 1 629 photos servies (92 %, sur 231 pages
  * des 248) n'avaient aucun texte alternatif. Les photos etaient pourtant
@@ -8,22 +8,44 @@
  * registre : les composants ecrivaient `alt=""` en dur a cote du `src`.
  * Muettes pour un lecteur d'ecran, invisibles pour un moteur d'images.
  *
- * Ce que la porte verifie, et qui la distingue d'un simple « alt non vide » :
- *  1. aucune photo du registre ne sort sans texte alternatif ;
- *  2. le texte pose est bien CELUI DU REGISTRE, pas un nom de fichier ni une
- *     chaine de remplissage. Une photo decrite « photo-4-1600.jpg » tombe.
+ * Le 14/10, mesure en production sur les 158 pages du plan du site : 34 photos
+ * encore muettes, et AUCUNE n'etait vue par cette porte. 31 etaient des photos
+ * de VILLE (`/assets/villes/`, et les memes fichiers importes par l'accueil,
+ * servis sous `/_next/static/media/<ville>.<empreinte>.jpg`), que la porte ne
+ * regardait pas parce qu'elles ne sont pas au registre. Les 3 autres etaient
+ * les cartes « Nos dernieres realisations » de l'accueil : des photos du
+ * registre, mais la porte lisait la liste des 248 pages de la maquette contre
+ * un serveur local perime, et ne mesurait donc pas le site servi.
  *
- * Usage : node scripts/verifie-alt-photos.mjs [adresse]      (defaut : local)
- *         node scripts/verifie-alt-photos.mjs --controle     (preuve d'echec)
+ * Ce que la porte verifie, et qui la distingue d'un simple « alt non vide » :
+ *  1. aucune photo du registre ni aucune photo de ville ne sort sans texte
+ *     alternatif, absent ou vide ;
+ *  2. le texte n'est ni un nom de fichier, ni une chaine de remplissage, ni
+ *     trop court pour decrire quoi que ce soit ;
+ *  3. pour une photo du registre, elle compte combien portent mot pour mot la
+ *     description du registre.
+ *
+ * Elle lit les pages du PLAN DU SITE de l'adresse mesuree (`sitemap.xml`), pas
+ * une liste recopiee : ce qui est mesure est ce qui est servi.
+ *
+ * Usage : node scripts/verifie-alt-photos.mjs [adresse]   (defaut : production)
+ *         node scripts/verifie-alt-photos.mjs --controle  (preuve d'echec, hors reseau)
+ * Jeton de succes : ALT_PHOTOS_PRESENTS
  */
 import { readFile } from 'node:fs/promises'
 
 const CONTROLE = process.argv.includes('--controle')
-const BASE = process.argv.find(a => a.startsWith('http')) ?? 'http://localhost:4340'
+const BASE = (process.argv.find(a => a.startsWith('http')) ?? 'https://migen-site.vercel.app').replace(/\/$/, '')
 const LOT = 12
 
 const reg = JSON.parse(await readFile('public/assets/photos/registre.json', 'utf8'))
 const attendu = new Map((reg.photos ?? reg).map(p => [p.fichier, (p.description ?? '').trim()]))
+
+/** Les photos de ville : servies telles quelles depuis `/assets/villes/`, ou
+ *  importees par l'accueil (`components/site/accueil/hubs/`), que Next sert
+ *  sous `/_next/static/media/<ville>.<empreinte>.jpg`. */
+const PHOTO_DE_VILLE =
+  /\/assets\/villes\/|\/accueil\/hubs\/|media\/(?:lyon|paris|lille|strasbourg|nantes|toulouse|marseille|bordeaux|metz|dijon)\./
 
 /** Rend un attribut HTML lisible : sans ce decodage la porte prend la bonne
  *  description pour une etrangere, parce que l'apostrophe sort en `&#x27;`. */
@@ -46,69 +68,94 @@ const REMPLISSAGES = [
   'visuel', 'migen', 'technicien', 'photo migen',
 ];
 
-/** Le fichier designe par une adresse d'image, optimisee par Next ou non. */
-function fichierDe(src) {
-  let brut = src
-  try { brut = decodeURIComponent(src) } catch { /* deja decode */ }
-  return brut.split('/assets/photos/')[1]?.split(/[?&#]/)[0] ?? null
+/** L'adresse d'image decodee, optimisee par Next ou non. */
+function decodeSrc(src) {
+  try { return decodeURIComponent(decodeHtml(src)) } catch { return decodeHtml(src) }
+}
+
+/** Le fichier du registre designe par une adresse d'image, ou null. */
+function fichierDuRegistre(brut) {
+  const f = brut.split('/assets/photos/')[1]?.split(/[?&#]/)[0] ?? null
+  return f && attendu.has(f) ? f : null
+}
+
+/** Le defaut d'un texte alternatif, ou null s'il decrit quelque chose. */
+function defautDuTexte(alt, fichier) {
+  if (!alt) return 'sans texte alternatif'
+  if (/\.(?:jpe?g|png|webp|avif)$/i.test(alt) || alt === fichier) return `nom de fichier en guise de description : « ${alt} »`
+  if (REMPLISSAGES.includes(alt.toLowerCase())) return `texte de remplissage, qui ne decrit pas cette photo : « ${alt} »`
+  if (alt.length < 12) return `description trop courte pour dire quoi que ce soit : « ${alt} »`
+  return null
 }
 
 function examine(html, url, defauts, stats) {
   for (const m of html.matchAll(/<img\b[^>]*>/gi)) {
     const tag = m[0];
-    const src = tag.match(/\bsrc="([^"]*)"/i)?.[1] ?? '';
-    const fichier = fichierDe(src);
-    if (!fichier || !attendu.has(fichier)) continue;
-    if (stats) stats.photos++;
+    const brut = decodeSrc(tag.match(/\bsrc="([^"]*)"/i)?.[1] ?? '');
+    const duRegistre = fichierDuRegistre(brut);
+    const deVille = !duRegistre && PHOTO_DE_VILLE.test(brut);
+    if (!duRegistre && !deVille) continue;
+    const fichier = duRegistre ?? brut.split(/[?&#]/).find(x => PHOTO_DE_VILLE.test(x))?.split('/').pop() ?? brut;
+    if (stats) stats[deVille ? 'villes' : 'photos']++;
     const alt = decodeHtml(tag.match(/\balt="([^"]*)"/i)?.[1] ?? '');
-    if (!alt) { defauts.push({ url, fichier, quoi: 'sans texte alternatif' }); continue; }
-    if (/\.(?:jpe?g|png|webp|avif)$/i.test(alt) || alt === fichier) {
-      defauts.push({ url, fichier, quoi: `nom de fichier en guise de description : « ${alt} »` }); continue;
-    }
-    if (REMPLISSAGES.includes(alt.toLowerCase())) {
-      defauts.push({ url, fichier, quoi: `texte de remplissage, qui ne decrit pas cette photo : « ${alt} »` }); continue;
-    }
-    if (alt.length < 12) {
-      defauts.push({ url, fichier, quoi: `description trop courte pour dire quoi que ce soit : « ${alt} »` }); continue;
-    }
-    if (stats && alt === attendu.get(fichier)) stats.duRegistre++;
+    const quoi = defautDuTexte(alt, fichier);
+    if (quoi) { defauts.push({ url, fichier, quoi }); continue; }
+    if (stats && duRegistre && alt === attendu.get(duRegistre)) stats.duRegistre++;
   }
 }
 
 if (CONTROLE) {
   const unFichier = [...attendu.keys()][0]
+  const carte = 'chimie-cuve-melange-flexible.jpg'
   const cas = [
-    ['photo sans alt',          `<img src="/assets/photos/${unFichier}" alt="">`],
-    ['photo sans attribut alt', `<img src="/assets/photos/${unFichier}">`],
-    ['alt = nom de fichier',    `<img src="/assets/photos/${unFichier}" alt="${unFichier}">`],
-    ['alt de remplissage',      `<img src="/assets/photos/${unFichier}" alt="Technicien migen en intervention">`],
-    ['alt trop court',          `<img src="/assets/photos/${unFichier}" alt="usine">`],
-    ['apostrophe echappee',     `<img src="/assets/photos/${unFichier}" alt="${(attendu.get(unFichier) ?? '').replace(/'/g, '&#x27;')}">`],
-    ['photo correcte',          `<img src="/_next/image/?url=%2Fassets%2Fphotos%2F${unFichier}&w=640" alt="${attendu.get(unFichier)}">`],
+    ['photo sans alt',              `<img src="/assets/photos/${unFichier}" alt="">`, true],
+    ['photo sans attribut alt',     `<img src="/assets/photos/${unFichier}">`, true],
+    ['alt = nom de fichier',        `<img src="/assets/photos/${unFichier}" alt="${unFichier}">`, true],
+    ['alt de remplissage',          `<img src="/assets/photos/${unFichier}" alt="Technicien migen en intervention">`, true],
+    ['alt trop court',              `<img src="/assets/photos/${unFichier}" alt="usine">`, true],
+    ['carte de l accueil muette',   `<img alt="" src="/_next/image/?url=%2Fassets%2Fphotos%2F${carte}&amp;w=3840">`, true],
+    ['ville sans alt',              `<img alt="" src="/_next/image/?url=%2Fassets%2Fvilles%2Fhub-lyon.jpg&amp;w=3840">`, true],
+    ['ville sans attribut alt',     `<img src="/assets/villes/ville-rouen.jpg">`, true],
+    ['hub importe sans alt',        `<img alt="" src="/_next/image/?url=%2F_next%2Fstatic%2Fimmutable%2Fmedia%2Fbordeaux.12peidexp8lr6.jpg&amp;w=3840">`, true],
+    ['hub importe, chemin bun',     `<img alt="" src="/x/components/site/accueil/hubs/metz.jpg">`, true],
+    ['ville au nom de fichier',     `<img src="/assets/villes/ville-rouen.jpg" alt="ville-rouen.jpg">`, true],
+    ['apostrophe echappee',         `<img src="/assets/photos/${unFichier}" alt="${(attendu.get(unFichier) ?? '').replace(/'/g, '&#x27;')}">`, false],
+    ['photo correcte',              `<img src="/_next/image/?url=%2Fassets%2Fphotos%2F${unFichier}&w=640" alt="${attendu.get(unFichier)}">`, false],
+    ['ville decrite',               `<img alt="Rouen, le Gros-Horloge et son beffroi" src="/_next/image/?url=%2Fassets%2Fvilles%2Fville-rouen.jpg&amp;w=3840">`, false],
+    ['hub importe decrit',          `<img alt="Bordeaux, les quais de la Garonne" src="/_next/image/?url=%2F_next%2Fstatic%2Fimmutable%2Fmedia%2Fbordeaux.12peidexp8lr6.jpg&amp;w=3840">`, false],
+    ['logo decoratif, hors champ',  `<img alt="" src="/_next/image/?url=%2Fassets%2Flogo-migen-mark.png&amp;w=48">`, false],
   ]
   let bon = 0
-  for (const [nom, html] of cas) {
+  for (const [nom, html, doitTomber] of cas) {
     const d = []
     examine(html, '/temoin', d, null)
-    const doitTomber = nom !== 'photo correcte' && nom !== 'apostrophe echappee'
     const tombe = d.length > 0
-    console.log(`  ${tombe === doitTomber ? 'OK  ' : 'RATE'}  ${nom.padEnd(26)} ${tombe ? 'refusee' : 'acceptee'}`)
+    console.log(`  ${tombe === doitTomber ? 'OK  ' : 'RATE'}  ${nom.padEnd(28)} ${tombe ? 'refusee' : 'acceptee'}`)
     if (tombe === doitTomber) bon++
   }
   console.log(bon === cas.length ? `\nCONTROLE OK : ${bon}/${cas.length}` : `\nCONTROLE ECHOUE : ${bon}/${cas.length}`)
   process.exit(bon === cas.length ? 0 : 1)
 }
 
-const idx = JSON.parse(await readFile('maquette/contenu/site/index.json', 'utf8'))
-const urls = [...new Set((idx.pages ?? idx).map(p => p.url ?? p.chemin ?? p))]
+let urls
+try {
+  const r = await fetch(`${BASE}/sitemap.xml`)
+  if (!r.ok) throw new Error(`HTTP ${r.status}`)
+  urls = [...new Set([...(await r.text()).matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => new URL(m[1].trim()).pathname))]
+} catch (e) {
+  console.error(`porte non concluante : plan du site illisible sur ${BASE} (${e.code ?? e.message})`)
+  process.exit(2)
+}
+if (!urls.length) { console.error(`porte non concluante : plan du site vide sur ${BASE}`); process.exit(2) }
+
 const defauts = []; const injoignables = []
-const stats = { photos: 0, duRegistre: 0 }
+const stats = { photos: 0, villes: 0, duRegistre: 0 }
 
 for (let i = 0; i < urls.length; i += LOT) {
   await Promise.all(urls.slice(i, i + LOT).map(async url => {
     let html
     try {
-      const r = await fetch(new URL(url, BASE), { redirect: 'follow' })
+      const r = await fetch(BASE + url, { redirect: 'follow' })
       if (!r.ok) return injoignables.push(`${url} (${r.status})`)
       html = await r.text()
     } catch (e) { return injoignables.push(`${url} (${e.code ?? e.message})`) }
@@ -121,12 +168,18 @@ if (injoignables.length) {
   injoignables.slice(0, 5).forEach(u => console.error(`  ${u}`))
   process.exit(2)
 }
+/* Une porte qui ne voit aucune photo de ville ne prouve rien : le jour ou le
+   motif d'adresse change, elle passerait a vide. */
+if (!stats.villes || !stats.photos) {
+  console.error(`porte non concluante : ${stats.villes} photo(s) de ville et ${stats.photos} du registre vues sur ${urls.length} pages, la porte est aveugle`)
+  process.exit(2)
+}
 if (defauts.length) {
   const pages = new Set(defauts.map(d => d.url))
-  console.error(`${defauts.length} photo(s) mal decrite(s) sur ${pages.size} page(s) :\n`)
-  defauts.slice(0, 25).forEach(d => console.error(`  ${d.url}\n      ${d.fichier} : ${d.quoi}`))
-  if (defauts.length > 25) console.error(`  ... et ${defauts.length - 25} autre(s)`)
+  console.error(`${defauts.length} photo(s) mal decrite(s) sur ${pages.size} page(s) de ${BASE} :\n`)
+  defauts.slice(0, 40).forEach(d => console.error(`  ${d.url}\n      ${d.fichier} : ${d.quoi}`))
+  if (defauts.length > 40) console.error(`  ... et ${defauts.length - 40} autre(s)`)
   process.exit(1)
 }
-console.log(`TOUTES_LES_PHOTOS_DECRITES  ${stats.photos} photos sur ${urls.length} pages, toutes decrites`)
-console.log(`  dont ${stats.duRegistre} portent mot pour mot la description du registre (${Math.round(stats.duRegistre / stats.photos * 100)} %)`)
+console.log(`ALT_PHOTOS_PRESENTS  ${stats.photos} photos du registre et ${stats.villes} photos de ville sur ${urls.length} pages, toutes decrites`)
+console.log(`TOUTES_LES_PHOTOS_DECRITES  dont ${stats.duRegistre} portent mot pour mot la description du registre (${Math.round(stats.duRegistre / stats.photos * 100)} %)`)
