@@ -26,6 +26,9 @@ import RepliPiedMobile from "./RepliPiedMobile";
  * contre le principe numéro un du projet. La navigation côté client, elle, est
  * conservée.
  *
+ * SUR TÉLÉPHONE (14/10, maquette mobile v2), le pied devient la carte blanche
+ * de la maquette (11 liens), et ce qui suit passe dessous en pastilles.
+ *
  * SUR TÉLÉPHONE, LES SEPT COLONNES SE REPLIENT, ET RIEN N'EST RETIRÉ. Mesuré
  * le 14/10 en production à 390 px : 2 026 px de pied sous chaque page. La
  * règle numéro un de la maquette mobile v2 est « replier, jamais retirer »
@@ -193,6 +196,28 @@ const MAILLAGE: readonly GroupeMaillage[] = [
    09/10 que le siège est bien à Limonest et qu'Écully est l'agence. La
    maquette l'écrit ainsi sur 96 de ses 244 captures. */
 const ADRESSE_SIEGE = "1 rue des Vergers, 69760 Limonest";
+
+/*
+ * LA CARTE DU TÉLÉPHONE, celle de la maquette mobile v2 (`maquette/mobile-v2/
+ * maquette/Migen - Mobile v2.dc.html`, ligne 182 pour le dessin, ligne 526 pour
+ * ces onze liens), libellés et ordre mot pour mot. Elle n'est peinte que sous
+ * 881 px ; au-dessus elle est `display: none`, le bureau ne la voit pas.
+ * Elle AJOUTE, elle ne remplace rien : les sept colonnes et la barre légale
+ * restent servies dessous, repliées en pastilles (voir le module CSS).
+ */
+const LIENS_CARTE_MOBILE: readonly Lien[] = [
+  { libelle: "Offres", href: "/offres/" },
+  { libelle: "Travaux industriels", href: "/travaux-industriels/" },
+  { libelle: "Bureau d’études", href: "/offres/bureau-etudes/" },
+  { libelle: "Expertises", href: "/expertises/" },
+  { libelle: "Secteurs", href: "/secteurs/" },
+  { libelle: "Implantations", href: "/implantations/" },
+  { libelle: "Réalisations", href: "/preuves/" },
+  { libelle: "Ressources", href: "/ressources/" },
+  { libelle: "Carrière", href: "/carriere/" },
+  { libelle: "L’équipe", href: "/a-propos/equipe/" },
+  { libelle: "Contact", href: "/contact/" },
+];
 
 const styleCadre: CSSProperties = {
   maxWidth: 1200,
@@ -366,7 +391,27 @@ export default function PiedDePage({
         paddingBottom: "calc(34px + var(--barre-reserve))",
       }}
     >
-      <div style={styleCadre}>
+      <div className={styles.carte}>
+        <Link href="/" prefetch={false} className={styles.carteMarque}>
+          <Image src="/assets/logo-migen-mark.png" alt="" width={20} height={20} />
+          <span>migen</span>
+        </Link>
+        <p className={styles.carteDevise}>Innovation, performance, impact.</p>
+        <ul className={styles.carteLiens}>
+          {LIENS_CARTE_MOBILE.map((lien) => (
+            <li key={lien.href}>
+              <LienSite href={lien.href} className={styles.carteLien}>
+                {lien.libelle}
+              </LienSite>
+            </li>
+          ))}
+        </ul>
+        <p className={styles.carteBas}>
+          Lyon · Montréal · Madrid · Dubaï
+          <br />© {annee} migen
+        </p>
+      </div>
+      <div style={styleCadre} className={styles.cadre}>
         <div
           className={`mg-r2 ${styles.colonnes}`}
           style={{
@@ -465,8 +510,8 @@ export default function PiedDePage({
           })}
         </div>
 
-        <div style={styleBarreBasse}>
-          <div style={styleMentionBasse}>
+        <div style={styleBarreBasse} className={styles.barreBasse}>
+          <div style={styleMentionBasse} className={styles.mention}>
             © {annee} migen© · Siège {ADRESSE_SIEGE}
           </div>
           <div style={{ display: "flex", gap: 22, flexWrap: "wrap", alignItems: "center" }}>

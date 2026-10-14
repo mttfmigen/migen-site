@@ -202,50 +202,187 @@
   }
 }
 
+/* La carte du téléphone n'existe pas au bureau : rien n'y est peint. */
+.carte {
+  display: none;
+}
+
 /*
- * SUR TÉLÉPHONE, LE PIED COMPACT. Chaque colonne devient une rangée de 52 px
- * (titre, chevron), séparée de la suivante par un filet ; le contenu s'ouvre
- * dessous au toucher. Les `!important` ne sont pas de confort : ils battent
- * les styles en ligne des conteneurs (gardés tels quels pour que le bureau
- * ne bouge pas) et les règles `!important` de `.mg-r2` et `.mg-rq3` dans
- * `globals.css`. Le préfixe `.pied` leur donne la spécificité qui tranche.
+ * SUR TÉLÉPHONE, LA CARTE BLANCHE DE LA MAQUETTE MOBILE V2 (ligne 182 de
+ * « Migen - Mobile v2.dc.html »), valeurs recopiées : marge 28/18, remplissage
+ * 22/18, rayon 24, logo de 20 px, onze liens sur deux colonnes, villes et
+ * millésime. Les encres passent par les jetons (--card, --ink1, --ink2), qui
+ * valent exactement les couleurs de la maquette en thème clair.
+ *
+ * Le reste du pied N'EST PAS RETIRÉ : il passe sous la carte, sur le fond de
+ * la page. Les sept colonnes deviennent sept pastilles (leur `<summary>`), sur
+ * trois lignes au lieu de sept rangées de 52 px ; une pastille ouverte prend
+ * toute la largeur et déplie ses liens dessous. La barre légale (mentions,
+ * confidentialité, CGV, réglage des traceurs) reste visible, jamais repliée.
+ * Seul le bloc de marque est masqué : son logo et sa devise sont dans la
+ * carte, son appel « Décrire mon besoin » dans la barre collante ; il reste
+ * dans le DOM.
+ *
+ * Les `!important` ne sont pas de confort : ils battent les styles en ligne
+ * des conteneurs (gardés tels quels pour que le bureau ne bouge pas) et les
+ * règles `!important` de `.mg-r2` et `.mg-rq3` dans `globals.css`. Le préfixe
+ * `.pied` leur donne la spécificité qui tranche.
  */
 @media (max-width: 880px) {
   .pied {
-    padding-top: 44px !important;
+    background: transparent !important;
+    color: var(--ink) !important;
+    padding-top: 28px !important;
   }
 
-  .pied .colonnes {
-    gap: 0 !important;
-    padding-bottom: 0 !important;
-    border-bottom: 0 !important;
+  .carte {
+    display: block;
+    margin: 0 18px;
+    padding: 22px 18px;
+    border-radius: 24px;
+    background: var(--card);
+    border: 1px solid var(--line);
+  }
+
+  .carteMarque {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+  }
+
+  .carteMarque img {
+    display: block;
+    width: auto;
+    height: 20px;
+  }
+
+  .carteMarque span {
+    font: 600 15px var(--ft);
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  .carteDevise {
+    margin: 8px 0 14px;
+    font: 400 13px/1.5 var(--fb);
+    color: var(--ink2);
+  }
+
+  .carteLiens {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px 12px;
+  }
+
+  .carteLien {
+    display: block;
+    padding: 7px 0;
+    font: 500 13px var(--fb);
+    color: var(--ink1);
+  }
+
+  .carteBas {
+    margin: 16px 0 0;
+    font: 400 12px/1.6 var(--fb);
+    color: var(--ink4);
+  }
+
+  .pied .cadre {
+    margin-top: 18px !important;
+    padding: 0 18px !important;
   }
 
   .marque {
-    margin-bottom: 30px;
+    display: none;
+  }
+
+  .pied .colonnes,
+  .pied .maillage {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 8px !important;
+    padding: 0 !important;
+    border-bottom: 0 !important;
   }
 
   .pied .maillage {
-    grid-template-columns: minmax(0, 1fr) !important;
-    gap: 0 !important;
-    padding: 0 !important;
+    margin-top: 8px;
   }
 
-  .pliable {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  .pied .colonnes > *,
+  .pied .maillage > * {
+    flex: none;
+    max-width: 100%;
+  }
+
+  .pied .colonnes > :has(> .pliable[open]),
+  .pied .maillage > :has(> .pliable[open]) {
+    flex-basis: 100%;
   }
 
   .titreColonne,
   .titreMaillage {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    min-height: 52px;
+    gap: 8px;
+    min-height: 34px;
     margin: 0;
+    padding: 0 14px;
+    border-radius: 999px;
+    background: var(--card);
+    border: 1px solid var(--line);
     cursor: pointer;
-    font: 600 11.5px var(--fb);
-    color: rgba(255, 255, 255, 0.66);
+    font: 500 12.5px var(--fb);
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink1);
+  }
+
+  .pied .corps {
+    padding: 12px 4px 8px;
+    color: var(--ink2) !important;
+  }
+
+  .pied .lienNav,
+  .pied .lienMaillage {
+    color: var(--ink1);
+  }
+
+  .pied .lienNav:hover,
+  .pied .lienMaillage:hover {
+    color: var(--acc);
+  }
+
+  /* L'orange garde son dessin ; son survol blanc disparaîtrait sur fond clair. */
+  .pied .lienPlan:hover {
+    color: var(--ink);
+  }
+
+  .pied .barreBasse {
+    padding-top: 18px !important;
+    gap: 6px 16px !important;
+  }
+
+  /* Les liens légaux, serrés sur deux lignes au lieu de quatre. */
+  .pied .barreBasse > div:last-child {
+    gap: 2px 16px !important;
+  }
+
+  .pied .mention,
+  .pied .lienBas,
+  .pied .reglages > button,
+  .pied .reglages > a {
+    color: var(--ink3) !important;
+  }
+
+  .pied .lienBas:hover,
+  .pied .reglages > button:hover,
+  .pied .reglages > a:hover {
+    color: var(--ink) !important;
   }
 
   /* Le chevron est un trait de bordure, pas un caractère : rien n'entre dans
@@ -254,9 +391,8 @@
   .titreMaillage::after {
     content: "";
     flex: none;
-    width: 7px;
-    height: 7px;
-    margin-right: 4px;
+    width: 6px;
+    height: 6px;
     border-right: 1.5px solid currentColor;
     border-bottom: 1.5px solid currentColor;
     transform: rotate(-45deg);
@@ -268,9 +404,6 @@
     transform: rotate(45deg);
   }
 
-  .corps {
-    padding-bottom: 22px;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
