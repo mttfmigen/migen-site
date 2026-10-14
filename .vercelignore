@@ -4,7 +4,17 @@
 # AUCUN code de production ne la lit : seuls des commentaires la citent, et les
 # contrôles qui s'en servent tournent en local, jamais au build. Les données que
 # la route sert vivent dans `supabase/import/`, qui reste inclus.
-maquette/
+maquette/*
+# SAUF l'index des pages (76 Ko) : le cocon mobile (components/site/cocon/
+# maillage-mobile.ts) l'importe pour fabriquer ses pastilles, et le build de
+# Vercel tombait sur « Cannot find module » depuis 6a1b996 (14/10). Les
+# exclusions emboîtées sont la seule façon de réinclure un fichier d'un
+# dossier exclu (syntaxe .gitignore).
+!maquette/contenu/
+maquette/contenu/*
+!maquette/contenu/site/
+maquette/contenu/site/*
+!maquette/contenu/site/index.json
 
 # Le colis de passation Claude Design (415 Mo) : seuls des commentaires et
 # des contrôles locaux le citent.
