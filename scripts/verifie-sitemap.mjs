@@ -14,7 +14,9 @@
  *    site (`docs/sitemap-ancien/post-sitemap.xml`), l'indentation par
  *    tabulations, chaque `<lastmod>` au format `AAAA-MM-JJTHH:MM:SS+00:00`,
  *    les billets (`/ressources/articles/x/`, `/preuves/x/`) dans
- *    `post-sitemap.xml` et nulle part ailleurs, aucune adresse en double ;
+ *    `post-sitemap.xml` et nulle part ailleurs, aucune adresse en double,
+ *    l'ordre de Yoast (date croissante, l'accueil en tête, une adresse sans
+ *    date à la fin), aucune date dans le futur ;
  *  - des dates VRAIES : jamais une même date pour la moitié des adresses ou
  *    plus (l'heure du build pour tous, le défaut d'avant), et les 12 billets
  *    repris à leur date d'origine, avant leur republication du 14/10 ;
@@ -74,6 +76,14 @@ export function fautesDuPlan(index, sousPlans) {
     const plusRecente = lastmods.sort().at(-1);
     const dateIndex = index.match(new RegExp(`<loc>${loc}</loc>\\s*<lastmod>([^<]+)</lastmod>`))?.[1];
     if (dateIndex !== plusRecente) fautes.push(`index : ${nom} daté ${dateIndex}, sa page la plus récente ${plusRecente}`);
+    // L'ordre de Yoast : date croissante, l'accueil en tête, une page sans date à la fin.
+    const rangs = xml
+      .split("<url>")
+      .slice(1)
+      .map((bloc) => (new URL(tous(bloc, "loc")[0]).pathname === "/" ? "" : (tous(bloc, "lastmod")[0] ?? "~")));
+    const desordre = rangs.findIndex((r, j) => j > 0 && r < rangs[j - 1]);
+    if (desordre > 0) fautes.push(`${nom} : ordre différent de Yoast (date croissante, accueil en tête), rompu à l'entrée ${desordre + 1}`);
+    for (const d of lastmods.filter((d) => DATE.test(d) && new Date(d) > new Date())) fautes.push(`${nom} : lastmod « ${d} » dans le futur`);
     for (const bloc of xml.split("<url>").slice(1)) {
       const chemin = new URL(tous(bloc, "loc")[0]).pathname;
       if (vus.has(chemin)) fautes.push(`${chemin} : en double dans le plan`);
@@ -163,7 +173,7 @@ function controle() {
     `${ENTETE}\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
     `\t<sitemap>\n\t\t<loc>${SITE}/post-sitemap.xml</loc>\n\t\t<lastmod>${post}</lastmod>\n\t</sitemap>\n` +
     `\t<sitemap>\n\t\t<loc>${SITE}/page-sitemap.xml</loc>\n\t\t<lastmod>${page}</lastmod>\n\t</sitemap>\n</sitemapindex>\n`;
-  const post = bon(url("/preuves/autoliv/", "2026-10-13T23:42:41+00:00", `${SITE}/assets/a.jpg`) + url("/ressources/articles/bien-etre-au-travail/", "2025-04-29T08:27:13+00:00"));
+  const post = bon(url("/ressources/articles/bien-etre-au-travail/", "2025-04-29T08:27:13+00:00") + url("/preuves/autoliv/", "2026-10-13T23:42:41+00:00", `${SITE}/assets/a.jpg`));
   const page = bon(url("/", "2026-10-14T12:04:49+00:00") + url("/rse/", "2026-10-12T14:13:21+00:00") + url("/cgv/"));
   const sain = { index: idx("2026-10-13T23:42:41+00:00", "2026-10-14T12:04:49+00:00"), post, page };
   const cas = [
@@ -176,6 +186,9 @@ function controle() {
     ["billet rangé dans les pages", { ...sain, page: page.replace("/rse/", "/preuves/vpk/") }, /c'est un billet/],
     ["image hors domaine", { ...sain, post: post.replace(`${SITE}/assets/a.jpg`, "https://migen-site.vercel.app/assets/a.jpg") }, /image hors du domaine/],
     ["index mal daté", { ...sain, index: idx("2026-01-01T00:00:00+00:00", "2026-10-14T12:04:49+00:00") }, /daté 2026-01-01/],
+    ["billets dans l'ordre du code, pas des dates", { ...sain, post: bon(url("/preuves/autoliv/", "2026-10-13T23:42:41+00:00") + url("/ressources/articles/bien-etre-au-travail/", "2025-04-29T08:27:13+00:00")) }, /ordre différent de Yoast/],
+    ["page sans date avant une page datée", { ...sain, page: bon(url("/") + url("/cgv/") + url("/rse/", "2026-10-12T14:13:21+00:00")) }, /ordre différent de Yoast/],
+    ["date dans le futur", { ...sain, page: page.replace("2026-10-12T14:13:21+00:00", "2099-01-01T00:00:00+00:00"), index: idx("2026-10-13T23:42:41+00:00", "2099-01-01T00:00:00+00:00") }, /dans le futur/],
   ];
   let bons = 0;
   for (const [nom, plan, attendu] of cas) {

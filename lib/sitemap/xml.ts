@@ -13,7 +13,7 @@ import { FEUILLE_DU_PLAN } from "@/lib/sitemap/adresses";
  *  - l'indentation par tabulations.
  *
  * Fonctions pures. Leur sortie servie est éprouvée par
- * `scripts/verifie-sitemap.mjs` (format, dates, images, 301), dont
+ * `scripts/verifie-sitemap.mjs` (format, ordre, dates, images, 301), dont
  * `--controle` prouve qu'elle sait échouer.
  */
 

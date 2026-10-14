@@ -1,6 +1,6 @@
 # Plan du site XML (sitemap), au format de l'ancien migen.fr
 
-Demande de Mehdi, 14/10 : « le sitemap Vercel n'est pas le même que celui de migen en termes de format, je veux le même ». L'ancien site (WordPress, Yoast SEO) a été relevé le 14/10 et figé dans `docs/sitemap-ancien/`.
+Demande de Mehdi, 14/10 : « le sitemap Vercel n'est pas le même que celui de migen en termes de format, je veux le même ». L'ancien site (WordPress, Yoast SEO) a été relevé le 14/10 et figé dans `docs/sitemap-ancien/` (index, plan des billets, plan des pages).
 
 ## Les adresses
 
@@ -16,7 +16,7 @@ Demande de Mehdi, 14/10 : « le sitemap Vercel n'est pas le même que celui de m
 
 ## Le format
 
-Identique à Yoast : déclaration XML et instruction `xml-stylesheet` sur la première ligne, `<sitemapindex>` puis une entrée par sous-plan avec sa `<lastmod>` (celle de sa page la plus récente), sous-plans `<urlset>` avec les espaces de noms `xsi` et `image` et le même `schemaLocation`, une `<image:image>` par image, indentation par tabulations, `<lastmod>` au format `AAAA-MM-JJTHH:MM:SS+00:00`. Écriture : `lib/sitemap/xml.ts`. Liste des pages : `lib/pages-publiees.ts`, la même que `/plan-du-site/`.
+Identique à Yoast : déclaration XML et instruction `xml-stylesheet` sur la première ligne, `<sitemapindex>` puis une entrée par sous-plan avec sa `<lastmod>` (celle de sa page la plus récente), sous-plans `<urlset>` avec les espaces de noms `xsi` et `image` et le même `schemaLocation`, une `<image:image>` par image, indentation par tabulations, `<lastmod>` au format `AAAA-MM-JJTHH:MM:SS+00:00`. Même ordre que Yoast : date croissante, la page d'accueil en tête du plan des pages, une page sans date à la fin (`lib/sitemap/plan.ts`). Écriture : `lib/sitemap/xml.ts`. Liste des pages : `lib/pages-publiees.ts`, la même que `/plan-du-site/`.
 
 ## Les dates : vraies ou absentes
 
