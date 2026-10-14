@@ -1,10 +1,14 @@
 import Image from "next/image";
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 import { LARGEUR, SECTION, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
 import type { SectionProbleme } from "@/types/contenu";
 
+import EtiquettePli from "./EtiquettePli";
 import { coupePunchline, numerote } from "./texte-offre";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import { resumeDe } from "../blocs/resume-de-section";
+import styles from "./PageOffre.module.css";
 import { cadragePhoto } from "@/lib/cadrage-photos";
 
 /**
@@ -31,7 +35,19 @@ export interface ProprietesProblemeOffre {
    * pilote serait une photo posée au hasard.
    */
   photo?: string | null;
+  /**
+   * LE REPLI MOBILE, SUR DEMANDE SEULEMENT. Absent, la section est rendue
+   * exactement comme avant le 14/10, sur tous les gabarits qui la montent
+   * (ville, expertises, domaine) : leur lot décide de leur repli, pas celui-ci.
+   * « ouvert » : repliable mais déplié au chargement, la maquette mobile v2
+   * gardant la PREMIÈRE section de contenu ouverte (dc.html L451, `nOpen = 1`,
+   * et L476, `const op = isRef || dI++ < nOpen`) ; « replie » : refermé au
+   * chargement sous 880 px. Au-dessus de 880 px, rien ne change.
+   */
+  pli?: Pli;
 }
+
+export type Pli = "ouvert" | "replie";
 
 /** La photo de la colonne gauche, identifiée sur `offres--residence.png`. */
 const PHOTO = "/assets/web/team-electric.jpg";
@@ -139,14 +155,18 @@ const CARTE_SOMBRE: CSSProperties = {
   alignItems: "baseline",
 };
 
-function Sombre({ section }: { section: SectionProbleme }) {
+function Sombre({ section, pli }: { section: SectionProbleme; pli?: Pli }) {
   const { titre, suite } = coupePunchline(section.punchline);
   return (
     <section data-screen-label="03 Problème" style={SECTION}>
-      <div style={LARGEUR}>
+      <div className={styles.blocPliablePartage} style={LARGEUR}>
         <div className="mg-pad" style={PANNEAU_SOMBRE}>
           <div aria-hidden="true" style={LUEUR} />
           <div style={{ position: "relative" }}>
+            {/* Le titre de l'étiquette est en blanc : le panneau est
+                anthracite, le `var(--ink)` du motif commun y serait
+                illisible. */}
+            <PliMobile pli={pli} section={section} titre={titre} couleur="#fff">
             <div style={{ ...SURTITRE, marginBottom: 16 }}>
               Votre problématique
             </div>
@@ -181,6 +201,7 @@ function Sombre({ section }: { section: SectionProbleme }) {
                 </div>
               ))}
             </div>
+            </PliMobile>
           </div>
         </div>
       </div>
@@ -222,11 +243,12 @@ const RANGEE_CARTE: CSSProperties = {
   flexDirection: "column",
 };
 
-function Rangee({ section }: { section: SectionProbleme }) {
+function Rangee({ section, pli }: { section: SectionProbleme; pli?: Pli }) {
   const { titre, suite } = coupePunchline(section.punchline);
   return (
     <section data-screen-label="03 Problème" style={SECTION}>
-      <div style={LARGEUR}>
+      <div className={styles.blocPliablePartage} style={LARGEUR}>
+        <PliMobile pli={pli} section={section} titre={titre}>
         <div className="mg-r2" style={RANGEE_ENTETE}>
           <div>
             <div style={{ ...SURTITRE, marginBottom: 18 }}>
@@ -275,8 +297,46 @@ function Rangee({ section }: { section: SectionProbleme }) {
             </div>
           ))}
         </div>
+        </PliMobile>
       </div>
     </section>
+  );
+}
+
+/**
+ * LE REPLI DES TROIS DESSINS, motif « Blocs communs (pliables) » de la
+ * maquette mobile : l'étiquette (`EtiquettePli`) répète le sur-titre et le H2,
+ * qui restent à leur place de capture. Le résumé suit la
+ * maquette : les intitulés des puces joints par « · », avec le repli
+ * `accroche ?? texte` pour qu'une puce sans accroche ne disparaisse pas du
+ * compte.
+ *
+ * SANS `pli`, RIEN N'EST ENVELOPPÉ. SANS TITRE, NON PLUS : même règle que
+ * `implantation/ProblemeCartes.tsx`, un bloc replié sans titre lisible est
+ * refusé par `scripts/verifie-blocs-pliables.mjs`.
+ */
+function PliMobile({
+  pli,
+  section,
+  titre,
+  couleur,
+  children,
+}: {
+  pli?: Pli;
+  section: SectionProbleme;
+  titre: string;
+  couleur?: string;
+  children: ReactNode;
+}) {
+  if (!pli || !titre) return <>{children}</>;
+  return (
+    <SectionPliableMobile
+      toujoursOuvert={pli === "ouvert"}
+      enTete={<EtiquettePli surtitre="Votre problématique" titre={titre} couleur={couleur} />}
+      resume={resumeDe(section.puces.map((puce) => puce.accroche ?? puce.texte))}
+    >
+      {children}
+    </SectionPliableMobile>
   );
 }
 
@@ -284,16 +344,15 @@ export default function ProblemeOffre({
   section,
   altPhoto,
   photo,
+  pli,
 }: ProprietesProblemeOffre) {
-  if (section.variante === "panneau-sombre") return <Sombre section={section} />;
-  if (section.variante === "rangee") return <Rangee section={section} />;
+  if (section.variante === "panneau-sombre") return <Sombre section={section} pli={pli} />;
+  if (section.variante === "rangee") return <Rangee section={section} pli={pli} />;
 
   const { titre, suite } = coupePunchline(section.punchline);
   const source = photo === undefined ? PHOTO : photo;
 
-  return (
-    <section data-screen-label="03 Problème" style={SECTION}>
-      <div style={LARGEUR}>
+  const corps = (
         <div
           className="mg-r2"
           style={{
@@ -346,6 +405,14 @@ export default function ProblemeOffre({
             ))}
           </div>
         </div>
+  );
+
+  return (
+    <section data-screen-label="03 Problème" style={SECTION}>
+      <div className={styles.blocPliablePartage} style={LARGEUR}>
+        <PliMobile pli={pli} section={section} titre={titre}>
+          {corps}
+        </PliMobile>
       </div>
     </section>
   );

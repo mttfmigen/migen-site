@@ -168,6 +168,8 @@ const RELEVE = () => {
     releve.push({
       genre,
       cle: texte.slice(0, 46),
+      /* Masquée par la feuille du gabarit : voir `compare`, bandes mobiles. */
+      masquee: getComputedStyle(section).display === "none",
       hauteur: Math.round(r.height),
       carte: rc ? { largeur: Math.round(rc.width), hauteur: Math.round(rc.height) } : null,
       /* Sans bouton, la règle ne s'applique pas : null, et aucun verdict. */
@@ -244,6 +246,17 @@ export function compare(site, maquette, etiquette) {
       defauts.push(`ORDRE · ${etiquette} · bloc ${i} : « ${s.genre} » servi là où la maquette pose « ${m.genre} »`);
       continue;
     }
+
+    /* LES BANDES D'APPEL MASQUÉES SOUS 881 PX NE SONT PAS COMPARÉES, et c'est
+       la maquette MOBILE V2 qui l'impose (14/10) : elle ne porte aucune des
+       trois bandes « Appel » du bureau, la cadence de conversion mobile
+       (photo + CTA, bandeau « Être rappelé ») les remplace, et
+       `PageOffre.module.css` les masque à cette largeur, texte gardé dans le
+       document. La référence de cette porte à 390 px reste la maquette de
+       BUREAU rendue étroite : sur ce seul point elle n'est plus la référence.
+       Au bureau la bande n'est jamais masquée, toutes ses règles s'y
+       appliquent comme avant. */
+    if (s.genre === "BANDE" && s.masquee) continue;
 
     if (arbitre(m.cle)) {
       /* Les deux faces de l'arbitrage, et rien d'autre : ni carte, ni hauteur

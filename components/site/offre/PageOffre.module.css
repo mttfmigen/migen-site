@@ -130,6 +130,14 @@
   .gabarit details > div {
     padding-left: 26px !important;
   }
+  /* SUR LES PAGES D'OFFRE, les blocs repliables du téléphone
+     (`data-pliable-mobile`) gardent leur corps à la gouttière : la règle
+     ci-dessus vise les questions repliées de la maquette de bureau, et
+     décalait de 26 px tout bloc déplié (rail des références rogné, mesuré le
+     14/10). Les autres gabarits qui portent `.gabarit` ne sont pas touchés. */
+  .gabaritOffre details[data-pliable-mobile] > div {
+    padding-left: 0 !important;
+  }
 }
 
 @media (max-width: 560px) {
@@ -170,7 +178,7 @@
   }
 }
 
-/* --------------------- l'étiquette de la bascule des deux blocs repliables
+/* ------------------- l'étiquette de la bascule des blocs repliables partagés
 
    ELLE N'EXISTE QUE SOUS 880 px, et c'est tout l'intérêt : au-dessus, le
    visiteur voit la section telle que sa capture la dessine, avec SON surtitre
@@ -199,6 +207,16 @@
   details[open] > summary > .etiquettePli {
     display: none;
   }
+  /* LE RÉSUMÉ S'EFFACE AUSSI, POUR LA MÊME RAISON. Il liste ce qui est sous le
+     pli ; déplié, ce contenu est à l'écran juste en dessous. La feuille
+     partagée (`SectionPliableMobile.module.css`) le rend à toutes les
+     largeurs mobiles, ouvert ou fermé, parce que sa seconde règle `.resume`
+     remplace le `display: none` de la première : sur un bloc déplié au
+     chargement (problème, références), la bascule montrait une phrase sans
+     titre au-dessus du vrai titre. Ancré sur les blocs de ce gabarit. */
+  .blocPliablePartage details[data-pliable-mobile][open] > summary > p {
+    display: none;
+  }
 }
 
 /* SUR BUREAU, LA BASCULE N'EXISTE PAS DU TOUT, et pas seulement son contenu.
@@ -215,13 +233,15 @@
    12 px avant chaque section, écart que la capture ne porte pas.
 
    LA PORTÉE EST LE BLOC, PAS LE GABARIT, et c'est la seule adaptation du
-   motif de référence : `ReferencesOffre` et `PointsOffre` sont partagés par
-   cinq gabarits (offre, ville, spécialité, domaine, secteur), aucun `<main>`
-   ne les couvre tous les cinq, et une règle non ancrée toucherait les blocs
+   motif de référence : `ReferencesOffre`, `PointsOffre`, et depuis le 14/10
+   `DerouleOffre`, `ProblemeOffre` (dessin en colonne) et
+   `implantation/ProblemeCartes` (dessin en rangée), sont partagés par
+   plusieurs gabarits (offre, ville, spécialité, domaine, secteur), aucun
+   `<main>` ne les couvre tous, et une règle non ancrée toucherait les blocs
    repliables des autres composants de la même page. La classe est posée sur
-   le conteneur de largeur de ces deux blocs, et sur eux seuls.
+   le conteneur de largeur de ces blocs-là, et sur eux seuls.
 
-   `> summary ~ div` ET PAS `> summary + div` : ces deux blocs passent un
+   `> summary ~ div` ET PAS `> summary + div` : ces blocs passent un
    `resume` à `SectionPliableMobile`, donc un `<p>` s'intercale entre la
    bascule et le corps. Le gabarit métier n'en passe pas, son `+ div`
    suffisait ; ici il ne désignerait rien. Le `<p>` lui-même est déjà masqué
@@ -232,5 +252,89 @@
   }
   .blocPliablePartage details[data-pliable-mobile] > summary ~ div {
     margin-top: 0;
+  }
+}
+
+/* LE HÉROS COMPACT DE LA MAQUETTE MOBILE V2 (`Migen - Mobile v2.dc.html`
+   L111 : surtitre, H1, chapeau, bouton d'action et téléphone, aucun
+   formulaire ; le sien vit en bas de page).
+
+   LE PANNEAU DE FORMULAIRE DU HÉROS SE REPLIE SOUS 881 PX, IL N'EST PAS
+   RETIRÉ : le HTML servi est identique aux deux largeurs, et le même
+   formulaire est servi une seconde fois par « 10 Appel final ».
+
+   IL SE DÉPLIE QUAND ON LE DEMANDE. Les boutons du gabarit (héros, bandes,
+   déroulé) visent `#besoin`, l'identifiant de ce panneau : quand l'adresse
+   porte cette ancre, `:has(:target)` le rend à l'écran, et le navigateur y
+   défile. Sans cette réouverture, une ancre vers un élément masqué ne mènerait
+   nulle part ; avec elle, aucun bouton n'a besoin d'un jumeau mobile, et
+   aucun texte n'est ajouté au document.
+
+   AUCUNE RÈGLE HORS MEDIA QUERY : au-dessus de 880 px rien ne change. Le
+   seuil est celui de `SectionPliableMobile.module.css`. */
+@media (max-width: 880px) {
+  .panneauHeroBureau:not(:has(:target)) {
+    display: none;
+  }
+}
+
+/* `.gabaritOffre` ET NON `.gabarit`, POUR TOUTES LES RÈGLES MOBILES V2 QUI
+   SUIVENT. `.gabarit` est aussi posé par les gabarits Ville, Expertises,
+   Domaine et Spécialité, qui reprennent les règles mobiles de l'offre de la
+   maquette de bureau (lire `PageVille.tsx`). Ancrées sur `.gabarit`, ces
+   règles raccourcissaient de 1 400 à 1 900 px leurs pages à 390 px, mesuré le
+   14/10 : leur téléphone est l'affaire de leur lot. `.gabaritOffre` n'est
+   posé que par `PageOffre`.
+
+   L'ÉCART ENTRE SECTIONS SUIT LA MAQUETTE MOBILE V2 SOUS 881 PX. Le gabarit
+   pose `--sec: 120px` en ligne, relevé le 08/10 sur la maquette de BUREAU
+   rendue à 390 px. La référence du téléphone est désormais la maquette mobile
+   v2, dont les sections se suivent à 12-14 px (dc.html, `m: "12px 18px 0"`) :
+   120 px avant chacune des quinze sections, c'était 1 800 px de vide par page,
+   et des sections repliées séparées par plus de hauteur qu'elles n'en
+   occupent. 40 px garde un souffle entre les blocs à fond propre. Le
+   `!important` bat le style en ligne, et seulement sous 881 px. */
+@media (max-width: 880px) {
+  .gabaritOffre {
+    --sec: 40px !important;
+  }
+}
+
+/* LE RÉSUMÉ ET LE CHEVRON D'UN BLOC REPLIÉ SUR PANNEAU SOMBRE (« Ce que nous
+   garantissons »). La feuille partagée les peint en `var(--ink2)`, gris foncé
+   pensé pour un fond clair : sur l'anthracite du panneau, le résumé replié
+   ne se lisait plus (mesuré le 14/10 à 390 px). Ils prennent le blanc atténué
+   des textes du panneau. Seulement replié, seulement sous 881 px. */
+@media (max-width: 880px) {
+  .panneauSombre details[data-pliable-mobile] > summary > p,
+  .panneauSombre details[data-pliable-mobile] > summary > [aria-hidden] {
+    color: rgba(255, 255, 255, 0.64) !important;
+  }
+}
+
+/* LE TITRE DE LA BOÎTE DE PASTILLES GARDE SES 11 PX. `PastillesCocon` le pose
+   en `<h2>` à 11 px (dc.html L125), mais `app/globals.css` impose sous 760 px
+   `.mg-site h2 { font-size: clamp(26px, 7.4vw, 34px) !important }` : posé
+   dans `.mg-site`, « ALLER PLUS LOIN · 2 » sortait à 28 px, mesuré le 14/10.
+   Correction locale, sur ce gabarit ; le défaut est signalé au composant. */
+@media (max-width: 880px) {
+  .gabaritOffre [data-pastilles-cocon] h2 {
+    font-size: 11px !important;
+    letter-spacing: 0.14em !important;
+  }
+}
+
+/* LES BANDES D'APPEL CÈDENT LEUR PLACE À LA CADENCE MOBILE, sur ce gabarit
+   seulement. La maquette mobile v2 ne porte aucune des trois bandes « Appel »
+   du bureau : son appel entre les sections est le photo + CTA et le bandeau
+   « Être rappelé » (`components/site/mobile/AvecConversionMobile`), que la
+   page pose à leur place. Les garder ferait se suivre deux appels à l'action
+   après « L'offre ». Leur texte, mention des horaires et libellé du bouton,
+   est celui du héros, qui reste affiché ; il reste aussi dans le document.
+   Ancré sur la racine du gabarit : les autres gabarits qui montent
+   `BandeAppel` ne sont pas touchés. */
+@media (max-width: 880px) {
+  .gabaritOffre [data-bande-appel] {
+    display: none;
   }
 }

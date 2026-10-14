@@ -3,7 +3,11 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 
 import { LARGEUR, SECTION, SURTITRE } from "@/components/site/blocs/habillage";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import EtiquettePli from "@/components/site/offre/EtiquettePli";
 import { cibleSure } from "@/components/site/offre/LiensOffre";
+import offre from "@/components/site/offre/PageOffre.module.css";
 import type { CarteMaillageOffres } from "@/types/offres";
 
 import styles from "./PageOffres.module.css";
@@ -71,15 +75,24 @@ export interface ProprietesSixOffres {
 }
 
 export default function SixOffres({ surtitre, titre, cartes }: ProprietesSixOffres) {
+  const retenues = cartes.filter((carte) => cibleSure(carte.href));
   return (
     <section style={SECTION}>
-      <div style={LARGEUR}>
+      <div className={offre.blocPliablePartage} style={LARGEUR}>
+        {/* REPLIÉ SUR TÉLÉPHONE, même raison que `offre/MaillageOffres` : la
+            maquette mobile v2 n'a pas ce bento (1 560 px à 390 px), son
+            maillage est la boîte de pastilles de la rubrique. Servi en
+            entier ; au-dessus de 880 px rien ne change. */}
+        <SectionPliableMobile
+          enTete={<EtiquettePli surtitre={surtitre} titre={titre} />}
+          resume={resumeDe(retenues.map((carte) => carte.titre))}
+        >
         {surtitre ? (
           <div style={{ ...SURTITRE, marginBottom: 14 }}>{surtitre}</div>
         ) : null}
         <h2 style={TITRE}>{titre}</h2>
         <div className={styles.bento} style={GRILLE}>
-          {cartes.filter((carte) => cibleSure(carte.href)).map((carte) => (
+          {retenues.map((carte) => (
             <Link
               key={carte.href}
               href={carte.href}
@@ -134,6 +147,7 @@ export default function SixOffres({ surtitre, titre, cartes }: ProprietesSixOffr
             </Link>
           ))}
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

@@ -6,8 +6,13 @@ import type { SectionDeroule } from "@/types/contenu";
 
 import { majusculeInitiale, numerote } from "./texte-offre";
 
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import { resumeDe } from "../blocs/resume-de-section";
+
+import EtiquettePli from "./EtiquettePli";
 import styles from "./PageOffre.module.css";
 import { continueLeTitre } from "../blocs/TitreEtSuite";
+import type { Pli } from "./ProblemeOffre";
 
 /**
  * Section « 05 Déroulé » de la capture (`maquette/rendu/offres--residence.html`) :
@@ -39,6 +44,12 @@ export interface ProprietesDerouleOffre {
    * déjà portées ne bougent pas.
    */
   titre?: string;
+  /**
+   * LE REPLI MOBILE, SUR DEMANDE SEULEMENT, même contrat que
+   * `ProblemeOffre.pli` : absent, la section est rendue comme avant le 14/10
+   * sur les gabarits qui la montent sans le demander.
+   */
+  pli?: Pli;
 }
 
 const CARTE_ENTETE: CSSProperties = {
@@ -112,6 +123,7 @@ const TEXTE_ETAPE: CSSProperties = {
 export default function DerouleOffre({
   section,
   titre = "Un appel. Un plan. Une ligne qui repart.",
+  pli,
 }: ProprietesDerouleOffre) {
   // La grille SE DÉDUIT DU NOMBRE D'ÉTAPES, relevé sur les 15 captures du
   // gabarit 03 (08/10) : 3 colonnes jusqu'à 6 étapes, 4 au-delà ; la carte
@@ -122,9 +134,7 @@ export default function DerouleOffre({
   const n = section.etapes.length;
   const colonnes = n <= 6 ? 3 : 4;
   const tuiles = n % colonnes !== 0;
-  return (
-    <section style={SECTION}>
-      <div style={LARGEUR}>
+  const grille = (
         <div
           className="mg-rmulti"
           style={{
@@ -217,6 +227,32 @@ export default function DerouleOffre({
             </div>
           ))}
         </div>
+  );
+
+  return (
+    <section style={SECTION}>
+      <div className={styles.blocPliablePartage} style={LARGEUR}>
+        {/* SE REPLIE AU TÉLÉPHONE quand le gabarit le demande, motif « Blocs
+            communs (pliables) » de la maquette mobile. Mesure du 14/10 à
+            390 px : 1 949 px déplié sur /offres/residence/.
+            LA BASCULE PORTE UNE ÉTIQUETTE, PAS LE TITRE : le surtitre et le
+            `<h2>` de la capture restent dans leur carte d'en-tête, première
+            cellule de la grille. Au-dessus de 880 px la bascule entière est
+            retirée (`.blocPliablePartage`), elle ne laisse donc aucun arrêt de
+            tabulation muet. Le résumé suit la règle de la maquette mobile :
+            les intitulés des étapes joints par « · », jamais une phrase
+            rédigée. */}
+        {pli ? (
+          <SectionPliableMobile
+            toujoursOuvert={pli === "ouvert"}
+            enTete={<EtiquettePli surtitre="Notre méthode" titre={titre} />}
+            resume={resumeDe(section.etapes.map((etape) => etape.titre))}
+          >
+            {grille}
+          </SectionPliableMobile>
+        ) : (
+          grille
+        )}
       </div>
     </section>
   );

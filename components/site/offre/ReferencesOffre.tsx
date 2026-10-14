@@ -40,6 +40,20 @@ export interface ProprietesReferencesOffre {
    * reprend pas quand c'est lui qui choisit la photo. Voir `photosDuRail`.
    */
   photosPrises?: readonly string[];
+  /**
+   * DÉPLIÉ AU CHARGEMENT SUR TÉLÉPHONE : la maquette mobile v2 garde son
+   * carrousel de références ouvert, hors du compte des sections repliées
+   * (`Migen - Mobile v2.dc.html` L476, `const op = isRef || dI++ < nOpen`, où
+   * `isRef` reconnaît les titres « références / réalisations / preuves »). Le
+   * bloc reste repliable au doigt.
+   *
+   * FAUX PAR DÉFAUT, et c'est un choix de périmètre, pas de maquette : ce bloc
+   * sert huit gabarits, et chacun décide de son téléphone. Passé à vrai par
+   * défaut, il rallongeait de 500 px 84 pages des autres gabarits, mesuré le
+   * 14/10. Les gabarits d'offre le passent ; les autres le passeront à leur
+   * tour.
+   */
+  toujoursOuvert?: boolean;
 }
 
 type Preuve = SectionPreuves["preuves"][number];
@@ -349,6 +363,7 @@ export default function ReferencesOffre({
   section,
   dateBrute = false,
   photosPrises = [],
+  toujoursOuvert = false,
 }: ProprietesReferencesOffre) {
   const preuves = section.preuves.filter(
     (preuve) => !!preuve.lienHref && estCheminInterne(preuve.lienHref),
@@ -367,6 +382,7 @@ export default function ReferencesOffre({
             la bascule entière est retirée, elle ne laisse donc aucun arrêt de
             tabulation muet. */}
         <SectionPliableMobile
+          toujoursOuvert={toujoursOuvert}
           enTete={
             <span data-mobile-seulement="" className={styles.etiquettePli}>
               <span style={ETIQUETTE_SURTITRE}>Nos réalisations</span>

@@ -669,9 +669,16 @@ const EXTRAIT = (imbriquees) => {
   /* Les pages « édito » génériques rangent leurs sections numérotées DANS la
      section du sommaire : la mesure de la capture les compte toutes, la porte
      aussi (`imbriquees`). Une section englobante garde tout son texte. */
+  /* LES SECTIONS DU TÉLÉPHONE NE SONT PAS COMPTÉES (14/10). La couche de
+     conversion mobile (photo + CTA) et les pastilles du maillage portent
+     `data-mobile-seulement` : `app/globals.css` les masque au-dessus de
+     880 px, donc à la largeur de cette porte (1 280 px), et la capture de
+     bureau n'a aucune raison de les porter. Les compter décalait l'ordre de
+     toutes les sections suivantes, et la porte accusait le déroulé d'avoir
+     perdu son texte alors qu'il était à sa place, une section plus loin. */
   const sections = imbriquees
-    ? principal.querySelectorAll("section")
-    : principal.querySelectorAll(":scope > section");
+    ? principal.querySelectorAll("section:not([data-mobile-seulement])")
+    : principal.querySelectorAll(":scope > section:not([data-mobile-seulement])");
   const sections2 = [...sections].map((section) => {
     const titre = section.querySelector("h1, h2, h3");
     return {

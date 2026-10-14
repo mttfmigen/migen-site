@@ -4,7 +4,10 @@ import type { CSSProperties } from "react";
 
 import { LARGEUR, SECTION, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
 import { estCheminInterne } from "@/components/site/blocs/TexteRiche";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
 
+import EtiquettePli from "./EtiquettePli";
 import styles from "./PageOffre.module.css";
 import { altPhoto } from "@/lib/descriptions-photos";
 
@@ -139,7 +142,21 @@ export default function RealisationsLiees({ cas }: ProprietesRealisationsLiees) 
 
   return (
     <section style={SECTION}>
-      <div style={LARGEUR}>
+      <div className={styles.blocPliablePartage} style={LARGEUR}>
+        {/* REPLIÉ SUR TÉLÉPHONE, même raison que `MaillageOffres` : la
+            maquette mobile v2 n'a pas cet écran, ses études de cas sont le
+            carrousel « Nos références », que la page garde ouvert. Le bloc
+            reste servi en entier ; le résumé joint les clients cités. Au-dessus
+            de 880 px, rien ne change. */}
+        <SectionPliableMobile
+          enTete={
+            <EtiquettePli
+              surtitre="Nos réalisations"
+              titre="Ils nous ont confié une mission comparable"
+            />
+          }
+          resume={resumeDe(retenus.map((c) => c.client ?? c.titre))}
+        >
         <div style={ENTETE}>
           <div>
             <div style={{ ...SURTITRE, marginBottom: 14 }}>
@@ -273,6 +290,7 @@ export default function RealisationsLiees({ cas }: ProprietesRealisationsLiees) 
             </Link>
           ))}
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

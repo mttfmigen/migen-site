@@ -3,8 +3,11 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 
 import { LARGEUR, SECTION, SURTITRE } from "@/components/site/blocs/habillage";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
 import type { CarteOffre } from "@/types/offre";
 
+import EtiquettePli from "./EtiquettePli";
 import styles from "./PageOffre.module.css";
 import { altPhoto } from "@/lib/descriptions-photos";
 
@@ -181,7 +184,22 @@ export default function MaillageOffres({ cartes }: ProprietesMaillageOffres) {
 
   return (
     <section style={SECTION}>
-      <div style={LARGEUR}>
+      <div className={styles.blocPliablePartage} style={LARGEUR}>
+        {/* REPLIÉ SUR TÉLÉPHONE : la maquette mobile v2 ne porte pas ce bento
+            (1 560 px à 390 px, mesuré le 14/10 sur /offres/residence/), son
+            maillage est la boîte de pastilles « Aller plus loin ». Le bloc
+            reste donc servi en entier, replié derrière son titre ; le résumé
+            joint les titres des cartes, comme la maquette fabrique les siens.
+            Au-dessus de 880 px, rien ne change (`.blocPliablePartage`). */}
+        <SectionPliableMobile
+          enTete={
+            <EtiquettePli
+              surtitre="Nos autres offres"
+              titre="Un autre besoin ? Il a son offre."
+            />
+          }
+          resume={resumeDe(retenues.map(({ gabarit }) => gabarit.titre))}
+        >
         <div style={{ ...SURTITRE, marginBottom: 14 }}>
           Nos autres offres
         </div>
@@ -238,6 +256,7 @@ export default function MaillageOffres({ cartes }: ProprietesMaillageOffres) {
             </Link>
           ))}
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

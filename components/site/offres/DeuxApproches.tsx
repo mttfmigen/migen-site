@@ -7,7 +7,11 @@ import {
   SURTITRE,
   VERRE,
 } from "@/components/site/blocs/habillage";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import EtiquettePli from "@/components/site/offre/EtiquettePli";
 import { cibleSure } from "@/components/site/offre/LiensOffre";
+import offre from "@/components/site/offre/PageOffre.module.css";
 import type { LienOffre } from "@/types/offre";
 import type { ApprocheOffres } from "@/types/offres";
 
@@ -192,7 +196,15 @@ export default function DeuxApproches({
 }: ProprietesDeuxApproches) {
   return (
     <section style={SECTION}>
-      <div style={LARGEUR}>
+      <div className={offre.blocPliablePartage} style={LARGEUR}>
+        {/* REPLIÉ SUR TÉLÉPHONE : écran propre au hub de bureau, absent de la
+            maquette mobile v2 (1 491 px à 390 px, mesuré le 14/10). Servi en
+            entier, replié derrière son titre ; au-dessus de 880 px rien ne
+            change (`.blocPliablePartage`). */}
+        <SectionPliableMobile
+          enTete={<EtiquettePli surtitre={surtitre} titre={titre} />}
+          resume={resumeDe(cartes.map((approche) => approche.titre))}
+        >
         <div style={{ ...SURTITRE, marginBottom: 14 }}>{surtitre}</div>
         <h2 style={TITRE}>{titre}</h2>
         <div className="mg-r2" style={GRILLE}>
@@ -212,6 +224,7 @@ export default function DeuxApproches({
             ),
           )}
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

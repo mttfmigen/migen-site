@@ -1,10 +1,13 @@
 import Link from "next/link";
-import type { ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
 
 import TexteRiche from "@/components/site/blocs/TexteRiche";
+import PastillesCocon from "@/components/site/cocon/PastillesCocon";
 import AppelFinal from "@/components/site/offre/AppelFinal";
 import AppelOffre from "@/components/site/offre/AppelOffre";
 import BandeAppel from "@/components/site/offre/BandeAppel";
+import CadenceOffre, { AncreRappel } from "@/components/site/offre/CadenceOffre";
+import TelephoneHeros from "@/components/site/offre/TelephoneHeros";
 import DerouleOffre from "@/components/site/offre/DerouleOffre";
 import GarantiesOffre from "@/components/site/offre/GarantiesOffre";
 import { liensSurs } from "@/components/site/offre/LiensOffre";
@@ -83,6 +86,8 @@ export interface ProprietesPageOffres {
   /** Composants serveur asynchrones (ils lisent la base) : passés en props. */
   filAriane?: ReactNode;
   maillage?: ReactNode;
+  /** Le chemin de la page : sans lui, ni cadence ni pastilles mobiles. */
+  chemin?: string;
 }
 
 /** La section du corpus de ce type, s'il y en a une (même règle que `PageOffre`). */
@@ -101,6 +106,7 @@ export default function PageOffres({
   formulaire,
   filAriane,
   maillage,
+  chemin,
 }: ProprietesPageOffres) {
   const actions = liensSurs(contenu.actions ?? []);
   const chiffres = contenu.chiffres ?? [];
@@ -120,7 +126,7 @@ export default function PageOffres({
   return (
     <div className="mg-site">
       {/* `racine` : la racine `.mgx-root` du gabarit d'offre (PageOffres.module.css). */}
-      <main className={styles.racine} style={{ paddingTop: 62 }}>
+      <main className={`${styles.racine} ${styles.hubOffres}`} style={{ paddingTop: 62 }}>
         {filAriane}
 
         {/* ------------------------------------------------- 0. « 01 Héros » */}
@@ -155,21 +161,41 @@ export default function PageOffres({
                 </p>
               ) : null}
 
+              {/* Le téléphone du héros mobile : voir `offre/TelephoneHeros`. */}
               {actions.length > 0 ? (
                 <div style={HERO_RANGEE_BOUTONS}>
-                  {actions.map((action) => (
-                    <Link
-                      key={action.href}
-                      href={action.href}
-                      prefetch={false}
-                      className={offre.boutonPrincipal}
-                      style={BOUTON_HERO}
-                    >
-                      {action.libelle}
-                    </Link>
-                  ))}
+                  {/* Une ancre dans la page est un `<a>` natif : voir la même
+                      rangée dans `offre/PageOffre.tsx` (`:target` et le
+                      panneau replié). */}
+                  {actions.map((action) =>
+                    action.href.startsWith("#") ? (
+                      <a
+                        key={action.href}
+                        href={action.href}
+                        className={offre.boutonPrincipal}
+                        style={BOUTON_HERO}
+                      >
+                        {action.libelle}
+                      </a>
+                    ) : (
+                      <Link
+                        key={action.href}
+                        href={action.href}
+                        prefetch={false}
+                        className={offre.boutonPrincipal}
+                        style={BOUTON_HERO}
+                      >
+                        {action.libelle}
+                      </Link>
+                    ),
+                  )}
+                  <TelephoneHeros />
                 </div>
-              ) : null}
+              ) : (
+                <div data-mobile-seulement="" style={HERO_RANGEE_BOUTONS}>
+                  <TelephoneHeros />
+                </div>
+              )}
 
               {contenu.mention ? (
                 <p style={HERO_MENTION}>{contenu.mention}</p>
@@ -177,7 +203,10 @@ export default function PageOffres({
             </div>
 
             {heroFormulaire ? (
-              <div style={{ position: "relative" }}>
+              /* Replié sous 881 px, rouvert quand l'adresse vise `#besoin` :
+                 héros compact de la maquette mobile v2, voir
+                 `offre/PageOffre.module.css`. */
+              <div className={offre.panneauHeroBureau} style={{ position: "relative" }}>
                 <PanneauFormulaire
                   id="besoin"
                   formulaire={`${formulaire}-hero`}
@@ -188,6 +217,11 @@ export default function PageOffres({
             ) : null}
           </div>
         </section>
+
+        {/* LES PAGES DE LA RUBRIQUE, boîte HAUTE de la maquette mobile v2
+            (dc.html L125 et L504 : « Toutes les pages de la rubrique », sous
+            le héros, pour un hub de gabarit 10). Mobile seulement. */}
+        {chemin ? <PastillesCocon chemin={chemin} variante="enfants" /> : null}
 
         {/* -------------------------------------------- 1. « 01 Chiffres » */}
 
@@ -228,45 +262,72 @@ export default function PageOffres({
 
         {/* ------------------------------------------ 5 à 9. Corps de l'offre */}
 
-        {probleme ? (
-          <ProblemeOffre
-            section={probleme}
-            altPhoto={titre}
-            photo={contenu.problemePhoto}
-          />
-        ) : null}
+        {/* LA CADENCE DE CONVERSION MOBILE, même montage que `PageOffre` :
+            chaque enfant est une section de contenu de la maquette (dc.html
+            `nD`), les bandes et l'appel « 07 » sont rattachés par un
+            `Fragment` à la section qui les précède. */}
+        <CadenceOffre chemin={chemin} actions={actions}>
+          {/* Déplié au chargement : première section de contenu (dc.html
+              L451, `nOpen = 1`). */}
+          {probleme ? (
+            <ProblemeOffre
+              key="probleme"
+              section={probleme}
+              altPhoto={titre}
+              photo={contenu.problemePhoto}
+              pli="ouvert"
+            />
+          ) : null}
 
-        {pointsOffre ? <PointsOffre section={pointsOffre} /> : null}
+          {pointsOffre || bandeVisible ? (
+            <Fragment key="offre">
+              {pointsOffre ? <PointsOffre section={pointsOffre} /> : null}
 
-        {bandeVisible ? (
-          <BandeAppel
-            mention={contenu.mention}
-            bouton={contenu.appelBouton}
-            variante="sombre"
-          />
-        ) : null}
+              {bandeVisible ? (
+                <BandeAppel
+                  mention={contenu.mention}
+                  bouton={contenu.appelBouton}
+                  variante="sombre"
+                />
+              ) : null}
+            </Fragment>
+          ) : null}
 
-        {deroule ? (
-          <DerouleOffre section={deroule} titre={contenu.derouleTitre} />
-        ) : null}
+          {deroule ? (
+            <DerouleOffre
+              key="deroule"
+              section={deroule}
+              titre={contenu.derouleTitre}
+              pli="replie"
+            />
+          ) : null}
 
-        {garanties ? <GarantiesOffre section={garanties} /> : null}
+          {garanties || contenu.brefBande ? (
+            <Fragment key="garanties">
+              {garanties ? <GarantiesOffre section={garanties} /> : null}
 
-        {/* ----------------------------------------- 10 à 12. Appel, références */}
+              {/* ----------------------------------- 10 à 12. Appel, références */}
 
-        {contenu.brefBande ? (
-          <AppelOffre
-            question={contenu.brefBande}
-            bouton={contenu.brefBouton}
-            mention={contenu.brefMention}
-          />
-        ) : null}
+              {contenu.brefBande ? (
+                <AppelOffre
+                  question={contenu.brefBande}
+                  bouton={contenu.brefBouton}
+                  mention={contenu.brefMention}
+                />
+              ) : null}
+            </Fragment>
+          ) : null}
 
-        {preuves ? <ReferencesOffre section={preuves} /> : null}
+          {preuves || bandeVisible ? (
+            <Fragment key="references">
+              {preuves ? <ReferencesOffre section={preuves} toujoursOuvert /> : null}
 
-        {bandeVisible ? (
-          <BandeAppel mention={contenu.mention} bouton={contenu.appelBouton} />
-        ) : null}
+              {bandeVisible ? (
+                <BandeAppel mention={contenu.mention} bouton={contenu.appelBouton} />
+              ) : null}
+            </Fragment>
+          ) : null}
+        </CadenceOffre>
 
         {/* --------------------------------- 13 et 14. Les deux écrans du hub */}
 
@@ -311,6 +372,9 @@ export default function PageOffres({
         {/* LA CIBLE DE L'ANCRE #mgx-form, oubliée par ce gabarit comme par
             PageOffre. Voir la note de ce dernier : le bouton « Poser ma
             question » de la FAQ ne menait nulle part. */}
+        {/* La cible du bandeau « Être rappelé » : voir `offre/CadenceOffre`. */}
+        <AncreRappel chemin={chemin} />
+
         <div id="mgx-form" style={{ scrollMarginTop: 90 }}>
           <AppelFinal
             question={ctaFinal?.question}

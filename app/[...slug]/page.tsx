@@ -413,6 +413,8 @@ export default async function PageDuCocon({
         formulaire={`cocon${page.path.replace(/\//g, "-")}`}
         filAriane={<FilAriane path={page.path} />}
         maillage={<Maillage page={page} />}
+        // Le chemin, pour la cadence de conversion et les pastilles mobiles.
+        chemin={page.path}
       />
     );
   }

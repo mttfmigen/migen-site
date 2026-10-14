@@ -6,6 +6,8 @@ import { SURTITRE } from "@/components/site/blocs/habillage";
 import { majusculeInitiale } from "./texte-offre";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
+import styles from "./PageOffre.module.css";
+
 /**
  * Section « 06 Garanties » de la capture (`maquette/rendu/offres--residence.html`) :
  * un grand panneau anthracite, surtitre « Notre parti pris », H2 « Ce que nous
@@ -67,7 +69,7 @@ const CARTE_TEXTE: CSSProperties = {
 export default function GarantiesOffre({ section }: ProprietesGarantiesOffre) {
   return (
     <section style={{ padding: "var(--sec) 24px 0" }}>
-      <div className="mg-pad" style={PANNEAU}>
+      <div className={`mg-pad ${styles.panneauSombre}`} style={PANNEAU}>
         <div aria-hidden="true" style={LUEUR} />
         <div style={{ position: "relative" }}>
           {/* REPLIÉ SUR TÉLÉPHONE, motif « Blocs communs (pliables) » de la

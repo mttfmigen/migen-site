@@ -1,13 +1,15 @@
 import Link from "next/link";
-import type { CSSProperties, ReactNode } from "react";
+import { Fragment, type CSSProperties, type ReactNode } from "react";
 
 import TexteRiche from "@/components/site/blocs/TexteRiche";
+import PastillesCocon from "@/components/site/cocon/PastillesCocon";
 import type { Section, TypeSection } from "@/types/contenu";
 import type { ContenuOffre } from "@/types/offre";
 
 import AppelFinal from "./AppelFinal";
 import AppelOffre from "./AppelOffre";
 import BandeAppel from "./BandeAppel";
+import CadenceOffre, { AncreRappel } from "./CadenceOffre";
 import {
   CommentCaMarche,
   Comparatif,
@@ -31,6 +33,7 @@ import RealisationsLiees from "./RealisationsLiees";
 import Reassurance from "./Reassurance";
 import ReferencesOffre from "./ReferencesOffre";
 import ReponseDirecte from "./ReponseDirecte";
+import TelephoneHeros from "./TelephoneHeros";
 import TypesMaintenance from "./TypesMaintenance";
 import { cibleSure, liensSurs } from "./LiensOffre";
 import PageEdito from "./generique/PageEdito";
@@ -223,7 +226,10 @@ export default function PageOffre({
        de sa page hôte, que `app/globals.css` applique à tout `.mg-site`.
        Mesuré le 08/10 à 390 px : 120 px sur /offres/residence/, 64 px sur les
        pages génériques, qui gardent donc la règle commune. */
-    <div className={`mg-site ${styles.gabarit}`} style={{ "--sec": "120px" } as CSSProperties}>
+    <div
+      className={`mg-site ${styles.gabarit} ${styles.gabaritOffre}`}
+      style={{ "--sec": "120px" } as CSSProperties}
+    >
       <main style={{ paddingTop: 62 }}>
         {filAriane}
 
@@ -259,21 +265,49 @@ export default function PageOffre({
                 </p>
               ) : null}
 
+              {/* Le téléphone du héros mobile suit le bouton d'action (voir
+                  `TelephoneHeros`). Sans bouton, la maquette mobile le garde
+                  (dc.html L111 rend toujours `hero.telL`) : sa rangée n'existe
+                  alors que sous 881 px, le héros de bureau reste celui de la
+                  capture. */}
               {actions.length > 0 ? (
                 <div style={HERO_RANGEE_BOUTONS}>
-                  {actions.map((action) => (
-                    <Link
-                      key={action.href}
-                      href={action.href}
-                      prefetch={false}
-                      className={styles.boutonPrincipal}
-                      style={BOUTON_HERO}
-                    >
-                      {action.libelle}
-                    </Link>
-                  ))}
+                  {/* UNE ANCRE DANS LA PAGE EST UN `<a>`, PAS UN `<Link>`. Le
+                      routeur de Next pose l'ancre par `history.pushState`, qui
+                      ne met pas à jour `:target` : sous 881 px, le panneau
+                      `#besoin` replié ne se rouvrait donc pas (mesuré le
+                      14/10, adresse en `#besoin`, panneau toujours masqué). La
+                      navigation native le rouvre et y défile. Même balise,
+                      même dessin : le bureau ne voit aucune différence. */}
+                  {actions.map((action) =>
+                    action.href.startsWith("#") ? (
+                      <a
+                        key={action.href}
+                        href={action.href}
+                        className={styles.boutonPrincipal}
+                        style={BOUTON_HERO}
+                      >
+                        {action.libelle}
+                      </a>
+                    ) : (
+                      <Link
+                        key={action.href}
+                        href={action.href}
+                        prefetch={false}
+                        className={styles.boutonPrincipal}
+                        style={BOUTON_HERO}
+                      >
+                        {action.libelle}
+                      </Link>
+                    ),
+                  )}
+                  <TelephoneHeros />
                 </div>
-              ) : null}
+              ) : (
+                <div data-mobile-seulement="" style={HERO_RANGEE_BOUTONS}>
+                  <TelephoneHeros />
+                </div>
+              )}
 
               {/* La mention des horaires, SOUS les boutons dans la capture. */}
               {contenu.mention ? (
@@ -282,7 +316,10 @@ export default function PageOffre({
             </div>
 
             {heroFormulaire ? (
-              <div style={{ position: "relative" }}>
+              /* `panneauHeroBureau` : replié sous 881 px, rouvert quand
+                 l'adresse vise `#besoin` (héros compact de la maquette mobile
+                 v2, voir le module CSS). */
+              <div className={styles.panneauHeroBureau} style={{ position: "relative" }}>
                 {/*
                   Le même formulaire qu'en bas de page, avec un identifiant
                   d'analyse distinct : HubSpot doit pouvoir dire lequel des
@@ -384,125 +421,174 @@ export default function PageOffre({
           <ComplementsOffre blocs={contenu.complementTypes} />
         ) : null}
 
-        {/* ------------------------------------------- 5. « 03 Problème » */}
+        {/* ------------- 5 à 13. Le corps, et la cadence de conversion mobile */}
 
-        {probleme ? (
-          <ProblemeOffre
-            section={probleme}
-            altPhoto={titre}
-            photo={contenu.problemePhoto}
-          />
-        ) : null}
+        {/* LA CADENCE DE LA MAQUETTE MOBILE V2 entre les sections de contenu
+            (`AvecConversionMobile`) : photo + CTA après la 2e, bandeau
+            « Être rappelé » après la 5e, la 8e… Chaque ENFANT compte pour une
+            section, et c'est la maquette qui dit lesquelles comptent : ses
+            sections numérotées du corpus (dc.html `nD`, L476). Les bandes
+            d'appel et l'appel « 07 » ne sont pas des sections de contenu : un
+            `Fragment` les rattache à la section qui les précède, pour qu'elles
+            ne décalent pas la cadence. Tout ce que la cadence ajoute est
+            masqué au-delà de 880 px ; le bureau ne bouge pas. */}
+        <CadenceOffre chemin={chemin} actions={actions}>
+          {/* ----------------------------------------- 5. « 03 Problème » */}
 
-        {/* ---------------------------------------------- 6. « 04 Offre » */}
+          {/* DÉPLIÉ AU CHARGEMENT : la première section de contenu de la
+              maquette mobile (dc.html L451, `nOpen = 1`). Les 23 pages du
+              gabarit ouvrent toutes sur le problème. */}
+          {probleme ? (
+            <ProblemeOffre
+              key="probleme"
+              section={probleme}
+              altPhoto={titre}
+              photo={contenu.problemePhoto}
+              pli="ouvert"
+            />
+          ) : null}
 
-        {offre ? <PointsOffre section={offre} /> : null}
+          {offre || bandeVisible || contenu.complementOffre?.length ? (
+            <Fragment key="offre">
+              {/* ------------------------------------------ 6. « 04 Offre » */}
 
-        {/* -------------------------------------------- 7. Appel · offre */}
+              {offre ? <PointsOffre section={offre} /> : null}
 
-        {/* La capture rend CETTE bande en sombre (fond `var(--panel)`), les
-            deux autres en clair : relevé du 06/10 sur le bloc 533 de
-            `maquette/rendu/offres--residence.html`. */}
-        {bandeVisible ? (
-          <BandeAppel
-            mention={contenu.mention}
-            bouton={contenu.appelBouton}
-            variante="sombre"
-          />
-        ) : null}
+              {/* ---------------------------------------- 7. Appel · offre */}
 
-        {/* ------------------------------------ 7 bis. « Complément 4 » */}
+              {/* La capture rend CETTE bande en sombre (fond `var(--panel)`),
+                  les deux autres en clair : relevé du 06/10 sur le bloc 533
+                  de `maquette/rendu/offres--residence.html`. */}
+              {bandeVisible ? (
+                <BandeAppel
+                  mention={contenu.mention}
+                  bouton={contenu.appelBouton}
+                  variante="sombre"
+                />
+              ) : null}
 
-        {/* Écran propre aux SOUS-pages du gabarit 03, absent des six offres
-            nommées : sans donnée, rien n'est rendu. Voir
-            `ComplementsOffre.tsx` (ajouté le 07/10 pour
-            `/offres/residence/prestataire-ou-salarie/`). */}
-        {/* `suit="bandeAppel"` : CET emplacement vient juste après la bande
-            d'appel sombre, pas après une section de contenu. Une ligne de
-            clôture n'y clôt rien, et le texte sortait de sa carte pour venir
-            se coller sous le bouton. Corrigé le 14/10, mesuré sur
-            `/travaux-industriels/` (section de 90 px au lieu de 191). */}
-        {contenu.complementOffre?.length ? (
-          <ComplementsOffre blocs={contenu.complementOffre} suit="bandeAppel" />
-        ) : null}
+              {/* -------------------------------- 7 bis. « Complément 4 » */}
 
-        {/* -------------------------------------------- 8. « 05 Déroulé » */}
+              {/* Écran propre aux SOUS-pages du gabarit 03, absent des six
+                  offres nommées : sans donnée, rien n'est rendu. Voir
+                  `ComplementsOffre.tsx` (ajouté le 07/10 pour
+                  `/offres/residence/prestataire-ou-salarie/`). */}
+              {/* `suit="bandeAppel"` : CET emplacement vient juste après la
+                  bande d'appel sombre, pas après une section de contenu. Une
+                  ligne de clôture n'y clôt rien, et le texte sortait de sa
+                  carte pour venir se coller sous le bouton. Corrigé le 14/10,
+                  mesuré sur `/travaux-industriels/` (section de 90 px au lieu
+                  de 191). */}
+              {contenu.complementOffre?.length ? (
+                <ComplementsOffre blocs={contenu.complementOffre} suit="bandeAppel" />
+              ) : null}
+            </Fragment>
+          ) : null}
 
-        {deroule ? (
-          <DerouleOffre section={deroule} titre={contenu.derouleTitre} />
-        ) : null}
+          {deroule || contenu.complementDeroule?.length ? (
+            <Fragment key="deroule">
+              {/* ---------------------------------------- 8. « 05 Déroulé » */}
 
-        {/* ------------------------------------ 8 bis. « Complément 5 » */}
+              {deroule ? (
+                <DerouleOffre
+                  section={deroule}
+                  titre={contenu.derouleTitre}
+                  pli="replie"
+                />
+              ) : null}
 
-        {/* Le MÊME écran que « Complément 4 », à l'emplacement que la maquette
-            lui donne APRÈS le déroulé. Ajouté le 07/10 pour
-            `/offres/residence/cahier-des-charges/`, dont la capture porte les
-            deux (« Les 4 erreurs qui coûtent cher »). Sans donnée, rien. */}
-        {contenu.complementDeroule?.length ? (
-          <ComplementsOffre blocs={contenu.complementDeroule} />
-        ) : null}
+              {/* -------------------------------- 8 bis. « Complément 5 » */}
 
-        {/* ------------------------------------------ 9. « 06 Garanties » */}
+              {/* Le MÊME écran que « Complément 4 », à l'emplacement que la
+                  maquette lui donne APRÈS le déroulé. Ajouté le 07/10 pour
+                  `/offres/residence/cahier-des-charges/`, dont la capture
+                  porte les deux (« Les 4 erreurs qui coûtent cher »). Sans
+                  donnée, rien. */}
+              {contenu.complementDeroule?.length ? (
+                <ComplementsOffre blocs={contenu.complementDeroule} />
+              ) : null}
+            </Fragment>
+          ) : null}
 
-        {garanties ? <GarantiesOffre section={garanties} /> : null}
+          {garanties || contenu.complementGaranties?.length || contenu.brefBande ? (
+            <Fragment key="garanties">
+              {/* -------------------------------------- 9. « 06 Garanties » */}
 
-        {/* ------------------------------------ 9 bis. « Complément 6 » */}
+              {garanties ? <GarantiesOffre section={garanties} /> : null}
 
-        {/* Le TROISIÈME emplacement de la même carte en verre, APRÈS les
-            garanties (gabarit 664). Ajouté le 07/10 en portant
-            `/offres/bureau-etudes/`, dont la capture porte les trois
-            emplacements, 4, 5 et 6. Sans donnée, rien n'est rendu. */}
-        {contenu.complementGaranties?.length ? (
-          <ComplementsOffre blocs={contenu.complementGaranties} />
-        ) : null}
+              {/* -------------------------------- 9 bis. « Complément 6 » */}
 
-        {/* --------------------------------------------- 10. « 07 Appel » */}
+              {/* Le TROISIÈME emplacement de la même carte en verre, APRÈS
+                  les garanties (gabarit 664). Ajouté le 07/10 en portant
+                  `/offres/bureau-etudes/`, dont la capture porte les trois
+                  emplacements, 4, 5 et 6. Sans donnée, rien n'est rendu. */}
+              {contenu.complementGaranties?.length ? (
+                <ComplementsOffre blocs={contenu.complementGaranties} />
+              ) : null}
 
-        {contenu.brefBande ? (
-          <AppelOffre
-            question={contenu.brefBande}
-            bouton={contenu.brefBouton}
-            mention={contenu.brefMention}
-          />
-        ) : null}
+              {/* ----------------------------------------- 10. « 07 Appel » */}
 
-        {/* ------------------------------------ 11. « Offres regroupées » */}
+              {contenu.brefBande ? (
+                <AppelOffre
+                  question={contenu.brefBande}
+                  bouton={contenu.brefBouton}
+                  mention={contenu.brefMention}
+                />
+              ) : null}
+            </Fragment>
+          ) : null}
 
-        {contenu.prestationsRegroupees ? (
-          <PrestationsRegroupees donnees={contenu.prestationsRegroupees} />
-        ) : null}
+          {/* -------------------------------- 11. « Offres regroupées » */}
 
-        {/* ------------------------------- 11 bis. « Marques maintenues » */}
+          {contenu.prestationsRegroupees ? (
+            <PrestationsRegroupees
+              key="prestationsRegroupees"
+              donnees={contenu.prestationsRegroupees}
+            />
+          ) : null}
 
-        {/* AJOUTÉ le 07/10 en portant `/offres/depannage-industriel/panne-
-            machine/` : 38 des 210 captures du dépôt rendent ici UNE famille de
-            constructeurs, et laquelle dépend de la page. Sans
-            `marquesFamille`, rien n'est rendu : les autres pages ne bougent
-            pas. Voir `MarquesOffre.tsx`. */}
-        {/* `marquesFamilles` ajoute le RAIL D'ONGLETS que rend la capture de
-            `/bureau-etudes/bureau-etude-electrique/` (07/10). Absent, la
-            section est celle d'avant. */}
-        {contenu.marquesFamille ? (
-          <MarquesOffre
-            famille={contenu.marquesFamille}
-            familles={contenu.marquesFamilles}
-            chemin={chemin}
-          />
-        ) : null}
+          {/* --------------------------- 11 bis. « Marques maintenues » */}
 
-        {/* ---------------------------------------- 12. « 08 Références » */}
+          {/* AJOUTÉ le 07/10 en portant `/offres/depannage-industriel/panne-
+              machine/` : 38 des 210 captures du dépôt rendent ici UNE famille
+              de constructeurs, et laquelle dépend de la page. Sans
+              `marquesFamille`, rien n'est rendu : les autres pages ne bougent
+              pas. Voir `MarquesOffre.tsx`. */}
+          {/* `marquesFamilles` ajoute le RAIL D'ONGLETS que rend la capture
+              de `/bureau-etudes/bureau-etude-electrique/` (07/10). Absent, la
+              section est celle d'avant. */}
+          {contenu.marquesFamille ? (
+            <MarquesOffre
+              key="marques"
+              famille={contenu.marquesFamille}
+              familles={contenu.marquesFamilles}
+              chemin={chemin}
+            />
+          ) : null}
 
-        {/* Le rail évite les photos du maillage de bas de page (section 15),
-            qu'il rendait aussi sur trois offres : voir `photosDuRail`. */}
-        {preuves ? (
-          <ReferencesOffre section={preuves} photosPrises={photosDuMaillage(autres)} />
-        ) : null}
+          {preuves || bandeVisible ? (
+            <Fragment key="references">
+              {/* ------------------------------------ 12. « 08 Références » */}
 
-        {/* --------------------------------------- 13. Appel · références */}
+              {/* Le rail évite les photos du maillage de bas de page (section
+                  15), qu'il rendait aussi sur trois offres : voir
+                  `photosDuRail`. */}
+              {preuves ? (
+                <ReferencesOffre
+                  section={preuves}
+                  photosPrises={photosDuMaillage(autres)}
+                  toujoursOuvert
+                />
+              ) : null}
 
-        {bandeVisible ? (
-          <BandeAppel mention={contenu.mention} bouton={contenu.appelBouton} />
-        ) : null}
+              {/* ----------------------------------- 13. Appel · références */}
+
+              {bandeVisible ? (
+                <BandeAppel mention={contenu.mention} bouton={contenu.appelBouton} />
+              ) : null}
+            </Fragment>
+          ) : null}
+        </CadenceOffre>
 
         {/* ---------------------------------------- 14. « 09 Questions » */}
 
@@ -588,6 +674,16 @@ export default function PageOffre({
             descend donc DANS le composant, sur sa section, comme la capture le
             pose elle-même (`maquette/rendu/offres--residence.html`, bloc 1241,
             `id="mgx-form"` et `scroll-margin-top: 90px` sur le `<section>`). */}
+        {/* LES PASTILLES DU MAILLAGE MOBILE, boîte basse de la maquette v2
+            (dc.html L134, « Aller plus loin » ou « Dans la même rubrique »),
+            juste AVANT l'appel de fin de page comme dans la maquette (le bloc
+            `kidsBottom` précède `showEndCta`). Mobile seulement, et rien pour
+            une page hors index. */}
+        {chemin ? <PastillesCocon chemin={chemin} /> : null}
+
+        {/* La cible du bandeau « Être rappelé » : voir `AncreRappel`. */}
+        <AncreRappel chemin={chemin} />
+
         <AppelFinal
           ancre="mgx-form"
           question={ctaFinal?.question}

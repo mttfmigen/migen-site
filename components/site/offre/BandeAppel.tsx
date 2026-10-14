@@ -92,7 +92,10 @@ export default function BandeAppel({
 }: ProprietesBandeAppel) {
   const sombre = variante === "sombre";
   return (
-    <section style={{ padding: "40px 0 0" }}>
+    /* `data-bande-appel` : la poignée par laquelle un gabarit masque ces bandes
+       sur téléphone, où la cadence de conversion mobile les remplace (voir
+       `PageOffre.module.css`). Sans règle qui la vise, elle ne fait rien. */
+    <section data-bande-appel="" style={{ padding: "40px 0 0" }}>
       <div style={LARGEUR}>
         <div style={{ ...BANDE, ...(sombre ? BANDE_SOMBRE : BANDE_CLAIRE) }}>
           {mention ? (

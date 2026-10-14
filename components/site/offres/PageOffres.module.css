@@ -51,3 +51,26 @@
     gap: 32px !important;
   }
 }
+
+/* LA MAQUETTE MOBILE V2 PREND LA MAIN SOUS 881 PX, mêmes règles que le
+   gabarit d'offre (`offre/PageOffre.module.css`, où leur raison est écrite) :
+   l'écart entre sections passe de 120 à 40 px, et les trois bandes d'appel
+   du bureau cèdent leur place à la cadence de conversion mobile, leur texte
+   restant dans le document et au héros. Rien ne change au-dessus.
+   `.hubOffres` ET NON `.racine` : `.racine` est aussi posée par le hub
+   `/implantations/`, que ces règles raccourcissaient de 1 916 px à 390 px
+   (mesuré le 14/10). `.hubOffres` n'est posée que par `PageOffres`. */
+@media (max-width: 880px) {
+  .hubOffres {
+    --sec: 40px;
+  }
+  .hubOffres [data-bande-appel] {
+    display: none;
+  }
+  /* Le titre de la boîte de pastilles, ramené à ses 11 px : même raison que
+     dans `offre/PageOffre.module.css`. */
+  .hubOffres [data-pastilles-cocon] h2 {
+    font-size: 11px !important;
+    letter-spacing: 0.14em !important;
+  }
+}
