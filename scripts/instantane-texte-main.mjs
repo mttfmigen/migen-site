@@ -135,11 +135,15 @@ export function compareInstantanes(avant, apres) {
       pages.push({ url, perdus: ["(page absente)"], ajoutes: [], ha: a.hauteur, hb: null });
       continue;
     }
-    const ca = compte(a.texte);
-    const cb = compte(b.texte);
+    // Les deux instantanés portent les nœuds séparés : on les compare, et la
+    // règle des collages n'a plus rien à excuser. Sinon (instantané ancien),
+    // repli sur le textContent et ses collages.
+    const parNoeuds = typeof a.noeuds === "string" && typeof b.noeuds === "string";
+    const ca = compte(parNoeuds ? a.noeuds : a.texte);
+    const cb = compte(parNoeuds ? b.noeuds : b.texte);
     const perdus = manque(ca, cb);
     const colles = [];
-    if (perdus.length) {
+    if (perdus.length && !parNoeuds) {
       for (const mot of collages(a.texte, b.texte)) {
         const k = perdus.indexOf(mot);
         if (k >= 0) colles.push(...perdus.splice(k, 1));
@@ -166,11 +170,24 @@ async function prends(base, largeur, fichier) {
         try {
           await page.goto(base + url, { waitUntil: "load", timeout: 60000 });
           await page.waitForTimeout(1200);
-          resultat[url] = await page.evaluate(() => ({
-            texte: document.querySelector("main")?.textContent ?? "",
-            hauteur: document.documentElement.scrollHeight,
-          }));
+          resultat[url] = await page.evaluate(() => {
+            const main = document.querySelector("main");
+            // Les NŒUDS de texte, joints par une espace : ce que textContent
+            // colle au bord de deux éléments (« rétrofitéeCe ») reste deux mots,
+            // et une insertion entre eux ne fabrique plus de faux mot perdu.
+            const noeuds = [];
+            if (main) {
+              const marche = document.createTreeWalker(main, NodeFilter.SHOW_TEXT);
+              for (let n = marche.nextNode(); n; n = marche.nextNode()) noeuds.push(n.nodeValue ?? "");
+            }
+            return {
+              texte: main?.textContent ?? "",
+              noeuds: noeuds.join(" "),
+              hauteur: document.documentElement.scrollHeight,
+            };
+          });
           resultat[url].texte = normalise(resultat[url].texte);
+          resultat[url].noeuds = normalise(resultat[url].noeuds);
           break;
         } catch (e) {
           if (essai === 2) resultat[url] = { texte: "", hauteur: 0, erreur: String(e).slice(0, 120) };
@@ -237,10 +254,14 @@ if (mode === "--controle") {
     compareInstantanes(avant, { "/a/": { texte: "Le technicien repart Être rappelé matin", hauteur: 1 } })[0].perdus.join() === "demain";
   const ok7 =
     compareInstantanes(colle, { "/a/": { texte: "Le technicien repart.Être rappelé matin", hauteur: 1 } })[0].perdus.join() === "repart.Demain";
-  const ok = ok1 && ok2 && ok3 && ok4 && ok5 && ok6 && ok7;
+  // Par nœuds : une insertion entre deux nœuds ne coûte rien, un nœud retiré se voit.
+  const parNoeuds = { "/a/": { texte: "rétrofitéeCe que", noeuds: "rétrofitée Ce que", hauteur: 1 } };
+  const ok8 = compareInstantanes(parNoeuds, { "/a/": { texte: "", noeuds: "rétrofitée Parlons Ce que", hauteur: 1 } })[0].perdus.length === 0;
+  const ok9 = compareInstantanes(parNoeuds, { "/a/": { texte: "", noeuds: "rétrofitée Parlons que", hauteur: 1 } })[0].perdus.join() === "Ce";
+  const ok = ok1 && ok2 && ok3 && ok4 && ok5 && ok6 && ok7 && ok8 && ok9;
   console.log(
     ok
-      ? "CONTROLE OK : 7/7 (ajout toléré, perte vue, multiplicité vue, page absente vue, collage excusé, mot remplacé vu, moitié de collage perdue vue)"
+      ? "CONTROLE OK : 9/9 (ajout toléré, perte vue, multiplicité vue, page absente vue, collage excusé, mot remplacé vu, moitié de collage perdue vue, insertion entre nœuds tolérée, nœud retiré vu)"
       : `CONTROLE EN ÉCHEC : ${[ok1, ok2, ok3, ok4, ok5, ok6, ok7].map((v, i) => (v ? "" : i + 1)).filter(Boolean).join(", ")}`,
   );
   process.exit(ok ? 0 : 1);
