@@ -304,6 +304,13 @@ for (const finalite of FINALITES) {
   }
 }
 
+// Le bandeau, son panneau et le lien du pied parlent de cookies (14/10) : la
+// page vers laquelle ils renvoient parle la même langue.
+assert.ok(
+  !/traceur/i.test(texteRendu),
+  "la page parle encore de « traceurs » alors que le bandeau dit « cookies »",
+);
+
 /* ------------- OPENAI : LA PAGE NOMME EXACTEMENT LES PIXELS RÉELLEMENT ARMÉS */
 
 /* AJOUTÉE LE 09/10, sur l'audit de Nathan Jorez. La page nommait « OpenAI »

@@ -258,7 +258,7 @@ const PARTIES: readonly Partie[] = [
             sur la purge de la preuve dans `0002_consentement.sql`. Les 180 jours
             annoncés ici sont, eux, EXACTEMENT ce que le code pose. */}
         <p style={P}>
-          Votre choix de traceurs est conservé {CONSERVATION_JOURS} jours dans un
+          Votre choix sur les cookies est conservé {CONSERVATION_JOURS} jours dans un
           cookie déposé par ce site, et la preuve de ce choix six mois de notre
           côté. Cette preuve ne porte ni votre nom, ni votre adresse IP.
         </p>
