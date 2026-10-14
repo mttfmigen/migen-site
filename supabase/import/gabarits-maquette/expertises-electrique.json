@@ -252,7 +252,7 @@
             "reponse": "Trois façons de travailler, un seul but : garantir que votre production ne s'arrête pas pour une raison électrique. En préventif, des relevés électriques (intensités, déséquilibres, harmoniques), la donnée nécessaire pour anticiper la défaillance, et une approche prédictive sur les moteurs critiques : la mesure répétée révèle l'anomalie naissante et permet de programmer l'arrêt au lieu de le subir. En maintenance corrective, le diagnostic, la réparation du composant défectueux, la remise en service et un compte rendu qui alimente votre gestion de maintenance. En amélioration, l'optimisation énergétique, le rétrofit électrique et la reprise des réseaux de distribution internes, avec un effet direct sur la productivité."
           },
           {
-            "question": "Ces travaux de maintenance se font-ils au contrat ou au projet ?",
+            "question": "Les travaux de maintenance se font-ils au contrat ou au projet ?",
             "reponse": "Les deux. Ces travaux de maintenance se mènent ponctuellement comme dans le cadre d'un contrat d'entretien régulier. Un projet plus large, un transfert de ligne ou une refonte d'armoires se pilote en mode projet, avec un interlocuteur unique et un planning tenu. Un projet de rétrofit se chiffre sur étude avant de le réaliser. Une solution de continuité permet d'assurer la production pendant les travaux : par tranches, de nuit ou pendant un arrêt planifié."
           },
           {

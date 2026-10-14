@@ -89,7 +89,7 @@ export const QUESTIONS_THOT_HUB: { question: string; reponse: string }[] = [
   },
   {
     question: "Où trouver des ressources pour aller plus loin ?",
-    reponse: "Nos guides publient un article par sujet : définition de chaque type de maintenance, méthode de recherche de panne, mise en œuvre d'un programme d'entretien, choix entre pneumatique, hydraulique ou électricité pour un actionneur. Chaque publication est relue par un spécialiste du domaine concerné, et la publication d'un nouvel article suit chaque évolution du métier.",
+    reponse: "Nos guides publient un article par sujet : définition de chaque type de maintenance, méthode de recherche de panne, mise en œuvre d'un programme d'entretien. Chaque publication est relue par un spécialiste du domaine concerné, et la publication d'un nouvel article suit chaque évolution du métier.",
   },
 ];
 
