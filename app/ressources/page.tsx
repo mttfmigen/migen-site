@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import HubRessources from "@/components/site/ressources-hub/v2/HubRessources";
+import { TITRE_PAGE } from "@/components/site/ressources-hub/v2/filtrage";
 import { pageParChemin } from "@/lib/contenu";
 import { metadonneesSeo } from "@/lib/seo/metadonnees";
 
@@ -12,7 +13,7 @@ import { metadonneesSeo } from "@/lib/seo/metadonnees";
  * le gabarit guide et le haut de page mobile qui la portaient avant.
  *
  * Le titre est celui que la maquette pose côté Entreprises (`pageTitle`,
- * page-dc.jsx), et la description reprend le chapô de la page, mot pour mot :
+ * page-dc.jsx) ; le hub le change côté Techniciens, comme elle. La description reprend le chapô de la page, mot pour mot :
  * la ligne `seo` parlait de « fiches pratiques », marquées « Bientôt » sur le
  * hub. Le reste (canonique, vignette, noindex) vient toujours de la table `seo`.
  * Le contenu du hub est versionné (`components/site/ressources-hub/v2/donnees.ts`) :
@@ -22,7 +23,7 @@ import { metadonneesSeo } from "@/lib/seo/metadonnees";
 export const revalidate = 3600;
 
 const CHEMIN = "/ressources/";
-const TITRE = "Ressources maintenance industrielle | Migen";
+const TITRE = TITRE_PAGE.ent;
 const DESCRIPTION =
   "Méthodes, organisation, GMAO, intelligence artificielle : écrit par nos équipes, à partir de ce qu’elles voient sur les sites industriels.";
 

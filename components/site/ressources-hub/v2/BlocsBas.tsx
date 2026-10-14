@@ -4,7 +4,7 @@ import Link from "next/link";
 import { demandeDiagnostic } from "@/components/formulaire/besoin";
 import { FormulaireBesoin } from "@/components/formulaire/FormulaireBesoin";
 
-import { MONO } from "./Cartes";
+import { allerAuBloc, MONO } from "./Cartes";
 import { ETAPES_SELECTION } from "./donnees";
 import { deux } from "./filtrage";
 import s from "./hub.module.css";
@@ -89,28 +89,10 @@ export function Coche({ texte }: { texte: string }) {
   );
 }
 
-/**
- * Le `go()` de la maquette : défile jusqu'au bloc, 96 px sous le haut, sans
- * écrire l'ancre dans l'adresse. Sans JavaScript, le lien `#id` reste valable.
- * Le focus suit, comme avec l'ancre qu'on empêche : sans lui, le Tab suivant
- * repartait du bouton (la colonne de gauche) et remontait la page.
- */
-function allerA(id: string) {
-  return (e: MouseEvent<HTMLAnchorElement>) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    e.preventDefault();
-    const doux = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 96, behavior: doux ? "smooth" : "auto" });
-    if (!el.hasAttribute("tabindex")) el.setAttribute("tabindex", "-1");
-    el.focus({ preventScroll: true });
-  };
-}
-
 /** `askDiag` de la maquette : présélectionne le besoin, puis défile jusqu'au formulaire. */
 export function diagnostic(e: MouseEvent<HTMLAnchorElement>) {
   demandeDiagnostic();
-  allerA("rs-form")(e);
+  allerAuBloc(e);
 }
 
 /** Bandeau sombre « Diagnostic Zéro arrêt ». */
@@ -292,7 +274,7 @@ export function ProcessSelection({ etape, onEtape }: { etape: number; onEtape: (
             chacun a fait le même chemin.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
-            <a href="#postuler" className={s.dim} style={BOUTON_ORANGE}>
+            <a href="#postuler" onClick={allerAuBloc} className={s.dim} style={BOUTON_ORANGE}>
               Postuler →
             </a>
             <Link

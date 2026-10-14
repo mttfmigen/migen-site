@@ -7,6 +7,12 @@ import type { ContenuRessource } from "./donnees";
  */
 
 export type Espace = "ent" | "tech";
+
+/** Le titre de l'onglet par espace, `pageTitle` de la maquette (`page-dc.jsx` l. 84). */
+export const TITRE_PAGE: Record<Espace, string> = {
+  ent: "Ressources maintenance industrielle | Migen",
+  tech: "Fiches métiers et carrière | Migen",
+};
 export type CleDuree = "all" | "s" | "m" | "l";
 export type CleTri = "pert" | "court" | "long";
 

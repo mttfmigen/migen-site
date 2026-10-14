@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import type { CSSProperties, MouseEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -13,6 +13,23 @@ import s from "./hub.module.css";
  */
 
 export const MONO = "ui-monospace,Menlo,monospace";
+
+/**
+ * Le `go()` de la maquette, pour un lien `#id` du hub : défile jusqu'au bloc,
+ * 96 px sous le haut, sans écrire l'ancre dans l'adresse. Sans JavaScript, le
+ * lien `#id` reste valable (le bloc porte `scrollMarginTop: 96`).
+ * Le focus suit, comme avec l'ancre qu'on empêche : sans lui, le Tab suivant
+ * repartait du bouton (la colonne de gauche) et remontait la page.
+ */
+export function allerAuBloc(e: MouseEvent<HTMLAnchorElement>) {
+  const el = document.getElementById(e.currentTarget.hash.slice(1));
+  if (!el) return;
+  e.preventDefault();
+  const doux = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 96, behavior: doux ? "smooth" : "auto" });
+  if (!el.hasAttribute("tabindex")) el.setAttribute("tabindex", "-1");
+  el.focus({ preventScroll: true });
+}
 
 const PASTILLE_VERRE: CSSProperties = {
   whiteSpace: "nowrap",
@@ -540,6 +557,7 @@ export function PourBienDemarrer({
           </div>
           <a
             href="#rs-process"
+            onClick={allerAuBloc}
             className={s.soft}
             style={{
               marginTop: "auto",

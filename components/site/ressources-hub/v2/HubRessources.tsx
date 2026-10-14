@@ -11,7 +11,7 @@ import { ALaUne, CarteGrille, CarteListe, MONO, PourBienDemarrer } from "./Carte
 import ColonneFiltres from "./ColonneFiltres";
 import { CONTENUS_ENTREPRISES, CONTENUS_TECHNICIENS } from "./donnees";
 import type { ContenuRessource } from "./donnees";
-import { colonnes, filtre, FILTRES_AU_REPOS, pastilles } from "./filtrage";
+import { colonnes, filtre, FILTRES_AU_REPOS, pastilles, TITRE_PAGE } from "./filtrage";
 import type { CleTri, Espace, Filtres } from "./filtrage";
 import s from "./hub.module.css";
 import { DERNIERE_CARTE, OUVERTS_PAR_LE_HUB } from "@/components/site/ressource/lecteur/ouverts";
@@ -94,6 +94,11 @@ export default function HubRessources() {
     window.addEventListener("keydown", kd);
     return () => window.removeEventListener("keydown", kd);
   }, []);
+
+  // Le titre de l'onglet suit l'espace, comme `pageTitle` de la maquette.
+  useEffect(() => {
+    document.title = TITRE_PAGE[espace];
+  }, [espace]);
 
   const live = CONTENUS[espace];
   const items = filtre(live, f, tri, espace);

@@ -171,6 +171,20 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+/* À deux colonnes, la 15e carte est seule sur sa ligne : la carte `large` de
+   `CarteGrille` (pleine largeur, photo à 42 % à gauche). Les styles en ligne
+   de la carte imposent `!important`. */
+@media (min-width: 520px) and (max-width: 760px), (min-width: 800px) and (max-width: 1051px), (min-width: 1101px) and (max-width: 1111px) {
+  .grilleRepli > :nth-child(15) {
+    grid-column: 1 / -1 !important;
+    flex-direction: row !important;
+  }
+  .grilleRepli > :nth-child(15) > :first-child {
+    width: 42% !important;
+    min-height: 220px !important;
+    aspect-ratio: auto !important;
+  }
+}
 
 @media (max-width: 1100px) {
   .app {
