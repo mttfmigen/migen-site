@@ -70,10 +70,31 @@ function routesStatiques(dossier = "app", prefixe = "/"): string[] {
 }
 
 const statiques = routesStatiques();
+
+/**
+ * Les chemins servis par RÉÉCRITURE, lus dans `next.config.ts` : des pages
+ * servies sous le domaine sans dossier `app/` ni ligne d'index, comme
+ * `/diagnostic-zero-arret/` (l'outil, réécrit vers son propre déploiement).
+ * Le tiroir de la maquette mobile v2 y mène (« Diagnostic gratuit ») : sans
+ * cette lecture, la porte refusait une adresse qui répond 200, celle-là même
+ * que le pied de page sert déjà et que `verification-pied-de-page.tsx`
+ * demande à chaque exécution.
+ */
+const reecrites = [
+  ...readFileSync("next.config.ts", "utf8").matchAll(
+    /source:\s*"(\/[^":]+)\/:[^"]*"/g,
+  ),
+].map((trouve) => `${trouve[1]}/`);
+assert.ok(
+  reecrites.includes("/diagnostic-zero-arret/"),
+  "la réécriture /diagnostic-zero-arret/ n'est plus lue dans next.config.ts",
+);
+
 const connues = new Set<string>([
   "/",
   ...index.map((entree) => entree.url).filter((url): url is string => typeof url === "string"),
   ...statiques,
+  ...reecrites,
 ]);
 
 assert.ok(
@@ -133,7 +154,8 @@ for (const lien of liens) {
   assert.ok(
     canoniques.has(sansSlash(lien)),
     `URL hors inventaire dans la navigation : ${lien}. L'inventaire tient ` +
-      `les 248 pages de l'index et les ${statiques.length} routes statiques de app/.`,
+      `les 248 pages de l'index, les ${statiques.length} routes statiques de ` +
+      `app/ et ${reecrites.length} réécriture(s) de next.config.ts.`,
   );
 }
 
@@ -214,6 +236,6 @@ assert.throws(
 );
 
 console.log(
-  `navigation vérifiée : ${liens.size} liens, tous dans l'inventaire du site (${connues.size} adresses : l'index des pages et les ${statiques.length} routes statiques) ; ` +
+  `navigation vérifiée : ${liens.size} liens, tous dans l'inventaire du site (${connues.size} adresses : l'index des pages, les ${statiques.length} routes statiques et ${reecrites.length} réécriture(s)) ; ` +
     `${SUR_TITRES.length} sur-titres de panneau au style de la maquette.`,
 );

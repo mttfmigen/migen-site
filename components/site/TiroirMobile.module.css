@@ -1,0 +1,59 @@
+/*
+ * Groupes dépliants du tiroir, maquette mobile v2 : des `<details>` NATIFS,
+ * exclusifs par leur attribut `name` comme la maquette
+ * (`<details name="menu">`), et tout le texte des groupes repliés reste dans
+ * le DOM. L'ancien tiroir ne montait les liens d'un groupe qu'une fois
+ * celui-ci déplié : un groupe fermé n'existait pas.
+ *
+ * Le chevron et sa rotation étaient portés par un style en ligne dépendant de
+ * l'état React ; avec un `<details>`, l'état vit dans le document, d'où ces
+ * règles. Les couleurs sont celles que le tiroir employait déjà.
+ */
+
+.groupe {
+  border-radius: 18px;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.bascule {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  cursor: pointer;
+  /* Le triangle du navigateur, retiré des deux moteurs : la maquette pose son
+     propre chevron à droite. */
+  list-style: none;
+}
+
+.bascule::-webkit-details-marker {
+  display: none;
+}
+
+.chevron {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+  font: 500 16px/1 var(--fb);
+  transition: transform 0.25s ease;
+}
+
+/* Ouvert, le chevron TOURNE et c'est tout : la maquette mobile v2 le garde
+   blanc (`.mv details[open]>summary .mv-chev{transform:rotate(90deg)}`). Le
+   fond orange venait de l'ancien tiroir, pas de cette maquette. */
+.groupe[open] > .bascule .chevron {
+  transform: rotate(90deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chevron {
+    transition: none;
+  }
+}

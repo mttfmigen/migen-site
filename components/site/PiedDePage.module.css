@@ -148,3 +148,134 @@
     padding: 3px 0;
   }
 }
+
+/* -------------------------------------------- colonnes repliables (mobile) */
+
+/*
+ * Les titres de colonne, devenus les `<summary>` de leur `<details>`. Les
+ * valeurs sont celles des anciens styles en ligne, à l'identique : au bureau,
+ * un `<summary>` en `display: block` sans marqueur se dessine exactement comme
+ * le `<div>` qu'il remplace.
+ */
+.titreColonne,
+.titreMaillage {
+  display: block;
+  list-style: none;
+}
+
+.titreColonne::-webkit-details-marker,
+.titreMaillage::-webkit-details-marker {
+  display: none;
+}
+
+.titreColonne {
+  font: 600 11px var(--fb);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 16px;
+}
+
+.titreMaillage {
+  font: 600 10.5px var(--fb);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.32);
+  margin-bottom: 12px;
+}
+
+/*
+ * AU BUREAU, LA BASCULE EST INERTE : un clic sur « Offres » ne doit pas
+ * refermer la colonne. Et si un dépliant arrivait fermé à cette largeur (un
+ * téléphone tourné en paysage), son contenu reste peint : les navigateurs
+ * récents masquent le contenu d'un `<details>` fermé par `::details-content`.
+ * `RepliPiedMobile` le rouvre aussi, cette règle couvre l'instant d'avant.
+ */
+@media (min-width: 881px) {
+  .titreColonne,
+  .titreMaillage {
+    pointer-events: none;
+  }
+
+  .pliable::details-content {
+    content-visibility: visible;
+  }
+}
+
+/*
+ * SUR TÉLÉPHONE, LE PIED COMPACT. Chaque colonne devient une rangée de 52 px
+ * (titre, chevron), séparée de la suivante par un filet ; le contenu s'ouvre
+ * dessous au toucher. Les `!important` ne sont pas de confort : ils battent
+ * les styles en ligne des conteneurs (gardés tels quels pour que le bureau
+ * ne bouge pas) et les règles `!important` de `.mg-r2` et `.mg-rq3` dans
+ * `globals.css`. Le préfixe `.pied` leur donne la spécificité qui tranche.
+ */
+@media (max-width: 880px) {
+  .pied {
+    padding-top: 44px !important;
+  }
+
+  .pied .colonnes {
+    gap: 0 !important;
+    padding-bottom: 0 !important;
+    border-bottom: 0 !important;
+  }
+
+  .marque {
+    margin-bottom: 30px;
+  }
+
+  .pied .maillage {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0 !important;
+    padding: 0 !important;
+  }
+
+  .pliable {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .titreColonne,
+  .titreMaillage {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 52px;
+    margin: 0;
+    cursor: pointer;
+    font: 600 11.5px var(--fb);
+    color: rgba(255, 255, 255, 0.66);
+  }
+
+  /* Le chevron est un trait de bordure, pas un caractère : rien n'entre dans
+     le `textContent` ni dans ce que lit un lecteur d'écran. */
+  .titreColonne::after,
+  .titreMaillage::after {
+    content: "";
+    flex: none;
+    width: 7px;
+    height: 7px;
+    margin-right: 4px;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: rotate(-45deg);
+    transition: transform 0.2s;
+  }
+
+  .pliable[open] > .titreColonne::after,
+  .pliable[open] > .titreMaillage::after {
+    transform: rotate(45deg);
+  }
+
+  .corps {
+    padding-bottom: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .titreColonne::after,
+  .titreMaillage::after {
+    transition: none;
+  }
+}

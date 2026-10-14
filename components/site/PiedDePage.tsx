@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 
 import styles from "./PiedDePage.module.css";
+import RepliPiedMobile from "./RepliPiedMobile";
 
 /*
  * Pied de page, porté depuis « Migen - Site final.dc.html », lignes 7181 à 7289.
@@ -24,6 +25,19 @@ import styles from "./PiedDePage.module.css";
  * une cinquantaine de liens déclencherait autant de requêtes sur chaque page du site,
  * contre le principe numéro un du projet. La navigation côté client, elle, est
  * conservée.
+ *
+ * SUR TÉLÉPHONE, LES SEPT COLONNES SE REPLIENT, ET RIEN N'EST RETIRÉ. Mesuré
+ * le 14/10 en production à 390 px : 2 026 px de pied sous chaque page. La
+ * règle numéro un de la maquette mobile v2 est « replier, jamais retirer »
+ * (Google lit le `textContent`) : chaque colonne est un `<details>` natif dont
+ * le titre est le `<summary>`, servi OUVERT, replié au chargement sous 881 px
+ * seulement par `RepliPiedMobile`. Les 55 liens restent dans le DOM à toutes
+ * les largeurs.
+ *
+ * AU BUREAU, RIEN NE BOUGE, au caractère près : aucun chevron ni résumé écrit
+ * dans le DOM (le chevron du téléphone est dessiné en CSS), le titre garde son
+ * dessin, la bascule est inerte et hors du parcours clavier. Toutes les règles
+ * propres au repli vivent sous `@media (max-width: 880px)` dans le module.
  */
 
 interface Lien {
@@ -186,21 +200,9 @@ const styleCadre: CSSProperties = {
   padding: "0 40px",
 };
 
-const styleTitreColonne: CSSProperties = {
-  font: "600 11px var(--fb)",
-  letterSpacing: ".14em",
-  textTransform: "uppercase",
-  color: "rgba(255,255,255,.4)",
-  marginBottom: 16,
-};
-
-const styleTitreMaillage: CSSProperties = {
-  font: "600 10.5px var(--fb)",
-  letterSpacing: ".14em",
-  textTransform: "uppercase",
-  color: "rgba(255,255,255,.32)",
-  marginBottom: 12,
-};
+/* Les titres de colonne vivent dans le module CSS (`.titreColonne`,
+   `.titreMaillage`), valeurs inchangées : devenus `<summary>`, ils prennent
+   un autre dessin sous 881 px, et un style en ligne gagnerait contre lui. */
 
 const styleBarreBasse: CSSProperties = {
   paddingTop: 26,
@@ -344,6 +346,7 @@ export default function PiedDePage({
 
   return (
     <footer
+      className={styles.pied}
       style={{
         background: "var(--foot)",
         color: "#fff",
@@ -362,7 +365,7 @@ export default function PiedDePage({
     >
       <div style={styleCadre}>
         <div
-          className="mg-r2"
+          className={`mg-r2 ${styles.colonnes}`}
           style={{
             display: "grid",
             gridTemplateColumns: "1.3fr 1fr 1fr 1fr",
@@ -371,7 +374,7 @@ export default function PiedDePage({
             borderBottom: "1px solid rgba(255,255,255,.1)",
           }}
         >
-          <div>
+          <div className={styles.marque}>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 18 }}>
               <Image src="/assets/logo-migen-white.png" alt="migen" width={26} height={26} />
             </div>
@@ -393,24 +396,29 @@ export default function PiedDePage({
 
           {COLONNES.map((colonne) => (
             <nav key={colonne.titre} aria-label={colonne.titre}>
-              <div style={styleTitreColonne}>{colonne.titre}</div>
-              <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 9 }}>
-                {colonne.liens.map((lien) => (
-                  <LienSite
-                    key={lien.href + lien.libelle}
-                    href={lien.href}
-                    className={lien.accent ? styles.lienPlan : styles.lienNav}
-                  >
-                    {lien.libelle}
-                  </LienSite>
-                ))}
-              </div>
+              <details open data-pied-pliable="" className={styles.pliable}>
+                <summary className={styles.titreColonne}>{colonne.titre}</summary>
+                <div
+                  className={styles.corps}
+                  style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 9 }}
+                >
+                  {colonne.liens.map((lien) => (
+                    <LienSite
+                      key={lien.href + lien.libelle}
+                      href={lien.href}
+                      className={lien.accent ? styles.lienPlan : styles.lienNav}
+                    >
+                      {lien.libelle}
+                    </LienSite>
+                  ))}
+                </div>
+              </details>
             </nav>
           ))}
         </div>
 
         <div
-          className="mg-rq3"
+          className={`mg-rq3 ${styles.maillage}`}
           style={{
             padding: "34px 0",
             borderBottom: "1px solid rgba(255,255,255,.1)",
@@ -421,9 +429,12 @@ export default function PiedDePage({
         >
           {MAILLAGE.map((groupe) => {
             const contenu = (
-              <>
-                <div style={styleTitreMaillage}>{groupe.titre}</div>
-                <div style={{ font: "400 13px/1.9 var(--fb)", color: "rgba(255,255,255,.44)" }}>
+              <details open data-pied-pliable="" className={styles.pliable}>
+                <summary className={styles.titreMaillage}>{groupe.titre}</summary>
+                <div
+                  className={styles.corps}
+                  style={{ font: "400 13px/1.9 var(--fb)", color: "rgba(255,255,255,.44)" }}
+                >
                   {groupe.entrees.map((entree, index) => (
                     <span key={entree.libelle}>
                       {index > 0 ? " · " : null}
@@ -437,7 +448,7 @@ export default function PiedDePage({
                     </span>
                   ))}
                 </div>
-              </>
+              </details>
             );
             /* `nav` annonce un ensemble de liens : une colonne qui n'en porte
                aucun reste un bloc de texte, comme dans la maquette. */
@@ -471,6 +482,7 @@ export default function PiedDePage({
           </div>
         </div>
       </div>
+      <RepliPiedMobile />
     </footer>
   );
 }
