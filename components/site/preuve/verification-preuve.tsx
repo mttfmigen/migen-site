@@ -176,10 +176,19 @@ function verifieInterdits(page: string, nom: string): void {
 function casLies(html: string, url: string): string[] {
   const debut = html.indexOf("<main");
   const pied = html.indexOf("<footer");
-  const zone =
+  /* LES BLOCS DU TÉLÉPHONE SONT RETIRÉS AVANT LA LECTURE DES LIENS, comme ils
+     le sont déjà avant la lecture du texte (`texteLisible`). Depuis le 14/10,
+     la maquette mobile v2 pose sous 880 px un carrousel « D’autres
+     réalisations » (`CarrouselRealisations`, `data-mobile-seulement`), dont
+     les six cartes visent d'autres études de cas : invisibles à 1280 px,
+     absentes de la capture de bureau, elles faisaient tomber cette
+     comparaison sur les 28 pages servies. Le maillage de bureau, lui, est
+     toujours comparé carte pour carte. */
+  const zone = retireOrnementsMobiles(
     debut >= 0
       ? html.slice(debut, html.indexOf("</main>", debut))
-      : html.slice(0, pied < 0 ? undefined : pied);
+      : html.slice(0, pied < 0 ? undefined : pied),
+  );
   const vus = new Map<string, string>();
   for (const [, href, interieur] of zone.matchAll(
     /<a\s[^>]*?href="(\/preuves\/[^"/]+\/?)"[^>]*>([\s\S]*?)<\/a>/g,
@@ -1185,7 +1194,11 @@ function controleServie(url: string, html: string, titre: string): string {
   const h1 = [...html.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/g)].map((m) => texteLisible(m[1]).trim());
   assert.deepEqual(h1, [normaliseTexte(titre)], `${url} : H1 servis ${JSON.stringify(h1)}, la donnée porte « ${titre} »`);
   const fin = html.indexOf("</main>", debut);
-  return html.slice(debut, fin < 0 ? undefined : fin);
+  /* Sans les blocs du téléphone : les photos du carrousel « D’autres
+     réalisations » (maquette mobile v2, 14/10, `data-mobile-seulement`) ne
+     sont pas des emplacements de la capture de bureau, et chacune tombait
+     dans l'emplacement « plusLoin » de la carte voisine. Voir `casLies`. */
+  return retireOrnementsMobiles(html.slice(debut, fin < 0 ? undefined : fin));
 }
 
 const ecartsServis: string[] = [];

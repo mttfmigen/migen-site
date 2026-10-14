@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 
+import RappelFinalMobile from "@/components/site/mobile/RappelFinalMobile";
+import FilArianeMobile from "@/components/site/preuve/FilArianeMobile";
 import type { ContenuHubPreuves } from "@/types/casclients";
 
 import FiltrePreuves from "./FiltrePreuves";
@@ -53,9 +55,14 @@ export interface ProprietesPreuvesHub {
   /** Le H1, porté par `pages.titre_h1` : « Preuves : nos réalisations ». */
   titre: string;
   contenu: ContenuHubPreuves;
+  /**
+   * Le chemin de la page (`/preuves/`), pour la couche MOBILE de la maquette
+   * v2 : fil d'Ariane et rappel final. Sans lui, rien de mobile ne s'ajoute.
+   */
+  chemin?: string;
 }
 
-export default function PreuvesHub({ titre, contenu }: ProprietesPreuvesHub) {
+export default function PreuvesHub({ titre, contenu, chemin }: ProprietesPreuvesHub) {
   const vues = vuesPreuves(contenu);
   const total = vues[0].nombre;
 
@@ -71,6 +78,10 @@ export default function PreuvesHub({ titre, contenu }: ProprietesPreuvesHub) {
         }}
       >
         <section style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 40px 0" }}>
+          {/* Le fil d'Ariane de la maquette MOBILE (dc.html L104, « Accueil ›
+              Réalisations »), sous 881 px seulement : la capture de bureau du
+              hub n'en porte pas. */}
+          {chemin ? <FilArianeMobile chemin={chemin} /> : null}
           <div
             className={styles.heros}
             style={{
@@ -93,6 +104,7 @@ export default function PreuvesHub({ titre, contenu }: ProprietesPreuvesHub) {
                 Nos réalisations
               </div>
               <h1
+                className={styles.titreHub}
                 style={{
                   font: "600 clamp(34px,4vw,56px)/1.04 var(--ft)",
                   letterSpacing: "-.045em",
@@ -104,6 +116,7 @@ export default function PreuvesHub({ titre, contenu }: ProprietesPreuvesHub) {
                 {titre}
               </h1>
               <p
+                className={styles.accroche}
                 style={{
                   font: "600 17px/1.55 var(--fb)",
                   color: "var(--ink,#1c1b19)",
@@ -115,6 +128,7 @@ export default function PreuvesHub({ titre, contenu }: ProprietesPreuvesHub) {
                 {contenu.accroche}
               </p>
               <p
+                className={styles.intro}
                 style={{
                   font: "400 15.5px/1.65 var(--fb)",
                   color: "var(--ink2,#6a6764)",
@@ -237,7 +251,10 @@ export default function PreuvesHub({ titre, contenu }: ProprietesPreuvesHub) {
 
         <FiltrePreuves vues={vues} />
 
-        <section style={{ maxWidth: 1200, margin: "0 auto", padding: "56px 40px 96px" }}>
+        <section
+          className={styles.bandeFinale}
+          style={{ maxWidth: 1200, margin: "0 auto", padding: "56px 40px 96px" }}
+        >
           <div
             style={{
               display: "flex",
@@ -282,6 +299,22 @@ export default function PreuvesHub({ titre, contenu }: ProprietesPreuvesHub) {
             </div>
           </div>
         </section>
+
+        {/* LE RAPPEL FINAL DE LA MAQUETTE MOBILE (dc.html L138, « Être
+            rappelé »), dernier bloc de la page comme sur la capture du hub.
+            Pas d'`AvecConversionMobile` ici : le hub n'a qu'UNE section de
+            contenu (les études filtrées), la cadence n'y insérerait rien
+            d'autre que ce rappel. Il vient après le bandeau sombre, comme le
+            rappel de la maquette après « Nos réalisations ». Mobile seulement.
+            L'espace qui le précède sépare, dans le `textContent` du `<main>`,
+            le dernier mot du bandeau du premier mot du rappel : collés, la
+            porte « aucun mot perdu » comptait le premier comme perdu. */}
+        {chemin ? (
+          <>
+            {" "}
+            <RappelFinalMobile />
+          </>
+        ) : null}
       </main>
     </div>
   );

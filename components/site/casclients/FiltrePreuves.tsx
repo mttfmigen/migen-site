@@ -371,7 +371,10 @@ export default function FiltrePreuves({ vues }: ProprietesFiltrePreuves) {
   const [actif, setActif] = useState(0);
 
   return (
-    <section style={{ maxWidth: 1200, margin: "0 auto", padding: "64px 40px 0" }}>
+    <section
+      className={styles.filtre}
+      style={{ maxWidth: 1200, margin: "0 auto", padding: "64px 40px 0" }}
+    >
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
         {vues.map((vue, i) => (
           <button

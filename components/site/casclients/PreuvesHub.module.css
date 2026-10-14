@@ -69,3 +69,96 @@
     grid-template-columns: minmax(0, 1fr) !important;
   }
 }
+
+/* ===================================================================
+   LA MAQUETTE MOBILE V2 SUR LE HUB /preuves/, posée le 14/10.
+   Référence : `maquette/mobile-v2/maquette/Migen - Mobile v2.dc.html`
+   (dc.html) et sa capture du hub à 402 px. Sous 880 px SEULEMENT, après
+   les replis historiques ci-dessus, qu'elle remplace à ces largeurs : le
+   bureau ne bouge pas.
+
+   G1 · LES 41 CARTES DÉFILENT À L'HORIZONTALE. Empilées, elles faisaient
+   près de 17 000 px de page à 390 px (mesuré le 14/10, 41 cartes l'une
+   sous l'autre). La maquette range ses études en carrousels (dc.html
+   L131, `hasRefs` : cartes de 236 px aimantées, défilement horizontal).
+   Toutes les cartes restent dans le DOM, dans le même ordre ; l'onglet
+   choisit toujours la vue. Rien n'est retiré.
+   =================================================================== */
+@media (max-width: 880px) {
+  /* G2 · le héros compact (dc.html L105-109 : H1 à 27 px, texte à 15). */
+  .heros {
+    gap: 18px !important;
+  }
+  .heros .titreHub {
+    font-size: 27px !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.04em !important;
+    margin-bottom: 10px !important;
+    max-width: none !important;
+  }
+  .heros .accroche {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+  }
+  .heros .intro {
+    font-size: 14.5px !important;
+    line-height: 1.6 !important;
+    margin-bottom: 16px !important;
+  }
+  .mosaique {
+    grid-template-rows: 110px 110px !important;
+  }
+  /* « Demander un diagnostic maintenance », insécable (valeur de la
+     capture), sortait de 75 px de la gouttière droite à 390 px. Le libellé
+     passe à la ligne plutôt que de sortir : aucun mot n'est changé. */
+  .heros .bouton {
+    white-space: normal !important;
+    max-width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .filtre {
+    padding-top: 32px !important;
+  }
+
+  .lesUnes,
+  .grille {
+    display: grid !important;
+    grid-template-columns: none !important;
+    grid-template-rows: none !important;
+    grid-auto-flow: column;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  .lesUnes::-webkit-scrollbar,
+  .grille::-webkit-scrollbar {
+    display: none;
+  }
+  .lesUnes {
+    grid-auto-columns: 280px;
+  }
+  .grille {
+    grid-auto-columns: 236px;
+  }
+  /* `:nth-child(n)` pour battre `.lesUnes > *:first-child` du bloc de
+     900 px. 380 px : la grande carte porte aussi son résumé, posé en bas
+     sur la photo ; à 300 px, il remontait sous la pastille du logo. */
+  .lesUnes > :nth-child(n) {
+    grid-row: auto !important;
+    min-height: 380px !important;
+    scroll-snap-align: start;
+  }
+  .grille > * {
+    scroll-snap-align: start;
+  }
+
+  /* Le haut et le bas seulement : sous 390 px, la gouttière de 20 px du
+     site (`app/globals.css`, sélecteur plus spécifique) garde la main. */
+  .bandeFinale {
+    padding-top: 32px !important;
+    padding-bottom: 0 !important;
+  }
+}

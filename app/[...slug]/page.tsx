@@ -345,6 +345,9 @@ export default async function PageDuCocon({
         formulaire={`cocon${page.path.replace(/\//g, "-")}`}
         filAriane={<FilAriane path={page.path} />}
         maillage={<Maillage page={page} />}
+        // Le CHEMIN, pour la couche MOBILE de la maquette v2 (fil d'Ariane,
+        // badge de lecture, cadence de conversion, carrousel, sœurs).
+        chemin={page.path}
       />
     );
   }
@@ -443,6 +446,9 @@ export default async function PageDuCocon({
         formulaire={`cocon${page.path.replace(/\//g, "-")}`}
         filAriane={<FilAriane path={page.path} />}
         maillage={<Maillage page={page} />}
+        // Le CHEMIN, pour la couche MOBILE du hub /preuves/ (fil d'Ariane,
+        // rappel final).
+        chemin={page.path}
       />
     );
   }

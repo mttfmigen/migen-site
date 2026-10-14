@@ -209,6 +209,8 @@ export interface ProprietesPageCasClients {
    */
   filAriane?: ReactNode;
   maillage?: ReactNode;
+  /** Le chemin de la page, pour la couche mobile du hub /preuves/. */
+  chemin?: string;
 }
 
 export default function PageCasClients({
@@ -217,9 +219,11 @@ export default function PageCasClients({
   formulaire = "casclients",
   filAriane,
   maillage,
+  chemin,
 }: ProprietesPageCasClients) {
   // Le hub n'a ni fil d'Ariane, ni formulaire, ni maillage : sa capture non plus.
-  if (estHubPreuves(contenu)) return <PreuvesHub titre={titre} contenu={contenu} />;
+  if (estHubPreuves(contenu))
+    return <PreuvesHub titre={titre} contenu={contenu} chemin={chemin} />;
 
   const surtitre = contenu.surtitre ?? "Cas clients";
   const chantiers = contenu.chantiers ?? [];

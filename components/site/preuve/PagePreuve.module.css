@@ -298,3 +298,223 @@
     gap: 4px !important;
   }
 }
+
+/* ===================================================================
+   LA MAQUETTE MOBILE V2 SUR LE GABARIT 02, posée le 14/10.
+   Référence : `maquette/mobile-v2/maquette/Migen - Mobile v2.dc.html`
+   (dc.html), capture m-02 (/preuves/aktid-centre-logistique/, 402 px).
+   TOUT CE QUI SUIT VIT SOUS 880 PX, le seuil du repli et de la couche
+   de conversion : le rendu de bureau reste celui de la capture, et la
+   porte `instantane-texte-main.mjs` le mesure à 1280 px, hauteur égale.
+   Rien n'est retiré : les règles compactent, replient ou font défiler.
+   =================================================================== */
+@media (max-width: 880px) {
+  /* G1 · LE RYTHME. `--sec` vaut 120 px EN LIGNE sur la racine (valeur de
+     MigenCas, voir le composant), si bien que la règle mobile du site
+     (`.mg-site { --sec: 64px }`) ne l'atteignait pas : six sections à
+     120 px de marge haute au téléphone. La maquette mobile espace ses
+     blocs de 12 à 22 px ; 48 px gardent l'air des gouttières de 40. */
+  .racine {
+    --sec: 48px !important;
+  }
+  .sectionChiffres {
+    padding-top: 24px !important;
+  }
+
+  /* G2 · LE HÉROS COMPACT (dc.html L105-109). La spécificité de
+     `.racine .x` bat la règle de titre du site (`.mg-site h1`). Le fil
+     d'Ariane mobile est posé juste au-dessus du héros, qui n'a plus besoin
+     de ses 40 px de tête. */
+  .racine .sectionHeros {
+    padding-top: 0 !important;
+  }
+  .racine .grilleHeros {
+    gap: 16px !important;
+  }
+  .racine .pastillesHeros {
+    margin-bottom: 12px !important;
+  }
+  .racine .titreHeros {
+    font-size: 27px !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.04em !important;
+    margin-bottom: 10px !important;
+    max-width: none !important;
+  }
+  .racine .chapeauHeros {
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+    margin-bottom: 8px !important;
+  }
+  /* Les deux boutons côte à côte, l'orange prend la place (dc.html L109 :
+     `flex:1;min-height:50px`, puis le téléphone). */
+  .racine .boutonsHeros {
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    margin-top: 16px !important;
+  }
+  .racine .boutonsHeros > a {
+    min-height: 50px;
+    justify-content: center;
+    text-align: center;
+    padding: 0 16px !important;
+    font-size: 14px !important;
+  }
+  .racine .boutonsHeros > a:first-child {
+    flex: 1 1 0%;
+  }
+  .racine .boutonsHeros > a:last-child {
+    white-space: nowrap !important;
+  }
+  /* La photo en 16/10 (dc.html L105 : `aspect-ratio:16/10`), au lieu des
+     480 px de la capture de bureau. */
+  .racine .cadreHeros {
+    height: auto !important;
+    aspect-ratio: 16 / 10;
+    border-radius: 24px !important;
+  }
+
+  /* Les titres de section, au corps de la maquette mobile (20 à 21 px,
+     dc.html L131-133) plutôt qu'aux 26 à 34 px de la règle du site. */
+  .racine section h2 {
+    font-size: 22px !important;
+    line-height: 1.2 !important;
+  }
+  /* Le titre du carrousel garde le sien (dc.html L131, 20 px). */
+  .racine .titreCarrousel {
+    font-size: 20px !important;
+  }
+
+  /* LES CHIFFRES EN DEUX COLONNES, comme les tuiles de la maquette
+     (dc.html L133 : `repeat(2,minmax(0,1fr));gap:8px`, carte 14 px). */
+  .racine .chiffres {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+  .racine .chiffres > div {
+    padding: 14px !important;
+    border-radius: 18px !important;
+  }
+  .racine .chiffres > div > div:last-child {
+    font-size: 16px !important;
+  }
+
+  /* Les tuiles du besoin, une par rangée sous 430 px : `grid-auto-rows:
+     1fr` (valeur de la capture, deux colonnes) les étirait toutes à la
+     hauteur de la plus haute, d'où un vide sous les courtes. */
+  .racine .besoinTuiles {
+    grid-auto-rows: auto !important;
+  }
+
+  /* LES OBJECTIFS, ouverts comme la section 01 de la maquette, en cartes
+     serrées (dc.html L131, `isKv` : 26 px de numéro, 13 px 14 px). */
+  .racine .objectifs {
+    gap: 8px !important;
+  }
+  .racine .objectifs > div {
+    padding: 13px 14px !important;
+    grid-template-columns: 26px minmax(0, 1fr) !important;
+    gap: 10px !important;
+    border-radius: 16px !important;
+  }
+  .racine .objectifs > div > span:first-child {
+    width: 26px !important;
+    height: 26px !important;
+    font-size: 11px !important;
+    line-height: 26px !important;
+  }
+
+  /* G3 · LES SECTIONS REPLIÉES EN CARTES, comme dc.html L130 : fond
+     blanc, filet, rayon 20 px, 15 px 16 px. Dépliées, elles reprennent
+     leur dessin ; la section qui les porte se resserre à 12 px. */
+  .racine section:has(details[data-pliable-mobile]:not([open])) {
+    padding-top: 12px !important;
+  }
+  .pliClair > details[data-pliable-mobile]:not([open]) {
+    background: #fff;
+    border: 1px solid rgba(28, 27, 25, 0.08);
+    border-radius: 20px;
+    padding: 15px 16px;
+  }
+  .etiquettePli {
+    flex: 1 1 0%;
+    min-width: 0;
+  }
+  /* Le bouton rond de la maquette (28 px, fond à 5,5 %) autour du
+     chevron de la bascule partagée. */
+  .racine details[data-pliable-mobile] > summary > span[aria-hidden="true"] {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    background: rgba(28, 27, 25, 0.055);
+    font-size: 17px;
+  }
+  .panneauResultat details[data-pliable-mobile] > summary > span[aria-hidden="true"] {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+  }
+  /* Le panneau sombre du résultat, replié : sa carte, pas ses 60 px. */
+  .panneauResultat:has(details[data-pliable-mobile]:not([open])) {
+    padding: 15px 16px !important;
+    border-radius: 20px !important;
+  }
+
+  /* LA PHOTO DU DISPOSITIF SE REPLIE AVEC SA SECTION : elle vit hors du
+     `<details>`, dans la cellule voisine ; sans cette règle, 420 px de
+     cadre restaient à l'écran sous une section fermée. Un cadre SANS
+     photo (`aria-hidden`) n'a rien à montrer : il n'est pas peint. */
+  .grilleDispositif:has(details[data-pliable-mobile]:not([open])) > .cadreDispositif,
+  .cadreDispositif[aria-hidden="true"] {
+    display: none;
+  }
+
+  /* « POUR ALLER PLUS LOIN » DÉFILE À L'HORIZONTALE, motif carrousel de
+     la maquette (dc.html L131 : cartes de 236 px, aimantées). */
+  .racine .grillePlusLoin {
+    display: flex !important;
+    gap: 10px !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  .racine .grillePlusLoin::-webkit-scrollbar {
+    display: none;
+  }
+  .racine .grillePlusLoin > .cartePlusLoin {
+    flex: none;
+    width: 236px;
+    scroll-snap-align: start;
+  }
+  .racine .grillePlusLoin > .cartePlusLoin > div:first-child {
+    height: 118px !important;
+  }
+}
+
+/* LE BADGE DE LECTURE DU HÉROS MOBILE (dc.html L492), peint par la feuille
+   depuis `data-lecture` : voir le composant pour la raison. Il ne vit que
+   sous 881 px, comme son élément (`data-mobile-seulement`). */
+.badgeLecture::before {
+  content: attr(data-lecture);
+}
+
+/* LE FIL D'ARIANE MOBILE SUR UNE LIGNE, qui défile au besoin, comme la
+   maquette (dc.html L104 : `overflow-x:auto;white-space:nowrap`).
+   `FilArianeVue` passe à la ligne (`flex-wrap: wrap`, en ligne) : le nom
+   d'une étude de cas tenait sur trois lignes à 390 px. La rangée n'existe
+   que sous 881 px (`data-mobile-seulement`), la règle aussi. Posée hors de
+   `.racine` : le hub /preuves/ monte le même fil. */
+.filMobile ol {
+  flex-wrap: nowrap !important;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.filMobile ol::-webkit-scrollbar {
+  display: none;
+}
+.filMobile li {
+  flex: none;
+  white-space: nowrap;
+}
