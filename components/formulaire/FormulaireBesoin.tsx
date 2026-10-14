@@ -149,6 +149,7 @@ export function FormulaireBesoin({ formulaire }: { formulaire: string }) {
   const [envoye, setEnvoye] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
   const merciRef = useRef<HTMLHeadingElement>(null);
+  const boutonRef = useRef<HTMLButtonElement>(null);
   const prefixe = useId();
 
   // « Demander mon diagnostic » présélectionne le besoin (`askDiag` de la maquette).
@@ -201,13 +202,18 @@ export function FormulaireBesoin({ formulaire }: { formulaire: string }) {
     setAlerte("");
   }
 
+  /* Les champs sont réactivés DANS le même rendu que les erreurs : un champ
+     encore `disabled` refuse le focus, et après un 422 le curseur tombait sur
+     la page (mesuré le 14/10). Sans champ fautif (503, réseau), le curseur
+     revient au bouton, que sa désactivation pendant l'envoi lui avait ôté. */
   function signale(trouvees: ErreursBesoin, texte: string) {
     flushSync(() => {
       setErreurs(trouvees);
       setAlerte(texte);
+      setEnCours(false);
     });
     const premier = ORDRE.find((c) => trouvees[c]);
-    if (premier) document.getElementById(`${prefixe}-${premier}`)?.focus();
+    (premier ? document.getElementById(`${prefixe}-${premier}`) : boutonRef.current)?.focus();
   }
 
   async function envoie(evenement: FormEvent<HTMLFormElement>) {
@@ -250,7 +256,7 @@ export function FormulaireBesoin({ formulaire }: { formulaire: string }) {
       signaleConversion({ formulaire, page: window.location.pathname });
     } catch (erreur) {
       console.error("Envoi du formulaire :", erreur);
-      setAlerte(ECHEC_RESEAU);
+      signale({}, ECHEC_RESEAU);
     } finally {
       setEnCours(false);
     }
@@ -268,7 +274,15 @@ export function FormulaireBesoin({ formulaire }: { formulaire: string }) {
         <p style={{ font: "400 15.5px/1.6 var(--fb)", color: "var(--ink1)", margin: 0, maxWidth: "40ch" }}>
           Un chargé d’affaires vous rappelle dans l’heure, aux horaires ouvrés.
         </p>
-        <button type="button" onClick={() => setEnvoye(false)} className={styles.autre}>
+        <button
+          type="button"
+          onClick={() => {
+            // Le bouton disparaît avec l'écran de remerciement : le curseur va au premier champ.
+            flushSync(() => setEnvoye(false));
+            document.getElementById(`${prefixe}-nomComplet`)?.focus();
+          }}
+          className={styles.autre}
+        >
           Envoyer une autre demande
         </button>
       </div>
@@ -279,9 +293,18 @@ export function FormulaireBesoin({ formulaire }: { formulaire: string }) {
     id: `${prefixe}-${nom}`,
     name: nom === "nomComplet" ? "nom_complet" : nom,
     "aria-invalid": erreurs[nom] ? true : undefined,
+    "aria-describedby": erreurs[nom] ? `${prefixe}-${nom}-erreur` : undefined,
     disabled: enCours,
     className: styles.champ,
   });
+  /* L'erreur du champ, lue avec lui par le lecteur d'écran quand le curseur s'y
+     pose. Hors de la vue : la maquette ne dessine que le bandeau d'erreur. */
+  const erreurDe = (nom: ChampBesoin) =>
+    erreurs[nom] ? (
+      <span id={`${prefixe}-${nom}-erreur`} className="sr-only">
+        {erreurs[nom]}
+      </span>
+    ) : null;
   const obligatoire = { required: true, "aria-required": true } as const;
 
   return (
@@ -307,6 +330,7 @@ export function FormulaireBesoin({ formulaire }: { formulaire: string }) {
             onChange={(e) => saisit("nomComplet", e.target.value)}
             style={SAISIE}
           />
+          {erreurDe("nomComplet")}
         </div>
         <div style={BLOC}>
           <label htmlFor={`${prefixe}-entreprise`} style={LIBELLE}>Entreprise</label>
@@ -316,6 +340,7 @@ export function FormulaireBesoin({ formulaire }: { formulaire: string }) {
             surSaisie={(v) => saisit("entreprise", v)}
             surElection={setEntreprise}
           />
+          {erreurDe("entreprise")}
         </div>
         <div style={BLOC}>
           <label htmlFor={`${prefixe}-email`} style={LIBELLE}>E-mail professionnel</label>
@@ -328,6 +353,7 @@ export function FormulaireBesoin({ formulaire }: { formulaire: string }) {
             onChange={(e) => saisit("email", e.target.value)}
             style={SAISIE}
           />
+          {erreurDe("email")}
         </div>
         <div style={BLOC}>
           <label htmlFor={`${prefixe}-telephone`} style={LIBELLE}>Téléphone</label>
@@ -357,6 +383,7 @@ export function FormulaireBesoin({ formulaire }: { formulaire: string }) {
               style={NUMERO}
             />
           </span>
+          {erreurDe("telephone")}
         </div>
       </div>
 
@@ -379,6 +406,7 @@ export function FormulaireBesoin({ formulaire }: { formulaire: string }) {
           </select>
           <span aria-hidden="true" style={CHEVRON} />
         </span>
+        {erreurDe("besoin")}
       </div>
 
       <div style={BLOC}>
@@ -391,6 +419,7 @@ export function FormulaireBesoin({ formulaire }: { formulaire: string }) {
           onChange={(e) => saisit("message", e.target.value)}
           style={ZONE}
         />
+        {erreurDe("message")}
       </div>
 
       {/* Toujours dans le document, pour que le lecteur d'écran l'annonce ;
@@ -399,7 +428,7 @@ export function FormulaireBesoin({ formulaire }: { formulaire: string }) {
         {alerte}
       </p>
 
-      <button type="submit" disabled={enCours} className={styles.bouton} style={BOUTON}>
+      <button ref={boutonRef} type="submit" disabled={enCours} className={styles.bouton} style={BOUTON}>
         {enCours ? "Envoi en cours…" : "Envoyer ma demande →"}
       </button>
 

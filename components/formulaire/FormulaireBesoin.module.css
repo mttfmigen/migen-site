@@ -58,6 +58,15 @@
   .cadreTel select {
     font-size: 16px !important;
   }
+
+  /* Le champ qui prend le curseur ne se range pas sous la barre collante du
+     bas (« Décrire mon besoin / Appeler ») : mesuré le 14/10 à 390 px, elle
+     couvrait « Votre besoin » pendant la saisie. Aucun effet sur le dessin. */
+  .champ,
+  .cadreTel select,
+  .bouton {
+    scroll-margin-bottom: calc(var(--conversion-barre-hauteur, 50px) + 3 * var(--conversion-barre-marge, 12px) + env(safe-area-inset-bottom));
+  }
 }
 
 /* L'état « envoyé » de la maquette (l. 676 à 691). */
