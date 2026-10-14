@@ -1,8 +1,11 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
 
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
+
 import PortesOffres from "./PortesOffres";
 import styles from "./PortesValeursRse.module.css";
+import SectionRepliee from "./SectionRepliee";
 
 /**
  * Les portes de sortie de l'écran : les six offres, les valeurs, la RSE.
@@ -89,6 +92,12 @@ const PORTES: readonly {
 export default function PortesValeursRse() {
   return (
     <>
+      {/* La section n'a pas de titre : sur téléphone, la bascule joint les
+          sur-titres des deux portes, et le résumé leurs titres. */}
+      <SectionRepliee
+        titre={PORTES.map((p) => p.surtitre).join(" · ")}
+        resume={resumeDe(PORTES.map((p) => p.titre))}
+      >
       <section style={{ padding: "var(--sec) 0 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
           <div
@@ -116,6 +125,7 @@ export default function PortesValeursRse() {
           </div>
         </div>
       </section>
+      </SectionRepliee>
       <PortesOffres />
     </>
   );

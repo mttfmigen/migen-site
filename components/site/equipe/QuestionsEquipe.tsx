@@ -2,6 +2,8 @@ import Image from "next/image";
 import { useId, type CSSProperties } from "react";
 
 import { ANCRE_FORMULAIRE } from "@/components/site/blocs/habillage";
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import SectionRepliee from "@/components/site/nous-connaitre/SectionRepliee";
 
 import styles from "./Equipe.module.css";
 import { QUESTIONS } from "./equipe-donnees";
@@ -117,9 +119,18 @@ const REPONSE: CSSProperties = {
   maxWidth: "68ch",
 };
 
+/* Écrits une fois : l'en-tête de bureau et la bascule du téléphone. */
+const SURTITRE_TEXTE = "Questions fréquentes";
+const TITRE_TEXTE = "Comment l’équipe s’organise autour du technicien.";
+
 export default function QuestionsEquipe() {
   const groupe = useId();
   return (
+    <SectionRepliee
+      kicker={SURTITRE_TEXTE}
+      titre={TITRE_TEXTE}
+      resume={resumeDe(QUESTIONS.map((q) => q.question))}
+    >
     <section style={SECTION}>
       <div style={LARGEUR}>
         <div data-reveal="">
@@ -133,9 +144,11 @@ export default function QuestionsEquipe() {
             />
             <div aria-hidden="true" style={VOILE} />
             <div style={{ position: "relative" }}>
-              <div style={SURTITRE}>Questions fréquentes</div>
-              <h2 style={TITRE}>
-                Comment l&rsquo;équipe s&rsquo;organise autour du technicien.
+              <div data-titre-bureau="" style={SURTITRE}>
+                {SURTITRE_TEXTE}
+              </div>
+              <h2 data-titre-bureau="" style={TITRE}>
+                {TITRE_TEXTE}
               </h2>
               <a href={ANCRE_FORMULAIRE} className={styles.boutonAction} style={BOUTON}>
                 Poser ma question
@@ -158,5 +171,6 @@ export default function QuestionsEquipe() {
         </div>
       </div>
     </section>
+    </SectionRepliee>
   );
 }

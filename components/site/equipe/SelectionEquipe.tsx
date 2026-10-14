@@ -1,3 +1,6 @@
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import SectionRepliee from "@/components/site/nous-connaitre/SectionRepliee";
+
 import { ETAPES_SELECTION } from "./equipe-donnees";
 import {
   LARGEUR,
@@ -12,8 +15,17 @@ import {
  * « Comment ces personnes sont choisies » : le panneau sombre avec le taux de
  * passage, et les trois étapes à droite. Maquette lignes 5939 à 5945.
  */
+/* Écrits une fois : l'en-tête de bureau et la bascule du téléphone. */
+const SURTITRE_TEXTE = "Comment ces personnes sont choisies";
+const TITRE_TEXTE = "La qualité se décide au recrutement.";
+
 export default function SelectionEquipe() {
   return (
+    <SectionRepliee
+      kicker={SURTITRE_TEXTE}
+      titre={TITRE_TEXTE}
+      resume={resumeDe(ETAPES_SELECTION.map((e) => e.titre))}
+    >
     <section style={SECTION}>
       <div style={LARGEUR}>
         <div data-reveal="">
@@ -53,8 +65,11 @@ export default function SelectionEquipe() {
                 }}
               />
               <div style={{ position: "relative" }}>
-                <div style={SURTITRE}>Comment ces personnes sont choisies</div>
+                <div data-titre-bureau="" style={SURTITRE}>
+                  {SURTITRE_TEXTE}
+                </div>
                 <h2
+                  data-titre-bureau=""
                   style={{
                     font: "600 calc(clamp(26px,2.8vw,38px) * var(--ts))/1.1 var(--ft)",
                     letterSpacing: "-.04em",
@@ -63,7 +78,7 @@ export default function SelectionEquipe() {
                     maxWidth: "18ch",
                   }}
                 >
-                  La qualité se décide au recrutement.
+                  {TITRE_TEXTE}
                 </h2>
                 <p
                   style={{
@@ -154,5 +169,6 @@ export default function SelectionEquipe() {
         </div>
       </div>
     </section>
+    </SectionRepliee>
   );
 }

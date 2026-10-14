@@ -1,7 +1,12 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
 
+import SectionRepliee from "./SectionRepliee";
 import SigleMigen from "./SigleMigen";
+
+/* Écrits une fois : l'en-tête de bureau et la bascule du téléphone. */
+const SURTITRE_TEXTE = "Le premier client";
+const TITRE_TEXTE = "Le nom est arrivé avant l’entreprise.";
 
 /**
  * Le premier client, l'origine du nom, le logo.
@@ -45,6 +50,7 @@ const RANGEE: CSSProperties = {
 
 export default function OrigineDuNom() {
   return (
+    <SectionRepliee kicker={SURTITRE_TEXTE} titre={TITRE_TEXTE}>
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <div
@@ -145,6 +151,7 @@ export default function OrigineDuNom() {
           </div>
           <div>
             <div
+              data-titre-bureau=""
               style={{
                 font: "600 11.5px var(--fb)",
                 letterSpacing: ".14em",
@@ -153,9 +160,10 @@ export default function OrigineDuNom() {
                 marginBottom: 16,
               }}
             >
-              Le premier client
+              {SURTITRE_TEXTE}
             </div>
             <h2
+              data-titre-bureau=""
               style={{
                 font: "600 calc(clamp(28px,3.2vw,44px) * var(--ts))/1.06 var(--ft)",
                 letterSpacing: "-.04em",
@@ -165,7 +173,7 @@ export default function OrigineDuNom() {
                 textWrap: "balance",
               }}
             >
-              Le nom est arrivé avant l&rsquo;entreprise.
+              {TITRE_TEXTE}
             </h2>
             <p
               style={{
@@ -379,5 +387,6 @@ export default function OrigineDuNom() {
         </div>
       </div>
     </section>
+    </SectionRepliee>
   );
 }

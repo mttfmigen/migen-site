@@ -12,6 +12,8 @@ import Reperes from "@/components/site/nous-connaitre/Reperes";
 import TerrainsExcellence from "@/components/site/nous-connaitre/TerrainsExcellence";
 import TroisCases from "@/components/site/nous-connaitre/TroisCases";
 import FormulaireBasDePage from "@/components/site/accueil/FormulaireBasDePage";
+import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
+import { ID_RAPPEL_FINAL } from "@/components/site/mobile/conversion-donnees";
 import { pageParChemin } from "@/lib/contenu";
 import { metadonneesSeo } from "@/lib/seo/metadonnees";
 
@@ -108,23 +110,46 @@ export default function NousConnaitre() {
       <main style={{ paddingTop: "96px" }}>
         <Ouverture />
         <Reperes />
-        <MotDuDirigeant />
-        <TerrainsExcellence />
-        <OrigineDuNom />
-        <TroisCases />
-        <FriseCinqAns />
-        <Fidelisation />
-        <PerimetreOuiNon />
-        <EquipeProche />
-        <PortesValeursRse />
+        {/* LA CADENCE MOBILE (photo + CTA après la 2e section, bandeau
+            « Être rappelé » après la 5e et la 8e), comme la maquette mobile v2
+            la pose sur cette page. Le héros et les repères n'en sont pas : la
+            maquette ne compte que ses sections numérotées, et les chiffres n'y
+            comptent pas (dc.html `x.k === "stats"`).
+            `chemin` est l'adresse de la MAQUETTE : elle sert cette page à
+            /a-propos/nous-connaitre/ (mobile-native-data.js), page native,
+            donc variante « standard » (« Parlons de votre site »). Notre
+            adresse, /nous-connaitre/, aurait pris la variante article.
+            `rappelFinal={false}` : la page pose son formulaire complet juste
+            en dessous, la maquette n'y met que le mini-formulaire ; deux
+            formulaires bout à bout ne disent rien de plus. */}
+        <AvecConversionMobile
+          chemin="/a-propos/nous-connaitre/"
+          gabarit="01"
+          photoHeros="/assets/web/team-grind-sparks.jpg"
+          rappelFinal={false}
+        >
+          <MotDuDirigeant />
+          <TerrainsExcellence />
+          <OrigineDuNom />
+          <TroisCases />
+          <FriseCinqAns />
+          <Fidelisation />
+          <PerimetreOuiNon />
+          <EquipeProche />
+          <PortesValeursRse />
+        </AvecConversionMobile>
         {/* La maquette rend ici son propre formulaire, identique champ pour
             champ à celui de l'accueil. Le composant déjà porté est réemployé,
-            avec le titre et l'introduction de cet écran. */}
-        <FormulaireBasDePage
-          formulaire="nous-connaitre-bas-de-page"
-          titre={TITRE_FORMULAIRE}
-          intro={INTRO_FORMULAIRE}
-        />
+            avec le titre et l'introduction de cet écran.
+            L'ancre `#etre-rappele` est celle que visent les bandeaux de la
+            cadence : sans rappel final, c'est ce formulaire qui la porte. */}
+        <div id={ID_RAPPEL_FINAL} style={{ scrollMarginTop: 110 }}>
+          <FormulaireBasDePage
+            formulaire="nous-connaitre-bas-de-page"
+            titre={TITRE_FORMULAIRE}
+            intro={INTRO_FORMULAIRE}
+          />
+        </div>
       </main>
     </div>
   );

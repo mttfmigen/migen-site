@@ -9,6 +9,7 @@ import {
   PANNEAU,
   SURTITRE,
 } from "@/components/site/blocs/habillage";
+import mobile from "@/components/site/nous-connaitre/mobile-apropos.module.css";
 
 /**
  * Ouverture de la page RSE : promesse à gauche, panneau du chiffre sécurité à
@@ -66,7 +67,10 @@ const IMAGE_LOGO: CSSProperties = {
 
 export default function OuvertureRse() {
   return (
-    <section style={{ maxWidth: 1200, margin: "0 auto", padding: "70px 40px 0" }}>
+    <section
+      className={mobile.herosCompact}
+      style={{ maxWidth: 1200, margin: "0 auto", padding: "70px 40px 0" }}
+    >
       <div
         className="mg-r2"
         style={{

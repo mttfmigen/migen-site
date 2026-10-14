@@ -1,0 +1,143 @@
+/*
+ * LE MOBILE DES SIX PAGES NATIVES (« à propos »), et rien d'autre.
+ * Consommé par `SectionRepliee.tsx` (`.repli`) et par les six héros
+ * (`.herosCompact`). Toute règle vit sous un media query : au-dessus de
+ * 880 px, la page est celle de la capture de bureau, au pixel.
+ */
+
+/* ------------------------------------------------------------ le repli */
+
+.repli {
+}
+
+/*
+ * SUR BUREAU, LA BASCULE N'EXISTE PAS ET LE FILET NON PLUS. Le titre reste à
+ * sa place d'origine (`data-titre-bureau`). Le filet, le retrait et la marge
+ * que `SectionPliableMobile.module.css` pose sur `.section` (1 + 18 + 4 px)
+ * sont retirés ici, sans quoi chaque section repliable allongerait la page de
+ * bureau de 23 px (mesure de l'accueil, 13/10).
+ */
+@media (min-width: 881px) {
+  .repli > :global(details[data-pliable-mobile]) {
+    border-top: 0;
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  .repli > :global(details[data-pliable-mobile] > summary) {
+    display: none;
+  }
+}
+
+@media (max-width: 880px) {
+  /* L'en-tête d'origine s'efface, la bascule porte le même texte : jamais
+     deux fois le même titre à l'écran. Le texte reste dans le HTML servi. */
+  .repli [data-titre-bureau] {
+    display: none;
+  }
+
+  /* Le `<details>` enveloppe la section entière, donc toute la largeur de
+     l'écran : le filet passe sur la bascule, dans la gouttière de la page
+     (40 px jusqu'à 390 px inclus, 20 px en dessous, `app/globals.css`).
+     12 px entre deux rangées : la marge des sections de la maquette mobile
+     v2 (dc.html `m: "12px 18px 0"`). */
+  .repli > :global(details[data-pliable-mobile]) {
+    border-top: 0;
+    padding-top: 0;
+    margin-top: 12px;
+  }
+
+  .repli > :global(details[data-pliable-mobile] > summary) {
+    margin-inline: var(--repli-gouttiere, 40px);
+    padding-top: 18px;
+    padding-bottom: 6px;
+    border-top: 1px solid var(--line);
+  }
+
+  /* Le chevron reste sur la ligne du titre (même cause et même correction que
+     `accueil/replis-accueil.module.css`) : sans `flex-basis: 0`, un titre long
+     fait passer le chevron seul à la ligne suivante. */
+  .repli > :global(details[data-pliable-mobile] > summary > *:first-child) {
+    flex: 1 1 0%;
+    min-width: 0;
+  }
+
+  /* Dépliée, la section perd le rythme de bureau qui la séparait de la
+     précédente (`var(--sec)`, 64 px) : c'est la bascule qui la sépare
+     désormais. `!important` parce que ce rembourrage est un style en ligne. */
+  .repli > :global(details[data-pliable-mobile] > div > section) {
+    padding-top: 0 !important;
+  }
+}
+
+@media (max-width: 389px) {
+  .repli > :global(details[data-pliable-mobile] > summary) {
+    margin-inline: var(--repli-gouttiere, 20px);
+  }
+}
+
+/* L'étiquette de la bascule (`SectionRepliee`), aux valeurs de
+   `SectionPliableMobile.module.css` (`.kicker`, `.titre`), qui ne s'appliquent
+   qu'à l'étiquette qu'il fabrique lui-même. `data-mobile-seulement` la masque
+   au-dessus de 880 px (`app/globals.css`). */
+.etiquette {
+  display: block;
+}
+
+.kicker {
+  display: block;
+  font: 600 11px/1 var(--ft);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--acc);
+}
+
+.titre {
+  display: block;
+  font: 600 16px/1.25 var(--ft);
+  letter-spacing: -0.025em;
+  margin-top: 4px;
+}
+
+/* Les rangées repliées posées DANS un panneau qui porte déjà son
+   rembourrage et ses filets (les familles de `/marques/`) : ni gouttière ni
+   marge en plus, les rangées s'y enchaînent filet contre filet. */
+.sansGouttiere {
+  --repli-gouttiere: 0px;
+}
+
+@media (max-width: 880px) {
+  .sansGouttiere .repli > :global(details[data-pliable-mobile]) {
+    margin-top: 0;
+  }
+}
+
+/* ------------------------------------------------------- le héros compact */
+
+/*
+ * G2, LE HÉROS COMPACT DU TÉLÉPHONE. La maquette mobile v2 ouvre ses pages
+ * sur un héros court (dc.html L111 : surtitre, H1, bouton) ; nos six héros
+ * gardent le rythme de bureau, 70 px au-dessus du surtitre et 36 px entre le
+ * texte et le panneau. Rien n'est retiré ni déplacé : seuls les espacements
+ * et le corps du chapô se resserrent sous 880 px (la photo de « Nous
+ * connaître », seule de son espèce, est raccourcie par `Ouverture.module.css`).
+ * `!important` parce que ces valeurs sont des styles en ligne.
+ */
+@media (max-width: 880px) {
+  .herosCompact {
+    padding-top: 20px !important;
+  }
+
+  .herosCompact > :global(.mg-r2) {
+    gap: 24px !important;
+  }
+
+  .herosCompact h1 + p {
+    font-size: 16px !important;
+    margin-top: 16px !important;
+  }
+
+  .herosCompact h1 + p + div {
+    margin-top: 20px !important;
+  }
+}

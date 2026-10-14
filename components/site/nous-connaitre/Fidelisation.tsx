@@ -6,8 +6,16 @@
  * lisibles en texte si le style ne charge pas.
  */
 
+import SectionRepliee from "./SectionRepliee";
+
+/* Écrits une fois : l'en-tête de bureau et la bascule du téléphone. */
+const SURTITRE_TEXTE = "Le métier le plus tendu d’Europe";
+const TITRE_TEXTE =
+  "Nos techniciens reçoivent deux propositions par jour. Ils restent.";
+
 export default function Fidelisation() {
   return (
+    <SectionRepliee kicker={SURTITRE_TEXTE} titre={TITRE_TEXTE}>
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <div
@@ -22,6 +30,7 @@ export default function Fidelisation() {
         >
           <div>
             <div
+              data-titre-bureau=""
               style={{
                 font: "600 11.5px var(--fb)",
                 letterSpacing: ".14em",
@@ -30,9 +39,10 @@ export default function Fidelisation() {
                 marginBottom: 18,
               }}
             >
-              Le métier le plus tendu d&rsquo;Europe
+              {SURTITRE_TEXTE}
             </div>
             <h2
+              data-titre-bureau=""
               style={{
                 font: "600 calc(clamp(26px,3vw,42px) * var(--ts))/1.06 var(--ft)",
                 letterSpacing: "-.04em",
@@ -42,7 +52,7 @@ export default function Fidelisation() {
                 textWrap: "balance",
               }}
             >
-              Nos techniciens reçoivent deux propositions par jour. Ils restent.
+              {TITRE_TEXTE}
             </h2>
             <p
               style={{
@@ -215,5 +225,6 @@ export default function Fidelisation() {
         </div>
       </div>
     </section>
+    </SectionRepliee>
   );
 }

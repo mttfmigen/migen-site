@@ -1,6 +1,8 @@
 import Image from "next/image";
 
 import { ANCRE_FORMULAIRE } from "@/components/site/blocs/habillage";
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import SectionRepliee from "@/components/site/nous-connaitre/SectionRepliee";
 
 import styles from "./Equipe.module.css";
 import { RELAIS } from "./equipe-donnees";
@@ -14,8 +16,17 @@ import { LARGEUR, SURTITRE, TEXTE_CARTE, VERRE_COURT } from "./habillage-equipe"
  * (empreinte comparée au blob de la maquette le 08/10), avec son filtre
  * `saturate(var(--sat)) contrast(1.05)` et son opacité `--ph-op`.
  */
+/* Écrits une fois : l'en-tête de bureau et la bascule du téléphone. */
+const SURTITRE_TEXTE = "Qui vous répond";
+const TITRE_TEXTE = "De votre appel au technicien, trois personnes. Pas plus.";
+
 export default function QuiVousRepond() {
   return (
+    <SectionRepliee
+      kicker={SURTITRE_TEXTE}
+      titre={TITRE_TEXTE}
+      resume={resumeDe(RELAIS.map((r) => r.titre))}
+    >
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={LARGEUR}>
         <div
@@ -82,8 +93,11 @@ export default function QuiVousRepond() {
             </div>
           </div>
           <div>
-            <div style={SURTITRE}>Qui vous répond</div>
+            <div data-titre-bureau="" style={SURTITRE}>
+              {SURTITRE_TEXTE}
+            </div>
             <h2
+              data-titre-bureau=""
               style={{
                 font: "600 calc(clamp(26px,3vw,42px) * var(--ts))/1.08 var(--ft)",
                 letterSpacing: "-.04em",
@@ -92,7 +106,7 @@ export default function QuiVousRepond() {
                 textWrap: "balance",
               }}
             >
-              De votre appel au technicien, trois personnes. Pas plus.
+              {TITRE_TEXTE}
             </h2>
             <p
               style={{
@@ -184,5 +198,6 @@ export default function QuiVousRepond() {
         </div>
       </div>
     </section>
+    </SectionRepliee>
   );
 }

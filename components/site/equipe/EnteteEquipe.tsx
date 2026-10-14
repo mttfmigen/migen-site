@@ -1,3 +1,5 @@
+import mobile from "@/components/site/nous-connaitre/mobile-apropos.module.css";
+
 import { H1 } from "./equipe-donnees";
 
 /**
@@ -7,7 +9,10 @@ import { H1 } from "./equipe-donnees";
  */
 export default function EnteteEquipe() {
   return (
-    <section style={{ maxWidth: 1200, margin: "0 auto", padding: "70px 40px 0" }}>
+    <section
+      className={mobile.herosCompact}
+      style={{ maxWidth: 1200, margin: "0 auto", padding: "70px 40px 0" }}
+    >
       <div
         style={{
           font: "600 11.5px var(--fb)",

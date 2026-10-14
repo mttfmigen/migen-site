@@ -1,5 +1,7 @@
 import type { CSSProperties } from "react";
 
+import mobile from "@/components/site/nous-connaitre/mobile-apropos.module.css";
+
 import { PARTENAIRES, TITRE_H1_PARTENAIRES, type Partenaire } from "./donnees";
 
 /**
@@ -54,6 +56,7 @@ export default function OuverturePartenaires({
   return (
     <>
       <section
+        className={mobile.herosCompact}
         style={{ maxWidth: 1200, margin: "0 auto", padding: "70px 40px 0" }}
       >
         <div style={SURTITRE}>Partenaires</div>

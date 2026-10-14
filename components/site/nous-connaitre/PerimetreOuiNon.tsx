@@ -24,6 +24,13 @@
  * `docs/NOUS-CONNAITRE-ARBITRAGES.md`. Ne pas la réécrire sans son arbitrage.
  */
 
+import SectionRepliee from "./SectionRepliee";
+
+/* Les deux étiquettes, écrites une fois : chaque carte porte la sienne, et la
+   bascule du téléphone les joint. La section n'a pas d'autre titre. */
+const FAIT_TITRE = "Ce que nous faisons";
+const PAS_FAIT_TITRE = "Ce que nous ne faisons pas";
+
 const FAIT: readonly string[] = [
   "Affecter des techniciens de maintenance sur votre site, en résidence ou ponctuellement",
   "Tenir un contrat de maintenance préventive avec engagement de délai",
@@ -41,6 +48,7 @@ const PAS_FAIT: readonly string[] = [
 
 export default function PerimetreOuiNon() {
   return (
+    <SectionRepliee titre={`${FAIT_TITRE} · ${PAS_FAIT_TITRE}`}>
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <div
@@ -74,7 +82,7 @@ export default function PerimetreOuiNon() {
                 marginBottom: 18,
               }}
             >
-              Ce que nous faisons
+              {FAIT_TITRE}
             </div>
             <ul
               style={{
@@ -134,7 +142,7 @@ export default function PerimetreOuiNon() {
                   marginBottom: 18,
                 }}
               >
-                Ce que nous ne faisons pas
+                {PAS_FAIT_TITRE}
               </div>
               <ul
                 style={{
@@ -170,5 +178,6 @@ export default function PerimetreOuiNon() {
         </div>
       </div>
     </section>
+    </SectionRepliee>
   );
 }

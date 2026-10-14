@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 
 import { ANCRE_FORMULAIRE } from "@/components/site/blocs/habillage";
+import mobile from "@/components/site/nous-connaitre/mobile-apropos.module.css";
 
 import styles from "./Valeurs.module.css";
 import { HERO, SLOGAN } from "./valeurs-donnees";
@@ -50,7 +51,10 @@ const HALO: CSSProperties = {
 
 export default function HeroValeurs() {
   return (
-    <section style={{ maxWidth: 1200, margin: "0 auto", padding: "70px 40px 0" }}>
+    <section
+      className={mobile.herosCompact}
+      style={{ maxWidth: 1200, margin: "0 auto", padding: "70px 40px 0" }}
+    >
       <div
         className="mg-r2"
         style={{

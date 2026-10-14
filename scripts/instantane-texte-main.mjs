@@ -33,10 +33,88 @@ const normalise = (t) =>
     .replace(/\s+/g, " ")
     .trim();
 
+const mots = (texte) => normalise(texte).split(" ").filter(Boolean);
+
 function compte(texte) {
   const m = new Map();
-  for (const mot of normalise(texte).split(" ").filter(Boolean)) m.set(mot, (m.get(mot) ?? 0) + 1);
+  for (const mot of mots(texte)) m.set(mot, (m.get(mot) ?? 0) + 1);
   return m;
+}
+
+/**
+ * LES COLLAGES DE FRONTIÈRE, et pourquoi ils ne sont pas des mots perdus.
+ *
+ * `textContent` colle le texte de deux éléments voisins sans espace : la fin
+ * d'une section et le début de la suivante forment UN « mot », par exemple
+ * « rétrofitéeCe » (fin du cas Retrofit, début de « Ce que nous vous
+ * transmettons »). Poser quoi que ce soit ENTRE les deux (le photo + CTA de la
+ * cadence, la bascule d'un repli) défait ce collage : « rétrofitéeCe »
+ * disparaît, « rétrofitéeParlons » et « AppelerCe » apparaissent. Aucun mot
+ * n'a quitté la page, mais le multi-ensemble le comptait perdu (mesuré le
+ * 14/10 : 5 pages, 10 « mots », tous de cette espèce).
+ *
+ * LA RÈGLE EST ÉTROITE, et c'est ce qui la garde capable d'échouer. On aligne
+ * les deux suites de mots (plus longue sous-suite commune) ; un mot n'est
+ * excusé que s'il est SEUL supprimé entre deux mots alignés, qu'une insertion
+ * l'y remplace, et qu'il se coupe en deux moitiés non vides dont la première
+ * ouvre le premier mot inséré et la seconde ferme le dernier. Les deux moitiés
+ * sont donc toujours là, de part et d'autre de l'insertion. Un vrai mot retiré
+ * à côté d'une insertion (« demain » remplacé par « Être rappelé ») ne se coupe
+ * pas ainsi et reste une perte : voir les témoins de `--controle`.
+ */
+function collages(avant, apres) {
+  const a = mots(avant);
+  const b = mots(apres);
+  const n = a.length;
+  const m = b.length;
+  const largeur = m + 1;
+  const lcs = new Uint32Array((n + 1) * largeur);
+  for (let i = n - 1; i >= 0; i--) {
+    for (let j = m - 1; j >= 0; j--) {
+      lcs[i * largeur + j] =
+        a[i] === b[j]
+          ? lcs[(i + 1) * largeur + j + 1] + 1
+          : Math.max(lcs[(i + 1) * largeur + j], lcs[i * largeur + j + 1]);
+    }
+  }
+  const excuses = [];
+  let supprimes = [];
+  let inseres = [];
+  const ferme = () => {
+    if (supprimes.length === 1 && inseres.length) {
+      const [mot] = supprimes;
+      for (let k = 1; k < mot.length; k++) {
+        const debut = mot.slice(0, k);
+        const fin = mot.slice(k);
+        if (!inseres[0].startsWith(debut)) continue;
+        /* La seconde moitié ferme un mot inséré, pas forcément le dernier :
+           quand le collage enjambe deux insertions (les rangées de /marques/),
+           l'alignement peut ranger la suite plus loin. Si c'est le premier mot
+           lui-même, il doit porter les deux moitiés sans les superposer. */
+        if (inseres.some((t, x) => t.endsWith(fin) && (x > 0 || t.length >= mot.length))) {
+          excuses.push(mot);
+          break;
+        }
+      }
+    }
+    supprimes = [];
+    inseres = [];
+  };
+  let i = 0;
+  let j = 0;
+  while (i < n || j < m) {
+    if (i < n && j < m && a[i] === b[j]) {
+      ferme();
+      i++;
+      j++;
+    } else if (j < m && (i === n || lcs[i * largeur + j + 1] >= lcs[(i + 1) * largeur + j])) {
+      inseres.push(b[j++]);
+    } else {
+      supprimes.push(a[i++]);
+    }
+  }
+  ferme();
+  return excuses;
 }
 
 /** Ce que `b` a de moins que `a`, mot par mot, avec la multiplicité. */
@@ -59,7 +137,15 @@ export function compareInstantanes(avant, apres) {
     }
     const ca = compte(a.texte);
     const cb = compte(b.texte);
-    pages.push({ url, perdus: manque(ca, cb), ajoutes: manque(cb, ca), ha: a.hauteur, hb: b.hauteur });
+    const perdus = manque(ca, cb);
+    const colles = [];
+    if (perdus.length) {
+      for (const mot of collages(a.texte, b.texte)) {
+        const k = perdus.indexOf(mot);
+        if (k >= 0) colles.push(...perdus.splice(k, 1));
+      }
+    }
+    pages.push({ url, perdus, colles, ajoutes: manque(cb, ca), ha: a.hauteur, hb: b.hauteur });
   }
   return pages;
 }
@@ -103,6 +189,9 @@ async function prends(base, largeur, fichier) {
 function rapporte(pages) {
   let pertes = 0;
   for (const p of pages) {
+    if (p.colles?.length) {
+      console.log(`COLLAGE ${p.url} : ${p.colles.length} frontière(s) défaite(s) par une insertion, moitiés présentes : ${p.colles.join(" ")}`);
+    }
     if (p.perdus.length) {
       pertes++;
       console.log(`PERTE ${p.url} : ${p.perdus.length} mot(s) : ${p.perdus.slice(0, 25).join(" ")}`);
@@ -136,8 +225,24 @@ if (mode === "--controle") {
   const ok2 = compareInstantanes(avant, perte)[0].perdus.join() === "demain";
   const ok3 = compareInstantanes({ "/a/": { texte: "Le le le technicien", hauteur: 1 } }, doublonPerdu)[0].perdus.join() === "le";
   const ok4 = compareInstantanes(avant, {})[0].perdus.length === 1;
-  const ok = ok1 && ok2 && ok3 && ok4;
-  console.log(ok ? "CONTROLE OK : 4/4 (ajout toléré, perte vue, multiplicité vue, page absente vue)" : "CONTROLE EN ÉCHEC");
+  /* Les collages : la frontière « repart.Demain » défaite par une insertion
+     est excusée ; un vrai mot remplacé par une insertion, ou un collage dont
+     une moitié manque, restent des pertes. */
+  const colle = { "/a/": { texte: "Le technicien repart.Demain matin", hauteur: 1 } };
+  const ok5 = (() => {
+    const [p] = compareInstantanes(colle, { "/a/": { texte: "Le technicien repart.Être rappeléDemain matin", hauteur: 1 } });
+    return p.perdus.length === 0 && p.colles.join() === "repart.Demain";
+  })();
+  const ok6 =
+    compareInstantanes(avant, { "/a/": { texte: "Le technicien repart Être rappelé matin", hauteur: 1 } })[0].perdus.join() === "demain";
+  const ok7 =
+    compareInstantanes(colle, { "/a/": { texte: "Le technicien repart.Être rappelé matin", hauteur: 1 } })[0].perdus.join() === "repart.Demain";
+  const ok = ok1 && ok2 && ok3 && ok4 && ok5 && ok6 && ok7;
+  console.log(
+    ok
+      ? "CONTROLE OK : 7/7 (ajout toléré, perte vue, multiplicité vue, page absente vue, collage excusé, mot remplacé vu, moitié de collage perdue vue)"
+      : `CONTROLE EN ÉCHEC : ${[ok1, ok2, ok3, ok4, ok5, ok6, ok7].map((v, i) => (v ? "" : i + 1)).filter(Boolean).join(", ")}`,
+  );
   process.exit(ok ? 0 : 1);
 } else if (mode === "prends") {
   const [base, largeur, fichier] = args;

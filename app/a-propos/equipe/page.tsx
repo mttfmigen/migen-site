@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 
 import FormulaireBasDePage from "@/components/site/accueil/FormulaireBasDePage";
+import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
+import { ID_RAPPEL_FINAL } from "@/components/site/mobile/conversion-donnees";
 import AppelInterlocuteur from "@/components/site/equipe/AppelInterlocuteur";
 import EngagementsEquipe from "@/components/site/equipe/EngagementsEquipe";
 import EnteteEquipe from "@/components/site/equipe/EnteteEquipe";
@@ -61,16 +63,39 @@ export default function Equipe() {
     <div className="mg-site">
       <main style={{ paddingTop: "96px" }}>
         <EnteteEquipe />
-        <GroupeEquipe groupe={DIRECTION} paddingHaut={44} />
-        <GroupeEquipe groupe={SUPPORT} paddingHaut={34} />
-        <QuiNousSommes />
-        <NotreHistoire />
-        <SelectionEquipe />
-        <ImplantationsEquipe />
-        <EngagementsEquipe />
-        <QuestionsEquipe />
+        {/* LA CADENCE MOBILE de la maquette mobile v2 (gabarit 01 de
+            l'index, variante « standard » sous /a-propos/) : photo + CTA après
+            la 2e section, bandeau « Être rappelé » après la 5e.
+            Les deux groupes de personnes comptent pour UNE section : la
+            maquette n'en fait qu'une, « Nos équipes, rôle par rôle ». Ils
+            restent DÉPLIÉS, à l'écart de la maquette qui replie cette section :
+            leur étiquette est un `div` (pas un titre de niveau, voir
+            `GroupeEquipe`), et un bloc replié sans titre de niveau est refusé
+            par `scripts/verifie-blocs-pliables.mjs`.
+            `AppelInterlocuteur` est un bandeau d'appel, pas une section de
+            contenu (la maquette ne compte pas ses `cta`) : la cadence s'arrête
+            avant lui, et `QuiVousRepond`, qui le suit, n'ajoute donc pas de
+            bandeau collé au formulaire.
+            Le héros n'a pas de photo : rien à écarter du tirage.
+            `rappelFinal={false}` : le formulaire complet suit, la maquette n'y
+            met que le mini-formulaire ; il porte l'ancre des bandeaux. */}
+        <AvecConversionMobile chemin="/a-propos/equipe/" gabarit="01" rappelFinal={false}>
+          <>
+            <GroupeEquipe groupe={DIRECTION} paddingHaut={44} />
+            <GroupeEquipe groupe={SUPPORT} paddingHaut={34} />
+          </>
+          <QuiNousSommes />
+          <NotreHistoire />
+          <SelectionEquipe />
+          <ImplantationsEquipe />
+          <EngagementsEquipe />
+          <QuestionsEquipe />
+        </AvecConversionMobile>
         <AppelInterlocuteur />
         <QuiVousRepond />
+        {/* L'ancre `#etre-rappele` visée par le bandeau de la cadence : sans
+            rappel final, c'est ce formulaire qui la porte. */}
+        <div id={ID_RAPPEL_FINAL} style={{ scrollMarginTop: 110 }}>
         <FormulaireBasDePage
           formulaire="equipe"
           titre="Parlez directement à l’équipe."
@@ -78,6 +103,7 @@ export default function Equipe() {
             "Pas de standard ni de centre d’appels : votre demande arrive chez un chargé d’affaires."
           }
         />
+        </div>
       </main>
     </div>
   );

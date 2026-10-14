@@ -1,5 +1,8 @@
 import Link from "next/link";
 
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import SectionRepliee from "@/components/site/nous-connaitre/SectionRepliee";
+
 import { AGENCES, HUBS } from "./equipe-donnees";
 import { CHAPEAU, LARGEUR, SECTION, SURTITRE, TITRE2, VERRE } from "./habillage-equipe";
 
@@ -10,8 +13,17 @@ import { CHAPEAU, LARGEUR, SECTION, SURTITRE, TITRE2, VERRE } from "./habillage-
  * Le lien « Nos implantations en détail » visait `goImplant`, la navigation
  * interne de l'éditeur. Il pointe ici sur `/implantations/`, vérifiée à 200.
  */
+/* Écrits une fois : l'en-tête de bureau et la bascule du téléphone. */
+const SURTITRE_TEXTE = "Nos implantations";
+const TITRE_TEXTE = "Quatre agences, dix hubs de techniciens.";
+
 export default function ImplantationsEquipe() {
   return (
+    <SectionRepliee
+      kicker={SURTITRE_TEXTE}
+      titre={TITRE_TEXTE}
+      resume={resumeDe(AGENCES.map((a) => a.ville))}
+    >
     <section style={SECTION}>
       <div style={LARGEUR}>
         <div data-reveal="">
@@ -25,8 +37,12 @@ export default function ImplantationsEquipe() {
             }}
           >
             <div>
-              <div style={SURTITRE}>Nos implantations</div>
-              <h2 style={TITRE2}>Quatre agences, dix hubs de techniciens.</h2>
+              <div data-titre-bureau="" style={SURTITRE}>
+                {SURTITRE_TEXTE}
+              </div>
+              <h2 data-titre-bureau="" style={TITRE2}>
+                {TITRE_TEXTE}
+              </h2>
               <p style={CHAPEAU}>
                 Quatre agences portent le réseau, des hubs de techniciens dans
                 les grandes villes rapprochent les équipes des usines.
@@ -129,5 +145,6 @@ export default function ImplantationsEquipe() {
         </div>
       </div>
     </section>
+    </SectionRepliee>
   );
 }

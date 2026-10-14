@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import FormulaireBasDePage from "@/components/site/accueil/FormulaireBasDePage";
+import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
 import CasRetrofit from "@/components/site/rse/CasRetrofit";
 import OuvertureRse from "@/components/site/rse/OuvertureRse";
 import PiecesFournisseur from "@/components/site/rse/PiecesFournisseur";
@@ -62,9 +63,18 @@ export default function Rse() {
     <div className="mg-site">
       <main style={{ paddingTop: "96px" }}>
         <OuvertureRse />
-        <PiliersRse />
-        <CasRetrofit />
-        <PiecesFournisseur />
+        {/* LA CADENCE MOBILE de la maquette mobile v2 : trois sections
+            numérotées, photo + CTA après la 2e. Elle sert cette page à
+            /a-propos/rse/ (mobile-native-data.js), page native, donc variante
+            « standard ». Le héros n'a pas de photo : rien à écarter du tirage.
+            `rappelFinal={false}` : le formulaire complet suit, la maquette n'y
+            met que le mini-formulaire. Aucun bandeau sur trois sections, donc
+            aucune ancre `#etre-rappele` à porter. */}
+        <AvecConversionMobile chemin="/a-propos/rse/" gabarit="01" rappelFinal={false}>
+          <PiliersRse />
+          <CasRetrofit />
+          <PiecesFournisseur />
+        </AvecConversionMobile>
         {/* Le formulaire de la maquette est celui du reste du site, aux titres
             près : on réemploie le bloc, qui porte déjà la validation, le champ
             piège, la mention RGPD et l'indicatif téléphonique. Son id

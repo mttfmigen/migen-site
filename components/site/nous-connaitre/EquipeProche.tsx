@@ -1,6 +1,13 @@
 import Link from "next/link";
 
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
+
 import styles from "./EquipeProche.module.css";
+import SectionRepliee from "./SectionRepliee";
+
+/* Écrits une fois : l'en-tête de bureau et la bascule du téléphone. */
+const SURTITRE_TEXTE = "L’équipe proche de vous au quotidien";
+const TITRE_TEXTE = "Trois personnes, et vous les connaissez par leur nom";
 
 /**
  * L'équipe proche du client : trois rôles, trois cartes.
@@ -82,10 +89,16 @@ const ROLES: readonly Role[] = [
 
 export default function EquipeProche() {
   return (
+    <SectionRepliee
+      kicker={SURTITRE_TEXTE}
+      titre={TITRE_TEXTE}
+      resume={resumeDe(ROLES.map((r) => r.titre))}
+    >
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <div data-reveal="">
           <div
+            data-titre-bureau=""
             style={{
               font: "600 11.5px var(--fb)",
               letterSpacing: ".14em",
@@ -94,9 +107,10 @@ export default function EquipeProche() {
               marginBottom: 18,
             }}
           >
-            L&rsquo;équipe proche de vous au quotidien
+            {SURTITRE_TEXTE}
           </div>
           <h2
+            data-titre-bureau=""
             style={{
               font: "600 calc(clamp(26px,3vw,42px) * var(--ts))/1.06 var(--ft)",
               letterSpacing: "-.04em",
@@ -106,7 +120,7 @@ export default function EquipeProche() {
               maxWidth: "24ch",
             }}
           >
-            Trois personnes, et vous les connaissez par leur nom
+            {TITRE_TEXTE}
           </h2>
           <div
             className="mg-rmulti"
@@ -133,5 +147,6 @@ export default function EquipeProche() {
         </div>
       </div>
     </section>
+    </SectionRepliee>
   );
 }

@@ -102,6 +102,38 @@ function texte(html: string): string {
     .trim();
 }
 
+/*
+ * CE QUE LE REPLI MOBILE AJOUTE N'EST PAS DANS LA CAPTURE DE BUREAU, ET C'EST
+ * NORMAL. Depuis le 14/10 (maquette mobile v2), sept sections de l'écran se
+ * replient sur téléphone : leur bascule porte une étiquette (le titre DÉJÀ
+ * ÉCRIT dans la section), un chevron et un résumé de leurs intitulés, tous
+ * marqués `data-mobile-seulement` et masqués au-dessus de 880 px. La capture de
+ * bureau n'a aucune raison de les porter : on retire ces éléments, et eux
+ * seuls, avant de comparer. Les étiquettes de groupe de `GroupeEquipe`, elles,
+ * SONT la bascule et ne portent pas la marque : elles restent comparées.
+ */
+function sansBascule(html: string): string {
+  const marque = /<(\w+)\b[^>]*\bdata-mobile-seulement\b[^>]*>/;
+  let sortie = html;
+  for (let debut = sortie.match(marque); debut?.index !== undefined; debut = sortie.match(marque)) {
+    const balises = new RegExp(`<${debut[1]}\\b[^>]*>|</${debut[1]}\\s*>`, "g");
+    balises.lastIndex = debut.index + debut[0].length;
+    let profondeur = 1;
+    let fin = sortie.length;
+    for (let m = balises.exec(sortie); m; m = balises.exec(sortie)) {
+      profondeur += m[0].startsWith("</") ? -1 : 1;
+      if (profondeur === 0) {
+        fin = m.index + m[0].length;
+        break;
+      }
+    }
+    sortie = sortie.slice(0, debut.index) + sortie.slice(fin);
+  }
+  return sortie;
+}
+/** Les `<details>` propres à l'écran, l'enveloppe du repli mobile écartée. */
+const DETAILS_PROPRES = /<details(?![^>]*data-pliable-mobile)[^>]*>/g;
+
 // ------------------------------------------------------------- le rendu porté
 const SECTIONS_RENDUES = [
   <EnteteEquipe key="entete" />,
@@ -122,7 +154,7 @@ const SECTIONS_RENDUES = [
     titre="Parlez directement à l’équipe."
     intro="Pas de standard ni de centre d’appels : votre demande arrive chez un chargé d’affaires."
   />,
-].map((element) => renderToStaticMarkup(element));
+].map((element) => sansBascule(renderToStaticMarkup(element)));
 
 const HTML = SECTIONS_RENDUES.join("");
 const TEXTE = texte(HTML);
@@ -204,8 +236,9 @@ assert.notEqual(TITRE_PAR_DEFAUT, H1, "le meta title répète le H1");
 // La capture montre les six plis fermés, et un seul s'ouvre à la fois.
 {
   const questions = SECTIONS_RENDUES[8];
-  assert.equal(questions.match(/<details/g)?.length ?? 0, 6, "la FAQ n'a plus six plis");
-  assert.ok(!/<details[^>]*\bopen\b/.test(questions), "un pli de la FAQ est ouvert, la capture les montre fermés");
+  const plis = questions.match(DETAILS_PROPRES) ?? [];
+  assert.equal(plis.length, 6, "la FAQ n'a plus six plis");
+  assert.ok(!plis.some((pli) => /\bopen\b/.test(pli)), "un pli de la FAQ est ouvert, la capture les montre fermés");
   assert.equal(new Set([...questions.matchAll(/<details[^>]*name="([^"]+)"/g)].map((m) => m[1])).size, 1, "les plis ne partagent pas un même groupe exclusif");
   assert.ok(/--gl-a:\.1/.test(questions), "le panneau de la FAQ n'a plus son verre à 10 %");
   assert.ok(SECTIONS_CAPTURE[8].includes("mg-faqph"), "la capture n'a plus son panneau photo");

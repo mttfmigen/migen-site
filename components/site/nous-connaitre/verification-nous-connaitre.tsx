@@ -554,9 +554,13 @@ assert.ok(
 // des imports par un outil de rangement le casserait sans erreur de type.
 const ORDRE = [...DOSSIERS, "FormulaireBasDePage"];
 /* La lettre qui précède exclut `Promise<Metadata>` : on ne veut que du JSX. */
-const montes = [...SOURCE_PAGE.matchAll(/(?<![A-Za-z>])<([A-Z][A-Za-z]*)\b/g)].map(
-  (m) => m[1],
-);
+/* `AvecConversionMobile` (14/10, maquette mobile v2) n'est pas une section :
+   il enveloppe les sections de contenu, dans leur ordre, et n'ajoute que la
+   cadence de conversion du téléphone, masquée au-dessus de 880 px. Il est
+   écarté du relevé, l'ordre des sections reste contrôlé tel quel. */
+const montes = [...SOURCE_PAGE.matchAll(/(?<![A-Za-z>])<([A-Z][A-Za-z]*)\b/g)]
+  .map((m) => m[1])
+  .filter((nom) => nom !== "AvecConversionMobile");
 assert.deepEqual(
   montes,
   ORDRE,

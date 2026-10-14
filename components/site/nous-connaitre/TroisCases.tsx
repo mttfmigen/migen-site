@@ -1,5 +1,9 @@
 import type { CSSProperties } from "react";
 
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
+
+import SectionRepliee from "./SectionRepliee";
+
 /**
  * Notre modèle : le marché en trois cases.
  *
@@ -42,8 +46,18 @@ const CASES: readonly { titre: string; texte: string; accent?: true }[] = [
   },
 ];
 
+/* Écrits une fois : l'en-tête de bureau et la bascule du téléphone. */
+const SURTITRE_TEXTE = "Notre modèle";
+const TITRE_TEXTE =
+  "Le marché se divise en trois. Nous sommes seuls dans la troisième case.";
+
 export default function TroisCases() {
   return (
+    <SectionRepliee
+      kicker={SURTITRE_TEXTE}
+      titre={TITRE_TEXTE}
+      resume={resumeDe(CASES.map((c) => c.titre))}
+    >
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <div data-reveal="">
@@ -57,7 +71,7 @@ export default function TroisCases() {
               marginBottom: 34,
             }}
           >
-            <div>
+            <div data-titre-bureau="">
               <div
                 style={{
                   font: "600 11.5px var(--fb)",
@@ -67,7 +81,7 @@ export default function TroisCases() {
                   marginBottom: 18,
                 }}
               >
-                Notre modèle
+                {SURTITRE_TEXTE}
               </div>
               <h2
                 style={{
@@ -79,8 +93,7 @@ export default function TroisCases() {
                   maxWidth: "20ch",
                 }}
               >
-                Le marché se divise en trois. Nous sommes seuls dans la
-                troisième case.
+                {TITRE_TEXTE}
               </h2>
             </div>
             <p
@@ -131,5 +144,6 @@ export default function TroisCases() {
         </div>
       </div>
     </section>
+    </SectionRepliee>
   );
 }

@@ -1,5 +1,6 @@
 import { TELEPHONE_SITE } from "@/components/site/entete-donnees";
 import { FilArianeVue } from "@/components/cocon/FilAriane";
+import mobile from "@/components/site/nous-connaitre/mobile-apropos.module.css";
 
 import styles from "./PageMarques.module.css";
 
@@ -43,6 +44,7 @@ export interface ProprietesOuverture {
 export default function Ouverture({ hrefAction }: ProprietesOuverture) {
   return (
     <section
+      className={mobile.herosCompact}
       style={{
         maxWidth: 1200,
         margin: "0 auto",

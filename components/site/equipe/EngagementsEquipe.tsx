@@ -1,15 +1,29 @@
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import SectionRepliee from "@/components/site/nous-connaitre/SectionRepliee";
+
 import { ENGAGEMENTS } from "./equipe-donnees";
 import { LARGEUR, SECTION, SURTITRE, TEXTE_CARTE, TITRE2, VERRE } from "./habillage-equipe";
+
+/* Écrits une fois : l'en-tête de bureau et la bascule du téléphone. */
+const SURTITRE_TEXTE = "Nos engagements";
+const TITRE_TEXTE = "Des engagements tenus, vérifiables mission après mission.";
 
 /** « Nos engagements », trois cartes numérotées. Maquette lignes 5954 à 5955. */
 export default function EngagementsEquipe() {
   return (
+    <SectionRepliee
+      kicker={SURTITRE_TEXTE}
+      titre={TITRE_TEXTE}
+      resume={resumeDe(ENGAGEMENTS.map((e) => e.titre))}
+    >
     <section style={SECTION}>
       <div style={LARGEUR}>
         <div data-reveal="">
-          <div style={SURTITRE}>Nos engagements</div>
-          <h2 style={{ ...TITRE2, maxWidth: "26ch" }}>
-            Des engagements tenus, vérifiables mission après mission.
+          <div data-titre-bureau="" style={SURTITRE}>
+            {SURTITRE_TEXTE}
+          </div>
+          <h2 data-titre-bureau="" style={{ ...TITRE2, maxWidth: "26ch" }}>
+            {TITRE_TEXTE}
           </h2>
           <ol
             className="mg-rmulti"
@@ -66,5 +80,6 @@ export default function EngagementsEquipe() {
         </div>
       </div>
     </section>
+    </SectionRepliee>
   );
 }

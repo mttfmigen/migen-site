@@ -1,5 +1,9 @@
 import type { CSSProperties } from "react";
 
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import SectionRepliee from "@/components/site/nous-connaitre/SectionRepliee";
+import mobile from "@/components/site/nous-connaitre/mobile-apropos.module.css";
+
 import styles from "./PageMarques.module.css";
 import type { FamilleMarques, Marque } from "./marques-donnees";
 import { FAMILLES } from "./marques-donnees";
@@ -82,7 +86,14 @@ export default function Familles({ familles = FAMILLES }: ProprietesFamilles) {
   return (
     <section style={{ padding: "48px 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
+        {/* SUR TÉLÉPHONE, UNE FAMILLE PAR RANGÉE REPLIÉE, la première exceptée.
+            La maquette mobile v2 n'a pas cet écran ; il suit la règle de ses
+            pages natives (sections repliées, la première ouverte). Le résumé
+            nomme les constructeurs de la famille : rien n'est retiré, les
+            logos restent dans le HTML. Le panneau porte déjà son
+            rembourrage, d'où `sansGouttiere`. */}
         <div
+          className={mobile.sansGouttiere}
           style={{
             background: "rgba(255,255,255,var(--gl-a))",
             backdropFilter: "blur(var(--gl-b)) saturate(150%)",
@@ -97,7 +108,7 @@ export default function Familles({ familles = FAMILLES }: ProprietesFamilles) {
           {familles.map((famille, index) => {
             const derniere = index === familles.length - 1;
             const avantDerniere = index === familles.length - 2;
-            return (
+            const rangee = (
               <div
                 key={famille.cle}
                 className="mg-r2"
@@ -112,7 +123,7 @@ export default function Familles({ familles = FAMILLES }: ProprietesFamilles) {
                     derniere || avantDerniere ? undefined : FILET,
                 }}
               >
-                <div style={{ paddingTop: 22 }}>
+                <div data-titre-bureau="" style={{ paddingTop: 22 }}>
                   {/* Un `div` et non un `h2`, comme la maquette l'écrit, et
                       ce n'est pas un oubli : `app/globals.css` impose
                       `font-size: clamp(26px,7.4vw,34px) !important` à tout
@@ -144,6 +155,17 @@ export default function Familles({ familles = FAMILLES }: ProprietesFamilles) {
                   ))}
                 </div>
               </div>
+            );
+            return index === 0 ? (
+              rangee
+            ) : (
+              <SectionRepliee
+                key={famille.cle}
+                titre={famille.titre}
+                resume={resumeDe(famille.marques.map((m) => m.nom))}
+              >
+                {rangee}
+              </SectionRepliee>
             );
           })}
         </div>

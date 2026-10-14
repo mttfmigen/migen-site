@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import type { CSSProperties } from "react";
 
+import mobile from "./mobile-apropos.module.css";
 import styles from "./Ouverture.module.css";
 
 /**
@@ -29,6 +30,7 @@ const BOUTON: CSSProperties = {
 export default function Ouverture() {
   return (
     <section
+      className={mobile.herosCompact}
       style={{
         maxWidth: 1200,
         margin: "0 auto",
@@ -141,6 +143,7 @@ export default function Ouverture() {
           </div>
         </div>
         <div
+          className={styles.photo}
           style={{
             borderRadius: "var(--rad)",
             overflow: "hidden",

@@ -14,6 +14,14 @@
  * rendu mot pour mot, règle validée par le client.
  */
 
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
+
+import SectionRepliee from "./SectionRepliee";
+
+/* Écrits une fois : l'en-tête de bureau et la bascule du téléphone. */
+const SURTITRE_TEXTE = "Notre histoire";
+const TITRE_TEXTE = "Cinq ans, de zéro à cent";
+
 interface Jalon {
   annee: string;
   texte: string;
@@ -72,6 +80,11 @@ const JALONS: readonly Jalon[] = [
 
 export default function FriseCinqAns() {
   return (
+    <SectionRepliee
+      kicker={SURTITRE_TEXTE}
+      titre={TITRE_TEXTE}
+      resume={resumeDe(JALONS.map((j) => j.annee))}
+    >
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <div data-reveal="">
@@ -85,7 +98,7 @@ export default function FriseCinqAns() {
               marginBottom: 34,
             }}
           >
-            <div>
+            <div data-titre-bureau="">
               <div
                 style={{
                   font: "600 11.5px var(--fb)",
@@ -95,7 +108,7 @@ export default function FriseCinqAns() {
                   marginBottom: 18,
                 }}
               >
-                Notre histoire
+                {SURTITRE_TEXTE}
               </div>
               <h2
                 style={{
@@ -107,7 +120,7 @@ export default function FriseCinqAns() {
                   maxWidth: "22ch",
                 }}
               >
-                Cinq ans, de zéro à cent
+                {TITRE_TEXTE}
               </h2>
             </div>
             <p
@@ -188,5 +201,6 @@ export default function FriseCinqAns() {
         </div>
       </div>
     </section>
+    </SectionRepliee>
   );
 }

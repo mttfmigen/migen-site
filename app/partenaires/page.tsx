@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import FormulaireBasDePage from "@/components/site/accueil/FormulaireBasDePage";
+import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
 import AppelAPartenaires from "@/components/site/partenaires/AppelAPartenaires";
 import FonctionnementPartenariat from "@/components/site/partenaires/FonctionnementPartenariat";
 import OuverturePartenaires from "@/components/site/partenaires/OuverturePartenaires";
@@ -64,9 +65,20 @@ export default function Partenaires() {
     // sont toutes préfixées par cette classe.
     <div className="mg-site">
       <main style={{ paddingTop: 96 }}>
-        <OuverturePartenaires />
-        <FonctionnementPartenariat />
-        <AppelAPartenaires />
+        {/* LA CADENCE MOBILE de la maquette mobile v2 (page native, gabarit
+            01, variante « standard ») : photo + CTA après la 2e section.
+            `OuverturePartenaires` porte le héros ET les cartes des deux
+            partenaires, que la maquette rend en deux sections numérotées : le
+            site les tient en une seule grille, elle compte donc pour une, et
+            le photo + CTA tombe après « Comment ça fonctionne » plutôt
+            qu'avant. Le héros n'a pas de photo : rien à écarter du tirage.
+            `rappelFinal={false}` : le formulaire complet suit, la maquette n'y
+            met que le mini-formulaire. Aucun bandeau sur trois sections. */}
+        <AvecConversionMobile chemin="/partenaires/" gabarit="01" rappelFinal={false}>
+          <OuverturePartenaires />
+          <FonctionnementPartenariat />
+          <AppelAPartenaires />
+        </AvecConversionMobile>
         <FormulaireBasDePage
           formulaire={FORMULAIRE_PARTENAIRES}
           titre={TITRE_FORMULAIRE_PARTENAIRES}

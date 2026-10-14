@@ -1,7 +1,14 @@
 import type { CSSProperties } from "react";
 
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import SectionRepliee from "@/components/site/nous-connaitre/SectionRepliee";
+
 import { ANCRE_FORMULAIRE_PARTENAIRES } from "./donnees";
 import styles from "./FonctionnementPartenariat.module.css";
+
+/* Écrits une fois : l'en-tête de bureau et la bascule du téléphone. */
+const SURTITRE_TEXTE = "Comment ça fonctionne";
+const TITRE_TEXTE = "Plusieurs métiers, un seul responsable.";
 
 /**
  * « Plusieurs métiers, un seul responsable » : les trois temps d'un partenariat.
@@ -75,6 +82,11 @@ export default function FonctionnementPartenariat({
   lienProjet = ANCRE_FORMULAIRE_PARTENAIRES,
 }: Proprietes) {
   return (
+    <SectionRepliee
+      kicker={SURTITRE_TEXTE}
+      titre={TITRE_TEXTE}
+      resume={resumeDe(ETAPES.map((e) => e.titre))}
+    >
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <div
@@ -91,6 +103,7 @@ export default function FonctionnementPartenariat({
               collage sous 760px par un sélecteur d'attribut sur cette valeur. */}
           <div style={{ position: "sticky", top: 110 }}>
             <div
+              data-titre-bureau=""
               style={{
                 font: "600 11.5px var(--fb)",
                 letterSpacing: ".14em",
@@ -99,9 +112,10 @@ export default function FonctionnementPartenariat({
                 marginBottom: 16,
               }}
             >
-              Comment ça fonctionne
+              {SURTITRE_TEXTE}
             </div>
             <h2
+              data-titre-bureau=""
               style={{
                 font: "600 calc(clamp(26px,3vw,42px) * var(--ts))/1.08 var(--ft)",
                 letterSpacing: "-.04em",
@@ -109,7 +123,7 @@ export default function FonctionnementPartenariat({
                 textWrap: "balance",
               }}
             >
-              Plusieurs métiers, un seul responsable.
+              {TITRE_TEXTE}
             </h2>
             <p
               style={{
@@ -180,5 +194,6 @@ export default function FonctionnementPartenariat({
         </div>
       </div>
     </section>
+    </SectionRepliee>
   );
 }

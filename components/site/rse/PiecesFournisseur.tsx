@@ -7,6 +7,12 @@ import {
   SURTITRE,
   VERRE,
 } from "@/components/site/blocs/habillage";
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import SectionRepliee from "@/components/site/nous-connaitre/SectionRepliee";
+
+/* Écrits une fois : l'en-tête de bureau et la bascule du téléphone. */
+const SURTITRE_TEXTE = "Ce que nous vous transmettons";
+const TITRE_TEXTE = "Les pièces pour votre dossier fournisseur";
 
 /**
  * Les pièces du dossier fournisseur, en liste numérotée à trois colonnes.
@@ -78,6 +84,11 @@ const PIECES: readonly { rang: string; titre: string; texte: string }[] = [
 
 export default function PiecesFournisseur() {
   return (
+    <SectionRepliee
+      kicker={SURTITRE_TEXTE}
+      titre={TITRE_TEXTE}
+      resume={resumeDe(PIECES.map((p) => p.titre))}
+    >
     <section style={{ padding: "var(--sec) 0 var(--sec)" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <div data-reveal="" style={{ ...VERRE, padding: "40px 44px 28px" }}>
@@ -92,10 +103,11 @@ export default function PiecesFournisseur() {
             }}
           >
             <div style={{ maxWidth: 620 }}>
-              <div style={{ ...SURTITRE, marginBottom: 14 }}>
-                Ce que nous vous transmettons
+              <div data-titre-bureau="" style={{ ...SURTITRE, marginBottom: 14 }}>
+                {SURTITRE_TEXTE}
               </div>
               <h2
+                data-titre-bureau=""
                 style={{
                   font: "600 calc(clamp(24px,2.6vw,36px) * var(--ts))/1.1 var(--ft)",
                   letterSpacing: "-.038em",
@@ -104,7 +116,7 @@ export default function PiecesFournisseur() {
                   textWrap: "balance",
                 }}
               >
-                Les pièces pour votre dossier fournisseur
+                {TITRE_TEXTE}
               </h2>
               <p
                 style={{
@@ -136,5 +148,6 @@ export default function PiecesFournisseur() {
         </div>
       </div>
     </section>
+    </SectionRepliee>
   );
 }

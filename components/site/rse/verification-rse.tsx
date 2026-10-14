@@ -200,7 +200,17 @@ assert.ok(
  * vérifiée, et c'est le défaut qu'on répare ici. /confidentialite vient du
  * formulaire partagé, pas de cette page.
  */
-const CIBLES_VERIFIEES = ["#formulaire", "/valeurs/", "/confidentialite/"];
+/* `/contact/` et `tel:` viennent de la cadence mobile (14/10, maquette mobile
+   v2) : le photo + CTA posé après la 2e section par `AvecConversionMobile`,
+   masqué au-dessus de 880 px. /contact/ est une page du plan du site, servie à
+   200 ; le numéro est celui de l'en-tête. */
+const CIBLES_VERIFIEES = [
+  "#formulaire",
+  "/valeurs/",
+  "/confidentialite/",
+  "/contact/",
+  "tel:+33478337205",
+];
 
 /*
  * Le slash final est rétabli avant comparaison. Hors du serveur Next, `Link`

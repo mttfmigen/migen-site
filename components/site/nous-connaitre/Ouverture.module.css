@@ -10,3 +10,12 @@
 .boutonSecond:hover {
   background: var(--card);
 }
+
+/* G2, héros compact : la photo tient 340 px de haut minimum sur bureau, la
+   maquette mobile v2 en montre environ 220 au téléphone. `!important` parce
+   que la hauteur est un style en ligne. */
+@media (max-width: 880px) {
+  .photo {
+    min-height: 220px !important;
+  }
+}
