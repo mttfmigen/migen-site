@@ -129,6 +129,18 @@ const FILET = [
   "/?cat=3",
   "/?s=robot",
   "/lost-password/?page_id=11",
+  "/sitemap_index.xml",
+  "/post-sitemap.xml",
+  "/fusion_tb_category-sitemap.xml",
+];
+
+/**
+ * L'attribution survit à la 301 : [ancienne adresse avec paramètres, paramètres
+ * attendus sur la cible]. Ceux de WordPress tombent, ceux de la campagne restent.
+ */
+const ATTRIBUTION = [
+  ["/maintenance-industrielle-lyon/?utm_source=x&gclid=y", "?utm_source=x&gclid=y"],
+  ["/?page_id=8&utm_source=x", "?utm_source=x"],
 ];
 
 /** Témoins : [chemin, code attendu sans redirection]. */
@@ -138,6 +150,8 @@ const TEMOINS = [
   ["/robots.txt", 200],
   ["/favicon.ico", 200],
   ["/assets/client-danone.png", 200],
+  ["/?utm_source=x&gclid=y", 200],
+  ["/ressources/?utm_source=x", 200],
 ];
 
 async function enLots(elements, travail) {
@@ -227,6 +241,18 @@ async function porteFilet(base, origine, pertes, comptes) {
       pertes.push({ chemin, perte: `témoin en ${code}${vers}, ${attendu} attendu` });
     } catch (e) {
       pertes.push({ chemin, perte: `témoin : ${e.message}` });
+    }
+  });
+  await enLots(ATTRIBUTION, async ([chemin, attendus]) => {
+    try {
+      const p = await parcours(base + chemin);
+      const perte = perteTechnique(p, origine);
+      if (perte) return pertes.push({ chemin, perte: `attribution : ${perte}` });
+      const recus = new URL(p.sauts[0].location, base).search;
+      if (recus !== attendus) return pertes.push({ chemin, perte: `attribution : « ${recus} » au lieu de « ${attendus} »` });
+      comptes.temoins++;
+    } catch (e) {
+      pertes.push({ chemin, perte: `attribution : ${e.message}` });
     }
   });
   try {
