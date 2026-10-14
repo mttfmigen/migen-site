@@ -88,7 +88,8 @@ export default function ProblematiqueClient() {
               Pénurie de profils qualifiés, turnover, habilitations à vérifier,
               sous-traitants qui découvrent votre installation à chaque
               passage&nbsp;: la maintenance externalisée échoue presque toujours
-              pour les mêmes raisons.
+              pour les mêmes raisons.{" "}
+              {"Au lieu de payer des réparations subies, vous investissez dans un service qui en réduit la fréquence."}
             </p>
             <p
               style={{

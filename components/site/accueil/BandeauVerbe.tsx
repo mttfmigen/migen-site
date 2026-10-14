@@ -145,6 +145,14 @@ export default function BandeauVerbe({
             >
               {
                 "TPE, PME, ETI : avec nos différents services de prestation, vous bénéficiez d'une expertise toujours adaptée pour résoudre vos problèmes de maintenance industrielle."
+              }{" "}
+              {/* Ajout SEO du 14/10 (Thot, analyse « entreprise maintenance
+                  industrielle ») : phrase resserrée du brouillon validé de
+                  septembre, `migen-refonte/seo/contenus/01-offres/offres.md`
+                  (« de l'atelier de mécanique générale […] à l'usine »), tenue
+                  à une ligne pour garder la hauteur de la maquette. */}
+              {
+                "Nous accompagnons chaque entreprise, de l'atelier de mécanique générale à l'usine."
               }
             </p>
           </div>

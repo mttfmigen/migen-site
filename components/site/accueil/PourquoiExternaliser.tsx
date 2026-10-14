@@ -126,7 +126,7 @@ export default function PourquoiExternaliser({
                 margin: "0 0 26px",
               }}
             >
-              {"Nos techniciens sont rigoureusement évalués sur de multiples compétences techniques. Vous conservez le contrôle total sur les intervenants déployés sur votre site : une équipe parfaitement adaptée à vos besoins et à vos exigences."}
+              {"Nos techniciens sont rigoureusement évalués sur de multiples compétences techniques. Vous conservez le contrôle total sur les intervenants déployés sur votre site : une équipe parfaitement adaptée à vos besoins et à vos exigences. Tout ce qui touche à la maintenance, la réparation et l'amélioration d'équipements industriels est notre terrain."}
             </p>
             <div
               style={{

@@ -9,7 +9,7 @@
     "gabarit": "offre",
     "pastille": "Nos offres",
     "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés en dehors de ces horaires.",
-    "chapeau": "Vous comparez des prestataires, et tous promettent la même chose. Migen est une entreprise de maintenance industrielle présente partout en France. Nous écrivons ce que les autres laissent vide : qui intervient, en combien de temps on vous rappelle, et ce qui figure sur le devis.",
+    "chapeau": "Vous comparez des prestataires, et tous promettent la même chose. Migen est une entreprise de maintenance industrielle présente partout en France. Nous écrivons ce que les autres laissent vide : qui intervient, en combien de temps on vous rappelle, et ce qui figure sur le devis. Choisir une entreprise de maintenance industrielle, c'est confier la disponibilité de son outil de production à des mains extérieures. La décision mérite mieux qu'un annuaire : un prestataire de maintenance industrielle s'évalue sur pièces.",
     "actions": [
       {
         "libelle": "Parler à un chargé d'affaires",
@@ -50,7 +50,7 @@
           },
           {
             "accroche": "Personne ne remonte à la cause racine.",
-            "texte": "On change la pièce, on redémarre, et la même panne revient six semaines plus tard, au même endroit."
+            "texte": "On change la pièce, on redémarre, et la même panne revient six semaines plus tard, au même endroit. Une réparation rapide ne suffit pas : il faut un service qui fait baisser le nombre de pannes année après année, mesures à l'appui."
           },
           {
             "accroche": "L'interlocuteur change à chaque visite.",
@@ -75,14 +75,14 @@
               "accroche": "Un technicien présent chaque jour dans vos murs",
               "texte": ", intégré à votre équipe de production. Voir la [sous-traitance maintenance](/offres/residence/)."
             },
-            "benefice": "Le poste est tenu sans recrutement, et remplacé s'il s'arrête. Vous gardez la production, nous portons la ressource."
+            "benefice": "Le poste est tenu sans recrutement, et remplacé s'il s'arrête. Vous gardez la production, nous portons la ressource. Le niveau de compétence est choisi, mécanique, électromécanique, électrique, automatisme ou robotique, avec un accompagnement adapté à votre quotidien."
           },
           {
             "prestation": {
               "accroche": "Un contrat de visites préventives planifiées",
               "texte": ", avec suivi de l'état du parc et priorité d'intervention. Voir le [contrat de maintenance](/offres/zero-arret/)."
             },
-            "benefice": "Votre budget devient une ligne connue d'avance au lieu d'une série de factures subies. Diagnostic gratuit pour démarrer."
+            "benefice": "Votre budget devient une ligne connue d'avance au lieu d'une série de factures subies. Diagnostic gratuit pour démarrer. Au lieu de payer des réparations subies, vous investissez dans un service qui en réduit la fréquence."
           },
           {
             "prestation": {
@@ -103,14 +103,14 @@
               "accroche": "La préparation et l'exécution de vos arrêts planifiés",
               "texte": ", coordination des corps de métier comprise. Voir l'[arrêt technique maintenance](/offres/arret-technique/)."
             },
-            "benefice": "La date de redémarrage tient, parce que le programme a été arbitré avant la première consignation."
+            "benefice": "La date de redémarrage tient, parce que le programme a été arbitré avant la première consignation. Les arrêts sont préparés et exécutés avec des équipes complètes, machines-outils de tournage comprises."
           },
           {
             "prestation": {
               "accroche": "La remise à niveau de machines anciennes",
               "texte": ", mécanique, électrique, automatisme. Voir le [retrofit machine industrielle](/offres/retrofit/)."
             },
-            "benefice": "Une machine qui repart pour dix ans coûte moins cher qu'une machine neuve, et elle garde vos réglages."
+            "benefice": "Une machine qui repart pour dix ans coûte moins cher qu'une machine neuve, et elle garde vos réglages. C'est la solution quand la réparation ne suffit plus et que le remplacement coûte trop cher."
           }
         ]
       },
@@ -123,15 +123,15 @@
           },
           {
             "titre": "Rappel dans l'heure",
-            "texte": "un chargé d'affaires qualifie le besoin au téléphone, équipement par équipement, et vous dit ce qui est faisable. Aux horaires ouvrés, lundi au vendredi 8h00 à 18h30."
+            "texte": "un chargé d'affaires qualifie le besoin au téléphone, équipement par équipement, et vous dit ce qui est faisable. Aux horaires ouvrés, lundi au vendredi 8h00 à 18h30. Une analyse du besoin, une visite quand elle s'impose, une mesure du périmètre."
           },
           {
             "titre": "Orientation vers la formule la plus économique",
-            "texte": "si une intervention ponctuelle suffit, nous ne vendons pas un contrat annuel. Si le contrat coûte moins cher sur l'année, nous le démontrons calcul à l'appui."
+            "texte": "si une intervention ponctuelle suffit, nous ne vendons pas un contrat annuel. Si le contrat coûte moins cher sur l'année, nous le démontrons calcul à l'appui. La recherche systématique de la prestation la plus économique fait partie du service."
           },
           {
             "titre": "Devis détaillé poste par poste",
-            "texte": "périmètre, contenu, exclusions, montant. Un document qui se lit sans avocat, et qui se compare ligne à ligne avec celui d'un concurrent."
+            "texte": "périmètre, contenu, exclusions, montant. Un document qui se lit sans avocat, et qui se compare ligne à ligne avec celui d'un concurrent. Le chiffrage au contenu détaillé est édité avec le même soin qu'un compte rendu : un devis précis simplifie toute la suite de la relation, l'expérience le montre, en particulier au moment des avenants."
           },
           {
             "titre": "Affectation d'un technicien évalué",
@@ -139,7 +139,7 @@
           },
           {
             "titre": "Compte rendu après chaque passage",
-            "texte": "cause, travaux réalisés, pièces posées, recommandations, au format de votre GMAO. Le dossier machine reste votre propriété."
+            "texte": "cause, travaux réalisés, pièces posées, recommandations, au format de votre GMAO. Le dossier machine reste votre propriété. Le contenu est pensé pour simplifier votre suivi et rester exploitable dans la durée. C'est également la base d'une relation durable : un client bien informé au quotidien est un client qui reste par choix."
           }
         ]
       },
@@ -148,15 +148,15 @@
         "puces": [
           {
             "accroche": "Le niveau réel de qui intervient.",
-            "texte": "Évaluation technique et comportementale en entretien, 10 % des techniciens retenus, résultats consultables avant que vous décidiez. Ce sont des salariés Migen, pas des inconnus recrutés pour la mission."
+            "texte": "Évaluation technique et comportementale en entretien, 10 % des techniciens retenus, résultats consultables avant que vous décidiez. Ce sont des salariés Migen, pas des inconnus recrutés pour la mission. Une formation continue entretient ensuite cette qualité, et une stabilité qui offre à nos clients une expérience durable, avec des visages connus qui les accompagnent dans leurs locaux, année après année."
           },
           {
             "accroche": "Aucun revenu sur les pièces.",
-            "texte": "Nous ne sommes ni fabricant ni distributeur. Nous consultons le marché au prix réel, donc une recommandation de remplacement reste une recommandation technique."
+            "texte": "Nous ne sommes ni fabricant ni distributeur. Nous consultons le marché au prix réel, donc une recommandation de remplacement reste une recommandation technique. Pas de vente de machines, de matériel ni d'outillage, aucune activité de négoce ni de fabricant : notre conseil reste indépendant de tout catalogue, y compris quand un élément part en usinage chez un partenaire."
           },
           {
             "accroche": "Votre connaissance reste chez vous.",
-            "texte": "Chaque rapport est édité et archivé dans le dossier de la machine, plans et schémas compris, même le jour où vous changez de prestataire."
+            "texte": "Chaque rapport est édité et archivé dans le dossier de la machine, plans et schémas compris, même le jour où vous changez de prestataire. Chaque rapport est édité au format adapté à votre organisation."
           }
         ]
       },
@@ -234,11 +234,47 @@
           },
           {
             "question": "Et la sécurité sur nos installations ?",
-            "reponse": "Plan de prévention, accueil sécurité du site, habilitations à jour, équipements de protection, respect des procédures de consignation : c'est un préalable, pas une case à cocher. Migen est l'employeur et porte la formation, le suivi médical et les attestations de vigilance. Nos comptes rendus sont conçus pour tenir dans un système qualité."
+            "reponse": "Plan de prévention, accueil sécurité du site, habilitations à jour, équipements de protection, respect des procédures de consignation : c'est un préalable, pas une case à cocher. Migen est l'employeur et porte la formation, le suivi médical et les attestations de vigilance. Nos comptes rendus sont conçus pour tenir dans un système qualité. Une réalisation réussie est d'abord une réalisation sûre, en particulier sur les installations de manutention et de levage."
           },
           {
             "question": "Couvrez-vous notre région ?",
-            "reponse": "Oui, partout en France, depuis Lyon où se trouve notre siège, complété par nos hubs de techniciens dans les grandes villes. La grande majorité des interventions est réalisée par des techniciens du bassin concerné. Cela compte pour les temps de trajet, et pour la connaissance du tissu industriel local. Nous intervenons aussi hors de France : notre premier contrat belge a démarré en octobre 2024, [Étude de cas McCAIN : Belgique](/preuves/mccain-belgique/)."
+            "reponse": "Oui, partout en France, depuis Lyon où se trouve notre siège, complété par nos hubs de techniciens dans les grandes villes. La grande majorité des interventions est réalisée par des techniciens du bassin concerné. Cela compte pour les temps de trajet, et pour la connaissance du tissu industriel local. Nous intervenons aussi hors de France : notre premier contrat belge a démarré en octobre 2024, [Étude de cas McCAIN : Belgique](/preuves/mccain-belgique/). Migen est née dans le Rhône, et l'axe Rhône-Alpes reste notre premier territoire : la vallée du Rhône et sa chimie, la métallurgie de la Loire, la mécanique de précision des Alpes, de la vallée de l'Arve aux usines de l'Isère et des Hautes-Alpes, la plasturgie de l'Ain, et l'Auvergne industrielle autour de Clermont-Ferrand. Nos équipes accompagnent au quotidien des sites de toute la région Auvergne-Rhône-Alpes, des Alpes du Nord au Massif central : cette densité nous permet d'être rapides, et d'être bons."
+          },
+          {
+            "question": "Quels bassins industriels couvrez-vous, région par région ?",
+            "reponse": "Grâce à nos agences et à nos hubs, la France entière, région par région, de la Normandie et l'axe Seine-Maritime au couloir rhodanien, des Hauts-de-France à l'arc alpin. En Auvergne-Rhône-Alpes, le Rhône et le Grand Lyon, la Loire et le bassin stéphanois, les Alpes du Nord, Isère et Savoie, l'Ain, l'Auvergne autour de Clermont. En Provence-Alpes-Côte d'Azur, Marseille et l'étang de Berre, Toulon et le Var, les Alpes du Sud. En Île-de-France, Paris, la vallée de la Seine, les plateformes logistiques de grande couronne. En Normandie, l'axe Seine de Rouen au Havre, la Normandie industrielle et portuaire. En Centre-Val de Loire, Orléans, Tours, le val de Loire pharmaceutique et cosmétique. Dans les Hauts-de-France, Lille, la Somme et l'Oise, l'agroalimentaire et l'automobile du Nord. Dans le Grand Est, l'Alsace, la Lorraine, la Champagne. En Pays de la Loire, Nantes et la Loire-Atlantique, la Sarthe, la Vendée. En Bretagne, Rennes, Brest, l'agroalimentaire breton. En Nouvelle-Aquitaine, Bordeaux et la Gironde, la Charente, le bassin de Pau. En Occitanie, Toulouse et l'aéronautique, Montpellier, le couloir languedocien. En Bourgogne-Franche-Comté, Dijon, le pays horloger et l'automobile du Doubs. La carte de nos implantations détaille chaque bassin, de l'Auvergne à la Normandie, du Rhône à la Seine : l'emballage en Bretagne n'a pas les contraintes du ferroviaire et du train en région lyonnaise, ni celles d'un site en plein arrondissement parisien."
+          },
+          {
+            "question": "Quelle est la différence entre une entreprise de maintenance industrielle et un atelier de fabrication ?",
+            "reponse": "L'atelier fabrique des pièces et des machines : usinage, découpe, chaudronnerie, soudure. L'entreprise de maintenance garde en état de marche les équipements existants : entretien, réparation, dépannage, amélioration. Migen appartient à la seconde famille de l'industrie, la maintenance industrielle, et travaille en bonne intelligence avec la première quand une pièce doit être refabriquée. Une grande partie des sociétés référencées comme « maintenance industrielle » sont en réalité des ateliers de fabrication : usinage de précision, découpe et découpe laser, tôlerie, chaudronnerie industrielle de fabrication, mécano soudure, injection plastique, fabrication de machines spéciales ou de pièces de grande dimension. C'est un métier voisin, et ce n'est pas le nôtre. Si votre recherche concerne la fabrication, nous vous le dirons au premier appel et, souvent, nous saurons vous recommander le bon partenaire. Découpe laser, découpe plasma, découpe jet d'eau, usinage de pièces en acier, en inox, en aluminium ou en alliage, moules d'injection plastique : autant de métiers d'atelier, que nous confions à des ateliers partenaires de la région lyonnaise, de Paris ou d'ailleurs."
+          },
+          {
+            "question": "Faites-vous de l'usinage, de la découpe ou de la chaudronnerie ?",
+            "reponse": "Non : nous ne fabriquons pas, et nous ne cherchons pas à le cacher derrière un vocabulaire flou. L'usinage et la fabrication de pièces, fraisage, tournage, rectification, centres d'usinage à commande numérique : nous ne sommes pas un atelier d'usinage. Pas d'usinage conventionnel ni d'usinage à commande numérique, pas de découpe jet d'eau ou laser, pas de soudure laser, pas de pliage ni de cintrage de tôle en aluminium, en inox ou en alliage, pas de moule d'injection plastique, pas de mécano soudure en série, pas de sablage ni de peinture, pas de machine spéciale sortie de nos murs. La tôlerie, la découpe laser, la découpe plasma, le pliage et le cintrage des métaux sont les métiers des ateliers de tôlerie : nous fabriquons d'autant moins que nos partenaires fabricants le font mieux, et nous assurons la dépose, la repose et la réalisation des réglages. La chaudronnerie de fabrication et la mécano soudure, cuves, châssis neufs, ensembles mécano soudés en série, chaudronnerie navale, sont hors périmètre : notre soudure à nous est celle de la réparation et de la maintenance, y compris sur tuyauterie industrielle. Le traitement de surface, peinture industrielle, thermolaquage, sablage, relève d'entreprises spécialisées, vers lesquelles nous orientons volontiers. Quand une pièce doit être refabriquée, en particulier sur une machine ancienne, nous rédigeons le dossier, plans et cotes, et le confions à un fournisseur d'usinage de précision de notre réseau, puis nous posons la pièce et remettons la machine en service. Même logique pour l'usinage de grande dimension, le traitement de surface, le traitement thermique des métaux ou la chaudronnerie de fabrication : nous le sous-traitons à un atelier partenaire qualifié et nous restons responsables de l'ensemble, c'est écrit noir sur blanc dans le devis, avec un prix ferme et un contenu détaillé. Nous accompagnons ainsi des projets mêlant maintenance et usinage sous-traité, de l'Auvergne à la Normandie, de la Loire aux Alpes, du Rhône à la Seine, et également en Île-de-France."
+          },
+          {
+            "question": "Avec quels partenaires fabricants travaillez-vous ?",
+            "reponse": "Ce réseau de partenaires est un actif à part entière : ateliers d'usinage de la région lyonnaise, de Paris ou de Bordeaux, tôleries équipées en découpe laser et plasma, spécialistes du cintrage d'acier, d'inox et d'aluminium, ateliers de traitement de surface et de traitement thermique, mouleurs plastique, mécano soudeurs, chaudronneries lourdes, jusqu'à la chaudronnerie navale pour nos clients du littoral, du Var à la Côte d'Azur, et une expertise spécialisée en tuyauterie process quand un réseau complet est à reprendre. La fabrication de moules, d'outillages et de pièces en plastique relève des mouleurs ; nous maintenons en revanche leurs presses et leurs périphériques, chaque jour s'il le faut. En traitant chaque lot avec le bon professionnel, nous restons concentrés sur notre domaine : la maintenance. Un besoin mixte, par exemple une remise en état qui exige l'usinage d'un arbre à la cote et la reprise de peinture d'un châssis, se gère alors avec un seul interlocuteur : nous pilotons, le partenaire fabrique, votre équipe garde une information claire du début à la fin. Chaque rapport est édité et archivé dans le dossier de la machine, y compris les plans du matériel refabriqué : la maison ne garde aucun savoir captif, tout est chez vous. Notre rôle chez un usineur n'est jamais l'usinage lui-même : c'est la disponibilité de ses machines d'usinage."
+          },
+          {
+            "question": "Intervenez-vous sur tous les secteurs de l'industrie ?",
+            "reponse": "Oui : agroalimentaire, logistique et manutention, emballage et conditionnement, chimie, pharmaceutique, automobile, aéronautique, métallurgie de l'acier et des alliages, plasturgie, énergie, industrie navale. Les équipements de manutention et de levage, convoyeurs, transstockeurs, ponts roulants pour les contrôles quotidiens, palans, sont un terrain d'expérience particulier de nos équipes logistique. Un atelier de dix personnes avec trois machines critiques a autant besoin d'une maintenance sérieuse qu'une usine de cinq cents personnes : la formule adaptée change, la rigueur non, et le devis est adapté à votre réalité, petite entreprise ou grand groupe. L'offre se module dans le temps : c'est vrai en particulier pour les sites saisonniers de l'industrie agroalimentaire. Nous n'intervenons pas chez les particuliers : notre service s'adresse aux entreprises, mêmes petites. Les lots du bâtiment, portes de garage industrielles, couverture, VRD, sont coordonnés sur un chantier, pas exécutés. Pour le traitement de l'eau, nous maintenons les équipements, pompes, vannes, vérins, armoires électriques, automatismes, mais l'exploitation chimique d'une station relève d'un exploitant dédié."
+          },
+          {
+            "question": "Intervenez-vous sur les utilités ?",
+            "reponse": "Oui pour la maintenance des utilités : air comprimé, pompes, vérins, systèmes de ventilation, réseaux de tuyauterie industrielle, y compris la reprise de tronçons de tuyauterie en alliage spécifique. L'audit énergétique réglementaire du bâtiment, lui, relève d'une société de contrôle spécialisée."
+          },
+          {
+            "question": "Que recouvre la remise en état de vos machines ?",
+            "reponse": "La remise en état concentre l'essentiel de nos réalisations au quotidien, et c'est une expérience qui se cultive. Organes mécaniques : roulements, réducteurs, transmissions, broches, vérins hydrauliques et pneumatiques, pompes, organes de manutention, quelle que soit la matière, fonte, acier ou alliage léger. Parties électriques et commande : moteurs, variateurs, armoires, capteurs, automates, recherche de panne et mise à jour des schémas. Structures et châssis : reprise de soudure sur tous alliages courants, renforcement, redressage, reprise de tuyauterie. Approvisionnement des pièces : pièces d'origine chez le fabricant, équivalences, ou refabrication à la cote chez un fournisseur qualifié : nous gérons la recherche, la commande et la pose, avec une solution de dépannage provisoire quand le délai fournisseur est long. Le même savoir-faire accompagne des sites très différents, de l'atelier de mécanique générale, tournage et centres d'usinage compris chez les clients usineurs, à l'usine agroalimentaire ou au centre logistique, avec la même méthode et la même exigence de précision."
+          },
+          {
+            "question": "Que contient exactement un compte rendu Migen ?",
+            "reponse": "Le contenu type, pensé pour simplifier votre quotidien : contexte, cause identifiée, travaux réalisés, pièces posées, mesures relevées, recommandations. Chaque rapport est édité au format adapté à votre organisation, GMAO comprise, et son contenu est relu avant envoi : un document édité proprement simplifie la vie de tout le monde, en particulier lors des audits. Sur demande, une session de formation de vos équipes au contenu de ces rapports est mise en place, pour ancrer une utilisation durable au quotidien : c'est également un bon moyen de faire monter vos opérateurs en compétence électromécanique de premier niveau."
+          },
+          {
+            "question": "Pouvez-vous cumuler plusieurs offres ?",
+            "reponse": "C'est même le cas le plus fréquent : une présence en résidence pour le quotidien, un arrêt technique annuel planifié, et le dépannage en filet de sécurité, d'une machine unique à une ligne de production entière. D'un domaine à l'autre, du produit fini à l'outil qui le fabrique, la bonne solution n'est pas la même. Le transfert industriel couvre le déménagement de machines ou de lignes entières, du démontage au transport et à la remise en service, moyens de levage et manutention spéciale compris, et le montage industriel l'installation d'équipements et de lignes. En amont, notre bureau d'études conçoit, dimensionne et prépare, avec la précision d'une équipe d'ingénierie qui connaît le terrain, et le conseil en maintenance industrielle accompagne la décision, chiffres en main, en offrant un regard électromécanique complet, de la tuyauterie aux automatismes, le contenu de l'audit restant votre propriété, rapport final édité compris. Un transfert, un transport de ligne ou une installation neuve s'ajoutent sans changer d'interlocuteur : les offres partagent la même connaissance de vos installations."
           }
         ]
       },
@@ -264,7 +300,7 @@
         "texte": "Une panne engage rarement un seul métier, qu'elle relève de la maintenance préventive ou de la maintenance curative. La vraie question est de savoir qui vient en appui quand le premier technicien bute."
       },
       {
-        "texte": "Un seul interlocuteur, huit domaines techniques. Mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique, soudure et chaudronnerie, robotique."
+        "texte": "Un seul interlocuteur, huit domaines techniques. Mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique, soudure et chaudronnerie, robotique. Tout ce qui touche à la maintenance, la réparation et l'amélioration d'équipements industriels est notre terrain, y compris la soudure de réparation, la chaudronnerie de maintenance, la métallerie de reprise et la tuyauterie industrielle."
       },
       {
         "puces": [
@@ -282,7 +318,7 @@
           },
           {
             "accroche": "Mécaniciens et chaudronniers",
-            "texte": "ligne d'arbre, transmission, reprise de châssis et de carters."
+            "texte": "ligne d'arbre, transmission, reprise de châssis et de carters. Un atelier d'usinage partenaire prend le relais quand une pièce doit être refaite à la cote."
           }
         ]
       }

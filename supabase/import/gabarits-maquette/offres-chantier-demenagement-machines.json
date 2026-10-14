@@ -12,7 +12,7 @@
     "gabarit": "offre",
     "pastille": "Nos offres",
     "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
-    "chapeau": "**À l'arrivée, votre machine ne fait pas que voyager : elle produit.** Remise en service comprise.",
+    "chapeau": "**À l'arrivée, votre machine ne fait pas que voyager : elle produit.** Remise en service comprise. Migen, entreprise de maintenance industrielle spécialiste du transfert industriel, assure le déplacement de vos équipements de production, du démontage aux essais dans les nouveaux locaux.",
     "actions": [
       {
         "libelle": "Les cinq offres",
@@ -52,15 +52,15 @@
         "puces": [
           {
             "accroche": "Le déménageur d'entreprise",
-            "texte": "transporte des caisses et des bureaux. Il ne déconnecte pas un automatisme et ne remonte pas une broche au bon couple."
+            "texte": "transporte des caisses et des bureaux. Il ne déconnecte pas un automatisme et ne remonte pas une broche au bon couple. Un déménageur généraliste sait transporter des archives, pas requalifier un équipement avant son retour en production."
           },
           {
             "accroche": "Le transporteur",
-            "texte": "livre au pied du camion. Personne ne rebranche, personne ne répond de la remise en route."
+            "texte": "livre au pied du camion. Personne ne rebranche, personne ne répond de la remise en route. Un pur transporteur exerce un métier très différent. C'est toute la différence entre un transport de machines industrielles et un vrai transfert d'outil de production."
           },
           {
             "accroche": "Vous, au milieu",
-            "texte": ", seul face aux questions techniques, aux contraintes d'accès et à un planning qui se tend."
+            "texte": ", seul face aux questions techniques, aux contraintes d'accès et à un planning qui se tend. C'est le sort de l'industriel qui déménage son atelier sans un interlocuteur qui réponde de tout."
           }
         ]
       },
@@ -71,13 +71,13 @@
             "prestation": {
               "texte": "**Étude préalable machine par machine**"
             },
-            "benefice": "Masses, points de levage, réseaux à déconnecter, accès des véhicules. L'imprévu se paie toujours : il est levé avant le devis."
+            "benefice": "Masses, points de levage, réseaux à déconnecter, accès des véhicules. L'imprévu se paie toujours : il est levé avant le devis. L'espace disponible est relevé depuis la rue jusqu'à la zone de production. L'étude aboutit à un plan d'implantation précis et à un planning détaillé : elle sert à définir précisément ce qu'il faut réaliser."
           },
           {
             "prestation": {
               "texte": "**Consignation et repérage**"
             },
-            "benefice": "Programmes d'automatisme sauvegardés, câblages et tuyauteries repérés. Le remontage suit un dossier, pas une mémoire."
+            "benefice": "Programmes d'automatisme sauvegardés, câblages et tuyauteries repérés. Le remontage suit un dossier, pas une mémoire. Chaque information est consignée pour le remontage, avec un repérage précis."
           },
           {
             "prestation": {
@@ -89,7 +89,7 @@
             "prestation": {
               "texte": "**Manutention lourde et transport**"
             },
-            "benefice": "Levage dimensionné, grand gabarit compris, autorisations et créneaux d'accès gérés par nous."
+            "benefice": "Levage dimensionné, grand gabarit compris, autorisations et créneaux d'accès gérés par nous. Le transport est confié à des partenaires spécialisés : la logistique est comprise dans la prestation."
           },
           {
             "prestation": {
@@ -101,7 +101,7 @@
             "prestation": {
               "texte": "**Stockage temporaire, démantèlement, adaptation des réseaux**"
             },
-            "benefice": "Sur devis, quand le site d'arrivée n'est pas prêt ou quand une partie du parc ne repart pas."
+            "benefice": "Sur devis, quand le site d'arrivée n'est pas prêt ou quand une partie du parc ne repart pas. Nous proposons aussi des prestations complémentaires : travaux d'aménagement et de modification des réseaux à l'arrivée, évacuation sécurisée des installations qui ne repartent pas, assistance à la planification et à l'organisation générale du projet, en lien avec votre ingénierie."
           }
         ]
       },
@@ -110,7 +110,7 @@
         "etapes": [
           {
             "titre": "L'étude préalable.",
-            "texte": "Visite des deux sites, relevé machine par machine, plan d'implantation et planning détaillé. C'est cette étape qui rend le devis fiable."
+            "texte": "Visite des deux sites, relevé machine par machine, plan d'implantation et planning détaillé. C'est cette étape qui rend le devis fiable. Que le projet concerne une seule machine outil ou un parc entier, quelle que soit sa taille, la méthode suit les mêmes étapes, en France comme à l'étranger."
           },
           {
             "titre": "La préparation.",
@@ -118,15 +118,15 @@
           },
           {
             "titre": "Le démontage et l'emballage.",
-            "texte": "Dépose dans les règles, conditionnement adapté à chaque équipement, protection dimensionnée pour la distance et pour la durée de stockage."
+            "texte": "Dépose dans les règles, conditionnement adapté à chaque équipement, protection dimensionnée pour la distance et pour la durée de stockage. La révision des organes usés et des installations peut se faire à l'occasion du démontage."
           },
           {
             "titre": "La manutention et le transport.",
-            "texte": "Levage, chargement, transport avec des partenaires spécialisés, coordination des accès et des autorisations."
+            "texte": "Levage, chargement, transport avec des partenaires spécialisés, coordination des accès et des autorisations. Nous disposons de moyens dimensionnés au gabarit de chaque équipement."
           },
           {
             "titre": "Le remontage et les raccordements.",
-            "texte": "Mise en place sur le plan validé, calage, mise à niveau, raccordement aux énergies et aux réseaux, vérifications de sécurité."
+            "texte": "Mise en place sur le plan validé, calage, mise à niveau, raccordement aux énergies et aux réseaux, vérifications de sécurité. La reprise du pilotage précède les essais."
           },
           {
             "titre": "La remise en service.",
@@ -139,19 +139,19 @@
         "puces": [
           {
             "accroche": "Un seul responsable, du premier appel à la remise en route.",
-            "texte": "Même interlocuteur pour le transport et pour les essais. Personne ne se renvoie la balle le jour où ça coince."
+            "texte": "Même interlocuteur pour le transport et pour les essais. Personne ne se renvoie la balle le jour où ça coince. Migen réunit les deux savoir-faire en une seule prestation : la manutention et la logistique d'un côté, la compétence de maintenance industrielle de l'autre. Une gestion de projet unique, un cahier des charges écrit, un planning partagé : choisir une prestation pilotée par un seul acteur, c'est confier chaque opération au même pilote, du premier contact à la fin du chantier. Un chargé d'affaires cadre votre projet de transfert industriel, même s'il n'est prévu que dans plusieurs mois."
           },
           {
             "accroche": "Des modes opératoires écrits avant chaque phase de manutention.",
-            "texte": "Analyse de risque, respect des règles du site, sécurité de vos équipes comme des nôtres."
+            "texte": "Analyse de risque, respect des règles du site, sécurité de vos équipes comme des nôtres. Les mentions légales et contractuelles convenues sont respectées à chaque phase, et la confidentialité de vos données techniques compte double lors d'un transfert d'activité stratégique."
           },
           {
             "accroche": "La préparation se fait pendant que vous produisez encore.",
-            "texte": "Colisage, travaux du site d'arrivée, préfabrication : l'arrêt réel est réduit au strict déplacement."
+            "texte": "Colisage, travaux du site d'arrivée, préfabrication : l'arrêt réel est réduit au strict déplacement. Vos process ne sont pas interrompus plus que nécessaire. Le transfert de machines en série suit un phasage étudié pour préserver l'activité, avec une gestion des priorités équipement par équipement."
           },
           {
             "accroche": "Des habilitations à jour et vérifiables avant la première dépose.",
-            "texte": "Démarche MASE pour la sécurité des interventions, évaluation EcoVadis pour la performance RSE : les attestations sont transmises avec chaque plan de prévention, avec les habilitations des techniciens qui entrent sur votre site."
+            "texte": "Démarche MASE pour la sécurité des interventions, évaluation EcoVadis pour la performance RSE : les attestations sont transmises avec chaque plan de prévention, avec les habilitations des techniciens qui entrent sur votre site. Les habilitations exigées sont suivies secteur par secteur, et nos comptes rendus s'intègrent dans un système qualité, y compris chez les industriels certifiés ISO 9001."
           }
         ]
       },
@@ -188,27 +188,35 @@
         "questions": [
           {
             "question": "Combien coûte un déménagement de machines industrielles ?",
-            "reponse": "Le montant dépend du nombre de machines, de leur masse, des conditions d'accès et de la distance. Il est chiffré sur devis après l'étude préalable, qui est gratuite. En manutention lourde, un prix donné sans visite se corrige toujours à la hausse."
+            "reponse": "Le montant dépend du nombre de machines, de leur masse, des conditions d'accès et de la distance. Il est chiffré sur devis après l'étude préalable, qui est gratuite. En manutention lourde, un prix donné sans visite se corrige toujours à la hausse. Plus le phasage protège la production, plus le budget est maîtrisé : c'est la clé d'un déménagement sans mauvaise surprise."
           },
           {
             "question": "Quels types de machines déménagez-vous ?",
-            "reponse": "Machine-outil, presse, centre d'usinage, ligne de conditionnement, convoyeur, robot, équipement de laboratoire. Nos domaines couvrent mécanique, électricité, automatisme, hydraulique et pneumatique. Pas de particuliers, pas de bureaux."
+            "reponse": "Machine-outil, presse, centre d'usinage, ligne de conditionnement, convoyeur, robot, équipement de laboratoire. Nos domaines couvrent mécanique, électricité, automatisme, hydraulique et pneumatique. Pas de particuliers, pas de bureaux. Ces compétences sont nécessaires pour déconnecter et requalifier la grande majorité du matériel industriel. Notre terrain, c'est l'industrie : machines de production, lignes, équipements de laboratoire."
           },
           {
             "question": "Assurez-vous aussi le transport et les autorisations ?",
-            "reponse": "Oui. Levage, chargement, transport avec des partenaires spécialisés, autorisations et créneaux d'accès : le même responsable répond du transport et de la remise en service."
+            "reponse": "Oui. Levage, chargement, transport avec des partenaires spécialisés, autorisations et créneaux d'accès : le même responsable répond du transport et de la remise en service. La gestion des autorisations nécessaires au déplacement est intégrée à la préparation du projet, et votre interlocuteur coordonne également les accès, les horaires et les obligations propres à chaque usine."
           },
           {
             "question": "Pouvez-vous stocker nos machines entre deux sites ?",
-            "reponse": "Oui, quand le site d'arrivée n'est pas prêt. L'emballage et la protection sont adaptés à la durée, et les modalités figurent au devis."
+            "reponse": "Oui, quand le site d'arrivée n'est pas prêt. L'emballage et la protection sont adaptés à la durée, et les modalités figurent au devis. Le stockage temporaire peut être organisé dans le cadre du projet, avec une protection adaptée, selon le calendrier du lieu de destination : c'est une solution d'attente, pas un garde-meuble."
           },
           {
             "question": "Qui sont les techniciens qui manipulent notre matériel ?",
-            "reponse": "Des salariés Migen, évalués en entretien technique et en entretien comportemental. Seuls 10 % des techniciens sont retenus, et les résultats d'évaluation vous sont communiqués."
+            "reponse": "Des salariés Migen, évalués en entretien technique et en entretien comportemental. Seuls 10 % des techniciens sont retenus, et les résultats d'évaluation vous sont communiqués. Votre matériel est entre les mains d'une équipe qui sait exactement ce qu'elle démonte, et pourquoi. Un expert du transfert industriel est impliqué dès la réflexion, avant même le choix des nouveaux locaux : cette expertise s'est construite auprès des grands donneurs d'ordres comme auprès des PME et des industriels français, et accompagne à l'international les clients qui y exploitent des usines. Le retour d'expérience de chaque chantier profite au suivant."
           },
           {
             "question": "Et si une machine ne mérite pas le voyage ?",
-            "reponse": "Nous le disons. L'étude tranche entre transfert, remise en état et démantèlement. Migen ne vend pas de machines : le conseil n'est orienté par aucun catalogue."
+            "reponse": "Nous le disons. L'étude tranche entre transfert, remise en état et démantèlement. Migen ne vend pas de machines : le conseil n'est orienté par aucun catalogue. Un déménagement est souvent l'occasion de trier : certains équipements justifient une révision avant le transfert, d'autres relèvent du démantèlement. L'étude préalable établit la nécessité, ou non, du voyage, avec un conseil honnête en amont."
+          },
+          {
+            "question": "Dans quels cas nos clients font-ils appel à cette prestation ?",
+            "reponse": "Un atelier de mécanique qui regroupe ses machines outils dans de nouveaux locaux, un industriel agroalimentaire qui déplace une ligne de conditionnement, une usine qui réorganise ses flux internes : nos clients de l'industrie, de la mécanique de précision à l'agroalimentaire, déplacent un équipement seul à l'intérieur de leurs locaux, d'un atelier à l'autre, ou vers une autre usine. Dans chaque cas, le déroulé est le même : une étude, un chiffrage engageant, un chantier piloté, un équipement qui reproduit de la valeur."
+          },
+          {
+            "question": "Faites-vous le déménagement complet d'une usine ?",
+            "reponse": "Oui : au-delà de la machine seule, nous pilotons le transfert de lignes de production et d'usines complètes, jusqu'au transfert d'usine intégral vers une autre région ou au transfert d'entreprise après un rachat. Ce périmètre relève de notre prestation de transfert de production, qui ajoute le phasage industriel, la continuité des process et de l'activité, et la coordination d'ensemble."
           }
         ]
       },
@@ -222,7 +230,7 @@
     ],
     "complementOffre": [
       {
-        "texte": "Hors périmètre, sans ambiguïté. Archives, bureaux, particuliers, garde-meuble, vente de matériel. Si votre demande relève du tertiaire, nous le disons tout de suite."
+        "texte": "Hors périmètre, sans ambiguïté. Archives, bureaux, particuliers, garde-meuble, vente de matériel. Si votre demande relève du tertiaire, nous le disons tout de suite. Le transfert d'archives, le déménagement de particuliers et l'informatique ne font pas partie de notre offre : notre matériel et nos méthodes sont dimensionnés pour l'outil de production. Chacun son métier."
       }
     ],
     "marquesFamille": "mo",

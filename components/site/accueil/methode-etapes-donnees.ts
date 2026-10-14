@@ -29,7 +29,9 @@ export const ETAPES_METHODE: readonly EtapeMethode[] = [
       "Un chargé d’affaires vient sur site. Il relève les technologies en présence, les contraintes d’accès et d’horaires, le niveau d’habilitation exigé et ce que coûte une heure d’arrêt.",
     votreCote: "Vous montrez l’installation et dites ce qui vous bloque.",
     resultat:
-      "Une proposition chiffrée, avec le périmètre écrit noir sur blanc.",
+      // Seconde phrase : ajout SEO du 14/10, reprise du brouillon validé de
+      // septembre (`migen-refonte/seo/contenus/01-offres/offres.md`).
+      "Une proposition chiffrée, avec le périmètre écrit noir sur blanc. Et la recherche de la prestation la plus économique.",
   },
   {
     cle: "selection",

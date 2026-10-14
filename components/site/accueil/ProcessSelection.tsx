@@ -67,7 +67,11 @@ export default function ProcessSelection() {
           </div>
           <div>
             <p style={{ font: "400 16.5px/1.7 var(--fb)", color: "var(--ink2)", margin: "0 0 22px", maxWidth: "48ch", textWrap: "pretty" }}>
-              Six étapes, menées par des techniciens de terrain, pas par un algorithme. C’est ce qui nous permet de vous envoyer quelqu’un qu’on peut laisser seul devant votre machine.
+              Six étapes, menées par des techniciens de terrain, pas par un algorithme. C’est ce qui nous permet de vous envoyer quelqu’un qu’on peut laisser seul devant votre machine.{" "}
+              {/* Ajout SEO du 14/10 (Thot, analyse « entreprise maintenance
+                  industrielle ») : phrases reprises du brouillon validé de
+                  septembre, `migen-refonte/seo/contenus/01-offres/offres.md`. */}
+              {"Choisir une entreprise de maintenance industrielle, c'est confier la disponibilité de son outil de production à des mains extérieures : un prestataire de maintenance industrielle s'évalue sur pièces, méthode, niveau réel des équipes, références et contenu des engagements. Notre métier : la maintenance de vos machines et installations industrielles, la réparation rapide de vos équipements quand il le faut, et un service qui fait baisser le nombre de pannes année après année, mesures à l'appui. D'une activité à l'autre, la bonne solution n'est pas la même."}
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "12px 24px" }}>
               <a
