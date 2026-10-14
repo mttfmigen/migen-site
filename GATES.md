@@ -43,6 +43,25 @@ copie de D7, sont des décisions ou des achats de Mehdi : déplacées en B5, B6
 et B7. Chaque entrée garde son ancien texte, son ancienne commande en clair et
 un paragraphe daté « REQUALIFIÉE LE 14/10 ».
 
+Passe du 14/10 après-midi, lot « rapport-avancement », seul lot autorisé à
+écrire ce registre ce jour-là. Le registre rejoué vers 14h15 rendait 48
+promesses : 37 tenues, 6 PROMESSES ROMPUES (G20, G57, G58, G59, G63, G66), 3
+commandes plantées (G60, D15, B7), 2 chantiers ouverts (D1, D16). Les six
+ruptures sont inscrites EN PLACE, datées, avec ce qui les a causées et le
+chantier qui les solde ; aucune attente n'a été touchée et aucun composant
+corrigé ici. Quatre d'entre elles (G20, G59, G63, G66) viennent du même commit,
+`5c7e765`, les titres que Mehdi a donnés aux trois blocs sans titre.
+ONZE COMMANDES VISAIENT L'ARBRE PRINCIPAL, resté à 93da90c (14/10 11h17), 35
+commits derrière la branche déployée : G2, G10, G16, G20, G24, G36, G40, G43,
+G51, G55 et B7. Elles commençaient toutes par `cd "/Users/mehdi/Landing
+lovable/migen-site" &&`, et mesuraient donc un dépôt que personne ne voit,
+quel que soit l'arbre d'où l'on lançait le vérificateur. Ce `cd` est retiré
+le 14/10, le reste de chaque commande et son attente sont inchangés : elles
+se lancent maintenant depuis l'arbre où tourne le vérificateur, comme toutes
+les autres. Cela a révélé une septième rupture, G55, inscrite à son entrée
+(les huit autres tiennent depuis l'arbre à jour, 14h43). D8 repasse
+en [ ]. La série 6 inscrit les demandes du 14/10.
+
 ---
 
 ## Série 1, la liste de neuf points du 12/10 au matin
@@ -61,7 +80,7 @@ un paragraphe daté « REQUALIFIÉE LE 14/10 ».
 - [x] FAIT
       PREUVE : `lib/secteur-du-cas.ts` déduit le secteur du texte de la fiche,
       38 photos hors secteur corrigées, 0 restante.
-      CHECK: cd "/Users/mehdi/Landing lovable/migen-site" && bun scripts/verifie-photos-du-secteur.mjs https://migen-site.vercel.app
+      CHECK: bun scripts/verifie-photos-du-secteur.mjs https://migen-site.vercel.app
       EXPECT: PHOTOS_DANS_LEUR_SUJET
       L'ATTENTE ÉTAIT MAL FORMULÉE, corrigée le 13/10 : elle réclamait un zéro
       que la commande n'affiche pas. La porte rend un JETON DE SUCCÈS,
@@ -123,7 +142,7 @@ un paragraphe daté « REQUALIFIÉE LE 14/10 ».
       PREUVE : `lib/photo-de-la-cible.ts` remplace l'image d'une carte par celle
       de la page qu'elle ouvre. 46 images écrites en dur basculées, sur sa
       décision « oui, tout basculer ».
-      CHECK: cd "/Users/mehdi/Landing lovable/migen-site" && node -e "const{NOMBRE_PAGES}=require('./lib/photo-par-page.ts');console.log(NOMBRE_PAGES)" 2>/dev/null || grep -c '": "/assets/photos/' lib/photo-par-page.ts
+      CHECK: node -e "const{NOMBRE_PAGES}=require('./lib/photo-par-page.ts');console.log(NOMBRE_PAGES)" 2>/dev/null || grep -c '": "/assets/photos/' lib/photo-par-page.ts
       EXPECT: 231 pages couvertes
 
 ### G11 — Accueil, bloc PARTEZ DE VOTRE BESOIN : changer les photos des cartes
@@ -164,7 +183,7 @@ un paragraphe daté « REQUALIFIÉE LE 14/10 ».
       LES 18 CARTES REPRENNENT LE H1 DE LEUR PAGE CIBLE, verbatim, et leur
       accroche telle que la page cible l'écrit. 4 restent sans accroche parce
       que leur page n'en écrit aucune : vide plutôt que faux.
-      CHECK: cd "/Users/mehdi/Landing lovable/migen-site" && node scripts/verifie-prestations-regroupees.mjs
+      CHECK: node scripts/verifie-prestations-regroupees.mjs
       EXPECT: 4 blocs, 25 prestations, aucune oubliée. La porte refuse aussi
       tout bloc de moins de 2 cartes : il n'aurait pas lieu d'être.
       MESURE : le contenu servi est exactement celui de la capture figée. Il
@@ -187,12 +206,36 @@ un paragraphe daté « REQUALIFIÉE LE 14/10 ».
 - [x] FAIT
       PREUVE : 141 blocs repliables sur 140 pages au départ, 932 blocs sur
       233 pages à l'arrivée. Pire page passée de 36,2 à 25,6 écrans.
-      CHECK: cd "/Users/mehdi/Landing lovable/migen-site" && SITE_URL=https://migen-site.vercel.app node scripts/verifie-blocs-pliables.mjs
+      CHECK: SITE_URL=https://migen-site.vercel.app node scripts/verifie-blocs-pliables.mjs
       EXPECT: 1092 blocs sur 233 pages
       LE COMPTE A MONTÉ depuis que ce point a été écrit, de 932 à 1092 : les
       gabarits repliés après coup s'y sont ajoutés. Un EXPECT périmé est un
       mensonge tranquille, il est corrigé. Et sans `SITE_URL` la porte vise le
       serveur de dév, qui ne tourne pas : elle rendait « MESURE NON CONCLUANTE ».
+      ROMPUE LE 14/10 VERS 14H15, inscrite telle quelle. Remesurée à 14h27
+      depuis un arbre à jour : « 163 defaut(s) sur 1851 bloc(s)
+      repliable(s) », code 1. Le défaut nommé est le même partout : « Ils nous
+      font confiance » n'a quasiment pas de corps dans le HTML servi
+      (`/bureau-etudes/`, `/expertises/`, `/expertises/mecanique/`,
+      `/expertises/automatisme/siemens/`, et la suite). Cause au dépôt :
+      `5c7e765` (14/10, 14h05) replie au téléphone la bande de logos sous le
+      titre donné par Mehdi, et le corps de ce pli est fait de logos, pas de
+      phrases.
+      L'ATTENTE EST PÉRIMÉE ELLE AUSSI, et elle n'est pas touchée ici : la
+      porte compte aujourd'hui 1851 blocs, et non 1092. Remise au vert, elle
+      ne rendrait toujours pas « 1092 ». Le chantier qui la solde la remet au
+      compte qu'il mesure, contre-essai à l'appui.
+      QUI LA SOLDE : le chantier Mobile vague 2, lot des titres des trois
+      blocs (`components/site/offre/LogosClients.tsx`, `Reassurance.tsx`,
+      `components/site/offres/EncartResidence.tsx`, fichiers pris par ce
+      chantier). À lui de trancher si une bande de logos décrits compte pour
+      un corps, ou si le pli doit porter du texte.
+      COMMANDE RENDUE À SON LIEU LE 14/10 : elle commençait par `cd
+      "/Users/mehdi/Landing lovable/migen-site" &&`, l'arbre principal resté à
+      93da90c, 35 commits derrière la branche déployée. Elle mesurait donc la
+      porte d'un dépôt en retard. Elle se lance maintenant depuis l'arbre où
+      tourne le vérificateur, comme toutes les autres, et la rupture tient
+      depuis l'arbre à jour.
 
 ### G21 — L'API SIREN n'était pas branchée sur les formulaires
 - [x] FAIT
@@ -240,7 +283,7 @@ un paragraphe daté « REQUALIFIÉE LE 14/10 ».
       `components/site/expertises/expertises-donnees.ts`. Les deux phrases qui
       portaient une information utile avant la redirection la gardent mot pour
       mot, sans réécriture.
-      CHECK: cd "/Users/mehdi/Landing lovable/migen-site" && node scripts/retire-redirection-depannage.mjs
+      CHECK: node scripts/retire-redirection-depannage.mjs
       EXPECT: 0 redirections sur 0 fiches ET 0 redirections dans 0 fichiers SQL
 
 ### G25 — Menu, bloc Ressources : « Fiches métier » renvoie vers le recrutement
@@ -355,7 +398,7 @@ un paragraphe daté « REQUALIFIÉE LE 14/10 ».
       LES 18 CARTES REPRENNENT LE H1 DE LEUR PAGE CIBLE, verbatim, et leur
       accroche telle que la page cible l'écrit. 4 restent sans accroche parce
       que leur page n'en écrit aucune : vide plutôt que faux.
-      CHECK: cd "/Users/mehdi/Landing lovable/migen-site" && node scripts/verifie-prestations-regroupees.mjs
+      CHECK: node scripts/verifie-prestations-regroupees.mjs
       EXPECT: 4 blocs, 25 prestations, aucune oubliée. La porte refuse aussi
       tout bloc de moins de 2 cartes : il n'aurait pas lieu d'être.
       Il n'y liste qu'UNE prestation, avec un renvoi vers un guide.
@@ -395,7 +438,7 @@ un paragraphe daté « REQUALIFIÉE LE 14/10 ».
       LES 18 CARTES REPRENNENT LE H1 DE LEUR PAGE CIBLE, verbatim, et leur
       accroche telle que la page cible l'écrit. 4 restent sans accroche parce
       que leur page n'en écrit aucune : vide plutôt que faux.
-      CHECK: cd "/Users/mehdi/Landing lovable/migen-site" && node scripts/verifie-prestations-regroupees.mjs
+      CHECK: node scripts/verifie-prestations-regroupees.mjs
       EXPECT: 4 blocs, 25 prestations, aucune oubliée. La porte refuse aussi
       tout bloc de moins de 2 cartes : il n'aurait pas lieu d'être.
       Sur /offres/bureau-etudes/ il n'en liste que deux. C'EST LE MÊME BLOC que
@@ -442,7 +485,7 @@ un paragraphe daté « REQUALIFIÉE LE 14/10 ».
       LES 18 CARTES REPRENNENT LE H1 DE LEUR PAGE CIBLE, verbatim, et leur
       accroche telle que la page cible l'écrit. 4 restent sans accroche parce
       que leur page n'en écrit aucune : vide plutôt que faux.
-      CHECK: cd "/Users/mehdi/Landing lovable/migen-site" && node scripts/verifie-prestations-regroupees.mjs
+      CHECK: node scripts/verifie-prestations-regroupees.mjs
       EXPECT: 4 blocs, 25 prestations, aucune oubliée. La porte refuse aussi
       tout bloc de moins de 2 cartes : il n'aurait pas lieu d'être.
       Il n'en liste que deux, Transfert industriel et Montage industriel.
@@ -535,7 +578,7 @@ un paragraphe daté « REQUALIFIÉE LE 14/10 ».
       LA MESURE QUI AVAIT CONCLU « 191 répondent 200 » AVAIT SUBSTITUÉ L'HÔTE.
       CAUSE : une seule notion servait deux usages opposés. Le canonique doit
       désigner le domaine final ; la vignette doit se télécharger aujourd'hui.
-      CHECK: cd "/Users/mehdi/Landing lovable/migen-site" && node scripts/verifie-vignette-partage.mjs
+      CHECK: node scripts/verifie-vignette-partage.mjs
       EXPECT: VIGNETTE_PARTAGE_OK. Témoin 5/5, dont le défaut exact et un
       contrôle négatif.
 
@@ -584,11 +627,22 @@ un paragraphe daté « REQUALIFIÉE LE 14/10 ».
       ancienne, perdant leur bloc `seo`, leur `titre_h1` et leur `pastille`,
       2 131 lignes nettes en moins. Restaurées à leur état commité, donc avec
       leurs photos réattribuées.
-      CHECK: cd "/Users/mehdi/Landing lovable/migen-site" && node scripts/verifie-interdits.mjs
+      CHECK: node scripts/verifie-interdits.mjs
       EXPECT: copie conforme aux interdits du contrat
       L'ATTENTE PRÉCÉDENTE ÉTAIT ILLISIBLE : elle réclamait « 15 formulations »,
       un chiffre que cette commande n'affiche jamais. Elle n'écrit un compte que
       lorsqu'elle en trouve ; conforme, elle dit « copie conforme ».
+      ROMPUE, RÉVÉLÉE LE 14/10 À 14H43 en rendant la commande à son lieu (voir
+      l'en-tête) : depuis l'arbre principal, resté à 93da90c (11h17), elle
+      passait ; depuis la branche déployée, « 1 formulation(s) interdite(s)
+      dans la copie », code 1, `lib/decisions-copie.ts:548`. C'est la règle
+      `TOURNAIRE` posée par `b4cc3e2` (14/10, 13h17, harmonisation mobile) :
+      elle RETIRE de la copie une formulation interdite du contrat, mais son
+      motif l'écrit en clair dans le code, que cette porte lit. La copie servie
+      n'est pas en cause d'après ce relevé ; la porte tombe quand même.
+      QUI LA SOLDE : le chantier Mobile vague 2, auteur de `b4cc3e2`, qui
+      tranche entre écrire ce motif autrement ou le déclarer à la porte, sans
+      l'aveugler. Non corrigé ici.
 
 ### G56 — Deux pages inventées, retirées
 - [x] FAIT
@@ -621,6 +675,19 @@ un paragraphe daté « REQUALIFIÉE LE 14/10 ».
       « interrompue », parce qu'une sortie tronquée ne prouve rien.
       CHECK: SITE_URL=https://migen-site.vercel.app node scripts/verifie-responsive.mjs | tail -1
       EXPECT: RESPONSIVE DU SITE CONFORME
+      ROMPUE LE 14/10 VERS 14H15. Remesurée à 14h32 depuis un arbre à jour :
+      « MESURE NON CONCLUANTE : 70 relevé(s) sur 110 », code 1. La porte ne
+      conclut pas : sur 40 relevés, un ou deux blocs repliables arrivent
+      OUVERTS du serveur sous 880 px (`/offres/` et `/offres/zero-arret/` à
+      deux blocs ; `/carriere/`, `/offres/bureau-etudes/`, quatre pages
+      d'expertise, `/guides/choisir-une-entreprise-de-maintenance/` et
+      `/ressources/fiches-pratiques/5s/` à un bloc ; à 320 et 360 px). Le
+      vérificateur l'a comptée rompue et non plantée parce que `| tail -1` ne
+      lui montre que la dernière ligne, où le mot « MESURE NON CONCLUANTE »
+      n'est pas.
+      Cause NON PROUVÉE ici : des plis ajoutés le 14/10 par la vague mobile
+      qui arrivent ouverts. Premier suspect à vérifier, `5c7e765`.
+      QUI LA SOLDE : le chantier Mobile vague 2.
 
 ### G58 — Les 72 grilles dont la piste dépassait leur conteneur
 - [x] FAIT LE 13/10, ROUVERT PAR UNE RÉGRESSION LE SOIR, REFERMÉ DANS LA FOULÉE.
@@ -650,6 +717,16 @@ un paragraphe daté « REQUALIFIÉE LE 14/10 ».
       `components/`, et cette passe de registre n'y touche pas.
       CHECK: node scripts/pistes-de-grille.mjs
       EXPECT: 0 piste(s) de grille déclarée(s)
+      ROMPUE LE 14/10 VERS 14H15, ET C'EST LA MÊME LEÇON QUE LE 13/10 AU SOIR.
+      Remesurée à 14h26 : « 3 piste(s) de grille déclarée(s) sur 2
+      fichier(s) ». `components/site/cocon/PastillesCocon.tsx` : 2 (`6a1b996`,
+      14/10 11h38, les pastilles du cocon mobile) ;
+      `components/site/preuve/CarrouselRealisations.tsx` : 1 (`efeeb49`, 14/10
+      12h20, le carrousel des études de cas). Deux fichiers arrivés après le
+      correctif `a519038`, que le script n'a donc jamais vus.
+      QUI LA SOLDE : le chantier Mobile vague 2, auteur des deux fichiers :
+      `node scripts/pistes-de-grille.mjs --applique`, puis le témoin. Non
+      lancé ici : il écrit dans `components/`.
 
 ### G59 — Aucun titre de section perdu sur grand écran
 - [x] FAIT, porte nouvelle, et elle a d'abord servi à me contredire. Une
@@ -661,6 +738,15 @@ un paragraphe daté « REQUALIFIÉE LE 14/10 ».
       production : aucun titre perdu, ni avant ni après.
       CHECK: node scripts/verifie-titres-de-section.mjs https://migen-site.vercel.app | tail -1
       EXPECT: AUCUN_TITRE_DE_SECTION_PERDU
+      ROMPUE LE 14/10 VERS 14H15. Remesurée à 14h27 : « 1 titre(s) de
+      section perdu(s) sur 1 page(s) », `/secteurs/aeronautique/`,
+      « certifications et équipe » perdu à 1280 px. C'est l'un des trois
+      titres que Mehdi a donnés le 14/10 aux blocs sans titre (`5c7e765`) : il
+      vit dans la bascule du téléphone, masquée au bureau, et ne se retrouve
+      nulle part ailleurs à 1280 px, ce que la porte refuse.
+      QUI LA SOLDE : le chantier Mobile vague 2, lot des titres des trois
+      blocs. À lui de trancher, porte ou composant : la capture de bureau ne
+      porte pas ce titre, la demande de Mehdi le pose au téléphone.
 
 ### G60 — 21 arrêts de tabulation muets à 1280 px
 - [x] FAIT. Au-dessus de 880 px le bloc ne se referme plus : son `<summary>`
@@ -729,6 +815,14 @@ un paragraphe daté « REQUALIFIÉE LE 14/10 ».
       contrôle n'est pas assoupli, il est seulement mesuré au bon endroit.
       CHECK: SITE_URL=https://migen-site.vercel.app bun run verifie:offre-rendu
       EXPECT: rendu d'offre conforme à la référence
+      ROMPUE LE 14/10 VERS 14H15. Remesurée à 14h27 sur `/offres/residence/` :
+      « 2 anomalie(s) », « section 2 : titre « ILS NOUS FONT CONFIANCE » au
+      lieu de « (aucun) » » et « section 3 : titre « Certifications et
+      équipe » au lieu de « (aucun) » ». Deux des trois titres du 14/10
+      (`5c7e765`), absents de la référence parce que la maquette de bureau
+      n'en donne pas.
+      QUI LA SOLDE : le chantier Mobile vague 2, lot des titres des trois
+      blocs.
 
 ### G64 — Le plan du site publiait 4 adresses mortes
 - [x] FAIT. Les deux fiches inventées de G56, plus deux autres sources de
@@ -812,6 +906,14 @@ un paragraphe daté « REQUALIFIÉE LE 14/10 ».
       ne touche pas. Ni le formulaire ni la copie ne sont à corriger.
       CHECK: bun components/site/secteurs-hub/verification-secteurs-hub.tsx
       EXPECT: 16 sections conformes
+      ROMPUE LE 14/10 VERS 14H15. Remesurée à 14h26 : « /secteurs/ : 1
+      écart(s) à la capture », « Réassurance : texte rendu absent de la
+      capture « Certifications et équipe » ». Même origine que G59 et G63 : le
+      titre du 14/10 (`5c7e765`) n'est pas dans la capture, et n'est pas
+      déclaré dans la liste `AJOUTS` de la porte.
+      QUI LA SOLDE : le chantier Mobile vague 2, lot des titres des trois
+      blocs (`components/site/offre/Reassurance.tsx` est pris par ce
+      chantier).
 
 ### G67 — Une erreur eslint préexistante, à arbitrer
 - DÉPLACÉE LE 14/10 EN B5, section « Bloqué sur Mehdi », avec son historique
@@ -952,11 +1054,33 @@ registre. Chaque entrée porte la commande qui décide de son état.
       EXPECT: NOUS_CONNAITRE_NOMME_LES_TROIS_METIERS
 
 ### D8 — « Refais moi le doc rapport d'avancement, à jour toutes les 10 minutes »
-- [x] FAIT. docs/AVANCEMENT.md, dont le bloc de chiffres est réécrit par un
-      script qui MESURE au lieu de recopier. Mise à jour programmée toutes les
-      dix minutes.
-      CHECK: node scripts/rapport-avancement.mjs --montre | grep -c remesureLe
-      EXPECT: au moins 1
+- [ ] PAS FAIT, REQUALIFIÉE LE 14/10 (paragraphe daté plus bas). Cette entrée
+      portait [x] et disait : « FAIT. docs/AVANCEMENT.md, dont le bloc de
+      chiffres est réécrit par un script qui MESURE au lieu de recopier. Mise
+      à jour programmée toutes les dix minutes. »
+      ANCIENNE COMMANDE, retirée du passage le 14/10 : `node
+      scripts/rapport-avancement.mjs --montre | grep -c remesureLe`, attente
+      « au moins 1 ». Elle prouvait que le script tourne, pas que le rapport
+      est remis à jour : elle passait le 14/10 alors que docs/AVANCEMENT.md
+      n'avait plus bougé depuis le 13/10 à 16h40 (tête 9e69526).
+      REQUALIFIÉE LE 14/10 : la remise à jour toutes les dix minutes vivait
+      dans la session arrêtée le 13/10, et rien ne l'avait relancée. Mehdi,
+      le 14/10 à 11h45 : « Pourquoi il y'a toujours une tâche en cours ». Le
+      script, lui, tourne, et mesure depuis le 14/10 la branche déployée au
+      lieu de l'arbre où il est lancé. La tâche planifiée est réarmée le 14/10
+      dans la session qui pilote : le script toutes les dix minutes, le
+      fichier réécrit localement, sans commit ni poussée, puisque chaque
+      poussée redéploie ; le fichier part avec les poussées des lots. Cette
+      tâche vit en mémoire de la session : elle s'arrête avec elle et expire
+      au bout de sept jours. La case reste donc [ ] tant que la commande
+      ci-dessous ne passe pas dans l'arbre qui pilote.
+      LA COMMANDE MESURE LE CORRECTIF LUI-MÊME : l'âge de « remesureLe » dans
+      docs/AVANCEMENT.md, vingt minutes au plus. Lancée dans un arbre où la
+      tâche ne tourne pas, elle échoue, et c'est juste. CONTRE-ESSAI JOUÉ LE
+      14/10 : sur le rapport du 13/10 à 16h40, pas de jeton, code 1 ; juste
+      après `node scripts/rapport-avancement.mjs`, le jeton.
+      CHECK: r=$(grep -o '"remesureLe": "[^"]*"' docs/AVANCEMENT.md | sed 's/.*: "//; s/"$//; s/ à / /'); t=$(TZ=Europe/Paris date -j -f '%d/%m/%Y %H:%M' "$r" +%s 2>/dev/null); a=$(( ($(date +%s) - ${t:-0}) / 60 )); echo "rapport remesure le $r, il y a $a minute(s)"; [ -n "$t" ] && [ "$a" -le 20 ] && echo RAPPORT_REMESURE_IL_Y_A_MOINS_DE_VINGT_MINUTES
+      EXPECT: RAPPORT_REMESURE_IL_Y_A_MOINS_DE_VINGT_MINUTES
 
 ### D9 — « Une liste de tout ce dont tu as besoin pour terminer »
 - [x] FAIT, et vérifiée point par point pour ne pas servir du périmé. La
@@ -1021,7 +1145,20 @@ registre. Chaque entrée porte la commande qui décide de son état.
 - [x] RÉPONDU. Six variables, toutes facultatives, aucune ne bloque la mise en
       ligne : GA4, Google Ads, LinkedIn, pixel OpenAI, Search Console et le
       secret des tâches planifiées. Toutes conditionnées au consentement.
-      CHECK: grep -c "NEXT_PUBLIC_GA\|NEXT_PUBLIC_GOOGLE_ADS_ID\|NEXT_PUBLIC_LINKEDIN_PARTNER_ID\|NEXT_PUBLIC_OPENAI_PIXEL_ID\|GSC_SERVICE_ACCOUNT_JSON\|CRON_SECRET" .env.example
+      PLANTÉE LE 14/10 VERS 14H15, et le site n'y est pour rien.
+      `.env.example` est ignoré par git (`.gitignore`, motif « .env* ») : il
+      n'existe que dans l'arbre principal, et la commande lancée depuis un
+      arbre à jour ne trouve pas le fichier. Elle se résout quand le lot
+      tag-manager versionne `.env.example` (« !.env.example » au
+      `.gitignore`).
+      COMMANDE ÉLARGIE LE 14/10, attente inchangée : ce même lot renomme
+      `NEXT_PUBLIC_OPENAI_PIXEL_ID` en `NEXT_PUBLIC_OPENAI_PIXEL_SRC`, le nom
+      que `components/consentement/Tags.tsx` lit réellement (ligne 31). Avec
+      l'ancien nom seul, la commande aurait compté 5 au lieu de 6 sur le
+      fichier de l'arbre principal, et accusé à tort une réponse juste. Elle
+      accepte les deux noms. ANCIENNE COMMANDE : la même sans
+      `NEXT_PUBLIC_OPENAI_PIXEL_SRC`.
+      CHECK: grep -c "NEXT_PUBLIC_GA\|NEXT_PUBLIC_GOOGLE_ADS_ID\|NEXT_PUBLIC_LINKEDIN_PARTNER_ID\|NEXT_PUBLIC_OPENAI_PIXEL_ID\|NEXT_PUBLIC_OPENAI_PIXEL_SRC\|GSC_SERVICE_ACCOUNT_JSON\|CRON_SECRET" .env.example
       EXPECT: au moins 6
 
 ### D16 — « Tu fais au mieux pour la version mobile »
@@ -1078,6 +1215,154 @@ registre. Chaque entrée porte la commande qui décide de son état.
       vaut donc pour toujours : 27 commits le 13/10.
       CHECK: git log --since=2026-10-13T00:00 --until=2026-10-14T00:00 --oneline | wc -l | tr -d ' '
       EXPECT: au moins 9
+
+---
+
+## Série 6, les demandes de Mehdi du 14/10
+
+Inscrite le 14/10 vers 14h45 par le lot « rapport-avancement ». Les citations
+exactes et l'état mesuré de chaque demande sont dans le relevé du 14/10 de la
+session qui pilote (`etat.json`, numéro N entre parenthèses). Une entrée non
+cochée dont la commande échoue est un chantier ouvert que sa porte confirme :
+sa case se coche quand le lot qui la porte a poussé ET que la commande passe
+en production. Les demandes du 14/10 sur la version mobile (replier sur
+toutes les pages, porter la maquette mobile v2) restent sous D1 et D16.
+
+### D20 — « 18 px comme la maquette » : la gouttière de page au téléphone (N36)
+- [x] FAIT, `e88b4b6` (14/10, 13h31). Sous 880 px, les conteneurs de 1200 px
+      à gouttière de 40 px passent à 18 px, comme la maquette mobile v2. Le
+      bureau ne bouge pas. La commande lit les feuilles de style que la
+      production sert avec l'accueil et exige la règle dans la bonne requête
+      de largeur. CONTRE-ESSAI JOUÉ LE 14/10 : la même commande qui cherche
+      17 px rend 0 et pas de jeton.
+      CHECK: n=0; for f in $(curl -s https://migen-site.vercel.app/ | grep -oE '/_next/static/[^"]+\.css' | sort -u); do c=$(curl -s "https://migen-site.vercel.app$f" | grep -oE '@media \(max-width:880px\)\{[^@]{0,250}padding-left:18px!important' | wc -l | tr -d ' '); n=$((n+c)); done; echo "regle de gouttiere mobile servie : $n"; [ "$n" -ge 1 ] && echo GOUTTIERE_MOBILE_SERVIE
+      EXPECT: GOUTTIERE_MOBILE_SERVIE
+
+### D21 — « Garde le formulaire, fais-le juste en plusieurs étapes » (N34)
+- [x] FAIT, `f4570d7` (14/10, 14h00). Au téléphone, le formulaire de contact
+      se remplit en trois étapes : entreprise et téléphone, puis nom, prénom
+      et e-mail, puis le message. Aucun champ ajouté, retiré ni renommé. La
+      commande exige les deux : les assertions de
+      `components/formulaire/verification.ts` (chaque champ dans une étape et
+      une seule, chaque étape jugée par la validation partagée), et les
+      marques d'étape dans le HTML servi de `/contact/`. Aucun envoi de
+      formulaire. CONTRE-ESSAI JOUÉ LE 14/10 : la même commande sur
+      `/mentions-legales/` rend 0 marque et pas de jeton.
+      CHECK: bun components/formulaire/verification.ts >/dev/null 2>&1 && r=ok || r=ko; n=$(curl -s https://migen-site.vercel.app/contact/ | grep -o 'etapeMobile' | wc -l | tr -d ' '); echo "repartition des champs en etapes : $r, marques d etape sur /contact/ : $n"; [ "$r" = ok ] && [ "$n" -ge 1 ] && echo FORMULAIRE_EN_ETAPES_SANS_CHAMP_PERDU
+      EXPECT: FORMULAIRE_EN_ETAPES_SANS_CHAMP_PERDU
+
+### D22 — Les titres des trois blocs repliés au téléphone (N35)
+- [x] FAIT, `5c7e765` (14/10, 14h05), mots de Mehdi : « Certifications et
+      équipe », « Ils nous font confiance », « Votre technicien intégré à
+      votre site ». Servis tous trois sur `/offres/`. CONTRE-ESSAI JOUÉ LE
+      14/10 : la même commande sur `/carriere/` rend 0, 0, 0 et pas de jeton.
+      CE COMMIT A ROMPU QUATRE PORTES qui ne connaissaient pas ces titres,
+      puisque la maquette de bureau n'en donne pas : G20, G59, G63, G66, et
+      il est le premier suspect de G57. Elles sont inscrites rompues à leur
+      place, avec le chantier qui les solde.
+      CHECK: h=$(curl -s https://migen-site.vercel.app/offres/); a=$(printf %s "$h" | grep -o 'Certifications et équipe' | wc -l | tr -d ' '); b=$(printf %s "$h" | grep -o 'Ils nous font confiance' | wc -l | tr -d ' '); c=$(printf %s "$h" | grep -o 'Votre technicien intégré à votre site' | wc -l | tr -d ' '); echo "sur /offres/ : $a, $b, $c"; [ "$a" -ge 1 ] && [ "$b" -ge 1 ] && [ "$c" -ge 1 ] && echo TROIS_TITRES_DU_QUATORZE_SERVIS
+      EXPECT: TROIS_TITRES_DU_QUATORZE_SERVIS
+
+### D23 — « Oui, les 101 » : toutes les pages publiées au plan du site (N43)
+- [ ] EN COURS, lot « plan-du-site ». Mesuré le 14/10 vers 14h : sitemap.xml
+      sert 259 adresses, `/plan-du-site/` n'en liste que 145 dans son
+      `<main>`. Il manque l'accueil, `/contact/`, `/carriere/` et ses fiches,
+      des villes, des études de cas, les ressources, les pages légales. Le
+      lot crée une source unique des pages publiées, lue par le plan ET par
+      le sitemap, et sa porte `scripts/verifie-plan-et-sitemap.mjs` exige le
+      même ensemble des deux côtés, chaque adresse en 200 sans redirection,
+      chaque `<loc>` sur https://migen.fr. Tant que cette porte n'est pas au
+      dépôt, la commande imprime les deux comptes et pas de jeton.
+      CHECK: if test -f scripts/verifie-plan-et-sitemap.mjs; then node scripts/verifie-plan-et-sitemap.mjs https://migen-site.vercel.app | tail -1; else p=$(curl -s https://migen-site.vercel.app/plan-du-site/ | grep -o '<main.*</main>' | grep -oE 'href="/[^"#?]*"' | sort -u | wc -l | tr -d ' '); s=$(curl -s https://migen-site.vercel.app/sitemap.xml | grep -o '<loc>' | wc -l | tr -d ' '); echo "porte du plan pas encore au depot ; plan du site : $p adresses, sitemap : $s"; fi
+      EXPECT: PLAN_ET_SITEMAP_ALIGNES
+
+### D24 — « Prépare le plan de redirection, on va bientôt mettre en ligne » (N42)
+- [x] FAIT POUR LE CODE, `4a336e5` puis `d76960f` (14/10). Les 301 de
+      l'ancien migen.fr sont versionnées dans `lib/redirections-ancien-site.ts`
+      et le plan est écrit dans `docs/PLAN-REDIRECTIONS.md`. Mesuré en
+      production le 14/10 à 14h33 : « 181 adresses de l'ancien site (183
+      formes), 4 conservées, 144 redirigées en une 301, 35 techniques en 404 ;
+      259 adresses du plan du site en 200 », puis le jeton. Sa porte a son
+      propre témoin, `--controle`.
+      CE QUI RESTE EST À MEHDI, section 5 du plan : la page `/cgv/`, que les
+      devis citent, n'existe pas sur le nouveau site et part provisoirement
+      vers `/mentions-legales/`, qui ne contient pas les CGV (bloquant avant
+      la bascule) ; et six choix de cible à valider.
+      CHECK: node scripts/verifie-redirections.mjs https://migen-site.vercel.app | tail -1
+      EXPECT: REDIRECTIONS_SANS_PERTE
+
+### D25 — « Pointer les redirections du LISEZMOI une à une » (N17)
+- [ ] PAS FAIT. Les six adresses que le LISEZMOI de la maquette mobile v2
+      demande de rediriger répondent encore 200 le 14/10 à 14h34 :
+      `/offres/chantier/`, `/offres/construction/`, `/offres/retrofit/`,
+      `/offres/audit-conseil-maintenance/`, `/bureau-etudes/`,
+      `/offres/depannage-industriel/`. Elles ne sont pas dans le plan de D24,
+      et deux d'entre elles y sont même des CIBLES ou des options :
+      `/offres/retrofit/` reçoit l'ancienne `/retrofit-machine-industriel/`,
+      `/offres/chantier/` et `/bureau-etudes/` sont deux des six choix que
+      Mehdi doit valider. Les rediriger sans ses choix casserait le plan.
+      QUI LA SOLDE : le chantier Redirections (`lib/redirections*.ts`,
+      `proxy.ts`), après les choix de Mehdi.
+      CHECK: n=0; for p in offres/chantier offres/construction offres/retrofit offres/audit-conseil-maintenance bureau-etudes offres/depannage-industriel; do c=$(curl -s -o /dev/null -w '%{http_code}' https://migen-site.vercel.app/$p/); echo "/$p/ $c"; [ "$c" = 301 ] && n=$((n+1)); done; echo "redirigees en 301 : $n sur 6"; [ "$n" = 6 ] && echo REDIRECTIONS_DU_LISEZMOI_EN_PLACE
+      EXPECT: REDIRECTIONS_DU_LISEZMOI_EN_PLACE
+
+### D26 — « Oublie pas le sitemap » (N43)
+- [x] FAIT POUR LE CODE. `/sitemap.xml` est servi, toutes ses adresses sur
+      https://migen.fr, et les 259 répondent 200 sans redirection (mesuré
+      par la porte de D24 le 14/10 à 14h33). `app/robots.ts` le déclare dès
+      que `SITE_INDEXABLE` vaut « oui ». CONTRE-ESSAI JOUÉ LE 14/10 : la même
+      commande qui exige l'hôte `https://www.migen.fr/` rend « 259 adresses,
+      dont 0 » et pas de jeton.
+      CE QUI RESTE EST À MEHDI, le jour de la bascule : poser
+      `SITE_INDEXABLE=oui` sur Vercel (sinon robots.txt reste « Disallow: / »),
+      puis soumettre https://migen.fr/sitemap.xml dans la Search Console
+      (étape 10 de `docs/PLAN-REDIRECTIONS.md`).
+      CHECK: x=$(curl -s https://migen-site.vercel.app/sitemap.xml); n=$(printf %s "$x" | grep -o '<loc>' | wc -l | tr -d ' '); m=$(printf %s "$x" | grep -o '<loc>https://migen.fr/' | wc -l | tr -d ' '); echo "sitemap : $n adresses, dont $m sur https://migen.fr"; [ "$n" -ge 1 ] && [ "$n" = "$m" ] && echo SITEMAP_SERVI_SUR_MIGEN_FR
+      EXPECT: SITEMAP_SERVI_SUR_MIGEN_FR
+
+### D27 — « Ensuite on va devoir intégrer le Tag Manager » (N41)
+- [ ] EN COURS, lot « tag-manager ». Mesuré le 14/10 : aucune trace de
+      Google Tag Manager au dépôt ni en production. Le lot pose
+      `components/consentement/TagManager.tsx`, monté dans `app/layout.tsx`
+      juste après le mode consentement, qui ne charge le conteneur QUE si un
+      choix existe et qu'une finalité Google est accordée ; sans identifiant,
+      rien ne se charge. Il versionne `.env.example` avec
+      `NEXT_PUBLIC_GTM_ID`, ce qui résout aussi D15. La commande exige le
+      composant, son montage, la variable documentée, les assertions du lot
+      (`components/consentement/verification-tag-manager.ts`) et aucun
+      gtm.js dans l'accueil servi. La preuve au navigateur, avant et après
+      « Tout accepter », est la porte `scripts/verifie-tag-manager.mjs` du
+      lot, jeton AUCUN_TAG_AVANT_CONSENTEMENT : elle demande un build local
+      avec un identifiant de test, et sa sortie se colle ici.
+      CE QUI RESTE À MEHDI : l'identifiant du conteneur (GTM-XXXXXXX), à poser
+      sur Vercel en Production (`NEXT_PUBLIC_GTM_ID`), les balises GA4, Google
+      Ads et LinkedIn dans le conteneur avec les contrôles de consentement,
+      puis le test des deux parcours avec Google Tag Assistant (CLAUDE.md
+      section 8).
+      CHECK: f=$(test -f components/consentement/TagManager.tsx && echo 1 || echo 0); t=$(grep -s -c 'TagManager' app/layout.tsx); e=$(git ls-files .env.example | wc -l | tr -d ' '); g=$(grep -s -c '^NEXT_PUBLIC_GTM_ID=' .env.example); v=$(test -f components/consentement/verification-tag-manager.ts && bun components/consentement/verification-tag-manager.ts >/dev/null 2>&1 && echo ok || echo ko); h=$(curl -s https://migen-site.vercel.app/ | grep -o 'googletagmanager.com/gtm.js' | wc -l | tr -d ' '); echo "composant : $f, monte : ${t:-0}, .env.example versionne : $e, variable documentee : ${g:-0}, assertions du lot : $v, gtm.js dans l accueil servi : $h"; [ "$f" = 1 ] && [ "${t:-0}" -ge 1 ] && [ "$e" = 1 ] && [ "${g:-0}" -ge 1 ] && [ "$v" = ok ] && [ "$h" = 0 ] && echo TAG_MANAGER_DERRIERE_LE_CONSENTEMENT
+      EXPECT: TAG_MANAGER_DERRIERE_LE_CONSENTEMENT
+
+### D28 — « Pour Metz et Dijon va sur Envato » (N37)
+- [x] FAIT, `43481b9` et `fd8415b` (14/10, 14h04 à 14h06), détail en B7. Les
+      deux photos sous licence répondent 200 et sont servies sur l'accueil et
+      sur `/implantations/`. CONTRE-ESSAI JOUÉ LE 14/10 : la même commande
+      pour Nancy, qui n'est pas un hub, rend 404 et 0.
+      CHECK: m=$(curl -s -o /dev/null -w '%{http_code}' https://migen-site.vercel.app/assets/villes/hub-metz.jpg); d=$(curl -s -o /dev/null -w '%{http_code}' https://migen-site.vercel.app/assets/villes/hub-dijon.jpg); a=$(curl -s https://migen-site.vercel.app/ | grep -oE 'media/(metz|dijon)\.' | sort -u | wc -l | tr -d ' '); i=$(curl -s https://migen-site.vercel.app/implantations/ | grep -oE 'media/(metz|dijon)\.' | sort -u | wc -l | tr -d ' '); echo "hub-metz.jpg $m, hub-dijon.jpg $d, accueil : $a sur 2, implantations : $i sur 2"; [ "$m" = 200 ] && [ "$d" = 200 ] && [ "$a" = 2 ] && [ "$i" = 2 ] && echo METZ_ET_DIJON_SOUS_LICENCE_EN_LIGNE
+      EXPECT: METZ_ET_DIJON_SOUS_LICENCE_EN_LIGNE
+
+### D29 — « Voir nos secteurs → tu as pas mis de cta pareil sur la page nous connaitre » (N02)
+- [x] FAIT, lot « cta-nous-connaitre », `f461219` (poussé le 14/10 à 14h28).
+      Demande du 13/10 à 21h32, restée sans suite jusqu'au 14/10. Le lien
+      était un texte orange de 14,5 px ; il prend le dessin du bouton
+      secondaire « Nos valeurs » de la même page, libellé et cible inchangés.
+      La commande lit le lien servi : cible `/secteurs/`, bord arrondi,
+      bordure. Mesuré en production le 14/10 vers 14h40 : le jeton.
+      CONTRE-ESSAI, avant / après : la même commande vers 14h35, avant le
+      déploiement, lisait `style="font:600 14.5px var(--fb);color:#ff7c3c"`
+      et ne rendait pas de jeton. La maquette rend ce lien en texte : le
+      bouton suit la demande de Mehdi.
+      CHECK: t=$(curl -s https://migen-site.vercel.app/nous-connaitre/ | grep -oE '<a [^>]*>Voir nos secteurs'); echo "$t"; printf %s "$t" | grep -q 'href="/secteurs/"' && printf %s "$t" | grep -q 'border-radius:999px' && printf %s "$t" | grep -q 'var(--gbd)' && echo VOIR_NOS_SECTEURS_EN_BOUTON
+      EXPECT: VOIR_NOS_SECTEURS_EN_BOUTON
 
 ---
 
@@ -1175,7 +1460,13 @@ dernière entrée `D` lue, et l'accuserait à tort. Leur mesure est écrite en
       pas sa photo (`grep -q`), ou si le rail ne sert pas dix photos de ville
       et vingt images décrites. CONTRE-ESSAI : avant le branchement, la même
       porte affichait « Nos hubs : 8 photos » et « HubsAccueil : 16 photo(s) ».
-      CHECK: cd "/Users/mehdi/Landing lovable/migen-site" && ls public/assets/villes/hub-metz.jpg public/assets/villes/hub-dijon.jpg components/site/accueil/hubs/metz.jpg components/site/accueil/hubs/dijon.jpg && grep -q '"/assets/villes/hub-metz.jpg"' supabase/import/gabarits-maquette/implantations-maintenance-industrielle-metz.json && grep -q '"/assets/villes/hub-dijon.jpg"' supabase/import/gabarits-maquette/implantations-maintenance-industrielle-dijon.json && bun components/site/accueil/verification-photos.tsx
+      COMMANDE RENDUE À SON LIEU LE 14/10 : elle commençait par `cd
+      "/Users/mehdi/Landing lovable/migen-site" &&`, l'arbre principal resté
+      à 93da90c (14/10 11h17), d'avant le branchement des deux photos : elle y
+      plantait au passage de 14h15. Lancée depuis un arbre à jour, sans ce
+      `cd`, elle rend à 14h26 « Nos hubs : 10 photos, toutes distinctes » et
+      « HubsAccueil : 20 photo(s), toutes décrites », code 0.
+      CHECK: ls public/assets/villes/hub-metz.jpg public/assets/villes/hub-dijon.jpg components/site/accueil/hubs/metz.jpg components/site/accueil/hubs/dijon.jpg && grep -q '"/assets/villes/hub-metz.jpg"' supabase/import/gabarits-maquette/implantations-maintenance-industrielle-metz.json && grep -q '"/assets/villes/hub-dijon.jpg"' supabase/import/gabarits-maquette/implantations-maintenance-industrielle-dijon.json && bun components/site/accueil/verification-photos.tsx
       EXPECT: Nos hubs : 10 photos, HubsAccueil : 20 photo(s), toutes décrites
       Avant le 14/10 : ACHAT OU TÉLÉCHARGEMENT DE MEHDI. Historique de D13, repris tel quel :
       « CHOISIES, PAS LIVRÉES. Metz : la cathédrale par RossHelen, même
