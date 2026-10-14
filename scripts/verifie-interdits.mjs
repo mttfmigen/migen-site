@@ -95,6 +95,17 @@ const INTERDITS = [
   ["—", "virgule, parenthèses ou deux-points, jamais de tiret cadratin"],
 ];
 
+/* LA COPIE JURIDIQUE DU CLIENT, reprise MOT POUR MOT (14/10) : les CGV de
+   Migen Service, auxquelles renvoient les devis. Un contrat ne se réécrit pas
+   pour la charte : « notamment », « sur mesure », « mise à disposition » et
+   les montants y sont le texte signé. Seule la typographie s'y applique, et
+   plus strictement qu'ailleurs : ni cadratin ni demi-cadratin. */
+const COPIE_JURIDIQUE = new Set(["app/cgv/texte.ts"]);
+const TYPOGRAPHIE = [
+  ...INTERDITS.filter(([motif]) => motif === "—"),
+  ["–", "virgule ou deux-points, jamais de tiret demi-cadratin dans le texte juridique"],
+];
+
 /* `/assets/...—...` n'existe pas, mais une URL ou un nom de fichier pourrait
    contenir une suite interdite sans être de la copie. Les lignes d'import et
    les chemins sont donc ignorés. */
@@ -129,9 +140,10 @@ for (const chemin of [
   ...fichiers(join(RACINE, "lib")),
 ]) {
   const lignes = sansCommentaires(readFileSync(chemin, "utf8")).split("\n");
+  const regles = COPIE_JURIDIQUE.has(relative(RACINE, chemin)) ? TYPOGRAPHIE : INTERDITS;
   lignes.forEach((ligne, i) => {
     if (IGNOREES.some((motif) => motif.test(ligne))) return;
-    for (const [motif, remede] of INTERDITS) {
+    for (const [motif, remede] of regles) {
       // Une chaîne se cherche telle quelle, un motif rend le fragment trouvé.
       const interdit =
         typeof motif === "string"

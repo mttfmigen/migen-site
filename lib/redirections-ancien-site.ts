@@ -162,7 +162,6 @@ export const REDIRECTIONS_ANCIEN_SITE: ReadonlyArray<
   ["/demande-de-devis/", "/contact/"],
   ["/remerciement/", "/contact/"],
   ["/entreprise-de-maintenance/", "/entreprise-maintenance-industrielle/"],
-  ["/cgv/", "/mentions-legales/"], // PROVISOIRE, bloquant : republier la page /cgv/ puis retirer cette ligne
   ["/a-propos/", "/nous-connaitre/"], // à valider : /nous-connaitre/ ou /entreprise-maintenance-industrielle/
   ["/migen-une-vision-innovante-de-la-maintenance-industrielle-par-nathan-jorez-ceo/", "/nous-connaitre/"],
   ["/certifications-mase-ecovadis/", "/rse/"],

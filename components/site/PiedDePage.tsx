@@ -331,6 +331,9 @@ export default function PiedDePage({
               <LienSite href="/confidentialite/" className={styles.lienBas}>
                 Confidentialité
               </LienSite>
+              <LienSite href="/cgv/" className={styles.lienBas}>
+                Conditions générales de vente
+              </LienSite>
               {reglagesConsentement ? (
                 <span className={styles.reglages}>{reglagesConsentement}</span>
               ) : null}
@@ -472,6 +475,10 @@ export default function PiedDePage({
             </LienSite>
             <LienSite href="/confidentialite/" className={styles.lienBas}>
               Confidentialité
+            </LienSite>
+            {/* Les devis renvoient à /cgv : la page est liée de partout. */}
+            <LienSite href="/cgv/" className={styles.lienBas}>
+              Conditions générales de vente
             </LienSite>
             {reglagesConsentement ? (
               <span className={styles.reglages}>{reglagesConsentement}</span>

@@ -10,7 +10,7 @@
 - **35** sont des adresses techniques de WordPress, sans contenu ni lien : elles disparaissent volontairement (réponse 404).
 - **Tout le trafic mesuré arrive sur une vraie page** : 1 892 visites par mois selon Semrush, dont 1 111 sur l'accueil (conservé) et 780 sur des adresses redirigées.
 - Vérifié par une commande, sur le serveur local et sur la préproduction : dernière ligne `REDIRECTIONS_SANS_PERTE`.
-- **Un bloquant avant la bascule : la page `/cgv/`** (section 5). Et six choix à valider.
+- ~~Un bloquant avant la bascule : la page `/cgv/`~~ **levé le 14/10** : la page est publiée, texte mot pour mot (section 5). Restent six choix à valider.
 
 Le détail, adresse par adresse : `docs/redirections/plan-redirections.csv` (une ligne par adresse : source, destination, code, raison, confiance, trafic, domaines référents).
 
@@ -101,7 +101,9 @@ Ce sont des pages que WordPress fabrique tout seul. Aucune n'a de visite ni de l
 
 ## 5. À valider par Mehdi
 
-### Bloquant : `/cgv/`
+### Bloquant : `/cgv/`, LEVÉ LE 14/10
+
+Fait : `app/cgv/page.tsx` sert les CGV en 200 (texte de `app/cgv/texte.ts`, copie mot pour mot de l'ancienne page, seuls les 50 tirets demi-cadratins remplacés), la page est au plan du site et au pied de page, et la ligne `/cgv/` est retirée de `lib/redirections-ancien-site.ts`. Aucune ligne `/cgv/` dans la table `redirects` de la base (vérifié le 14/10). Historique ci-dessous.
 
 L'ancienne page contient les **vraies conditions générales de vente** de Migen Service (version du 24/02/2026), et **les devis renvoient à `https://migen.fr/cgv`**. Le nouveau site n'a pas de page CGV.
 
@@ -163,7 +165,7 @@ Elle teste chaque ancienne adresse (et ses variantes, sans slash final par exemp
 
 ### Avant la bascule
 
-1. **Publier la page `/cgv/`** et retirer sa ligne de `lib/redirections-ancien-site.ts` (section 5). Trancher les six choix.
+1. ~~Publier la page `/cgv/` et retirer sa ligne de `lib/redirections-ancien-site.ts`~~ (fait le 14/10, section 5). Trancher les six choix.
 2. Déployer la version validée sur Vercel, puis : `node scripts/verifie-redirections.mjs` doit finir par `REDIRECTIONS_SANS_PERTE`.
 3. **Noter les enregistrements DNS actuels** de `migen.fr` et `www.migen.fr` (copie d'écran de la zone). C'est le retour arrière.
 4. Baisser leur durée de cache (TTL) à 5 minutes, 24 à 48 heures avant : un retour arrière prendra alors effet en minutes.

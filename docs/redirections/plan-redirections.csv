@@ -36,7 +36,7 @@ source,destination,code,raison,confiance,trafic,domaines_referents
 /category/uncategorized/page/3/,,404,"pagination : 404 attendue, pas de 301 de contenu",,0,0
 /certification-cefri/,/secteurs/nucleaire/,301,"certification CEFRI = radioprotection nucléaire ; pas de page CEFRI, hub secteur nucléaire (qui ne cite pas CEFRI)",moyenne,0,1
 /certifications-mase-ecovadis/,/rse/,301,"Pas de page certifications ; /rse/ cite la démarche MASE, l'évaluation EcoVadis et les attestations transmises. Cible prévue /a-propos/certifications-mase-ecovadis/ inexistante (404)",moyenne,0,1
-/cgv/,/mentions-legales/,301,"PROVISOIRE, bloquant : republier la page /cgv/ puis retirer cette ligne. vraies CGV (version 24/02/2026) sans page sur le nouveau site ; repli sur la page juridique la plus proche, à remplacer par une page /cgv/",basse,0,0
+/cgv/,/cgv/,200,"Conservée : page /cgv/ publiée le 14/10 sur le nouveau site, CGV de Migen Service (version 24/02/2026) mot pour mot ; les devis y renvoient. Plus de redirection",haute,0,0
 /comment-devenir-technicien-de-maintenance-industrielle/,/carriere/technicien-de-maintenance/formation/,301,Même sujet (formation et parcours pour devenir technicien) ; remplace la cible prévue /metiers/... en 404,haute,17,0
 /comment-faire-plan-de-maintenance-preventive/,/ressources/articles/plan-de-maintenance/,301,Article qui reprend la construction d'un plan de maintenance étape par étape (cite le plan de maintenance préventive) ; alternative proche : /ressources/process/gestion-maintenance-preventive/,moyenne,0,1
 /comment-fonctionne-la-gestion-de-maintenance-assistee-par-ordinateur/,/ressources/articles/gmao/,301,"Même sujet : GMAO, h1 identique",haute,0,0

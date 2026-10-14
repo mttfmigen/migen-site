@@ -33,5 +33,6 @@ export const ROUTES_STATIQUES = [
   "/plan-du-site/",
   "/mentions-legales/",
   "/confidentialite/",
+  "/cgv/",
   "/test-technicien/",
 ] as const;

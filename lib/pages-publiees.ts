@@ -77,6 +77,8 @@ const TITRES_STATIQUES: Record<(typeof ROUTES_STATIQUES)[number], string> = {
   "/plan-du-site/": "Toutes nos pages, au même endroit.",
   "/mentions-legales/": "Mentions légales",
   "/confidentialite/": "Politique de confidentialité",
+  // Quatorzième route, ajoutée le 14/10 : H1 de `app/cgv/page.tsx`.
+  "/cgv/": "Conditions générales de vente",
   "/test-technicien/": "Huit questions. Celles qu’on pose vraiment en entretien.",
 };
 
