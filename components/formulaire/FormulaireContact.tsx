@@ -49,6 +49,11 @@ type Etat = "repos" | "envoi" | "succes" | "erreur";
  * champs sont repris, et seulement s'ils sont des chaînes non vides.
  */
 export const EVENEMENT_PREREMPLIR = "migen:preremplir";
+
+/** La saisie d'un panneau court d'une page SANS formulaire complet (les 41
+    pages de /ressources/ et /preuves/, audit du 14/10), gardée le temps d'un
+    aller vers /contact/ : jamais dans l'adresse, seulement dans la session. */
+export const CLE_PREREMPLISSAGE = "migen:preremplir";
 const PREREMPLISSABLES = ["entreprise", "telephone", "email"] as const;
 
 interface Proprietes {
@@ -382,6 +387,17 @@ export function FormulaireContact({
       });
     }
     window.addEventListener(EVENEMENT_PREREMPLIR, reprend);
+    // Arrivée depuis une page sans formulaire complet : la saisie attend ici.
+    try {
+      const garde = window.sessionStorage.getItem(CLE_PREREMPLISSAGE);
+      if (garde) {
+        window.sessionStorage.removeItem(CLE_PREREMPLISSAGE);
+        reprend(new CustomEvent(EVENEMENT_PREREMPLIR, { detail: JSON.parse(garde) as unknown }));
+        formulaireRef.current?.scrollIntoView({ block: "start" });
+      }
+    } catch {
+      // Session indisponible ou illisible : le formulaire reste vide, rien ne casse.
+    }
     return () => window.removeEventListener(EVENEMENT_PREREMPLIR, reprend);
   }, []);
 

@@ -2,7 +2,7 @@
 
 import type { CSSProperties, FormEvent } from "react";
 
-import { EVENEMENT_PREREMPLIR } from "@/components/formulaire/FormulaireContact";
+import { CLE_PREREMPLISSAGE, EVENEMENT_PREREMPLIR } from "@/components/formulaire/FormulaireContact";
 
 import h from "./Generique.module.css";
 
@@ -42,11 +42,8 @@ export default function RappelExpress() {
     evenement.preventDefault();
     const donnees = new FormData(evenement.currentTarget);
     const valeur = (nom: string) => String(donnees.get(nom) ?? "").trim();
-    window.dispatchEvent(
-      new CustomEvent(EVENEMENT_PREREMPLIR, {
-        detail: { entreprise: valeur("entreprise"), telephone: valeur("telephone"), email: valeur("email") },
-      }),
-    );
+    const detail = { entreprise: valeur("entreprise"), telephone: valeur("telephone"), email: valeur("email") };
+    window.dispatchEvent(new CustomEvent(EVENEMENT_PREREMPLIR, { detail }));
     // La cible : le formulaire « Décrire mon besoin » de la page. `#cx-form`
     // n'existe que sur 8 pages sur 158 (mesuré le 14/10) ; ailleurs, le
     // dernier formulaire de la page qui demande un message, c'est-à-dire le
@@ -55,9 +52,22 @@ export default function RappelExpress() {
       f.querySelector('[name="message"]'),
     );
     const cible = document.getElementById("cx-form") ?? formulaires.at(-1) ?? null;
-    cible?.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (!cible) {
+      // AUCUN FORMULAIRE COMPLET SUR CETTE PAGE (/ressources/**, /preuves/ :
+      // 41 pages, audit du 14/10). Le bouton ne faisait alors RIEN et la
+      // demande se perdait. La saisie part vers /contact/, où le formulaire la
+      // reprend au montage (voir CLE_PREREMPLISSAGE).
+      try {
+        window.sessionStorage.setItem(CLE_PREREMPLISSAGE, JSON.stringify(detail));
+      } catch {
+        // Session indisponible : on va quand même au formulaire, vide.
+      }
+      window.location.assign("/contact/");
+      return;
+    }
+    cible.scrollIntoView({ behavior: "smooth", block: "start" });
     // Le curseur va au premier champ que ce panneau ne demande pas : le nom.
-    cible?.querySelector<HTMLInputElement>('[name="nom"]')?.focus({ preventScroll: true });
+    cible.querySelector<HTMLInputElement>('[name="nom"]')?.focus({ preventScroll: true });
   }
 
   return (

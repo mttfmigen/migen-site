@@ -89,7 +89,7 @@ const ADRESSE_PLACEHOLDER: Adresse = {
 /** Forme internationale du numéro affiché sur le site, 04 78 33 72 05. */
 const TELEPHONE = "+33 4 78 33 72 05";
 
-const LOGO = "/logo-migen.png";
+const LOGO = "/assets/logo-migen-mark.png";
 
 /**
  * Le corps de l'organisation, sans `@context`.
