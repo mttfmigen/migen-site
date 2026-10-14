@@ -4,6 +4,7 @@ import { Fragment, type CSSProperties, type ReactNode } from "react";
 import { FormulaireContact } from "@/components/formulaire/FormulaireContact";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
+import { ID_RAPPEL_FINAL } from "@/components/site/mobile/conversion-donnees";
 import type { VueGuide, BlocGuide } from "@/types/editorial";
 
 import BlocsGuide from "./BlocsGuide";
@@ -486,6 +487,11 @@ export default function Guide({
           </section>
         ) : null}
 
+        {/* La cible du bandeau mobile « Être rappelé » (`#etre-rappele`) : le
+            rappel final n'est pas posé (`rappelFinal={false}`), c'est ce
+            formulaire qui en tient lieu. Sans elle, le bouton du bandeau ne
+            menait nulle part (relevé des pages mortes du 14/10). */}
+        <div id={ID_RAPPEL_FINAL} />
         <section id="cx-form" style={{ padding: "var(--sec) 0 var(--sec)", scrollMarginTop: 90 }}>
           <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
             <div
