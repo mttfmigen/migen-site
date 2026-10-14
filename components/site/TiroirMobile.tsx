@@ -1,10 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 import s from "./Entete.module.css";
-import { type Telephone, TIROIR, TIROIR_LP } from "./entete-donnees";
+import t from "./TiroirMobile.module.css";
+import {
+  type Telephone,
+  TIROIR,
+  TIROIR_ACCUEIL,
+  TIROIR_LP,
+} from "./entete-donnees";
 
 export interface TiroirMobileProps {
   landingPage: boolean;
@@ -18,8 +24,13 @@ export interface TiroirMobileProps {
 const SELECTEUR_FOCUSABLES = "a[href],button:not([disabled])";
 
 /**
- * Tiroir tactile, motif de la maquette « Mobile » : feuillet remontant du bas,
- * fond de page assombri, sections dépliantes une à la fois.
+ * Tiroir tactile, motif de la maquette mobile v2 : feuillet remontant du bas,
+ * fond de page assombri, lien « Accueil » en tête, puis six groupes en
+ * `<details>` natifs, une seule section ouverte à la fois par leur attribut
+ * `name`, chacun avec son compteur de liens, ses sous-têtes orange et les
+ * descriptions que la maquette écrit. TOUT LE TEXTE RESTE DANS LE DOM, même
+ * replié : règle numéro un de la maquette mobile. L'ancien tiroir ne rendait
+ * les liens d'un groupe qu'une fois celui-ci déplié.
  *
  * Ce que la maquette ne dit pas et que le site exige : Échap ferme, le focus
  * reste dans le feuillet tant qu'il est ouvert et revient au bouton qui l'a
@@ -35,8 +46,6 @@ export default function TiroirMobile({
   libelleCta,
 }: TiroirMobileProps) {
   const feuillet = useRef<HTMLDivElement>(null);
-  // La maquette ouvre la première section d'emblée (menuGrp: 0).
-  const [ouverte, setOuverte] = useState(0);
 
   useEffect(() => {
     const declencheur = document.activeElement as HTMLElement | null;
@@ -169,115 +178,134 @@ export default function TiroirMobile({
           </>
         ) : (
           <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 6 }}>
-            {TIROIR.map((section, index) => {
-              const depliee = ouverte === index;
+            {/* « Accueil », seul au-dessus des groupes, comme la maquette. */}
+            <Link
+              href={TIROIR_ACCUEIL.href}
+              onClick={onFermer}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: 10,
+                padding: "14px 16px",
+                borderRadius: 18,
+                background: "var(--bg)",
+                font: "600 16px var(--ft)",
+                letterSpacing: "-.02em",
+                color: "var(--ink)",
+                minHeight: 44,
+              }}
+            >
+              {TIROIR_ACCUEIL.libelle}
+              <span aria-hidden="true" style={{ color: "var(--acc)" }}>
+                &rsaquo;
+              </span>
+            </Link>
+            {TIROIR.map((section) => {
+              /* Compté, jamais écrit : la maquette affiche `mg.n`, le nombre
+                 de liens du groupe, sous-têtes exclues. */
+              const nombreDeLiens = section.entrees.filter(
+                (entree) => entree.type === "lien",
+              ).length;
               return (
-                <div
+                <details
                   key={section.libelle}
-                  className={s.sectionTiroir}
-                  style={{
-                    borderRadius: 18,
-                    background: depliee ? "var(--bg)" : "#fff",
-                    overflow: "hidden",
-                  }}
+                  /* `name` partagé : le navigateur ne laisse ouvert qu'un
+                     groupe à la fois, l'accordéon exclusif de la maquette
+                     (`<details name="menu">`). Distinct de l'id du feuillet. */
+                  name="mg-tiroir-groupes"
+                  className={t.groupe}
                 >
-                  <button
-                    type="button"
-                    aria-expanded={depliee}
-                    aria-controls={`mg-tiroir-${index}`}
-                    onClick={() => setOuverte(depliee ? -1 : index)}
-                    style={{
-                      width: "100%",
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      gap: 12,
-                      padding: "15px 16px",
-                      border: "none",
-                      background: "none",
-                      textAlign: "left",
-                      cursor: "pointer",
-                      color: "var(--ink)",
-                    }}
-                  >
-                    <span>
-                      <span
-                        style={{
-                          display: "block",
-                          font: "600 16.5px var(--ft)",
-                          letterSpacing: "-.025em",
-                        }}
-                      >
-                        {section.libelle}
-                      </span>
-                      <span
-                        style={{
-                          display: "block",
-                          font: "400 12px var(--fb)",
-                          color: "var(--ink2)",
-                          marginTop: 2,
-                        }}
-                      >
-                        {section.description}
-                      </span>
+                  <summary className={t.bascule}>
+                    <span
+                      style={{
+                        font: "600 16px var(--ft)",
+                        letterSpacing: "-.02em",
+                        color: "var(--ink)",
+                      }}
+                    >
+                      {section.libelle}
                     </span>
                     <span
-                      aria-hidden="true"
-                      className={s.chevronTiroir}
-                      style={{
-                        flex: "none",
-                        width: 26,
-                        height: 26,
-                        borderRadius: 999,
-                        background: depliee ? "var(--acc)" : "var(--chip)",
-                        color: depliee ? "#fff" : "var(--ink)",
-                        display: "grid",
-                        placeItems: "center",
-                        fontSize: 15,
-                        transform: depliee ? "rotate(90deg)" : "none",
-                      }}
+                      style={{ display: "flex", alignItems: "center", gap: 8 }}
                     >
-                      &rsaquo;
+                      <span
+                        style={{
+                          font: "500 11.5px var(--fb)",
+                          color: "var(--ink2)",
+                        }}
+                      >
+                        {nombreDeLiens}
+                      </span>
+                      <span aria-hidden="true" className={t.chevron}>
+                        &rsaquo;
+                      </span>
                     </span>
-                  </button>
-                  {depliee && (
-                    <div
-                      id={`mg-tiroir-${index}`}
-                      style={{
-                        display: "grid", gridTemplateColumns: "minmax(0,1fr)",
-                        gap: 2,
-                        padding: "0 8px 10px",
-                      }}
-                    >
-                      {section.liens.map((lien) => (
-                        <Link
-                          key={lien.libelle}
-                          href={lien.href}
-                          onClick={onFermer}
-                          className={s.lienTiroir}
+                  </summary>
+                  <ul
+                    style={{
+                      listStyle: "none",
+                      margin: 0,
+                      padding: "0 8px 10px",
+                      display: "grid",
+                      gridTemplateColumns: "minmax(0,1fr)",
+                      gap: 1,
+                    }}
+                  >
+                    {section.entrees.map((entree) =>
+                      entree.type === "sous-tete" ? (
+                        <li
+                          key={`sous-tete-${entree.libelle}`}
                           style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            alignItems: "center",
-                            gap: 10,
-                            padding: "11px 10px",
-                            borderRadius: 12,
-                            font: "500 14px var(--fb)",
-                            minHeight: 44,
+                            padding: "12px 10px 4px",
+                            font: "600 10.5px var(--fb)",
+                            letterSpacing: ".12em",
+                            textTransform: "uppercase",
+                            color: "var(--acc)",
                           }}
                         >
-                          {lien.libelle}
-                          <span
-                            aria-hidden="true"
-                            style={{ color: "var(--acc)" }}
+                          {entree.libelle}
+                        </li>
+                      ) : (
+                        <li key={entree.href + entree.libelle}>
+                          <Link
+                            href={entree.href}
+                            onClick={onFermer}
+                            className={s.lienTiroir}
+                            style={{
+                              display: "flex",
+                              flexDirection: "column",
+                              justifyContent: "center",
+                              padding: "9px 10px",
+                              borderRadius: 10,
+                              font: "500 14px/1.35 var(--fb)",
+                              /* 44 px de cible tactile (WCAG 2.5.8), règle du
+                                 site conservée : la maquette s'arrête à 9 px
+                                 de remplissage. */
+                              minHeight: 44,
+                            }}
                           >
-                            &rsaquo;
-                          </span>
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                            <span style={{ display: "block" }}>
+                              {entree.libelle}
+                            </span>
+                            {entree.description ? (
+                              <span
+                                style={{
+                                  display: "block",
+                                  marginTop: 2,
+                                  font: "400 12.5px/1.4 var(--fb)",
+                                  color: "var(--ink2)",
+                                }}
+                              >
+                                {entree.description}
+                              </span>
+                            ) : null}
+                          </Link>
+                        </li>
+                      ),
+                    )}
+                  </ul>
+                </details>
               );
             })}
           </div>

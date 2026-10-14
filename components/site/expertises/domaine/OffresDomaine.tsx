@@ -3,6 +3,10 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 
 import { LARGEUR, SECTION } from "@/components/site/blocs/habillage";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import { EtiquettePliMobile } from "@/components/site/expertises/conversion-mobile";
+import stylesOffre from "@/components/site/offre/PageOffre.module.css";
 
 import styles from "./PageDomaine.module.css";
 import { altPhoto } from "@/lib/descriptions-photos";
@@ -176,7 +180,24 @@ const NUMERO: CSSProperties = {
 export default function OffresDomaine() {
   return (
     <section style={SECTION}>
-      <div style={LARGEUR}>
+      {/* SE REPLIE AU TÉLÉPHONE (G3 : bento de 2 190 à 2 240 px à 390 px),
+          même motif que `SecteursDomaine` : l'étiquette reprend le surtitre et
+          le H2 du panneau photographique (copie FIXE des 11 captures), le
+          résumé joint les six titres d'offres, la bascule est retirée du
+          bureau par `blocPliablePartage`. Tout le texte reste dans le DOM. */}
+      <div className={stylesOffre.blocPliablePartage} style={LARGEUR}>
+        <SectionPliableMobile
+          enTete={
+            <EtiquettePliMobile
+              surtitre="Nos offres"
+              titre="Six façons de travailler ensemble, selon votre besoin"
+            />
+          }
+          resume={resumeDe([
+            "migen© Résidence",
+            ...TUILES.map((offre) => offre.titre),
+          ])}
+        >
         <div
           className={styles.obento}
           style={{
@@ -342,6 +363,7 @@ export default function OffresDomaine() {
             </Link>
           ))}
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

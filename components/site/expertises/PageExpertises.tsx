@@ -1,7 +1,19 @@
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 
+import { FilArianeVue } from "@/components/cocon/FilAriane";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
+import PastillesCocon from "@/components/site/cocon/PastillesCocon";
+import {
+  cheminDepuisFormulaire,
+  etapesFilAriane,
+} from "@/components/site/expertises/cocon-mobile";
+import {
+  EtiquettePliMobile,
+  OuAppelez,
+  TelephoneHero,
+} from "@/components/site/expertises/conversion-mobile";
 import AppelFinal from "@/components/site/offre/AppelFinal";
 import BandeAppel from "@/components/site/offre/BandeAppel";
 import ComplementsOffre from "@/components/site/offre/ComplementsOffre";
@@ -136,6 +148,11 @@ export default function PageExpertises({
   /* Même règle que `PageOffre` : la PRÉSENCE du champ monte le panneau. */
   const heroFormulaire = typeof hub.formulaireHeroTitre === "string";
 
+  /* Le cocon mobile : chemin retrouvé contre l'index depuis `formulaire`
+     (voir `./cocon-mobile.ts`). Tout est `data-mobile-seulement`. */
+  const chemin = cheminDepuisFormulaire(formulaire);
+  const etapes = chemin ? etapesFilAriane(chemin) : [];
+
   return (
     /* La racine `.mgx-root` de `MigenExpertise` : `--sec` reste à 120 px sur
        mobile (la règle « --sec: 64px » de `.mg-site` ne l'atteint pas), et les
@@ -144,6 +161,14 @@ export default function PageExpertises({
     <div className={`mg-site ${stylesOffre.gabarit}`} style={{ "--sec": "120px" } as CSSProperties}>
       <main style={{ paddingTop: 62 }}>
         {filAriane}
+
+        {/* Le fil d'Ariane visible, téléphone seulement (maquette mobile v2,
+            dc.html L103). Au-dessus de 880 px, seul le JSON-LD demeure. */}
+        {etapes.length > 0 ? (
+          <div data-mobile-seulement="" style={{ padding: "16px 18px 0" }}>
+            <FilArianeVue etapes={etapes} />
+          </div>
+        ) : null}
 
         {/* ------------------------------------------------ 0. « 01 Héros » */}
 
@@ -201,24 +226,48 @@ export default function PageExpertises({
                       </Link>
                     ),
                   )}
+                  {/* Le numéro à côté du bouton, rangée CTA de la maquette
+                      mobile (L110) et corpus de la fiche du hub. Mobile
+                      seulement. */}
+                  <TelephoneHero />
                 </div>
               ) : null}
 
               {hub.mention ? <p style={HERO_MENTION}>{hub.mention}</p> : null}
             </div>
 
+            {/* Le panneau SE REPLIE au téléphone (G2 : héros compact), même
+                arbitrage que `PageDomaine` : replié, jamais retiré ni
+                déplacé, `blocPliablePartage` retire la bascule du bureau. */}
             {heroFormulaire ? (
-              <div style={{ position: "relative" }}>
-                <PanneauFormulaire
-                  id="besoin"
-                  formulaire={`${formulaire}-hero`}
-                  titre={hub.formulaireHeroTitre!}
-                  pastille={hub.formulaireHeroMention}
-                />
+              <div
+                className={stylesOffre.blocPliablePartage}
+                style={{ position: "relative" }}
+              >
+                <SectionPliableMobile
+                  enTete={
+                    <EtiquettePliMobile
+                      surtitre={hub.formulaireHeroMention}
+                      titre={hub.formulaireHeroTitre!}
+                    />
+                  }
+                >
+                  <PanneauFormulaire
+                    id="besoin"
+                    formulaire={`${formulaire}-hero`}
+                    titre={hub.formulaireHeroTitre!}
+                    pastille={hub.formulaireHeroMention}
+                  />
+                </SectionPliableMobile>
               </div>
             ) : null}
           </div>
         </section>
+
+        {/* « Toutes les pages de la rubrique », pastilles de la maquette
+            mobile sous le héros (`kidsTop`, dc.html L125 et L501, gabarit
+            10) : les onze domaines. Sous 881 px seulement. */}
+        {chemin ? <PastillesCocon chemin={chemin} variante="enfants" /> : null}
 
         {/* -------------------------------------------- 1. « 01 Chiffres » */}
 
@@ -326,6 +375,10 @@ export default function PageExpertises({
             formulaire={formulaire}
             bouton={hub.appelBouton}
           />
+          {/* La ligne du corpus sous l'appel final, verbatim dans la fiche du
+              hub, qui ajoute « , astreinte. » (mesure du 14/10). Mobile
+              seulement. */}
+          <OuAppelez astreinte />
         </div>
 
         {maillage ? (

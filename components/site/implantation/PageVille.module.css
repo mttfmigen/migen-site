@@ -94,3 +94,77 @@
   background: var(--acc) !important;
   color: #fff !important;
 }
+
+/* =========================================================================
+   LA COUCHE MOBILE V2 DU HÉROS (14/10). Tout vit sous `max-width: 880px`,
+   le seuil de `SectionPliableMobile.module.css` : au-dessus, ces classes
+   sont vides et le style en ligne de la capture reste seul maître.
+   ========================================================================= */
+
+/* Le fil d'Ariane du héros mobile : `margin-bottom: 12px` de la maquette
+   (dc.html L104). Visible sous 881 px seulement : l'attribut
+   `data-mobile-seulement` posé à côté de cette classe est masqué au-dessus
+   par `app/globals.css` (`display: none !important`). */
+.filMobile {
+  margin-bottom: 12px;
+}
+
+/* Le héros compact de la maquette mobile (dc.html L103-109) : gouttières de
+   18 px, h1 à 27px/1.1, sous-titre à 15px/1.6. `!important` parce que les
+   valeurs de bureau sont des styles EN LIGNE (habillage-offre.ts) : sans lui,
+   la règle ne s'appliquerait jamais. Mesure du 14/10 : héros à 1 850 px à
+   390 px sur le gabarit 04, 1 939 px sur le 06. */
+@media (max-width: 880px) {
+  .herosVille {
+    padding: 28px 18px 0 !important;
+  }
+  .titreHerosMobile {
+    font: 600 27px/1.1 var(--ft) !important;
+    letter-spacing: -0.04em !important;
+  }
+  .chapeauHerosMobile {
+    font: 400 15px/1.6 var(--fb) !important;
+    margin-top: 12px !important;
+  }
+}
+
+/* --------------- le panneau de formulaire du héros, replié au téléphone
+
+   MÊME MOTIF que `.etiquettePli` et `.blocPliablePartage` de
+   `offre/PageOffre.module.css`, porté ici parce que la bascule du panneau
+   appartient au gabarit ville. Le seuil est 880 px, celui de
+   `SectionPliableMobile.module.css` : les deux doivent rester d'accord.
+
+   L'étiquette n'existe que sous 880 px, et s'efface une fois le panneau
+   OUVERT : le panneau rend alors son propre titre, le même texte, et le dire
+   deux fois n'aiderait personne. Le chevron reste la poignée. */
+.etiquettePanneau {
+  display: none;
+  font: 600 16px/1.25 var(--ft);
+  letter-spacing: -0.025em;
+  color: var(--ink);
+}
+
+@media (max-width: 880px) {
+  .etiquettePanneau {
+    display: block;
+  }
+  .panneauPliable details[open] > summary > .etiquettePanneau {
+    display: none;
+  }
+}
+
+/* SUR BUREAU, LA BASCULE DU PANNEAU N'EXISTE PAS DU TOUT : vidée de son
+   étiquette elle resterait un `<summary>` focalisable et muet. Le panneau est
+   rendu `open` et ne se referme que sous 880 px, son contenu reste donc
+   affiché. Le `margin-top` du corps est remis à zéro : il aérerait l'espace
+   sous une bascule qui, ici, n'est plus là, et décalerait le panneau de
+   12 px que la capture ne porte pas. */
+@media (min-width: 881px) {
+  .panneauPliable details[data-pliable-mobile] > summary {
+    display: none;
+  }
+  .panneauPliable details[data-pliable-mobile] > summary ~ div {
+    margin-top: 0;
+  }
+}

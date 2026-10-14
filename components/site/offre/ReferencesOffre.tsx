@@ -35,6 +35,15 @@ export interface ProprietesReferencesOffre {
   section: SectionPreuves;
   /** La page Ville de la maquette garde la date telle qu'écrite (« d'un site… »). */
   dateBrute?: boolean;
+  /**
+   * OUVERT PAR DÉFAUT, et c'est la maquette mobile v2 qui le dit : son
+   * carrousel de références reste déplié sur TOUTES les pages, hors du
+   * compte des sections repliées (`Migen - Mobile v2.dc.html` L476,
+   * `const op = isRef || dI++ < nOpen`, où `isRef` reconnaît les titres
+   * « références / réalisations / preuves »). Le bloc reste repliable au
+   * doigt ; il ne se referme simplement pas tout seul au chargement.
+   */
+  toujoursOuvert?: boolean;
 }
 
 /** Une photo par carte, dans l'ordre des preuves du corpus. */
@@ -305,7 +314,11 @@ const FLECHE: CSSProperties = {
   font: "600 15px var(--fb)",
 };
 
-export default function ReferencesOffre({ section, dateBrute = false }: ProprietesReferencesOffre) {
+export default function ReferencesOffre({
+  section,
+  dateBrute = false,
+  toujoursOuvert = true,
+}: ProprietesReferencesOffre) {
   const preuves = section.preuves.filter(
     (preuve) => !!preuve.lienHref && estCheminInterne(preuve.lienHref),
   );
@@ -322,6 +335,7 @@ export default function ReferencesOffre({ section, dateBrute = false }: Propriet
             la bascule entière est retirée, elle ne laisse donc aucun arrêt de
             tabulation muet. */}
         <SectionPliableMobile
+          toujoursOuvert={toujoursOuvert}
           enTete={
             <span data-mobile-seulement="" className={styles.etiquettePli}>
               <span style={ETIQUETTE_SURTITRE}>Nos réalisations</span>

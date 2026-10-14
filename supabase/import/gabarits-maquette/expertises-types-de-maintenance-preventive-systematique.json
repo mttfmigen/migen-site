@@ -116,6 +116,11 @@
             },
             "benefice": "Vous arrêtez de sur-entretenir ce qui va bien, et vous resserrez là où ça casse. Le budget se déplace vers les bonnes machines."
           }
+        ],
+        "prose": [
+          {
+            "texte": "Un parc entier à mettre sous suivi ? Le [contrat de maintenance Zéro arrêt](/offres/zero-arret/) industrialise cette mise en œuvre, avec la priorité d'intervention en cas de panne. Avant de vous engager, l'[audit et conseil en maintenance](/offres/audit-conseil-maintenance/) chiffre ce qui mérite un régime systématique. Sur les machines instrumentées, la [maintenance conditionnelle](/expertises/types-de-maintenance/maintenance-conditionnelle/) se greffe sur ce socle."
+          }
         ]
       },
       {

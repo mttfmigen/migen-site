@@ -17,6 +17,12 @@ import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
 export interface ProprietesGarantiesOffre {
   section: SectionGaranties;
+  /**
+   * Reste déplié au téléphone : la maquette mobile v2 garde la PREMIÈRE
+   * section de contenu de la page ouverte (dc.html L451 et L476). C'est le
+   * gabarit qui sait laquelle, pas ce bloc.
+   */
+  toujoursOuvert?: boolean;
 }
 
 const PANNEAU: CSSProperties = {
@@ -64,7 +70,10 @@ const CARTE_TEXTE: CSSProperties = {
   color: "rgba(255,255,255,.64)",
 };
 
-export default function GarantiesOffre({ section }: ProprietesGarantiesOffre) {
+export default function GarantiesOffre({
+  section,
+  toujoursOuvert = false,
+}: ProprietesGarantiesOffre) {
   return (
     <section style={{ padding: "var(--sec) 24px 0" }}>
       <div className="mg-pad" style={PANNEAU}>
@@ -77,6 +86,7 @@ export default function GarantiesOffre({ section }: ProprietesGarantiesOffre) {
               rien ne change, le contenu est toujours dans le HTML servi, et
               c'est la feuille qui le replie. */}
           <SectionPliableMobile
+            toujoursOuvert={toujoursOuvert}
             enTete={
               <span>
                 <span style={{ ...SURTITRE, marginBottom: 18, display: "block" }}>

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 
 import Bandeau from "@/components/consentement/Bandeau";
-import BarreActionMobile from "@/components/site/BarreActionMobile";
+import BarreActionMobileParChemin from "@/components/site/BarreActionMobileParChemin";
 import Entete from "@/components/site/Entete";
 import Moteurs from "@/components/site/Moteurs";
 import PiedDePage from "@/components/site/PiedDePage";
@@ -194,8 +194,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {/* Barre d'action basse du motif tactile de la maquette Mobile. Sa règle
             CSS la masque au-delà de 880px, le même seuil où la navigation cède
             au bouton menu. Sans elle, on ne peut pas appeler Migen depuis un
-            téléphone sans ouvrir le tiroir. */}
-        <BarreActionMobile />
+            téléphone sans ouvrir le tiroir. Montée via son enveloppe cliente :
+            sur `/carriere/**`, la maquette mobile v2 remplace « Décrire mon
+            besoin » par « Postuler » vers le formulaire de candidature, et un
+            composant serveur ne connaît pas le chemin courant. */}
+        <BarreActionMobileParChemin />
 
         {children}
 

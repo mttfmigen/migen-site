@@ -148,3 +148,52 @@
     padding: 3px 0;
   }
 }
+
+/* --------------------------------------------- colonnes repliables (mobile) */
+
+/*
+ * Les titres de colonne, sortis du style en ligne à l'identique : sous 881 px
+ * leur marge basse doit tomber (le corps du `<details>` de
+ * `SectionPliableMobile` apporte ses 12 px à l'ouverture), et un style en
+ * ligne gagnerait contre cette règle. Au-dessus de 881 px, la marge est celle
+ * d'avant le repli : rien ne bouge.
+ */
+.titreColonne {
+  font: 600 11px var(--fb);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 16px;
+}
+
+.titreMaillage {
+  font: 600 10.5px var(--fb);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.32);
+  margin-bottom: 12px;
+}
+
+@media (max-width: 880px) {
+  .titreColonne,
+  .titreMaillage {
+    margin-bottom: 0;
+  }
+
+  /*
+   * Chevron et résumé de la bascule, RECOLORÉS POUR LE FOND SOMBRE. Le module
+   * du dépliant les peint en `var(--ink2)`, une encre pensée pour les fonds de
+   * page clairs : sur `var(--foot)` elle disparaît presque. Les sélecteurs
+   * passent par les attributs du dépliant (`data-pliable-mobile`,
+   * `data-mobile-seulement`) parce que ses classes sont hachées par son propre
+   * module ; la spécificité (classe + trois attributs) bat les règles du
+   * dépliant sans `!important`.
+   */
+  .colonnePliable details[data-pliable-mobile] > summary > span[data-mobile-seulement] {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .colonnePliable details[data-pliable-mobile]:not([open]) > summary > p[data-mobile-seulement] {
+    color: rgba(255, 255, 255, 0.44);
+  }
+}

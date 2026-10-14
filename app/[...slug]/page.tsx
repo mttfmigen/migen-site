@@ -240,6 +240,7 @@ export default async function PageDuCocon({
         titre={page.titre_h1}
         contenu={page.contenu}
         formulaire={`cocon${page.path.replace(/\//g, "-")}`}
+        chemin={page.path}
         filAriane={<FilAriane path={page.path} />}
         maillage={<Maillage page={page} />}
       />
@@ -258,6 +259,10 @@ export default async function PageDuCocon({
         titre={page.titre_h1}
         contenu={page.contenu}
         filAriane={<FilAriane path={page.path} />}
+        // Le CHEMIN, pour la couche MOBILE de la maquette v2 (fil d'Ariane,
+        // badge de lecture, puces du héros, « Nos réalisations », pastilles du
+        // cocon), dérivée de l'index du corpus. Voir `PageFicheMetier.chemin`.
+        chemin={page.path}
       />
     );
   }
@@ -343,6 +348,10 @@ export default async function PageDuCocon({
         formulaire={`cocon${page.path.replace(/\//g, "-")}`}
         filAriane={<FilAriane path={page.path} />}
         maillage={<Maillage page={page} />}
+        // Le CHEMIN, pour la couche MOBILE de la maquette v2 (fil d'Ariane,
+        // badge de lecture, « D’autres réalisations », pastilles du cocon),
+        // dérivée de l'index du corpus. Voir `PagePreuve.chemin`.
+        chemin={page.path}
       />
     );
   }

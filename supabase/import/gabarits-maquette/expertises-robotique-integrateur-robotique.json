@@ -113,6 +113,11 @@
             },
             "benefice": "Vous gardez la main sur l'historique de votre installation, pas votre prestataire."
           }
+        ],
+        "prose": [
+          {
+            "texte": "Un bras immobilisé maintenant relève du [dépannage industriel](/offres/depannage-industriel/). Un parc à remettre sous suivi relève de la [maintenance robotique](/expertises/robotique/). Quand la cause se trouve dans l'automate de ligne, nos [automaticiens](/expertises/automatisme/) prennent le relais sur la même cellule."
+          }
         ]
       },
       {

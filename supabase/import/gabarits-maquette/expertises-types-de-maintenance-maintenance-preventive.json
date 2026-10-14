@@ -210,6 +210,11 @@
             },
             "benefice": "Votre GMAO s'enrichit à chaque visite au lieu de se vider."
           }
+        ],
+        "prose": [
+          {
+            "texte": "Pour un programme préventif suivi dans la durée, voir le [contrat de maintenance Zéro arrêt](/offres/zero-arret/). Pour une panne en cours, voir le [dépannage industriel](/offres/depannage-industriel/). Migen est une [entreprise de maintenance industrielle](/offres/) présente partout en France."
+          }
         ]
       },
       {

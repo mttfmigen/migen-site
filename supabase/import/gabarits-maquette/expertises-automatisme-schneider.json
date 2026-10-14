@@ -113,6 +113,11 @@
             },
             "benefice": "La décision se prend sur des chiffres, pas sur une panne un samedi matin."
           }
+        ],
+        "prose": [
+          {
+            "texte": "Un parc entier à remettre sous suivi, sauvegardes comprises ? Le [contrat de maintenance Zéro arrêt](/offres/zero-arret/) couvre la visite préventive et la priorité d'intervention. Une ligne figée en ce moment se traite par le [dépannage industriel](/offres/depannage-industriel/). Sur un parc multimarque, nos [automaticiens Siemens](/expertises/automatisme/siemens/) prennent le reste, et la [programmation automate](/expertises/automatisme/programmation-automate/) détaille les langages et les livrables."
+          }
         ]
       },
       {
@@ -225,7 +230,7 @@
           },
           {
             "question": "Combien coûte l'intervention d'un automaticien ?",
-            "reponse": "Cela dépend du défaut, de la machine, de la série d'automate et de l'urgence. Tout est établi sur devis, sans coefficient caché. Comparez ce montant à celui d'une seule journée de ligne figée. Un appel par téléphone suffit pour cadrer le besoin."
+            "reponse": "Cela dépend du défaut, de la machine, de la série d'automate et de l'urgence. Tout est établi sur devis, sans coefficient caché. Comparez ce montant à celui d'une seule journée de ligne figée. Un appel au 04 78 33 72 05 suffit pour cadrer le besoin."
           },
           {
             "question": "Qui intervient dans nos armoires, et avec quelles habilitations ?",

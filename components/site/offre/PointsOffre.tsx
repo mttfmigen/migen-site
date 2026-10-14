@@ -15,14 +15,27 @@ import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
  * vous », compteur « 7 points », puis un rail horizontal de cartes numérotées
  * qui fusionnent les deux colonnes du tableau du corpus.
  *
- * `blocs/Offre.tsx` n'est pas touché : il sert le gabarit de vente. TROU
- * SIGNALÉ : la capture ne rend pas le paragraphe de prose du corpus (« Pour
- * trancher sans précipitation… », deux liens internes) ; il n'est donc pas
- * rendu ici non plus, conformément à la référence.
+ * `blocs/Offre.tsx` n'est pas touché : il sert le gabarit de vente.
+ *
+ * LA PROSE DU CORPUS EST RENDUE SOUS 881 PX SEULEMENT (14/10). La capture de
+ * BUREAU ne rend pas le paragraphe qui suit le tableau (« Pour trancher sans
+ * précipitation… ») : c'était le TROU SIGNALÉ de ce fichier, et au-dessus de
+ * 880 px rien ne change. La maquette MOBILE v2, elle, rend chaque bloc de la
+ * section (dc.html, `blocks: B` de la section détaillée), et sa règle première
+ * est « replier, jamais retirer » : trois fiches portent cette prose
+ * (`offres-residence`, `offres-maintenance-externalisee`,
+ * `offres-depannage-industriel`), avec leurs liens de cocon. Elle est donc
+ * servie, marquée `data-mobile-seulement`.
  */
 
 export interface ProprietesPointsOffre {
   section: SectionOffre;
+  /**
+   * Reste déplié au téléphone : la maquette mobile v2 garde la PREMIÈRE
+   * section de contenu de la page ouverte (dc.html L451 et L476). C'est le
+   * gabarit qui sait laquelle, pas ce bloc.
+   */
+  toujoursOuvert?: boolean;
 }
 
 const ENTETE: CSSProperties = {
@@ -123,7 +136,20 @@ const PARAGRAPHE: CSSProperties = {
   color: "var(--ink2)",
 };
 
-export default function PointsOffre({ section }: ProprietesPointsOffre) {
+/* La prose mobile, au corps de paragraphe de la maquette mobile v2
+   (dc.html, `pf: "400 var(--pfs)/1.65 var(--fb)"`, `--pfs` 15px). Elle ne se
+   voit que sous 881 px : aucune valeur ici ne touche le bureau. */
+const PROSE_MOBILE: CSSProperties = {
+  font: "400 15px/1.65 var(--fb)",
+  color: "var(--ink2)",
+  margin: "14px 0 0",
+  maxWidth: "64ch",
+};
+
+export default function PointsOffre({
+  section,
+  toujoursOuvert = false,
+}: ProprietesPointsOffre) {
   const points = section.lignes.map(fusionneLigne);
 
   return (
@@ -138,6 +164,7 @@ export default function PointsOffre({ section }: ProprietesPointsOffre) {
             appartient au contenu. Au-dessus de 880 px la bascule entière est
             retirée, elle ne laisse donc aucun arrêt de tabulation muet. */}
         <SectionPliableMobile
+          toujoursOuvert={toujoursOuvert}
           enTete={
             <span data-mobile-seulement="" className={styles.etiquettePli}>
               <span style={ETIQUETTE_SURTITRE}>L’offre</span>
@@ -241,6 +268,30 @@ export default function PointsOffre({ section }: ProprietesPointsOffre) {
             </div>
           ))}
         </div>
+        {/* LA PROSE DU CORPUS, APRÈS LES CARTES, SOUS 881 PX SEULEMENT.
+            La maquette mobile v2 rend chaque bloc de la section, prose et
+            liens de cocon compris ; la capture de bureau ne la rend pas, et
+            au-dessus de 880 px rien ne change (voir l'en-tête du fichier).
+            Chaque mot vient de `section.prose`, accroche en gras d'attaque
+            comme partout où le corpus l'écrit. */}
+        {section.prose?.length ? (
+          <div data-mobile-seulement="">
+            {section.prose.map((paragraphe) => (
+              <p
+                key={paragraphe.texte}
+                className={styles.texteAvecLiens}
+                style={PROSE_MOBILE}
+              >
+                {paragraphe.accroche ? (
+                  <strong style={{ fontWeight: 600, color: "var(--ink)" }}>
+                    {paragraphe.accroche}{" "}
+                  </strong>
+                ) : null}
+                <TexteRiche texte={paragraphe.texte} />
+              </p>
+            ))}
+          </div>
+        ) : null}
         </SectionPliableMobile>
       </div>
     </section>

@@ -1,6 +1,11 @@
 import type { CSSProperties } from "react";
 
 import { LARGEUR, VERRE } from "@/components/site/blocs/habillage";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import { EtiquettePliMobile } from "@/components/site/expertises/conversion-mobile";
+import tableauMobile from "@/components/site/expertises/tableau-mobile.module.css";
+import stylesOffre from "@/components/site/offre/PageOffre.module.css";
 import type { BlocComplementDomaine } from "@/types/domaine";
 
 /**
@@ -131,7 +136,18 @@ export default function ComplementSpecialite({
 
   return (
     <section style={SECTION_COMPLEMENT}>
-      <div style={LARGEUR}>
+      {/* SE REPLIE AU TÉLÉPHONE (G1), même motif et même étiquette que
+          `domaine/ComplementsDomaine` : « La réponse directe » est le H2 du
+          corpus d'où viennent ces blocs (mesuré le 14/10 sur les 7 fiches qui
+          portent `complementTypes`), le résumé joint `titre ?? texte`, la
+          bascule est retirée du bureau par `blocPliablePartage`. */}
+      <div className={stylesOffre.blocPliablePartage} style={LARGEUR}>
+        <SectionPliableMobile
+          enTete={<EtiquettePliMobile titre="La réponse directe" />}
+          resume={resumeDe(
+            retenus.map((bloc) => bloc.titre ?? bloc.texte),
+          )}
+        >
         <div style={CARTE}>
           {retenus.map((bloc, rang) => (
             <div key={rang} style={BLOC}>
@@ -163,7 +179,12 @@ export default function ComplementSpecialite({
                 </div>
               ) : null}
               {bloc.tableau?.lignes.length ? (
+                /* Sous 881 px, une carte par ligne (M5) : règles dans
+                   `../tableau-mobile.module.css`, attribut = prise de mesure
+                   de la porte. Au-dessus, rien ne change. */
                 <div
+                  className={tableauMobile.cadre}
+                  data-tableau-en-cartes=""
                   style={CADRE_TABLEAU}
                   tabIndex={0}
                   role="region"
@@ -196,6 +217,7 @@ export default function ComplementSpecialite({
             </div>
           ))}
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

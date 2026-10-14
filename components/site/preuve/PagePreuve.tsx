@@ -17,6 +17,10 @@ import TitreEtSuite from "../blocs/TitreEtSuite";
 import { cadragePhoto } from "@/lib/cadrage-photos";
 import { altPhoto } from "@/lib/descriptions-photos";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import Preuves from "@/components/site/blocs/Preuves";
+import PastillesCocon from "@/components/site/cocon/PastillesCocon";
+import FilArianeMobile from "./FilArianeMobile";
+import { minutesDeLecture, sectionRealisations } from "./donnees-mobiles";
 
 /**
  * Gabarit « 02 Étude de cas », porté de la RÉFÉRENCE : le rendu de la maquette
@@ -61,6 +65,14 @@ export interface ProprietesPagePreuve {
   formulaire: string;
   filAriane?: ReactNode;
   maillage?: ReactNode;
+  /**
+   * Le chemin de la page (`pages.path`, slash final), pour la couche MOBILE de
+   * la maquette v2 : fil d'Ariane, badge de lecture, « D’autres réalisations »
+   * et pastilles du cocon, tous dérivés de l'index du corpus. OPTIONNEL : sans
+   * lui, rien de mobile ne s'ajoute et le rendu reste celui d'avant, ce qui
+   * garde `verification-preuve.tsx` et ses captures inchangés.
+   */
+  chemin?: string;
 }
 
 /* Le numéro de l'agence et sa cible, relevés tels quels dans les deux
@@ -542,7 +554,14 @@ const RESULTAT_TITRE: CSSProperties = {
 /* Les colonnes suivent le nombre de résultats, quatre au plus : `resGrid:
    cols(Math.min(p.results.length, 4), 32)` dans MigenCas (AKTID en a 2,
    Joint Lyonnais 4). */
-const RESULTAT_GRILLE: CSSProperties = { display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 32 };
+/* L'ORDRE DES CLÉS EST CELUI DE LA CAPTURE (`display; gap;
+   grid-template-columns`), et il compte : React sérialise `style` dans l'ordre
+   du littéral, le `...spread` garde la position d'origine d'une clé remplacée,
+   et `verification-preuve.tsx` cherche l'attribut de la capture TEL QUEL.
+   `gridTemplateColumns` déclaré avant `gap` faisait tomber le contrôle n° 12
+   sur les 41 pages (mesuré le 14/10 sur aktid, première du tri). La grille des
+   étapes, écrite `display, gap, colonnes`, n'a jamais eu le défaut. */
+const RESULTAT_GRILLE: CSSProperties = { display: "grid", gap: 32, gridTemplateColumns: "minmax(0,1fr)" };
 const RESULTAT_COLONNES_MAX = 4;
 const RESULTAT_ITEM: CSSProperties = {
   borderTop: "2px solid var(--acc)",
@@ -881,6 +900,7 @@ export default function PagePreuve({
   formulaire,
   filAriane,
   maillage,
+  chemin,
 }: ProprietesPagePreuve) {
   const chiffres = contenu.chiffres ?? [];
   const objectifs = contenu.objectifs ?? [];
@@ -889,6 +909,14 @@ export default function PagePreuve({
   const dispositif = contenu.dispositif ?? [];
   const resultats = contenu.resultats ?? [];
   const plusLoin = (contenu.plusLoin ?? []).filter((l) => cibleSure(l.href));
+
+  /* La couche MOBILE de la maquette v2, dérivée du chemin (voir
+     `donnees-mobiles.ts`). « D’autres réalisations » est le titre verbatim de
+     la maquette pour ce gabarit (dc.html L469). */
+  const minutes = chemin ? minutesDeLecture(chemin) : undefined;
+  const autresRealisations = chemin
+    ? sectionRealisations(chemin, "D’autres réalisations")
+    : null;
 
   return (
     // `data-gabarit` : le marqueur que `verification-preuve.tsx` cherche sur la
@@ -907,12 +935,23 @@ export default function PagePreuve({
         {/* ----------------------------------- 0 · « Étude de cas · héros » */}
 
         <section style={HERO}>
+          {/* Le fil d'Ariane de la maquette MOBILE (dc.html L104), sous 881 px
+              seulement : les captures de bureau de ce gabarit n'en portent pas. */}
+          {chemin ? <FilArianeMobile chemin={chemin} /> : null}
           <div className="mg-r2" style={HERO_GRILLE}>
             <div>
               <div style={HERO_PASTILLES}>
                 <span style={PASTILLE}>
                   <span aria-hidden="true" style={PASTILLE_PUCE} />
                   Étude de cas
+                  {/* Le badge de lecture de la maquette MOBILE (dc.html L492 :
+                      « Étude de cas · N min de lecture »), mobile seulement :
+                      la pastille de la capture de bureau reste mot pour mot. */}
+                  {/* Pas d'espace à écrire : la pastille est une boîte flex à
+                      `gap: 8`, l'écart vient d'elle. */}
+                  {minutes ? (
+                    <span data-mobile-seulement="">· {minutes}</span>
+                  ) : null}
                 </span>
                 {contenu.logo ? (
                   <span style={LOGO_PASTILLE}>
@@ -1081,6 +1120,20 @@ export default function PagePreuve({
         {etapes.length > 0 ? (
           <section style={SECTION}>
             <div style={LARGEUR}>
+              {/* SE REPLIE AU TÉLÉPHONE, comme les sections 02 à 05 de la maquette
+                  mobile : `isOpen = si < 1 || secOpen[...]`, la 01 reste ouverte.
+                  Repli manquant mesuré le 14/10 (gabarit 02 de +36 à +51 % plus
+                  haut que la maquette à 390 px) : le déroulé était la dernière
+                  section numérotée sans bascule. Même étiquette mobile que les
+                  trois autres, le surtitre et le `<h2>` restent dans la section. */}
+              <SectionPliableMobile
+                enTete={
+                  <span data-mobile-seulement="" className={styles.etiquettePli}>
+                    <span style={ETIQUETTE_SURTITRE}>03 · Étape par étape</span>
+                    <span style={ETIQUETTE_TITRE}>Le déroulé</span>
+                  </span>
+                }
+              >
               <div style={KICKER}>03 · Étape par étape</div>
               <h2 style={{ ...TITRE2, margin: "0 0 40px" }}>Le déroulé</h2>
               <div style={{ position: "relative" }}>
@@ -1115,6 +1168,7 @@ export default function PagePreuve({
                   ))}
                 </div>
               </div>
+              </SectionPliableMobile>
             </div>
           </section>
         ) : null}
@@ -1313,6 +1367,20 @@ export default function PagePreuve({
             </div>
           </section>
         ) : null}
+
+        {/* ------------------- maquette MOBILE v2 : « D’autres réalisations »
+            (dc.html L482 : poussée après les sections du corpus quand la page
+            n'a pas de FAQ) puis « Dans la même rubrique », les sœurs de la
+            page (dc.html L506). Les captures de bureau de ce gabarit ne
+            portent ni l'une ni l'autre : les deux blocs sont mobile seulement
+            (`data-mobile-seulement` sur le premier, porté par PastillesCocon
+            pour le second), rien ne change à 1280 px. */}
+        {autresRealisations ? (
+          <div data-mobile-seulement="" data-realisations-mobiles="">
+            <Preuves section={autresRealisations} />
+          </div>
+        ) : null}
+        {chemin ? <PastillesCocon chemin={chemin} variante="soeurs" /> : null}
 
         {maillage ? (
           <div

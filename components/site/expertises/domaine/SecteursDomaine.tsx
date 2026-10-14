@@ -3,6 +3,10 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 
 import { LARGEUR, SECTION } from "@/components/site/blocs/habillage";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import { EtiquettePliMobile } from "@/components/site/expertises/conversion-mobile";
+import stylesOffre from "@/components/site/offre/PageOffre.module.css";
 
 import styles from "./PageDomaine.module.css";
 import { altPhoto } from "@/lib/descriptions-photos";
@@ -144,7 +148,22 @@ const CORPS: CSSProperties = {
 export default function SecteursDomaine() {
   return (
     <section style={SECTION}>
-      <div style={LARGEUR}>
+      {/* SE REPLIE AU TÉLÉPHONE (G3 : 1 686 à 1 740 px de cartes à 390 px),
+          motif « Blocs communs (pliables) » recopié de `offre/PointsOffre.tsx` :
+          l'étiquette reprend le surtitre et le H2 de la section (copie FIXE,
+          mesurée identique sur les 11 captures), le résumé joint les six
+          titres de cartes, la bascule entière est retirée du bureau par
+          `blocPliablePartage`. Tout le texte reste dans le DOM. */}
+      <div className={stylesOffre.blocPliablePartage} style={LARGEUR}>
+        <SectionPliableMobile
+          enTete={
+            <EtiquettePliMobile
+              surtitre="Par secteur d’activité"
+              titre="Même expertise, contraintes différentes"
+            />
+          }
+          resume={resumeDe(SECTEURS.map((secteur) => secteur.titre))}
+        >
         <div className="mg-r2" style={ENTETE}>
           <div>
             <div style={SURTITRE_SECTEURS}>Par secteur d’activité</div>
@@ -204,6 +223,7 @@ export default function SecteursDomaine() {
             </Link>
           ))}
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

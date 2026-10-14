@@ -6,6 +6,9 @@ import type { SectionDeroule } from "@/types/contenu";
 
 import { majusculeInitiale, numerote } from "./texte-offre";
 
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import { resumeDe } from "../blocs/resume-de-section";
+
 import styles from "./PageOffre.module.css";
 import { continueLeTitre } from "../blocs/TitreEtSuite";
 
@@ -39,6 +42,12 @@ export interface ProprietesDerouleOffre {
    * déjà portées ne bougent pas.
    */
   titre?: string;
+  /**
+   * Reste déplié au téléphone : la maquette mobile v2 garde la PREMIÈRE
+   * section de contenu de la page ouverte (dc.html L451 et L476). C'est le
+   * gabarit qui sait laquelle, pas ce bloc.
+   */
+  toujoursOuvert?: boolean;
 }
 
 const CARTE_ENTETE: CSSProperties = {
@@ -109,9 +118,34 @@ const TEXTE_ETAPE: CSSProperties = {
   margin: 0,
 };
 
+/**
+ * L'étiquette de la bascule mobile, même motif que `PointsOffre.tsx` et
+ * `ReferencesOffre.tsx` : le sur-titre et le H2 de la capture restent dans
+ * leur CARTE D'EN-TÊTE, qui est une cellule de la grille (les sortir vers le
+ * `<summary>` démonterait la grille de bureau). L'étiquette répète leur texte
+ * dans la bascule, et n'existe que sous 880 px (`styles.etiquettePli`).
+ */
+const ETIQUETTE_SURTITRE: CSSProperties = {
+  display: "block",
+  font: "600 11px var(--fb)",
+  letterSpacing: ".14em",
+  textTransform: "uppercase",
+  color: "var(--acc)",
+  marginBottom: 6,
+};
+
+/** Le libellé de la bascule, à l'échelle des H2 du gabarit en largeur mobile. */
+const ETIQUETTE_TITRE: CSSProperties = {
+  display: "block",
+  font: "600 calc(clamp(22px,2.4vw,30px) * var(--ts))/1.15 var(--ft)",
+  letterSpacing: "-.035em",
+  color: "var(--ink)",
+};
+
 export default function DerouleOffre({
   section,
   titre = "Un appel. Un plan. Une ligne qui repart.",
+  toujoursOuvert = false,
 }: ProprietesDerouleOffre) {
   // La grille SE DÉDUIT DU NOMBRE D'ÉTAPES, relevé sur les 15 captures du
   // gabarit 03 (08/10) : 3 colonnes jusqu'à 6 étapes, 4 au-delà ; la carte
@@ -124,7 +158,27 @@ export default function DerouleOffre({
   const tuiles = n % colonnes !== 0;
   return (
     <section style={SECTION}>
-      <div style={LARGEUR}>
+      <div className={styles.blocPliablePartage} style={LARGEUR}>
+        {/* SE REPLIE AU TÉLÉPHONE, motif « Blocs communs (pliables) » de la
+            maquette mobile. Ce bloc est servi par les gabarits offre, ville,
+            spécialité, domaine et secteur : le replier ici les sert tous.
+            Mesure du 14/10 à 390 px sur le gabarit 06 : 1 811 px déplié.
+            LA BASCULE PORTE UNE ÉTIQUETTE, PAS LE TITRE : le surtitre et le
+            `<h2>` de la capture restent dans leur carte d'en-tête, première
+            cellule de la grille. Au-dessus de 880 px la bascule entière est
+            retirée, elle ne laisse donc aucun arrêt de tabulation muet. Le
+            résumé suit la règle de la maquette mobile : les intitulés des
+            étapes joints par « · », jamais une phrase rédigée. */}
+        <SectionPliableMobile
+          toujoursOuvert={toujoursOuvert}
+          enTete={
+            <span data-mobile-seulement="" className={styles.etiquettePli}>
+              <span style={ETIQUETTE_SURTITRE}>Notre méthode</span>
+              <span style={ETIQUETTE_TITRE}>{titre}</span>
+            </span>
+          }
+          resume={resumeDe(section.etapes.map((etape) => etape.titre))}
+        >
         <div
           className="mg-rmulti"
           style={{
@@ -171,7 +225,23 @@ export default function DerouleOffre({
                   étapes
                 </span>
               </span>
-              <a href="#besoin" className={styles.boutonPrincipal} style={BOUTON}>
+              {/* Deux exemplaires, une ancre par largeur : sous 881 px le
+                  panneau `#besoin` du héros est masqué (héros compact de la
+                  maquette mobile v2), le jumeau mobile vise donc `#mgx-form`,
+                  l'appel final. Voir `.bureauSeulement` du module CSS. */}
+              <a
+                href="#besoin"
+                className={`${styles.boutonPrincipal} ${styles.bureauSeulement}`}
+                style={BOUTON}
+              >
+                Démarrer par l’audit
+              </a>
+              <a
+                href="#mgx-form"
+                data-mobile-seulement=""
+                className={styles.boutonPrincipal}
+                style={BOUTON}
+              >
                 Démarrer par l’audit
               </a>
             </div>
@@ -217,6 +287,7 @@ export default function DerouleOffre({
             </div>
           ))}
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

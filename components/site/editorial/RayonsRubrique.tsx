@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Fragment, useState, type CSSProperties } from "react";
+import { Fragment, useState, type CSSProperties, type ReactNode } from "react";
 
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
 import type { CarteCatalogue, VueRubrique } from "@/types/editorial";
 
@@ -75,7 +76,30 @@ function Filtre({
   );
 }
 
-export default function RayonsRubrique({ titre, vue }: { titre: string; vue: VueRubrique }) {
+/* L'étiquette de la bascule du catalogue, téléphone seulement : même échelle
+   que le `<h2>` mobile qu'elle double (motif des étiquettes du dépôt). */
+const ETIQUETTE_CATALOGUE: CSSProperties = {
+  display: "block",
+  font: "600 22px/1.25 var(--ft)",
+  letterSpacing: "-.03em",
+  color: "var(--ink)",
+};
+
+export default function RayonsRubrique({
+  titre,
+  vue,
+  arianeMobile,
+}: {
+  titre: string;
+  vue: VueRubrique;
+  /**
+   * La rangée du fil d'Ariane du TÉLÉPHONE (`FilArianeVue`), rendue par le
+   * parent SERVEUR : l'importer ici l'embarquerait dans le paquet client
+   * avec tout le module `FilAriane.tsx`. Le nœud arrive tout rendu, la
+   * frontière reste propre.
+   */
+  arianeMobile?: ReactNode;
+}) {
   const [rayon, setRayon] = useState(vue.rayon);
   const [recherche, setRecherche] = useState("");
 
@@ -96,8 +120,14 @@ export default function RayonsRubrique({ titre, vue }: { titre: string; vue: Vue
         data-screen-label="Ressources · héros"
         style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 40px 0" }}
       >
+        {/* Au téléphone, la rangée du site remplace la rangée de la capture :
+            la seconde s'efface sous 881 px (`.arianeBureau`), la première
+            n'existe que là (`data-mobile-seulement`). Même texte des deux
+            côtés, aucun pixel ne bouge sur bureau. */}
+        {arianeMobile}
         <nav
           aria-label="Fil d'Ariane"
+          className={styles.arianeBureau}
           style={{
             display: "flex",
             alignItems: "center",
@@ -283,6 +313,30 @@ export default function RayonsRubrique({ titre, vue }: { titre: string; vue: Vue
         data-screen-label="Ressources · rayons"
         style={{ maxWidth: 1200, margin: "0 auto", padding: "44px 40px 0" }}
       >
+        {/* LE CATALOGUE SE REPLIE AU TÉLÉPHONE, et c'est la maquette mobile
+            v2 qui le dit : son gabarit 11 ne déroule pas cette grille, il
+            sert le maillage en pastilles (« Tous les contenus », boîte haute
+            du dc.html) que `Rubrique.tsx` monte juste après ce composant.
+            Mesure du 14/10 : 2 à 15 cartes toujours ouvertes par page,
+            gabarit 2,3 à 3,1 fois plus haut que la maquette. REPLIER, JAMAIS
+            RETIRER : la grille entière reste dans le DOM, repliée sous une
+            bascule dont le titre est le nom du rayon (`vue.court`, la
+            pastille de la capture). Le `<h2>` qu'elle double n'existe que
+            sous 881 px, comme l'étiquette : la capture de bureau n'a aucun
+            titre ici, et sur bureau la bascule n'existe pas du tout
+            (`.corpsRubrique`, module CSS). La recherche du héros, elle,
+            reste hors du pli. */}
+        <SectionPliableMobile
+          enTete={
+            <span data-mobile-seulement="" className={styles.etiquettePli}>
+              <span style={ETIQUETTE_CATALOGUE}>{vue.court}</span>
+            </span>
+          }
+          resume={`${liste.length} ressources`}
+        >
+        <h2 data-mobile-seulement="" style={{ ...ETIQUETTE_CATALOGUE, margin: "0 0 14px" }}>
+          {vue.court}
+        </h2>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 26 }}>
           {vue.categories.map((c) => (
             <Filtre
@@ -473,6 +527,7 @@ export default function RayonsRubrique({ titre, vue }: { titre: string; vue: Vue
             Aucune ressource ne correspond à votre recherche.
           </div>
         ) : null}
+        </SectionPliableMobile>
       </section>
     </>
   );

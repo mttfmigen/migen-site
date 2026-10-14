@@ -3,6 +3,7 @@ import type { CSSProperties } from "react";
 import { LARGEUR, SECTION, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import { coupePunchline, numerote } from "@/components/site/offre/texte-offre";
+import stylesOffre from "@/components/site/offre/PageOffre.module.css";
 import type { SectionProbleme } from "@/types/contenu";
 
 /**
@@ -98,34 +99,47 @@ function colonnes(n: number): number {
 }
 
 /**
- * CE DESSIN-CI NE SE REPLIE PAS AU TÉLÉPHONE, et ce n'est pas un oubli.
+ * REPLIÉ AU TÉLÉPHONE DEPUIS LE 14/10, par le motif à ÉTIQUETTE de
+ * `offre/PointsOffre.tsx` (posé le 12/10, donc APRÈS le verdict d'époque qui
+ * laissait ce dessin déplié : ses trois issues pesées n'incluaient pas
+ * celle-ci). Il pèse 1546 px à 390 px sur `/implantations/lyon/`, sur 35
+ * pages : c'était le plus lourd des écrans encore dépliés du gabarit.
  *
- * Il pèse 1546 px à 390 px sur `/implantations/lyon/`, sur 35 pages : c'est le
- * plus lourd des écrans encore dépliés du gabarit. Mais SON H2 VIT DANS UNE
- * GRILLE : l'en-tête est une grille `1.1fr .9fr` (relevé tpl 439 de
- * `implantations--lyon.html`), le sur-titre et le H2 dans la première cellule,
- * la suite de la punchline dans la seconde. Le bloc repliable porte son
- * en-tête dans un `<summary>`, qui est une boîte flex : en sortir le H2 pour
- * l'y mettre démonterait la grille, et les deux colonnes de bureau de 35
- * captures passeraient l'une sous l'autre.
+ * SON H2 VIT DANS UNE GRILLE (`1.1fr .9fr`, relevé tpl 439 de
+ * `implantations--lyon.html`) : il y RESTE, à sa place et à sa taille de
+ * capture. La bascule porte une ÉTIQUETTE (`stylesOffre.etiquettePli`) qui
+ * répète le sur-titre et le H2, n'existe que sous 880 px, et s'efface une
+ * fois le bloc ouvert. Au-dessus de 880 px la bascule entière est retirée
+ * (`stylesOffre.blocPliablePartage`) : les deux colonnes de bureau des 35
+ * captures ne bougent pas d'un pixel.
  *
- * TROIS ISSUES ONT ÉTÉ PESÉES, aucune ne tient :
- *  · mettre la grille ENTIÈRE dans le `<summary>` garde le dessin, mais met
- *    toute la suite de la punchline dans la bascule d'un bloc replié, là où
- *    la maquette mobile n'y met qu'un sur-titre et un titre ;
- *  · ne replier que les cartes laisse un en-tête orphelin sans bascule ;
- *  · replier seulement sous 880 px demanderait un rendu différent du serveur
- *    et du client, donc une erreur d'hydratation.
- *
- * Le panneau sombre, lui, EMPILE son en-tête : c'est pourquoi il est replié,
- * plus bas dans ce fichier. Même donnée, deux dessins, deux verdicts.
- * `offre/DerouleOffre.tsx` est écarté pour exactement la même raison.
+ * PAS DE H2, PAS DE REPLI, même règle que le panneau sombre plus bas :
+ * `problemeSansTitre` (Vesoul, en rangée) rend le bloc déplié plutôt qu'une
+ * bascule sans titre lisible, que `scripts/verifie-blocs-pliables.mjs`
+ * refuse à juste titre.
  */
+
+/** L'étiquette de la bascule mobile, mêmes valeurs que `PointsOffre.tsx`. */
+const ETIQUETTE_SURTITRE: CSSProperties = {
+  display: "block",
+  font: "600 11px var(--fb)",
+  letterSpacing: ".14em",
+  textTransform: "uppercase",
+  color: "var(--acc)",
+  marginBottom: 6,
+};
+
+/** Le libellé de la bascule, à l'échelle des H2 du gabarit en largeur mobile. */
+const ETIQUETTE_TITRE: CSSProperties = {
+  display: "block",
+  font: "600 calc(clamp(22px,2.4vw,30px) * var(--ts))/1.15 var(--ft)",
+  letterSpacing: "-.035em",
+  color: "var(--ink)",
+};
 export default function ProblemeCartes({ section, sansTitre }: { section: SectionProbleme; sansTitre?: boolean }) {
   const { titre, suite } = decoupe(section, sansTitre);
-  return (
-    <section data-screen-label="03 Problème" style={SECTION}>
-      <div style={LARGEUR}>
+  const corps = (
+    <>
         <div className="mg-r2" style={ENTETE}>
           <div>
             <div style={{ ...SURTITRE, marginBottom: 18 }}>Votre problématique</div>
@@ -149,6 +163,26 @@ export default function ProblemeCartes({ section, sansTitre }: { section: Sectio
             </div>
           ))}
         </div>
+    </>
+  );
+  return (
+    <section data-screen-label="03 Problème" style={SECTION}>
+      <div className={stylesOffre.blocPliablePartage} style={LARGEUR}>
+        {titre ? (
+          <SectionPliableMobile
+            enTete={
+              <span data-mobile-seulement="" className={stylesOffre.etiquettePli}>
+                <span style={ETIQUETTE_SURTITRE}>Votre problématique</span>
+                <span style={ETIQUETTE_TITRE}>{titre}</span>
+              </span>
+            }
+            resume={resumePuces(section, titre)}
+          >
+            {corps}
+          </SectionPliableMobile>
+        ) : (
+          corps
+        )}
       </div>
     </section>
   );

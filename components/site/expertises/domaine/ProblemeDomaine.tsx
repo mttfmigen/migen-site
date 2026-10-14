@@ -1,6 +1,10 @@
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 import { LARGEUR, SECTION, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import { EtiquettePliMobile } from "@/components/site/expertises/conversion-mobile";
+import stylesOffre from "@/components/site/offre/PageOffre.module.css";
 import ProblemeOffre from "@/components/site/offre/ProblemeOffre";
 import { coupePunchline, numerote } from "@/components/site/offre/texte-offre";
 import type { SectionProbleme } from "@/types/contenu";
@@ -92,11 +96,54 @@ function colonnes(n: number): number {
   return n % 3 === 0 ? 3 : 4;
 }
 
+/**
+ * LE REPLI MOBILE DES TROIS DESSINS, motif « Blocs communs (pliables) » de la
+ * maquette mobile v2, recopié de `offre/PointsOffre.tsx` : l'étiquette
+ * n'existe que sous 881 px, la bascule entière est retirée du bureau par
+ * `blocPliablePartage`, le surtitre et le `<h2>` de la capture restent dans
+ * leur rangée. Le résumé suit la règle de `resume-de-section.ts` : les
+ * intitulés du bloc, repli `accroche ?? texte`, jamais une phrase rédigée.
+ */
+function PliProbleme({
+  section,
+  pleinePage = false,
+  children,
+}: {
+  section: SectionProbleme;
+  /** Le bloc enveloppe une SECTION pleine largeur : la bascule prend alors la
+      gouttière mobile de la maquette (`.pliPleinePage`, 18 px sous 881 px). */
+  pleinePage?: boolean;
+  children: ReactNode;
+}) {
+  const { titre } = coupePunchline(section.punchline);
+  return (
+    <div
+      className={
+        pleinePage
+          ? `${stylesOffre.blocPliablePartage} ${styles.pliPleinePage}`
+          : stylesOffre.blocPliablePartage
+      }
+    >
+      <SectionPliableMobile
+        enTete={
+          <EtiquettePliMobile surtitre="Votre problématique" titre={titre} />
+        }
+        resume={resumeDe(
+          section.puces.map((puce) => puce.accroche ?? puce.texte),
+        )}
+      >
+        {children}
+      </SectionPliableMobile>
+    </div>
+  );
+}
+
 function Rangee({ section }: { section: SectionProbleme }) {
   const { titre, suite } = coupePunchline(section.punchline);
   return (
     <section style={SECTION}>
       <div style={LARGEUR}>
+        <PliProbleme section={section}>
         <div className="mg-r2" style={ENTETE_RANGEE}>
           <div>
             <div style={{ ...SURTITRE, marginBottom: 18 }}>
@@ -124,6 +171,7 @@ function Rangee({ section }: { section: SectionProbleme }) {
             </div>
           ))}
         </div>
+        </PliProbleme>
       </div>
     </section>
   );
@@ -205,6 +253,7 @@ function Sombre({ section }: { section: SectionProbleme }) {
   return (
     <section style={SECTION}>
       <div style={LARGEUR}>
+        <PliProbleme section={section}>
         <div className={styles.panneauProbleme} style={PANNEAU}>
           <div aria-hidden="true" style={LUEUR} />
           <div style={{ position: "relative" }}>
@@ -231,6 +280,7 @@ function Sombre({ section }: { section: SectionProbleme }) {
             </div>
           </div>
         </div>
+        </PliProbleme>
       </div>
     </section>
   );
@@ -243,5 +293,14 @@ export default function ProblemeDomaine({
 }: ProprietesProblemeDomaine) {
   if (section.variante === "rangee") return <Rangee section={section} />;
   if (section.variante === "panneau-sombre") return <Sombre section={section} />;
-  return <ProblemeOffre section={section} altPhoto={altPhoto} photo={photo} />;
+  /* Le dessin « colonne » reste délégué à `ProblemeOffre`, INCHANGÉ ; le
+     repli, lui, est posé ICI (le composant est partagé hors du périmètre de
+     ce gabarit) : la section entière de `ProblemeOffre`, en-tête compris,
+     vit sous la bascule, exactement comme les blocs partagés de
+     `PointsOffre`. */
+  return (
+    <PliProbleme section={section} pleinePage>
+      <ProblemeOffre section={section} altPhoto={altPhoto} photo={photo} />
+    </PliProbleme>
+  );
 }

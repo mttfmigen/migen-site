@@ -1,6 +1,11 @@
 import type { CSSProperties } from "react";
 
 import { LARGEUR, VERRE } from "@/components/site/blocs/habillage";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import { EtiquettePliMobile } from "@/components/site/expertises/conversion-mobile";
+import tableauMobile from "@/components/site/expertises/tableau-mobile.module.css";
+import stylesOffre from "@/components/site/offre/PageOffre.module.css";
 import type { BlocComplementDomaine } from "@/types/domaine";
 
 /**
@@ -117,7 +122,21 @@ export default function ComplementsDomaine({
 
   return (
     <section style={{ padding: "48px 0 0" }}>
-      <div style={LARGEUR}>
+      {/* SE REPLIE AU TÉLÉPHONE (G1), motif « Blocs communs (pliables) »
+          recopié de `offre/PointsOffre.tsx`. L'étiquette « La réponse
+          directe » est le H2 du corpus d'où viennent ces blocs : mesuré le
+          14/10, les 7 fiches qui portent `complementTypes` (le hub de
+          rubrique et les six types de maintenance) l'écrivent en première
+          section ; rien n'est rédigé ici. Le résumé joint les intitulés des
+          blocs, repli `titre ?? texte` (règle de `resume-de-section.ts`).
+          `blocPliablePartage` retire la bascule du bureau. */}
+      <div className={stylesOffre.blocPliablePartage} style={LARGEUR}>
+        <SectionPliableMobile
+          enTete={<EtiquettePliMobile titre="La réponse directe" />}
+          resume={resumeDe(
+            retenus.map((bloc) => bloc.titre ?? bloc.texte),
+          )}
+        >
         <div style={CARTE}>
           {retenus.map((bloc, rang) => (
             <div key={rang} style={{ minWidth: 0, paddingBottom: 18 }}>
@@ -149,7 +168,12 @@ export default function ComplementsDomaine({
                 </div>
               ) : null}
               {bloc.tableau?.lignes.length ? (
+                /* Sous 881 px, une carte par ligne (M5) : les règles vivent
+                   dans `../tableau-mobile.module.css`, l'attribut est la
+                   prise de mesure de la porte. Au-dessus, rien ne change. */
                 <div
+                  className={tableauMobile.cadre}
+                  data-tableau-en-cartes=""
                   style={CADRE_TABLEAU}
                   tabIndex={0}
                   role="region"
@@ -188,6 +212,7 @@ export default function ComplementsDomaine({
             </div>
           ))}
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

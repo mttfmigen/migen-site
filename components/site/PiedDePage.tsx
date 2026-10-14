@@ -2,6 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 
+import SectionPliableMobile, {
+  ENTETE_DANS_BASCULE,
+} from "./blocs/SectionPliableMobile";
+import { resumeDe } from "./blocs/resume-de-section";
 import styles from "./PiedDePage.module.css";
 
 /*
@@ -24,6 +28,17 @@ import styles from "./PiedDePage.module.css";
  * une cinquantaine de liens déclencherait autant de requêtes sur chaque page du site,
  * contre le principe numéro un du projet. La navigation côté client, elle, est
  * conservée.
+ *
+ * SUR TÉLÉPHONE, LES COLONNES SE REPLIENT, ET RIEN N'EST RETIRÉ. Mesuré le
+ * 14/10 à 390 px : 2 094 px de pied de page sous chaque page, là où la
+ * maquette mobile v2 en dessine ~376. La règle numéro un de cette maquette est
+ * « replier, jamais retirer » (le texte reste dans le DOM, Google lit le
+ * `textContent`) : chaque colonne passe donc par `SectionPliableMobile`, le
+ * `<details>` natif du projet, rendu OUVERT par le serveur et replié au
+ * chargement sous 881 px seulement. Au-dessus de 881 px, rien ne change :
+ * mêmes libellés, même ordre, mêmes interlignes, la bascule y est inerte et
+ * son chevron masqué. Les 55 liens restent servis à toutes les largeurs,
+ * `verification-pied-de-page.tsx` les recense et sait tomber s'il en manque un.
  */
 
 interface Lien {
@@ -186,21 +201,10 @@ const styleCadre: CSSProperties = {
   padding: "0 40px",
 };
 
-const styleTitreColonne: CSSProperties = {
-  font: "600 11px var(--fb)",
-  letterSpacing: ".14em",
-  textTransform: "uppercase",
-  color: "rgba(255,255,255,.4)",
-  marginBottom: 16,
-};
-
-const styleTitreMaillage: CSSProperties = {
-  font: "600 10.5px var(--fb)",
-  letterSpacing: ".14em",
-  textTransform: "uppercase",
-  color: "rgba(255,255,255,.32)",
-  marginBottom: 12,
-};
+/* Les titres de colonne vivent dans le module CSS (`.titreColonne`,
+   `.titreMaillage`) et non plus en style en ligne : sous 881 px leur marge
+   basse doit tomber (le corps du `<details>` porte la sienne), et un style en
+   ligne gagnerait contre cette règle. Valeurs inchangées. */
 
 const styleBarreBasse: CSSProperties = {
   paddingTop: 26,
@@ -392,19 +396,39 @@ export default function PiedDePage({
           </div>
 
           {COLONNES.map((colonne) => (
-            <nav key={colonne.titre} aria-label={colonne.titre}>
-              <div style={styleTitreColonne}>{colonne.titre}</div>
-              <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 9 }}>
-                {colonne.liens.map((lien) => (
-                  <LienSite
-                    key={lien.href + lien.libelle}
-                    href={lien.href}
-                    className={lien.accent ? styles.lienPlan : styles.lienNav}
+            <nav
+              key={colonne.titre}
+              aria-label={colonne.titre}
+              className={styles.colonnePliable}
+            >
+              {/* Le titre existant passe en `enTete` : la bascule ne fabrique
+                  pas de second titre, et `data-en-tete-fourni` retire filet et
+                  marges du dépliant. Le résumé est CONSTRUIT depuis les
+                  libellés, comme la maquette construit les siens : une phrase
+                  écrite serait une donnée inventée. */}
+              <SectionPliableMobile
+                enTete={
+                  <div
+                    className={styles.titreColonne}
+                    style={ENTETE_DANS_BASCULE}
                   >
-                    {lien.libelle}
-                  </LienSite>
-                ))}
-              </div>
+                    {colonne.titre}
+                  </div>
+                }
+                resume={resumeDe(colonne.liens.map((lien) => lien.libelle))}
+              >
+                <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 9 }}>
+                  {colonne.liens.map((lien) => (
+                    <LienSite
+                      key={lien.href + lien.libelle}
+                      href={lien.href}
+                      className={lien.accent ? styles.lienPlan : styles.lienNav}
+                    >
+                      {lien.libelle}
+                    </LienSite>
+                  ))}
+                </div>
+              </SectionPliableMobile>
             </nav>
           ))}
         </div>
@@ -421,8 +445,17 @@ export default function PiedDePage({
         >
           {MAILLAGE.map((groupe) => {
             const contenu = (
-              <>
-                <div style={styleTitreMaillage}>{groupe.titre}</div>
+              <SectionPliableMobile
+                enTete={
+                  <div
+                    className={styles.titreMaillage}
+                    style={ENTETE_DANS_BASCULE}
+                  >
+                    {groupe.titre}
+                  </div>
+                }
+                resume={resumeDe(groupe.entrees.map((entree) => entree.libelle))}
+              >
                 <div style={{ font: "400 13px/1.9 var(--fb)", color: "rgba(255,255,255,.44)" }}>
                   {groupe.entrees.map((entree, index) => (
                     <span key={entree.libelle}>
@@ -437,16 +470,22 @@ export default function PiedDePage({
                     </span>
                   ))}
                 </div>
-              </>
+              </SectionPliableMobile>
             );
             /* `nav` annonce un ensemble de liens : une colonne qui n'en porte
                aucun reste un bloc de texte, comme dans la maquette. */
             return groupe.entrees.some((entree) => entree.href) ? (
-              <nav key={groupe.titre} aria-label={groupe.titre}>
+              <nav
+                key={groupe.titre}
+                aria-label={groupe.titre}
+                className={styles.colonnePliable}
+              >
                 {contenu}
               </nav>
             ) : (
-              <div key={groupe.titre}>{contenu}</div>
+              <div key={groupe.titre} className={styles.colonnePliable}>
+                {contenu}
+              </div>
             );
           })}
         </div>

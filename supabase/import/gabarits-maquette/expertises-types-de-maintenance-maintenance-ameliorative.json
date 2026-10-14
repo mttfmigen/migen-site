@@ -110,6 +110,11 @@
             },
             "benefice": "Le cycle de vie repart pour plusieurs années, au chiffrage d'une reprise et non d'un investissement neuf."
           }
+        ],
+        "prose": [
+          {
+            "texte": "Matériel obsolète, pièces introuvables, notice perdue : la réponse tenable devient le [retrofit machine industrielle](/offres/retrofit/), et la [mise en conformité machine](/offres/retrofit/mise-en-conformite-machine/) quand la sécurité est en jeu. Pour industrialiser la démarche sur tout un parc, l'abonnement [Zéro arrêt](/offres/zero-arret/) couvre les programmes suivis, l'analyse des causes et les améliorations mesurées."
+          }
         ]
       },
       {
@@ -226,7 +231,7 @@
           },
           {
             "question": "Faut-il un contrat pour lancer une amélioration ?",
-            "reponse": "Non. Une action isolée se traite en intervention ponctuelle, sur devis. L'abonnement Zéro arrêt se discute quand le même équipement revient plusieurs fois dans l'année et que le budget n'est plus pilotable."
+            "reponse": "Non. Une action isolée se traite en intervention ponctuelle, sur devis. L'abonnement [Zéro arrêt](/offres/zero-arret/) se discute quand le même équipement revient plusieurs fois dans l'année et que le budget n'est plus pilotable."
           },
           {
             "question": "Pouvez-vous reprendre un parc déjà suivi par un autre prestataire ?",

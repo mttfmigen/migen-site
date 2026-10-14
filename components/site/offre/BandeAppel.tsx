@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 
 import { LARGEUR } from "@/components/site/blocs/habillage";
 
+import { TELEPHONE_AFFICHE, TELEPHONE_HREF } from "./telephone-maquette";
 import styles from "./PageOffre.module.css";
 
 /**
@@ -85,6 +86,20 @@ const BOUTON: CSSProperties = {
   boxShadow: "0 12px 30px -12px rgba(255,124,60,.9)",
 };
 
+/* Le lien téléphone mobile, pastille blanche de la maquette mobile v2
+   (dc.html L111). `data-mobile-seulement` : jamais peint au-dessus de 880 px. */
+const BOUTON_TEL: CSSProperties = {
+  display: "inline-flex",
+  alignItems: "center",
+  padding: "14px 18px",
+  borderRadius: 999,
+  background: "#fff",
+  border: "1px solid rgba(28,27,25,.1)",
+  color: "var(--ink)",
+  font: "600 13.5px var(--fb)",
+  whiteSpace: "nowrap",
+};
+
 export default function BandeAppel({
   mention,
   bouton = "Parler à un chargé d’affaires",
@@ -158,8 +173,36 @@ export default function BandeAppel({
               ...(mention ? null : { marginInline: "auto" }),
             }}
           >
-            <a href="#besoin" className={styles.boutonPrincipal} style={BOUTON}>
+            {/* DEUX EXEMPLAIRES DU MÊME BOUTON, UNE ANCRE PAR LARGEUR. Sous
+                881 px le panneau `#besoin` du héros est masqué (héros compact
+                de la maquette mobile v2) : l'ancre ne défilerait nulle part.
+                Le jumeau mobile vise `#mgx-form`, l'appel final, comme la
+                maquette envoie « Être rappelé » vers son formulaire de bas de
+                page (dc.html L437). Même libellé, même dessin. */}
+            <a
+              href="#besoin"
+              className={`${styles.boutonPrincipal} ${styles.bureauSeulement}`}
+              style={BOUTON}
+            >
               {bouton}
+            </a>
+            <a
+              href="#mgx-form"
+              data-mobile-seulement=""
+              className={styles.boutonPrincipal}
+              style={BOUTON}
+            >
+              {bouton}
+            </a>
+            {/* LE TÉLÉPHONE REVIENT SUR TÉLÉPHONE, là où la maquette mobile
+                l'écrit : son écran d'appel entre les sections porte le lien
+                `tel:0478337205` à côté du bouton (dc.html L127, « Appeler »),
+                et son héros écrit le numéro en toutes lettres (L493). Le
+                numéro est celui que le corpus écrit 753 fois
+                (`mobile-v2-data.js`). Au-dessus de 880 px, rien : la capture
+                de bureau ne le rend pas dans cette bande. */}
+            <a data-mobile-seulement="" href={TELEPHONE_HREF} style={BOUTON_TEL}>
+              {TELEPHONE_AFFICHE}
             </a>
           </div>
         </div>

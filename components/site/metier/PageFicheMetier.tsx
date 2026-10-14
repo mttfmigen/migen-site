@@ -3,13 +3,24 @@ import type { CSSProperties, ReactNode } from "react";
 
 import TexteRiche from "@/components/site/blocs/TexteRiche";
 import { VERRE } from "@/components/site/blocs/habillage";
-import type { ContenuFicheMetier } from "@/types/metier";
+import type { ContenuFicheMetier, SectionFiche } from "@/types/metier";
 
 import styles from "./FicheMetier.module.css";
 import PostulerMetier from "./PostulerMetier";
 import SectionFicheMetier, { BoutonPostuler } from "./SectionsFicheMetier";
 import { altPhoto } from "@/lib/descriptions-photos";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import Preuves from "@/components/site/blocs/Preuves";
+import PastillesCocon from "@/components/site/cocon/PastillesCocon";
+import {
+  courtLibelle,
+  enfantsDe,
+} from "@/components/site/cocon/maillage-mobile";
+import FilArianeMobile from "@/components/site/preuve/FilArianeMobile";
+import {
+  minutesDeLecture,
+  sectionRealisations,
+} from "@/components/site/preuve/donnees-mobiles";
 
 /**
  * Gabarit 07 « Métier et carrière », 13 pages `/carriere/<metier>/`.
@@ -51,6 +62,55 @@ export interface ProprietesPageFicheMetier {
   contenu: ContenuFicheMetier;
   /** Fil d'Ariane, fourni par la page : composant serveur qui lit la base. */
   filAriane?: ReactNode;
+  /**
+   * Le chemin de la page (`pages.path`, slash final), pour la couche MOBILE de
+   * la maquette v2 : fil d'Ariane, badge de lecture, puces du héros vers les
+   * pages filles (dc.html L487), « Nos réalisations » et pastilles du cocon,
+   * tous dérivés de l'index du corpus et de `cas-lies.json`. OPTIONNEL : sans
+   * lui, rien de mobile ne s'ajoute et le rendu reste celui d'avant, ce qui
+   * garde `verification-metier.tsx` et ses captures inchangés.
+   */
+  chemin?: string;
+}
+
+/**
+ * LES PUCES DU HÉROS de la maquette mobile, dc.html L110 et L487 : le gabarit
+ * 07 pose ses pages FILLES en pastilles sous le chapeau (`chips = kidsOf(u)`),
+ * et c'est pour cela que `PastillesCocon` ne lui rend jamais de boîte
+ * d'enfants (sa cascade L505 l'exclut). Libellés et cibles dérivés de l'index
+ * (`enfantsDe`, `courtLibelle`), rien n'est rédigé. Dessin verbatim de L110.
+ * Mobile seulement : la capture de bureau n'en porte pas.
+ */
+const PUCES_HERO_RANGEE: CSSProperties = {
+  display: "flex",
+  flexWrap: "wrap",
+  gap: 6,
+  marginTop: 14,
+};
+const PUCE_HERO: CSSProperties = {
+  display: "inline-flex",
+  alignItems: "center",
+  minHeight: 36,
+  padding: "0 13px",
+  borderRadius: 999,
+  background: "#fff",
+  border: "1px solid rgba(28,27,25,.1)",
+  font: "500 13px var(--fb)",
+  color: "#1c1b19",
+};
+
+function PucesHeroMetier({ chemin }: { chemin: string }) {
+  const enfants = enfantsDe(chemin);
+  if (enfants.length === 0) return null;
+  return (
+    <div data-mobile-seulement="" data-puces-metier="" style={PUCES_HERO_RANGEE}>
+      {enfants.map((enfant) => (
+        <a key={enfant.url} href={enfant.url} style={PUCE_HERO}>
+          {courtLibelle(enfant)}
+        </a>
+      ))}
+    </div>
+  );
 }
 
 /**
@@ -94,8 +154,63 @@ export default function PageFicheMetier({
   titre,
   contenu,
   filAriane,
+  chemin,
 }: ProprietesPageFicheMetier) {
   const heros = contenu.heros;
+
+  /* La couche MOBILE de la maquette v2, dérivée du chemin (voir
+     `preuve/donnees-mobiles.ts`). « Nos réalisations » est le titre verbatim
+     de la maquette hors étude de cas (dc.html L469), et les cartes viennent de
+     `cas-lies.json` (quatre par fiche métier, mesuré le 14/10). */
+  const minutes = chemin ? minutesDeLecture(chemin) : undefined;
+  const realisations = chemin
+    ? sectionRealisations(chemin, "Nos réalisations")
+    : null;
+  /* dc.html L469 : la maquette pousse ses réalisations juste AVANT la section
+     de questions ; L482 : après tout le corpus quand la page n'en a pas. */
+  const rangFaq = contenu.sections.findIndex((s) => s.type === "faq");
+  const rangRealisations = rangFaq >= 0 ? rangFaq : contenu.sections.length;
+  const blocRealisations = realisations ? (
+    <div data-mobile-seulement="" data-realisations-mobiles="">
+      <Preuves section={realisations} />
+    </div>
+  ) : null;
+
+  /** Une section du corpus, repliée au téléphone quand elle sait se nommer. */
+  function rendSection(section: SectionFiche, i: number): ReactNode {
+    if (section.type === "postuler")
+      return <PostulerMetier key={`postuler-${i}`} />;
+    // L'index suffit comme clé : l'ordre du tableau EST le gabarit.
+    const cle = `${section.type}-${i}`;
+    /* UN TITRE NON VIDE, et pas seulement la présence de la clé.
+       Première version : `"titre" in section` suffisait, et des sections
+       au titre vide donnaient une bascule muette. La porte des blocs
+       repliables l'a refusé, 120 fois, avant déploiement. */
+    const titrable =
+      "titre" in section &&
+      "surtitre" in section &&
+      typeof section.titre === "string" &&
+      section.titre.trim() !== "" &&
+      typeof section.surtitre === "string" &&
+      section.surtitre.trim() !== "";
+    if (i === 0 || !titrable) {
+      return <SectionFicheMetier key={cle} section={section} />;
+    }
+    return (
+      <SectionPliableMobile
+        key={cle}
+        enTete={
+          <span data-mobile-seulement="" className={styles.etiquettePli}>
+            <span style={ETIQUETTE_SURTITRE}>{section.surtitre}</span>
+            <span style={ETIQUETTE_TITRE}>{section.titre}</span>
+          </span>
+        }
+      >
+        <SectionFicheMetier section={section} />
+      </SectionPliableMobile>
+    );
+  }
+
   return (
     <div className="mg-site" style={RACINE_CARRIERE}>
       <main className={styles.corpsMetier} style={{ paddingTop: 62 }}>
@@ -103,6 +218,9 @@ export default function PageFicheMetier({
 
         {/* ---------------------------------------------------------- héros */}
         <section style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 40px 0" }}>
+          {/* Le fil d'Ariane de la maquette MOBILE (dc.html L104), sous 881 px
+              seulement : les captures de bureau de ce gabarit n'en portent pas. */}
+          {chemin ? <FilArianeMobile chemin={chemin} /> : null}
           <div
             className={styles.deuxColonnes}
             style={{
@@ -138,6 +256,14 @@ export default function PageFicheMetier({
                     }}
                   />
                   {heros.pastille}
+                  {/* Le badge de lecture de la maquette MOBILE (dc.html L492 :
+                      « Fiche métier · N min de lecture »), mobile seulement :
+                      la pastille de la capture de bureau reste mot pour mot.
+                      Pas d'espace à écrire : la pastille est une boîte flex à
+                      `gap: 8`, l'écart vient d'elle. */}
+                  {minutes ? (
+                    <span data-mobile-seulement="">· {minutes}</span>
+                  ) : null}
                 </span>
               ) : null}
               <h1
@@ -180,6 +306,10 @@ export default function PageFicheMetier({
                   <TexteRiche texte={texte} />
                 </p>
               ))}
+              {/* Les puces vers les pages filles (salaire, compétences…),
+                  maquette mobile dc.html L110 et L487, sous le chapeau et
+                  avant les boutons. Mobile seulement. */}
+              {chemin ? <PucesHeroMetier chemin={chemin} /> : null}
               <div
                 style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 22 }}
               >
@@ -282,38 +412,22 @@ export default function PageFicheMetier({
 
             Une section sans titre, comme les chiffres, n'est pas repliée : il
             n'y aurait rien à mettre sur la bascule. */}
-        {contenu.sections.map((section, i) => {
-          if (section.type === "postuler") return <PostulerMetier key={`postuler-${i}`} />;
-          // L'index suffit comme clé : l'ordre du tableau EST le gabarit.
-          const cle = `${section.type}-${i}`;
-          /* UN TITRE NON VIDE, et pas seulement la présence de la clé.
-             Première version : `"titre" in section` suffisait, et des sections
-             au titre vide donnaient une bascule muette. La porte des blocs
-             repliables l'a refusé, 120 fois, avant déploiement. */
-          const titrable =
-            "titre" in section &&
-            "surtitre" in section &&
-            typeof section.titre === "string" &&
-            section.titre.trim() !== "" &&
-            typeof section.surtitre === "string" &&
-            section.surtitre.trim() !== "";
-          if (i === 0 || !titrable) {
-            return <SectionFicheMetier key={cle} section={section} />;
-          }
-          return (
-            <SectionPliableMobile
-              key={cle}
-              enTete={
-                <span data-mobile-seulement="" className={styles.etiquettePli}>
-                  <span style={ETIQUETTE_SURTITRE}>{section.surtitre}</span>
-                  <span style={ETIQUETTE_TITRE}>{section.titre}</span>
-                </span>
-              }
-            >
-              <SectionFicheMetier section={section} />
-            </SectionPliableMobile>
-          );
-        })}
+        {/* Les sections en deux tranches autour de « Nos réalisations » : la
+            maquette mobile pousse ses cartes de cas AVANT la FAQ (dc.html
+            L469), et le bloc est mobile seulement, si bien qu'au-dessus de
+            880 px la page est exactement la suite de sections d'avant. Les
+            clés gardent le rang ABSOLU du tableau : rien ne se remonte. */}
+        {contenu.sections.slice(0, rangRealisations).map(rendSection)}
+        {blocRealisations}
+        {contenu.sections
+          .slice(rangRealisations)
+          .map((section, i) => rendSection(section, i + rangRealisations))}
+
+        {/* « Dans la même rubrique », les sœurs de la page (dc.html L506 : le
+            gabarit 07 met ses ENFANTS en puces de héros, la boîte du bas porte
+            donc toujours les sœurs). Mobile seulement, porté par
+            PastillesCocon lui-même. */}
+        {chemin ? <PastillesCocon chemin={chemin} variante="soeurs" /> : null}
       </main>
     </div>
   );

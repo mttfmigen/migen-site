@@ -5,6 +5,9 @@ import { LARGEUR, SECTION, SURTITRE, VERRE } from "@/components/site/blocs/habil
 import type { SectionProbleme } from "@/types/contenu";
 
 import { coupePunchline, numerote } from "./texte-offre";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import { resumeDe } from "../blocs/resume-de-section";
+import styles from "./PageOffre.module.css";
 import { cadragePhoto } from "@/lib/cadrage-photos";
 
 /**
@@ -31,6 +34,14 @@ export interface ProprietesProblemeOffre {
    * pilote serait une photo posée au hasard.
    */
   photo?: string | null;
+  /**
+   * Reste déplié au téléphone : la maquette mobile v2 garde la PREMIÈRE
+   * section de contenu de la page ouverte (dc.html L451, `nOpen = 1`, et
+   * L476, `const op = isRef || dI++ < nOpen`). Le problème est la première
+   * section du corpus sur ce gabarit : c'est le gabarit qui le dit, pas ce
+   * bloc, parce que lui seul sait quelles sections la page porte.
+   */
+  toujoursOuvert?: boolean;
 }
 
 /** La photo de la colonne gauche, identifiée sur `offres--residence.png`. */
@@ -139,14 +150,36 @@ const CARTE_SOMBRE: CSSProperties = {
   alignItems: "baseline",
 };
 
-function Sombre({ section }: { section: SectionProbleme }) {
+function Sombre({
+  section,
+  toujoursOuvert = false,
+}: {
+  section: SectionProbleme;
+  toujoursOuvert?: boolean;
+}) {
   const { titre, suite } = coupePunchline(section.punchline);
   return (
     <section data-screen-label="03 Problème" style={SECTION}>
-      <div style={LARGEUR}>
+      <div className={styles.blocPliablePartage} style={LARGEUR}>
         <div className="mg-pad" style={PANNEAU_SOMBRE}>
           <div aria-hidden="true" style={LUEUR} />
           <div style={{ position: "relative" }}>
+            {/* SE REPLIE AU TÉLÉPHONE, même motif que le dessin en colonne
+                plus bas : l'étiquette répète le sur-titre et le H2 du panneau,
+                qui restent à leur place de capture, et n'existe que sous
+                880 px. Le titre de l'étiquette est en blanc : le panneau est
+                anthracite, le `var(--ink)` du motif commun y serait
+                illisible. */}
+            <SectionPliableMobile
+              toujoursOuvert={toujoursOuvert}
+              enTete={
+                <span data-mobile-seulement="" className={styles.etiquettePli}>
+                  <span style={ETIQUETTE_SURTITRE}>Votre problématique</span>
+                  <span style={{ ...ETIQUETTE_TITRE, color: "#fff" }}>{titre}</span>
+                </span>
+              }
+              resume={resumeDe(section.puces.map((puce) => puce.accroche ?? puce.texte))}
+            >
             <div style={{ ...SURTITRE, marginBottom: 16 }}>
               Votre problématique
             </div>
@@ -181,6 +214,7 @@ function Sombre({ section }: { section: SectionProbleme }) {
                 </div>
               ))}
             </div>
+            </SectionPliableMobile>
           </div>
         </div>
       </div>
@@ -222,11 +256,30 @@ const RANGEE_CARTE: CSSProperties = {
   flexDirection: "column",
 };
 
-function Rangee({ section }: { section: SectionProbleme }) {
+function Rangee({
+  section,
+  toujoursOuvert = false,
+}: {
+  section: SectionProbleme;
+  toujoursOuvert?: boolean;
+}) {
   const { titre, suite } = coupePunchline(section.punchline);
   return (
     <section data-screen-label="03 Problème" style={SECTION}>
-      <div style={LARGEUR}>
+      <div className={styles.blocPliablePartage} style={LARGEUR}>
+        {/* SE REPLIE AU TÉLÉPHONE, même motif que le dessin en colonne plus
+            bas : l'étiquette répète le sur-titre et le H2, qui restent dans
+            leur rangée d'en-tête de la capture, et n'existe que sous 880 px. */}
+        <SectionPliableMobile
+          toujoursOuvert={toujoursOuvert}
+          enTete={
+            <span data-mobile-seulement="" className={styles.etiquettePli}>
+              <span style={ETIQUETTE_SURTITRE}>Votre problématique</span>
+              <span style={ETIQUETTE_TITRE}>{titre}</span>
+            </span>
+          }
+          resume={resumeDe(section.puces.map((puce) => puce.accroche ?? puce.texte))}
+        >
         <div className="mg-r2" style={RANGEE_ENTETE}>
           <div>
             <div style={{ ...SURTITRE, marginBottom: 18 }}>
@@ -275,25 +328,50 @@ function Rangee({ section }: { section: SectionProbleme }) {
             </div>
           ))}
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );
 }
 
+/**
+ * L'étiquette de la bascule mobile du dessin EN COLONNE, même motif que
+ * `PointsOffre.tsx` : le sur-titre et le H2 de la capture restent dans leur
+ * colonne collante, à leur place et à leur taille ; l'étiquette répète leur
+ * texte dans la bascule et n'existe que sous 880 px (`styles.etiquettePli`).
+ */
+const ETIQUETTE_SURTITRE: CSSProperties = {
+  display: "block",
+  font: "600 11px var(--fb)",
+  letterSpacing: ".14em",
+  textTransform: "uppercase",
+  color: "var(--acc)",
+  marginBottom: 6,
+};
+
+/** Le libellé de la bascule, à l'échelle des H2 du gabarit en largeur mobile. */
+const ETIQUETTE_TITRE: CSSProperties = {
+  display: "block",
+  font: "600 calc(clamp(22px,2.4vw,30px) * var(--ts))/1.15 var(--ft)",
+  letterSpacing: "-.035em",
+  color: "var(--ink)",
+};
+
 export default function ProblemeOffre({
   section,
   altPhoto,
   photo,
+  toujoursOuvert = false,
 }: ProprietesProblemeOffre) {
-  if (section.variante === "panneau-sombre") return <Sombre section={section} />;
-  if (section.variante === "rangee") return <Rangee section={section} />;
+  if (section.variante === "panneau-sombre")
+    return <Sombre section={section} toujoursOuvert={toujoursOuvert} />;
+  if (section.variante === "rangee")
+    return <Rangee section={section} toujoursOuvert={toujoursOuvert} />;
 
   const { titre, suite } = coupePunchline(section.punchline);
   const source = photo === undefined ? PHOTO : photo;
 
-  return (
-    <section data-screen-label="03 Problème" style={SECTION}>
-      <div style={LARGEUR}>
+  const corps = (
         <div
           className="mg-r2"
           style={{
@@ -346,6 +424,35 @@ export default function ProblemeOffre({
             ))}
           </div>
         </div>
+  );
+
+  return (
+    <section data-screen-label="03 Problème" style={SECTION}>
+      <div className={styles.blocPliablePartage} style={LARGEUR}>
+        {/* SE REPLIE AU TÉLÉPHONE, motif « Blocs communs (pliables) » de la
+            maquette mobile, sur les pages dont le problème garde le dessin en
+            colonne (27 des 66 villes). PAS DE H2, PAS DE REPLI : même règle
+            que `implantation/ProblemeCartes.tsx`, un bloc replié sans titre
+            lisible est refusé par `scripts/verifie-blocs-pliables.mjs`. Le
+            résumé suit la maquette mobile : les intitulés des puces joints
+            par « · », avec le repli `accroche ?? texte` pour qu'une puce sans
+            accroche ne disparaisse pas du compte. */}
+        {titre ? (
+          <SectionPliableMobile
+            toujoursOuvert={toujoursOuvert}
+            enTete={
+              <span data-mobile-seulement="" className={styles.etiquettePli}>
+                <span style={ETIQUETTE_SURTITRE}>Votre problématique</span>
+                <span style={ETIQUETTE_TITRE}>{titre}</span>
+              </span>
+            }
+            resume={resumeDe(section.puces.map((puce) => puce.accroche ?? puce.texte))}
+          >
+            {corps}
+          </SectionPliableMobile>
+        ) : (
+          corps
+        )}
       </div>
     </section>
   );

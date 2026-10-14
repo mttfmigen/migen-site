@@ -1,12 +1,16 @@
 import Link from "next/link";
 import { Fragment, type CSSProperties, type ReactNode } from "react";
 
+import { FilArianeVue } from "@/components/cocon/FilAriane";
 import { FormulaireContact } from "@/components/formulaire/FormulaireContact";
+import Preuves from "@/components/site/blocs/Preuves";
+import PastillesCocon from "@/components/site/cocon/PastillesCocon";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
 import type { VueGuide, BlocGuide } from "@/types/editorial";
 
 import BlocsGuide from "./BlocsGuide";
 import styles from "./PageEditoriale.module.css";
+import { realisationsLiees } from "./realisations-liees-mobiles";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
 /**
@@ -151,15 +155,44 @@ function resumeDeLaSection(blocs: BlocGuide[]): string {
  * fichier doit rester montable depuis un contrôle hors base, exactement la
  * raison déjà écrite pour `filAriane` et `maillage` dans `PageEditoriale`.
  */
+/**
+ * Le format du hub `/ressources/` : le même discriminant que
+ * `PageEditoriale.tsx` (la pastille de la capture), pour séparer le hub
+ * (gabarit « 10 Hub de rubrique ») des deux guides (gabarit « 01 Article et
+ * fiche ») sans champ inventé.
+ */
+const FORMAT_HUB_RESSOURCES = "Ressources";
+
 export default function Guide({
   titre,
   vue,
   bibliotheque,
+  chemin,
 }: {
   titre: string;
   vue: VueGuide;
   bibliotheque?: ReactNode;
+  /**
+   * Le chemin de la page, avec slash final. Il sert aux apports de la
+   * maquette MOBILE v2 (14/10) : pastilles du maillage et réalisations
+   * liées. Absent, ces blocs ne se rendent pas ; le reste ne change pas.
+   */
+  chemin?: string;
 }) {
+  const estHub = vue.format === FORMAT_HUB_RESSOURCES;
+  /* LE NOMBRE DE SECTIONS OUVERTES AU TÉLÉPHONE vient de la maquette mobile
+     v2, et il est ÉCRIT dans son dc.html : `nOpen = g === "01" ? 2 : …`. Les
+     deux guides sont du gabarit 01 : leurs DEUX premières sections restent
+     ouvertes (mesure du 14/10 : une seule l'était, et le gabarit rendait
+     -12 % de hauteur par rapport à la maquette, seul de tous à être trop
+     court). Le hub `/ressources/` est du gabarit 10 : il garde sa règle
+     d'une section ouverte, posée le 12/10, ce lot ne porte pas ce gabarit. */
+  const nOuvertes = estHub ? 1 : 2;
+  /* Les réalisations liées de la maquette mobile, gabarit 01 seulement : le
+     dc.html écarte explicitement `/ressources/` (`g !== "11" && u !==
+     "/ressources/"`) de sa section de réalisations. */
+  const realisations = !estHub ? realisationsLiees(chemin ?? "") : undefined;
+
   return (
     <div className="mg-site">
       {/* `corpsGuide` est la PORTEE des deux regles de bureau des blocs
@@ -167,9 +200,26 @@ export default function Guide({
           selecteur global. Deux autres gabarits partagent ce module CSS. */}
       <main className={styles.corpsGuide} style={{ paddingTop: 96 }}>
         <section style={{ maxWidth: 1200, margin: "0 auto", padding: "56px 40px 0" }}>
+          {/* AU TÉLÉPHONE, LE FIL EST LA RANGÉE DU SITE (`FilArianeVue`),
+              celle que la maquette mobile v2 dessine dans son héros (nav
+              `mv-scroll`) et que le gabarit ressource, même gabarit 01,
+              monte déjà. La rangée de BUREAU ci-dessous, copiée de la
+              capture, ne bouge pas d'un pixel : elle s'efface seulement
+              sous 881 px (`.arianeBureau`), où la capture n'a pas de
+              référence. Le texte est le même dans les deux rangées. */}
+          <div data-mobile-seulement="" style={{ marginBottom: 24 }}>
+            <FilArianeVue
+              etapes={vue.ariane
+                .filter((maillon) => maillon.href !== "/")
+                .map((maillon) => ({
+                  titre: maillon.label,
+                  path: maillon.href ?? null,
+                }))}
+            />
+          </div>
           <nav
             aria-label="Fil d'Ariane"
-            className={styles.ariane}
+            className={`${styles.ariane} ${styles.arianeBureau}`}
             style={{
               display: "flex",
               alignItems: "center",
@@ -311,8 +361,10 @@ export default function Guide({
                   <BlocsGuide blocs={vue.intro} groupe="intro" />
                 </div>
               ) : null}
-              {/* CHAQUE SECTION SE REPLIE AU TELEPHONE SAUF LA PREMIERE, regle
-                  de la maquette mobile : `isOpen = si < 1 || secOpen[...]`.
+              {/* CHAQUE SECTION SE REPLIE AU TELEPHONE SAUF LES PREMIERES,
+                  et leur COMPTE vient de la maquette mobile v2 : `nOpen =
+                  g === "01" ? 2 : …` (voir `nOuvertes` plus haut). Les deux
+                  guides gardent DEUX sections ouvertes, le hub une seule.
                   Mesure du 12/10 : les deux guides etaient les pages les plus
                   longues du site, 36,2 et 25,8 ecrans, sans aucun repli.
                   L'ANCRE `#c<n>` RESTE SUR LA SECTION pour que le sommaire
@@ -354,7 +406,7 @@ export default function Guide({
                 const corps = <BlocsGuide blocs={s.blocs} groupe={`faq-c${i + 1}`} />;
                 return (
                   <section key={s.titre} id={`c${i + 1}`} style={{ scrollMarginTop: 100, paddingBottom: 56 }}>
-                    {i === 0 ? (
+                    {i < nOuvertes ? (
                       <>
                         {entete}
                         {corps}
@@ -379,6 +431,21 @@ export default function Guide({
             </article>
           </div>
         </section>
+
+        {/* « NOS RÉALISATIONS », APPORT DE LA MAQUETTE MOBILE V2 (14/10).
+            Son gabarit 01 pousse la section de réalisations après le corps
+            (dc.html : `refsSec`, avant la FAQ quand elle existe, sinon en
+            fin de contenu). Mesure des onze gabarits à 390 px : zéro lien
+            `/preuves/` ici, sept dans la maquette. La donnée suit la règle
+            de la maquette (`realisations-liees-mobiles.ts`), le dessin est
+            le bloc commun `blocs/Preuves.tsx`. `data-mobile-seulement` : la
+            capture de bureau des deux guides n'a pas cette section, le bloc
+            n'existe que sous 881 px et les portes de bureau l'écartent. */}
+        {realisations ? (
+          <div data-mobile-seulement="">
+            <Preuves section={realisations} />
+          </div>
+        ) : null}
 
         {vue.liees.length > 0 ? (
           <section style={{ padding: "var(--sec) 0 0" }}>
@@ -431,6 +498,14 @@ export default function Guide({
             </div>
           </section>
         ) : null}
+
+        {/* LES PASTILLES DU MAILLAGE MOBILE, boîte basse de la maquette v2 :
+            « Les rubriques » pour `/ressources/` (dc.html : `kidsBottom =
+            kidsBox("Les rubriques", kids)`), rien pour les deux guides, dont
+            le parent `/guides/` n'est pas une page de l'index, exactement
+            comme la maquette (`parent ? … : []`). Le composant est déjà
+            mobile-seulement et rend null sans donnée. */}
+        {chemin ? <PastillesCocon chemin={chemin} /> : null}
 
         <section id="cx-form" style={{ padding: "var(--sec) 0 var(--sec)", scrollMarginTop: 90 }}>
           <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>

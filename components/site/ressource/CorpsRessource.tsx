@@ -134,8 +134,20 @@ function Bloc({ bloc }: { bloc: BlocRessource }) {
         </ol>
       );
     case "tableau":
+      /* SOUS 881 PX, UNE CARTE PAR LIGNE, motif « tableau » du LISEZMOI de la
+         maquette mobile v2 (bloc `isTb` : chaque ligne devient une carte à
+         bord et fond propres). Le motif est COPIÉ de `blocs/Offre.tsx`
+         (`tableauEnCartes`), adapté à un vrai `<table>` : rien ne quitte le
+         DOM, aucune cellule n'est dupliquée, c'est le même texte restylé.
+         Mesure du 14/10 : tableaux bruts à 390 px sur le gabarit 01. Les
+         règles vivent dans `Ressource.module.css`, TOUTES sous
+         `@media (max-width: 880px)` : au-dessus, pas un pixel ne change.
+         `data-tableau-en-cartes` est la prise de mesure de la porte, comme
+         chez `Offre.tsx` : une classe de module est hachée au build. */
       return (
         <div
+          className={styles.tableauEnCartes}
+          data-tableau-en-cartes=""
           style={H.TABLEAU_CADRE}
           tabIndex={0}
           role="region"
@@ -278,10 +290,16 @@ export default function CorpsRessource({
           {avant.map((bloc, i) => (
             <Bloc key={`a${i}`} bloc={bloc} />
           ))}
-          {/* CHAQUE PARTIE SE REPLIE AU TÉLÉPHONE, SAUF LA PREMIÈRE.
-              C'est la règle de la maquette mobile, `MigenMobile.dc.html` :
-              `isOpen = si < 1 || secOpen[...]`, la première section reste
-              ouverte et les suivantes sont repliées sous un résumé.
+          {/* CHAQUE PARTIE SE REPLIE AU TÉLÉPHONE, SAUF LES DEUX PREMIÈRES.
+              C'est la règle de la maquette mobile v2 pour le gabarit 01, et
+              elle est ÉCRITE dans `Migen - Mobile v2.dc.html` :
+              `nOpen = g === "01" ? 2 : …`, puis `op = isRef || dI++ < nOpen`.
+              Les DEUX premières sections de contenu restent ouvertes, les
+              suivantes sont repliées sous un résumé.
+              CORRIGÉ LE 14/10 : la version précédente n'en laissait qu'UNE
+              (`k === 0`), règle des autres gabarits. La mesure des onze
+              gabarits à 390 px l'a vue : le gabarit 01 était le seul à rendre
+              MOINS haut que la maquette (-12 %), tout le reste étant replié.
               Mehdi, le 12/10 : « tu n'as pas déployé toute la maquette mobile,
               il n'y a que quelques pages ». Mesure du même jour : 1 567
               sections auraient dû se replier, 141 le faisaient, et les 41
@@ -307,7 +325,7 @@ export default function CorpsRessource({
             );
             return (
               <Fragment key={k}>
-                {k === 0 ? (
+                {k < 2 ? (
                   <>
                     {titre}
                     {corps}

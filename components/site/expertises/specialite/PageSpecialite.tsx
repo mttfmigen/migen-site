@@ -1,7 +1,20 @@
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 
+import { FilArianeVue } from "@/components/cocon/FilAriane";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
+import PastillesCocon from "@/components/site/cocon/PastillesCocon";
+import {
+  cheminDepuisFormulaire,
+  etapesFilAriane,
+} from "@/components/site/expertises/cocon-mobile";
+import {
+  EtiquettePliMobile,
+  OuAppelez,
+  TelephoneHero,
+} from "@/components/site/expertises/conversion-mobile";
+import { parentDe, courtLibelle } from "@/components/site/cocon/maillage-mobile";
 import OffresDomaine from "@/components/site/expertises/domaine/OffresDomaine";
 import ProblemeDomaine from "@/components/site/expertises/domaine/ProblemeDomaine";
 import SecteursDomaine from "@/components/site/expertises/domaine/SecteursDomaine";
@@ -41,6 +54,7 @@ import type { ContenuSpecialite } from "@/types/specialite";
 import ComplementSpecialite from "./ComplementSpecialite";
 import DomainesSpecialite from "./DomainesSpecialite";
 import styles from "./PageSpecialite.module.css";
+import ProseOffreMobile from "./ProseOffreMobile";
 
 /**
  * Gabarit « 05 Spécialité », porté le 07/10 contre la RÉFÉRENCE : le rendu de
@@ -136,6 +150,15 @@ export default function PageSpecialite({
      vérité n'est pas testée, un en-tête vide reste un panneau. */
   const heroFormulaire = typeof contenu.formulaireHeroTitre === "string";
 
+  /* LE COCON MOBILE : chemin retrouvé contre l'index (voir
+     `../cocon-mobile.ts`), fil d'Ariane de la maquette mobile, et la puce
+     « ↑ parent » que ses héros du gabarit 05 portent (dc.html L488 :
+     `chips = [{ l: "↑ " + short(parent), href: parent.url }]`). Tout est
+     `data-mobile-seulement` : rien ne change à 1280 px. */
+  const chemin = cheminDepuisFormulaire(formulaire);
+  const etapes = chemin ? etapesFilAriane(chemin) : [];
+  const parent = chemin ? parentDe(chemin) : undefined;
+
   return (
     /* La racine `.mgx-root` de `MigenExpertise` : `--sec` reste à 120 px sur
        mobile (la règle « --sec: 64px » de `.mg-site` ne l'atteint pas), et les
@@ -144,6 +167,15 @@ export default function PageSpecialite({
     <div className={`mg-site ${stylesOffre.gabarit}`} style={{ "--sec": "120px" } as CSSProperties}>
       <main style={{ paddingTop: 62 }}>
         {filAriane}
+
+        {/* Le fil d'Ariane visible, téléphone seulement (maquette mobile v2,
+            dc.html L103). Au-dessus de 880 px, seul le JSON-LD demeure,
+            décision de bureau du 08/10 inchangée. */}
+        {etapes.length > 0 ? (
+          <div data-mobile-seulement="" style={{ padding: "16px 18px 0" }}>
+            <FilArianeVue etapes={etapes} />
+          </div>
+        ) : null}
 
         {/* ------------------------------------------------ 0. « 01 Héros » */}
 
@@ -177,6 +209,39 @@ export default function PageSpecialite({
                 </p>
               ) : null}
 
+              {/* La puce « ↑ parent » du héros 05 de la maquette mobile
+                  (dc.html L110 et L488), libellé DÉRIVÉ de l'index
+                  (`courtLibelle`), jamais rédigé. Mobile seulement. */}
+              {parent ? (
+                <div
+                  data-mobile-seulement=""
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: 6,
+                    marginTop: 14,
+                  }}
+                >
+                  <Link
+                    href={parent.url}
+                    prefetch={false}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      minHeight: 36,
+                      padding: "0 13px",
+                      borderRadius: 999,
+                      background: "#fff",
+                      border: "1px solid rgba(28,27,25,.1)",
+                      font: "500 13px var(--fb)",
+                      color: "#1c1b19",
+                    }}
+                  >
+                    ↑ {courtLibelle(parent)}
+                  </Link>
+                </div>
+              ) : null}
+
               {actions.length > 0 ? (
                 <div style={HERO_RANGEE_BOUTONS}>
                   {actions.map((action) =>
@@ -201,6 +266,10 @@ export default function PageSpecialite({
                       </Link>
                     ),
                   )}
+                  {/* Le numéro à côté du bouton, rangée CTA de la maquette
+                      mobile (L110) et corpus de chaque fiche. Mobile
+                      seulement. */}
+                  <TelephoneHero />
                 </div>
               ) : null}
 
@@ -209,14 +278,30 @@ export default function PageSpecialite({
               ) : null}
             </div>
 
+            {/* Le panneau SE REPLIE au téléphone (G2 : héros compact), même
+                arbitrage que `PageDomaine` : replié, jamais retiré ni
+                déplacé, et `blocPliablePartage` retire la bascule du bureau.
+                L'ancre `#besoin` aboutit sur la bascule. */}
             {heroFormulaire ? (
-              <div style={{ position: "relative" }}>
-                <PanneauFormulaire
-                  id="besoin"
-                  formulaire={`${formulaire}-hero`}
-                  titre={contenu.formulaireHeroTitre!}
-                  pastille={contenu.formulaireHeroMention}
-                />
+              <div
+                className={stylesOffre.blocPliablePartage}
+                style={{ position: "relative" }}
+              >
+                <SectionPliableMobile
+                  enTete={
+                    <EtiquettePliMobile
+                      surtitre={contenu.formulaireHeroMention}
+                      titre={contenu.formulaireHeroTitre!}
+                    />
+                  }
+                >
+                  <PanneauFormulaire
+                    id="besoin"
+                    formulaire={`${formulaire}-hero`}
+                    titre={contenu.formulaireHeroTitre!}
+                    pastille={contenu.formulaireHeroMention}
+                  />
+                </SectionPliableMobile>
               </div>
             ) : null}
           </div>
@@ -299,6 +384,11 @@ export default function PageSpecialite({
         {/* --------------------------------------------- 5. « 04 Offre » */}
 
         {offre ? <PointsOffre section={offre} /> : null}
+
+        {/* La prose de l'offre et ses liens internes, REMIS dans la donnée le
+            14/10 (57 liens perdus sur les 19 fiches du gabarit) et rendus au
+            téléphone seulement : voir `ProseOffreMobile`. */}
+        {offre?.prose?.length ? <ProseOffreMobile prose={offre.prose} /> : null}
 
         {/* ------------------------------------------- 6. Appel · offre */}
 
@@ -445,6 +535,11 @@ export default function PageSpecialite({
           />
         ) : null}
 
+        {/* « Dans la même rubrique », boîte basse de la maquette mobile
+            (dc.html L134 et L506) : les sœurs de la spécialité. Sous 881 px
+            seulement. */}
+        {chemin ? <PastillesCocon chemin={chemin} variante="soeurs" /> : null}
+
         {/* ------------------------------------- 14. « 10 Appel final » */}
 
         {/* L'ANCRE `#mgx-form` est posée ici parce que la capture la pose sur
@@ -456,6 +551,9 @@ export default function PageSpecialite({
             formulaire={formulaire}
             bouton={contenu.appelBouton}
           />
+          {/* La ligne du corpus sous l'appel final, verbatim sur les 19
+              fiches du gabarit (mesure du 14/10). Mobile seulement. */}
+          <OuAppelez />
         </div>
 
         {maillage ? (

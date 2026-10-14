@@ -2,8 +2,13 @@ import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 
 import TexteRiche from "@/components/site/blocs/TexteRiche";
+import { FilArianeVue } from "@/components/cocon/FilAriane";
+import PastillesCocon from "@/components/site/cocon/PastillesCocon";
 import type { Section, TypeSection } from "@/types/contenu";
 import type { ContenuOffre } from "@/types/offre";
+
+import { etapesArianeMobile } from "./fil-ariane-mobile";
+import { TELEPHONE_AFFICHE, TELEPHONE_HREF } from "./telephone-maquette";
 
 import AppelFinal from "./AppelFinal";
 import AppelOffre from "./AppelOffre";
@@ -55,6 +60,26 @@ import {
 } from "./habillage-offre";
 
 import styles from "./PageOffre.module.css";
+
+/**
+ * Le bouton téléphone du héros mobile, valeurs de la maquette mobile v2
+ * (dc.html L111 : pastille blanche, bord discret, 50 px de haut). Il ne se
+ * voit que sous 881 px (`data-mobile-seulement`) : ces valeurs ne touchent
+ * donc jamais le dessin de bureau.
+ */
+const BOUTON_TEL: CSSProperties = {
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  minHeight: 50,
+  padding: "0 16px",
+  borderRadius: 999,
+  background: "#fff",
+  border: "1px solid rgba(28,27,25,.1)",
+  color: "var(--ink)",
+  font: "600 13.5px var(--fb)",
+  whiteSpace: "nowrap",
+};
 
 /**
  * Gabarit « 03 Offre et prestation », porté de la RÉFÉRENCE validée le 06/10 :
@@ -197,6 +222,30 @@ export default function PageOffre({
   const objections = sectionDeType(sections, "objections");
   const ctaFinal = sectionDeType(sections, "ctaFinal");
 
+  /* LA PREMIÈRE SECTION DE CONTENU RESTE OUVERTE SUR TÉLÉPHONE, règle de la
+     maquette mobile v2 : `Migen - Mobile v2.dc.html` L451 et L476,
+     `nOpen = 1` pour ce gabarit et `const op = isRef || dI++ < nOpen`. On ne
+     replie JAMAIS tout : la page garde son premier bloc déplié, et les
+     références restent ouvertes de leur côté (`ReferencesOffre`). L'ordre est
+     celui du gabarit, qui est celui du corpus : problème, offre, déroulé,
+     garanties. */
+  const premierPli = probleme
+    ? "probleme"
+    : offre
+      ? "offre"
+      : deroule
+        ? "deroule"
+        : garanties
+          ? "garanties"
+          : null;
+
+  /* Le fil d'Ariane VISIBLE de la maquette mobile v2 (dc.html, bloc
+     `hasCrumbs` : « Accueil › … › page », défilant). Les 248 captures de
+     bureau n'en dessinent pas sur ce gabarit depuis la décision du 08/10
+     (voir `cocon/FilAriane.tsx`) : la rangée n'existe donc que sous 881 px,
+     et seulement quand la page connaît son chemin. */
+  const ariane = chemin ? etapesArianeMobile(chemin) : [];
+
   /* Le panneau de droite du héros n'existe que s'il porte un formulaire. Sans
      titre fourni, le héros passe sur une colonne.
 
@@ -242,6 +291,15 @@ export default function PageOffre({
             }}
           >
             <div>
+              {/* Le fil d'Ariane de la maquette mobile v2, au sommet du héros
+                  (dc.html, bloc `hasCrumbs`, rendu avant le surtitre). Sous
+                  881 px seulement : les captures de bureau de ce gabarit n'en
+                  dessinent pas, décision du 08/10 maintenue. */}
+              {ariane.length > 0 ? (
+                <div data-mobile-seulement="" style={{ marginBottom: 12 }}>
+                  <FilArianeVue etapes={ariane} />
+                </div>
+              ) : null}
               {contenu.pastille ? (
                 <div style={HERO_RANGEE_PASTILLE}>
                   <span style={PASTILLE}>
@@ -259,21 +317,71 @@ export default function PageOffre({
                 </p>
               ) : null}
 
+              {/* LE HÉROS MOBILE EST COMPACT : bouton d'action + téléphone,
+                  comme la maquette mobile v2 (dc.html L111, `hero.cta` puis
+                  `hero.telL`). Le corpus écrit lui-même ce duo dans l'encadré
+                  du héros (« [Faire chiffrer mon arrêt](/contact/) ·
+                  04 78 33 72 05 ») : le numéro n'est pas une invention, c'est
+                  le morceau de la ligne que l'import avait laissé tomber.
+
+                  LA CIBLE CHANGE SOUS 881 PX, et c'est une conséquence du
+                  héros compact : `#besoin` est le panneau du héros, masqué à
+                  cette largeur ; une ancre vers un élément masqué ne défile
+                  nulle part. Chaque bouton `#besoin` a donc son jumeau
+                  `data-mobile-seulement` qui vise `#mgx-form`, l'appel final,
+                  comme la maquette envoie ses appels vers son formulaire de
+                  bas de page (dc.html L437, `#etre-rappele`). Même libellé,
+                  même dessin : seule l'ancre suit la largeur. */}
               {actions.length > 0 ? (
                 <div style={HERO_RANGEE_BOUTONS}>
-                  {actions.map((action) => (
-                    <Link
-                      key={action.href}
-                      href={action.href}
-                      prefetch={false}
-                      className={styles.boutonPrincipal}
-                      style={BOUTON_HERO}
-                    >
-                      {action.libelle}
-                    </Link>
-                  ))}
+                  {actions.map((action) =>
+                    action.href === "#besoin" ? (
+                      <span key={action.href} style={{ display: "contents" }}>
+                        <Link
+                          href={action.href}
+                          prefetch={false}
+                          className={`${styles.boutonPrincipal} ${styles.bureauSeulement}`}
+                          style={BOUTON_HERO}
+                        >
+                          {action.libelle}
+                        </Link>
+                        <Link
+                          href="#mgx-form"
+                          prefetch={false}
+                          data-mobile-seulement=""
+                          className={styles.boutonPrincipal}
+                          style={BOUTON_HERO}
+                        >
+                          {action.libelle}
+                        </Link>
+                      </span>
+                    ) : (
+                      <Link
+                        key={action.href}
+                        href={action.href}
+                        prefetch={false}
+                        className={styles.boutonPrincipal}
+                        style={BOUTON_HERO}
+                      >
+                        {action.libelle}
+                      </Link>
+                    ),
+                  )}
+                  <a data-mobile-seulement="" href={TELEPHONE_HREF} style={BOUTON_TEL}>
+                    {TELEPHONE_AFFICHE}
+                  </a>
                 </div>
-              ) : null}
+              ) : (
+                /* Sans bouton d'action, la maquette mobile garde le téléphone
+                   (dc.html L111 rend toujours `hero.telL`). La rangée entière
+                   n'existe que sous 881 px : au-dessus, le héros sans action
+                   reste celui de la capture, au pixel. */
+                <div data-mobile-seulement="" style={HERO_RANGEE_BOUTONS}>
+                  <a href={TELEPHONE_HREF} style={BOUTON_TEL}>
+                    {TELEPHONE_AFFICHE}
+                  </a>
+                </div>
+              )}
 
               {/* La mention des horaires, SOUS les boutons dans la capture. */}
               {contenu.mention ? (
@@ -282,7 +390,11 @@ export default function PageOffre({
             </div>
 
             {heroFormulaire ? (
-              <div style={{ position: "relative" }}>
+              /* `panneauHeroBureau` : le panneau quitte l'écran sous 881 px,
+                 héros compact de la maquette mobile v2. Il reste dans le HTML
+                 servi, et le formulaire complet est servi une seconde fois
+                 par « 10 Appel final » plus bas. Voir le module CSS. */
+              <div className={styles.panneauHeroBureau} style={{ position: "relative" }}>
                 {/*
                   Le même formulaire qu'en bas de page, avec un identifiant
                   d'analyse distinct : HubSpot doit pouvoir dire lequel des
@@ -391,12 +503,15 @@ export default function PageOffre({
             section={probleme}
             altPhoto={titre}
             photo={contenu.problemePhoto}
+            toujoursOuvert={premierPli === "probleme"}
           />
         ) : null}
 
         {/* ---------------------------------------------- 6. « 04 Offre » */}
 
-        {offre ? <PointsOffre section={offre} /> : null}
+        {offre ? (
+          <PointsOffre section={offre} toujoursOuvert={premierPli === "offre"} />
+        ) : null}
 
         {/* -------------------------------------------- 7. Appel · offre */}
 
@@ -429,7 +544,11 @@ export default function PageOffre({
         {/* -------------------------------------------- 8. « 05 Déroulé » */}
 
         {deroule ? (
-          <DerouleOffre section={deroule} titre={contenu.derouleTitre} />
+          <DerouleOffre
+            section={deroule}
+            titre={contenu.derouleTitre}
+            toujoursOuvert={premierPli === "deroule"}
+          />
         ) : null}
 
         {/* ------------------------------------ 8 bis. « Complément 5 » */}
@@ -444,7 +563,12 @@ export default function PageOffre({
 
         {/* ------------------------------------------ 9. « 06 Garanties » */}
 
-        {garanties ? <GarantiesOffre section={garanties} /> : null}
+        {garanties ? (
+          <GarantiesOffre
+            section={garanties}
+            toujoursOuvert={premierPli === "garanties"}
+          />
+        ) : null}
 
         {/* ------------------------------------ 9 bis. « Complément 6 » */}
 
@@ -584,9 +708,18 @@ export default function PageOffre({
             descend donc DANS le composant, sur sa section, comme la capture le
             pose elle-même (`maquette/rendu/offres--residence.html`, bloc 1241,
             `id="mgx-form"` et `scroll-margin-top: 90px` sur le `<section>`). */}
+        {/* LES PASTILLES DU MAILLAGE MOBILE, boîte basse de la maquette v2
+            (dc.html L134, « Aller plus loin » ou « Dans la même rubrique »),
+            rendue juste AVANT l'appel de fin de page comme dans la maquette
+            (le bloc `kidsBottom` précède `showEndCta`). Le composant est
+            `data-mobile-seulement` et ne rend rien pour une page hors index :
+            au-dessus de 880 px, rien ne change. */}
+        {chemin ? <PastillesCocon chemin={chemin} /> : null}
+
         <AppelFinal
           ancre="mgx-form"
           question={ctaFinal?.question}
+          rappel={ctaFinal?.rappel}
           formulaire={formulaire}
           bouton={heroFormulaire ? contenu.formulaireHeroTitre : contenu.appelBouton}
           chemin={chemin}

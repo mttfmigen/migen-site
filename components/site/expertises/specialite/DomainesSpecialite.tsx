@@ -7,6 +7,10 @@ import {
   SURTITRE,
   TITRE2,
 } from "@/components/site/blocs/habillage";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import { EtiquettePliMobile } from "@/components/site/expertises/conversion-mobile";
+import stylesOffre from "@/components/site/offre/PageOffre.module.css";
 import { numerote } from "@/components/site/offre/texte-offre";
 import type { CarteDomaineSpecialite } from "@/types/specialite";
 
@@ -118,7 +122,16 @@ export default function DomainesSpecialite({
 }: ProprietesDomainesSpecialite) {
   return (
     <section style={SECTION}>
-      <div style={LARGEUR}>
+      {/* SE REPLIE AU TÉLÉPHONE (G1 : section corpus sans repli), motif
+          « Blocs communs (pliables) » recopié de `offre/PointsOffre.tsx` :
+          l'étiquette reprend le surtitre fixe et le H2 de la donnée, le
+          résumé joint les valeurs des cartes (`resume-de-section.ts`), la
+          bascule est retirée du bureau par `blocPliablePartage`. */}
+      <div className={stylesOffre.blocPliablePartage} style={LARGEUR}>
+        <SectionPliableMobile
+          enTete={<EtiquettePliMobile surtitre="Nos domaines" titre={titre} />}
+          resume={resumeDe(cartes.map((carte) => carte.valeur))}
+        >
         <div style={ENTETE}>
           <div style={SURTITRE}>Nos domaines</div>
           <h2 style={TITRE2}>{titre}</h2>
@@ -149,6 +162,7 @@ export default function DomainesSpecialite({
             </div>
           ))}
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

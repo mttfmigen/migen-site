@@ -117,6 +117,11 @@
             },
             "benefice": "Plus de discussion au prochain incident, et votre service maintenance garde la trace."
           }
+        ],
+        "prose": [
+          {
+            "texte": "Le vérin n'est souvent que le symptôme : une huile chargée ou une pompe fatiguée le tuera à nouveau. Le circuit complet relève de notre [maintenance hydraulique](/expertises/hydraulique/). Presse à l'arrêt en ce moment, c'est du [dépannage industriel](/offres/depannage-industriel/). Et si le même vérin vous lâche pour la troisième fois, regardez l'abonnement [Zéro arrêt](/offres/zero-arret/)."
+          }
         ]
       },
       {

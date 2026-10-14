@@ -110,3 +110,15 @@
     grid-template-columns: minmax(0, 1fr) !important;
   }
 }
+
+/* LE REPLI « PLEINE PAGE » du dessin « colonne » du problème : la bascule
+   enveloppe la SECTION entière de `ProblemeOffre` (pleine largeur, gouttière
+   interne), elle prend donc la gouttière mobile de la maquette (18 px) pour
+   ne pas coller au bord de l'écran. Rien au-dessus de 880 px : la bascule y
+   est retirée par `blocPliablePartage` (PageOffre.module.css). */
+@media (max-width: 880px) {
+  .pliPleinePage > details[data-pliable-mobile] > summary {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}

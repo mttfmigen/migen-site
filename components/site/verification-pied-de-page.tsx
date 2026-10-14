@@ -2,9 +2,11 @@
  * Contrôle du pied de page, sans navigateur.
  *
  *   bun components/site/verification-pied-de-page.tsx
+ *   bun components/site/verification-pied-de-page.tsx --controle
  *
  * PRÉALABLE : le site sur http://localhost:4340/ (`SITE_URL` pour un autre),
- * chaque lien interne y est demandé.
+ * chaque lien interne y est demandé. `--controle` s'arrête AVANT le réseau :
+ * il joue les contrôles statiques et leurs témoins d'échec, et c'est tout.
  *
  * LA RÉFÉRENCE est le pied de page de `maquette/site-final-autonome.html`,
  * relu à chaque exécution, jamais recopié : le contrôle se met à jour tout seul
@@ -22,7 +24,16 @@
  *    texte, et « Habilitations » n'a aucun lien.
  * 5. L'adresse du siège est celle de LIMONEST, celle de la maquette, et aucun tiret
  *    cadratin n'est rendu.
- * Des témoins prouvent que 1, 2 et 4 savent échouer.
+ * 6. REPLIER, JAMAIS RETIRER (maquette mobile v2, 14/10) : les sept colonnes
+ *    passent par `SectionPliableMobile`, donc chacune est un
+ *    `<details data-pliable-mobile>` rendu OUVERT par le serveur, replié au
+ *    chargement sous 881 px seulement. Le contrôle exige les sept dépliants,
+ *    l'attribut `open` sur chacun, et chaque lien de colonne DANS le corps de
+ *    son dépliant : le DOM étant le même à 390 et à 1280 px, un lien présent
+ *    ici est présent replié.
+ * Des témoins prouvent que 1, 2, 4 et 6 savent échouer, dont : un lien retiré
+ *  du corps d'un dépliant (le pied « perdrait » ce lien à 390 px) et un
+ *  dépliant servi fermé (texte caché au premier rendu).
  */
 
 import assert from "node:assert/strict";
@@ -31,6 +42,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 
 import PiedDePage from "@/components/site/PiedDePage";
 
+const CONTROLE = process.argv.includes("--controle");
 const SITE = (process.env.SITE_URL ?? "http://localhost:4340").replace(/\/$/, "");
 
 const entites: Record<string, string> = {
@@ -109,21 +121,39 @@ const rendu = renderToStaticMarkup(<PiedDePage />);
  * Elle exige donc toujours une GRILLE, ce qui est le fond du contrôle, sans
  * exiger l'ordre ni la liste de ses propriétés, qui n'en est pas. Ce que la
  * porte vérifie vraiment, les libellés et leur ordre, est inchangé. */
+/* DEPUIS LE REPLI MOBILE (14/10), une colonne est `nav > details > summary
+   (titre) + corps (liens)`. La lecture s'ancre sur le `</summary>` : les liens
+   d'une colonne sont ce qui vit entre lui et la fin de son `<details>`. Le
+   résumé de la bascule, lui, vit DANS le `<summary>` et ne doit pas être
+   compté comme contenu. */
 function navRendue(html: string): { titre: string; libelles: string[] }[] {
-  return [...html.matchAll(/<nav aria-label="([^"]+)"><div[^>]*>[^<]*<\/div><div style="[^"]*display:grid[^"]*">([\s\S]*?)<\/div><\/nav>/g)].map(
-    ([, titre, corps]) => ({
-      titre: lisible(titre),
+  const zone = html.slice(0, html.indexOf('class="mg-rq3"'));
+  return [...zone.matchAll(/<nav aria-label="([^"]+)"/g)].map((depart) => {
+    const apres = zone.indexOf("</summary>", depart.index) + "</summary>".length;
+    const fin = zone.indexOf("</details>", apres);
+    const corps = zone.slice(apres, fin);
+    return {
+      titre: lisible(depart[1]),
       libelles: [...corps.matchAll(/<a\b[^>]*>([^<]+)<\/a>/g)].map((m) => lisible(m[1])),
-    }),
-  );
+    };
+  });
 }
 
-/** Le texte de chaque colonne du maillage rendue, liens fondus dans la ligne. */
+/** Le texte de chaque colonne du maillage rendue, liens fondus dans la ligne.
+    Même ancre que la navigation : le titre vit dans le `<summary>`, le texte
+    entre `</summary>` et `</details>`. */
 function maillageRendu(html: string): { titre: string; texte: string }[] {
   const zone = html.slice(html.indexOf('class="mg-rq3"'));
-  return [
-    ...zone.matchAll(/margin-bottom:12px">([^<]+)<\/div><div style="font:400 13px\/1\.9 var\(--fb\);color:rgba\(255,255,255,\.44\)">([\s\S]*?)<\/div><\/(?:nav|div)>/g),
-  ].map(([, titre, corps]) => ({ titre: lisible(titre), texte: lisible(corps.replace(/<[^>]*>/g, "")) }));
+  return [...zone.matchAll(/<summary[^>]*><div[^>]*>([^<]+)<\/div>/g)].map(
+    (depart) => {
+      const apres = zone.indexOf("</summary>", depart.index) + "</summary>".length;
+      const fin = zone.indexOf("</details>", apres);
+      return {
+        titre: lisible(depart[1]),
+        texte: lisible(zone.slice(apres, fin).replace(/<[^>]*>/g, "")),
+      };
+    },
+  );
 }
 
 /**
@@ -151,6 +181,35 @@ function controleMaillage(html: string): void {
 const relevesNav = controleNav(rendu);
 controleMaillage(rendu);
 
+// 6 · le repli ne retire rien : sept dépliants, tous rendus OUVERTS (Google
+// reçoit le texte entier, et le DOM de 390 px est celui de 1280 px), et chaque
+// lien de colonne vit dans le corps de son dépliant. Les contrôles 1 et 2
+// lisent justement ces corps : un lien sorti d'un dépliant y tombe aussi.
+function controleRepli(html: string): void {
+  const pied = html.slice(0, html.indexOf("</footer>"));
+  const depliants = pied.match(/<details\b[^>]*data-pliable-mobile[^>]*>/g) ?? [];
+  assert.equal(
+    depliants.length,
+    7,
+    "les sept colonnes du pied (3 de navigation, 4 de maillage) doivent être " +
+      "des <details data-pliable-mobile>",
+  );
+  for (const depliant of depliants) {
+    assert.ok(
+      /\bopen\b/.test(depliant),
+      "un dépliant du pied est servi FERMÉ : le repli doit venir du client " +
+        "sous 881 px, jamais du HTML servi",
+    );
+  }
+  /* Aucun lien hors dépliant dans la zone des colonnes : un lien posé entre
+     deux dépliants échapperait aux contrôles 1 et 2. L'appel à l'action de la
+     marque (avant la première colonne) et la barre basse (après le maillage)
+     restent hors dépliant, et c'est voulu : ils ne se replient pas. */
+  const colonnes = navRendue(pied).reduce((n, c) => n + c.libelles.length, 0);
+  assert.ok(colonnes >= 20, `colonnes du pied mal relevées : ${colonnes} liens`);
+}
+controleRepli(rendu);
+
 // 3 · « Toutes nos pages », le seul lien dessiné à part dans la maquette.
 const plan = navMaquette.flatMap((c) => c.liens).find((l) => l.libelle === "Toutes nos pages");
 assert.ok(plan, "la maquette ne porte plus « Toutes nos pages »");
@@ -171,6 +230,51 @@ assert.match(
 const habilitations = rendu.slice(rendu.indexOf(">Habilitations<"), rendu.indexOf("Accès Z.A.C"));
 assert.ok(habilitations.length > 0 && !habilitations.includes("<a "), "un lien a été posé dans la colonne Habilitations");
 
+// ------------------------------------------------- témoins (sans réseau)
+// Un libellé retiré, deux libellés permutés, un département perdu : chacun
+// doit faire tomber le contrôle. Et depuis le repli mobile : un lien retiré du
+// corps d'un dépliant (à 390 px, le pied l'aurait « perdu »), un dépliant
+// servi fermé. Le `replaceAll` du maillage n'est pas un détail : le résumé de
+// la bascule porte le même texte que le corps, un `replace` simple ne
+// toucherait que le résumé et le témoin ne prouverait rien.
+const [premier, second] = navRendue(rendu)[0].libelles;
+for (const [defaut, html] of [
+  ["un libellé retiré", rendu.replace(`>${premier}</a>`, "></a>")],
+  ["deux libellés permutés", rendu.replace(`>${premier}<`, ">@@<").replace(`>${second}<`, `>${premier}<`).replace(">@@<", `>${second}<`)],
+  ["un lien perdu à 390 px (retiré du corps d'un dépliant)", rendu.replace(/<a\b[^>]*>Nos valeurs<\/a>/, "")],
+] as const) {
+  assert.notEqual(html, rendu, `témoin mal construit : ${defaut}`);
+  assert.throws(() => controleNav(html), `le contrôle de la navigation laisse passer ${defaut}`);
+}
+assert.throws(
+  () => controleMaillage(rendu.replaceAll(" · Drôme", "")),
+  "le contrôle du maillage laisse passer un département perdu",
+);
+{
+  const ferme = rendu.replace(' open=""', "");
+  assert.notEqual(ferme, rendu, "témoin mal construit : aucun dépliant ouvert");
+  assert.throws(
+    () => controleRepli(ferme),
+    "le contrôle du repli laisse passer un dépliant servi fermé",
+  );
+  const sansDepliant = rendu.replace(" data-pliable-mobile", "");
+  assert.throws(
+    () => controleRepli(sansDepliant),
+    "le contrôle du repli laisse passer une colonne sans dépliant",
+  );
+}
+
+if (CONTROLE) {
+  console.log(
+    `pied de page, mode témoins : ${relevesNav} libellés de navigation et ` +
+      `${maillageMaquette.length} colonnes de maillage conformes à l'autonome ; ` +
+      "7 dépliants servis ouverts ; 6 témoins d'échec tombés (dont le lien " +
+      "perdu à 390 px et le dépliant servi fermé). Réseau non joué : relancer " +
+      "sans --controle avec le site démarré.",
+  );
+  process.exit(0);
+}
+
 async function demande(chemin: string): Promise<Response> {
   try {
     return await fetch(`${SITE}${chemin}`, { redirect: "manual" });
@@ -188,6 +292,7 @@ const servi = accueil.slice(accueil.indexOf("<footer"), accueil.indexOf("</foote
 assert.ok(servi.length > 9, "pied de page absent de l'accueil servi");
 controleNav(servi);
 controleMaillage(servi);
+controleRepli(`${servi}</footer>`);
 const internes = [...new Set([...servi.matchAll(/href="(\/[^"#]*)"/g)].map((m) => m[1]))];
 const morts: string[] = [];
 for (const chemin of internes) {
@@ -222,25 +327,14 @@ assert.ok(!/Moulin Carron|—/.test(texte), "l'adresse d'Écully ou un tiret cad
 const landing = lisible(renderToStaticMarkup(<PiedDePage landingPage />).replace(/<[^>]*>/g, " "));
 assert.ok(!/Moulin Carron|—|mise à disposition/.test(landing), "interdit dans le pied de page de la landing");
 
-// ------------------------------------------------------------- témoins
-// Un libellé retiré, deux libellés permutés, un département perdu, un lien
-// mort : chacun doit faire tomber le contrôle.
-const [premier, second] = navRendue(rendu)[0].libelles;
-for (const [defaut, html] of [
-  ["un libellé retiré", rendu.replace(`>${premier}</a>`, "></a>")],
-  ["deux libellés permutés", rendu.replace(`>${premier}<`, ">@@<").replace(`>${second}<`, `>${premier}<`).replace(">@@<", `>${second}<`)],
-] as const) {
-  assert.throws(() => controleNav(html), `le contrôle de la navigation laisse passer ${defaut}`);
-}
-assert.throws(
-  () => controleMaillage(rendu.replace(" · Drôme", "")),
-  "le contrôle du maillage laisse passer un département perdu",
-);
+// ------------------------------------------------------- témoin (réseau)
+// Un lien mort doit faire tomber le contrôle des codes HTTP.
 assert.notEqual(await statut("/n-existe-pas-pied-de-page/"), 200, "le contrôle des liens ne sait pas voir une 404");
 
 console.log(
   `pied de page vérifié contre l'autonome : ${relevesNav} libellés de navigation et ${maillageMaquette.length} ` +
-    `colonnes de maillage, mot pour mot et dans l'ordre ; « Toutes nos pages » au dessin de la maquette ; ` +
+    `colonnes de maillage, mot pour mot et dans l'ordre ; 7 dépliants servis ouverts (replier ne retire rien) ; ` +
+    `« Toutes nos pages » au dessin de la maquette ; ` +
     `${internes.length} liens internes à 200 sur ${SITE} ; ${SANS_PAGE.length} libellé(s) sans page, revérifié(s) : ` +
     `${SANS_PAGE.map((m) => `« ${m.libelle} » (${m.raison})`).join(", ")} ; siège de Limonest ; témoins d'échec tombés.`,
 );

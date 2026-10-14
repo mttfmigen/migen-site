@@ -112,6 +112,11 @@
             },
             "benefice": "Les prochaines interruptions seront choisies, pas subies."
           }
+        ],
+        "prose": [
+          {
+            "texte": "Machine arrêtée en ce moment : passez par le [dépannage industriel](/offres/depannage-industriel/). Le dossier ne se solde qu'une fois la [maintenance curative](/expertises/types-de-maintenance/maintenance-curative/) réalisée. Un parc qui vit en dépannage permanent se remet sous suivi avec le [contrat Zéro arrêt](/offres/zero-arret/)."
+          }
         ]
       },
       {

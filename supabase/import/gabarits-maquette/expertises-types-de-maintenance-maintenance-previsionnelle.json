@@ -239,6 +239,11 @@
             },
             "benefice": "Votre production ne dépend plus d'une seule personne irremplaçable."
           }
+        ],
+        "prose": [
+          {
+            "texte": "Pour industrialiser la démarche avec des visites planifiées, une priorité d'intervention et un suivi documenté, voir le [contrat de maintenance Zéro arrêt](/offres/zero-arret/). Pour une panne en cours, voir le [dépannage industriel](/offres/depannage-industriel/). Migen est une [entreprise de maintenance industrielle](/offres/) présente partout en France."
+          }
         ]
       },
       {

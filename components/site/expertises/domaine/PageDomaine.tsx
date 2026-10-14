@@ -1,7 +1,19 @@
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 
+import { FilArianeVue } from "@/components/cocon/FilAriane";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
+import PastillesCocon from "@/components/site/cocon/PastillesCocon";
+import {
+  cheminDepuisFormulaire,
+  etapesFilAriane,
+} from "@/components/site/expertises/cocon-mobile";
+import {
+  EtiquettePliMobile,
+  OuAppelez,
+  TelephoneHero,
+} from "@/components/site/expertises/conversion-mobile";
 import AppelFinal from "@/components/site/offre/AppelFinal";
 import BandeAppel from "@/components/site/offre/BandeAppel";
 import ComplementsOffre from "@/components/site/offre/ComplementsOffre";
@@ -130,6 +142,14 @@ export default function PageDomaine({
      vérité n'est pas testée, un en-tête vide reste un panneau. */
   const heroFormulaire = typeof contenu.formulaireHeroTitre === "string";
 
+  /* LE COCON MOBILE (fil d'Ariane + pastilles) a besoin du CHEMIN, que la
+     route ne passe pas : il est retrouvé contre l'index depuis `formulaire`
+     (voir `../cocon-mobile.ts`). Hors index, rien ne se monte, comme la
+     maquette. Tout ce qui suit porte `data-mobile-seulement` : à 1280 px,
+     RIEN ne change. */
+  const chemin = cheminDepuisFormulaire(formulaire);
+  const etapes = chemin ? etapesFilAriane(chemin) : [];
+
   return (
     /* La racine `.mgx-root` de `MigenExpertise` : `--sec` reste à 120 px sur
        mobile (la règle « --sec: 64px » de `.mg-site` ne l'atteint pas), et les
@@ -138,6 +158,16 @@ export default function PageDomaine({
     <div className={`mg-site ${stylesOffre.gabarit}`} style={{ "--sec": "120px" } as CSSProperties}>
       <main style={{ paddingTop: 62 }}>
         {filAriane}
+
+        {/* LE FIL D'ARIANE VISIBLE, TÉLÉPHONE SEULEMENT. La maquette mobile
+            v2 le pose au-dessus du héros (dc.html L103) ; la décision de
+            bureau du 08/10 (pas de rangée visible) tient toujours au-dessus
+            de 880 px, où seul le JSON-LD de `filAriane` demeure. */}
+        {etapes.length > 0 ? (
+          <div data-mobile-seulement="" style={{ padding: "16px 18px 0" }}>
+            <FilArianeVue etapes={etapes} />
+          </div>
+        ) : null}
 
         {/* ------------------------------------------------ 0. « 01 Héros » */}
 
@@ -195,6 +225,11 @@ export default function PageDomaine({
                       </Link>
                     ),
                   )}
+                  {/* Le numéro à côté du bouton, comme la rangée CTA de la
+                      maquette mobile (L110) et le corpus de chaque fiche
+                      (« [CTA](/contact/) · 04 78 33 72 05 »). Mobile
+                      seulement : le bureau suit sa capture, qui ne l'a pas. */}
+                  <TelephoneHero />
                 </div>
               ) : null}
 
@@ -203,18 +238,48 @@ export default function PageDomaine({
               ) : null}
             </div>
 
+            {/* LE PANNEAU SE REPLIE AU TÉLÉPHONE (G2 : héros compact). Le
+                H1 du gabarit 09 était à y=160 et le premier H2 de contenu à
+                y=3617 à 390 px, le formulaire long en étant la première
+                cause. La maquette mobile ne met AUCUN formulaire dans le
+                héros : son bouton d'action renvoie plus bas. DÉPLACER le
+                panneau dans le DOM aurait changé le bureau (sa capture le
+                pose dans la grille du héros) : il est donc REPLIÉ, jamais
+                retiré — le formulaire long du bas de page (`AppelFinal`)
+                reste la voie mobile, et l'ancre `#besoin` du bouton du héros
+                aboutit sur la bascule, qui rouvre le panneau d'un geste.
+                Au-dessus de 880 px, `blocPliablePartage` retire la bascule :
+                rien ne change à 1280 px. */}
             {heroFormulaire ? (
-              <div style={{ position: "relative" }}>
-                <PanneauFormulaire
-                  id="besoin"
-                  formulaire={`${formulaire}-hero`}
-                  titre={contenu.formulaireHeroTitre!}
-                  pastille={contenu.formulaireHeroMention}
-                />
+              <div
+                className={stylesOffre.blocPliablePartage}
+                style={{ position: "relative" }}
+              >
+                <SectionPliableMobile
+                  enTete={
+                    <EtiquettePliMobile
+                      surtitre={contenu.formulaireHeroMention}
+                      titre={contenu.formulaireHeroTitre!}
+                    />
+                  }
+                >
+                  <PanneauFormulaire
+                    id="besoin"
+                    formulaire={`${formulaire}-hero`}
+                    titre={contenu.formulaireHeroTitre!}
+                    pastille={contenu.formulaireHeroMention}
+                  />
+                </SectionPliableMobile>
               </div>
             ) : null}
           </div>
         </section>
+
+        {/* LES SPÉCIALITÉS DU DOMAINE, pastilles de la maquette mobile sous
+            le héros (`kidsTop`, dc.html L125 et L501 : « Les spécialités du
+            domaine »). Mesure du 14/10 sur le gabarit 09 : zéro lien vers
+            les pages filles à 390 px. Le bloc n'existe que sous 881 px. */}
+        {chemin ? <PastillesCocon chemin={chemin} variante="enfants" /> : null}
 
         {/* -------------------------------------------- 1. « 01 Chiffres » */}
 
@@ -349,6 +414,12 @@ export default function PageDomaine({
           />
         ) : null}
 
+        {/* « Dans la même rubrique », la boîte basse de la maquette mobile
+            (`kidsBottom`, dc.html L134 et L506) : les pages sœurs du domaine.
+            Mesure du 14/10 : 10 liens du cocon perdus à 390 px sur ce
+            gabarit. Sous 881 px seulement. */}
+        {chemin ? <PastillesCocon chemin={chemin} variante="soeurs" /> : null}
+
         {/* ------------------------------------- 15. « 10 Appel final » */}
 
         {/* L'ANCRE `#mgx-form` est posée ici parce que la capture la pose sur
@@ -361,6 +432,10 @@ export default function PageDomaine({
             formulaire={formulaire}
             bouton={contenu.appelBouton}
           />
+          {/* La ligne du corpus sous l'appel final, verbatim sur les 11
+              fiches du gabarit (mesure du 14/10). Mobile seulement : la
+              capture de bureau ne la rend pas. */}
+          <OuAppelez />
         </div>
 
         {maillage ? (

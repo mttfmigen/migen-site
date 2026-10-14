@@ -170,7 +170,7 @@
   }
 }
 
-/* --------------------- l'étiquette de la bascule des deux blocs repliables
+/* ------------------- l'étiquette de la bascule des blocs repliables partagés
 
    ELLE N'EXISTE QUE SOUS 880 px, et c'est tout l'intérêt : au-dessus, le
    visiteur voit la section telle que sa capture la dessine, avec SON surtitre
@@ -215,13 +215,15 @@
    12 px avant chaque section, écart que la capture ne porte pas.
 
    LA PORTÉE EST LE BLOC, PAS LE GABARIT, et c'est la seule adaptation du
-   motif de référence : `ReferencesOffre` et `PointsOffre` sont partagés par
-   cinq gabarits (offre, ville, spécialité, domaine, secteur), aucun `<main>`
-   ne les couvre tous les cinq, et une règle non ancrée toucherait les blocs
+   motif de référence : `ReferencesOffre`, `PointsOffre`, et depuis le 14/10
+   `DerouleOffre`, `ProblemeOffre` (dessin en colonne) et
+   `implantation/ProblemeCartes` (dessin en rangée), sont partagés par
+   plusieurs gabarits (offre, ville, spécialité, domaine, secteur), aucun
+   `<main>` ne les couvre tous, et une règle non ancrée toucherait les blocs
    repliables des autres composants de la même page. La classe est posée sur
-   le conteneur de largeur de ces deux blocs, et sur eux seuls.
+   le conteneur de largeur de ces blocs-là, et sur eux seuls.
 
-   `> summary ~ div` ET PAS `> summary + div` : ces deux blocs passent un
+   `> summary ~ div` ET PAS `> summary + div` : ces blocs passent un
    `resume` à `SectionPliableMobile`, donc un `<p>` s'intercale entre la
    bascule et le corps. Le gabarit métier n'en passe pas, son `+ div`
    suffisait ; ici il ne désignerait rien. Le `<p>` lui-même est déjà masqué
@@ -232,5 +234,39 @@
   }
   .blocPliablePartage details[data-pliable-mobile] > summary ~ div {
     margin-top: 0;
+  }
+}
+
+/* LE PANNEAU DE FORMULAIRE DU HÉROS QUITTE L'ÉCRAN SOUS 881 PX, ET LE DOM LE
+   GARDE. La maquette mobile v2 sert un héros compact : surtitre, H1, chapeau,
+   bouton d'action et téléphone (`Migen - Mobile v2.dc.html` L111), et son
+   formulaire long vit EN BAS de page. Le gabarit de bureau, lui, pose le
+   formulaire complet dans la colonne droite du héros (capture
+   `offres--residence.html`, section « 01 Héros »), et au-dessus de 880 px rien
+   ne doit bouger. Le panneau est donc MASQUÉ par la feuille sous 881 px, pas
+   retiré : le HTML servi est identique aux deux largeurs, et le formulaire
+   complet reste servi une seconde fois par « 10 Appel final », plus bas dans
+   la même page. Le seuil est celui de `SectionPliableMobile.module.css`.
+   AUCUNE RÈGLE HORS MEDIA QUERY : une déclaration de base, même anodine
+   (`min-width`), toucherait le dessin de bureau, et la loi du chantier est
+   qu'au-dessus de 880 px rien ne change. */
+@media (max-width: 880px) {
+  .panneauHeroBureau {
+    display: none;
+  }
+}
+
+/* LA COPIE DE BUREAU D'UN BOUTON À DOUBLE CIBLE. Les boutons du gabarit visent
+   `#besoin`, le panneau du héros, que la règle ci-dessus masque sous 881 px :
+   une ancre vers un élément masqué ne défile nulle part. La maquette mobile
+   envoie ses appels vers son formulaire de bas de page (`#etre-rappele`,
+   dc.html L437) ; ici la cible basse est `#mgx-form`, l'appel final, présent
+   sur toutes les pages qui montent ces blocs. Chaque bouton existe donc en
+   deux exemplaires au même libellé : celui-ci, visible au-dessus de 880 px,
+   et son jumeau `data-mobile-seulement` qui vise `#mgx-form`.
+   Même règle que ci-dessus : rien hors media query, le bureau ne bouge pas. */
+@media (max-width: 880px) {
+  .bureauSeulement {
+    display: none !important;
   }
 }

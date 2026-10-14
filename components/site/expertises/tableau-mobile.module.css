@@ -1,0 +1,72 @@
+/*
+ * SOUS 881 PX, UNE CARTE PAR LIGNE DE TABLEAU, et c'est le motif « tableau »
+ * du LISEZMOI de la maquette mobile v2 (« Tableau → une carte par ligne »).
+ *
+ * MOTIF RECOPIÉ de `blocs/Offre.tsx` et `blocs/Blocs.module.css`
+ * (`tableauEnCartes`, `enteteDeTableau`, `carteDeLigne`), PAS importé : le
+ * fichier appartient à un autre lot, et son motif est écrit pour des rangées
+ * en `<div>` là où `ComplementsDomaine` et `ComplementSpecialite` rendent un
+ * VRAI `<table>` (ligne brute de 480 px minimum à 390 px, mesurée le 14/10 :
+ * le tableau de 7 lignes de `/expertises/types-de-maintenance/` défile hors
+ * de l'écran). Les règles ne portent QUE sous 880 px : au-dessus, ce balisage
+ * se rend exactement comme avant. Le tableau ne quitte jamais le DOM, aucune
+ * cellule n'est dupliquée ni masquée : c'est le même texte, restylé.
+ *
+ * LES `!important` SONT LE MOTIF D'ORIGINE : les cellules portent leurs
+ * dimensions en style EN LIGNE (relevé de la capture), seule une règle
+ * `!important` les bat, exactement comme dans `Blocs.module.css`.
+ *
+ * LA PRISE DE MESURE est l'attribut `data-tableau-en-cartes`, posé par les
+ * deux composants sur le MÊME élément que la classe `.cadre` : un nom de
+ * classe de module est haché au build, la porte compte des attributs stables.
+ */
+@media (max-width: 880px) {
+  .cadre {
+    overflow-x: visible !important;
+    border: none !important;
+    background: none !important;
+    border-radius: 0 !important;
+  }
+  .cadre table {
+    display: grid !important;
+    gap: 8px !important;
+    min-width: 0 !important;
+    border-collapse: separate !important;
+  }
+  /* La ligne d'en-têtes de colonnes : une petite rangée au-dessus des cartes,
+     comme la ligne de tête de la maquette. Elle reste dans le flux et à
+     l'écran, aucun mot ne part. */
+  .cadre thead {
+    display: block !important;
+  }
+  .cadre thead tr {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 4px 14px;
+    padding: 0 4px !important;
+  }
+  .cadre th {
+    padding: 0 !important;
+    border-bottom: none !important;
+  }
+  /* Une carte par ligne : cellules empilées, fond et bord de carte, les
+     valeurs de la maquette mobile (padding 14px 15px, rayon de carte). */
+  .cadre tbody {
+    display: grid !important;
+    gap: 8px !important;
+  }
+  .cadre tbody tr {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 8px !important;
+    padding: 14px 15px !important;
+    border: 1px solid var(--line) !important;
+    border-radius: var(--rad-s) !important;
+    background: var(--card) !important;
+  }
+  .cadre td {
+    display: block !important;
+    padding: 0 !important;
+    border-top: none !important;
+  }
+}

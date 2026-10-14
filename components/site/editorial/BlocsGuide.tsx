@@ -419,8 +419,18 @@ function Bloc({ bloc, groupe, ouverte }: { bloc: BlocGuide; groupe: string; ouve
       );
 
     case "tableau":
+      /* SOUS 881 PX, UNE CARTE PAR LIGNE, motif « tableau » du LISEZMOI de
+         la maquette mobile v2 (bloc `isTb`). Le motif est COPIÉ de
+         `blocs/Offre.tsx` (`tableauEnCartes`), adapté à un vrai `<table>` :
+         rien ne quitte le DOM, c'est le même texte restylé. Mesure du
+         14/10 : tableaux bruts à 390 px sur le gabarit 01. Les règles sont
+         dans `PageEditoriale.module.css`, toutes sous
+         `@media (max-width: 880px)` : au-dessus, pas un pixel ne change.
+         `data-tableau-en-cartes` est la prise de mesure de la porte. */
       return (
         <div
+          className={styles.tableauEnCartes}
+          data-tableau-en-cartes=""
           tabIndex={0}
           role="region"
           aria-label="Tableau, défilement horizontal possible"

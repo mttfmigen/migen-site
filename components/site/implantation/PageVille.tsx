@@ -1,7 +1,10 @@
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 
+import { FilArianeVue } from "@/components/cocon/FilAriane";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
+import PastillesCocon from "@/components/site/cocon/PastillesCocon";
 import AppelFinal from "@/components/site/offre/AppelFinal";
 import AppelOffre from "@/components/site/offre/AppelOffre";
 import BandeAppel from "@/components/site/offre/BandeAppel";
@@ -37,8 +40,10 @@ import ReferencesOffre from "@/components/site/offre/ReferencesOffre";
 import type { Section, TypeSection } from "@/types/contenu";
 import type { ContenuVille } from "@/types/implantation";
 
+import { etapesDe } from "./fil-ariane-mobile";
 import HubLocal from "./HubLocal";
 import MaillageVille from "./MaillageVille";
+import stylesVille from "./PageVille.module.css";
 import ProblemeCartes, { ProblemePanneau } from "./ProblemeCartes";
 import QuestionsVille from "./QuestionsVille";
 
@@ -81,6 +86,26 @@ import QuestionsVille from "./QuestionsVille";
  * capture des villes diffère vivent dans ce dossier (hub local, problème en
  * rangée, questions, maillage). Composant SERVEUR : fil
  * d'Ariane et maillage du cocon restent en props (CLAUDE.md §4).
+ *
+ * LA COUCHE MOBILE V2 (14/10), et RIEN ne change au-dessus de 880 px :
+ * chaque ajout vit sous `data-mobile-seulement` (masqué à 881 px et plus par
+ * `app/globals.css`, `!important`) ou dans un `<summary>` que
+ * `stylesVille.panneauPliable` retire du bureau. Trois ajouts, tous relevés
+ * dans `maquette/mobile-v2/maquette/Migen - Mobile v2.dc.html` :
+ *
+ *   · le fil d'Ariane du héros (dc.html L104, `hasCrumbs`) : `FilArianeVue`
+ *     sur les étapes dérivées de l'index (`./fil-ariane-mobile`) ;
+ *   · le panneau de formulaire du héros SE REPLIE (G2 : 1 141 px des
+ *     1 850 px du héros à 390 px). Replié, jamais retiré : le formulaire
+ *     entier reste dans le DOM, `SectionPliableMobile` le referme au
+ *     chargement sous 881 px seulement ;
+ *   · les pastilles du maillage (dc.html L125 kidsTop et L134 kidsBottom) :
+ *     `PastillesCocon` variante « enfants » sous le héros (« Départements
+ *     couverts » des hubs) et variante « soeurs » avant l'appel final
+ *     (« Dans la même rubrique » : les villes sœurs du même hub, les
+ *     66 pages du gabarit étaient à ZÉRO lien entre elles sur téléphone).
+ *
+ * Porte : `bun components/site/implantation/verification-mobile-ville.tsx`.
  */
 
 export interface ProprietesPageVille {
@@ -89,6 +114,14 @@ export interface ProprietesPageVille {
   contenu: ContenuVille;
   /** Identifiant d'analyse des soumissions, repris par HubSpot. */
   formulaire: string;
+  /**
+   * Le chemin de la page avec slash final (« /implantations/lyon/ »), passé
+   * par la route (`page.path`). Il alimente la couche mobile : fil d'Ariane
+   * et pastilles du maillage, tous deux dérivés de l'index de la maquette.
+   * ABSENT (anciens appels, portes), la couche mobile ne se rend pas :
+   * vide plutôt que deviné.
+   */
+  chemin?: string;
   filAriane?: ReactNode;
   maillage?: ReactNode;
 }
@@ -107,9 +140,11 @@ export default function PageVille({
   titre,
   contenu,
   formulaire,
+  chemin,
   filAriane,
   maillage,
 }: ProprietesPageVille) {
+  const etapes = chemin ? etapesDe(chemin) : [];
   const actions = liensSurs(contenu.actions ?? []);
   const chiffres = contenu.chiffres ?? [];
   const sections = contenu.sections ?? [];
@@ -140,7 +175,7 @@ export default function PageVille({
         {filAriane}
 
         {/* 0 · 01 Héros */}
-        <section style={HERO}>
+        <section className={stylesVille.herosVille} style={HERO}>
           <div
             className="mg-r2"
             style={{
@@ -151,6 +186,15 @@ export default function PageVille({
             }}
           >
             <div>
+              {/* Le fil d'Ariane de la maquette mobile (dc.html L104), sous
+                  881 px seulement : les captures de bureau du gabarit n'en
+                  dessinent aucun, `data-mobile-seulement` le retire du bureau
+                  et les portes qui comparent à la capture l'écartent. */}
+              {etapes.length > 0 ? (
+                <div data-mobile-seulement="" className={stylesVille.filMobile}>
+                  <FilArianeVue etapes={etapes} />
+                </div>
+              ) : null}
               {contenu.pastille ? (
                 <div style={HERO_RANGEE_PASTILLE}>
                   <span style={PASTILLE}>
@@ -159,9 +203,15 @@ export default function PageVille({
                   </span>
                 </div>
               ) : null}
-              <h1 style={TITRE1}>{titre}</h1>
+              {/* Les classes ne portent que des règles mobiles (maquette
+                  mobile, h1 27px/1.1 et sous-titre 15px/1.6, dc.html
+                  L107-109) : au-dessus de 880 px elles sont vides, le style
+                  en ligne de la capture reste seul maître. */}
+              <h1 className={stylesVille.titreHerosMobile} style={TITRE1}>
+                {titre}
+              </h1>
               {contenu.chapeau ? (
-                <p style={CHAPEAU_HERO}>
+                <p className={stylesVille.chapeauHerosMobile} style={CHAPEAU_HERO}>
                   <TexteRiche texte={contenu.chapeau} />
                 </p>
               ) : null}
@@ -183,17 +233,49 @@ export default function PageVille({
               {contenu.mention ? <p style={HERO_MENTION}>{contenu.mention}</p> : null}
             </div>
             {heroFormulaire ? (
-              <div style={{ position: "relative" }}>
-                <PanneauFormulaire
-                  id="besoin"
-                  formulaire={`${formulaire}-hero`}
-                  titre={contenu.formulaireHeroTitre!}
-                  pastille={contenu.formulaireHeroMention}
-                />
+              /* LE PANNEAU SE REPLIE AU TÉLÉPHONE, IL N'EST PAS RETIRÉ.
+                 Mesure du 14/10 à 390 px : 1 141 px des 1 850 px du héros,
+                 là où la maquette mobile n'a PAS de formulaire dans son héros
+                 (son mini-formulaire vit en bas de page, et cette page garde
+                 le sien dans « 10 Appel final »). Le formulaire entier reste
+                 dans le HTML servi ; `SectionPliableMobile` le referme au
+                 chargement sous 881 px. L'ancre `#besoin` du bouton du héros
+                 reste atteignable : la navigation vers un fragment rouvre le
+                 `<details>` ancêtre (algorithme « ancestor details revealing »
+                 des moteurs récents). La bascule porte le titre DU panneau,
+                 copie du corpus, et s'efface une fois le panneau ouvert
+                 (`etiquettePanneau`) pour ne pas doubler le titre que le
+                 panneau rend lui-même. Sur bureau, la bascule n'existe pas
+                 (`panneauPliable`, même motif que `.blocPliablePartage` de
+                 `offre/PageOffre.module.css`). */
+              <div className={stylesVille.panneauPliable} style={{ position: "relative" }}>
+                <SectionPliableMobile
+                  enTete={
+                    <span
+                      data-mobile-seulement=""
+                      className={stylesVille.etiquettePanneau}
+                    >
+                      {contenu.formulaireHeroTitre}
+                    </span>
+                  }
+                >
+                  <PanneauFormulaire
+                    id="besoin"
+                    formulaire={`${formulaire}-hero`}
+                    titre={contenu.formulaireHeroTitre!}
+                    pastille={contenu.formulaireHeroMention}
+                  />
+                </SectionPliableMobile>
               </div>
             ) : null}
           </div>
         </section>
+
+        {/* Maquette mobile, boîte HAUTE du maillage (dc.html L125, kidsTop) :
+            « Départements couverts » pour les pages qui ont des enfants dans
+            l'index (les hubs : Lyon en a 5). Mobile seulement, le composant
+            porte lui-même `data-mobile-seulement`. */}
+        {chemin ? <PastillesCocon chemin={chemin} variante="enfants" /> : null}
 
         {/* 1 · 01 Chiffres */}
         {chiffres.length > 0 ? (
@@ -268,6 +350,13 @@ export default function PageVille({
 
         {/* 15 · Maillage · offres */}
         <MaillageVille />
+
+        {/* Maquette mobile, boîte BASSE du maillage (dc.html L134,
+            kidsBottom) : « Dans la même rubrique », les sœurs de la page
+            (villes du même hub pour une ville de hub, toutes les
+            implantations sœurs sinon ; même calcul pour les 8 départements).
+            C'est LE maillage entre les 66 pages villes : il était à zéro. */}
+        {chemin ? <PastillesCocon chemin={chemin} variante="soeurs" /> : null}
 
         {/* 16 · 10 Appel final : la capture pose l'ancre `#mgx-form` sur la section. */}
         <div id="mgx-form" style={{ scrollMarginTop: 90 }}>

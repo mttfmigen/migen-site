@@ -3,6 +3,9 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 import { FilArianeVue } from "@/components/cocon/FilAriane";
+import PastillesCocon from "@/components/site/cocon/PastillesCocon";
+import Preuves from "@/components/site/blocs/Preuves";
+import { realisationsLiees } from "@/components/site/editorial/realisations-liees-mobiles";
 import type { ContenuRessource, LectureRessource } from "@/types/ressource";
 import type { Question } from "@/types/contenu";
 
@@ -226,12 +229,19 @@ function Appel() {
 export interface ProprietesPageRessource {
   titre: string;
   contenu: ContenuRessource;
+  /**
+   * Le chemin de la page, avec slash final (« /ressources/articles/gmao/ »).
+   * Il sert aux deux apports de la maquette MOBILE v2 (14/10) : les pastilles
+   * du maillage (sœurs de la page) et les réalisations liées. Absent, ces
+   * deux blocs ne se rendent pas ; le reste de la page ne change pas.
+   */
+  chemin?: string;
   /** Passés par la route, non rendus : voir l'en-tête du fichier. */
   filAriane?: ReactNode;
   maillage?: ReactNode;
 }
 
-export default function PageRessource({ titre, contenu }: ProprietesPageRessource) {
+export default function PageRessource({ titre, contenu, chemin }: ProprietesPageRessource) {
   const { rayon, chapo = [], parties = [], questions = [], aLire = [] } = contenu;
   const rayonVu = rayon ? H.RAYONS[rayon] : undefined;
   const livre = rayon === "livres-blancs";
@@ -245,6 +255,9 @@ export default function PageRessource({ titre, contenu }: ProprietesPageRessourc
      s'ancre alors en haut, la photo reste centrée sur la rangée. */
   const paragraphes = chapo.filter(Boolean);
   const colonneTexte = paragraphes.length < chapo.length ? H.COLONNE_ANCREE : undefined;
+
+  /* Les réalisations liées de la maquette mobile : voir le bloc plus bas. */
+  const realisations = chemin ? realisationsLiees(chemin) : undefined;
 
   const etapes = [
     { titre: "Ressources", path: "/ressources/" },
@@ -313,9 +326,33 @@ export default function PageRessource({ titre, contenu }: ProprietesPageRessourc
 
         <CorpsRessource avant={contenu.avant} parties={parties} />
 
+        {/* « NOS RÉALISATIONS », APPORT DE LA MAQUETTE MOBILE V2 (14/10).
+            Le gabarit 01 de la maquette mobile pousse sa section de
+            réalisations juste AVANT la FAQ (dc.html : `if (x.k === "faq")
+            { … refsSec(…) }`), six à huit cartes qui mènent aux études de
+            cas. La mesure des onze gabarits à 390 px : ZÉRO lien `/preuves/`
+            sur nos 38 pages, sept dans la maquette. La donnée vient de
+            `realisations-liees-mobiles.ts`, règle de la maquette, rien
+            d'inventé ; le dessin est le bloc commun `blocs/Preuves.tsx`.
+            `data-mobile-seulement` : la CAPTURE DE BUREAU de ce gabarit n'a
+            que cinq sections, ce bloc n'existe donc que sous 881 px
+            (`app/globals.css`), et les portes de bureau l'écartent. */}
+        {realisations ? (
+          <div data-mobile-seulement="">
+            <Preuves section={realisations} />
+          </div>
+        ) : null}
+
         {questions.length > 0 ? <Questions questions={questions} /> : null}
 
         {aLire.length > 0 ? <Lectures lectures={aLire} rayon={rayon} /> : null}
+
+        {/* LES PASTILLES DU MAILLAGE MOBILE, boîte basse « Dans la même
+            rubrique » de la maquette v2 (le gabarit 01 n'a pas d'enfants, la
+            cascade du composant tombe sur les sœurs, comme `kidsBottom` du
+            dc.html). Le composant est déjà mobile-seulement et rend null
+            sans donnée : rien ne change sur bureau. */}
+        {chemin ? <PastillesCocon chemin={chemin} /> : null}
 
         <Appel />
       </main>

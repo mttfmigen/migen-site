@@ -296,7 +296,10 @@ const CONTENU_HUB_EXPERTISES_DECLARE: ContenuHubExpertises = {
       etapes: [
         {
           titre: "Vous décrivez la situation.",
-          texte: "Quatre champs, ou un appel par téléphone. Dites ce qui se passe, on vous met sur la bonne offre.",
+          /* « par téléphone » était une RÉÉCRITURE : la fiche du hub écrit le
+             numéro (`expertises.md`, étape 1 : « Quatre champs, ou un appel
+             au 04 78 33 72 05. »), remis le 14/10 (M4). */
+          texte: "Quatre champs, ou un appel au 04 78 33 72 05. Dites ce qui se passe, on vous met sur la bonne offre.",
         },
         {
           titre: "Nous qualifions le besoin.",

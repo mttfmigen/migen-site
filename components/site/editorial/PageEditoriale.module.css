@@ -467,3 +467,104 @@
     grid-column: 1 / -1;
   }
 }
+
+/* ===================================================================
+   LA COUCHE MOBILE V2 (14/10), mesurée contre la maquette
+   `maquette/mobile-v2/` à 390 px. TOUT ce qui suit vit sous un seuil :
+   au-dessus de 880 px, aucune de ces règles ne mord, la capture de
+   bureau reste la référence et `verification-editorial.tsx` la mesure.
+   =================================================================== */
+
+/*
+ * LE TABLEAU EN CARTES SOUS 881 PX, motif « tableau » du LISEZMOI de la
+ * maquette mobile v2 : « Tableau → une carte par ligne ». Motif COPIÉ de
+ * `blocs/Blocs.module.css` (`tableauEnCartes`, bloc Offre), adapté au VRAI
+ * `<table>` des gabarits guide et rubrique : la ligne d'en-têtes devient une
+ * petite rangée au-dessus des cartes, chaque `<tr>` une carte, chaque
+ * cellule s'empile. RIEN ne quitte le DOM, aucun mot ne part.
+ *
+ * `!important` : les cellules sont habillées par styles en ligne, qu'une
+ * feuille ne bat pas autrement (idiome des règles mobiles du dépôt).
+ */
+@media (max-width: 880px) {
+  .tableauEnCartes {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+  }
+  .tableauEnCartes table {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+  .tableauEnCartes thead {
+    display: block !important;
+  }
+  .tableauEnCartes thead tr {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 4px 14px !important;
+    padding: 0 4px 8px !important;
+  }
+  .tableauEnCartes th {
+    display: block !important;
+    padding: 0 !important;
+    border: none !important;
+    white-space: normal !important;
+  }
+  .tableauEnCartes tbody {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 8px !important;
+  }
+  .tableauEnCartes tbody tr {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 8px !important;
+    padding: 14px 15px !important;
+    border: 1px solid var(--line) !important;
+    border-radius: var(--rad-s) !important;
+    background: var(--card) !important;
+  }
+  .tableauEnCartes td {
+    display: block !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+}
+
+/*
+ * LA RANGÉE DE BUREAU DU FIL D'ARIANE S'EFFACE AU TÉLÉPHONE, où la rangée
+ * du site (`FilArianeVue`, marquée `data-mobile-seulement`) la remplace :
+ * même texte des deux côtés, jamais deux rangées à l'écran. Au-dessus de
+ * 880 px la classe ne porte RIEN : la rangée de la capture ne bouge pas.
+ */
+@media (max-width: 880px) {
+  .arianeBureau {
+    display: none !important;
+  }
+}
+
+/*
+ * SUR BUREAU, LES BASCULES DU GABARIT RUBRIQUE N'EXISTENT PAS DU TOUT :
+ * même règle, même raison et même preuve que `.corpsGuide` plus haut (un
+ * `<summary>` vidé de ses ornements mobiles reste un arrêt de tabulation
+ * muet). Elle est LÉGALE ici parce que chaque bascule du gabarit double son
+ * titre hors d'elle : les cartes du guide gardent leur `<h2>` dans le corps,
+ * et la bascule du catalogue ne porte qu'un titre de téléphone
+ * (`data-mobile-seulement`) qu'aucune capture de bureau ne dessine.
+ * Le `margin-top` du corps est remis à zéro pour la même raison que chez
+ * `.corpsGuide` : il aère une bascule qui, ici, n'est plus là.
+ */
+@media (min-width: 881px) {
+  .corpsRubrique details[data-pliable-mobile] > summary {
+    display: none;
+  }
+  .corpsRubrique details[data-pliable-mobile] > summary ~ div {
+    margin-top: 0;
+  }
+}

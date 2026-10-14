@@ -488,13 +488,22 @@ const sansSlash = (href: string) => href.replace(/\/+$/, "") || "/";
  * libellés des champs et le bouton d'envoi restent comparés (depuis le 08/10,
  * il répète le titre du panneau, comme la capture) :
  *  - le champ piège anti-robot « Site web », masqué (`aria-hidden`) ;
- *  - la mention RGPD et son lien `/confidentialite` (RGPD articles 13 et 14).
+ *  - la mention RGPD et son lien `/confidentialite` (RGPD articles 13 et 14) ;
+ *  - la mention de prospection donnée par Mehdi le 13/10 au soir
+ *    (`MENTION_PROSPECTION`, commit 1a7ff9a), un `<p>` à elle seule : la
+ *    capture ne la porte pas, et c'est normal, elle lui est postérieure.
+ *    C'est la même ligne qu'a dû poser `verification-secteurs-hub` (G66).
+ *    CHAÎNE EXACTE, pas un motif : une phrase voisine resterait refusée.
  */
 function sansEcartsFormulaire(html: string): string {
   return html.replace(/<form\b[\s\S]*?<\/form>/g, (form) =>
     form
       .replace(/<div aria-hidden="true"[^>]*><label[^>]*>Site web<\/label>[\s\S]*?<\/div>/g, "")
-      .replace(/<p[^>]*>Données traitées par Migen[\s\S]*?<\/p>/g, ""),
+      .replace(/<p[^>]*>Données traitées par Migen[\s\S]*?<\/p>/g, "")
+      .replace(
+        /<p[^>]*>Vos informations seront conservées et utilisées pour vous proposer nos produits et services\. Vous restez libre de vous désinscrire à tout moment\.<\/p>/g,
+        "",
+      ),
   );
 }
 
