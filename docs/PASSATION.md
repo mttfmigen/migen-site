@@ -1,9 +1,89 @@
-# Passation du 06/10 au soir : lis ceci avant de toucher au site
+# Passation : lis ceci avant de toucher au site
 
 Écrit à la demande de Mehdi, pour la session qui reprend : « avec tout ce qu'on a
 fait depuis et tout ce que je t'ai dit, pour pas qu'il fasse de boulette ».
 Deux journées ont été en partie perdues à reconstruire ce qui suit. Ne le
 redécouvre pas : lis-le.
+
+> **Mis à jour le 14/10 au soir, pour le passage sur l'autre compte Claude.**
+> Le corps du document date du 06/10 et reste vrai : la référence, les onze
+> gabarits, les pièges. La section 0 ci-dessous porte les six jours qui
+> manquaient, du 11 au 14/10, soit 65 commits.
+
+---
+
+## 0. REPRISE DU 14/10 : par où commencer, en trois minutes
+
+### Ce qu'il faut lire, dans cet ordre, et rien d'autre pour démarrer
+
+1. **`docs/INVENTAIRE-3-JOURS.md`** : les 25 demandes de Mehdi des 11 au 14/10,
+   chacune avec son état **mesuré** et la commande qui le décide. 22 faites,
+   3 qui attendent une décision ou un achat de sa part.
+2. **`GATES.md`** : le registre des promesses. Il est **honnête** depuis le
+   13/10 au soir, c'est-à-dire qu'aucune promesse n'y est verte sans que sa
+   commande ait été lancée. Vérifie-le toi-même avant de t'en servir :
+   `node scripts/verifie-le-registre.mjs`.
+3. **`CLAUDE.md`**, section 16, pour les onze gabarits.
+
+### L'état du site, mesuré et non supposé
+
+| Ce qu'on peut affirmer | La commande qui le prouve |
+|---|---|
+| 158 pages servies, aucune perdue | le plan du site, comparé page à page |
+| Le formulaire dépose un lead chez HubSpot | les six champs obligatoires du portail acceptés |
+| Aucune photo hors sujet sur une page commerciale | `node scripts/verifie-photo-sujet.mjs https://migen-site.vercel.app` |
+| Les 400 photos des pages à sujet nommé sont dans leur sujet | `bun scripts/verifie-photos-du-secteur.mjs https://migen-site.vercel.app` |
+| Le registre ne ment pas | `node scripts/verifie-le-registre.mjs` |
+| Types et build | `bunx tsc --noEmit` puis `bun run build` |
+
+### CE QUI RESTE, et c'est court
+
+**À Mehdi, pas à toi :**
+1. Deux photos sous licence pour **Metz et Dijon**. Elles servaient une
+   cimenterie et un métier à tisser sous des légendes inventées : les deux
+   tuiles sont passées en panneau sombre plutôt que de mentir.
+2. Environ **trois photos de logistique**. Cinq emplacements servent le même
+   convoyeur et les douze photos du thème servent déjà 9 à 11 pages chacune.
+   C'est un manque de stock, aucune redistribution ne le réglera.
+3. Le **h1 de `/nous-connaitre/`** : « Un seul métier : technicien de
+   maintenance. » C'est SA copie, mesurée ligne 5208 de
+   `maquette/accueil-rendu.html`. **Ne la réécris pas.** La porte de la page
+   porte une assertion qui t'en empêchera, et c'est voulu.
+4. Les **six pages d'expertise sans étude de cas** (soudure, robotique et ses
+   deux filles, tuyauterie et sa fille) : commander les études, ou accepter la
+   bande sans carte.
+5. Supprimer la **société « Z »** créée par erreur dans son HubSpot le 13/10 à
+   18h30. Une session ne peut pas supprimer de donnée CRM.
+
+**À toi :**
+6. **Porter la maquette mobile v2.** C'est le gros morceau restant : onze
+   gabarits et trois hauts de page sur mesure. La maquette est versionnée dans
+   `maquette/mobile-v2/`, son LISEZMOI porte les trois consignes verbatim.
+   La règle numéro un y est : **replier, jamais retirer**. Le texte reste dans
+   le DOM même replié, parce que Google lit le `textContent`. Mehdi s'est déjà
+   fâché là-dessus : « les mots doivent être là pour le SEO ».
+
+### LES QUATRE PIÈGES PAYÉS CES TROIS JOURS, ne les repaie pas
+
+1. **`bunx tsc --noEmit` ne prouve pas que le site se construit.** Le 14/10, le
+   build est tombé sur une fonction du navigateur appelée par sept composants
+   serveur, alors que les types passaient. La frontière serveur / navigateur
+   n'est pas une question de types. **Lance toujours `bun run build`.**
+2. **Le serveur de développement du port 4340 sert du contenu périmé.**
+   Quatre mesures fausses lui sont déjà imputables, dont une porte entière qui
+   accusait à tort. Mesure contre un `bun run start` frais, ou contre la
+   production.
+3. **`grep -c` compte des LIGNES.** Le HTML servi tient sur une seule ligne :
+   `grep -c` y rend toujours 1. Utilise `grep -o | wc -l`.
+4. **Une porte qui crie au loup se fait ignorer.** `verifie-photo-sujet.mjs`
+   rendait 11 signalements dont 10 faux, et le vrai s'y cachait. Quand une
+   porte signale beaucoup, soupçonne d'abord la porte.
+
+### LE PRINCIPE QUI PRIME SUR TOUT
+
+**Aucune page perdue, aucun mot perdu.** La mesure du 14/10 : 258 112 mots dans
+les `<main>` des 158 pages, avant et après la repasse, à l'unité près. Avant
+d'annoncer quoi que ce soit, reconstruis et recompare.
 
 ---
 
