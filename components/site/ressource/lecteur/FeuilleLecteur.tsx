@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import s from "./lecteur.module.css";
+import { OUVERTS_PAR_LE_HUB } from "./ouverts";
 
 /**
  * La feuille du lecteur, maquette « Ressources v2 » : voile flouté, feuille
@@ -12,25 +13,80 @@ import s from "./lecteur.module.css";
  * maquette retirait son ancre `#/ressources/...` : ici l'adresse ouverte est
  * la vraie URL de la page, qui sert la page complète si on la recharge.
  */
-export default function FeuilleLecteur({ url, children }: { url: string; children: ReactNode }) {
+const FOCUSABLES =
+  'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),summary,[tabindex]:not([tabindex="-1"])';
+
+/** Rend inertes les frères de chaque ancêtre du lecteur ; renvoie la remise en état. */
+function inerteAutour(el: HTMLElement): () => void {
+  const poses: HTMLElement[] = [];
+  for (let n: HTMLElement | null = el; n && n !== document.body; n = n.parentElement) {
+    for (const frere of Array.from(n.parentElement?.children ?? [])) {
+      if (frere !== n && frere instanceof HTMLElement && !frere.inert) {
+        frere.inert = true;
+        poses.push(frere);
+      }
+    }
+  }
+  return () => poses.forEach((x) => (x.inert = false));
+}
+
+export default function FeuilleLecteur({
+  url,
+  depuisLeHubSeulement = false,
+  children,
+}: {
+  url: string;
+  /** Vrai : une navigation qui ne vient pas d'une carte du hub ouvre la page entière. */
+  depuisLeHubSeulement?: boolean;
+  children: ReactNode;
+}) {
   const router = useRouter();
+  const racine = useRef<HTMLDivElement>(null);
   const feuille = useRef<HTMLElement>(null);
   const [progression, setProgression] = useState(0);
   const [copie, setCopie] = useState(false);
+  const [actif] = useState(() => !depuisLeHubSeulement || OUVERTS_PAR_LE_HUB.has(url));
 
   useEffect(() => {
-    const fermer = (e: KeyboardEvent) => {
-      if (e.key === "Escape") router.back();
+    if (!actif) window.location.assign(url);
+  }, [actif, url]);
+
+  // Fond inerte, focus piégé dans la feuille puis rendu à la carte, Échap ferme.
+  useEffect(() => {
+    if (!actif || !racine.current) return;
+    const carte = document.activeElement as HTMLElement | null;
+    const debloque = inerteAutour(racine.current);
+    const clavier = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        router.back();
+        return;
+      }
+      if (e.key !== "Tab" || !feuille.current) return;
+      const liste = Array.from(feuille.current.querySelectorAll<HTMLElement>(FOCUSABLES)).filter(
+        (x) => x.offsetParent !== null,
+      );
+      if (!liste.length) return;
+      const premier = liste[0];
+      const dernier = liste[liste.length - 1];
+      if (e.shiftKey && (document.activeElement === premier || document.activeElement === feuille.current)) {
+        e.preventDefault();
+        dernier.focus();
+      } else if (!e.shiftKey && document.activeElement === dernier) {
+        e.preventDefault();
+        premier.focus();
+      }
     };
-    window.addEventListener("keydown", fermer);
+    window.addEventListener("keydown", clavier);
     const avant = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     feuille.current?.focus({ preventScroll: true });
     return () => {
-      window.removeEventListener("keydown", fermer);
+      window.removeEventListener("keydown", clavier);
       document.body.style.overflow = avant;
+      debloque();
+      if (carte?.isConnected) carte.focus({ preventScroll: true });
     };
-  }, [router]);
+  }, [actif, router]);
 
   useEffect(() => {
     if (!copie) return;
@@ -43,8 +99,10 @@ export default function FeuilleLecteur({ url, children }: { url: string; childre
     setCopie(true);
   };
 
+  if (!actif) return null;
+
   return (
-    <>
+    <div ref={racine}>
       <div
         className={s.voile}
         onClick={() => router.back()}
@@ -63,6 +121,7 @@ export default function FeuilleLecteur({ url, children }: { url: string; childre
         tabIndex={-1}
         role="dialog"
         aria-modal="true"
+        aria-label="Lecture de la ressource"
         data-lecteur-ressource=""
         className={s.feuille}
         onScroll={(e) => {
@@ -172,6 +231,6 @@ export default function FeuilleLecteur({ url, children }: { url: string; childre
         </div>
         {children}
       </aside>
-    </>
+    </div>
   );
 }

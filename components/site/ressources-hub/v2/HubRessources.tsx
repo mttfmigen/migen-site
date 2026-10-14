@@ -15,6 +15,7 @@ import type { ContenuRessource } from "./donnees";
 import { colonnes, filtre, FILTRES_AU_REPOS, pastilles } from "./filtrage";
 import type { CleTri, Espace, Filtres } from "./filtrage";
 import s from "./hub.module.css";
+import { OUVERTS_PAR_LE_HUB } from "@/components/site/ressource/lecteur/ouverts";
 
 /**
  * Le hub /ressources/, maquette « Ressources v2 » (`page-dc.jsx` et
@@ -33,6 +34,8 @@ import s from "./hub.module.css";
  */
 
 const ARTICLE = /^\/ressources\/articles\/[^/]+\/$/;
+/** Fiches métier et guides de l'espace Techniciens : la maquette les ouvre aussi dans le lecteur. */
+const FICHES = new Set(CONTENUS_TECHNICIENS.map((x) => x.url));
 const PAR_URL = new Map(CONTENUS_ENTREPRISES.map((x) => [x.url, x] as const));
 const UNE = [
   "/ressources/articles/cout-arret-de-production/",
@@ -134,7 +137,8 @@ export default function HubRessources() {
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     const a = (e.target as Element).closest("a");
     const href = a?.getAttribute("href");
-    if (!a || !href || a.target || !ARTICLE.test(href)) return;
+    if (!a || !href || a.target || !(ARTICLE.test(href) || FICHES.has(href))) return;
+    OUVERTS_PAR_LE_HUB.add(href);
     e.preventDefault();
     router.push(href, { scroll: false });
   };
