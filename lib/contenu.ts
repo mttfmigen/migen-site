@@ -169,6 +169,18 @@ const CONTENUS_SUR_DISQUE: ReadonlyMap<string, RelaisGabarit> = (() => {
 })();
 
 /**
+ * Les chemins que le relais disque sert, pour le plan du site. Décision de
+ * Mehdi du 14/10 : ces pages sont en ligne, en 200 et indexables, mais étaient
+ * absentes du plan, donc mal trouvées par Google. Mesuré ce jour-là : 101
+ * pages (34 villes, 13 études de cas, 13 fiches métier, l'offre Full service,
+ * le hub /ressources/ et ses 35 contenus, 2 guides), toutes validées par lui.
+ * Le plan écarte lui-même les doublons de la base et les sources de redirection.
+ */
+export function cheminsDuRelais(): string[] {
+  return [...CONTENUS_SUR_DISQUE.keys()];
+}
+
+/**
  * Un identifiant STABLE déduit du chemin, à la forme d'un UUID.
  *
  * POURQUOI LA FORME COMPTE : `maillage()` interroge `pages` avec
@@ -199,11 +211,10 @@ function identifiantStable(path: string): string {
  * reprend la main d'elle-même, puisque ce repli ne s'applique QUE lorsque la
  * lecture ne remonte rien.
  *
- * TROU CONNU, SIGNALÉ PLUTÔT QUE MASQUÉ : `cheminsPublies()` lit la base, donc
- * ces pages ne sont ni pré-rendues au build ni annoncées au plan du site. Elles
- * sont servies à la visite (`dynamicParams` par défaut). Les y ajouter serait
- * décider à la place de Mehdi quelles pages sont publiées : ça se tranche avec
- * lui, pas ici.
+ * `cheminsPublies()` lit la base, donc ces pages ne sont pas pré-rendues au
+ * build : elles sont servies à la visite (`dynamicParams` par défaut). Elles
+ * sont annoncées au plan du site depuis le 14/10, sur décision de Mehdi (voir
+ * `cheminsDuRelais`).
  *
  * LE PARENT EST LU EN BASE pour que le fil d'Ariane et le maillage du cocon
  * situent la page. Rien n'est inventé : sans parent connu, les deux restent

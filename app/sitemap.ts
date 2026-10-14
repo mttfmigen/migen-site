@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 
-import { cheminsArticles } from "@/lib/contenu";
+import { cheminsArticles, cheminsDuRelais } from "@/lib/contenu";
 import { cheminNormalise, sourcesRedirigees } from "@/lib/redirections";
 import { ROUTES_STATIQUES } from "@/lib/routes-statiques";
 import { urlAbsolue } from "@/lib/seo/url";
@@ -77,6 +77,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .filter((id): id is string => id !== null),
   );
 
+  const cheminsDeBase = new Set(listePages.map((page) => page.path));
+
   // Date du jour pour les routes statiques : leur contenu vit dans le code, donc
   // sa dernière modification est celle du déploiement, pas d'une ligne en base.
   const deploiement = new Date();
@@ -95,6 +97,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         url: urlAbsolue(page.path),
         lastModified: new Date(page.updated_at),
       })),
+    /* LES PAGES DU RELAIS DISQUE QUE LA BASE N'A PAS, décision de Mehdi du
+       14/10 : servies en 200 et indexables, elles manquaient au plan. Sans
+       date : la leur est une date fixe de synthèse (voir `pageDeRelais`), et
+       une fausse date de mise à jour vaut moins qu'aucune. */
+    ...cheminsDuRelais()
+      .filter((chemin) => !cheminsDeBase.has(chemin))
+      .filter((chemin) => !(ROUTES_STATIQUES as readonly string[]).includes(chemin))
+      .filter((chemin) => !redirigees.has(cheminNormalise(chemin)))
+      .map((chemin) => ({ url: urlAbsolue(chemin) })),
     ...articles
       .filter((article) => !article.noindex)
       .map((article) => ({
