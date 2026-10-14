@@ -41,7 +41,9 @@ const PHOTOS: Record<string, string> = {
   "/expertises/mecanique/machine-outil/": "/assets/photos/meca-pied-a-coulisse-fraiseuse.jpg",
   "/expertises/pneumatique/": "/assets/photos/pneu-cle-bloc-distribution.jpg",
   "/expertises/robotique/": "/assets/photos/menuiserie-robot-panneaux.jpg",
+  "/expertises/robotique/abb/": "/assets/photos/env-maintenance-automaticien-2.jpg",
   "/expertises/robotique/fanuc/": "/assets/photos/env-industrie-automobile.jpg",
+  "/expertises/robotique/integrateur-robotique/": "/assets/photos/env-inspection-bras-robotiques.jpg",
   "/expertises/soudure/": "/assets/photos/il-soudure-poste-masque-releve.jpg",
   "/expertises/specialisations-constructeur/": "/assets/photos/menuiserie-cnc-pupitre-casque.jpg",
   "/expertises/tuyauterie/": "/assets/photos/env-raffinerie-de-petrole-bangkok.jpg",
@@ -255,4 +257,4 @@ export function photoDeLaPage(url: string | null | undefined): string | null {
 }
 
 /** Le nombre de pages couvertes, pour les portes. */
-export const NOMBRE_PAGES = 229;
+export const NOMBRE_PAGES = 231;
