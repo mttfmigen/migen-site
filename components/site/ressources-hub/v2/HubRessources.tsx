@@ -1,8 +1,9 @@
 "use client";
 
-import type { CSSProperties } from "react";
+import type { CSSProperties, MouseEvent } from "react";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import PostulerMetier from "@/components/site/metier/PostulerMetier";
 
@@ -20,7 +21,9 @@ import s from "./hub.module.css";
  * `markup-indent.html`). La maquette fait foi, au mot et au pixel ; ce qui
  * s'en écarte est délibéré et listé ici :
  *   · l'en-tête et le pied sont ceux du site, pas la barre et le pied dessinés ;
- *   · chaque carte est un vrai lien, le lecteur latéral n'est pas porté ;
+ *   · chaque carte est un vrai lien ; un clic simple sur un article l'ouvre
+ *     dans le lecteur latéral, à sa vraie URL (route interceptée
+ *     `app/ressources/@lecteur`), là où la maquette posait une ancre `#/...` ;
  *   · le rendu serveur sert les 28 cartes des deux espaces : le filtre ne fait
  *     que masquer (Google lit tout, sans JavaScript) ;
  *   · le formulaire est celui du site (aucun champ nouveau), la candidature
@@ -29,6 +32,7 @@ import s from "./hub.module.css";
  *     répond 404) ; « Sans engagement » est retiré (mot interdit du site).
  */
 
+const ARTICLE = /^\/ressources\/articles\/[^/]+\/$/;
 const PAR_URL = new Map(CONTENUS_ENTREPRISES.map((x) => [x.url, x] as const));
 const UNE = [
   "/ressources/articles/cout-arret-de-production/",
@@ -66,6 +70,7 @@ function useLargeur() {
 }
 
 export default function HubRessources() {
+  const router = useRouter();
   const [espace, setEspace] = useState<Espace>("ent");
   const [f, setF] = useState<Filtres>(FILTRES_AU_REPOS);
   const [tri, setTri] = useState<CleTri>("pert");
@@ -124,8 +129,18 @@ export default function HubRessources() {
     );
   };
 
+  /** Clic simple sur un article : lecteur latéral, sans quitter le hub. */
+  const ouvreLecteur = (e: MouseEvent<HTMLDivElement>) => {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const a = (e.target as Element).closest("a");
+    const href = a?.getAttribute("href");
+    if (!a || !href || a.target || !ARTICLE.test(href)) return;
+    e.preventDefault();
+    router.push(href, { scroll: false });
+  };
+
   return (
-    <div className={s.rs} data-hub-ressources="">
+    <div className={s.rs} data-hub-ressources="" onClick={ouvreLecteur}>
       <div
         aria-hidden="true"
         style={{

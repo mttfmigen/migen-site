@@ -1,0 +1,124 @@
+/* Lecteur latéral du hub /ressources/, maquette « Ressources v2 »
+   (`markup-indent.html` l. 1006-1267, `css-page.css`). Jetons du hub repris,
+   parce que la feuille est rendue hors de `.rs` (fente parallèle). */
+
+.feuille {
+  --bg: #f1f2f4;
+  --bg2: #e7e8eb;
+  --card: #ffffff;
+  --glass: rgba(255, 255, 255, 0.68);
+  --ink: #1c1b19;
+  --ink1: #3f3d3a;
+  --ink2: #67645f;
+  --ink3: #8c8882;
+  --line: rgba(28, 27, 25, 0.09);
+  --chip: rgba(28, 27, 25, 0.055);
+  --knob: #1c1b19;
+  --knobfg: #ffffff;
+  --accw: rgba(255, 124, 60, 0.12);
+  --acci: #9a400f;
+  font-family: var(--fb);
+  scrollbar-width: none;
+  animation: rsSheet 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.feuille::-webkit-scrollbar {
+  display: none;
+}
+:root[data-theme="sombre"] .feuille {
+  --bg: #121110;
+  --bg2: #1f1e1c;
+  --card: #1b1a18;
+  --glass: rgba(34, 33, 31, 0.66);
+  --ink: #f4f3f1;
+  --ink1: #d8d5d0;
+  --ink2: #a9a59e;
+  --ink3: #86817a;
+  --line: rgba(255, 255, 255, 0.08);
+  --chip: rgba(255, 255, 255, 0.07);
+  --knob: #f4f3f1;
+  --knobfg: #1c1b19;
+  --accw: rgba(255, 124, 60, 0.16);
+  --acci: #ffb08a;
+}
+.feuille a {
+  color: inherit;
+}
+
+.voile {
+  animation: rsFade 0.3s ease both;
+}
+
+.defile {
+  scrollbar-width: none;
+}
+.defile::-webkit-scrollbar {
+  display: none;
+}
+
+.suivant img {
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.suivant:hover img {
+  transform: scale(1.05);
+}
+
+@keyframes rsSheet {
+  from {
+    opacity: 0;
+    transform: translateX(48px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes rsFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .feuille,
+  .voile {
+    animation: none;
+  }
+}
+@media (max-width: 640px) {
+  .bal {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .bal > * {
+    grid-column: auto !important;
+  }
+}
+
+/* FAQ : `<details>` natif, dessin de la maquette (fond, pastille « + » qui
+   tourne en orange à l'ouverture). */
+.faq {
+  border: 1px solid var(--line);
+  background-color: var(--card);
+  transition: background-color 0.25s, border-color 0.25s;
+}
+.faq[open] {
+  border-color: transparent;
+  background-color: var(--bg);
+}
+.faq > summary {
+  list-style: none;
+}
+.faq > summary::-webkit-details-marker {
+  display: none;
+}
+.plus {
+  background-color: var(--chip);
+  color: var(--ink);
+  transition: background-color 0.25s, transform 0.25s;
+}
+.faq[open] .plus {
+  background-color: #ff7c3c;
+  color: #fff;
+  transform: rotate(45deg);
+}
