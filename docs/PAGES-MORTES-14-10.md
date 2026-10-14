@@ -95,8 +95,10 @@ Pages en pause (rubriques « rédigées mais en pause » du colis) : 5 fiches pr
 200 et restent en ligne (référencement, cibles de 301).
 
 - **En-tête, méga-menu, tiroir mobile, pied de page** : aucun lien vers une page
-  en pause. Un lien de menu serait cité par toutes les pages ; aucune page en pause
-  n'est citée par plus de trois.
+  en pause. Un lien de menu serait cité par toutes les pages ; une page en pause
+  est citée par 3 à 12 pages, mais au plus par 3 pages hors des pages en pause
+  elles-mêmes (le plan du site et les articles ci-dessous ; le reste vient de
+  « Sur le même sujet » entre fiches en pause). Recompté en relecture, voir 5.
 - **`/plan-du-site/`** : les 20 pages en pause y sont listées, sous leurs rubriques.
 - **Corps de quatre articles en ligne**, cinq liens dans le texte :
 
@@ -183,3 +185,61 @@ Menu Ressources de l'en-tête et hub `/ressources/` : hors lot.
   aucun mot perdu sur une page touchée par ce lot. Les 8 pages qui perdent du
   texte (`/plan-du-site/`, `/confidentialite/`, `/ressources/` et les cinq rubriques
   redirigées) le perdent par des lots antérieurs, poussés avant celui-ci.
+
+## 5. Relecture adverse, 14/10
+
+Rejouée sur un build neuf de `phase-2-gabarits` (2c31a86), `bunx next start -p 5624`,
+avec un parcours indépendant de celui du lot.
+
+### 5.1 Ce qui est confirmé
+
+- Parcours HTML depuis l'accueil, `/plan-du-site/` et les 267 adresses du sitemap :
+  268 pages servies en 200, 1 945 cibles distinctes (liens, images, `srcset`,
+  `url()` en ligne, originaux derrière `/_next/image`, `og:image`, adresses du JSON-LD),
+  aucune 404, aucune 500, aucune redirection, aucune chaîne.
+- Ancres : la seule sans cible est `#rs-process` du hub. Vérifié au navigateur à
+  1280 px : le lien est masqué et non focalisable dans l'espace Entreprises, et dans
+  l'espace Techniciens le clic amène la section à 96 px du haut. Fausse alerte confirmée.
+- Navigateur, les 268 pages à 390 px puis à 1280 px, défilées jusqu'en bas :
+  aucune réponse 400 ou plus du site (images paresseuses, polices, données de
+  navigation comprises), aucune image cassée, aucune ancre morte dans le DOM vivant
+  hors `#rs-process`.
+- Menus vivants : tiroir mobile ouvert avec ses rubriques dépliées (accueil, un
+  article, un guide), chaque entrée du méga-menu survolée et cliquée, hub dans
+  les deux espaces. Aucune cible absente du parcours HTML, aucune page en pause.
+- Lecteur du hub (fenêtre ouverte depuis une carte) : « Tous les articles → » mène
+  à `/ressources/`, « Décrire mon besoin » à `/ressources/#rs-form` (section à 96 px),
+  « Postuler → » de l'espace Techniciens à `/ressources/#postuler` (section à 96 px).
+- Guides à 390 px : le bouton « Être rappelé » amène `#etre-rappele` à 90 px du haut,
+  le formulaire `#cx-form` au même endroit. À 1280 px le bouton n'est pas affiché.
+- Fil d'Ariane des 47 pages : « Articles » (ou sa rubrique) en texte, sans effet de
+  survol (le survol ne vise que `a.niveau`) ; `BreadcrumbList` à trois niveaux,
+  Accueil, Ressources, la page.
+- Colis contre site : 262 lignes, 250 servies en 200, les 12 et les 18 écarts de la
+  section 2 recomptés à l'identique. `/diagnostic-zero-arret/` est bien la seule page
+  servie hors sitemap, et absente du corps du plan du site.
+
+### 5.2 Ce qui était faux ou manquant
+
+- Section 1.4 : « aucune page en pause n'est citée par plus de trois » était faux
+  (jusqu'à 12 pages, par le maillage entre fiches en pause). Phrase corrigée ; la
+  conclusion, aucune page en pause depuis un menu, tient.
+- Section 4 : la preuve `node scripts/verifie-liens.mjs` ne lisait que 120 des 268
+  pages (borne `PAGES_MAX = 120`), et l'un de ses six départs,
+  `/ressources/fiches-pratiques/`, est une 301 depuis le 14/10 : la porte le
+  sautait. Corrigé : elle part de l'accueil, du plan du site et de chaque adresse du
+  sitemap. Résultat sur le build : 274 adresses lues, 0 morte, 0 redirigée.
+  Preuve qu'elle sait échouer : contre un faux site, elle trouve un lien mort et un
+  lien vers une 301 posés sur une page que seul le sitemap déclare (sortie 1).
+
+### 5.3 Ce qui reste, hors de ce lot
+
+- **La page 404 est vide sans JavaScript.** Une adresse inconnue (par exemple
+  `/a-propos/valeurs/`, l'une des trois adresses du colis) répond bien 404, mais son
+  HTML ne porte ni en-tête, ni titre, ni lien : tout est dans les données React,
+  dessiné par le navigateur. Avec JavaScript, la page affiche « Cette page n'existe
+  pas » et 144 liens. Le fichier statique `_not-found.html` du build, lui, porte le
+  titre : c'est le rendu dynamique de la 404 qui le perd. Pas un lien cassé, mais un
+  visiteur sans JavaScript, ou un robot qui ne l'exécute pas, tombe sur une page
+  blanche. À traiter dans un lot de routage, pas ici.
+- Les décisions des sections 1.4 et 2.1 restent à trancher par Mehdi.

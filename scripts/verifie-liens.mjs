@@ -24,20 +24,26 @@ import { locsDuPlan } from "./plan-xml.mjs";
 
 const SITE = (process.env.SITE_URL ?? "http://localhost:4340/").replace(/\/$/, "");
 
-/** Pages de départ : une par famille, pour atteindre tous les gabarits. */
-const DEPARTS = [
-  "/",
-  "/offres/residence/",
-  "/expertises/",
-  "/implantations/lyon/",
-  "/ressources/fiches-pratiques/",
-  "/preuves/eiffage/",
-];
+/**
+ * Pages de départ : l'accueil, le plan du site et chaque adresse du sitemap
+ * (ajoutée plus bas). Mesuré le 14/10 : partie de six pages dont
+ * `/ressources/fiches-pratiques/`, devenue une 301 et donc sautée, et bornée à
+ * 120 pages, la porte ne lisait que 120 des 268 pages servies.
+ */
+const DEPARTS = ["/", "/plan-du-site/"];
 
-/** Au-delà, on tourne en rond : le cocon se referme sur lui-même. */
-const PAGES_MAX = 120;
+/** Garde-fou contre une boucle d'adresses générées, pas une borne de travail. */
+const PAGES_MAX = 2000;
 
 const aVisiter = [...DEPARTS];
+try {
+  // Index et sous-plans, au format de l'ancien site (`scripts/plan-xml.mjs`).
+  for (const loc of await locsDuPlan(SITE)) {
+    aVisiter.push(loc.replace(/^https?:\/\/[^/]+/, ""));
+  }
+} catch {
+  // Plan XML absent : le parcours part de l'accueil et du plan du site.
+}
 const vues = new Set();
 /** cible -> pages qui la citent */
 const liens = new Map();
