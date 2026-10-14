@@ -297,3 +297,127 @@
     padding-top: 0 !important;
   }
 }
+
+/* ===================================================== MAQUETTE MOBILE V2
+
+   LE HÉROS COMPACT DU TÉLÉPHONE (G2), même règle que les fiches métier
+   (`metier/FicheMetier.module.css`, bloc « héros compact ») et pour la même
+   source, dc.html L104 à L110 : photo en tête au format 16/10, titre de
+   27 px, boutons, puis le chapeau. L'ordre du DOM ne bouge pas, les deux
+   colonnes passent en `display: contents` et `order` replace leurs enfants.
+   Rien n'est retiré. Au-dessus de 880 px, aucune règle ne s'applique. */
+@media (max-width: 880px) {
+  .heros {
+    padding-top: 16px !important;
+  }
+  .herosGrille {
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: 0 !important;
+  }
+  .herosTexte,
+  .herosVisuel {
+    display: contents;
+  }
+  /* `width: 100%` : sans lui, `aspect-ratio` rend un cadre de 0 px dans la
+     colonne flexible (voir `metier/FicheMetier.module.css`). */
+  .herosCadre {
+    order: -2;
+    width: 100%;
+    height: auto !important;
+    aspect-ratio: 16 / 10;
+    border-radius: 24px !important;
+    margin-bottom: 16px;
+  }
+  .herosPastille {
+    order: -1;
+    align-self: flex-start;
+    margin-bottom: 0 !important;
+  }
+  .corpsHub .herosTitre {
+    margin: 10px 0 10px !important;
+    font-size: 27px !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.04em !important;
+    max-width: none !important;
+  }
+  .herosBoutons {
+    order: 2;
+    margin-top: 16px !important;
+  }
+  .herosChapo {
+    order: 3;
+    margin: 20px 0 12px !important;
+    font-size: 16px !important;
+  }
+  .herosPara {
+    order: 4;
+    font-size: 15px !important;
+  }
+  .herosVisuel > .flottante {
+    order: 5;
+    padding: 14px 16px !important;
+    gap: 12px !important;
+  }
+  .herosVisuel > .flottante > span:first-child {
+    font-size: 28px !important;
+  }
+}
+
+/* LA BASCULE FERMÉE EST UNE CARTE, maquette mobile v2 dc.html L131. Voir
+   `metier/FicheMetier.module.css`. */
+@media (max-width: 880px) {
+  .corpsHub details[data-pliable-mobile]:not([open]) > summary {
+    margin: 6px 18px 0;
+    padding: 12px 16px;
+    border-radius: 20px;
+    background: #fff;
+    border: 1px solid rgba(28, 27, 25, 0.08);
+  }
+}
+
+/* LES CARTES « POUR ALLER PLUS LOIN » EN LIGNE AU TÉLÉPHONE (G3), hub et
+   fiches métier (`LiensPhoto`). Écran de bureau que la maquette mobile n'a
+   pas ; il ne peut pas se replier (pas de titre de niveau, voir `etiquetteDe`
+   dans `metier/PageFicheMetier.tsx`), il se compacte : vignette de 96 px à
+   gauche, libellé à droite, comme les rangées de liens de la maquette mobile.
+   Rien n'est retiré, la photo reste. 1 039 px à 390 px sur
+   /carriere/technicien-de-maintenance/ avant, pour trois cartes.
+
+   À PARTIR DE 360 PX SEULEMENT : à 320 px, « Électromécanicien » ne tient pas
+   à côté d'une vignette, sa flèche sortait de 16 px de la carte (mesuré par
+   `verification-responsive.mjs`). En dessous, la carte garde sa photo en tête. */
+@media (min-width: 360px) and (max-width: 620px) {
+  .liensCarte {
+    flex-direction: row !important;
+    align-items: stretch;
+  }
+  .liensPhoto {
+    flex: 0 0 72px;
+    height: auto !important;
+    min-height: 72px;
+  }
+  .liensTexte {
+    flex: 1 1 auto;
+    min-width: 0;
+    align-items: center !important;
+    padding: 12px 14px !important;
+  }
+  .liensTexte > span:first-child {
+    font-size: 15px !important;
+  }
+}
+
+/* LE RYTHME DES SECTIONS AU TÉLÉPHONE, `--sec: 64px` comme le reste du site
+   sous 760 px. Voir `RACINE_CARRIERE` dans `metier/PageFicheMetier.tsx`. */
+@media (max-width: 760px) {
+  .corpsHub {
+    --sec: 64px;
+  }
+  /* Le titre des pastilles du cocon, rendu à 29 px par `.mg-site h2` :
+     correctif local, voir `metier/FicheMetier.module.css`. */
+  .corpsHub [data-pastilles-cocon] > h2 {
+    font-size: 11px !important;
+  }
+}

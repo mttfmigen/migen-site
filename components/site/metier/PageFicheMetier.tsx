@@ -3,13 +3,17 @@ import type { CSSProperties, ReactNode } from "react";
 
 import TexteRiche from "@/components/site/blocs/TexteRiche";
 import { VERRE } from "@/components/site/blocs/habillage";
-import type { ContenuFicheMetier } from "@/types/metier";
+import type { ContenuFicheMetier, SectionFiche } from "@/types/metier";
 
 import styles from "./FicheMetier.module.css";
 import PostulerMetier from "./PostulerMetier";
 import SectionFicheMetier, { BoutonPostuler } from "./SectionsFicheMetier";
 import { altPhoto } from "@/lib/descriptions-photos";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
+import PastillesCocon from "@/components/site/cocon/PastillesCocon";
+import { courtLibelle, enfantsDe } from "@/components/site/cocon/maillage-mobile";
+import FilArianeMobile from "@/components/site/preuve/FilArianeMobile";
 
 /**
  * Gabarit 07 « Métier et carrière », 13 pages `/carriere/<metier>/`.
@@ -43,6 +47,11 @@ import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
  * pas jusqu'aux pages carrière de la maquette : mesuré à 390 px, 120 px dans
  * la maquette, 64 sur le site, soit 56 px d'écart en tête de chaque section.
  * Partagé avec le hub `/carriere/`, servi par le même fichier.
+ *
+ * SOUS 760 PX, LA RÉFÉRENCE EST DEVENUE LA MAQUETTE MOBILE V2 (14/10) : elle
+ * n'a plus ce rythme de 120 px, ses blocs se suivent à 12 à 22 px. Le module
+ * CSS rend donc au `<main>` de la famille le `--sec: 64px` du reste du site à
+ * cette largeur (`.corpsMetier`, `.corpsHub`) ; au-dessus, rien ne change.
  */
 export const RACINE_CARRIERE = { "--sec": "120px" } as CSSProperties;
 
@@ -51,6 +60,95 @@ export interface ProprietesPageFicheMetier {
   contenu: ContenuFicheMetier;
   /** Fil d'Ariane, fourni par la page : composant serveur qui lit la base. */
   filAriane?: ReactNode;
+  /**
+   * Le chemin de la page (`pages.path`, slash final), pour la couche MOBILE de
+   * la maquette v2 : cadence de conversion, puces du héros vers les pages
+   * filles, pastilles « Dans la même rubrique ». OPTIONNEL : sans lui, rien de
+   * mobile ne s'ajoute et le rendu reste celui d'avant, ce qui garde
+   * `verification-metier.tsx` et ses captures inchangés.
+   */
+  chemin?: string;
+}
+
+/**
+ * LES PUCES DU HÉROS de la maquette mobile v2, dc.html L110 et L487 : le
+ * gabarit 07 pose ses pages FILLES en pastilles sous le titre
+ * (`chips = kidsOf(u)`), et c'est pour cela que `PastillesCocon` ne lui rend
+ * jamais de boîte d'enfants (sa cascade L505 l'exclut). Libellés et cibles
+ * dérivés de l'index (`enfantsDe`, `courtLibelle`), rien n'est rédigé. Dessin
+ * verbatim de L110. Mobile seulement : la capture de bureau n'en porte pas.
+ * Repris du travail interrompu (d39f904), relu le 14/10.
+ */
+const PUCES_HERO_RANGEE: CSSProperties = {
+  display: "flex",
+  flexWrap: "wrap",
+  gap: 6,
+  marginTop: 14,
+};
+const PUCE_HERO: CSSProperties = {
+  display: "inline-flex",
+  alignItems: "center",
+  minHeight: 36,
+  padding: "0 13px",
+  borderRadius: 999,
+  background: "#fff",
+  border: "1px solid rgba(28,27,25,.1)",
+  font: "500 13px var(--fb)",
+  color: "#1c1b19",
+};
+
+function PucesHeroMetier({ chemin }: { chemin: string }) {
+  const enfants = enfantsDe(chemin);
+  if (enfants.length === 0) return null;
+  return (
+    <div
+      data-mobile-seulement=""
+      data-puces-metier=""
+      className={styles.herosPuces}
+      style={PUCES_HERO_RANGEE}
+    >
+      {enfants.map((enfant) => (
+        <a key={enfant.url} href={enfant.url} style={PUCE_HERO}>
+          {courtLibelle(enfant)}
+        </a>
+      ))}
+    </div>
+  );
+}
+
+/**
+ * LES SECTIONS DE CONTENU, celles que la maquette mobile numérote et compte
+ * (`nD`, dc.html L452 à L480) : ni les chiffres (`stats`, non comptés), ni la
+ * FAQ, ni le formulaire, ni les cartes de fin. C'est autour d'elles seules que
+ * la cadence de conversion se pose.
+ */
+const HORS_CONTENU: ReadonlySet<SectionFiche["type"]> = new Set([
+  "chiffres",
+  "faq",
+  "postuler",
+  "liens",
+]);
+
+/** Le titre de bascule d'une section, ou rien si elle ne sait pas se nommer. */
+function etiquetteDe(section: SectionFiche): { surtitre: string; titre: string } | null {
+  /* « Pour aller plus loin » NE SE REPLIE PAS : son seul titre est un
+     surtitre en `<div>` (celui de la capture), et `verifie-blocs-pliables.mjs`
+     refuse un bloc replié sans titre de niveau (16 refus mesurés le 14/10).
+     En faire un `<h3>` casserait `verifie-titres-metier.mjs`, qui tient la
+     structure des titres contre la capture. Ses cartes passent donc en ligne au
+     téléphone (`HubCarriere.module.css`, `liens*`) au lieu d'être repliées. */
+  /* UN TITRE NON VIDE, et pas seulement la présence de la clé.
+     Première version : `"titre" in section` suffisait, et des sections
+     au titre vide donnaient une bascule muette. La porte des blocs
+     repliables l'a refusé, 120 fois, avant déploiement. */
+  const titrable =
+    "titre" in section &&
+    "surtitre" in section &&
+    typeof section.titre === "string" &&
+    section.titre.trim() !== "" &&
+    typeof section.surtitre === "string" &&
+    section.surtitre.trim() !== "";
+  return titrable ? { surtitre: section.surtitre, titre: section.titre } : null;
 }
 
 /**
@@ -79,32 +177,108 @@ const ETIQUETTE_SURTITRE: CSSProperties = {
   letterSpacing: ".14em",
   textTransform: "uppercase",
   color: "var(--acc)",
-  marginBottom: 6,
+  /* dc.html L131 : `margin-bottom:3px` sous le surtitre de la bascule. */
+  marginBottom: 3,
 };
 
 /** Le libellé de la bascule, à l'échelle des H2 du gabarit en largeur mobile. */
 const ETIQUETTE_TITRE: CSSProperties = {
   display: "block",
-  font: "600 calc(clamp(22px,2.4vw,30px) * var(--ts))/1.15 var(--ft)",
-  letterSpacing: "-.035em",
+  /* Le titre de bascule de la maquette mobile v2, dc.html L131 :
+     `font:600 16.5px/1.3 var(--ft);letter-spacing:-.025em`. Il était à
+     l'échelle des H2 (22 px à 390 px) : deux lignes par bascule au lieu d'une,
+     et onze bascules par fiche. L'étiquette n'existe que sous 880 px. */
+  font: "600 16.5px/1.3 var(--ft)",
+  letterSpacing: "-.025em",
   color: "var(--ink)",
 };
+
+/**
+ * Une section du corpus, repliée au téléphone quand elle sait se nommer.
+ *
+ * ÉCART DÉCLARÉ (14/10) : la maquette mobile v2 laisse ouverte la première
+ * section numérotée (dc.html L451, `nOpen = 1`). Pas ici. Mesuré à 390 px sur
+ * les treize fiches, l'ouvrir les rendait toutes PLUS HAUTES qu'avant la
+ * couche mobile (+156 à +976 px) : le bento ouvert pèse 1 434 px à nos
+ * gouttières de 40 px, contre environ 700 dans la maquette à 18 px. Toutes
+ * repliées, elles baissent de 514 à 1 317 px. Le hub `/carriere/`, lui, ouvre
+ * sa première section et baisse quand même de 6 301 px. À trancher par Mehdi.
+ */
+function rendSection(section: SectionFiche, i: number): ReactNode {
+  if (section.type === "postuler") return <PostulerMetier key={`postuler-${i}`} />;
+  // L'index suffit comme clé : l'ordre du tableau EST le gabarit.
+  const cle = `${section.type}-${i}`;
+  const etiquette = i === 0 ? null : etiquetteDe(section);
+  if (!etiquette) return <SectionFicheMetier key={cle} section={section} />;
+  return (
+    <SectionPliableMobile
+      key={cle}
+      enTete={
+        <span data-mobile-seulement="" className={styles.etiquettePli}>
+          <span style={ETIQUETTE_SURTITRE}>{etiquette.surtitre}</span>
+          <span style={ETIQUETTE_TITRE}>{etiquette.titre}</span>
+        </span>
+      }
+    >
+      <SectionFicheMetier section={section} />
+    </SectionPliableMobile>
+  );
+}
 
 export default function PageFicheMetier({
   titre,
   contenu,
   filAriane,
+  chemin,
 }: ProprietesPageFicheMetier) {
   const heros = contenu.heros;
+  const sections = contenu.sections;
+  /* PAS DE BADGE « N min de lecture » (dc.html L492), écart déclaré : posé
+     entre la pastille « Métier » et le titre, il coupe le mot que
+     `textContent` colle entre les deux, EN PLUS de la coupure du fil
+     d'Ariane, et `instantane-texte-main.mjs` ne sait excuser qu'une coupure
+     par mot collé : 13 fiches sur 13 y comptaient un mot perdu (mesuré le
+     14/10, aucun mot réellement retiré). */
+
+  /* LES TROIS TRANCHES, sans rien réordonner : ce qui précède la première
+     section de contenu (les chiffres), la suite des sections de contenu, et
+     ce qui suit la dernière (FAQ, formulaire, cartes de fin). Au-dessus de
+     880 px, la page est exactement la suite de sections d'avant : la cadence
+     n'ajoute que des blocs `data-mobile-seulement`. */
+  const premier = sections.findIndex((s) => !HORS_CONTENU.has(s.type));
+  const dernier = sections.length - 1 - [...sections].reverse().findIndex((s) => !HORS_CONTENU.has(s.type));
+  const avecContenu = premier >= 0;
+  const avant = avecContenu ? sections.slice(0, premier) : sections;
+  const contenus = avecContenu ? sections.slice(premier, dernier + 1) : [];
+  const apres = avecContenu ? sections.slice(dernier + 1) : [];
+  const rangFaq = apres.findIndex((s) => s.type === "faq");
+
+  const rendContenus = contenus.map((s, j) => rendSection(s, premier + j));
+  const rendApres = apres.map((s, j) => rendSection(s, dernier + 1 + j));
+
   return (
     <div className="mg-site" style={RACINE_CARRIERE}>
       <main className={styles.corpsMetier} style={{ paddingTop: 62 }}>
         {filAriane}
 
-        {/* ---------------------------------------------------------- héros */}
-        <section style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 40px 0" }}>
+        {/* ---------------------------------------------------------- héros
+
+            LE HÉROS COMPACT DU TÉLÉPHONE (G2), maquette mobile v2 dc.html
+            L104 à L110 : photo en tête au format 16/10, surtitre, titre de
+            27 px, puces des pages filles, boutons, puis le chapeau. Tout est
+            fait par `FicheMetier.module.css` sous 880 px (classes `heros*`) :
+            l'ordre du DOM ne bouge pas, rien n'est retiré, et au-dessus de
+            880 px aucune règle ne s'applique. */}
+        <section
+          className={styles.heros}
+          style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 40px 0" }}
+        >
+          {/* Le fil d'Ariane de la maquette MOBILE (dc.html L104), au-dessus de
+              la photo, sous 881 px seulement : les captures de bureau de ce
+              gabarit n'en portent pas. Composant du lot 02, tel quel. */}
+          {chemin ? <FilArianeMobile chemin={chemin} titre={titre} /> : null}
           <div
-            className={styles.deuxColonnes}
+            className={`${styles.deuxColonnes} ${styles.herosGrille}`}
             style={{
               display: "grid",
               gridTemplateColumns: "1.08fr .92fr",
@@ -112,9 +286,10 @@ export default function PageFicheMetier({
               alignItems: "center",
             }}
           >
-            <div>
+            <div className={styles.herosTexte}>
               {heros.pastille ? (
                 <span
+                  className={styles.herosPastille}
                   style={{
                     display: "inline-flex",
                     alignItems: "center",
@@ -141,6 +316,7 @@ export default function PageFicheMetier({
                 </span>
               ) : null}
               <h1
+                className={styles.herosTitre}
                 style={{
                   font: "600 calc(clamp(38px,4.6vw,64px) * var(--ts))/1.03 var(--ft)",
                   letterSpacing: "-.045em",
@@ -153,7 +329,7 @@ export default function PageFicheMetier({
               </h1>
               {heros.chapeau ? (
                 <p
-                  className={styles.texteLie}
+                  className={`${styles.texteLie} ${styles.herosChapo}`}
                   style={{
                     font: "400 19px/1.6 var(--fb)",
                     color: "var(--ink)",
@@ -168,7 +344,7 @@ export default function PageFicheMetier({
               {heros.paragraphes?.map((texte) => (
                 <p
                   key={texte}
-                  className={styles.texteLie}
+                  className={`${styles.texteLie} ${styles.herosPara}`}
                   style={{
                     font: "400 15.5px/1.65 var(--fb)",
                     color: "var(--ink2)",
@@ -180,7 +356,9 @@ export default function PageFicheMetier({
                   <TexteRiche texte={texte} />
                 </p>
               ))}
+              {chemin ? <PucesHeroMetier chemin={chemin} /> : null}
               <div
+                className={styles.herosBoutons}
                 style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 22 }}
               >
                 <BoutonPostuler />
@@ -204,8 +382,9 @@ export default function PageFicheMetier({
                 </a>
               </div>
             </div>
-            <div style={{ position: "relative" }}>
+            <div className={styles.herosVisuel} style={{ position: "relative" }}>
               <div
+                className={styles.herosCadre}
                 style={{
                   position: "relative",
                   borderRadius: 32,
@@ -265,8 +444,10 @@ export default function PageFicheMetier({
 
         {/* ---------------------- les sections, dans l'ordre de la capture
 
-            CHAQUE SECTION SE REPLIE AU TÉLÉPHONE SAUF LA PREMIÈRE, règle de la
-            maquette mobile : `isOpen = si < 1 || secOpen[...]`.
+            CHAQUE SECTION TITRÉE SE REPLIE AU TÉLÉPHONE, la première section
+            numérotée aussi : écart déclaré sur `rendSection`. Les chiffres,
+            sans titre, ne se replient pas : il n'y aurait rien à mettre sur la
+            bascule. Les cartes de fin non plus, voir `etiquetteDe`.
 
             Mesure du 12/10, hauteur réelle après hydratation : les pages
             carrière sont les plus longues du site, de 25 à 34 écrans, et
@@ -280,40 +461,36 @@ export default function PageFicheMetier({
             le bloc ETIQUETTE_SURTITRE plus haut pour les deux fautes que ce
             choix répare.
 
-            Une section sans titre, comme les chiffres, n'est pas repliée : il
-            n'y aurait rien à mettre sur la bascule. */}
-        {contenu.sections.map((section, i) => {
-          if (section.type === "postuler") return <PostulerMetier key={`postuler-${i}`} />;
-          // L'index suffit comme clé : l'ordre du tableau EST le gabarit.
-          const cle = `${section.type}-${i}`;
-          /* UN TITRE NON VIDE, et pas seulement la présence de la clé.
-             Première version : `"titre" in section` suffisait, et des sections
-             au titre vide donnaient une bascule muette. La porte des blocs
-             repliables l'a refusé, 120 fois, avant déploiement. */
-          const titrable =
-            "titre" in section &&
-            "surtitre" in section &&
-            typeof section.titre === "string" &&
-            section.titre.trim() !== "" &&
-            typeof section.surtitre === "string" &&
-            section.surtitre.trim() !== "";
-          if (i === 0 || !titrable) {
-            return <SectionFicheMetier key={cle} section={section} />;
-          }
-          return (
-            <SectionPliableMobile
-              key={cle}
-              enTete={
-                <span data-mobile-seulement="" className={styles.etiquettePli}>
-                  <span style={ETIQUETTE_SURTITRE}>{section.surtitre}</span>
-                  <span style={ETIQUETTE_TITRE}>{section.titre}</span>
-                </span>
-              }
-            >
-              <SectionFicheMetier section={section} />
-            </SectionPliableMobile>
-          );
-        })}
+            LA CADENCE DE CONVERSION (maquette mobile v2, variante carrière)
+            enveloppe les seules sections de contenu : photo et « Postuler chez
+            Migen » après la 2e, bandeau « Ce métier vous ressemble ? » après
+            la 5e, la 8e, la 11e. PAS DE RAPPEL FINAL (`rappelFinal={false}`) :
+            en carrière, la maquette ne pose en bas qu'un bouton « Postuler chez
+            Migen » qui mène au formulaire de candidature (dc.html L576,
+            `endBtnOnly: isCar`), et cette page porte CE formulaire,
+            « Rejoindre Migen » (#postuler), juste après la FAQ. Un bouton qui
+            renvoie au bloc suivant serait un doublon. */}
+        {avant.map((s, i) => rendSection(s, i))}
+        {chemin ? (
+          <AvecConversionMobile
+            chemin={chemin}
+            gabarit="07"
+            photoHeros={heros.photo?.src}
+            rappelFinal={false}
+          >
+            {rendContenus}
+          </AvecConversionMobile>
+        ) : (
+          rendContenus
+        )}
+        {rendApres.slice(0, rangFaq + 1)}
+        {/* « Dans la même rubrique », les sœurs de la page, après la FAQ et
+            avant le bloc de candidature, à la place que lui donne la maquette
+            (dc.html L134 puis L138). Le gabarit 07 met ses ENFANTS en puces de
+            héros (L506) : la boîte du bas porte donc toujours les sœurs.
+            Mobile seulement, porté par `PastillesCocon` lui-même. */}
+        {chemin ? <PastillesCocon chemin={chemin} variante="soeurs" /> : null}
+        {rendApres.slice(rangFaq + 1)}
       </main>
     </div>
   );

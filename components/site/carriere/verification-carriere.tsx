@@ -288,8 +288,16 @@ const titresDe = (html: string) =>
    d'attraper un titre manquant, un titre en trop, et un titre déplacé. Seul le
    libellé que Mehdi a écarté est substitué, et l'assertion des deux sens plus
    haut garantit que l'ancien libellé a bien disparu du rendu. */
+/* LES BLOCS MOBILES SONT ÉCARTÉS DU CÔTÉ MESURÉ (14/10, maquette mobile v2).
+   « Toutes les pages de la rubrique · 8 » (`PastillesCocon`) est un `<h2>`
+   que la maquette MOBILE pose sous le héros, et que la capture de BUREAU n'a
+   pas : il porte `data-mobile-seulement` et n'existe pas au-dessus de 880 px.
+   Seules les `<section>` ainsi marquées sont retirées, et aucune ne contient de
+   section imbriquée : la recherche non gourmande s'arrête à la bonne fin. */
+const sansMobile = (html: string) =>
+  html.replace(/<section\b[^>]*\bdata-mobile-seulement[^>]*>[\s\S]*?<\/section>/g, "");
 assert.deepEqual(
-  titresDe(RENDU),
+  titresDe(sansMobile(RENDU)),
   titresDe(CAPTURE),
   "les titres de section ne suivent pas la capture, décisions de copie appliquées",
 );

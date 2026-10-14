@@ -29,10 +29,22 @@ const TITRE2: CSSProperties = {
   textWrap: "balance",
 };
 
-/** Un paragraphe du corpus, liens et gras rendus. */
-export function Paragraphe({ texte, style }: { texte: string; style: CSSProperties }) {
+/** Un paragraphe du corpus, liens et gras rendus. `className` s'ajoute à
+ *  `texteLie` (le héros du hub y pose son ordre mobile). */
+export function Paragraphe({
+  texte,
+  style,
+  className,
+}: {
+  texte: string;
+  style: CSSProperties;
+  className?: string;
+}) {
   return (
-    <p className={styles.texteLie} style={{ textWrap: "pretty", ...style }}>
+    <p
+      className={className ? `${styles.texteLie} ${className}` : styles.texteLie}
+      style={{ textWrap: "pretty", ...style }}
+    >
       <TexteRiche texte={texte} />
     </p>
   );
@@ -702,7 +714,7 @@ export function LiensPhoto({ items }: { items: { libelle: string; href: string; 
               key={item.href}
               href={item.href}
               prefetch={false}
-              className={styles.carteLien}
+              className={`${styles.carteLien} ${styles.liensCarte}`}
               style={{
                 ...VERRE,
                 borderRadius: 24,
@@ -713,6 +725,7 @@ export function LiensPhoto({ items }: { items: { libelle: string; href: string; 
               }}
             >
               <div
+                className={styles.liensPhoto}
                 style={{
                   position: "relative",
                   height: 140,
@@ -736,6 +749,7 @@ export function LiensPhoto({ items }: { items: { libelle: string; href: string; 
                 ) : null}
               </div>
               <div
+                className={styles.liensTexte}
                 style={{
                   padding: "18px 20px 20px",
                   display: "flex",

@@ -260,6 +260,7 @@ export default async function PageDuCocon({
         titre={page.titre_h1}
         contenu={page.contenu}
         filAriane={<FilAriane path={page.path} />}
+        chemin={page.path}
       />
     );
   }

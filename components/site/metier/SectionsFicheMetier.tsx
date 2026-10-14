@@ -168,7 +168,7 @@ function Enveloppe({ children, fin = false }: { children: ReactNode; fin?: boole
 function Chiffres({ items }: { items: { valeur: string; texte: string }[] }) {
   if (!items.length) return null;
   return (
-    <section style={{ ...LARGEUR, padding: "84px 40px 0" }}>
+    <section className={styles.sectionChiffres} style={{ ...LARGEUR, padding: "84px 40px 0" }}>
       <div
         data-reveal=""
         className={styles.stats}

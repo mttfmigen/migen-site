@@ -21,6 +21,12 @@ import {
 } from "./SectionsHub";
 import { altPhoto } from "@/lib/descriptions-photos";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
+import PastillesCocon from "@/components/site/cocon/PastillesCocon";
+import FilArianeMobile from "@/components/site/preuve/FilArianeMobile";
+
+/** Le chemin de cette route statique, pour la couche mobile de la maquette v2. */
+const CHEMIN = "/carriere/";
 
 /**
  * Le hub `/carriere/`, gabarit 10 « Hub de rubrique » servi par
@@ -70,14 +76,17 @@ const ETIQUETTE_SURTITRE: CSSProperties = {
   letterSpacing: ".14em",
   textTransform: "uppercase",
   color: "var(--acc)",
-  marginBottom: 6,
+  /* dc.html L131 : `margin-bottom:3px` sous le surtitre de la bascule. */
+  marginBottom: 3,
 };
 
 /** Le libelle de la bascule, a l'echelle des H2 du gabarit en largeur mobile. */
 const ETIQUETTE_TITRE: CSSProperties = {
   display: "block",
-  font: "600 calc(clamp(22px,2.4vw,30px) * var(--ts))/1.15 var(--ft)",
-  letterSpacing: "-.035em",
+  /* dc.html L131, titre de bascule de la maquette mobile v2. Voir
+     `metier/PageFicheMetier.tsx`. */
+  font: "600 16.5px/1.3 var(--ft)",
+  letterSpacing: "-.025em",
   color: "var(--ink)",
 };
 
@@ -110,14 +119,111 @@ function Section({ section }: { section: SectionHub }) {
   }
 }
 
+/**
+ * LES SECTIONS DE CONTENU, celles que la maquette mobile numérote et compte
+ * (`nD`, dc.html L452 à L480) : ni les chiffres, ni la FAQ, ni le formulaire,
+ * ni les cartes de fin. C'est autour d'elles seules que la cadence se pose.
+ */
+const HORS_CONTENU: ReadonlySet<SectionHub["type"]> = new Set([
+  "chiffres",
+  "faq",
+  "postuler",
+  "liens",
+]);
+
+/**
+ * LES TYPES QUI SE REPLIENT AU TÉLÉPHONE : toutes les sections numérotées,
+ * comme la maquette mobile v2 (dc.html L475, chaque section du corpus est un
+ * `<details>`). Les cartes de fin « Pour aller plus loin » restent dépliées,
+ * en ligne au téléphone : voir `etiquetteDe` de `metier/PageFicheMetier.tsx`.
+ *
+ * Jusqu'au 14/10, seuls `etapes`, `refus`, `hubs` et `avis` se repliaient, et
+ * ce hub restait la page la plus haute du site : 15 329 px à 390 px, 18,2
+ * écrans, sept sections ouvertes dont « Nos informations pratiques » à 1 894
+ * px. La FAQ reste dehors : la maquette la montre dépliée, ses questions sont
+ * déjà des `<details>` (une ouverte à la fois).
+ */
+const REPLIABLES: ReadonlySet<SectionHub["type"]> = new Set([
+  "bento",
+  "etapes",
+  "metiers",
+  "encart",
+  "duo",
+  "liste",
+  "refus",
+  "hubs",
+  "avis",
+]);
+
+/** Le titre de bascule d'une section, ou rien si elle ne sait pas se nommer. */
+function etiquetteDe(section: SectionHub): { surtitre: string; titre: string } | null {
+  if (!REPLIABLES.has(section.type)) return null;
+  const titrable =
+    "titre" in section &&
+    "surtitre" in section &&
+    typeof section.titre === "string" &&
+    section.titre.trim() !== "" &&
+    typeof section.surtitre === "string" &&
+    section.surtitre.trim() !== "";
+  return titrable ? { surtitre: section.surtitre, titre: section.titre } : null;
+}
+
+/**
+ * Une section, repliée au téléphone quand elle sait se nommer. `ouverte` : la
+ * seule section que la maquette mobile laisse ouverte, la première numérotée
+ * (dc.html L451, `nOpen = 1` sur le gabarit 10).
+ */
+function rendSection(section: SectionHub, i: number, ouverte = false) {
+  // L'index suffit comme clé : l'ordre du tableau EST celui de la capture.
+  const cle = `${section.type}-${i}`;
+  const etiquette = i === 0 ? null : etiquetteDe(section);
+  if (!etiquette) return <Section key={cle} section={section} />;
+  return (
+    <SectionPliableMobile
+      key={cle}
+      toujoursOuvert={ouverte}
+      enTete={
+        <span data-mobile-seulement="" className={styles.etiquettePli}>
+          <span style={ETIQUETTE_SURTITRE}>{etiquette.surtitre}</span>
+          <span style={ETIQUETTE_TITRE}>{etiquette.titre}</span>
+        </span>
+      }
+    >
+      <Section section={section} />
+    </SectionPliableMobile>
+  );
+}
+
 export default function PageHubCarriere({ contenu }: { contenu: ContenuHubCarriere }) {
-  const { heros } = contenu;
+  const { heros, sections } = contenu;
+
+  /* LES TROIS TRANCHES, sans rien réordonner : les chiffres, la suite des
+     sections de contenu, puis FAQ, formulaire et cartes de fin. */
+  const premier = sections.findIndex((s) => !HORS_CONTENU.has(s.type));
+  const dernier =
+    sections.length - 1 - [...sections].reverse().findIndex((s) => !HORS_CONTENU.has(s.type));
+  const avecContenu = premier >= 0;
+  const avant = avecContenu ? sections.slice(0, premier) : sections;
+  const contenus = avecContenu ? sections.slice(premier, dernier + 1) : [];
+  const apres = avecContenu ? sections.slice(dernier + 1) : [];
+  const rangOuvert = contenus.findIndex((s, j) => etiquetteDe(s) && premier + j > 0);
+
   return (
     <div className="mg-site" style={RACINE_CARRIERE}>
       <main className={styles.corpsHub} style={{ paddingTop: 62 }}>
-        <section style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 40px 0" }}>
+        {/* LE HÉROS COMPACT DU TÉLÉPHONE (G2), maquette mobile v2 dc.html
+            L104 à L110 : voir les classes `heros*` de `HubCarriere.module.css`.
+            L'ordre du DOM ne bouge pas, rien n'est retiré, et au-dessus de
+            880 px aucune règle ne s'applique. */}
+        <section
+          className={styles.heros}
+          style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 40px 0" }}
+        >
+          {/* Le fil d'Ariane de la maquette mobile (dc.html L104), « Accueil /
+              Carrière », sous 881 px seulement. Composant du lot 02. */}
+          <FilArianeMobile chemin={CHEMIN} />
           <div
-            className={styles.deuxColonnes}
+            className={`${styles.deuxColonnes} ${styles.herosGrille}`}
             style={{
               display: "grid",
               gridTemplateColumns: "1.08fr .92fr",
@@ -125,8 +231,9 @@ export default function PageHubCarriere({ contenu }: { contenu: ContenuHubCarrie
               alignItems: "center",
             }}
           >
-            <div>
+            <div className={styles.herosTexte}>
               <span
+                className={styles.herosPastille}
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
@@ -147,6 +254,7 @@ export default function PageHubCarriere({ contenu }: { contenu: ContenuHubCarrie
                 {heros.pastille}
               </span>
               <h1
+                className={styles.herosTitre}
                 style={{
                   font: "600 calc(clamp(38px,4.6vw,64px) * var(--ts))/1.03 var(--ft)",
                   letterSpacing: "-.045em",
@@ -159,6 +267,7 @@ export default function PageHubCarriere({ contenu }: { contenu: ContenuHubCarrie
               </h1>
               <Paragraphe
                 texte={heros.chapeau}
+                className={styles.herosChapo}
                 style={{
                   font: "400 19px/1.6 var(--fb)",
                   color: "var(--ink)",
@@ -170,6 +279,7 @@ export default function PageHubCarriere({ contenu }: { contenu: ContenuHubCarrie
                 <Paragraphe
                   key={texte}
                   texte={texte}
+                  className={styles.herosPara}
                   style={{
                     font: "400 15.5px/1.65 var(--fb)",
                     color: "var(--ink2)",
@@ -178,7 +288,10 @@ export default function PageHubCarriere({ contenu }: { contenu: ContenuHubCarrie
                   }}
                 />
               ))}
-              <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 22 }}>
+              <div
+                className={styles.herosBoutons}
+                style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 22 }}
+              >
                 <BoutonPostuler />
                 <a
                   href="tel:+33478337205"
@@ -199,8 +312,9 @@ export default function PageHubCarriere({ contenu }: { contenu: ContenuHubCarrie
                 </a>
               </div>
             </div>
-            <div style={{ position: "relative" }}>
+            <div className={styles.herosVisuel} style={{ position: "relative" }}>
               <div
+                className={styles.herosCadre}
                 style={{
                   position: "relative",
                   borderRadius: 32,
@@ -254,43 +368,32 @@ export default function PageHubCarriere({ contenu }: { contenu: ContenuHubCarrie
           </div>
         </section>
 
-        {/* CHAQUE SECTION SE REPLIE AU TELEPHONE SAUF LA PREMIERE, regle de la
-            maquette mobile. Ce hub etait la page la plus longue du site, 32,2
-            ecrans. Une section sans titre non vide n'est pas repliee : il n'y
-            aurait rien a mettre sur la bascule. */}
-        {contenu.sections.map((section, i) => {
-          // L'index suffit comme clé : l'ordre du tableau EST celui de la capture.
-          const cle = `${section.type}-${i}`;
-          /* LES QUATRE TYPES REPLIES, et le compte ne change pas : sept blocs
-             sur cette page. `MetiersRecrutes` et `QuestionsHub` restent dehors.
-             Depuis le passage a l'etiquette, les envelopper ne ferait plus de
-             titre en double (chaque section garde son seul `<h2>`), mais ce
-             serait changer le repli mobile, pas reparer les titres : la liste
-             reste telle quelle, et le compte de blocs pliables avec elle. */
-          const replie = new Set(["etapes", "refus", "hubs", "avis"]);
-          const titrable =
-            replie.has(section.type) &&
-            "titre" in section &&
-            "surtitre" in section &&
-            typeof section.titre === "string" &&
-            section.titre.trim() !== "" &&
-            typeof section.surtitre === "string" &&
-            section.surtitre.trim() !== "";
-          if (i === 0 || !titrable) return <Section key={cle} section={section} />;
-          return (
-            <SectionPliableMobile
-              key={cle}
-              enTete={
-                <span data-mobile-seulement="" className={styles.etiquettePli}>
-                  <span style={ETIQUETTE_SURTITRE}>{section.surtitre}</span>
-                  <span style={ETIQUETTE_TITRE}>{section.titre}</span>
-                </span>
-              }
-            >
-              <Section section={section} />
-            </SectionPliableMobile>
-          );
-        })}
+        {/* « Toutes les pages de la rubrique », les huit fiches métier filles,
+            sous le héros : la boîte haute de la maquette mobile v2 pour le
+            gabarit 10 (dc.html L125 et L501). Mobile seulement, portée par
+            `PastillesCocon` lui-même. */}
+        <PastillesCocon chemin={CHEMIN} />
+
+        {/* CHAQUE SECTION NUMÉROTÉE SE REPLIE AU TÉLÉPHONE, SAUF LA PREMIÈRE,
+            qui reste ouverte : règle de la maquette mobile v2. Les chiffres,
+            sans titre, ne se replient pas. Voir `REPLIABLES`.
+
+            LA CADENCE DE CONVERSION, variante carrière, enveloppe les seules
+            sections de contenu : photo et « Postuler chez Migen » après la 2e,
+            bandeau « Ce métier vous ressemble ? » après la 5e, la 8e, la 11e.
+            PAS DE RAPPEL FINAL : en carrière, la maquette ne pose en bas qu'un
+            bouton vers le formulaire de candidature (dc.html L576), et cette
+            page porte CE formulaire (#postuler) juste après la FAQ. */}
+        {avant.map((s, i) => rendSection(s, i))}
+        <AvecConversionMobile
+          chemin={CHEMIN}
+          gabarit="10"
+          photoHeros={heros.photo.src}
+          rappelFinal={false}
+        >
+          {contenus.map((s, j) => rendSection(s, premier + j, j === rangOuvert))}
+        </AvecConversionMobile>
+        {apres.map((s, j) => rendSection(s, dernier + 1 + j))}
       </main>
     </div>
   );

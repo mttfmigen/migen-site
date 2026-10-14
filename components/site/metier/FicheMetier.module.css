@@ -363,3 +363,173 @@
     min-height: 0 !important;
   }
 }
+
+/* ===================================================== MAQUETTE MOBILE V2
+
+   LE HÉROS COMPACT DU TÉLÉPHONE (G2), dc.html L104 à L110 :
+
+     photo      aspect-ratio:16/10 ; border-radius:24px ; margin-bottom:16px
+     surtitre   font:600 11px          (ici la pastille du site, inchangée)
+     h1         margin:10px 0 10px ; font:600 27px/1.1 ; letter-spacing:-.04em
+     puces      margin-top:14px        (pages filles, gabarit 07 seulement)
+     boutons    margin-top:16px
+     puis le corps, `pfs:16px` pour l'introduction
+
+   L'ORDRE DU DOM NE BOUGE PAS. Les deux colonnes passent en `display:
+   contents` et leurs enfants deviennent les éléments d'une seule colonne
+   flexible, où `order` pose la photo en tête et les boutons avant le chapeau,
+   comme la maquette. Rien n'est retiré : la carte « 10 % » descend sous les
+   paragraphes, en flux.
+
+   `!important` parce que les valeurs à battre sont des styles EN LIGNE. Le
+   sélecteur du titre est ancré sur `.corpsMetier` : la règle globale
+   `.mg-site h1` (globals.css, sous 480 px) est elle aussi `!important`, et
+   seule une spécificité supérieure la passe.
+
+   AU-DESSUS DE 880 PX, AUCUNE DE CES RÈGLES NE S'APPLIQUE. */
+@media (max-width: 880px) {
+  .heros {
+    padding-top: 16px !important;
+  }
+  /* `align-items` en `!important` : la grille porte `align-items: center` EN
+     LIGNE, qui centrait et rétrécissait chaque enfant de la colonne (titre du
+     hub centré, mesuré). */
+  .herosGrille {
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: 0 !important;
+  }
+  .herosTexte,
+  .herosVisuel {
+    display: contents;
+  }
+  /* `width: 100%` est indispensable : dans une colonne flexible, la largeur
+     étirée n'est pas encore connue quand la hauteur se calcule, et
+     `aspect-ratio` seul rendait un cadre de 0 px (photo absente, mesuré). */
+  .herosCadre {
+    order: -2;
+    width: 100%;
+    height: auto !important;
+    aspect-ratio: 16 / 10;
+    border-radius: 24px !important;
+    margin-bottom: 16px;
+  }
+  .herosPastille {
+    order: -1;
+    align-self: flex-start;
+    margin-bottom: 0 !important;
+  }
+  .corpsMetier .herosTitre {
+    margin: 10px 0 10px !important;
+    font-size: 27px !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.04em !important;
+    max-width: none !important;
+  }
+  .herosPuces {
+    order: 1;
+  }
+  .herosBoutons {
+    order: 2;
+    margin-top: 16px !important;
+  }
+  .herosChapo {
+    order: 3;
+    margin: 20px 0 12px !important;
+    font-size: 16px !important;
+  }
+  .herosPara {
+    order: 4;
+    font-size: 15px !important;
+  }
+  /* La carte « 10 % » en tuile, aux mesures des chiffres de la maquette mobile
+     (L129 : `padding:14px`, valeur en 21 px ; 28 ici, celle des tuiles du
+     site) : elle n'est plus posée sur la photo, elle suit le texte. */
+  .herosVisuel > .flottante {
+    order: 5;
+    padding: 14px 16px !important;
+    gap: 12px !important;
+  }
+  .herosVisuel > .flottante > span:first-child {
+    font-size: 28px !important;
+  }
+}
+
+/* LA BASCULE FERMÉE EST UNE CARTE, comme dans la maquette mobile v2, dc.html
+   L131 : le `<details>` y porte `margin:12px 18px 0;border-radius:20px;
+   background:#fff;border:1px solid rgba(28,27,25,.08)` et son `<summary>`
+   `padding:15px 16px`. Sans elle, onze bascules à titre de 16,5 px se
+   suivaient sans air, le surtitre de l'une collé au titre de la précédente.
+   Ouverte, la section reprend son propre dessin : la carte ne vaut que pour
+   l'état fermé, et rien de tout cela n'existe au-dessus de 880 px.
+
+   ÉCART DE RYTHME, VOULU : 6 px entre deux cartes (l'écart des pastilles de
+   la maquette, L125) et 12 px de rembourrage vertical, au lieu de 12 et 15.
+   Aux valeurs exactes, cinq fiches sur treize redevenaient plus hautes
+   qu'avant la couche mobile (jusqu'à +190 px sur la fiche Formation et ses
+   dix-huit cartes), et la hauteur doit baisser. */
+@media (max-width: 880px) {
+  .corpsMetier details[data-pliable-mobile]:not([open]) > summary {
+    margin: 6px 18px 0;
+    padding: 12px 16px;
+    border-radius: 20px;
+    background: #fff;
+    border: 1px solid rgba(28, 27, 25, 0.08);
+  }
+}
+
+/* LE RYTHME DES SECTIONS AU TÉLÉPHONE : le `--sec: 64px` du reste du site
+   (globals.css, `.mg-site` sous 760 px), que `RACINE_CARRIERE` battait par son
+   style en ligne de 120 px. Posé sur le `<main>`, plus proche que la racine,
+   il l'emporte par héritage sans `!important`. Voir `RACINE_CARRIERE`. */
+@media (max-width: 760px) {
+  .corpsMetier {
+    --sec: 64px;
+  }
+  /* Les chiffres posent 84 px fixes au-dessus d'eux, hors `--sec`. */
+  .sectionChiffres {
+    padding-top: 32px !important;
+  }
+}
+
+/* LES CHIFFRES EN TUILES DE DEUX, maquette mobile v2 L129 (`isStats`) :
+   `grid-template-columns:repeat(2,minmax(0,1fr)) ; gap:8px`, tuiles
+   rembourrées à 14 px. Seulement à partir de 375 px : en dessous, une tuile
+   de deux colonnes n'a plus la place d'un mot comme « collaborateurs » entre
+   les gouttières de 40 px de la famille, et la règle d'une colonne de 620 px
+   reste. */
+@media (min-width: 375px) and (max-width: 620px) {
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+  .stats > div {
+    padding: 14px !important;
+  }
+}
+
+/* LES CARTES DU BENTO AU TÉLÉPHONE, comme celles du duo plus haut : la
+   maquette mobile v2 rembourre ses cartes à 14, 16 ou 18 px et ne leur pose
+   aucune hauteur minimale (dc.html, cartes numérotées des sections). Le bento
+   est la première section de dix fiches sur treize, celle que la maquette
+   laisse OUVERTE : 26 à 32 px de rembourrage et 180 à 210 px de hauteur
+   minimale y coûtaient 190 px sur /carriere/technicien-de-maintenance/. */
+@media (max-width: 620px) {
+  .bento > div {
+    padding: 18px !important;
+    min-height: 0 !important;
+  }
+}
+
+/* LE TITRE DES PASTILLES DU COCON (« Dans la même rubrique · 7 »).
+   `PastillesCocon` le dessine en 11 px, mais la règle globale `.mg-site h2`
+   (globals.css, sous 760 px, `!important`) le passait à 29 px : un surtitre
+   devenu le plus gros titre de la page. Correctif LOCAL, ancré sur le `<main>`
+   de la famille pour l'emporter en spécificité ; le correctif de fond
+   appartient au composant partagé (signalé). */
+@media (max-width: 760px) {
+  .corpsMetier [data-pastilles-cocon] > h2 {
+    font-size: 11px !important;
+  }
+}
