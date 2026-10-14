@@ -38,6 +38,8 @@ export default function RepliFormulaireMobile({
   useEffect(() => {
     /* Au chargement seulement : un visiteur qui l'a ouvert le garde ouvert. */
     if (bloc.current && window.matchMedia("(max-width: 880px)").matches) bloc.current.open = false;
+    // Monté : le contenu, masqué au premier affichage (globals.css), peut paraître.
+    bloc.current?.setAttribute("data-monte", "");
   }, []);
 
   return (

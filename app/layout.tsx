@@ -161,7 +161,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             privée, la page reste sur le réglage du système. */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{var t=localStorage.getItem("migen-theme");if(t==="Sombre"||t==="Clair")document.documentElement.setAttribute("data-theme",t==="Sombre"?"sombre":"clair")}catch(e){}`,
+            // `data-js` d'abord : il active, sous 880 px, le masquage des blocs
+            // repliables jusqu'à leur montage (globals.css, « sans décalage au
+            // chargement »). Sans JavaScript, il n'est jamais posé.
+            __html: `document.documentElement.setAttribute("data-js","");try{var t=localStorage.getItem("migen-theme");if(t==="Sombre"||t==="Clair")document.documentElement.setAttribute("data-theme",t==="Sombre"?"sombre":"clair")}catch(e){}`,
           }}
         />
       </head>

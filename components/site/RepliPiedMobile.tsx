@@ -42,6 +42,8 @@ export default function RepliPiedMobile(): null {
         else if (auChargement) bloc.open = false;
         const bascule = bloc.querySelector("summary");
         if (bascule) bascule.tabIndex = telephone.matches ? 0 : -1;
+        // Monté : le contenu, masqué au premier affichage (globals.css), peut paraître.
+        bloc.setAttribute("data-monte", "");
       }
     };
     applique(true);

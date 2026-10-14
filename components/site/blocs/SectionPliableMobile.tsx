@@ -119,6 +119,11 @@ export default function SectionPliableMobile({
     /* Le repli n'a lieu qu'au chargement : si le visiteur a déjà ouvert le
        bloc, un changement de largeur ne doit pas le lui refermer au nez. */
     if (window.matchMedia("(max-width: 880px)").matches) element.open = false;
+    /* MONTÉ : jusqu'ici, sur téléphone, le contenu était masqué par
+       app/globals.css (« sans décalage au chargement »). Servi ouvert puis
+       refermé après l'hydratation, il faisait sauter la page : CLS de 0,253
+       sur l'accueil mobile, mesuré le 14/10. */
+    element.setAttribute("data-monte", "");
   }, [toujoursOuvert]);
 
   /*
@@ -185,6 +190,7 @@ export default function SectionPliableMobile({
       className={s.section}
       data-pliable-mobile=""
       data-carte-numerotee=""
+      {...(toujoursOuvert ? { "data-toujours-ouvert": "" } : {})}
       {...(numero ? {} : { "data-sans-numero": "" })}
       {...(enTete ? { "data-en-tete-fourni": "" } : {})}
     >

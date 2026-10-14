@@ -892,6 +892,22 @@ details[open] .g3-plus {
   }
 }
 
+/* SANS DÉCALAGE AU CHARGEMENT, sous 880 px (audit du 14/10 : CLS de 0,253 sur
+   l'accueil mobile, au-dessus du seuil « mauvais » de Google, 0,1 sur les
+   villes). Les blocs repliables sont servis OUVERTS, pour le bureau et pour
+   Google, puis refermés au montage : tout ce qui suivait remontait. Leur
+   contenu reste donc masqué dès le premier affichage tant que le composant ne
+   l'a pas marqué `data-monte` ; le texte reste dans le DOM. `html[data-js]`
+   est posé par une ligne en tête de page (app/layout.tsx) : sans JavaScript,
+   rien n'est jamais masqué. */
+@media (max-width: 880px) {
+  html[data-js] details[data-pliable-mobile]:not([data-monte]):not([data-toujours-ouvert]) > :not(summary),
+  html[data-js] details[data-repli-formulaire]:not([data-monte]) > :not(summary),
+  html[data-js] details[data-pied-pliable]:not([data-monte]) > :not(summary) {
+    display: none !important;
+  }
+}
+
 .conversion-rappel-sombre input::placeholder {
   color: rgba(255, 255, 255, 0.8);
 }
