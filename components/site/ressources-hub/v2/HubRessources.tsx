@@ -14,7 +14,7 @@ import type { ContenuRessource } from "./donnees";
 import { colonnes, filtre, FILTRES_AU_REPOS, pastilles } from "./filtrage";
 import type { CleTri, Espace, Filtres } from "./filtrage";
 import s from "./hub.module.css";
-import { OUVERTS_PAR_LE_HUB } from "@/components/site/ressource/lecteur/ouverts";
+import { DERNIERE_CARTE, OUVERTS_PAR_LE_HUB } from "@/components/site/ressource/lecteur/ouverts";
 
 /**
  * Le hub /ressources/, maquette « Ressources v2 » (`page-dc.jsx` et
@@ -142,6 +142,7 @@ export default function HubRessources() {
     const href = a?.getAttribute("href");
     if (!a || !href || a.target || !(ARTICLE.test(href) || FICHES.has(href))) return;
     OUVERTS_PAR_LE_HUB.add(href);
+    DERNIERE_CARTE.url = href;
     e.preventDefault();
     router.push(href, { scroll: false });
   };

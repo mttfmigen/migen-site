@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import s from "./lecteur.module.css";
-import { OUVERTS_PAR_LE_HUB } from "./ouverts";
+import { DERNIERE_CARTE, OUVERTS_PAR_LE_HUB } from "./ouverts";
 
 /**
  * La feuille du lecteur, maquette « Ressources v2 » : voile flouté, feuille
@@ -30,6 +30,16 @@ function inerteAutour(el: HTMLElement): () => void {
   return () => poses.forEach((x) => (x.inert = false));
 }
 
+/**
+ * Ouvert par une carte : Précédent revient au hub. Ouvert par « À lire
+ * ensuite » : reculer rouvrirait l'article d'avant, on ferme vers le hub,
+ * comme la maquette (`closeRd` pousse l'adresse du hub).
+ */
+function fermerVersLeHub(router: ReturnType<typeof useRouter>, url: string) {
+  if (DERNIERE_CARTE.url === url) router.back();
+  else router.push("/ressources/", { scroll: false });
+}
+
 export default function FeuilleLecteur({
   url,
   depuisLeHubSeulement = false,
@@ -47,9 +57,13 @@ export default function FeuilleLecteur({
   const [copie, setCopie] = useState(false);
   const [actif] = useState(() => !depuisLeHubSeulement || OUVERTS_PAR_LE_HUB.has(url));
 
+  // replace, pas assign : la navigation douce a déjà inscrit l'adresse, un
+  // assign en ajoutait une seconde et Précédent restait sur la même page.
   useEffect(() => {
-    if (!actif) window.location.assign(url);
+    if (!actif) window.location.replace(url);
   }, [actif, url]);
+
+  const fermer = () => fermerVersLeHub(router, url);
 
   // Fond inerte, focus piégé dans la feuille puis rendu à la carte, Échap ferme.
   useEffect(() => {
@@ -58,7 +72,7 @@ export default function FeuilleLecteur({
     const debloque = inerteAutour(racine.current);
     const clavier = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        router.back();
+        fermerVersLeHub(router, url);
         return;
       }
       if (e.key !== "Tab" || !feuille.current) return;
@@ -86,7 +100,7 @@ export default function FeuilleLecteur({
       debloque();
       if (carte?.isConnected) carte.focus({ preventScroll: true });
     };
-  }, [actif, router]);
+  }, [actif, router, url]);
 
   useEffect(() => {
     if (!copie) return;
@@ -105,7 +119,7 @@ export default function FeuilleLecteur({
     <div ref={racine}>
       <div
         className={s.voile}
-        onClick={() => router.back()}
+        onClick={fermer}
         aria-hidden="true"
         style={{
           position: "fixed",
@@ -202,7 +216,7 @@ export default function FeuilleLecteur({
           </button>
           <button
             type="button"
-            onClick={() => router.back()}
+            onClick={fermer}
             style={{
               flex: "none",
               border: "none",

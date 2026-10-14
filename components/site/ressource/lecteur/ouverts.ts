@@ -7,3 +7,11 @@
  * hub n'a pas à charger le code du lecteur pour la remplir.
  */
 export const OUVERTS_PAR_LE_HUB = new Set<string>();
+
+/**
+ * La dernière carte cliquée : son entrée d'historique est juste au-dessus du
+ * hub, Fermer y revient par Précédent. Ouvert autrement (« À lire ensuite »),
+ * Fermer pousse /ressources/ : la maquette ferme, elle ne recule pas d'un
+ * article.
+ */
+export const DERNIERE_CARTE = { url: "" };
