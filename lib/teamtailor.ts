@@ -140,6 +140,16 @@ async function appelle(
   return { ok: r.ok, statut: r.status, donnee };
 }
 
+/** La raison donnée par TeamTailor (JSON:API `errors`), tronquée, pour le journal. */
+function raisonApi(donnee: unknown): string {
+  const erreurs = (donnee as { errors?: { title?: string; detail?: string }[] } | null)?.errors;
+  if (!Array.isArray(erreurs) || erreurs.length === 0) return "";
+  return erreurs
+    .map((e) => [e.title, e.detail].filter(Boolean).join(" : "))
+    .join(" | ")
+    .slice(0, 300);
+}
+
 /** L'identifiant numérique rendu par TeamTailor, ou null si la forme surprend. */
 function identifiant(donnee: unknown): number | null {
   if (typeof donnee !== "object" || donnee === null) return null;
@@ -191,9 +201,18 @@ export async function deposeCandidature(c: Candidature): Promise<ResultatDepot> 
       return { depose: false, raison: "refus-api", detail: "TeamTailor n'a pas rendu d'identifiant" };
     }
 
+    /* DES ATTRIBUTS, MÊME SIMPLES, SONT OBLIGATOIRES (14/10). Sans la clé
+       `attributes`, l'API TeamTailor répond 400 sur /job-applications : le
+       profil était créé mais jamais rattaché à l'offre (mesuré sur les deux
+       premiers essais de Mehdi, profils 219826576 et 219826613). La lettre de
+       motivation porte le message du candidat quand il en a écrit un. */
     const rattachement = await appelle("/job-applications", conf.cle, {
       data: {
         type: "job-applications",
+        attributes: {
+          sourced: false,
+          ...(c.message ? { "cover-letter": c.message } : {}),
+        },
         relationships: {
           candidate: { data: { id: String(candidatId), type: "candidates" } },
           job: { data: { id: conf.offre, type: "jobs" } },
@@ -206,7 +225,7 @@ export async function deposeCandidature(c: Candidature): Promise<ResultatDepot> 
       return {
         depose: false,
         raison: "refus-api",
-        detail: `profil ${candidatId} créé, rattachement à l'offre refusé : ${rattachement.statut}`,
+        detail: `profil ${candidatId} créé, rattachement à l'offre refusé : ${rattachement.statut} ${raisonApi(rattachement.donnee)}`,
       };
     }
 
