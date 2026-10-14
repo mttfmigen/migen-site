@@ -24,10 +24,10 @@ const PASTILLE_VERRE: React.CSSProperties = {
  * maquette, seulement le hub /ressources/ (maquette Ressources v2) et ses
  * articles.
  *
- * À gauche, le bloc anthracite des deux espaces du hub, chacun avec les vrais
- * comptes de ses formats, et le lien vers le hub. À droite, les trois articles
- * « À la une » du hub en cartes à photo : format, durée de lecture, titre.
- * Les données et leurs comptes sont dans `entete-donnees.ts`, tenus par
+ * Depuis le 14/10 au soir (Mehdi, catégories masquées) : sur toute la largeur,
+ * les trois articles « À la une » du hub en cartes à photo (format, durée de
+ * lecture, titre) et le bouton « Accéder à toutes nos ressources ». Les
+ * données sont dans `entete-donnees.ts`, tenues par
  * `scripts/verifie-menu-ressources.mjs`.
  */
 export default function PanneauRessources() {
@@ -96,7 +96,9 @@ export default function PanneauRessources() {
                 src={article.image}
                 alt={altPhoto(article.image)}
                 fill
-                sizes="(max-width: 1000px) 50vw, 230px"
+                /* Pleine largeur depuis le retrait du bloc des espaces : les
+                   cartes font 337 px à 1440, comme celles de Cas clients. */
+                sizes="(max-width: 1000px) 50vw, 340px"
                 style={{
                   objectFit: "cover",
                   filter: "saturate(var(--sat)) brightness(.7)",
