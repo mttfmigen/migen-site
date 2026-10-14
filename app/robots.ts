@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import { urlAbsolue } from "@/lib/seo/url";
+import { INDEX_DU_PLAN } from "@/lib/sitemap/adresses";
 
 /**
  * robots.txt.
@@ -37,6 +38,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/admin", "/api"],
     },
-    sitemap: urlAbsolue("/sitemap.xml"),
+    // L'INDEX, comme l'ancien site (Yoast) : la Search Console le connaît.
+    sitemap: urlAbsolue(INDEX_DU_PLAN),
   };
 }

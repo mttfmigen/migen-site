@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 import { cibleFilet, PARAMETRES_WORDPRESS } from "@/lib/filet-ancien-site";
+import { cibleAdresseDePlan, estAdresseDePlan } from "@/lib/sitemap/adresses";
 import {
   cheminNormalise,
   REDIRECTIONS_CODE,
@@ -183,6 +184,19 @@ export async function proxy(request: NextRequest): Promise<NextResponse> {
   const chemin = request.nextUrl.pathname;
   const canonique = cheminNormalise(chemin);
 
+  // Les adresses de plan de site d'abord (`lib/sitemap/adresses.ts`) : l'index
+  // et ses sous-plans sont servis tels quels, toute autre (`/sitemap.xml`,
+  // anciens sous-plans de Yoast, `wp-sitemap.xml`) part en 301 sur l'index,
+  // comme sur l'ancien site. Ni la table `redirects` ni le filet n'y touchent.
+  const plan = cibleAdresseDePlan(chemin);
+  if (plan) {
+    const cible = urlSansNextUrl(request);
+    cible.pathname = plan;
+    cible.search = "";
+    return NextResponse.redirect(cible, 301);
+  }
+  if (estAdresseDePlan(chemin)) return NextResponse.next();
+
   let table: Table | null = null;
   try {
     table = await redirections();
@@ -264,18 +278,19 @@ export async function proxy(request: NextRequest): Promise<NextResponse> {
  *
  * Repris pour le filet de l'ancien WordPress : `/wp-…` (images de
  * `/wp-content/uploads/`, `/wp-login.php`), tout `.php` (`/xmlrpc.php`), en
- * toute casse, les plans de site de Yoast (`/sitemap_index.xml`,
- * `/page-sitemap.xml`), en toute casse aussi, et les débris du thème à
- * extension apparente (une virgule, `/.svg`). Le site n'a aucun fichier sous
- * ces formes : son plan est `/sitemap.xml`, que ces motifs ne voient pas.
+ * toute casse, et les débris du thème à extension apparente (une virgule,
+ * `/.svg`). Le site n'a aucun fichier sous ces formes.
+ *
+ * Repris aussi : toute adresse de plan de site, en toute casse
+ * (`/sitemap.xml`, `/sitemap_index.xml`, `/page-sitemap.xml`,
+ * `/category-sitemap.xml`…), pour la règle des plans en tête de `proxy`.
  */
 export const config = {
   matcher: [
     "/((?!api/|_next/|.*\\.[a-zA-Z0-9]+$).*)",
     "/([wW][pP]-.*)",
     "/(.*\\.[pP][hH][pP])",
-    "/([sS][iI][tT][eE][mM][aA][pP]_[iI][nN][dD][eE][xX]\\.[xX][mM][lL])",
-    "/([a-zA-Z0-9_-]+-[sS][iI][tT][eE][mM][aA][pP][0-9]*\\.[xX][mM][lL])",
+    "/([a-zA-Z0-9_-]*[sS][iI][tT][eE][mM][aA][pP][a-zA-Z0-9_-]*\\.[xX][mM][lL])",
     // Débris du thème Avada à extension apparente (`/0,0,0,0.3`, `/.svg`).
     "/(.*,.*)",
     "/(\\.[sS][vV][gG]|\\.[pP][nN][gG])",

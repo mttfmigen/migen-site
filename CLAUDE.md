@@ -129,7 +129,8 @@ pas à ouvrir une table.
 ## 6. SEO technique
 
 - `generateMetadata` par page depuis la table `seo`.
-- `sitemap.xml` et `robots.txt` générés, pages et articles publiés uniquement,
+- Plan XML (`/sitemap_index.xml` et ses sous-plans, au format Yoast de l'ancien
+  site, voir `docs/PLAN-DU-SITE-XML.md`) et `robots.txt` générés, pages et articles publiés uniquement,
   hors `noindex`.
 - JSON-LD : Organization (global), BreadcrumbList (toutes pages), Service
   (offres), Article (blog).

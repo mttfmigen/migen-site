@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
- * PORTE : le plan du site HTML et sitemap.xml annoncent les mêmes pages, et
- * toutes répondent.
+ * PORTE : le plan du site HTML et le plan XML annoncent les mêmes pages, et
+ * toutes répondent. « sitemap.xml » désigne ici le plan XML entier : l'index
+ * `/sitemap_index.xml` et ses sous-plans, lus par `scripts/plan-xml.mjs`.
  *
  *   node scripts/verifie-plan-et-sitemap.mjs https://migen-site.vercel.app
  *   node scripts/verifie-plan-et-sitemap.mjs http://localhost:4430
@@ -29,6 +30,8 @@
  */
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
+
+import { locsDuPlan } from "./plan-xml.mjs";
 
 const executer = promisify(execFile);
 
@@ -79,14 +82,21 @@ const main = (html) => /<main\b[\s\S]*<\/main>/.exec(html)?.[0] ?? "";
 
 /* ------------------------------------------------------------ les listes */
 
-const sitemap = await curl(`${BASE}/sitemap.xml`);
+// Le plan XML est un index et ses sous-plans depuis le 14/10 (format de
+// l'ancien migen.fr) : `locsDuPlan` les lit tous.
+let locs;
+try {
+  locs = await locsDuPlan(BASE);
+} catch (e) {
+  console.error(`${e.message} : rien à comparer`);
+  process.exit(1);
+}
 const plan = await curl(`${BASE}/plan-du-site/`);
-if (sitemap.statut !== 200 || plan.statut !== 200) {
-  console.error(`sitemap.xml ${sitemap.statut}, /plan-du-site/ ${plan.statut} : rien à comparer`);
+if (plan.statut !== 200) {
+  console.error(`/plan-du-site/ ${plan.statut} : rien à comparer`);
   process.exit(1);
 }
 
-const locs = [...sitemap.corps.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1].trim());
 if (FAUTE === "hote") locs[1] = locs[1].replace(HOTE_FINAL, BASE);
 
 /** Lien du plan : chemin -> texte du lien. Seuls les liens internes du <main>. */

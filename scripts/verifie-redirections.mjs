@@ -36,6 +36,8 @@ import { createServer } from "node:http";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { locsDuPlan } from "./plan-xml.mjs";
+
 const RACINE = fileURLToPath(new URL("..", import.meta.url));
 const LISTE = join(RACINE, "docs/redirections/anciennes-adresses.json");
 const BASE_PAR_DEFAUT = "https://migen-site.vercel.app";
@@ -129,17 +131,12 @@ const FILET = [
   "/?cat=3",
   "/?s=robot",
   "/lost-password/?page_id=11",
-  "/sitemap_index.xml",
-  "/post-sitemap.xml",
-  "/fusion_tb_category-sitemap.xml",
   "/maintenance-industrielle-lyon/embed/",
   "/maintenance-industrielle-lyon/feed/rss2/",
-  "/page-sitemap.xml",
   "/WP-CONTENT/uploads/x.PNG",
   "/XMLRPC.PHP",
   "/search/%7Bsearch_term_string%7D/",
   "/?attachment_id=12",
-  "/PAGE-SITEMAP.XML",
   "/maintenance-industrielle-lyon/%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%3E%3C%2Fsvg%3E",
   "/mentions-legales/%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%3E/",
   "/technicien-de-maintenance-centre-logistique/&",
@@ -170,7 +167,18 @@ const TEMOINS = [
   // Fichiers standard que l'ancien site n'a jamais eus : 404, jamais l'accueil.
   ["/ads.txt", 404],
   ["/.well-known/security.txt", 404],
-  ["/sitemap.xml", 200],
+  // Le plan XML, au format de l'ancien site depuis le 14/10 : l'index et ses
+  // deux sous-plans servis, toute autre adresse de plan en 301 vers l'index
+  // (le filet n'y touche plus ; cibles vérifiées par `verifie-sitemap.mjs`).
+  ["/sitemap_index.xml", 200],
+  ["/page-sitemap.xml", 200],
+  ["/post-sitemap.xml", 200],
+  ["/sitemap.xml", 301],
+  ["/fusion_tb_category-sitemap.xml", 301],
+  ["/element_category-sitemap.xml", 301],
+  ["/category-sitemap.xml", 301],
+  ["/wp-sitemap.xml", 301],
+  ["/PAGE-SITEMAP.XML", 301],
   ["/robots.txt", 200],
   ["/favicon.ico", 200],
   ["/assets/client-danone.png", 200],
@@ -187,10 +195,7 @@ async function enLots(elements, travail) {
 }
 
 async function cheminsDuPlan(base) {
-  const r = await fetch(`${base}/sitemap.xml`, { signal: AbortSignal.timeout(30_000) });
-  if (r.status !== 200) throw new Error(`plan du site en ${r.status}`);
-  const xml = await r.text();
-  return [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
+  return (await locsDuPlan(base)).map((loc) => new URL(loc).pathname);
 }
 
 /** Le contrôle complet d'une base. Rend les pertes et les comptes. */
@@ -222,7 +227,7 @@ async function porte(base, adresses, { filet = false } = {}) {
 
   try {
     const plan = await cheminsDuPlan(base);
-    if (plan.length === 0) pertes.push({ chemin: "/sitemap.xml", perte: "plan du site vide" });
+    if (plan.length === 0) pertes.push({ chemin: "/sitemap_index.xml", perte: "plan du site vide" });
     await enLots(plan, async (chemin) => {
       try {
         const { code, location } = await reponse(base + chemin);
@@ -234,7 +239,7 @@ async function porte(base, adresses, { filet = false } = {}) {
       }
     });
   } catch (e) {
-    pertes.push({ chemin: "/sitemap.xml", perte: e.message });
+    pertes.push({ chemin: "/sitemap_index.xml", perte: e.message });
   }
 
   return { pertes, comptes };
@@ -315,7 +320,10 @@ function imprime(base, adresses, { pertes, comptes }) {
  * passe.
  */
 async function controle() {
-  const PLAN = "<urlset><url><loc>https://migen.fr/page/</loc></url><url><loc>https://migen.fr/redirigee/</loc></url></urlset>";
+  const CORPS = {
+    "/sitemap_index.xml": "<sitemapindex><sitemap><loc>https://migen.fr/page-sitemap.xml</loc></sitemap></sitemapindex>",
+    "/page-sitemap.xml": "<urlset><url><loc>https://migen.fr/page/</loc></url><url><loc>https://migen.fr/redirigee/</loc></url></urlset>",
+  };
   const ROUTES = {
     "/page/": [200],
     "/redirigee/": [301, "/page/"],
@@ -326,12 +334,13 @@ async function controle() {
     "/cible-morte/": [301, "/nulle-part/"],
     "/technique-redirigee/": [301, "/page/"],
     "/technique-sur-place/": [200],
-    "/sitemap.xml": [200],
+    "/sitemap_index.xml": [200],
+    "/page-sitemap.xml": [200],
   };
   const serveur = createServer((req, res) => {
     const [code, location] = ROUTES[req.url] ?? [404];
     if (location) res.setHeader("location", location);
-    res.writeHead(code).end(req.url === "/sitemap.xml" ? PLAN : "");
+    res.writeHead(code).end(CORPS[req.url] ?? "");
   });
   await new Promise((ok) => serveur.listen(0, "127.0.0.1", ok));
   const base = `http://127.0.0.1:${serveur.address().port}`;

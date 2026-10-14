@@ -12,6 +12,7 @@ import assert from "node:assert/strict";
 import { cibleFilet } from "@/lib/filet-ancien-site";
 import { cheminNormalise, REDIRECTIONS_CODE } from "@/lib/redirections";
 import { ROUTES_STATIQUES } from "@/lib/routes-statiques";
+import { cibleAdresseDePlan } from "@/lib/sitemap/adresses";
 
 const connue = (c: string) => REDIRECTIONS_CODE.get(c)?.destination;
 const filet = (adresse: string) => {
@@ -35,10 +36,8 @@ const ATTENDUS: ReadonlyArray<readonly [string, string]> = [
   ["/maintenance-industrielle-lyon/amp", "/implantations/lyon/"],
   ["/maintenance-industrielle-lyon/trackback/", "/implantations/lyon/"],
   ["/maintenance-industrielle-lyon/comment-page-2/", "/implantations/lyon/"],
-  ["/fusion_tb_category-sitemap.xml", "/sitemap.xml"],
   ["/WP-CONTENT/uploads/x.PNG", "/"],
   ["/search/%7Bsearch_term_string%7D/", "/"],
-  ["/PAGE-SITEMAP.XML", "/sitemap.xml"],
   // Sous une ancienne adresse redirigée : sa cible. Débris du thème : l'accueil.
   ["/maintenance-industrielle-lyon/%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%3E%3C%2Fsvg%3E", "/implantations/lyon/"],
   ["/technicien-de-maintenance-centre-logistique/&", REDIRECTIONS_CODE.get("/technicien-de-maintenance-centre-logistique/")?.destination ?? "?"],
@@ -82,11 +81,6 @@ const ATTENDUS: ReadonlyArray<readonly [string, string]> = [
   ["/?page_id=8", "/"],
   ["/?cat=3", "/"],
   ["/?s=robot", "/"],
-  // Plans de site de Yoast, en 200 sur l'ancien site.
-  ["/sitemap_index.xml", "/sitemap.xml"],
-  ["/page-sitemap.xml", "/sitemap.xml"],
-  ["/post-sitemap2.xml", "/sitemap.xml"],
-  ["/element_category-sitemap.xml", "/sitemap.xml"],
   ["/?attachment_id=12", "/"],
   ["/?author=1", "/"],
   ["/?feed=rss2", "/"],
@@ -102,10 +96,37 @@ const PAGES = [
   ...[...REDIRECTIONS_CODE.values()].map((r) => cheminNormalise(r.destination)),
 ];
 for (const page of PAGES) assert.equal(filet(page), null, `page ${page} touchée`);
-for (const adresse of ["/offres/nexistepas/", "/offres/?s=robot", "/?utm_source=x", "/robots.txt", "/sitemap.xml"]) {
+for (const adresse of ["/offres/nexistepas/", "/offres/?s=robot", "/?utm_source=x", "/robots.txt"]) {
   assert.equal(filet(adresse), null, `${adresse} touchée`);
 }
 
+// Les adresses de plan de site ne sont JAMAIS au filet (14/10) : `proxy.ts` les
+// sert ou les redirige avant lui, par `cibleAdresseDePlan`. [adresse, 301 attendue
+// ou null si servie telle quelle].
+const PLANS: ReadonlyArray<readonly [string, string | null]> = [
+  ["/sitemap_index.xml", null],
+  ["/page-sitemap.xml", null],
+  ["/post-sitemap.xml", null],
+  ["/PAGE-SITEMAP.XML", "/page-sitemap.xml"],
+  ["/sitemap.xml", "/sitemap_index.xml"],
+  ["/Sitemap.XML", "/sitemap_index.xml"],
+  ["/category-sitemap.xml", "/sitemap_index.xml"],
+  ["/fusion_tb_category-sitemap.xml", "/sitemap_index.xml"],
+  ["/element_category-sitemap.xml", "/sitemap_index.xml"],
+  ["/post-sitemap2.xml", "/sitemap_index.xml"],
+  ["/wp-sitemap.xml", "/sitemap_index.xml"],
+  ["/wp-sitemap-posts-post-1.xml", "/sitemap_index.xml"],
+];
+for (const [adresse, attendue] of PLANS) {
+  assert.equal(filet(adresse), null, `filet de ${adresse} : une adresse de plan n'est pas au filet`);
+  assert.equal(cibleAdresseDePlan(adresse), attendue, `plan ${adresse}`);
+}
+// Témoins : ni une page, ni une image, ni un autre XML ne sont des plans.
+for (const adresse of ["/plan-du-site/", "/sitemap.xsl", "/assets/sitemap.png", "/feed.xml", "/wp-login.php"]) {
+  assert.equal(cibleAdresseDePlan(adresse), null, `${adresse} prise pour un plan`);
+}
+
 console.log(
-  `FILET_OK : ${ATTENDUS.length} motifs attrapés, ${PAGES.length} pages du site et 5 témoins intacts.`,
+  `FILET_OK : ${ATTENDUS.length} motifs attrapés, ${PAGES.length} pages du site et 4 témoins intacts ; ` +
+    `${PLANS.length} adresses de plan hors du filet, servies ou en 301 vers l'index.`,
 );

@@ -412,8 +412,8 @@ try {
   const ouvert = robots();
   assert.equal(
     FAUTE === "robots" ? undefined : ouvert.sitemap,
-    "https://migen.fr/sitemap.xml",
-    "robots.txt ouvert ne déclare pas https://migen.fr/sitemap.xml",
+    "https://migen.fr/sitemap_index.xml",
+    "robots.txt ouvert ne déclare pas https://migen.fr/sitemap_index.xml, comme l'ancien site",
   );
 
   delete process.env.SITE_INDEXABLE;

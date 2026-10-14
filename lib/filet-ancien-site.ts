@@ -1,3 +1,5 @@
+import { estAdresseDePlan } from "@/lib/sitemap/adresses";
+
 /**
  * Le filet de l'ancien site WordPress : toute adresse au FORMAT WordPress qui
  * n'est ni une page du nouveau site ni une redirection connue part en 301 vers
@@ -28,12 +30,6 @@ const SUFFIXE =
 /** Familles WordPress, thème Avada et WooCommerce, sans équivalent ici. */
 const FAMILLES =
   /^\/(?:wp-|(?:author|category|tag|search|blocks|element_category|fusion_tb_category|portfolio-items|faq-items|featured_item|contact-form-7|shop|product-category|product|cart|checkout|my-account|lost-password|comments)\/|\d{4}\/(?:\d{2}\/)?)|\.php$/;
-
-/**
- * Plans de site de Yoast (`/sitemap_index.xml`, `/page-sitemap.xml`…), connus
- * de la Search Console : ils partent sur le plan du nouveau site.
- */
-const PLAN_YOAST = /^\/(?:sitemap_index|[a-z0-9_-]+-sitemap\d*)\.xml$/;
 
 /**
  * Débris du thème Avada que les robots ont pris pour des liens (archives du
@@ -71,6 +67,10 @@ export function cibleFilet(
   requete: URLSearchParams,
   connue: (chemin: string) => string | undefined,
 ): string | null {
+  // Une adresse de plan de site n'est jamais au filet : `proxy.ts` la sert ou
+  // la redirige avant lui (`lib/sitemap/adresses.ts`), `wp-sitemap.xml` compris.
+  if (estAdresseDePlan(chemin)) return null;
+
   // Un débris sous une ancienne adresse redirigée (`/maintenance-industrielle-lyon/%3csvg…`,
   // `…/&`) : la cible de cette adresse. Seulement si la suite n'a pas la forme
   // d'une adresse : `/a-propos/` est redirigée, `/a-propos/equipe/` est une page.
@@ -82,7 +82,6 @@ export function cibleFilet(
 
   const parent = SUFFIXE.exec(chemin)?.[1];
   if (parent !== undefined) return connue(parent) ?? "/";
-  if (PLAN_YOAST.test(chemin)) return "/sitemap.xml";
   if (FAMILLES.test(chemin) || RESIDUS.has(chemin)) return "/";
   if (sousAncienne !== undefined) return sousAncienne;
   if (DEBRIS.test(chemin)) return "/";

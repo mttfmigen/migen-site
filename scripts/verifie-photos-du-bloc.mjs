@@ -44,6 +44,8 @@
  */
 import { readFile } from "node:fs/promises";
 
+import { locsDuPlan } from "./plan-xml.mjs";
+
 const CONTROLE = process.argv.includes("--controle");
 const BASE =
   process.argv.find((a) => a.startsWith("http")) ?? "https://migen-site.vercel.app";
@@ -207,18 +209,9 @@ async function adresses() {
      `/nous-connaitre/` et `/rse/`, que `maquette/contenu/site/index.json`
      ignore. Lire l'index seul, c'est ne jamais visiter les pages du défaut. */
   try {
-    const r = await fetch(new URL("/sitemap.xml", BASE));
-    if (r.ok) {
-      const xml = await r.text();
-      const chemins = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => {
-        try {
-          return new URL(m[1]).pathname;
-        } catch {
-          return m[1];
-        }
-      });
-      if (chemins.length) return [...new Set(chemins)];
-    }
+    // Index et sous-plans, au format de l'ancien site (`scripts/plan-xml.mjs`).
+    const chemins = (await locsDuPlan(BASE)).map((loc) => new URL(loc).pathname);
+    if (chemins.length) return [...new Set(chemins)];
   } catch {
     /* on retombe sur l'index de la maquette */
   }

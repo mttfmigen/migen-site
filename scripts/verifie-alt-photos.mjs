@@ -25,7 +25,7 @@
  *  3. pour une photo du registre, elle compte combien portent mot pour mot la
  *     description du registre.
  *
- * Elle lit les pages du PLAN DU SITE de l'adresse mesuree (`sitemap.xml`), pas
+ * Elle lit les pages du PLAN DU SITE de l'adresse mesuree (`sitemap_index.xml` et ses sous-plans), pas
  * une liste recopiee : ce qui est mesure est ce qui est servi.
  *
  * Usage : node scripts/verifie-alt-photos.mjs [adresse]   (defaut : production)
@@ -33,6 +33,8 @@
  * Jeton de succes : ALT_PHOTOS_PRESENTS
  */
 import { readFile } from 'node:fs/promises'
+
+import { locsDuPlan } from './plan-xml.mjs'
 
 const CONTROLE = process.argv.includes('--controle')
 const BASE = (process.argv.find(a => a.startsWith('http')) ?? 'https://migen-site.vercel.app').replace(/\/$/, '')
@@ -146,9 +148,8 @@ if (CONTROLE) {
 
 let urls
 try {
-  const r = await fetch(`${BASE}/sitemap.xml`)
-  if (!r.ok) throw new Error(`HTTP ${r.status}`)
-  urls = [...new Set([...(await r.text()).matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => new URL(m[1].trim()).pathname))]
+  // Index et sous-plans, au format de l'ancien site (`scripts/plan-xml.mjs`).
+  urls = [...new Set((await locsDuPlan(BASE)).map(loc => new URL(loc).pathname))]
 } catch (e) {
   console.error(`porte non concluante : plan du site illisible sur ${BASE} (${e.code ?? e.message})`)
   process.exit(2)

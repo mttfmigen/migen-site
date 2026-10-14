@@ -18,6 +18,8 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { locsDuPlan } from "./plan-xml.mjs";
+
 const RACINE = join(dirname(fileURLToPath(import.meta.url)), "..");
 const INDEX = join(RACINE, "maquette", "contenu", "site", "index.json");
 const SITE = process.env.SITE_URL ?? "http://localhost:4340";
@@ -39,18 +41,8 @@ function litIndex() {
 /** Les URL que le site déclare lui-même dans son plan de site. */
 async function litSitemap() {
   try {
-    const r = await fetch(`${SITE}/sitemap.xml`, { signal: AbortSignal.timeout(DELAI) });
-    if (!r.ok) return null;
-    const xml = await r.text();
-    return new Set(
-      [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => {
-        try {
-          return new URL(m[1]).pathname;
-        } catch {
-          return m[1];
-        }
-      }),
-    );
+    // Index et sous-plans, au format de l'ancien site (`scripts/plan-xml.mjs`).
+    return new Set((await locsDuPlan(SITE)).map((loc) => new URL(loc).pathname));
   } catch {
     return null;
   }

@@ -104,7 +104,7 @@ Ce sont des pages que WordPress fabrique tout seul, sans visite ni lien d'un aut
 **Le filet.** Au-delà des 35, toute adresse au format de l'ancien WordPress qui n'est ni une page du nouveau site ni une redirection connue part en 301 vers l'accueil, ou vers le parent évident. Il est posé dans `lib/filet-ancien-site.ts`, appliqué par `proxy.ts` **après** la table `redirects` et les lignes de `lib/redirections-ancien-site.ts`. Les motifs :
 
 - `/wp-…` (dont `/wp-content/`, `/wp-includes/`, `/wp-admin`, `/wp-login.php`, `/wp-json/`) et tout fichier `.php` (`/xmlrpc.php`), en toute casse ;
-- les plans de site de Yoast (`/sitemap_index.xml`, `/page-sitemap.xml`, `/post-sitemap.xml`, `/category-sitemap.xml`…) : 301 vers `/sitemap.xml`, ajouté le 14/10 à la relecture (ils répondaient 404 et sont connus de la Search Console) ;
+- les plans de site NE SONT PLUS au filet depuis le 14/10 au soir : le nouveau site sert `/sitemap_index.xml`, `/page-sitemap.xml` et `/post-sitemap.xml` au format de l'ancien (Yoast), et `/sitemap.xml`, `/category-sitemap.xml`, `/fusion_tb_category-sitemap.xml`, `/element_category-sitemap.xml`, `wp-sitemap.xml` partent en 301 vers l'index (voir `docs/PLAN-DU-SITE-XML.md`) ;
 - `/author/`, `/category/`, `/tag/`, `/search/`, `/blocks/`, `/element_category/`, `/fusion_tb_category/`, `/portfolio-items/`, `/faq-items/`, `/featured_item/`, `/shop/`, `/product-category/`, `/product/`, `/cart/`, `/checkout/`, `/my-account/`, `/lost-password/`, `/comments/` ;
 - les archives datées `/AAAA/` et `/AAAA/MM/…` ;
 - `…/page/N/`, `…/feed/` (et `feed/rss2/`, `feed/atom/`), `…/embed/`, `…/trackback/`, `…/amp/`, `…/comment-page-N/` : la cible de la page qui précède (`/actualites/page/2/` part comme `/actualites/`), l'accueil sinon ;
@@ -209,7 +209,7 @@ curl -sI https://migen.fr/maintenance-industrielle-lyon/ | grep -i -E "^(HTTP|lo
 ### Juste après la bascule
 
 9. Relancer la vérification **contre le vrai domaine** : `node scripts/verifie-redirections.mjs https://migen.fr`. Dernière ligne attendue : `REDIRECTIONS_SANS_PERTE`.
-10. **Search Console** : soumettre `https://migen.fr/sitemap.xml` ; retirer l'ancien plan de Yoast (`sitemap_index.xml`), qui part désormais en 301 vers `/sitemap.xml`. Inspecter quelques adresses clés (l'accueil, `/offres/retrofit/`, `/implantations/lyon/`) et demander leur indexation.
+10. **Search Console** : le plan déclaré reste `https://migen.fr/sitemap_index.xml`, à la même adresse que celui de Yoast (voir `docs/PLAN-DU-SITE-XML.md`) : le soumettre à nouveau pour forcer sa lecture. Inspecter quelques adresses clés (l'accueil, `/offres/retrofit/`, `/implantations/lyon/`) et demander leur indexation.
 11. Mettre à jour les liens que Migen contrôle, pour qu'ils visent la nouvelle adresse directement : signatures de mail, LinkedIn, fiche Google, annuaires, modèles de devis (lien CGV).
 
 ### La première semaine

@@ -26,6 +26,8 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { chromium } from "playwright";
 
+import { locsDuPlan } from "./plan-xml.mjs";
+
 const normalise = (t) =>
   (t ?? "")
     .replace(/[   ]/g, " ")
@@ -155,8 +157,8 @@ export function compareInstantanes(avant, apres) {
 }
 
 async function prends(base, largeur, fichier) {
-  const plan = await (await fetch(`${base}/sitemap.xml`)).text();
-  const urls = [...plan.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
+  // Index et sous-plans, au format de l'ancien site (`scripts/plan-xml.mjs`).
+  const urls = (await locsDuPlan(base)).map((loc) => new URL(loc).pathname);
   if (urls.length < 100) throw new Error(`MESURE NON CONCLUANTE : ${urls.length} pages au plan de ${base}`);
   const nav = await chromium.launch({ channel: "chrome" });
   const ctx = await nav.newContext({ viewport: { width: largeur, height: 900 } });

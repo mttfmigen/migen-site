@@ -4,10 +4,13 @@ import { TITRE_HUB_EXPERTISES } from "@/components/site/expertises/expertises-do
 import { cheminsArticles, cheminsDuRelais, titresDuRelais } from "@/lib/contenu";
 import { cheminNormalise } from "@/lib/redirections";
 import { ROUTES_STATIQUES } from "@/lib/routes-statiques";
+import datesRelevees from "@/lib/sitemap/dates.json";
+import { plusRecente } from "@/lib/sitemap/xml";
 import { lectureContenu } from "@/lib/supabase";
 
 /**
- * LES PAGES PUBLIÉES, SOURCE UNIQUE de `sitemap.xml` et de `/plan-du-site/`.
+ * LES PAGES PUBLIÉES, SOURCE UNIQUE du plan XML (`/sitemap_index.xml` et ses
+ * sous-plans, `lib/sitemap/plan.ts`) et de `/plan-du-site/`.
  *
  * POURQUOI CE MODULE, mesuré le 14/10 vers 14h : `sitemap.xml` annonçait 259
  * adresses, toutes en 200, mais le plan du site n'en listait que 145, parce
@@ -46,7 +49,15 @@ export interface PagePubliee {
   path: string;
   /** Le H1 que la page sert. */
   titre: string;
-  /** Absente pour le relais disque : sa date est une date fixe de synthèse. */
+  /**
+   * La date VRAIE de dernière modification, ou rien (règle du 14/10 : jamais
+   * l'heure du build pour tout le monde). `updated_at` de la base pour ses
+   * pages et ses articles ; pour les routes statiques et le relais disque, la
+   * date que `scripts/releve-sitemap.mjs` relève dans l'historique git (ou la
+   * date d'origine des 12 billets repris) et versionne dans
+   * `lib/sitemap/dates.json`. Une page de la base que le relais remplace
+   * prend la plus récente des deux.
+   */
   lastModified?: Date;
 }
 
@@ -104,6 +115,14 @@ const TITRES_DU_COMPOSANT: ReadonlyMap<string, string> = new Map([
   ["/expertises/", TITRE_HUB_EXPERTISES],
 ]);
 
+const DATES_RELEVEES: Readonly<Record<string, string>> = datesRelevees;
+
+/** La date relevée d'un chemin, ou rien. */
+function dateRelevee(path: string): Date | undefined {
+  const iso = DATES_RELEVEES[path];
+  return iso ? new Date(iso) : undefined;
+}
+
 /** « /offres/residence/ » donne « residence » : le slug d'une page ou d'un article. */
 function dernierSegment(path: string): string {
   return path.split("/").filter(Boolean).pop() ?? "";
@@ -146,15 +165,11 @@ export async function pagesPubliees(
   );
   const estRedirigee = (path: string) => redirigees.has(cheminNormalise(path));
 
-  // Date du jour pour les routes statiques : leur contenu vit dans le code, sa
-  // dernière modification est celle du déploiement, pas d'une ligne en base.
-  const deploiement = new Date();
-
   return [
     ...ROUTES_STATIQUES.map((path) => ({
       path,
       titre: TITRES_STATIQUES[path],
-      lastModified: deploiement,
+      lastModified: dateRelevee(path),
     })),
     ...listePages
       // Une route statique qui a aussi sa ligne en base (`/ressources/`) n'est
@@ -168,10 +183,10 @@ export async function pagesPubliees(
           TITRES_DU_COMPOSANT.get(page.path) ??
           TITRES_DU_RELAIS.get(page.path) ??
           page.titre_h1,
-        lastModified: new Date(page.updated_at),
+        lastModified: plusRecente([new Date(page.updated_at), dateRelevee(page.path)]),
       })),
-    // Sans date : celle du relais est une date fixe de synthèse (voir
-    // `pageDeRelais`), et une fausse date de mise à jour vaut moins qu'aucune.
+    // La date relevée de son fichier, jamais celle de `pageDeRelais` : c'est
+    // une date fixe de synthèse, et une fausse date vaut moins qu'aucune.
     ...cheminsDuRelais()
       .filter((path) => !cheminsDeBase.has(path))
       .filter((path) => !statiques.includes(path))
@@ -179,6 +194,7 @@ export async function pagesPubliees(
       .map((path) => ({
         path,
         titre: TITRES_DU_RELAIS.get(path) ?? humanise(path),
+        lastModified: dateRelevee(path),
       })),
     ...articles
       .filter((article) => !article.noindex)

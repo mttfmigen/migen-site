@@ -28,7 +28,9 @@ function routesSous(dossier: string, prefixe: string): string[] {
   return readdirSync(dossier, { withFileTypes: true })
     .filter((entree) => entree.isDirectory())
     .map((entree) => entree.name)
-    .filter((nom) => !nom.startsWith("[") && !nom.startsWith("(") && nom !== "api")
+    // `@lecteur` est un emplacement de route parallèle (`/ressources/`), pas un
+    // segment d'adresse.
+    .filter((nom) => !nom.startsWith("[") && !nom.startsWith("(") && !nom.startsWith("@") && nom !== "api")
     .flatMap((nom) => {
       const route = `${prefixe}${nom}/`;
       const sous = routesSous(join(dossier, nom), route);

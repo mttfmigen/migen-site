@@ -20,6 +20,8 @@
  *
  * PRÉALABLE : le site doit tourner (`bun run dev`, ou `SITE_URL` vers le build).
  */
+import { locsDuPlan } from "./plan-xml.mjs";
+
 const SITE = (process.env.SITE_URL ?? "http://localhost:4340/").replace(/\/$/, "");
 
 /** Pages de départ : une par famille, pour atteindre tous les gabarits. */
@@ -73,11 +75,9 @@ while (aVisiter.length > 0 && vues.size < PAGES_MAX) {
    le seul fichier que le robot lit en entier. */
 const duPlan = [];
 try {
-  const plan = await fetch(`${SITE}/sitemap.xml`);
-  if (plan.ok) {
-    for (const trouve of (await plan.text()).matchAll(/<loc>([^<]+)<\/loc>/g)) {
-      duPlan.push(trouve[1].replace(/^https?:\/\/[^/]+/, ""));
-    }
+  // Index et sous-plans, au format de l'ancien site (`scripts/plan-xml.mjs`).
+  for (const loc of await locsDuPlan(SITE)) {
+    duPlan.push(loc.replace(/^https?:\/\/[^/]+/, ""));
   }
 } catch {
   // Absent en développement selon la configuration : ce n'est pas une faute ici.

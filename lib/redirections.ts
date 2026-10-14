@@ -4,7 +4,7 @@
  * POURQUOI CE MODULE EXISTE. Trois endroits ont besoin de savoir qu'un chemin
  * est la SOURCE d'une redirection et non une page :
  *   · `proxy.ts`, pour renvoyer le visiteur ;
- *   · `app/sitemap.ts`, pour ne pas déclarer à Google une adresse qui redirige ;
+ *   · `lib/sitemap/plan.ts` (le plan XML), pour ne pas déclarer à Google une adresse qui redirige ;
  *   · `app/plan-du-site/page.tsx`, pour ne pas en poser le lien.
  *
  * MESURÉ LE 13/10, et c'est ce qui a fait écrire ce fichier : le plan du site

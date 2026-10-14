@@ -39,7 +39,7 @@ export function urlAbsolue(chemin: string): string {
  * L'URL de l'article suit le cocon plutôt qu'un préfixe plat : un article
  * rattaché au pilier « /offres/depannage/ » est servi à
  * « /offres/depannage/mon-article/ ». Sans pilier, le chemin n'est pas
- * déductible et l'appelant doit traiter ce cas (voir app/sitemap.ts).
+ * déductible et l'appelant doit traiter ce cas (voir lib/sitemap/plan.ts).
  */
 export function cheminArticle(slug: string, cheminPilier: string): string {
   return `${cheminPilier}${slug}/`;

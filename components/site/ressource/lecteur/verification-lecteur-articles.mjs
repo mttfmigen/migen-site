@@ -26,6 +26,8 @@
  */
 import { chromium } from "playwright";
 
+import { locsDuPlan } from "../../../../scripts/plan-xml.mjs";
+
 const base = process.argv[2] ?? "http://localhost:5603";
 
 const mots = (t) =>
@@ -71,9 +73,9 @@ const ALTS = (sel) =>
     .filter((i) => i.offsetParent !== null && i.alt.trim())
     .map((i) => i.alt.trim());
 
-const plan = await (await fetch(`${base}/sitemap.xml`)).text();
-const urls = [...plan.matchAll(/<loc>([^<]+)<\/loc>/g)]
-  .map((m) => new URL(m[1]).pathname)
+// Index et sous-plans, au format de l'ancien site (`scripts/plan-xml.mjs`).
+const urls = (await locsDuPlan(base))
+  .map((loc) => new URL(loc).pathname)
   .filter((p) => /^\/ressources\/articles\/[^/]+\/$/.test(p));
 if (urls.length < 20) {
   console.error(`MESURE NON CONCLUANTE : ${urls.length} articles au plan de ${base}`);
