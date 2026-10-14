@@ -307,6 +307,37 @@ assert.ok(
   "le bandeau ne dit plus que rien ne s'active avant l'accord",
 );
 assert.ok(HTML.includes("changer d"), "le bandeau ne dit plus qu'on peut changer d'avis");
+// Les quatre finalités nommées dès le premier niveau, une proposition chacune :
+// en taire une, c'est la cacher (relecture du 14/10, la publicité manquait).
+for (const [finalite, marque] of [
+  ["mesure_audience", "améliorer nos pages"],
+  ["publicite", "garder les annonces"],
+  ["personnalisation", "celles qui vous concernent"],
+  ["suivi_commercial", "ce que vous avez lu"],
+] as const) {
+  assert.ok(HTML.includes(marque), `le bandeau ne nomme plus la finalité ${finalite}`);
+}
+// Le titre ne dit pas « cookies » : la phrase doit décrire la boîte.
+assert.ok(
+  /aria-describedby="consentement-texte"/.test(HTML) &&
+    /<p id="consentement-texte"/.test(HTML),
+  "la boîte n'est plus décrite par sa phrase : un lecteur d'écran n'entend que « Pour un site plus utile »",
+);
+// Le panneau dépasse la fenêtre au téléphone : borné et défilant, sinon son
+// haut (titre, Fermer, première case) sort de l'écran.
+assert.ok(
+  /\.bandeau\s*\{[^}]*max-height:\s*100dvh[^}]*overflow-y:\s*auto/.test(CSS),
+  "le bandeau n'est plus borné à la fenêtre : le haut du panneau sort de l'écran",
+);
+assert.ok(
+  /z-\[(\d+)\]/.test(TSX) && Number(/z-\[(\d+)\]/.exec(TSX)?.[1]) > 80,
+  "le bandeau passe sous l'en-tête flottant (z-index 80)",
+);
+// Le bandeau renvoie au pied de page : le lien qu'on y trouve parle la même langue.
+assert.ok(
+  !/traceur/i.test(sansCommentaires(lis("./LienReglages.tsx"))),
+  "le lien du pied de page parle encore de « traceurs »",
+);
 assert.ok(
   HTML.includes("Politique de confidentialit"),
   "lien vers la politique de confidentialité perdu",

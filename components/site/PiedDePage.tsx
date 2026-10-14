@@ -381,7 +381,7 @@ export default function PiedDePage({
         padding: "80px 0 34px",
         /* La barre d'action basse est en position fixe : elle ne pousse rien,
            et sans cette réserve elle couvrait les 68 derniers pixels du pied
-           sur les 248 pages, dont « Gérer mes traceurs » et « Une mission
+           sur les 248 pages, dont « Gérer mes cookies » et « Une mission
            freelance » à 100 %. Les 34 px du raccourci au dessus restent le jeu
            visible entre la dernière ligne et la barre.
 

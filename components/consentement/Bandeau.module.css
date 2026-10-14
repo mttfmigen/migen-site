@@ -43,6 +43,14 @@
   /* 20px de côté : la marge mobile du site, posée par `app/globals.css` sous
      760px. En bas, la réserve de l'encoche, comme la barre d'action mobile. */
   padding: 22px 20px calc(24px + env(safe-area-inset-bottom));
+  /* BORNÉ À LA FENÊTRE, et défilant. Mesuré le 14/10 : le panneau
+     « Personnaliser » fait 1 347 px à 390 px de large et 940 px à 1440, pour
+     une fenêtre de 860. Calé au bas d'une boîte fixe, son haut sortait de
+     l'écran : titre, « Fermer » et la case « Mesure d'audience » étaient
+     inatteignables, la molette faisant défiler la page derrière. */
+  max-height: 100dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 /* 640px : le seuil où la maquette passe en une colonne (lignes 748 et 752), et
@@ -54,6 +62,8 @@
     border-radius: var(--rad);
     /* Retrait de carte de la maquette, ligne 1182. */
     padding: 30px 30px 32px;
+    /* 16px en bas (`sm:bottom-4`), autant en haut. */
+    max-height: calc(100dvh - 32px);
   }
 }
 

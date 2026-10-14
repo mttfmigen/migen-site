@@ -16,7 +16,7 @@ export default function LienReglages() {
       onClick={ouvrePanneau}
       className="text-sm underline underline-offset-4 hover:no-underline focus-visible:outline-2 focus-visible:outline-offset-2"
     >
-      Gérer mes traceurs
+      Gérer mes cookies
     </button>
   );
 }

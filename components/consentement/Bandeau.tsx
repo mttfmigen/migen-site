@@ -77,12 +77,20 @@ export default function Bandeau() {
      mesuré à 768px, le bandeau allait de 16px à 784px, soit 16px hors de
      l'écran. Les deux déclarations se contredisaient, et c'est la largeur qui
      gagnait. `w-auto` au même seuil laisse les deux bords décider. */
+  /* `aria-describedby` : le titre, « Pour un site plus utile », ne dit pas
+     seul de quoi parle la boîte. Un lecteur d'écran annonce donc aussi la
+     phrase, qui nomme les cookies et leurs usages.
+
+     `z-[90]` et non `z-50` : l'en-tête flottant est à 80 (Entete.tsx). Le
+     panneau, plus haut que la fenêtre, est borné et défile (`.bandeau`) ; sous
+     l'en-tête, son titre et « Fermer » seraient masqués. */
   return (
     <dialog
       ref={boite}
       aria-labelledby="consentement-titre"
+      aria-describedby="consentement-texte"
       onClose={ferme}
-      className={`${s.bandeau} fixed inset-x-0 bottom-0 top-auto z-50 m-0 w-full max-w-3xl sm:inset-x-4 sm:bottom-4 sm:mx-auto sm:w-auto`}
+      className={`${s.bandeau} fixed inset-x-0 bottom-0 top-auto z-[90] m-0 w-full max-w-3xl sm:inset-x-4 sm:bottom-4 sm:mx-auto sm:w-auto`}
     >
       <div className="flex items-start gap-4">
         <h2 id="consentement-titre" className={`${s.titre} flex-1`}>
@@ -95,11 +103,17 @@ export default function Bandeau() {
         </button>
       </div>
 
-      <p className={s.texte}>
-        Des cookies nous aident à améliorer nos pages, à vous montrer des
-        annonces qui vous concernent et, si vous nous écrivez, à vous répondre
-        en sachant ce que vous avez lu. Rien ne s&apos;active sans votre accord,
-        et vous pouvez changer d&apos;avis à tout moment en pied de page.{" "}
+      {/* Une proposition par finalité, dans l'ordre du panneau : mesure
+          (améliorer nos pages), publicité (garder les annonces utiles),
+          personnalisation (celles qui vous concernent), suivi commercial
+          (répondre en sachant ce que vous avez lu). En taire une au premier
+          niveau, c'est la cacher. Longueur mesurée : même hauteur de bandeau
+          que le texte précédent, de 320 à 1440 px. */}
+      <p id="consentement-texte" className={s.texte}>
+        Des cookies nous aident à améliorer nos pages, à garder les annonces
+        utiles, à vous montrer celles qui vous concernent et à vous répondre en
+        sachant ce que vous avez lu. Rien ne s&apos;active sans votre accord, et
+        vous pouvez changer d&apos;avis à tout moment en pied de page.{" "}
         <a href={LIEN_CONFIDENTIALITE} className={s.lien}>
           Politique de confidentialité
         </a>
