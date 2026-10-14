@@ -8,7 +8,7 @@
   "contenu": {
     "gabarit": "ville",
     "pastille": "Nos implantations",
-    "chapeau": "Peu de bassins français empilent autant de contraintes différentes sur trente kilomètres : la microélectronique du Grésivaudan, exigeante en propreté et en traçabilité, la chimie de procédé du sud grenoblois, les papeteries en service continu, et l'héritage de la houille blanche dans le matériel électrique. Nos techniciens travaillent les utilités et les équipements de production de ces quatre mondes. Migen est une entreprise de maintenance industrielle spécialisée qui intervient à Grenoble et dans toute l'Isère, dans le bassin grenoblois comme partout en France.",
+    "chapeau": "Peu de bassins français empilent autant de contraintes différentes sur trente kilomètres : la microélectronique du Grésivaudan, exigeante en propreté et en traçabilité, la chimie de procédé du sud grenoblois, les papeteries en service continu, et l'héritage de la houille blanche dans le matériel électrique. Nos techniciens travaillent les utilités et les équipements de production de ces quatre mondes.",
     "actions": [
       {
         "libelle": "Faire chiffrer ma maintenance à Grenoble",
@@ -39,7 +39,7 @@
       "photo": "/assets/photos/il-usines-a-yokkaichi-mars-24-2026-1600.jpg",
       "badge": "Rattaché au hub Lyon",
       "nom": "Grenoble, couvert par le hub Lyon",
-      "texte": "Les techniciens du hub Lyon interviennent à Grenoble et alentour, avec les mêmes méthodes et un seul interlocuteur. Maintenance industrielle Grenoble : le bassin concentre une industrie technologique de pointe et une base mécanique ancienne. Une entreprise de maintenance ne vaut que présente et joignable sur le terrain : des professionnels itinérants de maintenance industrielle interviennent sur la ville de Grenoble, Saint-Martin-d'Hères, Saint-Égrève, Crolles et le Grésivaudan, aussi bien dans la vallée du Rhône qu'en Haute-Savoie, de Valence à Marseille, en Auvergne-Rhône-Alpes comme ailleurs, avec un contact unique et une assistance continue pour vos travaux.",
+      "texte": "Les techniciens du hub Lyon interviennent à Grenoble et alentour, avec les mêmes méthodes et un seul interlocuteur.",
       "bouton": "Demander une intervention à Grenoble",
       "cartes": [
         {
@@ -109,15 +109,15 @@
         "puces": [
           {
             "accroche": "Les utilités font tomber les procédés sensibles.",
-            "texte": "Air comprimé, vide, fluides, groupes froids : en microélectronique, une dérive d'utilité se voit sur le produit avant de se voir sur l'équipement. Le moindre équipement à l'arrêt bloque une ligne entière : un secteur de haute technologie, exigeant en propreté, précision et traçabilité."
+            "texte": "Air comprimé, vide, fluides, groupes froids : en microélectronique, une dérive d'utilité se voit sur le produit avant de se voir sur l'équipement."
           },
           {
             "accroche": "La propreté conditionne l'accès.",
-            "texte": "Tenue, outillage, procédure d'entrée : un technicien qui ne connaît pas ces règles ne rentre pas, ou pire, rentre mal. Nous travaillons en milieu contrôlé, avec vos règles de propreté et vos habilitations, et nous adaptons habilitations, gammes et horaires à chaque activité industrielle. Aide au redémarrage comprise."
+            "texte": "Tenue, outillage, procédure d'entrée : un technicien qui ne connaît pas ces règles ne rentre pas, ou pire, rentre mal."
           },
           {
             "accroche": "La chimie de procédé du sud n'a pas de fenêtre naturelle.",
-            "texte": "Service continu, installations parfois classées : l'arrêt se prépare des semaines à l'avance ou ne se fait pas. Du Pont-de-Claix au Grésivaudan, plateformes chimiques et papeteries abritent des process continus ; chaudronnerie, tuyauterie, process en milieu chimique continu : des installations où fiabilité et contrôle priment."
+            "texte": "Service continu, installations parfois classées : l'arrêt se prépare des semaines à l'avance ou ne se fait pas."
           },
           {
             "accroche": "Les papeteries punissent le préventif reporté.",
@@ -125,7 +125,7 @@
           },
           {
             "accroche": "La vallée est étroite, la compétence rare.",
-            "texte": "Entre Crolles, Voiron et le sud grenoblois, trouver un automaticien disponible prend plus de temps que la réparation elle-même. À Grenoble, emploi industriel rime avec pénurie : les offres d'emploi en maintenance restent affichées des mois dans l'Isère, et entre la recherche, l'offre publiée, les entretiens et le préavis, un recrutement se compte en trimestres. Le titre professionnel, le bac pro et le BTS en électrotechnique alimentent la filière, en entreprise comme en centre, mais l'expérience machine se transmet au pied de l'équipement."
+            "texte": "Entre Crolles, Voiron et le sud grenoblois, trouver un automaticien disponible prend plus de temps que la réparation elle-même."
           }
         ]
       },
@@ -137,42 +137,42 @@
               "accroche": "Les utilités traitées comme des équipements critiques",
               "texte": "Air comprimé, vide, fluides, groupes froids, distribution électrique."
             },
-            "benefice": "Vous fermez la cause première de la plupart des arrêts de ligne sur un site sensible. Grenoble, berceau de l'industrie électrique française, garde un tissu industriel et technologique dense autour de l'énergie, des réseaux et de la mesure. C'est une maintenance industrielle experte, mesurée au taux de disponibilité gagné."
+            "benefice": "Vous fermez la cause première de la plupart des arrêts de ligne sur un site sensible."
           },
           {
             "prestation": {
               "accroche": "Le respect des règles de propreté et des habilitations du site procédure d'entrée comprise.",
               "texte": ""
             },
-            "benefice": "Un intervenant extérieur cesse d'être un risque de contamination ou de non-conformité. Agroalimentaire et emballage, conditionnement, froid industriel : des cadences soutenues, où la disponibilité du matériel fait la marge."
+            "benefice": "Un intervenant extérieur cesse d'être un risque de contamination ou de non-conformité."
           },
           {
             "prestation": {
               "accroche": "Un préventif écrit, gammes et périodicités calées sur vos heures de fonctionnement.",
               "texte": ""
             },
-            "benefice": "L'arrêt subi recule, et la charge de vos électriciens et mécaniciens internes s'allège. La maintenance préventive fait baisser le taux de panne, la maintenance corrective répare, la recherche de cause racine empêche la récidive. Grâce à un préventif tenu, les conditions de travail s'améliorent, et le poste de responsable maintenance redevient soutenable."
+            "benefice": "L'arrêt subi recule, et la charge de vos électriciens et mécaniciens internes s'allège."
           },
           {
             "prestation": {
               "accroche": "Le champ technique complet",
               "texte": "Mécanique, électricité, automatisme, hydraulique, pneumatique, soudure."
             },
-            "benefice": "Un seul contrat pour la mécanique de précision comme pour la chaudronnerie de procédé. Les domaines de la maintenance industrielle se combinent sur une même mission, avec un seul interlocuteur : roulements, transmissions, alignements ; maintenance électrique industrielle, armoires, moteurs, variateurs, électricité industrielle ; programmation automate SIEMENS et Schneider ; centrales, pompes, vérins, filtres ; réseaux d'air comprimé ; chaudronnerie et tuyauterie. Usinage, découpe, décolletage, mécanique de précision : nos électriciens et mécaniciens y assurent contrôle, réglage et fabrication de pièces de reprise."
+            "benefice": "Un seul contrat pour la mécanique de précision comme pour la chaudronnerie de procédé."
           },
           {
             "prestation": {
               "accroche": "Astreinte la nuit, le week-end et les jours fériés en option tenue par nos techniciens mobiles, comme partout en France (voir nos implantations).",
               "texte": ""
             },
-            "benefice": "Les procédés continus sont couverts la nuit, le week-end et les jours fériés. L'astreinte, proposée en option, s'ajoute à un contrat de maintenance Zéro arrêt."
+            "benefice": "Les procédés continus sont couverts la nuit, le week-end et les jours fériés."
           },
           {
             "prestation": {
               "accroche": "Les grands projets pris en charge",
               "texte": "Transfert de production, remise en état, arrêt planifié."
             },
-            "benefice": "Calages de précision, jalons datés, chiffrage écrit : le redémarrage se prépare, il ne s'espère pas. L'activité bouge : ateliers qui se regroupent, équipements qui changent de vie, et ces travaux se préparent. Chaque chantier fait l'objet d'une étude et d'un plan écrits : périmètre, moyens, jalons datés, contrôles. Un transfert de production se juge au redémarrage, machine par machine, qu'il vise l'atelier voisin ou Marseille, et la remise en état redonne des années à un outil de production amorti."
+            "benefice": "Calages de précision, jalons datés, chiffrage écrit : le redémarrage se prépare, il ne s'espère pas."
           }
         ]
       },
@@ -181,11 +181,11 @@
         "etapes": [
           {
             "titre": "Le premier contact",
-            "texte": "Vous décrivez la panne ou le besoin par téléphone. Rappel dans l'heure aux horaires ouvrés pour qualifier l'équipement, l'accès et les habilitations. Les conditions d'accès se qualifient dès cette prise de contact, comme avant chaque mission de maintenance industrielle à Grenoble."
+            "texte": "Vous décrivez la panne ou le besoin par téléphone. Rappel dans l'heure aux horaires ouvrés pour qualifier l'équipement, l'accès et les habilitations."
           },
           {
             "titre": "Le devis écrit",
-            "texte": "Périmètre, moyens, taux, conditions d'intervention, accepté avant le départ du technicien. Un pré-diagnostic cadre l'exceptionnel en amont, jamais en fin de facture."
+            "texte": "Périmètre, moyens, taux, conditions d'intervention, accepté avant le départ du technicien."
           },
           {
             "titre": "La préparation d'accès",
@@ -197,11 +197,11 @@
           },
           {
             "titre": "La cause racine",
-            "texte": "L'analyse cherche l'origine réelle de la défaillance, utilités comprises, pour éviter la récidive. Le travail : réparer vite, puis rechercher la cause racine."
+            "texte": "L'analyse cherche l'origine réelle de la défaillance, utilités comprises, pour éviter la récidive."
           },
           {
             "titre": "Le compte rendu",
-            "texte": "Résultats, préconisations, seuils à surveiller, versés dans votre GMAO en toute confidentialité. Chaque réparation est documentée, avec une information complète et des données à jour, chez vous. Un seul contact suit vos travaux, quel que soit le site."
+            "texte": "Résultats, préconisations, seuils à surveiller, versés dans votre GMAO en toute confidentialité."
           }
         ]
       },
@@ -210,15 +210,15 @@
         "puces": [
           {
             "accroche": "Le périmètre dit avec franchise",
-            "texte": "Nous intervenons sur les utilités et les équipements périphériques de production. Pour les procédés les plus sensibles, nous travaillons dans vos règles et avec vos habilitations, et nous le disons quand un matériel sort de notre champ. Nos techniciens assurent aussi l'assistance à la mise en service d'un nouvel équipement ou d'une nouvelle technologie : réglages de précision, essais, montée en cadence."
+            "texte": "Nous intervenons sur les utilités et les équipements périphériques de production. Pour les procédés les plus sensibles, nous travaillons dans vos règles et avec vos habilitations, et nous le disons quand un matériel sort de notre champ."
           },
           {
             "accroche": "Le niveau attesté avant la première entrée en zone",
-            "texte": "Entretien technique et comportemental, un technicien sur dix retenu, résultats d'évaluation communiqués en amont. La qualité de notre politique de sélection reste le verrou, et chaque nouveau technicien poursuit sa formation et sa montée en compétence sur le terrain, au contact des équipements de nos clients de l'Isère. Chaque technicien de maintenance industrielle est employé en CDI temps plein, formé et encadré : vous achetez un résultat. Le bassin d'emploi grenoblois fait partie de nos zones de recherche et de recrutement, postes ouverts à tous, situation de handicap comprise."
+            "texte": "Entretien technique et comportemental, un technicien sur dix retenu, résultats d'évaluation communiqués en amont."
           },
           {
             "accroche": "Vous gardez la main",
-            "texte": "Vos priorités, vos règles de sécurité, votre GMAO. Nos techniciens entrent dans votre organisation et s'y rangent, sans la redessiner. Vos outils, votre GMAO : nos équipes de maintenance industrielle s'intègrent à votre entreprise, elles ne la remplacent pas, sans céder le contrôle de votre outil industriel. Le périmètre est écrit, l'information est partagée, et les taux de disponibilité sont relevés à chaque visite. Beaucoup de clients du secteur industriel commencent par un dépannage, découvrent l'offre, puis s'engagent : rien ne vous oblige à tout confier d'un coup, c'est une solution, pas une dépendance. Vous savez ce qui est fait, quand et pourquoi : le travail se voit. Nos références sont nationales, partout en France, de Grenoble à Marseille."
+            "texte": "Vos priorités, vos règles de sécurité, votre GMAO. Nos techniciens entrent dans votre organisation et s'y rangent, sans la redessiner."
           }
         ]
       },
@@ -323,84 +323,6 @@
     {
       "ligne": "Oui, avec l'offre résidence : un salarié Migen qui rejoint votre équipe, suivi par un référent, en poste sous 2 à 3 semaines.",
       "pourquoi": "délai chiffré : seul « rappel dans l'heure » est autorisé (contrat de rédaction et passation du client). Délai « en poste sous 2 à 3 semaines ». Première phrase de la réponse à « Pouvez-vous affecter un technicien à demeure sur notre site ? » (09 Questions), la suite reste."
-    }
-  ],
-  "ajouts": [
-    {
-      "ligne": "Migen est une entreprise de maintenance industrielle spécialisée qui intervient à Grenoble et dans toute l'Isère, dans le bassin grenoblois comme partout en France.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, héro"
-    },
-    {
-      "ligne": "Maintenance industrielle Grenoble : le bassin concentre une industrie technologique de pointe et une base mécanique ancienne. Une entreprise de maintenance ne vaut que présente et joignable sur le terrain : des professionnels itinérants de maintenance industrielle interviennent sur la ville de Grenoble, Saint-Martin-d'Hères, Saint-Égrève, Crolles et le Grésivaudan, aussi bien dans la vallée du Rhône qu'en Haute-Savoie, de Valence à Marseille, en Auvergne-Rhône-Alpes comme ailleurs, avec un contact unique et une assistance continue pour vos travaux.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, notre présence et FAQ Isère"
-    },
-    {
-      "ligne": "Le moindre équipement à l'arrêt bloque une ligne entière : un secteur de haute technologie, exigeant en propreté, précision et traçabilité.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Microélectronique et semi-conducteurs"
-    },
-    {
-      "ligne": "Nous travaillons en milieu contrôlé, avec vos règles de propreté et vos habilitations, et nous adaptons habilitations, gammes et horaires à chaque activité industrielle. Aide au redémarrage comprise.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, FAQ salle blanche et Les secteurs industriels de l'Isère"
-    },
-    {
-      "ligne": "Du Pont-de-Claix au Grésivaudan, plateformes chimiques et papeteries abritent des process continus ; chaudronnerie, tuyauterie, process en milieu chimique continu : des installations où fiabilité et contrôle priment.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Chimie et papeterie, Chaudronnerie et chimie de process"
-    },
-    {
-      "ligne": "À Grenoble, emploi industriel rime avec pénurie : les offres d'emploi en maintenance restent affichées des mois dans l'Isère, et entre la recherche, l'offre publiée, les entretiens et le préavis, un recrutement se compte en trimestres. Le titre professionnel, le bac pro et le BTS en électrotechnique alimentent la filière, en entreprise comme en centre, mais l'expérience machine se transmet au pied de l'équipement.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Emploi et recrutement en maintenance à Grenoble"
-    },
-    {
-      "ligne": "Grenoble, berceau de l'industrie électrique française, garde un tissu industriel et technologique dense autour de l'énergie, des réseaux et de la mesure. C'est une maintenance industrielle experte, mesurée au taux de disponibilité gagné.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Énergie et matériel électrique, La solution tient en une phrase"
-    },
-    {
-      "ligne": "Agroalimentaire et emballage, conditionnement, froid industriel : des cadences soutenues, où la disponibilité du matériel fait la marge.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Agroalimentaire et emballage"
-    },
-    {
-      "ligne": "La maintenance préventive fait baisser le taux de panne, la maintenance corrective répare, la recherche de cause racine empêche la récidive. Grâce à un préventif tenu, les conditions de travail s'améliorent, et le poste de responsable maintenance redevient soutenable.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Nos domaines d'intervention"
-    },
-    {
-      "ligne": "Les domaines de la maintenance industrielle se combinent sur une même mission, avec un seul interlocuteur : roulements, transmissions, alignements ; maintenance électrique industrielle, armoires, moteurs, variateurs, électricité industrielle ; programmation automate SIEMENS et Schneider ; centrales, pompes, vérins, filtres ; réseaux d'air comprimé ; chaudronnerie et tuyauterie. Usinage, découpe, décolletage, mécanique de précision : nos électriciens et mécaniciens y assurent contrôle, réglage et fabrication de pièces de reprise.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Nos domaines d'intervention, Mécanique et sous-traitance"
-    },
-    {
-      "ligne": "L'activité bouge : ateliers qui se regroupent, équipements qui changent de vie, et ces travaux se préparent. Chaque chantier fait l'objet d'une étude et d'un plan écrits : périmètre, moyens, jalons datés, contrôles. Un transfert de production se juge au redémarrage, machine par machine, qu'il vise l'atelier voisin ou Marseille, et la remise en état redonne des années à un outil de production amorti.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Travaux, transferts et grands arrêts"
-    },
-    {
-      "ligne": "Les conditions d'accès se qualifient dès cette prise de contact, comme avant chaque mission de maintenance industrielle à Grenoble.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Le premier contact, FAQ"
-    },
-    {
-      "ligne": "Un pré-diagnostic cadre l'exceptionnel en amont, jamais en fin de facture.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Le devis"
-    },
-    {
-      "ligne": "Chaque réparation est documentée, avec une information complète et des données à jour, chez vous. Un seul contact suit vos travaux, quel que soit le site.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, La réparation et le compte rendu"
-    },
-    {
-      "ligne": "Nos techniciens assurent aussi l'assistance à la mise en service d'un nouvel équipement ou d'une nouvelle technologie : réglages de précision, essais, montée en cadence.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Nos domaines d'intervention"
-    },
-    {
-      "ligne": "La qualité de notre politique de sélection reste le verrou, et chaque nouveau technicien poursuit sa formation et sa montée en compétence sur le terrain, au contact des équipements de nos clients de l'Isère. Chaque technicien de maintenance industrielle est employé en CDI temps plein, formé et encadré : vous achetez un résultat. Le bassin d'emploi grenoblois fait partie de nos zones de recherche et de recrutement, postes ouverts à tous, situation de handicap comprise.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, FAQ recrutement"
-    },
-    {
-      "ligne": "Vos outils, votre GMAO : nos équipes de maintenance industrielle s'intègrent à votre entreprise, elles ne la remplacent pas, sans céder le contrôle de votre outil industriel. Le périmètre est écrit, l'information est partagée, et les taux de disponibilité sont relevés à chaque visite. Beaucoup de clients du secteur industriel commencent par un dépannage, découvrent l'offre, puis s'engagent : rien ne vous oblige à tout confier d'un coup, c'est une solution, pas une dépendance. Vous savez ce qui est fait, quand et pourquoi : le travail se voit. Nos références sont nationales, partout en France, de Grenoble à Marseille.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Externaliser sa maintenance sans perdre la main"
-    },
-    {
-      "ligne": "L'astreinte, proposée en option, s'ajoute à un contrat de maintenance Zéro arrêt.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, encadré présence continue"
-    },
-    {
-      "ligne": "Le travail : réparer vite, puis rechercher la cause racine.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Ce qui se passe quand vous appelez"
     }
   ]
 }

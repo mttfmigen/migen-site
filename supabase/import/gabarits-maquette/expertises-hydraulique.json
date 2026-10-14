@@ -187,67 +187,19 @@
           },
           {
             "question": "Qui répond de la sécurité sur un circuit haute pression ?",
-            "reponse": "Nos techniciens. Consignation des énergies, purge de la pression résiduelle, calage des charges, plan de prévention signé, balisage. Vos procédures et vos créneaux d'accès priment sur nos habitudes. Nos équipes arrivent avec les autorisations, la certification et les protections demandées par votre plan de prévention."
+            "reponse": "Nos techniciens. Consignation des énergies, purge de la pression résiduelle, calage des charges, plan de prévention signé, balisage. Vos procédures et vos créneaux d'accès priment sur nos habitudes."
           },
           {
             "question": "Qui intervient sur nos centrales ?",
-            "reponse": "Des techniciens salariés de Migen, évalués en entretien technique et comportemental, 10 % des techniciens retenus. L'hydraulique proportionnelle et son pilotage par automate évoluent vite : la compétence est entretenue, pas déclarée. Chaque intervenant passe un test technique et une évaluation comportementale."
+            "reponse": "Des techniciens salariés de Migen, évalués en entretien technique et comportemental, 10 % des techniciens retenus. L'hydraulique proportionnelle et son pilotage par automate évoluent vite : la compétence est entretenue, pas déclarée."
           },
           {
             "question": "Travaillez-vous l'hydraulique des engins de chantier ?",
-            "reponse": "Non. Notre terrain est l'hydraulique industrielle fixe : presse, injection, levage d'atelier, machine de production. Un engin, une nacelle ou du matériel agricole relève d'un spécialiste du matériel roulant. Notre expertise couvre l'hydraulique industrielle fixe et son application en atelier. L'hydraulique mobile (engin de chantier, nacelle, engin agricole, camion) et l'hydraulique industrielle sont deux univers que le web mélange en permanence : le dire franchement vous évite une journée perdue."
+            "reponse": "Non. Notre terrain est l'hydraulique industrielle fixe : presse, injection, levage d'atelier, machine de production. Un engin, une nacelle ou du matériel agricole relève d'un spécialiste du matériel roulant."
           },
           {
             "question": "Couvrez-vous notre région, et les petits sites ?",
             "reponse": "Oui aux deux. 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et des hubs de techniciens dans les grandes villes de France partout en France. Une seule centrale critique justifie un suivi réel, dimensionné sur votre réalité."
-          },
-          {
-            "question": "Pouvez-vous intervenir en urgence sur une panne hydraulique ?",
-            "reponse": "Oui : prise en charge immédiate, maintenance corrective et remise en service. Décrivez la situation dans le formulaire ou appelez directement : notre accueil téléphonique répond du lundi au vendredi, de 8h00 à 18h30, et l'astreinte prend le relais la nuit et le week-end."
-          },
-          {
-            "question": "Que recouvre la maintenance hydraulique ?",
-            "reponse": "Tenir la pression, arrêter les fuites, garantir la fiabilité : c'est l'un de nos domaines de maintenance des équipements industriels. Une ligne ne tombe jamais en panne « d'hydraulique ». Elle tombe en panne d'un flexible percé, d'un distributeur collé, d'une huile cuite. La maintenance hydraulique suit le fluide, de la centrale jusqu'à l'organe de travail : une pression stable du premier au dernier cycle, avec la vérification des pompes, des limiteurs, des accumulateurs et des réglages de chaque circuit hydraulique ; des fuites arrêtées à la source ; une huile sous surveillance, avec l'analyse du fluide hydraulique, la mesure de la pollution et le remplacement du filtre ; des vérins qui retrouvent leur course ; des centrales et groupes remis au propre, jusqu'à l'espace de travail autour de la centrale ; un schéma à jour, relevé quand le dossier d'origine a disparu. Le schéma est le document utile que personne ne retrouve le jour de la panne."
-          },
-          {
-            "question": "Quelles pannes hydrauliques traitez-vous le plus souvent ?",
-            "reponse": "Un système hydraulique prévient toujours avant de lâcher. La perte de pression : pompe fatiguée, limiteur déréglé, fuite interne. Le fluide qui chauffe : refroidisseur encrassé, débit mal réparti, viscosité inadaptée, et au-delà du seuil l'huile se dégrade et attaque les joints. Le vérin qui broute : air dans la boucle, guidage usé, contre-pression mal réglée. Le bruit de cavitation : crépine colmatée, niveau trop bas, aspiration en défaut. Le flexible qui claque : vieillissement, frottement, montage en contrainte. Et la panne qui revient : là, le problème n'est pas le composant, c'est la cause racine."
-          },
-          {
-            "question": "Quels réflexes appliquez-vous sur un circuit hydraulique ?",
-            "reponse": "Le vrai sujet de l'hydraulique, ce n'est pas l'outil, c'est l'expérience de celui qui tient la clé. Vérifier le niveau avant d'accuser la pompe : en pratique, la maintenance en hydraulique commence toujours par le contrôle le plus simple. Rechercher la cause racine avant de remplacer : un composant neuf monté sur un défaut non traité ne tient pas la saison. Tracer chaque opération par écrit : sans trace, la panne suivante repart de zéro."
-          },
-          {
-            "question": "Préventif, curatif, amélioratif : que faites-vous ?",
-            "reponse": "Trois types de maintenance, un seul objectif : prolonger la durée de vie des installations sans bloquer votre fabrication. La maintenance préventive : visites régulières, analyse du fluide, vérification des flexibles et des filtres, relevés, pour traiter les défaillances avant qu'elles ne coûtent. La maintenance corrective, ou curative : diagnostic, réparation ou remplacement du composant en défaut, essais, remise en service, avec la cause identifiée et écrite. La maintenance améliorative : reprise du circuit, filtration plus efficace, meilleure accessibilité, mise à jour du schéma, pour que la même panne ne revienne plus et que l'efficacité énergétique progresse."
-          },
-          {
-            "question": "Comment se construit un préventif hydraulique ?",
-            "reponse": "Dans beaucoup d'usines, l'hydraulique n'est surveillée par personne : aucune analyse de fluide, aucun relevé, aucune gestion de l'entretien hydraulique, on attend la casse. Nous remettons de la mesure là où il n'y en a pas : température, pression, état du fluide, temps de cycle. Ces quatre éléments suffisent à éviter la majorité des pannes. Le préventif se construit ensuite en quatre étapes. L'état des lieux : inventaire des groupes et des points de mesure, avec une vision claire de ce qui est critique pour votre activité. Un programme d'entretien adapté : fréquences, gammes, consommables, références à garder en stock, en partant de votre réalité d'exploitation. Les visites et mesures : contrôle du fonctionnement, analyse du fluide, suivi de l'usure, correction rapide des dérives détectées. Le bilan et le conseil : un retour régulier pour optimiser le plan de maintenance, arbitrer entre réparation et remise à niveau. Cette méthode est la base d'une maintenance prédictive utile : la donnée s'accumule, les décisions deviennent simples, et la fiabilité suit."
-          },
-          {
-            "question": "Sur quels équipements et systèmes hydrauliques travaillez-vous ?",
-            "reponse": "Nous proposons nos services sur les installations hydrauliques de l'industrie, quelle que soit la marque du matériel en place. Presses et machines de formage, plieuses, poinçonneuses, injection plastique ; manutention et levage fixe ; lignes de production, convoyage, découpe, compactage ; centrales, groupes de secours, boucles de refroidissement, réseaux de distribution d'usine ; équipements mixtes combinant hydraulique, pneumatique, mécanique, électricité et automatisme ; supports et structures repris par soudure quand la fixation fatigue le composant. Nous travaillons sur l'existant, sans imposer une solution propriétaire, et notre entreprise applique la même qualité de service partout en France. La maintenance pneumatique et la lubrification industrielle, voisines de l'hydraulique, sont deux moyens directs de réduction de l'usure."
-          },
-          {
-            "question": "À quelle fréquence faut-il analyser l'huile hydraulique ?",
-            "reponse": "Cela dépend du régime de la machine, de la température de service et de l'environnement. Nous fixons la fréquence lors de l'état des lieux, puis nous l'ajustons grâce aux résultats réels des premières analyses."
-          },
-          {
-            "question": "Fournissez-vous les pièces hydrauliques ?",
-            "reponse": "Le diagnostic et la remise en état simple se font sur place. Pour une réfection complète, le composant est déposé et traité par un atelier spécialisé, sous notre suivi, avec essais avant remontage. Ni vente ni fabrication : nous ne sommes ni fabricant de composants ni distributeur, aucun catalogue à écouler, donc aucun remplacement de confort. Si un flexible, un joint ou un distributeur manque, nous le sourçons et pouvons proposer une référence équivalente. Quand un composant doit partir au banc d'essai chez un spécialiste, nous le disons et nous organisons la dépose."
-          },
-          {
-            "question": "Que faut-il installer pour suivre un circuit à distance ?",
-            "reponse": "Des capteurs de température et de pression suffisent pour commencer. Nous vous disons ce qui est nécessaire pour votre cas spécifique, sans suréquiper un équipement qui n'en a pas besoin."
-          },
-          {
-            "question": "Êtes-vous un organisme de formation hydraulique ?",
-            "reponse": "Non. Une bonne partie des résultats sur ce sujet sont des catalogues de stage : formation maintenance, formation automatisme, formation soudage, formation usinage, formation robot, formation vision industrielle, formation variateurs de vitesse, formation industrie du futur. Migen n'est ni organisme de la métallurgie, ni vendeur de formation, ni parcours diplômant : nous envoyons des professionnels faire le travail sur vos machines, avec un compte rendu à la clé."
-          },
-          {
-            "question": "Comment obtenir un devis de maintenance hydraulique ?",
-            "reponse": "Décrivez votre besoin dans le formulaire, ou pensez à contacter directement le hub le plus proche par téléphone. Nous vous rappelons pour répondre au périmètre réel, puis nous adressons une proposition adaptée et personnalisée."
           }
         ]
       },

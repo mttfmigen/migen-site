@@ -8,7 +8,7 @@
   "contenu": {
     "gabarit": "ville",
     "pastille": "Nos implantations",
-    "chapeau": "Entre le fleuve et la ville, la vallée aligne des procédés qui ne s'arrêtent pas : raffinage, papier-carton, agroalimentaire, logistique de quai. Nous y intervenons avec des techniciens habitués aux consignations strictes et aux fenêtres d'arrêt courtes, qui se déplacent sur vos sites : nous n'avons ni agence ni hub de techniciens à Rouen. Une ligne arrêtée à Rouen en Normandie coûte autant qu'ailleurs : cher, et tout de suite. Notre entreprise assure un service de maintenance industrielle complet : dépannage, maintenance préventive, travaux et réparations.",
+    "chapeau": "Entre le fleuve et la ville, la vallée aligne des procédés qui ne s'arrêtent pas : raffinage, papier-carton, agroalimentaire, logistique de quai. Nous y intervenons avec des techniciens habitués aux consignations strictes et aux fenêtres d'arrêt courtes, qui se déplacent sur vos sites : nous n'avons ni agence ni hub de techniciens à Rouen.",
     "actions": [
       {
         "libelle": "Faire chiffrer ma maintenance à Rouen",
@@ -39,7 +39,7 @@
       "photo": "/assets/villes/ville-rouen.jpg",
       "badge": "Rattaché au hub Paris",
       "nom": "Rouen, couvert par le hub Paris",
-      "texte": "Les techniciens du hub Paris interviennent à Rouen et alentour, avec les mêmes méthodes et un seul interlocuteur. De la vallée à la ville de Rouen, la carte industrielle est dense. Pas d'adresse vitrine : une organisation, avec un nombre réduit d'interlocuteurs. Notre périmètre Rouen couvre Rouen, Sotteville-lès-Rouen, Grand-Quevilly, Saint-Étienne-du-Rouvray, Mont-Saint-Aignan ou Le Mesnil-Esnard, et s'étend dans la région du Havre à Caen selon la mission.",
+      "texte": "Les techniciens du hub Paris interviennent à Rouen et alentour, avec les mêmes méthodes et un seul interlocuteur.",
       "bouton": "Demander une intervention à Rouen",
       "cartes": [
         {
@@ -92,7 +92,7 @@
           },
           {
             "accroche": "L'environnement ne pardonne pas l'approximation.",
-            "texte": "Consignations, permis de feu, zones réglementées : un prestataire qui découvre ces règles sur place vous coûte plus qu'il ne vous rapporte. Raffinage et pétrochimie : procédés continus, exigences légales strictes."
+            "texte": "Consignations, permis de feu, zones réglementées : un prestataire qui découvre ces règles sur place vous coûte plus qu'il ne vous rapporte."
           },
           {
             "accroche": "L'abrasion et l'humidité usent vite.",
@@ -123,7 +123,7 @@
               "accroche": "Mécanique lourde et réparations durables pour le papier, le carton et le recyclage, en maintenance mécanique.",
               "texte": ""
             },
-            "benefice": "L'organe usé ne revient pas trois mois plus tard : la cause d'usure est traitée, pas seulement la pièce. Mécanique générale, paliers, réducteurs, alignements, équilibrage : la vie de vos équipements se joue là."
+            "benefice": "L'organe usé ne revient pas trois mois plus tard : la cause d'usure est traitée, pas seulement la pièce."
           },
           {
             "prestation": {
@@ -137,14 +137,14 @@
               "accroche": "Électromécanique, automatisme et robotique pour l'automobile et les équipementiers : variateurs, cellules ABB et Fanuc, reprise de trajectoires.",
               "texte": ""
             },
-            "benefice": "La cadence revient sans attendre un intégrateur extérieur. Séries tendues, robots, variateurs de vitesse ; armoires, motorisations, recherche de défaut par un électricien industriel habilité : pétrochimie ou construction mécanique, la méthode ne change pas."
+            "benefice": "La cadence revient sans attendre un intégrateur extérieur."
           },
           {
             "prestation": {
               "accroche": "Entretien et dépannage des lignes de convoyage et de tri portuaires, y compris en pic d'activité.",
               "texte": ""
             },
-            "benefice": "Le flux reprend avant la rotation suivante, pas après. Hydraulique et pneumatique : centrales, vérins, fuites, énergie propre du réseau d'air."
+            "benefice": "Le flux reprend avant la rotation suivante, pas après."
           },
           {
             "prestation": {
@@ -160,11 +160,11 @@
         "etapes": [
           {
             "titre": "Le rappel dans l'heure",
-            "texte": "Vous décrivez la panne ou les travaux aux horaires ouvrés. Nous disons ce qui est faisable, avec quel profil, et une date ferme est posée. Un contact unique : un chargé d'affaires suit vos sites, vos équipements et vos critères d'accès."
+            "texte": "Vous décrivez la panne ou les travaux aux horaires ouvrés. Nous disons ce qui est faisable, avec quel profil, et une date ferme est posée."
           },
           {
             "titre": "La qualification technique",
-            "texte": "Photos, historique, références matériel, contraintes d'accès et de sécurité. La préparation supprime le second déplacement. L'itinéraire de vos ateliers, vos consignes, votre accueil sécurité : tout est connu avant d'arriver."
+            "texte": "Photos, historique, références matériel, contraintes d'accès et de sécurité. La préparation supprime le second déplacement."
           },
           {
             "titre": "Le dossier de prévention",
@@ -176,11 +176,11 @@
           },
           {
             "titre": "Les essais et la remise en service",
-            "texte": "Contrôles en charge, validation avec votre exploitation, avant de rendre l'installation. L'objectif : remettre l'unité en production, puis expliquer la cause."
+            "texte": "Contrôles en charge, validation avec votre exploitation, avant de rendre l'installation."
           },
           {
             "titre": "Le compte rendu",
-            "texte": "Travail réalisé, résultats, pistes d'amélioration, exploitables par votre encadrement. Rien d'ajouté à la facture. Vous recevez la cause et les points clés à surveiller : votre expérience s'achève sur une solution qui fonctionne et une activité relancée."
+            "texte": "Travail réalisé, résultats, pistes d'amélioration, exploitables par votre encadrement. Rien d'ajouté à la facture."
           }
         ]
       },
@@ -189,11 +189,11 @@
         "puces": [
           {
             "accroche": "Aucune référence locale inventée",
-            "texte": "Nos preuves sont nationales, écrites et vérifiables. Nous préférons vous mettre en relation avec un industriel comparable plutôt qu'aligner des logos. Missions, moyens engagés, résultats : tout est écrit dans nos études de cas, à consulter avant de nous confier vos équipements. Sur demande, nous vous rapprochons d'une entreprise comparable à la vôtre, secteur et taille, pour observer la méthode à l'œuvre."
+            "texte": "Nos preuves sont nationales, écrites et vérifiables. Nous préférons vous mettre en relation avec un industriel comparable plutôt qu'aligner des logos."
           },
           {
             "accroche": "Un chiffrage ferme avant intervention",
-            "texte": "Périmètre écrit, taux horaire homogène partout en France, pièces au prix réel. L'exceptionnel se chiffre en amont, jamais en fin de facture. Chaque prestation est chiffrée avant de commencer : c'est le bon format pour tester notre expertise, et notre vraie promesse de société de services."
+            "texte": "Périmètre écrit, taux horaire homogène partout en France, pièces au prix réel. L'exceptionnel se chiffre en amont, jamais en fin de facture."
           },
           {
             "accroche": "La reprise d'un préventif abandonné, sans jugement",
@@ -293,55 +293,5 @@
         "question": "Besoin d'un partenaire qui tienne le préventif quand votre équipe ne peut plus ?"
       }
     ]
-  },
-  "ajouts": [
-    {
-      "ligne": "Une ligne arrêtée à Rouen en Normandie coûte autant qu'ailleurs : cher, et tout de suite. Notre entreprise assure un service de maintenance industrielle complet : dépannage, maintenance préventive, travaux et réparations.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, héro"
-    },
-    {
-      "ligne": "De la vallée à la ville de Rouen, la carte industrielle est dense. Pas d'adresse vitrine : une organisation, avec un nombre réduit d'interlocuteurs. Notre périmètre Rouen couvre Rouen, Sotteville-lès-Rouen, Grand-Quevilly, Saint-Étienne-du-Rouvray, Mont-Saint-Aignan ou Le Mesnil-Esnard, et s'étend dans la région du Havre à Caen selon la mission.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Comment nous couvrons le bassin rouennais"
-    },
-    {
-      "ligne": "Raffinage et pétrochimie : procédés continus, exigences légales strictes.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Les secteurs industriels de l'axe Seine"
-    },
-    {
-      "ligne": "Mécanique générale, paliers, réducteurs, alignements, équilibrage : la vie de vos équipements se joue là.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Mécanique et transmissions"
-    },
-    {
-      "ligne": "Séries tendues, robots, variateurs de vitesse ; armoires, motorisations, recherche de défaut par un électricien industriel habilité : pétrochimie ou construction mécanique, la méthode ne change pas.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, tableau des secteurs et encadré méthode"
-    },
-    {
-      "ligne": "Hydraulique et pneumatique : centrales, vérins, fuites, énergie propre du réseau d'air.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Hydraulique et pneumatique"
-    },
-    {
-      "ligne": "Un contact unique : un chargé d'affaires suit vos sites, vos équipements et vos critères d'accès.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Un contact unique"
-    },
-    {
-      "ligne": "L'itinéraire de vos ateliers, vos consignes, votre accueil sécurité : tout est connu avant d'arriver.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Un contact unique"
-    },
-    {
-      "ligne": "Vous recevez la cause et les points clés à surveiller : votre expérience s'achève sur une solution qui fonctionne et une activité relancée.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, FAQ après la première intervention"
-    },
-    {
-      "ligne": "Missions, moyens engagés, résultats : tout est écrit dans nos études de cas, à consulter avant de nous confier vos équipements. Sur demande, nous vous rapprochons d'une entreprise comparable à la vôtre, secteur et taille, pour observer la méthode à l'œuvre.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Des preuves plutôt que des promesses locales"
-    },
-    {
-      "ligne": "Chaque prestation est chiffrée avant de commencer : c'est le bon format pour tester notre expertise, et notre vraie promesse de société de services.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, FAQ chiffrage et Domaines techniques couverts"
-    },
-    {
-      "ligne": "L'objectif : remettre l'unité en production, puis expliquer la cause.",
-      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, FAQ urgence le week-end"
-    }
-  ]
+  }
 }

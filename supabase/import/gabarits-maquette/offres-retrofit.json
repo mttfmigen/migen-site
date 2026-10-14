@@ -7,7 +7,7 @@
   "contenu": {
     "gabarit": "offre",
     "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
-    "chapeau": "**Votre machine peut produire plusieurs années de plus, pour un coût total très inférieur à celui du neuf.** Le bâti est sain, c'est la commande qui est morte. Le retrofit machine industrielle est la solution intermédiaire : moderniser une machine existante plutôt que la remplacer, pour améliorer la sécurité, la productivité et la fiabilité de vos moyens de production.",
+    "chapeau": "**Votre machine peut produire plusieurs années de plus, pour un coût total très inférieur à celui du neuf.** Le bâti est sain, c'est la commande qui est morte.",
     "actions": [
       {
         "libelle": "Les cinq offres",
@@ -51,7 +51,7 @@
           },
           {
             "accroche": "Le préventif qui saute",
-            "texte": ", faute de temps, pendant que la machine se dégrade un peu plus. Votre outil de production vieillit, les pannes s'accumulent, chaque pièce d'origine devient introuvable."
+            "texte": ", faute de temps, pendant que la machine se dégrade un peu plus."
           }
         ]
       },
@@ -62,31 +62,31 @@
             "prestation": {
               "texte": "**Retrofit mécanique**"
             },
-            "benefice": "Roulements, transmissions, motorisations, guidages, broches remplacés et géométrie reprise. La précision d'origine revient, parfois dépassée. Le bâti, souvent l'élément le plus durable et le plus coûteux, est conservé. Le principe : donner une seconde vie à l'équipement grâce à des composants récents."
+            "benefice": "Roulements, transmissions, motorisations, guidages, broches remplacés et géométrie reprise. La précision d'origine revient, parfois dépassée."
           },
           {
             "prestation": {
               "texte": "**Retrofit électrique et automatisme**"
             },
-            "benefice": "Armoires rénovées, variateurs échangés, recâblage aux normes, automate obsolète remplacé, programmes repris, nouvelle interface homme-machine. Les systèmes obsolètes sont changés, chaque convertisseur en fin de vie échangé, avec intégration de nouveaux capteurs : l'électronique étant la partie qui vieillit le plus vite, c'est souvent le cœur du projet de retrofit."
+            "benefice": "Armoires rénovées, variateurs échangés, recâblage aux normes, automate obsolète remplacé, programmes repris, nouvelle interface homme-machine."
           },
           {
             "prestation": {
               "texte": "**Capteurs et supervision**"
             },
-            "benefice": "Une presse des années 90 alimente les mêmes outils de suivi qu'une ligne récente. Sans capteurs modernes, rien ne remonte de la machine. La modernisation ouvre aussi l'accès aux technologies récentes : la commande numérique et la continuité numérique avec vos outils de gestion, les capteurs connectés, les caméras de vision industrielle pour le contrôle qualité, l'intelligence artificielle appliquée à l'analyse des données de vos ateliers. Sans capteurs modernes, aucune intelligence exploitable ne remonte de la machine. Par exemple, une presse des années 90 équipée de nouveaux capteurs et d'une supervision moderne peut alimenter les mêmes outils de gestion qu'une ligne automatisée récente, sans intelligence artificielle embarquée d'origine."
+            "benefice": "Une presse des années 90 alimente les mêmes outils de suivi qu'une ligne récente. Sans capteurs modernes, rien ne remonte de la machine."
           },
           {
             "prestation": {
               "texte": "**[Mise en conformité des machines](/offres/retrofit/mise-en-conformite-machine/)**"
             },
-            "benefice": "Protecteurs, arrêts d'urgence, dispositifs de sécurité et dossier technique traités pendant l'arrêt, pas après. Toute modernisation est l'occasion de traiter chaque exigence légale applicable, la mention des normes appliquées figurant au dossier."
+            "benefice": "Protecteurs, arrêts d'urgence, dispositifs de sécurité et dossier technique traités pendant l'arrêt, pas après."
           },
           {
             "prestation": {
               "texte": "**[Remise en état machine industrielle](/offres/retrofit/remise-en-etat/)**"
             },
-            "benefice": "Quand la dégradation dépasse les organes de commande : démontage, expertise, réparation, peinture, remontage, essais. C'est une rénovation générale, plus profonde qu'une réparation ponctuelle. On parle également de revamping industriel ou de reconditionnement machine industrielle : les termes varient d'un secteur d'activité à l'autre, la logique reste la même."
+            "benefice": "Quand la dégradation dépasse les organes de commande : démontage, expertise, réparation, peinture, remontage, essais."
           }
         ]
       },
@@ -95,23 +95,23 @@
         "etapes": [
           {
             "titre": "Le diagnostic.",
-            "texte": "Un expert examine la machine dans votre atelier : état mécanique, électrique, automatismes, historique de pannes, obsolescence des composants, exigences de sécurité. Vous savez ce qui doit partir, ce qui reste, et pourquoi. L'environnement et la zone d'implantation de la machine sont relevés."
+            "texte": "Un expert examine la machine dans votre atelier : état mécanique, électrique, automatismes, historique de pannes, obsolescence des composants, exigences de sécurité. Vous savez ce qui doit partir, ce qui reste, et pourquoi."
           },
           {
             "titre": "L'étude et le chiffrage.",
-            "texte": "Plans, schémas, choix des composants, planning. Le devis est détaillé poste par poste, avec des variantes assumées pour s'ajuster à votre budget. Notre ingénierie formalise la solution, avec une optimisation du séquencement pour votre planning. Chaque poste étant chiffré séparément, vous voyez précisément où va votre budget."
+            "texte": "Plans, schémas, choix des composants, planning. Le devis est détaillé poste par poste, avec des variantes assumées pour s'ajuster à votre budget."
           },
           {
             "titre": "La préparation hors site.",
-            "texte": "Approvisionnement des pièces, préfabrication des armoires, programmes écrits et testés à l'avance. Tout ce qui peut se faire sans arrêter la ligne se fait sans arrêter la ligne. Tout ce qui peut être réalisé en amont l'est, pour réduire l'immobilisation de la machine."
+            "texte": "Approvisionnement des pièces, préfabrication des armoires, programmes écrits et testés à l'avance. Tout ce qui peut se faire sans arrêter la ligne se fait sans arrêter la ligne."
           },
           {
             "titre": "La réalisation sur site.",
-            "texte": "Nos techniciens interviennent en coordination avec vos équipes de maintenance et de fabrication, sur les créneaux les moins pénalisants. Les opérations mécaniques, électriques et de contrôle-commande sont menées en une seule opération planifiée."
+            "texte": "Nos techniciens interviennent en coordination avec vos équipes de maintenance et de fabrication, sur les créneaux les moins pénalisants."
           },
           {
             "titre": "La mise en service.",
-            "texte": "Réglages, essais à vide puis en charge, formation des opérateurs, documentation mise à jour, accompagnement jusqu'à la cadence nominale. Après les réglages, la machine repart avec un objectif clair : produire mieux qu'avant, durablement."
+            "texte": "Réglages, essais à vide puis en charge, formation des opérateurs, documentation mise à jour, accompagnement jusqu'à la cadence nominale."
           }
         ]
       },
@@ -120,11 +120,11 @@
         "puces": [
           {
             "accroche": "Un diagnostic qui dit aussi quand le retrofit ne vaut pas le coup.",
-            "texte": "Migen ne vit pas de la vente de machines : le conseil n'est orienté par aucun catalogue. La vente de machines neuves et le négoce de matériel ne sont pas notre métier : si, par exemple, l'achat d'une machine neuve est réellement plus économique pour votre cas, nous vous le dirons, calcul à l'appui."
+            "texte": "Migen ne vit pas de la vente de machines : le conseil n'est orienté par aucun catalogue."
           },
           {
             "accroche": "Le planning d'immobilisation est convenu avec votre production avant le premier coup de clé.",
-            "texte": "Pas de date imposée, pas de dérive silencieuse. Le chiffrage est établi sur devis, poste par poste, avant toute mise en œuvre."
+            "texte": "Pas de date imposée, pas de dérive silencieuse."
           },
           {
             "accroche": "Les travaux sont menés par des techniciens salariés Migen",
@@ -170,11 +170,11 @@
         "questions": [
           {
             "question": "Combien coûte un retrofit de machine ?",
-            "reponse": "Chaque projet est chiffré sur devis après diagnostic : tout dépend du type de machine et de l'étendue de la remise à niveau. Le constat reste le même d'un projet à l'autre : moderniser revient nettement moins cher qu'acheter neuf, à performances comparables. L'achat neuf, c'est le prix élevé du matériel et ses dépenses cachées : génie civil, implantation, formation des opérateurs, requalification des process. Les avantages du retrofit se mesurent : un retour sur investissement rapide, une réduction de l'immobilisation, un taux de panne qui diminue et un taux de disponibilité qui remonte sur les équipements modernisés."
+            "reponse": "Chaque projet est chiffré sur devis après diagnostic : tout dépend du type de machine et de l'étendue de la remise à niveau. Le constat reste le même d'un projet à l'autre : moderniser revient nettement moins cher qu'acheter neuf, à performances comparables."
           },
           {
             "question": "Quand faut-il envisager un retrofit plutôt qu'un remplacement ?",
-            "reponse": "Quand le bâti et la mécanique de base restent sains mais que la commande, l'électricité ou les automatismes sont dépassés, ou qu'une pièce de rechange critique a disparu du marché. Si la structure elle-même est en fin de vie, le remplacement redevient justifié. Le retrofit consiste à changer les composants vieillissants ou obsolètes par des technologies actuelles, en conservant la structure de l'équipement. L'objectif : prolonger le cycle de vie de la machine de plusieurs années, la rendre plus sûre et plus performante, et éviter l'investissement d'une nouvelle machine quand il n'est pas justifié. Du point de vue financier comme du point de vue de l'impact environnemental, détruire un équipement dont le bâti a encore de longues années devant lui est rarement une décision rationnelle."
+            "reponse": "Quand le bâti et la mécanique de base restent sains mais que la commande, l'électricité ou les automatismes sont dépassés, ou qu'une pièce de rechange critique a disparu du marché. Si la structure elle-même est en fin de vie, le remplacement redevient justifié."
           },
           {
             "question": "Combien de temps la machine est-elle immobilisée ?",
@@ -186,11 +186,11 @@
           },
           {
             "question": "Intervenez-vous sur toutes les marques, y compris les machines spéciales ?",
-            "reponse": "Oui. Notre indépendance nous permet d'intervenir quel que soit le fabricant d'origine, robotique et machines spéciales comprises, dans l'automobile, l'agroalimentaire, la métallurgie, la chimie, la plasturgie et l'énergie. Nous modernisons les machines de production industrielle : machine outil, machine transfert, ligne de production, équipement de manutention ou de conditionnement, robot, dans tous les secteurs de l'industrie. Notre gamme couvre aussi bien la petite fraiseuse d'atelier que la ligne de fabrication automatisée complète, pour les petites et moyennes entreprises comme pour les grands groupes : un seul partenaire, une méthode efficace, un contact unique. C'est souvent la meilleure approche pour un parc hétérogène."
+            "reponse": "Oui. Notre indépendance nous permet d'intervenir quel que soit le fabricant d'origine, robotique et machines spéciales comprises, dans l'automobile, l'agroalimentaire, la métallurgie, la chimie, la plasturgie et l'énergie."
           },
           {
             "question": "Et après le redémarrage, vous disparaissez ?",
-            "reponse": "Non. Le retrofit peut déboucher sur un programme d'entretien préventif ou sur l'abonnement Zéro arrêt, pour protéger l'investissement dans la durée. Il entretient la machine modernisée et permet d'augmenter sa disponibilité. Moderniser, c'est enfin sortir du cercle vicieux de la maintenance corrective : moins de pannes, et une maintenance qui peut faire évoluer le reste du parc au lieu de courir après l'urgence. De l'accueil de votre demande jusqu'au suivi après redémarrage, un seul interlocuteur gère votre dossier."
+            "reponse": "Non. Le retrofit peut déboucher sur un programme d'entretien préventif ou sur l'abonnement Zéro arrêt, pour protéger l'investissement dans la durée."
           }
         ]
       },
