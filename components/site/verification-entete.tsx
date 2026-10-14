@@ -9,7 +9,6 @@
 
 import assert from "node:assert/strict";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
-import { PathnameContext } from "next/dist/shared/lib/hooks-client-context.shared-runtime";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import Entete from "@/components/site/Entete";
@@ -110,15 +109,13 @@ assert.ok(
     "n'a pas été lu, et la porte refuserait presque tout le menu.",
 );
 
-const PANNEAUX: PanneauId[] = ["offres", "expertises", "preuves", "ressources"];
-
-/** L'en-tête rendu comme sur une page donnée : `usePathname` lit ce contexte. */
-const surLaPage = (chemin: string) =>
-  renderToStaticMarkup(
-    <PathnameContext.Provider value={chemin}>
-      <Entete />
-    </PathnameContext.Provider>,
-  );
+const PANNEAUX: PanneauId[] = [
+  "offres",
+  "expertises",
+  "preuves",
+  "ressources",
+  "apropos",
+];
 
 const site = renderToStaticMarkup(<Entete />);
 const lp = renderToStaticMarkup(<Entete landingPage />);
@@ -145,15 +142,14 @@ for (const source of [site, lp, panneaux]) {
     liens.add(trouve[1]);
   }
 }
-// Le tiroir n'est pas rendu au repos : ses cibles sont relues dans les données,
-// ancre retirée (`/carriere/#postuler` vise la page `/carriere/`).
+// Le tiroir n'est pas rendu au repos : ses cibles sont relues dans les données.
 const donnees = readFileSync("components/site/entete-donnees.ts", "utf8");
-const liensDonnees = [...donnees.matchAll(/href: "(\/[^"#]*)[^"]*"/g)].map(
+const liensDonnees = [...donnees.matchAll(/href: "(\/[^"]*)"/g)].map(
   (trouve) => trouve[1],
 );
 for (const lien of liensDonnees) liens.add(lien);
 
-assert.ok(liens.size > 50, `trop peu de liens relevés : ${liens.size}`);
+assert.ok(liens.size > 60, `trop peu de liens relevés : ${liens.size}`);
 for (const lien of liens) {
   assert.ok(
     canoniques.has(sansSlash(lien)),
@@ -172,83 +168,27 @@ for (const lien of liensDonnees) {
   );
 }
 
-// ------------------------------------------ la barre du colis du 14/10
-// Tranchée par Mehdi le 14/10 : la barre de `Migen - Ressources v2.dc.html`,
-// relue ici dans sa <nav>. Offres, Expertises, Réalisations, Ressources,
-// Carrière, puis « Décrire mon besoin » ; plus de téléphone dans la barre.
-const navColis = /<header onMouseEnter[\s\S]*?<\/header>/.exec(
-  readFileSync("maquette/colis-14-10/Migen - Ressources v2.dc.html", "utf8"),
-)?.[0];
-assert.ok(navColis, "la barre du colis du 14/10 est introuvable");
-const libellesColis = [...navColis.matchAll(/<a\b[^>]*>([^<{]+)<\/a>/g)].map((m) => m[1].trim());
-const ctaColis = /navCta: isEnt \? "([^"]+)"/.exec(
-  readFileSync("maquette/colis-14-10/Migen - Ressources v2.dc.html", "utf8"),
-)?.[1];
-
-/** Les libellés de la barre, dans l'ordre, logo exclu. */
-function exigeBarreDuColis(html: string): void {
-  const nav = /<nav[^>]*aria-label="Navigation principale"[^>]*>([\s\S]*?)<\/nav>/.exec(html)?.[1] ?? "";
-  const servis = [...nav.matchAll(/<a\b[^>]*>([^<]+)<\/a>/g)].map((m) => m[1].trim());
-  assert.deepEqual(servis, libellesColis, "la barre ne porte plus les entrées du colis du 14/10");
-  assert.ok(ctaColis && html.includes(`>${ctaColis}</a>`), `l'appel « ${ctaColis} » manque à la barre`);
-}
-exigeBarreDuColis(site);
-assert.deepEqual(libellesColis, ["Offres", "Expertises", "Réalisations", "Ressources", "Carrière"]);
-
-// « Réalisations » mène à /preuves/ : `goReal` de « Migen - Site final.dc.html »
-// vaut `this.cxGo("/preuves/")`.
-assert.match(site, /href="\/preuves"[^>]*>Réalisations</, "« Réalisations » ne mène plus à /preuves/");
-assert.match(site, /href="\/carriere"[^>]*>Carrière</, "« Carrière » ne mène plus à /carriere/");
-
 // ------------------------------------- le numéro de la LP reste sur la LP
 // Interdit de copie non négociable. Les deux variantes partagent le même
 // composant : une erreur de condition ferait fuiter le numéro publicitaire sur
-// les pages du site, ou l'inverse. La barre du site n'a plus de numéro.
-// La CAPSULE seule, en texte AFFICHÉ : le tiroir, monté replié dans le même
-// rendu, garde le numéro (comme la maquette mobile, sous « Décrire mon
-// besoin »), et le rond « Appeler » de la barre mobile le porte dans son nom
-// accessible.
-const capsule = /<header\b[\s\S]*?<\/header>/.exec(site)?.[0] ?? "";
-assert.ok(capsule.includes("Décrire mon besoin"), "capsule introuvable dans le rendu");
-assert.ok(!capsule.includes(">04 78 33 72 05<"), "le numéro est revenu dans la barre du site");
-assert.ok(capsule.includes('href="tel:+33478337205"'), "le rond « Appeler » de la barre mobile manque");
-assert.ok(site.includes("04 78 33 72 05"), "le numéro a quitté le tiroir");
+// les 222 pages du site, ou l'inverse.
+assert.ok(site.includes("04 78 33 72 05"), "numéro du site absent");
 assert.ok(!site.includes("04 11 78 95 97"), "numéro de la LP sorti de la LP");
 assert.ok(lp.includes("04 11 78 95 97"), "numéro de la LP absent de la LP");
 assert.ok(!lp.includes("04 78 33 72 05"), "numéro du site présent sur la LP");
 
 // --------------------------------------------- mega-menu atteignable au clavier
-// Quatre entrées à panneau, chacune déclare son état et la cible qu'elle
-// commande. Sans ces attributs, le menu redevient décoratif.
+// Cinq entrées à panneau, chacune un vrai bouton qui déclare son état et la
+// cible qu'il commande. Sans ces attributs, le menu redevient décoratif.
 assert.equal(
   site.split('aria-controls="mg-megamenu"').length - 1,
-  4,
+  5,
   "une entrée de menu a perdu son aria-controls",
 );
 assert.equal(
   site.split('aria-expanded="false"').length - 1,
-  5,
+  6,
   "une entrée de menu ou le bouton de tiroir a perdu son aria-expanded",
-);
-
-// ------------------------------------------------ l'entrée de la rubrique
-// Comme « Ressources » dans la barre du colis : l'entrée de la page courante
-// porte aria-current, et elle seule. Sans chemin, aucune.
-function exigeActive(html: string, libelle: string | null): void {
-  const actives = [...html.matchAll(/<a\b[^>]*aria-current="page"[^>]*>([^<]+)<\/a>/g)].map((m) => m[1]);
-  assert.deepEqual(actives, libelle ? [libelle] : [], `entrée active attendue : ${libelle ?? "aucune"}, servie : ${actives.join(", ") || "aucune"}`);
-}
-exigeActive(surLaPage("/ressources"), "Ressources");
-exigeActive(surLaPage("/ressources/articles/gmao"), "Ressources");
-exigeActive(surLaPage("/preuves/danone-lignes-de-production"), "Réalisations");
-exigeActive(surLaPage("/carriere"), "Carrière");
-exigeActive(surLaPage("/"), null);
-exigeActive(surLaPage("/offres-speciales"), null);
-assert.throws(() => exigeActive(surLaPage("/offres"), "Ressources"), /entrée active attendue/);
-assert.throws(
-  () => exigeBarreDuColis(site.replace(">Réalisations<", ">Cas clients<")),
-  /entrées du colis/,
-  "le contrôle de la barre laisse passer un libellé ancien",
 );
 
 // ------------------------------------------- pas de chemin deviné en secours
@@ -271,12 +211,11 @@ assert.ok(
 
 // ------------------------------- les sur-titres des panneaux, au style près
 // Relus dans l'autonome : 12 px de marge sous ceux d'« Offres », 14 sous ceux
-// de « Ressources », orange partout. Le 08/10, ceux de Ressources étaient à
-// 12, et « Nos offres », devenu lien, passait au brun. Le panneau À propos a
-// quitté la barre le 14/10, ses deux sur-titres avec lui.
+// de « Ressources » et « À propos », orange partout. Le 08/10, les quatre
+// derniers étaient à 12, et « Nos offres », devenu lien, passait au brun.
 const autonome = readFileSync("maquette/site-final-autonome.html", "utf8").replace(/\\"/g, '"');
 const echappe = (t: string) => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-const SUR_TITRES = ["Nos offres", "Conception &amp; réalisation", "Par format", "Par situation"];
+const SUR_TITRES = ["Nos offres", "Conception &amp; réalisation", "Par format", "Par situation", "L’entreprise", "Nos engagements"];
 const styleSurTitre = (html: string, libelle: string) =>
   new RegExp(`<div style="([^"]*font:600 11px[^"]*)">(?:<a\\b[^>]*>)?${echappe(libelle)}<`).exec(html)?.[1];
 /* Depuis le 14/10, le panneau Ressources suit le hub /ressources/ (maquette

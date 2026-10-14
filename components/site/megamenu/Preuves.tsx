@@ -5,7 +5,7 @@ import s from "../Entete.module.css";
 import { CAS, CHIFFRES } from "../entete-donnees";
 import { altPhoto } from "@/lib/descriptions-photos";
 
-/** Panneau « Réalisations » (ex « Cas clients ») : trois vignettes d’étude, puis le bloc chiffres. */
+/** Panneau « Cas clients » : trois vignettes d'étude, puis le bloc chiffres. */
 export default function PanneauPreuves() {
   return (
     <div

@@ -5,7 +5,12 @@ import { useEffect, useRef } from "react";
 
 import s from "./Entete.module.css";
 import t from "./TiroirMobile.module.css";
-import { type Telephone, TIROIR, TIROIR_LP } from "./entete-donnees";
+import {
+  type Telephone,
+  TIROIR,
+  TIROIR_ACCUEIL,
+  TIROIR_LP,
+} from "./entete-donnees";
 
 export interface TiroirMobileProps {
   /** Monté en permanence, masqué par `hidden` quand il est fermé : ses liens
@@ -23,13 +28,13 @@ export interface TiroirMobileProps {
 const SELECTEUR_FOCUSABLES = "a[href],button:not([disabled])";
 
 /**
- * Tiroir tactile, « Menu sheet » de la maquette mobile du colis du 14/10
- * (`MigenMobile.dc.html`) : feuillet remontant du bas, fond de page assombri,
- * cinq groupes dépliables (Nos offres, Expertises métiers, Expertises
- * sectorielles, Migen, Carrière), chacun avec sa ligne grise, puis « Décrire
- * mon besoin » et le numéro. Les groupes sont des `<details>` natifs, un seul
- * ouvert à la fois par leur attribut `name`. TOUT LE TEXTE RESTE DANS LE DOM,
- * même replié : règle numéro un de la maquette mobile.
+ * Tiroir tactile, motif de la maquette mobile v2 : feuillet remontant du bas,
+ * fond de page assombri, lien « Accueil » en tête, puis six groupes en
+ * `<details>` natifs, une seule section ouverte à la fois par leur attribut
+ * `name`, chacun avec son compteur de liens, ses sous-têtes orange et les
+ * descriptions que la maquette écrit. TOUT LE TEXTE RESTE DANS LE DOM, même
+ * replié : règle numéro un de la maquette mobile. L'ancien tiroir ne rendait
+ * les liens d'un groupe qu'une fois celui-ci déplié.
  *
  * Ce que la maquette ne dit pas et que le site exige : Échap ferme, le focus
  * reste dans le feuillet tant qu'il est ouvert et revient au bouton qui l'a
@@ -180,82 +185,136 @@ export default function TiroirMobile({
           </>
         ) : (
           <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 6 }}>
-            {TIROIR.map((section, rang) => (
-              <details
-                key={section.libelle}
-                /* `name` partagé : le navigateur ne laisse ouvert qu'un
-                   groupe à la fois, comme la maquette (`menuGrp`). Le
-                   premier est ouvert d'emblée : `menuGrp: 0` dans son état
-                   initial. */
-                name="mg-tiroir-groupes"
-                open={rang === 0}
-                className={t.groupe}
-              >
-                <summary className={t.bascule}>
-                  <span>
+            {/* « Accueil », seul au-dessus des groupes, comme la maquette. */}
+            <Link
+              href={TIROIR_ACCUEIL.href}
+              onClick={onFermer}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: 10,
+                padding: "14px 16px",
+                borderRadius: 18,
+                background: "var(--bg)",
+                font: "600 16px var(--ft)",
+                letterSpacing: "-.02em",
+                color: "var(--ink)",
+                minHeight: 44,
+              }}
+            >
+              {TIROIR_ACCUEIL.libelle}
+              <span aria-hidden="true" style={{ color: "var(--acc)" }}>
+                &rsaquo;
+              </span>
+            </Link>
+            {TIROIR.map((section) => {
+              /* Compté, jamais écrit : la maquette affiche `mg.n`, le nombre
+                 de liens du groupe, sous-têtes exclues. */
+              const nombreDeLiens = section.entrees.filter(
+                (entree) => entree.type === "lien",
+              ).length;
+              return (
+                <details
+                  key={section.libelle}
+                  /* `name` partagé : le navigateur ne laisse ouvert qu'un
+                     groupe à la fois, l'accordéon exclusif de la maquette
+                     (`<details name="menu">`). Distinct de l'id du feuillet. */
+                  name="mg-tiroir-groupes"
+                  className={t.groupe}
+                >
+                  <summary className={t.bascule}>
                     <span
                       style={{
-                        display: "block",
-                        font: "600 16.5px var(--ft)",
-                        letterSpacing: "-.025em",
+                        font: "600 16px var(--ft)",
+                        letterSpacing: "-.02em",
                         color: "var(--ink)",
                       }}
                     >
                       {section.libelle}
                     </span>
                     <span
-                      style={{
-                        display: "block",
-                        font: "400 12px var(--fb)",
-                        color: "var(--ink2)",
-                        marginTop: 2,
-                      }}
+                      style={{ display: "flex", alignItems: "center", gap: 8 }}
                     >
-                      {section.description}
-                    </span>
-                  </span>
-                  <span aria-hidden="true" className={t.chevron}>
-                    &rsaquo;
-                  </span>
-                </summary>
-                <ul
-                  style={{
-                    listStyle: "none",
-                    margin: 0,
-                    padding: "0 8px 10px",
-                    display: "grid",
-                    gridTemplateColumns: "minmax(0,1fr)",
-                    gap: 2,
-                  }}
-                >
-                  {section.liens.map((lien) => (
-                    <li key={lien.href}>
-                      <Link
-                        href={lien.href}
-                        onClick={onFermer}
-                        className={s.lienTiroir}
+                      <span
                         style={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                          alignItems: "center",
-                          gap: 10,
-                          padding: "11px 10px",
-                          borderRadius: 12,
-                          font: "500 14px var(--fb)",
-                          /* 44 px de cible tactile (WCAG 2.5.8). */
-                          minHeight: 44,
+                          font: "500 11.5px var(--fb)",
+                          color: "var(--ink2)",
                         }}
                       >
-                        {lien.libelle}
-                        <span aria-hidden="true" style={{ color: "var(--acc)" }}>
-                          &rsaquo;
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </details>
-            ))}
+                        {nombreDeLiens}
+                      </span>
+                      <span aria-hidden="true" className={t.chevron}>
+                        &rsaquo;
+                      </span>
+                    </span>
+                  </summary>
+                  <ul
+                    style={{
+                      listStyle: "none",
+                      margin: 0,
+                      padding: "0 8px 10px",
+                      display: "grid",
+                      gridTemplateColumns: "minmax(0,1fr)",
+                      gap: 1,
+                    }}
+                  >
+                    {section.entrees.map((entree) =>
+                      entree.type === "sous-tete" ? (
+                        <li
+                          key={`sous-tete-${entree.libelle}`}
+                          style={{
+                            padding: "12px 10px 4px",
+                            font: "600 10.5px var(--fb)",
+                            letterSpacing: ".12em",
+                            textTransform: "uppercase",
+                            color: "var(--acc)",
+                          }}
+                        >
+                          {entree.libelle}
+                        </li>
+                      ) : (
+                        <li key={entree.href + entree.libelle}>
+                          <Link
+                            href={entree.href}
+                            onClick={onFermer}
+                            className={s.lienTiroir}
+                            style={{
+                              display: "flex",
+                              flexDirection: "column",
+                              justifyContent: "center",
+                              padding: "9px 10px",
+                              borderRadius: 10,
+                              font: "500 14px/1.35 var(--fb)",
+                              /* 44 px de cible tactile (WCAG 2.5.8), règle du
+                                 site conservée : la maquette s'arrête à 9 px
+                                 de remplissage. */
+                              minHeight: 44,
+                            }}
+                          >
+                            <span style={{ display: "block" }}>
+                              {entree.libelle}
+                            </span>
+                            {entree.description ? (
+                              <span
+                                style={{
+                                  display: "block",
+                                  marginTop: 2,
+                                  font: "400 12.5px/1.4 var(--fb)",
+                                  color: "var(--ink2)",
+                                }}
+                              >
+                                {entree.description}
+                              </span>
+                            ) : null}
+                          </Link>
+                        </li>
+                      ),
+                    )}
+                  </ul>
+                </details>
+              );
+            })}
           </div>
         )}
 

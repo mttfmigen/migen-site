@@ -215,16 +215,14 @@ function defauts({ formats, situations, carriere, panneau, reelles, une, hub }) 
     dit("le pied du panneau n'affiche plus TOTAL_RESSOURCES.");
   }
 
-  // 5. Le libellé de /carriere/ dans la barre : « Carrière », celui de la
-  //    barre du colis du 14/10, tranché par Mehdi le 14/10 (il remplace
-  //    « Rejoindre migen » du 12/10).
+  // 5. Le libellé de /carriere/ dans la barre, tranché par Mehdi le 12/10.
   if (carriere.href !== "/carriere/") {
     dit(`l'entrée de carrière ne mène plus à /carriere/ : ${carriere.href}`);
   }
-  if (carriere.libelle !== "Carrière") {
+  if (carriere.libelle !== "Rejoindre migen") {
     dit(
-      `l'entrée de carrière est libellée « ${carriere.libelle} », la barre du ` +
-        `colis du 14/10 écrit « Carrière ».`,
+      `l'entrée de carrière est libellée « ${carriere.libelle} », Mehdi a ` +
+        `demandé « Rejoindre migen » le 12/10.`,
     );
   }
 
@@ -338,9 +336,9 @@ const TEMOINS = [
     }),
   ],
   [
-    "le libellé de carrière revenu à « Rejoindre migen »",
-    /écrit « Carrière »/,
-    (cas) => ({ ...cas, carriere: { ...cas.carriere, libelle: "Rejoindre migen" } }),
+    "le libellé de carrière revenu à « Carrière »",
+    /Rejoindre migen/,
+    (cas) => ({ ...cas, carriere: { ...cas.carriere, libelle: "Carrière" } }),
   ],
   [
     "une situation qui perd son slash final",

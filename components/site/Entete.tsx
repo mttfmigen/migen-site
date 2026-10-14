@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
 
 import MegaMenu from "./MegaMenu";
@@ -49,23 +48,19 @@ const SEPARATEUR: React.CSSProperties = {
   margin: "0 6px",
 };
 
-/** L'entrée de la rubrique courante : son adresse préfixe le chemin, que
- *  celui-ci porte ou non son slash final. */
-function estActive(chemin: string, href: string): boolean {
-  return `${chemin}/`.startsWith(href);
-}
-
 /**
- * Barre de navigation flottante : la capsule en verre dépoli, les quatre
- * mega-menus et le tiroir tactile.
+ * Barre de navigation flottante : l'îlot en verre dépoli, les cinq mega-menus
+ * et le tiroir tactile.
  *
  * Composant client, et il doit l'être : survols, ouverture des panneaux,
  * tiroir, Échap et piège de focus sont tous des comportements de navigateur.
  *
- * La capsule rentre quand on descend et revient quand on remonte ou que le
- * curseur approche du haut : c'est `Moteurs.tsx` qui la pilote, par le
- * sélecteur `.mg-island > header` de la maquette. Ce balisage doit donc rester.
- * Un panneau ouvert (`aria-expanded="true"`) la garde affichée.
+ * Deux écarts assumés avec la maquette. Les entrées à panneau sont de vrais
+ * boutons qui ouvrent le panneau au clic, et ne naviguent donc plus : le lien
+ * vers la page pilier vit à l'intérieur du panneau (navigation au clavier). Et
+ * le bouton de bascule de thème, en `display:none` dans la maquette, est
+ * affiché à la même place : le README de passation exige un choix de thème
+ * mémorisé (voir BasculeTheme).
  */
 export default function Entete({
   landingPage = false,
@@ -74,26 +69,19 @@ export default function Entete({
   const [panneau, setPanneau] = useState<PanneauId | null>(null);
   const [tiroir, setTiroir] = useState(false);
   const barre = useRef<HTMLDivElement>(null);
-  const chemin = usePathname() ?? "";
 
   const telephone = landingPage ? TELEPHONE_LP : TELEPHONE_SITE;
   const hrefCta = landingPage ? "#lp-contact" : "/contact/";
   const libelleCta = landingPage ? "Obtenir un devis" : "Décrire mon besoin";
-
-  /** Vrai le temps de rendre le focus après Échap : ce focus-là ne doit pas
-   *  rouvrir le panneau que l'on vient de fermer. */
-  const focusRendu = useRef(false);
 
   /** Ferme le panneau et rend le focus à l'entrée qui l'avait ouvert. */
   function fermerPanneauAuClavier() {
     const ferme = panneau;
     setPanneau(null);
     if (ferme) {
-      focusRendu.current = true;
       barre.current
         ?.querySelector<HTMLElement>(`[data-panneau="${ferme}"]`)
         ?.focus();
-      focusRendu.current = false;
     }
   }
 
@@ -133,18 +121,67 @@ export default function Entete({
           pointerEvents: "auto",
         }}
       >
-        <header className={s.capsule}>
-          <Link href="/" className={s.logo}>
+        <header
+          style={{
+            width: "max-content",
+            maxWidth: "100%",
+            margin: "0 auto",
+            display: "flex",
+            alignItems: "center",
+            gap: 3,
+            padding: "4px 4px 4px 6px",
+            borderRadius: 999,
+            pointerEvents: "auto",
+            willChange: "transform",
+            transition:
+              "transform 460ms cubic-bezier(.22,.72,.2,1),opacity 260ms ease",
+            background: "var(--gsol)",
+            backdropFilter: "blur(22px) saturate(180%)",
+            WebkitBackdropFilter: "blur(22px) saturate(180%)",
+            border: "1px solid var(--gbd)",
+            boxShadow:
+              "0 1px 1px rgba(0,0,0,.04),0 16px 38px -16px rgba(0,0,0,.36)",
+          }}
+        >
+          <Link
+            href="/"
+            className={s.logo}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 7,
+              flex: "none",
+              padding: "7px 12px 7px 10px",
+              borderRadius: 999,
+            }}
+          >
             <Image
               src="/assets/logo-migen-mark.png"
               alt=""
               width={21}
               height={21}
               priority
-              className={s.logoMarque}
+              style={{ height: 21, width: "auto", display: "block" }}
             />
-            <span className={s.logoMot}>migen</span>
-            <span className={s.logoCopyright}>©</span>
+            <span
+              style={{
+                font: "600 17.5px/1 var(--ft)",
+                letterSpacing: "-.045em",
+                color: "var(--ink)",
+              }}
+            >
+              migen
+            </span>
+            <span
+              style={{
+                font: "500 9px/1 var(--fb)",
+                color: "var(--ink4)",
+                alignSelf: "flex-start",
+                marginTop: 1,
+              }}
+            >
+              ©
+            </span>
           </Link>
 
           <span className="mg-nav" style={SEPARATEUR} />
@@ -194,9 +231,6 @@ export default function Entete({
                   data-panneau={entree.id}
                   aria-expanded={panneau === entree.id}
                   aria-controls="mg-megamenu"
-                  aria-current={
-                    estActive(chemin, entree.href) ? "page" : undefined
-                  }
                   className={s.itemNav}
                   style={{
                     ...ITEM_NAV,
@@ -204,9 +238,7 @@ export default function Entete({
                     alignItems: "center",
                   }}
                   onMouseEnter={() => setPanneau(entree.id)}
-                  onFocus={() => {
-                    if (!focusRendu.current) setPanneau(entree.id);
-                  }}
+                  onFocus={() => setPanneau(entree.id)}
                   onClick={(evenement) => {
                     // UN VRAI LIEN DEPUIS LE 11/10. À la souris, le clic suit
                     // le lien : c'est ce que Mehdi demandait, une entrée de
@@ -234,9 +266,6 @@ export default function Entete({
               ))}
               <Link
                 href={NAV_CARRIERE.href}
-                aria-current={
-                  estActive(chemin, NAV_CARRIERE.href) ? "page" : undefined
-                }
                 className={s.itemNav}
                 style={{
                   ...ITEM_NAV,
@@ -260,57 +289,31 @@ export default function Entete({
               flex: "none",
             }}
           >
-            {/* <BasculeTheme /> : éteint comme dans la maquette, voir globals.css.
-                Le numéro ne reste que sur la landing page : la barre du site
-                du 14/10 n'en porte plus (décision de Mehdi). Il reste joignable
-                par le tiroir, la barre d'action mobile et /contact/. */}
+            {/* <BasculeTheme /> : éteint comme dans la maquette, voir globals.css. */}
+            <a
+              href={telephone.href}
+              className={`mg-tel ${s.tel}`}
+              style={{
+                padding: "9px 12px",
+                borderRadius: 999,
+                font: "500 13.5px var(--fb)",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {telephone.affichage}
+            </a>
             {landingPage ? (
-              <>
-                <a
-                  href={telephone.href}
-                  className={`mg-tel ${s.tel}`}
-                  style={{
-                    padding: "9px 12px",
-                    borderRadius: 999,
-                    font: "500 13.5px var(--fb)",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  {telephone.affichage}
-                </a>
-                <a href={hrefCta} className={s.cta} style={STYLE_CTA}>
-                  {libelleCta}
-                </a>
-              </>
+              <a href={hrefCta} className={s.cta} style={STYLE_CTA}>
+                {libelleCta}
+              </a>
             ) : (
               <Link href={hrefCta} className={s.cta} style={STYLE_CTA}>
                 {libelleCta}
               </Link>
             )}
-            {/* Au téléphone, la barre de `MigenMobile.dc.html` : un rond
-                « Appeler » et le bouton de menu anthracite. */}
-            <a
-              href={telephone.href}
-              aria-label={`Appeler le ${telephone.affichage}`}
-              className={s.appel}
-            >
-              <svg
-                width="17"
-                height="17"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
-              </svg>
-            </a>
             <button
               type="button"
-              className={`mg-burger ${s.burger}`}
+              className="mg-burger"
               aria-label="Menu"
               aria-expanded={tiroir}
               aria-controls="mg-tiroir"
@@ -318,8 +321,23 @@ export default function Entete({
                 setPanneau(null);
                 setTiroir((ouvert) => !ouvert);
               }}
+              style={{
+                alignItems: "center",
+                justifyContent: "center",
+                width: 36,
+                height: 36,
+                borderRadius: 999,
+                background: "var(--chip)",
+                border: "none",
+                cursor: "pointer",
+                flexDirection: "column",
+                gap: 4,
+                padding: 0,
+                flex: "none",
+              }}
             >
-              <span aria-hidden="true">{tiroir ? "×" : "≡"}</span>
+              <span style={BARRE_BURGER} />
+              <span style={BARRE_BURGER} />
             </button>
           </div>
         </header>
@@ -357,4 +375,11 @@ const STYLE_CTA: React.CSSProperties = {
   font: "600 13.5px var(--fb)",
   whiteSpace: "nowrap",
   boxShadow: "0 8px 20px -10px rgba(255,124,60,.85)",
+};
+
+const BARRE_BURGER: React.CSSProperties = {
+  display: "block",
+  width: 15,
+  height: 1.5,
+  background: "var(--ink)",
 };

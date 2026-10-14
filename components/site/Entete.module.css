@@ -10,126 +10,11 @@
 
 /* ---------------------------------------------------------------- la pilule */
 
-/*
- * La capsule, valeurs de `<header>` dans « Migen - Site final.dc.html ».
- * Sous 881 px, la barre de `MigenMobile.dc.html` : pleine largeur, logo à
- * gauche, « Appeler » et le menu à droite (voir plus bas).
- */
-.capsule {
-  width: max-content;
-  max-width: 100%;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  padding: 4px 4px 4px 6px;
-  border-radius: 999px;
-  pointer-events: auto;
-  will-change: transform;
-  transition:
-    transform 460ms cubic-bezier(0.22, 0.72, 0.2, 1),
-    opacity 260ms ease;
-  background: var(--gsol);
-  backdrop-filter: blur(22px) saturate(180%);
-  -webkit-backdrop-filter: blur(22px) saturate(180%);
-  border: 1px solid var(--gbd);
-  box-shadow:
-    0 1px 1px rgba(0, 0, 0, 0.04),
-    0 16px 38px -16px rgba(0, 0, 0, 0.36);
-}
-
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  flex: none;
-  padding: 7px 12px 7px 10px;
-  border-radius: 999px;
   transition: background var(--tr);
 }
 .logo:hover {
   background: var(--chip);
-}
-
-.logoMarque {
-  height: 21px;
-  width: auto;
-  display: block;
-}
-
-.logoMot {
-  font: 600 17.5px/1 var(--ft);
-  letter-spacing: -0.045em;
-  color: var(--ink);
-}
-
-.logoCopyright {
-  font: 500 9px/1 var(--fb);
-  color: var(--ink4);
-  align-self: flex-start;
-  margin-top: 1px;
-}
-
-/* Les deux ronds de la barre mobile : absents du bureau. */
-.appel {
-  display: none;
-}
-
-.burger {
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 999px;
-  border: none;
-  padding: 0;
-  flex: none;
-  cursor: pointer;
-  background: var(--panel);
-  color: #fff;
-  font-size: 16px;
-  line-height: 1;
-}
-
-@media (max-width: 880px) {
-  .capsule {
-    width: 100%;
-    justify-content: space-between;
-    gap: 6px;
-    padding: 8px 8px 8px 14px;
-    backdrop-filter: blur(20px) saturate(160%);
-    -webkit-backdrop-filter: blur(20px) saturate(160%);
-    box-shadow: 0 12px 30px -18px rgba(0, 0, 0, 0.35);
-  }
-  .logo {
-    gap: 8px;
-    padding: 0;
-    /* Cible tactile (WCAG 2.5.8) : la hauteur des deux ronds voisins, sans
-       changer celle de la barre. */
-    min-height: 36px;
-  }
-  .logo:hover {
-    background: none;
-  }
-  .logoMarque {
-    height: 20px;
-  }
-  .logoMot {
-    font: 600 15px/1 var(--ft);
-    letter-spacing: -0.02em;
-  }
-  .logoCopyright {
-    display: none;
-  }
-  .appel {
-    display: grid;
-    place-items: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 999px;
-    background: var(--chip);
-    color: var(--ink);
-  }
 }
 
 .itemNav {
@@ -145,32 +30,6 @@
   background: var(--card);
   color: var(--ink);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Entrée de la rubrique où l'on se trouve, au dessin de « Ressources » dans
-   la barre de `Migen - Ressources v2.dc.html` : fond --chip, graisse 600,
-   encre pleine. « Migen - Site final » n'a pas d'état actif. */
-.itemNav[aria-current="page"],
-.itemNav[aria-current="true"] {
-  background: var(--chip);
-  color: var(--ink);
-  font-weight: 600 !important;
-}
-
-/* La capsule rentre au défilement (`Moteurs.tsx` pose transform, opacity et
-   pointer-events EN LIGNE sur `.mg-island > header`). Un visiteur au clavier
-   qui y entre par Tab doit la voir : le focus la ramène, d'où `!important`,
-   seule façon pour une feuille de battre un style en ligne. */
-.capsule:focus-within {
-  transform: translateY(0) !important;
-  opacity: 1 !important;
-  pointer-events: auto !important;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .capsule {
-    transition: none !important;
-  }
 }
 
 .tel {
@@ -245,6 +104,14 @@
   text-decoration: underline;
 }
 
+/* Même survol, encre la plus effacée au repos (« Modèle de LP »). */
+.lienDiscret {
+  color: var(--ink4);
+}
+.lienDiscret:hover {
+  color: var(--acc);
+}
+
 /* Vignette d'étude de cas : le texte reste blanc, la carte se soulève. */
 .carteCas {
   color: #fff;
@@ -265,6 +132,14 @@
 }
 
 /* ---------------------------------------------------------- tiroir tactile */
+
+.sectionTiroir {
+  transition: background 0.2s;
+}
+
+.chevronTiroir {
+  transition: transform 0.2s;
+}
 
 .lienTiroir {
   color: var(--ink1);

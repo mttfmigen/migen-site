@@ -1,31 +1,27 @@
 /*
- * Groupes dépliants du tiroir, « Menu sheet » de `MigenMobile.dc.html` (colis
- * du 14/10) : des `<details>` NATIFS, exclusifs par leur attribut `name`, et
- * tout le texte des groupes repliés reste dans le DOM.
+ * Groupes dépliants du tiroir, maquette mobile v2 : des `<details>` NATIFS,
+ * exclusifs par leur attribut `name` comme la maquette
+ * (`<details name="menu">`), et tout le texte des groupes repliés reste dans
+ * le DOM. L'ancien tiroir ne montait les liens d'un groupe qu'une fois
+ * celui-ci déplié : un groupe fermé n'existait pas.
  *
- * La maquette calcule ces couleurs selon l'état du groupe (`m.bg`, `m.cbg`,
- * `m.cfg`, `m.rot`) ; avec un `<details>`, l'état vit dans le document, d'où
- * ces règles. Valeurs de la maquette : fond blanc fermé, --bg ouvert ; pastille
- * rgba(28,27,25,.055) (= --chip) fermée, orange plein ouverte, tournée de 90°.
+ * Le chevron et sa rotation étaient portés par un style en ligne dépendant de
+ * l'état React ; avec un `<details>`, l'état vit dans le document, d'où ces
+ * règles. Les couleurs sont celles que le tiroir employait déjà.
  */
 
 .groupe {
   border-radius: 18px;
-  background: var(--card);
-  overflow: hidden;
-  transition: background 0.2s;
-}
-
-.groupe[open] {
   background: var(--bg);
+  overflow: hidden;
 }
 
 .bascule {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
-  padding: 15px 16px;
+  gap: 10px;
+  padding: 14px 16px;
   cursor: pointer;
   /* Le triangle du navigateur, retiré des deux moteurs : la maquette pose son
      propre chevron à droite. */
@@ -41,24 +37,22 @@
   width: 26px;
   height: 26px;
   border-radius: 999px;
-  background: var(--chip);
+  background: #fff;
   color: var(--ink);
   display: grid;
   place-items: center;
-  font-size: 15px;
-  transition: transform 0.2s;
+  font: 500 16px/1 var(--fb);
+  transition: transform 0.25s ease;
 }
 
-/* Pastille orange pleine : elle ne porte qu'un glyphe décoratif (aria-hidden),
-   pas de texte à lire. */
+/* Ouvert, le chevron TOURNE et c'est tout : la maquette mobile v2 le garde
+   blanc (`.mv details[open]>summary .mv-chev{transform:rotate(90deg)}`). Le
+   fond orange venait de l'ancien tiroir, pas de cette maquette. */
 .groupe[open] > .bascule .chevron {
-  background: var(--acc);
-  color: #fff;
   transform: rotate(90deg);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .groupe,
   .chevron {
     transition: none;
   }
