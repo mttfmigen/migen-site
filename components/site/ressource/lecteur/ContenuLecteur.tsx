@@ -2,12 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 
-import { CONTENUS_ENTREPRISES } from "@/components/site/ressources-hub/v2/donnees";
+import { CONTENUS_ENTREPRISES, CONTENUS_TECHNICIENS } from "@/components/site/ressources-hub/v2/donnees";
 import { altPhoto } from "@/lib/descriptions-photos";
-import type { BlocRessource, ContenuRessource } from "@/types/ressource";
+import type { BlocRessource } from "@/types/ressource";
 
 import { EnLigne } from "../CorpsRessource";
 import { COPIE } from "../habillage";
+import type { ContenuLecteurFiche } from "./fiche-vers-lecteur";
 import s from "./lecteur.module.css";
 
 /**
@@ -182,7 +183,7 @@ function Tableau({ entetes, lignes }: { entetes: string[]; lignes: string[][] })
   return (
     <div className={s.defile} style={{ margin: "6px 0 22px", overflowX: "auto", borderRadius: 20, border: "1px solid var(--line)" }}>
       <div style={{ display: "grid", minWidth: n * 150, gridTemplateColumns: `repeat(${n},minmax(150px,1fr))` }}>
-        {colonnes.map((c) => cellule(entetes[c] ?? "", true, false, `e${c}`))}
+        {entetes.some(Boolean) && colonnes.map((c) => cellule(entetes[c] ?? "", true, false, `e${c}`))}
         {lignes.flatMap((r, i) => colonnes.map((c) => cellule(r[c] ?? "", false, c === 0, `${i}-${c}`)))}
       </div>
     </div>
@@ -250,7 +251,25 @@ function Partie({ n, titre, children }: { n: number; titre: string; children: Re
   );
 }
 
-function Appel({ surtitre, titre }: { surtitre: string; titre: string }) {
+/** Les deux appels du lecteur, relevés mot pour mot dans la maquette, par espace. */
+const APPELS = {
+  ent: {
+    milieu: "Besoin de bras pour appliquer cette méthode sur votre site ?",
+    surtitre: "Passer à l’action",
+    titre: "Un chargé d’affaires vous rappelle dans l’heure.",
+    bouton: "Décrire mon besoin →",
+    href: "/ressources/#rs-form",
+  },
+  tech: {
+    milieu: "Ce métier vous ressemble ?",
+    surtitre: "Ce métier vous ressemble ?",
+    titre: "Rejoignez les 120 collaborateurs de migen.",
+    bouton: "Postuler →",
+    href: "/ressources/#postuler",
+  },
+} as const;
+
+function Appel({ surtitre, titre, bouton, href }: { surtitre: string; titre: string; bouton: string; href: string }) {
   return (
     <div
       style={{
@@ -295,8 +314,8 @@ function Appel({ surtitre, titre }: { surtitre: string; titre: string }) {
         </div>
         <div style={{ font: "600 21px/1.2 var(--ft)", letterSpacing: "-.03em", maxWidth: "24ch" }}>{titre}</div>
       </div>
-      <Link href="/ressources/#rs-form" style={{ ...BOUTON, position: "relative", padding: "14px 22px", font: "600 14.5px var(--fb)" }}>
-        Décrire mon besoin →
+      <Link href={href} style={{ ...BOUTON, position: "relative", padding: "14px 22px", font: "600 14.5px var(--fb)" }}>
+        {bouton}
       </Link>
     </div>
   );
@@ -309,17 +328,20 @@ export default function ContenuLecteur({
 }: {
   url: string;
   titre: string;
-  contenu: ContenuRessource;
+  contenu: ContenuLecteurFiche;
 }) {
-  const ordre = CONTENUS_ENTREPRISES.findIndex((x) => x.url === url);
-  const carte = ordre >= 0 ? CONTENUS_ENTREPRISES[ordre] : undefined;
-  const suivant =
-    ordre >= 0 && CONTENUS_ENTREPRISES.length > 1 ? CONTENUS_ENTREPRISES[(ordre + 1) % CONTENUS_ENTREPRISES.length] : undefined;
+  const espace = url.startsWith("/carriere/") ? "tech" : "ent";
+  const liste = espace === "tech" ? CONTENUS_TECHNICIENS : CONTENUS_ENTREPRISES;
+  const appel = APPELS[espace];
+  const ordre = liste.findIndex((x) => x.url === url);
+  const carte = ordre >= 0 ? liste[ordre] : undefined;
+  const suivant = ordre >= 0 && liste.length > 1 ? liste[(ordre + 1) % liste.length] : undefined;
   const parties = contenu.parties ?? [];
   const questions = contenu.questions ?? [];
   const nbParties = parties.length + (questions.length ? 1 : 0);
   const photo = carte?.photo ?? contenu.image;
-  const minutes = contenu.minutes ?? carte?.minutes;
+  // La carte du hub d'abord : le lecteur dit la durée de la carte qu'on vient de cliquer (maquette).
+  const minutes = carte?.minutes ?? contenu.minutes;
   const fil = [
     "Ressources",
     contenu.rayon ? LIBELLE_RAYON[contenu.rayon] : carte?.format,
@@ -404,10 +426,10 @@ export default function ContenuLecteur({
                 }}
               >
                 <span style={{ font: "600 15.5px/1.35 var(--ft)", letterSpacing: "-.02em", color: "var(--ink)", maxWidth: "38ch" }}>
-                  Besoin de bras pour appliquer cette méthode sur votre site ?
+                  {appel.milieu}
                 </span>
-                <Link href="/ressources/#rs-form" style={{ ...BOUTON, padding: "12px 18px", font: "600 13.5px var(--fb)" }}>
-                  Décrire mon besoin →
+                <Link href={appel.href} style={{ ...BOUTON, padding: "12px 18px", font: "600 13.5px var(--fb)" }}>
+                  {appel.bouton}
                 </Link>
               </div>
             )}
@@ -415,6 +437,9 @@ export default function ContenuLecteur({
         ))}
         {questions.length > 0 && (
           <Partie n={parties.length} titre={COPIE.faqSurtitre}>
+            {(contenu.introFaq ?? []).map((t) => (
+              <Bloc key={t} bloc={{ type: "paragraphe", texte: t }} />
+            ))}
             <div style={{ display: "grid", gap: 8, margin: "6px 0 10px" }}>
               {questions.map((q) => (
                 <details key={q.question} name="faq-lecteur" className={s.faq} style={{ borderRadius: 20, overflow: "hidden" }}>
@@ -454,7 +479,7 @@ export default function ContenuLecteur({
             </div>
           </Partie>
         )}
-        <Appel surtitre="Passer à l’action" titre="Un chargé d’affaires vous rappelle dans l’heure." />
+        <Appel surtitre={appel.surtitre} titre={appel.titre} bouton={appel.bouton} href={appel.href} />
         {suivant && (
           <Link
             href={suivant.url}

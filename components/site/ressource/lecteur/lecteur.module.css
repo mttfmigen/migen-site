@@ -80,13 +80,6 @@
     opacity: 1;
   }
 }
-/* Fiche métier ouverte dans le lecteur : la page servie, telle quelle. Son
-   retrait sous l'en-tête fixe du site n'a pas lieu d'être dans la feuille,
-   qui a sa propre barre. */
-.corpsPage main {
-  padding-top: 0 !important;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .feuille,
   .voile {
