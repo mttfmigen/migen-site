@@ -338,7 +338,10 @@ export default function PolitiqueConfidentialite() {
               alignItems: "start",
             }}
           >
+            {/* `mg-resrail` décolle le sommaire sous 980 px : en une colonne,
+                collant, il passait PAR-DESSUS le texte (mesuré à 390 px). */}
             <nav
+              className="mg-resrail"
               aria-label="Sommaire de la politique de confidentialité"
               style={{ position: "sticky", top: "110px" }}
             >

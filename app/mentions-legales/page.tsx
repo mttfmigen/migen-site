@@ -376,7 +376,9 @@ export default function MentionsLegales() {
           <div style={LARGEUR}>
             {/* `mg-r2` fait tomber les deux colonnes en une sous 900px. */}
             <div className="mg-r2" style={GRILLE}>
-              <nav style={COLONNE_SOMMAIRE} aria-label="Sommaire des mentions légales">
+              {/* `mg-resrail` décolle le sommaire sous 980 px : en une colonne,
+                  collant, il passait PAR-DESSUS le texte (mesuré à 390 px). */}
+              <nav className="mg-resrail" style={COLONNE_SOMMAIRE} aria-label="Sommaire des mentions légales">
                 <div style={ETIQUETTE_SOMMAIRE}>Sommaire</div>
                 <div style={LISTE_SOMMAIRE}>
                   {SECTIONS.map((section, rang) => (
