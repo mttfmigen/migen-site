@@ -204,6 +204,16 @@ debrancheConversion();
 signaleConversion({ formulaire: "contact", page: "/" });
 assert.equal(recues, 1, "le retrait du consentement coupe bien le signal");
 
+// Chaque conversion publie « generate_lead » dans le dataLayer, que le
+// conteneur Tag Manager lit (il ne se charge qu'après consentement).
+{
+  const globale = globalThis as unknown as { window?: unknown; dataLayer?: unknown[] };
+  globale.window = globalThis;
+  signaleConversion({ formulaire: "contact", page: "/x/" });
+  assert.deepEqual(globale.dataLayer?.at(-1), { event: "generate_lead", formulaire: "contact", page: "/x/" }, "la conversion n'arrive pas au dataLayer");
+  delete globale.window;
+}
+
 // Le champ piège n'est pas un champ du contact : une charge utile qui le porte
 // reste valide pour la validation, c'est la route qui la jette en silence.
 const avecPiege = valideCharge({

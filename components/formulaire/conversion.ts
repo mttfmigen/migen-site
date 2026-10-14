@@ -37,7 +37,22 @@ export function debrancheConversion(): void {
  * L'erreur d'une plateforme ne doit pas remonter jusqu'au visiteur : son formulaire
  * est déjà parti, il n'a pas à voir un échec de mesure.
  */
+/** Le nom d'événement que le conteneur Tag Manager écoute pour la conversion
+    Google Ads (« generate_lead », nom recommandé par Google). */
+export const EVENEMENT_CONVERSION = "generate_lead";
+
 export function signaleConversion(conversion: Conversion): void {
+  /* LE DATALAYER, TOUJOURS : jusqu'au 14/10, rien n'écoutait ce signal en
+     production (`brancheConversion` n'était appelé que par la vérification),
+     et la bascule aurait coupé à Google Ads les conversions que le WordPress
+     lui envoie par Tag Manager. Pousser dans le dataLayer ne fait partir
+     AUCUNE requête : seul un conteneur Tag Manager le lit, et il ne se charge
+     qu'après le consentement, ses balises suivant le mode consentement. */
+  if (typeof window !== "undefined") {
+    const fenetre = window as unknown as { dataLayer?: unknown[] };
+    fenetre.dataLayer = fenetre.dataLayer ?? [];
+    fenetre.dataLayer.push({ event: EVENEMENT_CONVERSION, formulaire: conversion.formulaire, page: conversion.page });
+  }
   if (!ecouteur) return;
   try {
     ecouteur(conversion);
