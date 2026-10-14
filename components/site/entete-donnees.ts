@@ -294,14 +294,14 @@ export interface ArticleALaUne extends Lien {
  * Les deux espaces du hub, avec les libellés de ses formats (`FORMATS` de
  * `ressources-hub/v2/filtrage.ts`) et ses VRAIS comptes (`donnees.ts`). Seuls
  * les formats qui ont des contenus publiés sont listés. Recopiés plutôt
- * qu'importés : `donnees.ts` porte les 28 contenus, et l'en-tête est un
+ * qu'importés : `donnees.ts` porte les 40 contenus, et l'en-tête est un
  * composant client chargé sur chaque page. `scripts/verifie-menu-ressources.mjs`
  * recompte le hub à chaque exécution et refuse tout écart.
  */
 export const RES_ESPACES: EspaceRessources[] = [
   {
     libelle: "Entreprises",
-    formats: [{ libelle: "Articles", nombre: 15 }],
+    formats: [{ libelle: "Articles", nombre: 27 }],
   },
   {
     libelle: "Techniciens",
@@ -313,11 +313,11 @@ export const RES_ESPACES: EspaceRessources[] = [
   },
 ];
 
-/** « 15 articles », « 7 fiches métiers » : le compte d'un format, en clair. */
+/** « 27 articles », « 7 fiches métiers » : le compte d'un format, en clair. */
 export const compteFormat = (format: FormatEspace): string =>
   `${format.nombre} ${format.libelle.toLowerCase()}`;
 
-/** « Entreprises : 15 articles. Techniciens : 7 fiches métiers, … » */
+/** « Entreprises : 27 articles. Techniciens : 7 fiches métiers, … » */
 export const RESUME_ESPACES: string = RES_ESPACES.map(
   (espace) =>
     `${espace.libelle} : ${espace.formats.map(compteFormat).join(", ")}.`,
