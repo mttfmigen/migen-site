@@ -23,3 +23,84 @@
 .carteLien:hover {
   transform: translateY(-2px);
 }
+
+/* ───────────────────────────── HAUT DE PAGE MOBILE V2, sous 881 px ──────────
+
+   Portage de l'écran contact de la maquette mobile v2
+   (`maquette/mobile-v2/maquette/Migen - Mobile v2.dc.html`, bloc
+   `{{ isContact }}`), mesuré le 14/10 à 390 px sur l'application autonome :
+   gouttière `padding:0 18px`, h1 `font:600 27px/1.1` à -.04em, chapô
+   `font:400 15px/1.6`, rythme de 10 à 22 px. Les éléments gardés de la
+   maquette bureau (capsules, repères) prennent son échelle : bouton
+   `600 14.5px`, tuile de chiffre `600 21px/1.08`, voir `Ouverture.tsx`.
+
+   TOUT VIT DANS CETTE SEULE MEDIA QUERY, ET TOUT PORTE `!important`.
+   · 880 px est le seuil mobile du site (`--barre-reserve`, `.barreAction`) :
+     au-dessus, AUCUNE règle d'ici ne s'applique, le bureau ne bouge pas d'un
+     pixel et la porte de `verification-contact.tsx` continue de mesurer les
+     styles en ligne de la maquette bureau, intacts.
+   · `!important` n'est pas un confort : les tailles à remplacer sont des
+     styles EN LIGNE (prioritaires sur toute règle simple), et `app/globals.css`
+     pose déjà `.mg-site h1 { font-size … !important }` sous 760 px. Chaque
+     sélecteur double sa classe ou la niche sous `.enTeteMobile` pour gagner en
+     spécificité À ÉGALITÉ d'`!important` (0-2-x contre 0-1-1).
+   · AUCUNE règle d'ici ne masque ni ne retire : pas de `display:none`, pas de
+     `visibility:hidden`, pas de `font-size:0`. « Replier, jamais retirer » ;
+     ici rien n'est même replié, tout est resserré. La porte
+     `verification-mobile.tsx` le vérifie et sait échouer dessus. */
+@media (max-width: 880px) {
+  /* La gouttière de la maquette mobile : 18 px, contre 40 au bureau. 22 px en
+     tête, le pas vertical de ses sections (`margin:22px 18px 0`). */
+  .enTeteMobile.enTeteMobile {
+    padding: 22px 18px 0 !important;
+  }
+  /* L'écart entre le texte et le formulaire : 20 px, le `margin-top` du
+     formulaire de la maquette, contre 36 px posés par `.mg-r2` sous 900 px. */
+  .enTeteMobile .grilleMobile {
+    gap: 20px !important;
+  }
+  /* Le pas du fil d'Ariane de la maquette : `margin-bottom:12px`. */
+  .enTeteMobile .badgesMobile {
+    margin-bottom: 12px !important;
+  }
+  /* Le h1 de l'écran contact : `font:600 27px/1.1`, -.04em. `max-width:none`
+     rend au titre la largeur de l'écran, comme dans la maquette : les 16ch du
+     bureau à 27 px feraient des lignes de trois mots. */
+  .enTeteMobile h1.titreMobile {
+    font-size: 27px !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.04em !important;
+    max-width: none !important;
+  }
+  /* Le chapô : `font:400 15px/1.6`, à 10 px du titre (marge du h1 maquette). */
+  .enTeteMobile p.chapoMobile {
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+    margin-top: 10px !important;
+  }
+  /* Les capsules, à l'échelle des boutons de la maquette : `600 14.5px`. */
+  .enTeteMobile .actionsMobile {
+    margin-top: 18px !important;
+  }
+  .enTeteMobile .actionsMobile .capsuleVerre {
+    padding: 12px 18px !important;
+    font-size: 14.5px !important;
+  }
+  /* Les repères, à l'échelle de la tuile de chiffre : `600 21px/1.08`, le
+     libellé de 12.5 px est déjà celui de la maquette. */
+  .enTeteMobile .reperesMobile {
+    margin-top: 22px !important;
+    padding-top: 18px !important;
+    gap: 18px !important;
+  }
+  .enTeteMobile .repereMobile {
+    gap: 18px !important;
+  }
+  .enTeteMobile .traitMobile {
+    height: 28px !important;
+  }
+  .enTeteMobile .valeurMobile {
+    font-size: 21px !important;
+    line-height: 1.08 !important;
+  }
+}

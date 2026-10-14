@@ -14,6 +14,27 @@ import styles from "./Contact.module.css";
  * déjà un composant client autonome et porte sa validation, son champ piège et
  * sa mention RGPD. La maquette dessinait ses deux états (`sc-if sent` /
  * `notSent`) à la main, ils sont dans le composant.
+ *
+ * SOUS 881 PX, LE HAUT DE PAGE PREND L'ÉCHELLE DE LA MAQUETTE MOBILE V2
+ * (`maquette/mobile-v2/`, écran contact : gouttière de 18 px, h1
+ * `600 27px/1.1` à -.04em, chapô `400 15px/1.6`). Le portage est en CSS SEUL,
+ * dans `Contact.module.css`, media `(max-width: 880px)` : le DOM ne change
+ * pas, donc le `textContent` ne change pas (« replier, jamais retirer »), et
+ * les styles en ligne restent ceux du bureau, où RIEN ne bouge. 880 px est le
+ * seuil mobile du site (`--barre-reserve` de `app/globals.css`,
+ * `.barreAction` de `Entete.module.css`), pas un chiffre nouveau.
+ *
+ * CE QUE LA MAQUETTE MOBILE N'A PAS ET QU'ON GARDE : le badge d'astreinte,
+ * les deux capsules et les trois repères viennent de la maquette BUREAU
+ * (écran « Contact / devis ») et n'existent pas sur l'écran mobile v2, qui
+ * enchaîne fil d'Ariane, titre, chapô, formulaire. Les retirer sous 881 px
+ * perdrait leur texte : ils restent, resserrés à l'échelle mobile de la
+ * maquette (boutons `600 14.5px`, tuile de chiffre `600 21px/1.08`, libellé
+ * `12.5px`). Son fil d'Ariane, lui, n'est PAS repris : il AJOUTERAIT du texte
+ * que le bureau ne rend pas, et la preuve du lot est un `textContent`
+ * identique aux deux largeurs.
+ *
+ * Porte : `bun components/site/contact/verification-mobile.tsx --controle`.
  */
 
 /** Identifiant d'analyse des conversions de ce formulaire. */
@@ -65,6 +86,7 @@ export default function Ouverture() {
   return (
     <section
       id="form-page"
+      className={styles.enTeteMobile}
       style={{
         scrollMarginTop: 96,
         maxWidth: 1200,
@@ -73,7 +95,10 @@ export default function Ouverture() {
       }}
     >
       <div
-        className="mg-r2"
+        // `filter(Boolean)` : sous bun (portes), l'import d'un module CSS ne
+        // rend pas ses classes, et `${undefined}` écrirait « undefined » dans
+        // l'attribut. Next, lui, résout la vraie classe.
+        className={["mg-r2", styles.grilleMobile].filter(Boolean).join(" ")}
         style={{
           display: "grid",
           gridTemplateColumns: "1.12fr .88fr",
@@ -83,6 +108,7 @@ export default function Ouverture() {
       >
         <div>
           <div
+            className={styles.badgesMobile}
             style={{
               display: "flex",
               alignItems: "center",
@@ -125,6 +151,7 @@ export default function Ouverture() {
           </div>
 
           <h1
+            className={styles.titreMobile}
             style={{
               font: "600 calc(clamp(38px,4.4vw,66px) * var(--ts))/1.03 var(--ft)",
               letterSpacing: "-.045em",
@@ -141,6 +168,7 @@ export default function Ouverture() {
           </h1>
 
           <p
+            className={styles.chapoMobile}
             style={{
               font: "400 17.5px/1.65 var(--fb)",
               color: "var(--ink2)",
@@ -155,6 +183,7 @@ export default function Ouverture() {
           </p>
 
           <div
+            className={styles.actionsMobile}
             style={{
               display: "flex",
               gap: 12,
@@ -187,6 +216,7 @@ export default function Ouverture() {
           </div>
 
           <div
+            className={styles.reperesMobile}
             style={{
               display: "flex",
               alignItems: "center",
@@ -200,11 +230,14 @@ export default function Ouverture() {
             {REPERES.map((repere, rang) => (
               <div
                 key={repere.libelle}
+                className={styles.repereMobile}
                 style={{ display: "flex", alignItems: "center", gap: 26 }}
               >
-                {rang > 0 ? <div style={TRAIT} /> : null}
+                {rang > 0 ? <div className={styles.traitMobile} style={TRAIT} /> : null}
                 <div>
-                  <div style={VALEUR}>{repere.valeur}</div>
+                  <div className={styles.valeurMobile} style={VALEUR}>
+                    {repere.valeur}
+                  </div>
                   <div style={LIBELLE}>{repere.libelle}</div>
                 </div>
               </div>

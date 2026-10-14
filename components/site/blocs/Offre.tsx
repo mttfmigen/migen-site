@@ -40,16 +40,35 @@ const LIGNE: CSSProperties = {
   borderBottom: "1px solid var(--line)",
 };
 
-/** Le tableau comparatif, quand la page en porte un. Même grille que les lignes. */
+/**
+ * Le tableau comparatif, quand la page en porte un. Même grille que les lignes.
+ *
+ * SOUS 881 PX, UNE CARTE PAR LIGNE, et c'est le motif « tableau » du LISEZMOI
+ * de la maquette mobile v2 (bloc `isTb`). Les trois classes du module
+ * (`tableauEnCartes`, `enteteDeTableau`, `carteDeLigne`) ne portent des règles
+ * QUE sous ce seuil : au-dessus, ce balisage se rend exactement comme avant.
+ * Le tableau ne quitte jamais le DOM, aucune cellule n'est dupliquée ni
+ * masquée : c'est le même texte, restylé. Porte :
+ * `verification-tableau-mobile.tsx`, témoin compris.
+ *
+ * LES ATTRIBUTS `data-*` SONT LA PRISE DE MESURE, comme `data-pliable-mobile`
+ * chez `SectionPliableMobile` : un nom de classe de module est haché au build
+ * et vide sous `bun`, la porte compte donc des attributs stables. Chacun est
+ * posé sur le MÊME élément que sa classe, et la porte relit ce fichier pour
+ * s'en assurer.
+ */
 function TableauComparatif({ tableau }: { tableau: Tableau }) {
   const grille = `1.3fr repeat(${Math.max(1, tableau.entetes.length - 1)},1fr)`;
 
   return (
     <div
+      className={styles.tableauEnCartes}
+      data-tableau-en-cartes=""
       style={{ ...VERRE, overflow: "hidden", marginTop: 16 }}
     >
       <div
-        className="mg-cmp"
+        className={`mg-cmp ${styles.enteteDeTableau}`}
+        data-entete-de-tableau=""
         style={{
           display: "grid",
           gridTemplateColumns: grille,
@@ -74,7 +93,8 @@ function TableauComparatif({ tableau }: { tableau: Tableau }) {
       {tableau.lignes.map((ligne, rang) => (
         <div
           key={ligne[0] ?? `ligne-${rang}`}
-          className="mg-cmp"
+          className={`mg-cmp ${styles.carteDeLigne}`}
+          data-carte-de-ligne=""
           style={{
             ...LIGNE,
             gridTemplateColumns: grille,
@@ -162,9 +182,17 @@ export default function Offre({ section }: { section: SectionOffre }) {
           )}
         >
         {section.lignes.length > 0 ? (
-          <div style={{ ...VERRE, overflow: "hidden" }}>
+          /* Le duo prestation / bénéfice est écrit par le corpus comme un
+             tableau à deux colonnes : il prend le même motif mobile que le
+             comparatif, une carte par ligne sous 881 px, rien au-dessus. */
+          <div
+            className={styles.tableauEnCartes}
+            data-tableau-en-cartes=""
+            style={{ ...VERRE, overflow: "hidden" }}
+          >
             <div
-              className="mg-cmp"
+              className={`mg-cmp ${styles.enteteDeTableau}`}
+              data-entete-de-tableau=""
               style={{
                 display: "grid",
                 gridTemplateColumns: "1.1fr 1fr",
@@ -184,7 +212,8 @@ export default function Offre({ section }: { section: SectionOffre }) {
             {section.lignes.map((ligne, rang) => (
               <div
                 key={ligne.prestation.texte}
-                className="mg-cmp"
+                className={`mg-cmp ${styles.carteDeLigne}`}
+                data-carte-de-ligne=""
                 style={{
                   ...LIGNE,
                   gridTemplateColumns: "1.1fr 1fr",

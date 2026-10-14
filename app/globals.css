@@ -827,3 +827,56 @@ details[open] .g3-plus {
     padding: 18px 18px 20px !important;
   }
 }
+
+/* =========================================================================
+   COUCHE DE CONVERSION MOBILE (maquette mobile v2), posée le 14/10.
+   Composants : `components/site/mobile/`. Porte :
+   `bun components/site/mobile/verification-conversion-mobile.tsx`.
+
+   1. `[data-mobile-seulement]` : la couche n'existe que sous 881 px, le seuil
+      déjà posé par l'en-tête (`Entete.module.css`, l'îlot perd sa navigation
+      sous 881 px) et par `--barre-reserve` plus haut dans ce fichier. Un seul
+      seuil pour tout le mobile : aucune largeur où une moitié de la couche
+      s'affiche sans l'autre.
+
+   2. LA BARRE COLLANTE NE RECOUVRE JAMAIS LE CONTENU. Quand elle est dans le
+      DOM (`[data-barre-collante]`), `body` reçoit un rembourrage bas égal à
+      la place qu'elle occupe : hauteur + marge basse + zone de geste, plus
+      une marge de respiration. Même principe que `--barre-reserve` (défaut
+      mesuré le 10/10 : 68 px de pied de page couverts sur 248 pages, réglage
+      CNIL compris), mais porté par la présence de la barre elle-même :
+      aucune page à câbler, aucun oubli possible.
+
+   3. Géométrie de la maquette mobile v2, dc.html L191 : hauteur 50 px,
+      marges latérales 12 px (la barre v1 portait 54/14, valeurs de la
+      maquette v1 : les deux jeux de variables restent distincts).
+
+   4. `.conversion-rappel-sombre` : le panneau « Être rappelé » réutilisé tel
+      quel (`RappelExpress`) rend ses champs sur fond sombre ; le navigateur
+      ne redessine pas la couleur du texte indicatif, on la porte à un blanc
+      à 80 %, mesuré à 9,2:1 sur le fond composite (porte, contrôle n° 3).
+   ========================================================================= */
+
+:root {
+  --conversion-barre-hauteur: 50px; /* dc.html L191 : height:50px */
+  --conversion-barre-marge: 12px;   /* dc.html L191 : left:12px;right:12px */
+}
+
+@media (min-width: 881px) {
+  [data-mobile-seulement] {
+    display: none !important;
+  }
+}
+
+@media (max-width: 880px) {
+  body:has([data-barre-collante]) {
+    padding-bottom: calc(
+      var(--conversion-barre-hauteur) + 2 * var(--conversion-barre-marge) +
+        env(safe-area-inset-bottom)
+    );
+  }
+}
+
+.conversion-rappel-sombre input::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}

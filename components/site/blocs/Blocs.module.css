@@ -108,3 +108,58 @@
 .corpusClair a:focus-visible {
   color: var(--acc);
 }
+
+/* ================== Tableau en cartes, sous 881 px (maquette mobile v2) ====
+   Motif « tableau : une carte par ligne » du LISEZMOI de la maquette mobile
+   v2, bloc `isTb` de « Migen - Mobile v2.dc.html » : chaque ligne du tableau
+   devient une carte, la ligne d'en-têtes reste lue au-dessus des cartes.
+
+   C'EST LE MÊME BALISAGE QUE LE BUREAU, RESTYLÉ. Rien n'est dupliqué, rien
+   n'est masqué, rien n'est retiré : le `textContent` est identique aux deux
+   largeurs, et le tableau ne quitte jamais le DOM. La porte
+   `verification-tableau-mobile.tsx` le mesure, et son témoin montre qu'elle
+   tombe si une ligne disparaît.
+
+   TOUT VIT DANS CE MEDIA. Au-dessus de 880 px ces classes ne portent aucune
+   règle : la mise en page de bureau ne change pas d'un pixel (règle du
+   dépôt). Le seuil est celui du repli mobile, `SectionPliableMobile`.
+
+   `!important` : les blocs sont habillés par styles en ligne
+   (`habillage.ts`), qu'une feuille ne bat pas autrement. C'est l'idiome des
+   règles mobiles du dépôt (`app/globals.css`, famille `.mg-*`). Le sélecteur
+   parent > enfant (0,2,0) bat aussi `.mg-cmp` de `globals.css` (0,1,0) sous
+   760 px, quel que soit l'ordre d'empaquetage des feuilles. */
+@media (max-width: 880px) {
+  .tableauEnCartes {
+    display: grid !important;
+    gap: 8px !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+  }
+  /* La ligne d'en-têtes de colonnes : une petite rangée au-dessus des
+     cartes, comme la ligne de tête de la maquette. Elle reste dans le flux
+     et à l'écran, aucun mot ne part. */
+  .tableauEnCartes > .enteteDeTableau {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 4px 14px;
+    padding: 0 4px !important;
+    border-bottom: none !important;
+  }
+  /* Une carte par ligne : cellules empilées, fond et bord de carte. Le
+     raccourci `border` remet aussi à zéro le `borderBottom` en ligne. */
+  .tableauEnCartes > .carteDeLigne {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 8px !important;
+    padding: 14px 15px !important;
+    border: 1px solid var(--line) !important;
+    border-radius: var(--rad-s) !important;
+    background: var(--card) !important;
+  }
+}

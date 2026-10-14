@@ -1,0 +1,47 @@
+/*
+ * Le haut de page « sur mesure » du hub /ressources/, maquette mobile v2.
+ *
+ * Il n'existe QUE sous 881 px, le seuil mobile du dépôt (le même que
+ * `.barreAction`, `ParcoursMobile` et les plis de `SectionPliableMobile`).
+ * Sur bureau, le hub garde son héros du gabarit guide : la maquette mobile v2
+ * ne dessine ce bloc que pour le téléphone (« Accueil, Ressources et Contact
+ * ont un haut de page sur mesure », LISEZMOI de `maquette/mobile-v2/`).
+ *
+ * `display: none` retire le bloc de l'écran de bureau, PAS du document : son
+ * texte reste dans le DOM aux deux largeurs, c'est la règle du projet
+ * (« les mots doivent être là pour le SEO »), et c'est ce que la porte
+ * `verification-haut-de-page.tsx` vérifie.
+ */
+
+.haut {
+  display: none;
+}
+
+@media (max-width: 880px) {
+  .haut {
+    display: block;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 26px 40px 0;
+  }
+}
+
+/*
+ * Les deux textes reprennent les déclarations de la maquette mobile v2
+ * (bloc `isResTop` de `Migen - Mobile v2.dc.html`) :
+ * kicker `600 11px, .14em, uppercase, #ff7c3c` (= var(--acc)),
+ * sous-titre `400 15px/1.6, #4a4845` (= var(--ink1)).
+ */
+.kicker {
+  margin: 0;
+  font: 600 11px var(--fb);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--acc);
+}
+
+.sousTitre {
+  margin: 8px 0 0;
+  font: 400 15px/1.6 var(--fb);
+  color: var(--ink1);
+}
