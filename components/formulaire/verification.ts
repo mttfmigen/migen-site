@@ -9,6 +9,7 @@
  */
 
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 
 import {
   attributionCourante,
@@ -98,9 +99,11 @@ assert.deepEqual(valideCharge({ ...correct, formulaire: "contact" }).erreurs, {}
 // 74 pages sur 158 dépassaient : leur formulaire répondait 422 « Quelques champs
 // demandent une correction » sans qu'aucun champ visible soit en faute, et
 // aucun lead n'en partait. On rejoue ici chaque adresse de l'index du client.
-const INDEX_PAGES: { url: string }[] = (
-  await import("@/maquette/contenu/site/index.json", { with: { type: "json" } })
-).default;
+// Lu à l'exécution, pas importé : `maquette/` n'est pas envoyé à Vercel, et un
+// import y faisait échouer la vérification des types du build (14/10).
+const INDEX_PAGES: { url: string }[] = JSON.parse(
+  readFileSync(new URL("../../maquette/contenu/site/index.json", import.meta.url), "utf8"),
+);
 for (const { url } of INDEX_PAGES) {
   for (const id of [`cocon${url.replace(/\//g, "-")}`, `cocon${url.replace(/\//g, "-")}-hero`]) {
     assert.deepEqual(
