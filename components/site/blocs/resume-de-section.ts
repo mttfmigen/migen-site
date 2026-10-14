@@ -38,3 +38,13 @@ export function resumeDe(
   const propres = morceaux.map((m) => (m ?? "").trim()).filter(Boolean);
   return propres.length > 0 ? propres.join(" · ") : undefined;
 }
+
+/**
+ * VRAI QUAND L'ÉTIQUETTE ÉCRIT DÉJÀ SON NUMÉRO (« 02 · Notre réponse », « 03 »).
+ * Le repli passe alors `numero={false}` : sans quoi la carte numérotée de
+ * `app/globals.css` ajoute le sien, et le téléphone affichait « 01 » à côté de
+ * « 02 · Notre réponse » (106 pages sur 248 mesurées le 14/10).
+ */
+export function porteSonNumero(surtitre?: string): boolean {
+  return /^\d{2}(?!\d)/.test(surtitre?.trim() ?? "");
+}

@@ -307,6 +307,7 @@ export default function CorpsRessource({
                 <span style={H.ETIQUETTE_TITRE}>{partie.titre}</span>
               </span>
             }
+            numero={false}
             resume={resumeDeLaPartie(partie)}
             /* LA DEUXIÈME PARTIE RESTE OUVERTE AU TÉLÉPHONE (`nOpen = 2` du
                gabarit 01), mais REPLIABLE, comme dans la maquette où les

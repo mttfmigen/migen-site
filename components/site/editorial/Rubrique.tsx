@@ -268,6 +268,7 @@ export default function Rubrique({
                         <span style={ETIQUETTE_TITRE_CARTE}>{carte.titre}</span>
                       </span>
                     }
+                    numero={false}
                     resume={resumeDeCarte(carte.blocs)}
                   >
                     <div

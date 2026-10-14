@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Fragment } from "react";
 
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
-import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import { porteSonNumero, resumeDe } from "@/components/site/blocs/resume-de-section";
 import PastillesCocon from "@/components/site/cocon/PastillesCocon";
 import { appliqueDecisions } from "@/lib/decisions-copie";
 
@@ -327,7 +327,7 @@ function SectionNumerotee({ sec, chemin }: { sec: Section } & AvecChemin) {
       className={`${offre.blocPliablePartage} ${h.pliPleineLargeur}`}
       style={css(sec.bandCss ?? "")}
     >
-      <SectionPliableMobile enTete={<EtiquettePli surtitre={sec.num} titre={sec.title} />}>
+      <SectionPliableMobile numero={!porteSonNumero(sec.num)} enTete={<EtiquettePli surtitre={sec.num} titre={sec.title} />}>
       <div className={`mg-r2 ${sec.faqCls ?? ""}`} style={css(sec.gridCss ?? "")}>
         <div style={css(sec.asideCss ?? "")}>
           {sec.titleAside ? <Titre sec={sec} /> : null}

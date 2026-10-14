@@ -21,6 +21,7 @@ import {
 } from "./SectionsHub";
 import { altPhoto } from "@/lib/descriptions-photos";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import { porteSonNumero } from "@/components/site/blocs/resume-de-section";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
 import PastillesCocon from "@/components/site/cocon/PastillesCocon";
 import FilArianeMobile from "@/components/site/preuve/FilArianeMobile";
@@ -182,6 +183,7 @@ function rendSection(section: SectionHub, i: number, ouverte = false) {
     <SectionPliableMobile
       key={cle}
       toujoursOuvert={ouverte}
+      numero={!porteSonNumero(etiquette.surtitre)}
       enTete={
         <span data-mobile-seulement="" className={styles.etiquettePli}>
           <span style={ETIQUETTE_SURTITRE}>{etiquette.surtitre}</span>

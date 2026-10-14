@@ -1005,6 +1005,7 @@ export default function PagePreuve({
       <section key="reponse" style={SECTION}>
         <div className={styles.pliClair} style={LARGEUR}>
           <SectionPliableMobile
+            numero={false}
             enTete={
               <EtiquettePli surtitre="02 · Notre réponse" titre="Ce que nous avons mis en place" />
             }
@@ -1030,6 +1031,7 @@ export default function PagePreuve({
       <section key="deroule" style={SECTION}>
         <div className={styles.pliClair} style={LARGEUR}>
           <SectionPliableMobile
+            numero={false}
             enTete={<EtiquettePli surtitre="03 · Étape par étape" titre="Le déroulé" />}
           >
             <div style={KICKER}>03 · Étape par étape</div>
@@ -1101,6 +1103,7 @@ export default function PagePreuve({
           </div>
           <div className={styles.pliClair}>
             <SectionPliableMobile
+              numero={false}
               enTete={<EtiquettePli surtitre="04 · Fiche mission" titre="Le dispositif" />}
             >
               <div style={KICKER}>04 · Fiche mission</div>
@@ -1134,6 +1137,7 @@ export default function PagePreuve({
           <div aria-hidden="true" style={RESULTAT_LUEUR} />
           <div style={{ position: "relative" }}>
             <SectionPliableMobile
+              numero={false}
               enTete={<EtiquettePli surtitre="05 · Résultat" titre="Le résultat" sombre />}
             >
               <div style={KICKER}>05 · Résultat</div>

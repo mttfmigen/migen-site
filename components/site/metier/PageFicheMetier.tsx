@@ -10,6 +10,7 @@ import PostulerMetier from "./PostulerMetier";
 import SectionFicheMetier, { BoutonPostuler } from "./SectionsFicheMetier";
 import { altPhoto } from "@/lib/descriptions-photos";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import { porteSonNumero } from "@/components/site/blocs/resume-de-section";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
 import PastillesCocon from "@/components/site/cocon/PastillesCocon";
 import { courtLibelle, enfantsDe } from "@/components/site/cocon/maillage-mobile";
@@ -213,6 +214,7 @@ function rendSection(section: SectionFiche, i: number): ReactNode {
   return (
     <SectionPliableMobile
       key={cle}
+      numero={!porteSonNumero(etiquette.surtitre)}
       enTete={
         <span data-mobile-seulement="" className={styles.etiquettePli}>
           <span style={ETIQUETTE_SURTITRE}>{etiquette.surtitre}</span>

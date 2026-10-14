@@ -1,4 +1,5 @@
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import { porteSonNumero } from "@/components/site/blocs/resume-de-section";
 import PastillesCocon from "@/components/site/cocon/PastillesCocon";
 
 import CadenceOffre, { AncreRappel } from "../CadenceOffre";
@@ -34,6 +35,7 @@ function SectionLecture({ sec, ouverte }: { sec: Section; ouverte: boolean }) {
           bascule n'existe pas (`.blocPliablePartage`). */}
       <SectionPliableMobile
         toujoursOuvert={ouverte}
+        numero={!porteSonNumero(sec.num)}
         enTete={<EtiquettePli surtitre={sec.num} titre={sec.title} />}
       >
       <div style={css("display:flex;align-items:baseline;gap:14px;margin-bottom:20px")}>

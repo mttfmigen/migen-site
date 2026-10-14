@@ -241,6 +241,7 @@ export default function Guide({
                 <span style={ETIQUETTE_TITRE}>{s.titre}</span>
               </span>
             }
+            numero={false}
             resume={resumeDeLaSection(s.blocs)}
             toujoursOuvert={i < nOuvertes}
           >
