@@ -27,7 +27,7 @@
  */
 const DESCRIPTIONS_VILLES: Readonly<Record<string, string>> = {
   "hub-bordeaux.jpg": "Bordeaux, les quais de la Garonne",
-  "hub-dijon.jpg": "Vignes de Meursault en Côte-d'Or sous l'hiver",
+  "hub-dijon.jpg": "Rangs de vigne à Meursault, en Côte-d'Or",
   "hub-lille.jpg": "Façades du centre de Lille",
   "hub-lyon.jpg": "Lyon, la basilique de Fourvière au coucher du soleil",
   "hub-marseille.jpg": "Marseille, le Vieux-Port",

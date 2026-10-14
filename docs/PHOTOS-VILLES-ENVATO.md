@@ -65,8 +65,10 @@ octets, dans `components/site/accueil/hubs/` (`metz.jpg`, `dijon.jpg`).
 Branchées sur les cartes de l'accueil, la mosaïque de `/implantations/` et le
 bloc « Votre hub local » des deux pages ville. Textes alternatifs dans
 `lib/descriptions-villes.ts` : « Metz et sa cathédrale Saint-Étienne » et
-« Vignes de Meursault en Côte-d'Or sous l'hiver ». La photo de Dijon montre
-Meursault, pas Dijon : aucun texte ne doit l'annoncer comme Dijon.
+« Rangs de vigne à Meursault, en Côte-d'Or ». La photo de Dijon montre
+Meursault, pas Dijon : aucun texte ne doit l'annoncer comme Dijon. Pas de
+saison non plus : le titre d'origine disait « en hiver », mais la photo
+montre de l'herbe verte et des arbres en fleur (relevé le 14/10).
 
 ## Bloc « Votre hub local » des pages ville
 
