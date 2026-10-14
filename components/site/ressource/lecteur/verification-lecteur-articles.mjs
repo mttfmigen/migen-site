@@ -18,6 +18,11 @@
  * (`text-transform` change la casse d'`innerText`), ponctuation de bord ôtée.
  * Comparaison en multi-ensemble : un mot présent deux fois dans la page doit
  * l'être deux fois dans le lecteur.
+ *
+ * Les textes de remplacement des photos affichées (`alt` non vide) sont du
+ * texte de la page : chacun doit se retrouver dans le lecteur (14/10, les
+ * 12 billets repris perdaient le leur, et les 15 articles Migen montraient la
+ * photo de la carte du hub, sans alt, au lieu de celle de la page).
  */
 import { chromium } from "playwright";
 
@@ -60,6 +65,12 @@ const OUVRE_TOUT = () => {
   }
 };
 
+/** Les textes de remplacement non vides des photos affichées : du texte de la page aussi. */
+const ALTS = (sel) =>
+  [...(document.querySelector(sel)?.querySelectorAll("img") ?? [])]
+    .filter((i) => i.offsetParent !== null && i.alt.trim())
+    .map((i) => i.alt.trim());
+
 const plan = await (await fetch(`${base}/sitemap.xml`)).text();
 const urls = [...plan.matchAll(/<loc>([^<]+)<\/loc>/g)]
   .map((m) => new URL(m[1]).pathname)
@@ -84,6 +95,7 @@ const ouvrier = async () => {
       await p.waitForTimeout(800);
       await p.evaluate(OUVRE_TOUT);
       const textePage = await p.evaluate(() => document.querySelector("main")?.innerText ?? "");
+      const altsPage = await p.evaluate(ALTS, "main");
 
       await p.goto(`${base}/ressources/`, { waitUntil: "load", timeout: 60000 });
       await p.waitForFunction(() => !!window.next?.router, null, { timeout: 30000 });
@@ -100,15 +112,22 @@ const ouvrier = async () => {
         };
       });
 
+      const altsLecteur = await p.evaluate(ALTS, "[data-lecteur-ressource]");
+      const altsPerdus = manque(compte(altsPage), compte(altsLecteur));
+      if (altsPerdus.length) ecarts.push(`${url} : texte de photo perdu (${altsPerdus.length}) : ${altsPerdus.join(" | ").slice(0, 300)}`);
+
       const a = mots(textePage);
       const b = mots(texteLecteur);
       total = { page: total.page + a.length, lecteur: total.lecteur + b.length };
-      const perdus = manque(compte(a), compte(b));
-      // Les libellés propres sont retirés du compte, et doivent être déclarés.
+      // Les libellés propres sont retirés du lecteur AVANT de comparer, dans
+      // les deux sens : un « 01 » ou un « à » de libellé ne peut plus masquer
+      // un mot de la page perdu ailleurs. Lecteur = page + libellés, exactement.
       for (const l of libelles) {
         if (!declare(url, mots(l).join(" "))) ecarts.push(`${url} : libellé non déclaré « ${l.slice(0, 60)} »`);
       }
-      const ajoutes = manque(compte(manque(compte(b), compte(a))), compte(libelles.flatMap(mots)));
+      const sansLibelles = compte(manque(compte(b), compte(libelles.flatMap(mots))));
+      const perdus = manque(compte(a), sansLibelles);
+      const ajoutes = manque(sansLibelles, compte(a));
       const ligne = `${url}  page ${a.length} mots, lecteur ${b.length} (dont ${libelles.length} libellé(s) propre(s))`;
       if (perdus.length || ajoutes.length) {
         ecarts.push(

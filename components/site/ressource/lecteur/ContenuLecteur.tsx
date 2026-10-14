@@ -486,7 +486,8 @@ function CarteSuivante({ href, photo, surtitre, titre }: { href: string; photo: 
       }}
     >
       <span style={{ position: "relative", display: "block", aspectRatio: "4/3", borderRadius: 16, overflow: "hidden", background: "var(--bg2)" }}>
-        <Image src={photo} alt="" fill sizes="120px" style={{ objectFit: "cover" }} />
+        {/* Le texte de remplacement de la page (« Sur le même sujet »), pas un alt vide. */}
+        <Image src={photo} alt={altPhoto(photo)} fill sizes="120px" style={{ objectFit: "cover" }} />
       </span>
       <span style={{ display: "grid", gap: 4 }}>
         <span
@@ -526,7 +527,11 @@ export default function ContenuLecteur({
   const questions = contenu.questions ?? [];
   const lectures = contenu.aLire ?? [];
   const rayon = contenu.rayon ? RAYONS[contenu.rayon] : undefined;
-  const photo = carte?.photo ?? contenu.image;
+  // Fiche métier : la photo de la carte cliquée (maquette). Article : la photo
+  // de la PAGE et son texte de remplacement (`imageAlt` des billets repris),
+  // mesuré le 14/10 : la carte du hub montrait une autre photo, sans alt.
+  const photo = article ? (contenu.image ?? carte?.photo) : (carte?.photo ?? contenu.image);
+  const altHeros = article && photo === contenu.image ? (contenu.imageAlt ?? altPhoto(photo)) : altPhoto(photo);
   // Fiche métier : la carte du hub d'abord, le lecteur dit la durée de la carte
   // cliquée (maquette). Article : la durée de la PAGE, dont il porte les mots.
   const minutes = article ? contenu.minutes : (carte?.minutes ?? contenu.minutes);
@@ -640,7 +645,7 @@ export default function ContenuLecteur({
             background: "var(--bg2)",
           }}
         >
-          <Image src={photo} alt={altPhoto(photo)} fill sizes="(max-width: 900px) 100vw, 800px" style={{ objectFit: "cover" }} />
+          <Image src={photo} alt={altHeros} fill sizes="(max-width: 900px) 100vw, 800px" style={{ objectFit: "cover" }} />
         </div>
       )}
       <article style={{ padding: `0 ${PAD} 56px` }}>

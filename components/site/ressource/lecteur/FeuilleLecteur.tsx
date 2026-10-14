@@ -16,12 +16,17 @@ import { DERNIERE_CARTE, OUVERTS_PAR_LE_HUB } from "./ouverts";
 const FOCUSABLES =
   'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),summary,[tabindex]:not([tabindex="-1"])';
 
-/** Rend inertes les frères de chaque ancêtre du lecteur ; renvoie la remise en état. */
+/**
+ * Rend inertes les frères de chaque ancêtre du lecteur ; renvoie la remise en
+ * état. Sauf un `<dialog>` : le bandeau de consentement (z-index 90) reste
+ * affiché PAR-DESSUS la feuille, et inerte il ne répondait plus à aucun clic
+ * (mesuré le 14/10 : « Tout refuser » sous `[inert]` lecteur ouvert).
+ */
 function inerteAutour(el: HTMLElement): () => void {
   const poses: HTMLElement[] = [];
   for (let n: HTMLElement | null = el; n && n !== document.body; n = n.parentElement) {
     for (const frere of Array.from(n.parentElement?.children ?? [])) {
-      if (frere !== n && frere instanceof HTMLElement && !frere.inert) {
+      if (frere !== n && frere instanceof HTMLElement && !frere.inert && !(frere instanceof HTMLDialogElement)) {
         frere.inert = true;
         poses.push(frere);
       }
