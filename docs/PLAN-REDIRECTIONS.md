@@ -7,7 +7,7 @@
 - L'ancien site (WordPress) a **181 adresses connues**.
 - **4** gardent la même adresse sur le nouveau site.
 - **142** sont renvoyées, en **une seule étape** (redirection 301), vers la page du nouveau site qui traite le même sujet.
-- **35** sont des adresses techniques de WordPress, sans contenu ni lien : elles disparaissent volontairement (réponse 404).
+- **35** sont des adresses techniques de WordPress, sans contenu ni lien : depuis le 14/10, elles aussi partent en **une 301** vers l'accueil ou vers la page parente évidente (section 4). **Plus aucune ancienne adresse ne répond 404.**
 - **Tout le trafic mesuré arrive sur une vraie page** : 1 892 visites par mois selon Semrush, dont 1 111 sur l'accueil (conservé) et 780 sur des adresses redirigées.
 - Vérifié par une commande, sur le serveur local et sur la préproduction : dernière ligne `REDIRECTIONS_SANS_PERTE`.
 - ~~Un bloquant avant la bascule : la page `/cgv/`~~ **levé le 14/10** : la page est publiée, texte mot pour mot (section 5). Restent six choix à valider.
@@ -37,7 +37,7 @@ Hors liste, réglés par le domaine et non adresse par adresse : `www.migen.fr` 
 | Redirigées en une 301 | 142 | 780 |
 | dont déjà en place avant aujourd'hui | 21 | |
 | dont ajoutées aujourd'hui | 121 | |
-| Laissées en 404 (techniques) | 35 | 0 |
+| Techniques, redirigées en une 301 par le filet (accueil ou parent) | 35 | 0 |
 | **Total** | **181** | **1 892** |
 
 Les 4 conservées : l'accueil `/`, `/contact/`, `/mentions-legales/`, `/partenaires/`.
@@ -82,22 +82,34 @@ Classées par visites mensuelles (Semrush). Quatre y entrent pour leurs liens : 
 | `/le-futur-de-la-maintenance-industrielle-une-perspective-a-10-ans/` | `/ressources/articles/maintenance-4-0/` | 0 | 2 |
 | `/maintenance-robotique/` | `/expertises/robotique/` | 0 | 2 |
 
-## 4. Les 35 adresses laissées en 404, et pourquoi
+## 4. Les 35 adresses techniques, et le filet de l'ancien WordPress
 
-Ce sont des pages que WordPress fabrique tout seul. Aucune n'a de visite ni de lien d'un autre site. Les renvoyer vers une page de contenu serait du bruit pour Google, qui traite une telle redirection comme une page introuvable déguisée. Une 404 franche lui dit simplement de les oublier.
+**Règle de Mehdi, 14/10/2026 vers 15 h 40** : « toute URL de l'ancien site doit renvoyer vers une page, c'est la règle » ; « sur les pages introuvables, renvoie-les vers la home quand même ». Elle remplace le choix précédent, qui laissait ces 35 adresses en 404.
 
-| type | adresses | exemple |
-|---|---|---|
-| Pages suivantes d'une liste (pagination) | 9 | `/category/articles/page/2/` |
-| Pages d'auteur | 8 | `/author/antoinedigirolamo/` |
-| Morceaux du thème Avada | 9 | `/element_category/columns/`, `/faq-items/` |
-| Liens courts WordPress | 3 | `/?page_id=8` |
-| Flux RSS | 2 | `/feed/` |
-| Restes de boutique WooCommerce | 2 | `/shop/` |
-| Catégorie « Non classé » | 1 | `/category/uncategorized/` |
-| Interface de publication à distance | 1 | `/xmlrpc.php` |
+Ce sont des pages que WordPress fabrique tout seul, sans visite ni lien d'un autre site. Chacune part désormais en **une seule 301** vers une page qui répond 200 :
 
-**Les liens courts `?page_id=`.** `/?page_id=8` et `/?page_id=89` affichent l'accueil (le nouveau site ignore le paramètre, et l'accueil déclare sa propre adresse comme adresse officielle) ; `/lost-password/?page_id=11` répond 404. Aucun n'a de lien entrant : pas de règle dédiée. L'ancien site n'a aucune forme `?p=NNN` connue.
+| type | adresses | exemple | vers |
+|---|---|---|---|
+| Pages suivantes d'une liste (pagination) | 9 | `/category/articles/page/2/` | la cible de la liste : `/ressources/articles/`, `/preuves/`, `/offres/full-service/` ; l'accueil pour « Non classé » |
+| Pages d'auteur | 8 | `/author/antoinedigirolamo/` | l'accueil |
+| Morceaux du thème Avada | 9 | `/element_category/columns/`, `/faq-items/` | l'accueil |
+| Liens courts WordPress | 3 | `/?page_id=8` | l'accueil |
+| Flux RSS | 2 | `/feed/` | l'accueil |
+| Restes de boutique WooCommerce | 2 | `/shop/` | l'accueil |
+| Catégorie « Non classé » | 1 | `/category/uncategorized/` | l'accueil |
+| Interface de publication à distance | 1 | `/xmlrpc.php` | l'accueil |
+
+**Les liens courts `?page_id=`.** Lus sur l'ancien site le 14/10 : `/?page_id=8` et `/?page_id=89` y répondent déjà 404, et `?page_id=11` mène à `/logo2r/`, la fiche d'une image du logo. Aucune page à retrouver : les trois vont à l'accueil.
+
+**Le filet.** Au-delà des 35, toute adresse au format de l'ancien WordPress qui n'est ni une page du nouveau site ni une redirection connue part en 301 vers l'accueil, ou vers le parent évident. Il est posé dans `lib/filet-ancien-site.ts`, appliqué par `proxy.ts` **après** la table `redirects` et les lignes de `lib/redirections-ancien-site.ts`. Les motifs :
+
+- `/wp-…` (dont `/wp-content/`, `/wp-includes/`, `/wp-admin`, `/wp-login.php`, `/wp-json/`) et tout fichier `.php` (`/xmlrpc.php`) ;
+- `/author/`, `/category/`, `/tag/`, `/blocks/`, `/element_category/`, `/fusion_tb_category/`, `/portfolio-items/`, `/faq-items/`, `/featured_item/`, `/shop/`, `/product-category/`, `/product/`, `/cart/`, `/checkout/`, `/my-account/`, `/lost-password/`, `/comments/` ;
+- les archives datées `/AAAA/` et `/AAAA/MM/…` ;
+- `…/page/N/` et `…/feed/` : la cible de la page qui précède (`/actualites/page/2/` part comme `/actualites/`), l'accueil sinon ;
+- `?p=`, `?page_id=`, `?cat=`, `?s=` sur l'accueil. Une page du nouveau site garde ses paramètres.
+
+Aucun motif ne touche une adresse du nouveau site : les 272 adresses du plan du site répondent 200, et une adresse inventée qui ne ressemble pas à WordPress (`/offres/nexistepas/`) garde sa 404. Le contrôle `bun lib/verification-filet.ts` (dans `bun run verifie`) prouve chaque motif et ces témoins.
 
 ## 5. À valider par Mehdi
 
@@ -157,7 +169,7 @@ node scripts/verifie-redirections.mjs https://migen.fr    # après la bascule
 node scripts/verifie-redirections.mjs --controle          # prouve qu'elle sait échouer
 ```
 
-Elle teste chaque ancienne adresse (et ses variantes, sans slash final par exemple) puis chaque adresse du plan du site. Elle n'écrit `REDIRECTIONS_SANS_PERTE` que si tout passe. `--controle` fabrique une chaîne, une boucle, une 404, une cible en 404, une adresse technique redirigée et une page masquée, et vérifie qu'elle les voit toutes.
+Elle teste chaque ancienne adresse (et ses variantes, sans slash final par exemple) puis chaque adresse du plan du site. Elle n'écrit `REDIRECTIONS_SANS_PERTE` que si tout passe. Elle teste aussi un exemple de chaque motif du filet (une 301 vers une page en 200) et des témoins : `/offres/nexistepas/` en 404, le plan du site, `robots.txt`, l'icône, une image, un script de Next et l'API sans redirection. Depuis le 14/10, une ancienne adresse en 404 la fait échouer, technique ou non. `--controle` fabrique une chaîne, une boucle, une 404, une cible en 404, une adresse technique en 404, une adresse technique servie sur place et une page masquée, et vérifie qu'elle les voit toutes.
 
 - **Changer une destination** : modifier la ligne dans `lib/redirections-ancien-site.ts` (et en base si elle y est), puis relancer la vérification.
 
@@ -194,7 +206,7 @@ curl -sI https://migen.fr/maintenance-industrielle-lyon/ | grep -i -E "^(HTTP|lo
 
 ### La première semaine
 
-12. **Chaque jour, les 404 dans les journaux Vercel** (projet `migen-site`, Logs, filtre sur le code 404). Une ancienne adresse de contenu qui tombe en 404 : ajouter sa ligne dans `lib/redirections-ancien-site.ts`, déployer, relancer la vérification. Ignorer les robots qui cherchent `wp-login.php`, `wp-admin/` ou `xmlrpc.php`.
+12. **Chaque jour, les 404 dans les journaux Vercel** (projet `migen-site`, Logs, filtre sur le code 404). Une ancienne adresse de contenu qui tombe en 404 : ajouter sa ligne dans `lib/redirections-ancien-site.ts`, déployer, relancer la vérification. Les robots qui cherchent `wp-login.php`, `wp-admin/` ou `xmlrpc.php` partent sur l'accueil par le filet, ils n'y apparaissent plus.
 13. Search Console, rubrique Pages : suivre « Introuvable (404) » et « Page avec redirection » pendant 2 à 4 semaines. Les anciennes adresses doivent y passer en « Page avec redirection », c'est normal.
 
 ### Retour arrière, si besoin
@@ -212,7 +224,7 @@ Le suivi de positions de Mehdi (`Position Tracking Rankings Overview Oct 14.csv`
 | `/transfert-demenagement-industriel/` | `/offres/chantier/` | `/offres/chantier/demenagement-machines/` | « déménagement de machines industrielles » (20e), « déménagement industriel » (720 par mois) : le choix « à valider » de la section 5 est tranché ainsi |
 | `/comment-devenir-technicien-de-maintenance-industrielle/` | `/carriere/technicien-de-maintenance/formation/` | `/carriere/technicien-de-maintenance/` | « technicien de maintenance industrielle » (31e, 2 400 par mois) porte sur le métier |
 
-Motifs vérifiés le même jour sur la préproduction : archives paginées (`/actualites/page/N/`, `/category/articles/page/N/`, `/page/N/`), archive d'auteur, `/feed/` et fichiers de `/wp-content/uploads/` répondent 404, comme prévu pour les adresses techniques ; `/nos-offres/` et `/entreprise-de-maintenance/`, deux chaînes de l'ancien WordPress, arrivent en un seul saut.
+Motifs vérifiés le même jour sur la préproduction : archives paginées (`/actualites/page/N/`, `/category/articles/page/N/`, `/page/N/`), archive d'auteur, `/feed/` et fichiers de `/wp-content/uploads/` répondaient 404, comme prévu alors pour les adresses techniques (remplacé le même jour par le filet, section 4) ; `/nos-offres/` et `/entreprise-de-maintenance/`, deux chaînes de l'ancien WordPress, arrivent en un seul saut.
 
 Reste ouvert : la page `/cgv/` (section 5), en cours de publication à l'identique.
 

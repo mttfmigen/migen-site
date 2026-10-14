@@ -19,7 +19,10 @@
  * final) ; la destination est la page FINALE, jamais une autre source (le
  * build échoue sinon, voir `tableVersionnee`). Les adresses techniques de
  * WordPress (flux, auteurs, pagination, thème Avada, WooCommerce, `?p=`) n'ont
- * PAS de ligne : elles répondent 404, c'est voulu.
+ * PAS de ligne : le filet `lib/filet-ancien-site.ts` les envoie en 301 sur
+ * l'accueil ou le parent évident (règle de Mehdi du 14/10 : « toute URL de
+ * l'ancien site doit renvoyer vers une page »). Une pagination prend la cible
+ * de son archive : `/category/articles/page/2/` part comme `/category/articles/`.
  *
  * PIÈGE : le proxy applique ces lignes AVANT de servir une page. Une source qui
  * redevient une page (ex. `/cgv/` republiée) reste masquée tant que sa ligne
