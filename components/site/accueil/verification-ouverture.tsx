@@ -117,3 +117,40 @@ assert.ok(
 }
 
 console.log("Ouverture : aucun lien inerte, ancre du formulaire résolue.");
+
+// ------------------------------------- la cadence de conversion mobile, 14/10
+// 1. L'ANCRE DES BANDEAUX. `app/page.tsx` pose `rappelFinal={false}` : la
+//    maquette finit sur un mini-formulaire, l'accueil sur son formulaire
+//    complet, et le rappel n'est donc pas dessiné. Mais les bandeaux « Une
+//    question sur votre site ? » visent `#etre-rappele`, que seul ce rappel
+//    portait. C'est l'enveloppe du formulaire de bas de page qui la reprend :
+//    sans elle, quatre boutons « Être rappelé » ne mènent nulle part, et rien
+//    d'autre ne le verrait.
+// 2. LA BASCULE DU FORMULAIRE DU HÉROS PASSE AVANT SON EN-TÊTE, et l'en-tête
+//    reste collé au formulaire : c'est ce qui garde le texte du `<main>`
+//    identique, mot pour mot, à celui d'avant le repli (voir `Hero.tsx`).
+{
+  const { readFileSync } = await import("node:fs");
+  const { ANCRE_RAPPEL, ID_RAPPEL_FINAL } = await import(
+    "@/components/site/mobile/conversion-donnees"
+  );
+  const page = readFileSync(new URL("../../../app/page.tsx", import.meta.url), "utf8");
+  assert.equal(ANCRE_RAPPEL, `#${ID_RAPPEL_FINAL}`, "les bandeaux et le rappel final ne visent plus la même ancre");
+  if (page.includes("rappelFinal={false}")) {
+    assert.ok(
+      page.includes("id={ID_RAPPEL_FINAL}"),
+      `l'accueil ne pose pas le rappel final et plus rien n'y porte ${ANCRE_RAPPEL} : les bandeaux « Être rappelé » mènent nulle part`,
+    );
+  }
+
+  const heros = renderToStaticMarkup(<Hero />);
+  const bascule = heros.indexOf("<summary");
+  const enTete = heros.indexOf(">Décrire mon besoin<", heros.indexOf("</summary>"));
+  const champs = heros.indexOf("<form");
+  assert.ok(
+    bascule >= 0 && bascule < enTete && enTete < champs,
+    "la bascule du formulaire du héros doit précéder son en-tête, et l'en-tête précéder le formulaire",
+  );
+}
+
+console.log("Cadence mobile : l'ancre #etre-rappele est portée, la bascule du héros est à sa place.");

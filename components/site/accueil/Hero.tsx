@@ -1,8 +1,25 @@
 import { FormulaireContact } from "@/components/formulaire/FormulaireContact";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+
+import replis from "./replis-accueil.module.css";
 
 /* Section d'ouverture de la page d'accueil, portée de « Migen - Site final »
    (lignes 483 à 533). Composant serveur : le seul élément interactif est le
-   formulaire, qui est déjà un composant client autonome. */
+   formulaire, qui est déjà un composant client autonome.
+
+   LE HÉROS COMPACT DU TÉLÉPHONE (G2), sous 881 px seulement. La maquette
+   mobile v2 (m-00) ouvre l'accueil sur la pastille, le titre et le parcours
+   « Qu'est-ce qui vous bloque ? » : aucun formulaire en tête. Le nôtre faisait
+   1 620 px de haut à 390 px, dont 900 de champs, et repoussait le parcours à
+   deux écrans. Le formulaire est donc REPLIÉ derrière sa propre rangée
+   « Rappel dans l'heure · Décrire mon besoin », jamais retiré : ses champs, sa
+   validation et son envoi sont ceux d'avant, au caractère près. Sur bureau la
+   bascule n'existe pas et le panneau est celui de la capture. */
+
+/* Le titre du panneau, écrit une fois et servi aux deux endroits (en-tête de
+   bureau, bascule du téléphone), comme les sections repliées de l'accueil. */
+const TITRE_PANNEAU = "Décrire mon besoin";
+const MENTION_PANNEAU = "Rappel dans l’heure";
 
 const VALEUR = {
   font: "600 22px var(--ft)",
@@ -24,6 +41,7 @@ const TRAIT = {
 export default function Hero() {
   return (
     <section
+      className={replis.herosCompact}
       style={{
         maxWidth: 1200,
         margin: "0 auto",
@@ -99,6 +117,7 @@ export default function Hero() {
           </h1>
 
           <p
+            className={replis.chapoHeros}
             style={{
               font: "400 17.5px/1.65 var(--fb)",
               color: "var(--ink2)",
@@ -113,6 +132,7 @@ export default function Hero() {
           </p>
 
           <div
+            className={replis.chiffresHeros}
             style={{
               display: "flex",
               alignItems: "center",
@@ -155,45 +175,69 @@ export default function Hero() {
                 "0 1px 1px rgba(0,0,0,.04),0 30px 70px -34px rgba(0,0,0,.42)",
             }}
           >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "flex-start",
-                justifyContent: "space-between",
-                columnGap: "14px",
-                rowGap: "6px",
-                marginBottom: "20px",
-                flexWrap: "wrap",
-              }}
-            >
-              <div
-                style={{
-                  font: "600 20px/1.2 var(--ft)",
-                  letterSpacing: "-.03em",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                Décrire mon besoin
-              </div>
-              <div
-                style={{
-                  font: "500 11.5px var(--fb)",
-                  letterSpacing: ".1em",
-                  textTransform: "uppercase",
-                  color: "var(--acc)",
-                }}
-              >
-                Rappel dans l’heure
-              </div>
-            </div>
+            {/* LA BASCULE PASSE AVANT L'EN-TÊTE, ET C'EST UNE MESURE QUI L'A
+                DÉCIDÉ. Le texte du `<main>` est lu d'un bloc
+                (`scripts/instantane-texte-main.mjs`) : deux blocs voisins y
+                collent leurs mots, « +200clientsDécrire »,
+                « l'heureSite web ». Posée entre l'en-tête et le formulaire, la
+                bascule cassait ces collages, et la porte « aucun mot perdu »
+                les comptait comme perdus. Posée AVANT, avec le titre en tête et
+                la mention en résumé, elle ne fait qu'insérer son propre texte :
+                tout ce qui était là se relit à l'identique.
+                La mention « Rappel dans l'heure » passe en résumé et non en
+                sur-titre pour la même raison (un sur-titre la mettrait en tête
+                de la bascule, collée à « clients ») ; la feuille la remonte
+                au-dessus du titre, à l'écran seulement. */}
+            <div className={replis.repliHeros}>
+              <SectionPliableMobile titre={TITRE_PANNEAU} resume={MENTION_PANNEAU}>
+                {/* L'en-tête de bureau, masqué sur téléphone où la bascule le
+                    porte. L'enveloppe existe parce que l'en-tête a un
+                    `display: flex` en ligne, qu'une feuille ne bat pas ; sans
+                    rembourrage ni bordure, elle laisse passer sa marge basse
+                    et le bureau ne bouge pas d'un pixel. */}
+                <div className={replis.enTeteBureau}>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "flex-start",
+                      justifyContent: "space-between",
+                      columnGap: "14px",
+                      rowGap: "6px",
+                      marginBottom: "20px",
+                      flexWrap: "wrap",
+                    }}
+                  >
+                    <div
+                      style={{
+                        font: "600 20px/1.2 var(--ft)",
+                        letterSpacing: "-.03em",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {TITRE_PANNEAU}
+                    </div>
+                    <div
+                      style={{
+                        font: "500 11.5px var(--fb)",
+                        letterSpacing: ".1em",
+                        textTransform: "uppercase",
+                        color: "var(--acc)",
+                      }}
+                    >
+                      {MENTION_PANNEAU}
+                    </div>
+                  </div>
+                </div>
 
-            {/* Le formulaire existant porte sa propre validation, son champ
-                piège, sa mention RGPD et son état d'envoi : la maquette
-                dessinait ces écrans (`sc-if sent` / `notSent`) à la main, ils
-                sont ici dans le composant. */}
-            <FormulaireContact
-              formulaire="accueil-hero"
-            />
+                {/* Le formulaire existant porte sa propre validation, son champ
+                    piège, sa mention RGPD et son état d'envoi : la maquette
+                    dessinait ces écrans (`sc-if sent` / `notSent`) à la main,
+                    ils sont ici dans le composant. */}
+                <FormulaireContact
+                  formulaire="accueil-hero"
+                />
+              </SectionPliableMobile>
+            </div>
           </div>
         </div>
       </div>

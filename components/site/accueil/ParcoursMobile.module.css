@@ -59,10 +59,10 @@
 
 .question {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 15px 16px;
+  padding: 13px 14px 13px 12px;
   cursor: pointer;
   /* La maquette pose son propre chevron : le triangle natif part, sur les deux
      moteurs. */
@@ -73,18 +73,25 @@
   display: none;
 }
 
+/* Le numéro dans sa pastille carrée (voir `.etiquette`). `--acc-ink` pour la
+   même raison que `.nomOffre` plus bas : l'orange de marque sur son propre
+   fond à 11 % ne tient pas le contraste d'un texte de cette taille. */
 .numero {
-  font: 600 11px ui-monospace, Menlo, monospace;
-  letter-spacing: 0.06em;
-  color: var(--acc);
-  display: block;
-  margin-bottom: 4px;
+  grid-row: 1 / span 2;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 13px;
+  background: var(--acc-w);
+  font: 600 12.5px ui-monospace, Menlo, monospace;
+  color: var(--acc-ink);
 }
 
 .libelle {
   display: block;
-  font: 600 15px/1.3 var(--ft);
-  letter-spacing: -0.022em;
+  font: 600 14.5px/1.3 var(--ft);
+  letter-spacing: -0.02em;
   color: var(--ink);
 }
 
@@ -193,14 +200,25 @@
    La maquette mobile du client écrit sa carte « 01 Je n'arrive pas à recruter
    mon technicien de maintenance · Résidence › ». Le nom de l'offre y est lisible
    avant le toucher : c'est ce qui dit au visiteur où il va. Il manquait. */
+/* LA CARTE DE LA MAQUETTE MOBILE V2, posée le 14/10 (m-00, dc.html L115) :
+   le numéro dans une pastille carrée de 40 px À GAUCHE, la question et l'offre
+   à sa droite, `grid-template-columns: 40px minmax(0,1fr)`, 13 px sur 14 de
+   rembourrage (`.question`). Le numéro posé AU-DESSUS de la question, dessin
+   de la maquette v1, coûtait une ligne par carte : 117 px contre 84 dans
+   m-00, six fois. Rien n'est retiré, l'ordre des éléments dans le document ne
+   change pas. */
 .etiquette {
-  display: block;
   min-width: 0;
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  column-gap: 12px;
+  align-items: center;
 }
 
 .nomOffre {
+  justify-self: start;
   display: inline-block;
-  margin-top: 7px;
+  margin-top: 5px;
   padding: 3px 10px;
   border-radius: 999px;
   background: var(--acc-w);

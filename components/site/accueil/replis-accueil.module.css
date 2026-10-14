@@ -182,17 +182,13 @@
  * Et c'est bien `@media (max-width: 880px)` : au-dessus, la bascule est
  * `display: none`, un rembourrage n'y veut rien dire.
  */
+/* Depuis le 14/10 la rangée est une CARTE (voir « LA RANGÉE REPLIÉE DEVIENT
+   UNE CARTE » plus bas) posée à 18 px du bord, la gouttière de la maquette
+   mobile v2 : la section n'ayant ici aucun rembourrage, la carte prend 18 px
+   de MARGE, sans quoi son fond blanc irait d'un bord à l'autre de l'écran. */
 @media (max-width: 880px) {
-  .repliPleineLargeur :global(details[data-pliable-mobile] > summary) {
-    padding-left: 40px;
-    padding-right: 40px;
-  }
-}
-
-@media (max-width: 389px) {
-  .repliPleineLargeur :global(details[data-pliable-mobile] > summary) {
-    padding-left: 20px;
-    padding-right: 20px;
+  .repliPleineLargeur {
+    --debord-carte: 18px;
   }
 }
 
@@ -266,5 +262,218 @@
 @media (max-width: 880px) {
   .repli:has(:global(details[data-pliable-mobile]):not([open])) {
     padding-top: 0 !important;
+  }
+}
+
+/*
+ * LA RANGÉE REPLIÉE DEVIENT UNE CARTE, comme dans la maquette mobile v2.
+ *
+ * m-00 (dc.html L132, motif `isDetails`) pose chaque section repliée dans une
+ * carte blanche : rayon 20 px, filet rgba(28,27,25,.08), 15 px sur 16 de
+ * rembourrage, 12 px entre deux cartes, le chevron dans une pastille ronde de
+ * 28 px. Le site posait encore la rangée de la maquette v1, un filet en haut
+ * et rien d'autre.
+ *
+ * LA CARTE EST LE `<summary>` ET NON LE `<details>`, et c'est voulu : notre
+ * gouttière de page vaut 40 px à 390 px (`app/globals.css`), celle de la
+ * maquette 18. Rembourrer le dépliant entier rognerait encore 34 px au
+ * contenu OUVERT, des grilles dessinées pour 310 px. La rangée a donc l'air de
+ * la maquette fermée, et le contenu déplié garde toute sa largeur.
+ *
+ * LA CARTE DÉBORDE DE LA GOUTTIÈRE JUSQU'À 18 PX DU BORD, celle de la maquette
+ * et celle que posent en ligne le photo + CTA et les bandeaux de
+ * `components/site/mobile/` (`margin: … 18px`). Sans ce débord, les cartes
+ * (310 px) et les insertions de conversion (354 px) alternaient deux largeurs
+ * sur toute la page. `--debord-carte` vaut 40 − 18 = 22 px de débord, 20 − 18
+ * = 2 sous 390 px où la gouttière tombe à 20 ; une section dont la gouttière
+ * est déjà de 18 px la remet à zéro (`ProcessSelection.module.css`), une
+ * section sans gouttière la porte à 18 (`.repliPleineLargeur`).
+ *
+ * Les jetons sont ceux des cartes du parcours (`ParcoursMobile.module.css`) :
+ * `--card` et `--line`, pour que les deux familles de cartes de l'accueil ne
+ * divergent pas.
+ *
+ * RIEN AU-DESSUS DE 880 PX : la bascule y est en `display: none`.
+ */
+@media (max-width: 880px) {
+  .repli :global(details[data-pliable-mobile]) {
+    border-top: 0;
+    padding-top: 0;
+    margin-top: 12px;
+  }
+
+  .repli :global(details[data-pliable-mobile] > summary) {
+    align-items: center;
+    padding: 15px 16px;
+    margin-block: 0;
+    margin-inline: var(--debord-carte, -22px);
+    border-radius: 20px;
+    background: var(--card);
+    border: 1px solid var(--line);
+  }
+
+  .repli :global(details[data-pliable-mobile] > summary > [aria-hidden="true"]) {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    background: rgba(28, 27, 25, 0.055);
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 389px) {
+  .repli :global(details[data-pliable-mobile] > summary) {
+    margin-inline: var(--debord-carte, -2px);
+  }
+}
+
+/*
+ * LE NUMÉRO DES SECTIONS : « 01 » à « 15 », dc.html L132 (`sx.n`, police
+ * monospace 11 px, orange), à gauche du titre.
+ *
+ * EN COMPTEUR CSS, ET C'EST LA RAISON DE CE CHOIX : un contenu généré n'entre
+ * ni dans le `textContent` ni dans le HTML servi. Le texte que Google lit ne
+ * change donc pas d'un caractère.
+ *
+ * Seules les sections que la maquette numérote le sont : `.numerotees`
+ * enveloppe dans `app/page.tsx` les quinze sections qui portent la cadence de
+ * conversion. Le parcours, les offres, les logos et les hubs restent sans
+ * numéro, comme dans m-00 (`isOffers`, `isHubs`).
+ */
+.numerotees {
+  counter-reset: section-accueil;
+}
+
+@media (max-width: 880px) {
+  .numerotees :global(details[data-pliable-mobile]) {
+    counter-increment: section-accueil;
+  }
+
+  .numerotees :global(details[data-pliable-mobile] > summary)::before {
+    content: counter(section-accueil, decimal-leading-zero);
+    flex: 0 0 22px;
+    font: 600 11px ui-monospace, Menlo, monospace;
+    color: var(--acc);
+  }
+}
+
+/*
+ * L'ANCRE `#etre-rappele` que visent les bandeaux « Une question sur votre
+ * site ? ». Elle enveloppe le formulaire de bas de page (voir `app/page.tsx`)
+ * et reprend sa marge de défilement, pour que l'îlot de navigation ne
+ * recouvre pas son titre.
+ */
+.ancreRappel {
+  scroll-margin-top: 110px;
+}
+
+/*
+ * LE HÉROS COMPACT DU TÉLÉPHONE (G2), voir `Hero.tsx`.
+ *
+ * Le haut de page : 70 px de rembourrage sous l'îlot de navigation sur bureau,
+ * 24 sur téléphone, où la maquette pose sa pastille à 16 px sous l'en-tête.
+ * Le chapô : 16 px, la taille du chapô de la maquette mobile (dc.html, bloc
+ * `lead` : 500 16px/1.6) ; le style est en ligne, d'où `!important`.
+ */
+@media (max-width: 880px) {
+  .herosCompact {
+    padding-top: 24px !important;
+  }
+
+  .chapoHeros {
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+    margin-top: 18px !important;
+  }
+
+  /* LES TROIS CHIFFRES SUR UNE LIGNE. Avec leurs 26 px d'écart et leurs deux
+     filets verticaux, « +200 clients » passait seul à la ligne à 390 px : une
+     ligne de 72 px pour un chiffre. Les filets sont décoratifs (des `div`
+     vides) : ils s'effacent, l'écart tombe à 20 px, les trois tiennent. La
+     maquette mobile les pose d'ailleurs en tuiles, sans filet. */
+  .chiffresHeros {
+    gap: 20px !important;
+    margin-top: 26px !important;
+    padding-top: 20px !important;
+  }
+
+  .chiffresHeros > :empty {
+    display: none;
+  }
+}
+
+/*
+ * LA BANDE DE LOGOS DU TÉLÉPHONE, au rythme de la maquette mobile v2 (m-00,
+ * dc.html L118 : « Ils nous font confiance », 24 px au-dessus, 10 px sous le
+ * sur-titre, pastilles de 52 px de haut et 104 de large, rayon 14). Les
+ * valeurs de bureau sont en ligne, d'où `!important`. Rien n'est retiré : les
+ * 38 logos et leur boucle sont les mêmes.
+ */
+@media (max-width: 880px) {
+  .marqueeCompact {
+    padding-top: 24px !important;
+  }
+
+  .marqueeCompact > div:first-child {
+    margin-bottom: 10px !important;
+  }
+
+  .marqueeCompact :global(.mg-marquee) {
+    padding: 4px 0 !important;
+  }
+
+  .marqueeCompact :global(.mg-logo) {
+    height: 52px !important;
+    min-width: 104px !important;
+    border-radius: 14px !important;
+  }
+}
+
+/*
+ * LE FORMULAIRE DU HÉROS, REPLIÉ SUR TÉLÉPHONE. Le panneau de verre qui
+ * l'entoure fait déjà la carte : la bascule n'en dessine pas une seconde, elle
+ * perd seulement le filet du repli partagé. Sur bureau, elle disparaît et le
+ * panneau est celui d'avant, au pixel.
+ */
+.repliHeros :global(details[data-pliable-mobile]) {
+  border-top: 0;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+@media (min-width: 881px) {
+  .repliHeros :global(details[data-pliable-mobile] > summary) {
+    display: none;
+  }
+}
+
+@media (max-width: 880px) {
+  .repliHeros :global(details[data-pliable-mobile] > summary) {
+    align-items: center;
+    /* La mention passe sur sa propre ligne au-dessus du titre (voir plus
+       bas) : l'écart de 12 px de la bascule partagée l'en décollait. */
+    row-gap: 0;
+  }
+
+  .repliHeros :global(details[data-pliable-mobile] > summary > *:first-child) {
+    flex: 1 1 0%;
+    min-width: 0;
+  }
+
+  /* « Rappel dans l'heure » est le RÉSUMÉ de la bascule (voir `Hero.tsx`,
+     pourquoi pas un sur-titre). À l'écran, il prend le dessin du sur-titre
+     de l'en-tête de bureau et remonte au-dessus du titre : `order` ne touche
+     que l'affichage, l'ordre de lecture reste titre puis mention. Trois
+     éléments de plus dans le sélecteur que la règle partagée
+     `.section:not([open]) .resume`, qu'il doit battre. */
+  .repliHeros :global(details[data-pliable-mobile] > summary > p[data-mobile-seulement]) {
+    order: -1;
+    margin: 0 0 2px;
+    font: 500 11px/1.3 var(--fb);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--acc-ink);
   }
 }

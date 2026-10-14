@@ -425,3 +425,21 @@ rendu depuis `PortesValeursRse.tsx` et non comme une douzième section de
 `app/nous-connaitre/page.tsx`, qui est sa place. Le composant le déclare
 lui-même. Le remonter d'un cran est un déplacement d'une ligne dans la page,
 hors du périmètre de cette passe comme de la précédente.
+
+---
+
+## F. Lot accueil, maquette mobile v2 (14/10) : la copie qui diffère, NON réécrite
+
+Le portage mobile de l'accueil (`app/page.tsx`, `components/site/accueil/`)
+a relevé cinq écarts de COPIE entre la maquette mobile v2 (m-00,
+`maquette/mobile-v2/maquette/Migen - Mobile v2.dc.html`) et le site. Aucun
+n'a été réécrit : chacun est la copie servie aujourd'hui, et la règle « aucun
+mot perdu » interdit de la remplacer sans décision. À trancher par Mehdi.
+
+| Où | Le site sert | La maquette mobile v2 écrit |
+|---|---|---|
+| Pastille du héros | « Partout en France » (seule, demande du 12/10) | « Partout en France · rappel dans l’heure » |
+| Parcours, chapô (`ParcoursMobile.tsx`) | « Dites-nous ce qui coince, nous vous montrons la réponse et la page qui la détaille. » | « Dites-nous ce qui vous bloque : chaque carte ouvre la page de l’offre qui y répond. » |
+| Parcours, carte 06 (`lib/parcours-mobile.ts`) | « Il me faut un dépannage, vite », offre « Intervention », vers `/offres/depannage-industriel/` | « Je veux confier toute ma maintenance à un seul partenaire », offre « Full service », vers `/offres/full-service/`. Le README de la maquette redirige d'ailleurs `/offres/depannage-industriel/` vers `/offres/zero-arret/`. |
+| Bande de logos | « Plus de 200 clients accompagnés » | « Ils nous font confiance » |
+| Bouton de « Notre sélection » et de Résidence | « Découvrir migen© Résidence », « Découvrir Résidence » | « Découvrir Résidence » (dc.html, `homeModel`). Le mot est voisin de « découvrez », proscrit : la maquette l'emploie, la liste ne vise que l'impératif. À confirmer. |

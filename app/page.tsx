@@ -24,6 +24,9 @@ import TemoignagesClients from "@/components/site/accueil/TemoignagesClients";
 import { VUE_AVANT, VUE_AVEC } from "@/components/site/accueil/avant-apres-donnees";
 import { BESOINS } from "@/components/site/accueil/bento-besoins-donnees";
 import { ETAPES_METHODE } from "@/components/site/accueil/methode-etapes-donnees";
+import replis from "@/components/site/accueil/replis-accueil.module.css";
+import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
+import { ID_RAPPEL_FINAL } from "@/components/site/mobile/conversion-donnees";
 import { pageParChemin } from "@/lib/contenu";
 import { metadonneesSeo } from "@/lib/seo/metadonnees";
 
@@ -101,24 +104,62 @@ export default function Accueil() {
             reste l'entrée en matière. */}
         <ParcoursMobile />
         <GrilleOffres />
-        <MarqueeClients />
-        <CertificationsRse />
-        <ProblematiqueClient />
-        <ProcessSelection />
-        <BandeauVerbe />
-        <FocusResidence />
-        <LogosTechnologies />
-        <ChiffresCroissance />
-        <DernieresRealisations />
-        <TemoignagesClients />
-        <FriseHistoire />
-        <PourquoiExternaliser />
-        <BentoBesoins besoins={BESOINS} />
-        <AvantApresBascule avant={VUE_AVANT} avec={VUE_AVEC} />
-        <MethodeQuatreEtapes etapes={ETAPES_METHODE} />
-        <SecteursAccueil />
+        <MarqueeClients compactMobile />
+        {/* LA CADENCE DE CONVERSION DE LA MAQUETTE MOBILE V2 (m-00, dc.html
+            L452 à L456), posée entre les sections repliées et NUMÉROTÉES.
+            Ce qui n'y entre pas, comme dans la maquette, où `nD` ne compte
+            que les sections numérotées : le haut de page propre à l'accueil
+            (héros, parcours, offres, logos) et les hubs (`isHubs`, jamais comptés).
+            Photo + CTA après la 2e (« Votre problématique », comme m-00),
+            bandeau « Une question sur votre site ? » après la 5e, 8e, 11e et
+            14e : l'accueil porte quinze sections là où la maquette en
+            numérote treize, la règle « toutes les trois » en donne une de plus.
+            `photoHeros` : l'accueil n'a pas de photo de héros, et la maquette
+            retombe sur `assets/web/team-duo.jpg` pour « / » (dc.html L421) ;
+            l'écarter du tirage redonne exactement la photo de m-00.
+            `rappelFinal={false}` : la maquette finit sur le mini-formulaire
+            « Être rappelé », l'accueil finit DÉJÀ sur son formulaire complet,
+            juste dessous. Poser `RappelExpress` au-dessus empilerait deux
+            formulaires dont le premier ne fait que préremplir le second. Le
+            formulaire de bas de page porte donc l'ancre `#etre-rappele` que
+            visent les bandeaux.
+            `numerotees` : le numéro 01, 02… des rangées repliées, en compteur
+            CSS (rien dans le texte du document), voir replis-accueil.
+            CE QUE LA PORTE « AUCUN MOT PERDU » SIGNALE ICI, ET CE QUE C'EST.
+            Elle lit le `textContent` du `<main>` d'un bloc : deux sections
+            voisines y collent leurs mots (« accès Z.A.C.Notre sélection »).
+            Chaque insertion casse un de ces collages, et la porte compte le
+            faux mot « Z.A.C.Notre » comme perdu : cinq ici, un par insertion.
+            Mesuré le 14/10 : retirer du texte d'après les seules chaînes
+            insérées redonne celui d'avant, caractère pour caractère. */}
+        <div className={replis.numerotees}>
+          <AvecConversionMobile
+            chemin="/"
+            gabarit="home"
+            photoHeros="/assets/web/team-duo.jpg"
+            rappelFinal={false}
+          >
+            <CertificationsRse />
+            <ProblematiqueClient />
+            <ProcessSelection />
+            <BandeauVerbe />
+            <FocusResidence />
+            <LogosTechnologies />
+            <ChiffresCroissance />
+            <DernieresRealisations />
+            <TemoignagesClients />
+            <FriseHistoire />
+            <PourquoiExternaliser />
+            <BentoBesoins besoins={BESOINS} />
+            <AvantApresBascule avant={VUE_AVANT} avec={VUE_AVEC} />
+            <MethodeQuatreEtapes etapes={ETAPES_METHODE} />
+            <SecteursAccueil />
+          </AvecConversionMobile>
+        </div>
         <HubsAccueil />
-        <FormulaireBasDePage />
+        <div id={ID_RAPPEL_FINAL} className={replis.ancreRappel}>
+          <FormulaireBasDePage />
+        </div>
       </main>
     </div>
   );

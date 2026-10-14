@@ -1,4 +1,6 @@
 import Image from "next/image";
+
+import replis from "./replis-accueil.module.css";
 /* Bandeau de logos clients, porté de « Migen - Site final » (lignes 600 à 608).
    Composant serveur : le défilement et la pause au survol sont entièrement en
    CSS (`@keyframes mgMarquee`, `.mg-marquee:hover .mg-track` dans
@@ -18,6 +20,10 @@ export interface ProprietesMarqueeClients {
       (tous les PNG et le WebP) : passer une liste réduite tant que le
       rapatriement n'est pas fini. */
   logos?: readonly Logo[];
+  /** Le rythme compact de la maquette mobile v2 sous 881 px. Posé par
+      l'accueil seul : `casclients/PageCasClients` reprend ce bandeau et
+      n'appartient pas au lot de l'accueil. */
+  compactMobile?: boolean;
 }
 
 /** Exportée : `offre/LogosClients` affiche la MÊME liste. Un logo ajouté ou
@@ -90,9 +96,13 @@ const IMAGE = {
 
 export default function MarqueeClients({
   logos = LOGOS_MAQUETTE,
+  compactMobile = false,
 }: ProprietesMarqueeClients) {
   return (
-    <section style={{ padding: "64px 0 0" }}>
+    <section
+      className={compactMobile ? replis.marqueeCompact : undefined}
+      style={{ padding: "64px 0 0" }}
+    >
       <div
         style={{
           maxWidth: 1200,
