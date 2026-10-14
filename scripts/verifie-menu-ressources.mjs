@@ -159,11 +159,14 @@ function defauts({ espaces, une, panneau, tiroir, carriere, hub }) {
 
   // 4. Le rendu porte ce que disent les données, et le lien vers le hub.
   const visible = texte(panneau).replace(/\s+/g, " ");
+  // 14/10, Mehdi : « masque pour le moment les catégories ». Les espaces et
+  // leurs comptes ne sont plus rendus dans le panneau : leurs données restent
+  // contrôlées plus haut (comptes recomptés dans le hub), mais aucun compte
+  // ne doit réapparaître dans le rendu tant que la décision tient.
   for (const espace of espaces) {
-    if (!visible.includes(espace.libelle)) dit(`l'espace « ${espace.libelle} » n'est pas rendu.`);
     for (const format of espace.formats) {
-      if (!new RegExp(`\\b${format.nombre} ${format.libelle}\\b`).test(visible)) {
-        dit(`le compte « ${format.nombre} ${format.libelle} » n'est pas rendu.`);
+      if (new RegExp(`\\b${format.nombre} ${format.libelle}\\b`).test(visible)) {
+        dit(`la catégorie « ${format.nombre} ${format.libelle} » est de nouveau rendue, masquée par Mehdi le 14/10.`);
       }
     }
   }
@@ -173,8 +176,8 @@ function defauts({ espaces, une, panneau, tiroir, carriere, hub }) {
       dit(`la durée de « ${article.libelle} » n'est pas rendue.`);
     }
   }
-  if (!visible.includes("Toutes les ressources →")) {
-    dit("le lien « Toutes les ressources → » n'est plus rendu.");
+  if (!visible.includes("Accéder à toutes nos ressources")) {
+    dit("le bouton « Accéder à toutes nos ressources » n'est plus rendu.");
   }
 
   // 5. Slash final, libellé de carrière, interdits de copie.
@@ -254,14 +257,14 @@ const TEMOINS = [
     (cas) => ({ ...cas, une: cas.une.map((x, rang) => (rang === 0 ? { ...x, minutes: 12 } : x)) }),
   ],
   [
-    "un compte retiré du rendu",
-    /n'est pas rendu/,
-    (cas) => ({ ...cas, panneau: cas.panneau.replace(/>15</, "><") }),
+    "une catégorie de nouveau rendue",
+    /de nouveau rendue/,
+    (cas) => ({ ...cas, panneau: `${cas.panneau}<span>7 Fiches métiers</span>` }),
   ],
   [
-    "le lien vers le hub retiré du panneau",
-    /Toutes les ressources →/,
-    (cas) => ({ ...cas, panneau: cas.panneau.replace("Toutes les ressources →", "Tout") }),
+    "le bouton vers le hub retiré du panneau",
+    /Accéder à toutes nos ressources/,
+    (cas) => ({ ...cas, panneau: cas.panneau.replace("Accéder à toutes nos ressources", "Tout") }),
   ],
   [
     "une cible qui perd son slash final",

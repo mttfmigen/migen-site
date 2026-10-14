@@ -12,7 +12,11 @@ const LETTRE: CSSProperties = {
   font: "700 calc(clamp(56px,7vw,96px) * var(--ts))/.9 var(--ft)",
   letterSpacing: "-.06em",
   color: "var(--acc)",
-  width: ".9em",
+  /* AUCUNE LARGEUR IMPOSÉE (14/10, signalé par Mehdi : « le GEN mange le
+     général », « M = aintenance »). Une largeur fixe de .9em tenait une seule
+     lettre ; « GEN », sur la même rangée depuis le retrait de la rangée
+     « EN », débordait de sa case et recouvrait « éral ». Chaque lettre prend
+     sa largeur et sa suite la colle : M-aintenance, I-ndustrielle, GEN-éral. */
   flex: "none",
 };
 
@@ -24,7 +28,7 @@ const SUITE: CSSProperties = {
 const RANGEE: CSSProperties = {
   display: "flex",
   alignItems: "baseline",
-  gap: 14,
+  gap: 8,
 };
 
 /**

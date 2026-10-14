@@ -605,12 +605,8 @@ export const TIROIR: SectionTiroir[] = [
           description: `${article.format} · ${dureeLecture(article)}`,
         }),
       ),
-      {
-        type: "lien",
-        libelle: "Toutes les ressources",
-        href: "/ressources/",
-        description: RESUME_ESPACES,
-      },
+      /* 14/10, Mehdi : catégories masquées, un bouton vers le hub. */
+      { type: "lien", libelle: "Accéder à toutes nos ressources", href: "/ressources/" },
     ],
   },
   {

@@ -142,7 +142,7 @@ export const REDIRECTIONS_ANCIEN_SITE: ReadonlyArray<
   // Articles, guides et fiches de l'ancien blog : vers la ressource du même sujet, sinon le hub.
   ["/guide-maintenance-industrielle/", "/ressources/articles/guide-maintenance-industrielle/"], // billet republié le 14/10
   ["/tout-savoir-sur-la-maintenance-industrielle/", "/ressources/articles/guide-maintenance-industrielle/"], // WordPress la renvoie vers ce guide, republié le 14/10
-  ["/category/articles/", "/ressources/articles/"],
+  ["/category/articles/", "/ressources/"],
   ["/vers-une-france-reindustrialisee-avantages-defis-et-strategies/", "/ressources/articles/reindustrialisation/"], // billet republié le 14/10
   ["/la-digitalisation-des-manuels-de-maintenance-industrielle/", "/ressources/articles/digitalisation-des-manuels/"], // billet republié le 14/10
   ["/comment-fonctionne-la-gestion-de-maintenance-assistee-par-ordinateur/", "/ressources/articles/gmao/"],
@@ -175,7 +175,7 @@ export const REDIRECTIONS_ANCIEN_SITE: ReadonlyArray<
   // elles donnent la cible finale. (/nous-rejoindre sans slash : la recherche
   // canonique du proxy le couvre.)
   ["/5s-maintenance-industrielle/", "/ressources/fiches-pratiques/5s/"],
-  ["/actualites/", "/ressources/articles/"],
+  ["/actualites/", "/ressources/"],
   ["/entreprise-de-maintenance-industrielle/", "/entreprise-maintenance-industrielle/"],
   ["/expert-maintenance-industrielle-externalisee/", "/offres/full-service/"], // corrige la ligne de base qui vise /offres/maintenance-externalisee/
   ["/gestion-dechets-operations-maintenance/", "/ressources/articles/gestion-des-dechets/"],

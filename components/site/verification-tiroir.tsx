@@ -254,7 +254,8 @@ function menuAttendu(): SectionTiroir[] {
  * lui-même : la liste `UNE` de `HubRessources.tsx`, `donnees.ts` et `FORMATS`.
  * Que le hub change, et le tiroir doit suivre.
  */
-function resumeDuHub(): string {
+// Gardé pour le jour où les catégories reviennent dans le tiroir.
+export function resumeDuHub(): string {
   const espaces: [Espace, string][] = [["ent", "Entreprises"], ["tech", "Techniciens"]];
   const contenus = { ent: CONTENUS_ENTREPRISES, tech: CONTENUS_TECHNICIENS };
   return espaces
@@ -298,7 +299,9 @@ function avecLaUneDuHub(groupes: SectionTiroir[]): SectionTiroir[] {
       entrees: [
         { type: "sous-tete", libelle: "À la une" },
         ...une,
-        { ...tout, description: resumeDuHub() },
+        /* 14/10, Mehdi : catégories masquées, un bouton vers le hub. Le
+           résumé des comptes par espace n'est plus affiché. */
+        { type: "lien", libelle: "Accéder à toutes nos ressources", href: "/ressources/" },
       ],
     };
   });

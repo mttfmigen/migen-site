@@ -96,6 +96,14 @@ export const REDIRECTIONS_REFONTE: TableRedirections = new Map(
       ["/offres/maintenance-externalisee/", "/offres/full-service/"],
       ["/equipe/", "/a-propos/equipe/"],
       ["/realisations/", "/preuves/"],
+      /* 14/10, Mehdi : « cette page n'est pas celle des ressources ». Les cinq
+         pages de rubrique de l'ancienne maquette sont remplacées par le hub
+         Ressources v2 (colonne de filtres) ; leurs fiches restent en ligne. */
+      ["/ressources/articles/", "/ressources/"],
+      ["/ressources/process/", "/ressources/"],
+      ["/ressources/fiches-pratiques/", "/ressources/"],
+      ["/ressources/fiches-techniques/", "/ressources/"],
+      ["/ressources/livres-blancs/", "/ressources/"],
     ] as const
   ).map(([source, destination]) => [
     source,

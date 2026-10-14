@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import s from "../Entete.module.css";
-import { dureeLecture, RES_A_LA_UNE, RES_ESPACES } from "../entete-donnees";
+import { dureeLecture, RES_A_LA_UNE } from "../entete-donnees";
 import { SurTitre } from "./blocs";
 import { altPhoto } from "@/lib/descriptions-photos";
 
@@ -36,93 +36,40 @@ export default function PanneauRessources() {
       className="mg-r2"
       style={{
         display: "grid",
-        gridTemplateColumns: ".9fr 1.7fr",
+        gridTemplateColumns: "minmax(0,1fr)",
         gap: 22,
         alignItems: "stretch",
       }}
     >
-      <div
-        style={{
-          borderRadius: 20,
-          background: "#1c1b19",
-          padding: 22,
-          display: "flex",
-          flexDirection: "column",
-          gap: 16,
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
+      <div>
+        {/* 14/10, Mehdi : « masque pour le moment les catégories, affiche juste
+            les ressources et mets un bouton Accéder à toutes nos ressources ».
+            Le bloc des espaces et de leurs comptes est retiré du panneau ; ses
+            données (RES_ESPACES) restent dans entete-donnees.ts. */}
         <div
           style={{
-            position: "absolute",
-            width: 260,
-            height: 260,
-            right: -110,
-            top: -120,
-            background:
-              "radial-gradient(circle,rgba(255,124,60,.3),transparent 66%)",
-          }}
-        />
-        {RES_ESPACES.map((espace, rang) => (
-          <div
-            key={espace.libelle}
-            style={{
-              position: "relative",
-              paddingTop: rang ? 14 : 0,
-              borderTop: rang ? "1px solid rgba(255,255,255,.12)" : "none",
-            }}
-          >
-            <SurTitre marge={10}>{espace.libelle}</SurTitre>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(3,minmax(0,1fr))",
-                gap: 12,
-              }}
-            >
-              {espace.formats.map((format) => (
-                <div key={format.libelle}>
-                  <div
-                    style={{
-                      font: "600 24px var(--ft)",
-                      letterSpacing: "-.04em",
-                      color: "#fff",
-                    }}
-                  >
-                    {format.nombre}
-                  </div>
-                  <div
-                    style={{
-                      font: "400 12px/1.35 var(--fb)",
-                      color: "rgba(255,255,255,.6)",
-                    }}
-                  >
-                    {format.libelle}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-        <Link
-          href="/ressources/"
-          className={s.ctaPanneau}
-          style={{
-            position: "relative",
-            marginTop: "auto",
-            display: "inline-flex",
-            justifyContent: "center",
-            padding: "12px 18px",
-            borderRadius: 999,
-            font: "600 13.5px var(--fb)",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            gap: 16,
+            marginBottom: 12,
           }}
         >
-          Toutes les ressources →
-        </Link>
-      </div>
-      <div>
-        <SurTitre>À la une</SurTitre>
+          <SurTitre marge={0}>À la une</SurTitre>
+          <Link
+            href="/ressources/"
+            className={s.ctaPanneau}
+            style={{
+              display: "inline-flex",
+              justifyContent: "center",
+              padding: "11px 18px",
+              borderRadius: 999,
+              font: "600 13.5px var(--fb)",
+            }}
+          >
+            Accéder à toutes nos ressources
+          </Link>
+        </div>
         <div
           className="mg-rq3"
           style={{
