@@ -19,7 +19,10 @@ import { vignetteDeLaPage } from "@/lib/seo/vignette";
  * « | Migen » est celui de la fiche.
  */
 
-const TITRE = "Nous rejoindre | Migen";
+// Le corpus écrivait « Nous rejoindre | Migen », soit le h1 suivi de la
+// marque : interdit (le title n'est jamais le h1). Le fragment ajouté est pris
+// dans la description de la page, mot pour mot (14/10).
+const TITRE = "Nous rejoindre : postes, alternance, candidature | Migen";
 const DESCRIPTION =
   "Rejoindre une entreprise de maintenance industrielle qui évalue vraiment ses techniciens. Postes, alternance, candidature.";
 

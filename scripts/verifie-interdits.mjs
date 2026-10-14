@@ -140,12 +140,21 @@ function sansCommentaires(source) {
    la règle qui fait le travail. Le corps du motif est blanchi, rien d'autre :
    le texte de REMPLACEMENT, lui, est une chaîne servie et reste contrôlé.
    Un `/` ne commence un motif qu'après un signe qui interdit la division
-   (`=`, `(`, `,`, `[`, `:`, `!`, `&`, `|`, `?`, `;`, ou `return`). */
+   (`=`, `(`, `,`, `[`, `:`, `!`, `&`, `|`, `?`, `;`, ou `return`).
+   Relecture adverse du 14/10 : ces signes se lisent aussi dans du TEXTE
+   (« Tarif : / sur mesure / jour », « Accès (/ sur mesure /) »), et le mot y
+   était blanchi. Un motif n'est donc reconnu que s'il porte un drapeau
+   (`/…/gi`) ou un signe d'expression régulière (`(`, `\`, `[`, `^`, `$`, `|`,
+   `?`, `*`, `+`, `{`). Un motif nu comme `/sur mesure/` reste contrôlé : faux
+   positif possible, jamais un faux négatif. */
 const LITTERAL_REGEX =
-  /(^|[=(,[:!&|?;]|\breturn)(\s*)\/(?![/*])((?:\\.|\[(?:\\.|[^\]\\\n])*\]|[^/\\\n[])+)\/[dgimsuyv]*/g;
+  /(^|[=(,[:!&|?;]|\breturn)(\s*)\/(?![/*])((?:\\.|\[(?:\\.|[^\]\\\n])*\]|[^/\\\n[])+)\/([dgimsuyv]*)/g;
+const SIGNE_DE_MOTIF = /[()\\[\]^$|?*+{}]/;
 function sansMotifs(ligne) {
-  return ligne.replace(LITTERAL_REGEX, (tout, avant, blanc, corps) =>
-    `${avant}${blanc}/${" ".repeat(corps.length)}/`,
+  return ligne.replace(LITTERAL_REGEX, (tout, avant, blanc, corps, drapeaux) =>
+    drapeaux || SIGNE_DE_MOTIF.test(corps)
+      ? `${avant}${blanc}/${" ".repeat(corps.length)}/${drapeaux}`
+      : tout,
   );
 }
 
@@ -168,6 +177,10 @@ const attendus = [
   [`const R = [[/(conçues) en interne/gi, () => "conçues sur mesure"]];`, ["sur mesure"]],
   [`<p>Une offre sur mesure</p>`, ["sur mesure"]],
   [`const x = a / b; const y = "sur mesure";`, ["sur mesure"]],
+  // Du texte qui ressemble à un motif après « : » ou « ( » reste contrôlé.
+  [`<p>Tarif : / sur mesure / jour</p>`, ["sur mesure"]],
+  [`const t = "Accès (/ sur mesure /)";`, ["sur mesure"]],
+  [`<p>Options : /sur mesure/ ou standard</p>`, ["sur mesure"]],
 ];
 for (const [ligne, attendu] of attendus) {
   const lu = temoin(ligne);
