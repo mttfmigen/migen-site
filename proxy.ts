@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-import { cibleFilet } from "@/lib/filet-ancien-site";
+import { cibleFilet, PARAMETRES_WORDPRESS } from "@/lib/filet-ancien-site";
 import {
   cheminNormalise,
   REDIRECTIONS_CODE,
@@ -158,9 +158,25 @@ function cibleInterne(destination: string, request: NextRequest): URL | null {
   // Un `URL` nu, pas un clone de `request.nextUrl` : voir `urlSansNextUrl`.
   const cible = urlSansNextUrl(request);
   cible.pathname = cheminNormalise(analysee.pathname);
-  cible.search = analysee.search;
+  cible.search = analysee.search || parametresReportes(request);
   cible.hash = analysee.hash;
   return cible;
+}
+
+/**
+ * Les paramètres de la requête, reportés sur la cible d'une redirection.
+ *
+ * POURQUOI : un ancien lien de campagne (`?utm_source=…`, `?gclid=…`) qui
+ * passait par une 301 arrivait sans ses paramètres, et le formulaire perdait
+ * l'attribution (`lib/utm.ts` les lit sur la page d'arrivée). Les paramètres de
+ * WordPress (`?p=`, `?page_id=`, `?cat=`, `?s=`) sont retirés : reportés sur
+ * l'accueil, ils relanceraient le filet, soit une chaîne de deux sauts.
+ */
+function parametresReportes(request: NextRequest): string {
+  const params = new URLSearchParams(request.nextUrl.search);
+  for (const p of PARAMETRES_WORDPRESS) params.delete(p);
+  const texte = params.toString();
+  return texte ? `?${texte}` : "";
 }
 
 export async function proxy(request: NextRequest): Promise<NextResponse> {
@@ -199,16 +215,19 @@ export async function proxy(request: NextRequest): Promise<NextResponse> {
   // Puis le filet de l'ancien WordPress (`lib/filet-ancien-site.ts`) : une
   // adresse à son format, sans page ni redirection connue, part sur l'accueil
   // ou sur le parent évident. Aucun de ses motifs ne vise une page du site.
-  const filet = cibleFilet(
-    canonique,
-    request.nextUrl.searchParams,
-    (c) => connue(c)?.destination,
-  );
-  const regle =
-    connue(chemin, canonique) ??
-    (filet === null
+  // Évalué seulement sans redirection connue : une page du site ne paie que
+  // trois expressions régulières sur un chemin court.
+  const regleFilet = () => {
+    const filet = cibleFilet(
+      canonique,
+      request.nextUrl.searchParams,
+      (c) => connue(c)?.destination,
+    );
+    return filet === null
       ? undefined
-      : { source: canonique, destination: filet, code: 301 });
+      : { source: canonique, destination: filet, code: 301 };
+  };
+  const regle = connue(chemin, canonique) ?? regleFilet();
   if (regle) {
     const cible = cibleInterne(regle.destination, request);
     if (cible) return NextResponse.redirect(cible, regle.code);
@@ -245,8 +264,15 @@ export async function proxy(request: NextRequest): Promise<NextResponse> {
  *
  * Repris pour le filet de l'ancien WordPress : `/wp-…` (images de
  * `/wp-content/uploads/`, `/wp-login.php`) et tout `.php` (`/xmlrpc.php`).
- * Le site n'a aucun fichier sous ces formes.
+ * Le site n'a aucun fichier sous ces formes. Et les plans de site de Yoast
+ * (`/sitemap_index.xml`, `/page-sitemap.xml`…), qui partent sur `/sitemap.xml`.
  */
 export const config = {
-  matcher: ["/((?!api/|_next/|.*\\.[a-zA-Z0-9]+$).*)", "/(wp-.*)", "/(.*\\.php)"],
+  matcher: [
+    "/((?!api/|_next/|.*\\.[a-zA-Z0-9]+$).*)",
+    "/(wp-.*)",
+    "/(.*\\.php)",
+    "/(sitemap_index\\.xml)",
+    "/([a-zA-Z_-]+-sitemap[0-9]*\\.xml)",
+  ],
 };

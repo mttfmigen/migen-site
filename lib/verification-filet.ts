@@ -59,6 +59,11 @@ const ATTENDUS: ReadonlyArray<readonly [string, string]> = [
   ["/?page_id=8", "/"],
   ["/?cat=3", "/"],
   ["/?s=robot", "/"],
+  // Plans de site de Yoast, en 200 sur l'ancien site.
+  ["/sitemap_index.xml", "/sitemap.xml"],
+  ["/page-sitemap.xml", "/sitemap.xml"],
+  ["/post-sitemap2.xml", "/sitemap.xml"],
+  ["/element_category-sitemap.xml", "/sitemap.xml"],
 ];
 
 for (const [adresse, attendue] of ATTENDUS) {

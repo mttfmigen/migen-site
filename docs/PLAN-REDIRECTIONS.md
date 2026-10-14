@@ -107,7 +107,10 @@ Ce sont des pages que WordPress fabrique tout seul, sans visite ni lien d'un aut
 - `/author/`, `/category/`, `/tag/`, `/blocks/`, `/element_category/`, `/fusion_tb_category/`, `/portfolio-items/`, `/faq-items/`, `/featured_item/`, `/shop/`, `/product-category/`, `/product/`, `/cart/`, `/checkout/`, `/my-account/`, `/lost-password/`, `/comments/` ;
 - les archives datées `/AAAA/` et `/AAAA/MM/…` ;
 - `…/page/N/` et `…/feed/` : la cible de la page qui précède (`/actualites/page/2/` part comme `/actualites/`), l'accueil sinon ;
-- `?p=`, `?page_id=`, `?cat=`, `?s=` sur l'accueil. Une page du nouveau site garde ses paramètres.
+- `?p=`, `?page_id=`, `?cat=`, `?s=` sur l'accueil. Une page du nouveau site garde ses paramètres ;
+- les six plans de site de Yoast, en 200 sur l'ancien site et hors des 181 (`/sitemap_index.xml`, `/page-sitemap.xml`, `/post-sitemap.xml`, `/category-sitemap.xml`, `/element_category-sitemap.xml`, `/fusion_tb_category-sitemap.xml`) : vers `/sitemap.xml`. Ajoutés le 14/10 à la relecture : le proxy ne voyait pas les `.xml`, ils restaient en 404.
+
+**Les paramètres de campagne passent la 301.** Une ancienne adresse appelée avec `?utm_source=…` ou `?gclid=…` arrive sur sa cible avec ces paramètres : le formulaire garde l'attribution. Les paramètres de WordPress (`p`, `page_id`, `cat`, `s`) tombent, sans quoi l'accueil relancerait le filet en un deuxième saut.
 
 Aucun motif ne touche une adresse du nouveau site : les 272 adresses du plan du site répondent 200, et une adresse inventée qui ne ressemble pas à WordPress (`/offres/nexistepas/`) garde sa 404. Le contrôle `bun lib/verification-filet.ts` (dans `bun run verifie`) prouve chaque motif et ces témoins.
 

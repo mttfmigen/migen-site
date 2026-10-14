@@ -25,8 +25,17 @@ const SUFFIXE = /^(.*\/)(?:page\/\d+|feed)\/$/;
 const FAMILLES =
   /^\/(?:wp-|(?:author|category|tag|blocks|element_category|fusion_tb_category|portfolio-items|faq-items|featured_item|shop|product-category|product|cart|checkout|my-account|lost-password|comments)\/|\d{4}\/(?:\d{2}\/)?)|\.php$/;
 
-/** Liens courts et recherche de WordPress, posés sur l'accueil. */
-const PARAMETRES = ["p", "page_id", "cat", "s"];
+/**
+ * Plans de site de Yoast (`/sitemap_index.xml`, `/page-sitemap.xml`…), en 200
+ * sur l'ancien site et soumis à la Search Console : ils vont au plan du site.
+ */
+const PLANS_YOAST = /^\/(?:sitemap_index|[a-z_-]+-sitemap\d*)\.xml$/;
+
+/**
+ * Liens courts et recherche de WordPress, posés sur l'accueil. Le proxy les
+ * retire aussi des paramètres qu'il reporte sur la cible d'une redirection.
+ */
+export const PARAMETRES_WORDPRESS = ["p", "page_id", "cat", "s"];
 
 /**
  * La destination du filet, ou `null` si l'adresse n'est pas de l'ancien format.
@@ -43,7 +52,8 @@ export function cibleFilet(
   const parent = SUFFIXE.exec(chemin)?.[1];
   if (parent !== undefined) return connue(parent) ?? "/";
   if (FAMILLES.test(chemin)) return "/";
+  if (PLANS_YOAST.test(chemin)) return "/sitemap.xml";
   // Seulement sur l'accueil : une page du nouveau site garde ses paramètres.
-  if (chemin === "/" && PARAMETRES.some((p) => requete.has(p))) return "/";
+  if (chemin === "/" && PARAMETRES_WORDPRESS.some((p) => requete.has(p))) return "/";
   return null;
 }
