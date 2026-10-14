@@ -84,8 +84,12 @@
   filter: brightness(0.93);
   color: #fff !important;
 }
-.chipHover:hover {
-  background: var(--chip) !important;
+.bordOrange:hover {
+  border-color: #ff7c3c !important;
+}
+/* Mots-clés : au-delà des 8 premiers, repliés par l'attribut hidden, jamais retirés. */
+.motCle:not([hidden]) {
+  display: inline-flex;
 }
 .dashed:hover {
   border-color: #ff7c3c !important;
@@ -96,12 +100,6 @@
   color: var(--knobfg) !important;
 }
 
-.scroll {
-  scrollbar-width: none;
-}
-.scroll::-webkit-scrollbar {
-  display: none;
-}
 .sc > * {
   flex-shrink: 0;
 }
@@ -178,6 +176,9 @@
   .app {
     grid-template-columns: 240px minmax(0, 1fr) !important;
     gap: 20px !important;
+  }
+  .fmt {
+    grid-template-columns: minmax(0, 1fr) !important;
   }
 }
 @media (max-width: 1000px) {
