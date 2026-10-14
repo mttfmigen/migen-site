@@ -133,6 +133,50 @@ function sansCommentaires(source) {
     .replace(/(^|[^:"'`\\])\/\/.*$/gm, (ligne, avant) => avant);
 }
 
+/* LES LITTÉRAUX D'EXPRESSION RÉGULIÈRE NE SONT PAS DE LA COPIE (14/10).
+   `lib/decisions-copie.ts` porte des règles qui RETIRENT un interdit du texte
+   servi : leur motif cite donc le mot, `/(conçues) sur mesure/gi`, exactement
+   comme un commentaire l'explique. Le chercher là retournait le contrôle contre
+   la règle qui fait le travail. Le corps du motif est blanchi, rien d'autre :
+   le texte de REMPLACEMENT, lui, est une chaîne servie et reste contrôlé.
+   Un `/` ne commence un motif qu'après un signe qui interdit la division
+   (`=`, `(`, `,`, `[`, `:`, `!`, `&`, `|`, `?`, `;`, ou `return`). */
+const LITTERAL_REGEX =
+  /(^|[=(,[:!&|?;]|\breturn)(\s*)\/(?![/*])((?:\\.|\[(?:\\.|[^\]\\\n])*\]|[^/\\\n[])+)\/[dgimsuyv]*/g;
+function sansMotifs(ligne) {
+  return ligne.replace(LITTERAL_REGEX, (tout, avant, blanc, corps) =>
+    `${avant}${blanc}/${" ".repeat(corps.length)}/`,
+  );
+}
+
+/** Les interdits que porte une ligne de code, une fois motifs blanchis. */
+function interditsDeLaLigne(ligne, regles) {
+  const lue = sansMotifs(ligne);
+  return regles.flatMap(([motif, remede]) => {
+    // Une chaîne se cherche telle quelle, un motif rend le fragment trouvé.
+    const interdit = typeof motif === "string" ? lue.includes(motif) && motif : lue.match(motif)?.[0];
+    return interdit ? [{ interdit, remede }] : [];
+  });
+}
+
+/* TÉMOIN : la porte attrape TOUJOURS « sur mesure » dans une chaîne, y compris
+   le texte de remplacement d'une règle, et l'ignore dans le seul motif. */
+const temoin = (ligne) => interditsDeLaLigne(ligne, INTERDITS).map((t) => t.interdit);
+const attendus = [
+  [`const titre = "Des pièces conçues sur mesure";`, ["sur mesure"]],
+  [`const R = [[/(conçues) sur mesure/gi, (_m, c) => \`\${c} en interne\`]];`, []],
+  [`const R = [[/(conçues) en interne/gi, () => "conçues sur mesure"]];`, ["sur mesure"]],
+  [`<p>Une offre sur mesure</p>`, ["sur mesure"]],
+  [`const x = a / b; const y = "sur mesure";`, ["sur mesure"]],
+];
+for (const [ligne, attendu] of attendus) {
+  const lu = temoin(ligne);
+  if (JSON.stringify(lu) !== JSON.stringify(attendu)) {
+    console.error(`TÉMOIN ROUGE : ${ligne}\n  attendu ${JSON.stringify(attendu)}, lu ${JSON.stringify(lu)}`);
+    process.exit(2);
+  }
+}
+
 const trouvailles = [];
 for (const chemin of [
   ...fichiers(join(RACINE, "components")),
@@ -143,20 +187,13 @@ for (const chemin of [
   const regles = COPIE_JURIDIQUE.has(relative(RACINE, chemin)) ? TYPOGRAPHIE : INTERDITS;
   lignes.forEach((ligne, i) => {
     if (IGNOREES.some((motif) => motif.test(ligne))) return;
-    for (const [motif, remede] of regles) {
-      // Une chaîne se cherche telle quelle, un motif rend le fragment trouvé.
-      const interdit =
-        typeof motif === "string"
-          ? ligne.includes(motif) && motif
-          : ligne.match(motif)?.[0];
-      if (interdit) {
-        trouvailles.push({
-          ou: `${relative(RACINE, chemin)}:${i + 1}`,
-          interdit,
-          remede,
-          ligne: ligne.trim().slice(0, 100),
-        });
-      }
+    for (const { interdit, remede } of interditsDeLaLigne(ligne, regles)) {
+      trouvailles.push({
+        ou: `${relative(RACINE, chemin)}:${i + 1}`,
+        interdit,
+        remede,
+        ligne: ligne.trim().slice(0, 100),
+      });
     }
   });
 }

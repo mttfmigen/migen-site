@@ -80,6 +80,10 @@ const TITRES_STATIQUES: Record<(typeof ROUTES_STATIQUES)[number], string> = {
   // Quatorzième route, ajoutée le 14/10 : H1 de `app/cgv/page.tsx`.
   "/cgv/": "Conditions générales de vente",
   "/test-technicien/": "Huit questions. Celles qu’on pose vraiment en entretien.",
+  // H1 par défaut de `HubRessources` (lecteur entreprise), relevé le 14/10 sur
+  // la préproduction. La ligne `pages` de la base porte encore l'ancien H1
+  // « Guide maintenance industrielle », que la page ne sert plus.
+  "/ressources/": "Le terrain, mis par écrit.",
 };
 
 /**
@@ -177,6 +181,9 @@ export async function pagesPubliees(
       lastModified: deploiement,
     })),
     ...listePages
+      // Une route statique qui a aussi sa ligne en base (`/ressources/`) n'est
+      // listée qu'une fois, avec le H1 que son composant sert.
+      .filter((page) => !statiques.includes(page.path))
       .filter((page) => !exclus.has(page.id))
       .filter((page) => !estRedirigee(page.path))
       .map((page) => ({

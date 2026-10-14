@@ -40,7 +40,10 @@ import { vignetteDeLaPage } from "@/lib/seo/vignette";
 export const metadata: Metadata = {
   title: "Engagements RSE de Migen, sécurité, emploi et retrofit",
   description:
-    "Sécurité des équipes, formation et emploi local, prolongation des machines par le retrofit, achats de proximité : les engagements RSE de Migen et les pièces transmises pour votre dossier fournisseur.",
+    // 199 caractères avant le 14/10, coupés dans la SERP (plafond de la porte
+    // SEO : 175). La fin « et les pièces transmises pour votre dossier
+    // fournisseur » est retirée de la description seulement : la page la sert.
+    "Sécurité des équipes, formation et emploi local, prolongation des machines par le retrofit, achats de proximité : les engagements RSE de Migen.",
   alternates: { canonical: "/rse/" },
   openGraph: {
     type: "website",

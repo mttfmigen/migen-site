@@ -35,4 +35,7 @@ export const ROUTES_STATIQUES = [
   "/confidentialite/",
   "/cgv/",
   "/test-technicien/",
+  // Hub des ressources, route statique depuis le portage « Ressources v2 » :
+  // son H1 vit dans le composant, plus dans la ligne `pages` de la base.
+  "/ressources/",
 ] as const;
