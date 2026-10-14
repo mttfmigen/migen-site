@@ -30,7 +30,9 @@
  *    dépliant, et chaque `<summary>` ne porte QUE le titre : ni chevron ni
  *    résumé écrit dans le DOM, sans quoi le texte du pied changerait au
  *    bureau. L'attribut est le même des deux côtés (`RepliPiedMobile`).
- * Des témoins prouvent que 1, 2, 4 et 6 savent échouer.
+ * 7. La carte blanche du téléphone porte les onze liens de la maquette mobile
+ *    v2, libellés, destinations et ordre (relus dans la maquette, pas recopiés).
+ * Des témoins prouvent que 1, 2, 4, 6 et 7 savent échouer.
  */
 
 import assert from "node:assert/strict";
@@ -165,6 +167,25 @@ function controleRepli(html: string): void {
   }
 }
 
+/**
+ * 7 · LA CARTE DU TÉLÉPHONE, contre la maquette mobile v2 relue à chaque
+ * exécution (`const foot` de « Migen - Mobile v2.dc.html ») : mêmes onze
+ * libellés, mêmes destinations, même ordre. C'est la première liste du pied.
+ * Slash final ignoré : hors de Next, `Link` le retire.
+ */
+const mobileV2 = readFileSync("maquette/mobile-v2/maquette/Migen - Mobile v2.dc.html", "utf8");
+const footMaquette = /const foot = \[([\s\S]*?)\]\.filter/.exec(mobileV2)?.[1] ?? "";
+const carteMaquette = [...footMaquette.matchAll(/\["([^"]+)", "([^"]+)"\]/g)].map(([, l, h]) => `${l} ${h.replace(/\/$/, "")}`);
+assert.equal(carteMaquette.length, 11, "les onze liens de la carte mal relevés dans la maquette mobile v2");
+
+function controleCarte(html: string): void {
+  const liste = /<ul\b[^>]*>([\s\S]*?)<\/ul>/.exec(html.slice(html.indexOf("<footer")))?.[1] ?? "";
+  const rendue = [...liste.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>([^<]+)<\/a>/g)].map(
+    ([, h, l]) => `${lisible(l)} ${h.replace(/\/$/, "")}`,
+  );
+  assert.deepEqual(rendue, carteMaquette, "carte du téléphone : libellés, liens ou ordre différents de la maquette mobile v2");
+}
+
 // L'attribut que le serveur pose est celui que le navigateur cherche.
 assert.ok(
   readFileSync("components/site/RepliPiedMobile.tsx", "utf8").includes('"details[data-pied-pliable]"'),
@@ -196,6 +217,15 @@ function controleMaillage(html: string): void {
 const relevesNav = controleNav(rendu);
 controleMaillage(rendu);
 controleRepli(rendu);
+controleCarte(rendu);
+assert.throws(
+  () => controleCarte(rendu.replace(/(<li><a\b[^>]*>Secteurs<\/a><\/li>)(<li><a\b[^>]*>Implantations<\/a><\/li>)/, "$2$1")),
+  "le contrôle de la carte laisse passer deux liens permutés",
+);
+assert.throws(
+  () => controleCarte(rendu.replace(/<li><a\b[^>]*>Contact<\/a><\/li>/, "")),
+  "le contrôle de la carte laisse passer un lien retiré",
+);
 
 // 3 · « Toutes nos pages », le seul lien dessiné à part dans la maquette.
 const plan = navMaquette.flatMap((c) => c.liens).find((l) => l.libelle === "Toutes nos pages");
@@ -247,7 +277,7 @@ if (CONTROLE) {
   console.log(
     `pied de page, mode témoins : ${relevesNav} libellés de navigation et ${maillageMaquette.length} colonnes de ` +
       "maillage conformes à l'autonome ; 7 dépliants servis ouverts, titres seuls dans les <summary> ; " +
-      "7 témoins d'échec tombés. Réseau non joué : relancer sans --controle, le site démarré.",
+      "carte du téléphone conforme à la maquette mobile v2 ; 9 témoins d'échec tombés. Réseau non joué : relancer sans --controle, le site démarré.",
   );
   process.exit(0);
 }
@@ -270,6 +300,7 @@ assert.ok(servi.length > 9, "pied de page absent de l'accueil servi");
 controleNav(servi);
 controleMaillage(servi);
 controleRepli(servi);
+controleCarte(servi);
 const internes = [...new Set([...servi.matchAll(/href="(\/[^"#]*)"/g)].map((m) => m[1]))];
 const morts: string[] = [];
 for (const chemin of internes) {
@@ -310,7 +341,7 @@ assert.notEqual(await statut("/n-existe-pas-pied-de-page/"), 200, "le contrôle 
 
 console.log(
   `pied de page vérifié contre l'autonome : ${relevesNav} libellés de navigation et ${maillageMaquette.length} ` +
-    `colonnes de maillage, mot pour mot et dans l'ordre ; 7 dépliants servis ouverts, titres seuls dans les <summary> ; ` +
+    `colonnes de maillage, mot pour mot et dans l'ordre ; carte du téléphone aux ${carteMaquette.length} liens de la maquette mobile v2 ; 7 dépliants servis ouverts, titres seuls dans les <summary> ; ` +
     `« Toutes nos pages » au dessin de la maquette ; ` +
     `${internes.length} liens internes à 200 sur ${SITE} ; ${SANS_PAGE.length} libellé(s) sans page, revérifié(s) : ` +
     `${SANS_PAGE.map((m) => `« ${m.libelle} » (${m.raison})`).join(", ")} ; siège de Limonest ; témoins d'échec tombés.`,

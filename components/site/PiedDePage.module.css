@@ -285,9 +285,16 @@
     color: var(--ink1);
   }
 
+  /* #8c8882, la couleur de la maquette (ligne 187), et non --ink4 (#a8a49d) :
+     aucun jeton ne la porte, et --ink4 tombait à 2,5:1 sur le blanc de la
+     carte contre 3,5:1 pour la maquette. */
   .carteBas {
     margin: 16px 0 0;
     font: 400 12px/1.6 var(--fb);
+    color: #8c8882;
+  }
+
+  :global(:root[data-theme="sombre"]) .carteBas {
     color: var(--ink4);
   }
 
@@ -367,16 +374,23 @@
     gap: 6px 16px !important;
   }
 
-  /* Les liens légaux, serrés sur deux lignes au lieu de quatre. */
+  /* Les liens légaux, serrés sur trois lignes au lieu de quatre. 6 px entre
+     deux lignes et pas 2 : des liens de 18 px au pas de 20 px faisaient se
+     croiser leurs cercles de 24 px (critère 2.5.8 de la WCAG 2.2, exception
+     d'espacement), mesuré le 14/10 à 390 px. Au pas de 24 px, ils se touchent
+     sans se croiser. */
   .pied .barreBasse > div:last-child {
-    gap: 2px 16px !important;
+    gap: 6px 16px !important;
   }
 
+  /* --ink2 et non --ink3 : sur le fond de page (#f1f2f4), --ink3 ne donnait
+     que 4,2:1 à des textes de 12,5 px, sous le seuil AA de 4,5:1 ; --ink2 en
+     donne 5,0. */
   .pied .mention,
   .pied .lienBas,
   .pied .reglages > button,
   .pied .reglages > a {
-    color: var(--ink3) !important;
+    color: var(--ink2) !important;
   }
 
   .pied .lienBas:hover,
