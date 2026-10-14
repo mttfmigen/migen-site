@@ -353,7 +353,8 @@ export function ProcessSelection({ etape, onEtape }: { etape: number; onEtape: (
                   ) : null}
                 </span>
                 <span aria-hidden="true" style={{ paddingTop: 10, font: "400 22px/1 var(--fb)", textAlign: "right", color: fg }}>
-                  {on ? "–" : "+"}
+                  {/* signe moins (U+2212) : la maquette met un demi-cadratin, interdit sur le site */}
+                  {on ? "−" : "+"}
                 </span>
               </button>
             );

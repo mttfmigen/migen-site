@@ -62,7 +62,7 @@ export const TAXONOMIE: Record<Espace, readonly string[]> = {
 export const DUREES: readonly (readonly [CleDuree, string])[] = [
   ["all", "Tout"],
   ["s", "≤ 6 min"],
-  ["m", "7–10"],
+  ["m", "7-10"], // trait d'union : la maquette écrit un demi-cadratin, interdit sur le site
   ["l", "10 +"],
 ];
 

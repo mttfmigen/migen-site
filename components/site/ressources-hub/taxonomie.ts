@@ -231,7 +231,7 @@ export type CleDuree = "all" | "s" | "m" | "l";
 export const SEGMENTS_DUREE: readonly { cle: CleDuree; libelle: string }[] = [
   { cle: "all", libelle: "Tout" },
   { cle: "s", libelle: "≤ 6 min" },
-  { cle: "m", libelle: "7–10" },
+  { cle: "m", libelle: "7-10" },
   { cle: "l", libelle: "10 +" },
 ] as const;
 
