@@ -5,8 +5,8 @@ source,destination,code,raison,confiance,trafic,domaines_referents
 /?page_id=89,/,301,"lien court WordPress : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0
 /a-propos/,/nous-connaitre/,301,"à valider : /nous-connaitre/ ou /entreprise-maintenance-industrielle/. Ancienne page « À propos » (philosophie, valeurs, équipe), WordPress la renvoyait vers /maintenance-industrielle/ qui présente l'entreprise ; /nous-connaitre/ est la page « Qui est Migen » du nouveau site",haute,0,0
 /accueil-cloned/,/,301,"doublon WordPress « Accueil (Cloned) » de la page d'accueil, même contenu",haute,0,0
-/actualites/,/ressources/articles/,301,déjà en base (0003_redirections.sql),haute,0,0
-/actualites/page/2/,/ressources/articles/,301,"pagination : filet de l'ancien WordPress, vers la cible de son archive (règle de Mehdi du 14/10)",,0,0
+/actualites/,/ressources/,301,"en base (0003_redirections.sql), cible changée le 14/10 vers le hub Ressources v2 : base et code d'accord",haute,0,0
+/actualites/page/2/,/ressources/,301,"pagination : filet de l'ancien WordPress, vers la cible de son archive (règle de Mehdi du 14/10)",,0,0
 /aktid-choisit-migen-intervention-pour-le-montage-de-son-nouveau-centre-logistique-a-clermont-ferrand/,/preuves/aktid-centre-logistique/,301,"Même étude de cas Aktid (montage du centre logistique de Clermont-Ferrand, 6 semaines)",haute,0,0
 /amazon-choisit-migen-intervention-pour-assurer-le-maintien-de-son-centre-logistique/,/preuves/amazon-centre-logistique/,301,"Même étude de cas Amazon ORY4, nommé dans la cible",haute,0,0
 /amazon-choisit-migen-intervention-pour-assurer-le-maintien-dun-nouveau-site/,/preuves/amazon-nouveau-site/,301,"Même étude de cas Amazon ETZ 2 (nouveau site), nommé dans la cible",haute,0,0
@@ -24,10 +24,10 @@ source,destination,code,raison,confiance,trafic,domaines_referents
 /blocks/erreur-404/,/,301,"bloc de thème : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0
 /blocks/footer-about-us/,/,301,"bloc de thème : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0
 /bureau-etudes-ingenierie/,/offres/bureau-etudes/,301,"bureau d'études ; /offres/bureau-etudes/ plutôt que /bureau-etudes/ (même h1, que la maquette redirige vers /offres/bureau-etudes/) pour éviter une chaîne",haute,0,0
-/category/articles/,/ressources/articles/,301,"Archive WordPress des articles de blog (maintenance préventive, 5S, externalisation...) : même rôle que le hub des articles du nouveau site",haute,0,0
-/category/articles/page/2/,/ressources/articles/,301,"pagination : filet de l'ancien WordPress, vers la cible de son archive (règle de Mehdi du 14/10)",,0,0
-/category/articles/page/3/,/ressources/articles/,301,"pagination : filet de l'ancien WordPress, vers la cible de son archive (règle de Mehdi du 14/10)",,0,0
-/category/articles/page/4/,/ressources/articles/,301,"pagination : filet de l'ancien WordPress, vers la cible de son archive (règle de Mehdi du 14/10)",,0,0
+/category/articles/,/ressources/,301,"Archive WordPress des articles de blog (maintenance préventive, 5S, externalisation...) : le hub Ressources v2, depuis que /ressources/articles/ part vers /ressources/ (14/10)",haute,0,0
+/category/articles/page/2/,/ressources/,301,"pagination : filet de l'ancien WordPress, vers la cible de son archive (règle de Mehdi du 14/10)",,0,0
+/category/articles/page/3/,/ressources/,301,"pagination : filet de l'ancien WordPress, vers la cible de son archive (règle de Mehdi du 14/10)",,0,0
+/category/articles/page/4/,/ressources/,301,"pagination : filet de l'ancien WordPress, vers la cible de son archive (règle de Mehdi du 14/10)",,0,0
 /category/realisations/,/preuves/,301,"Archive WordPress des études de cas clients (Danone, JTEKT, GLS, Suez, Autoliv...) : même rôle que le hub des réalisations du nouveau site",haute,0,0
 /category/realisations/page/2/,/preuves/,301,"pagination : filet de l'ancien WordPress, vers la cible de son archive (règle de Mehdi du 14/10)",,0,0
 /category/realisations/page/3/,/preuves/,301,"pagination : filet de l'ancien WordPress, vers la cible de son archive (règle de Mehdi du 14/10)",,0,0

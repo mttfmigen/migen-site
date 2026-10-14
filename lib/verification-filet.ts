@@ -21,9 +21,9 @@ const filet = (adresse: string) => {
 
 const ATTENDUS: ReadonlyArray<readonly [string, string]> = [
   // Paginations et flux : le parent évident.
-  ["/category/articles/page/2/", "/ressources/articles/"],
+  ["/category/articles/page/2/", "/ressources/"],
   ["/category/realisations/page/3/", "/preuves/"],
-  ["/actualites/page/2/", "/ressources/articles/"],
+  ["/actualites/page/2/", "/ressources/"],
   ["/expert-maintenance-industrielle-externalisee/page/2/", "/offres/full-service/"],
   ["/maintenance-industrielle-lyon/feed/", "/implantations/lyon/"],
   ["/page/2/", "/"],

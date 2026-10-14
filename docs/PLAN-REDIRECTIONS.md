@@ -90,7 +90,7 @@ Ce sont des pages que WordPress fabrique tout seul, sans visite ni lien d'un aut
 
 | type | adresses | exemple | vers |
 |---|---|---|---|
-| Pages suivantes d'une liste (pagination) | 9 | `/category/articles/page/2/` | la cible de la liste : `/ressources/articles/`, `/preuves/`, `/offres/full-service/` ; l'accueil pour « Non classé » |
+| Pages suivantes d'une liste (pagination) | 9 | `/category/articles/page/2/` | la cible de la liste : `/ressources/`, `/preuves/`, `/offres/full-service/` ; l'accueil pour « Non classé » |
 | Pages d'auteur | 8 | `/author/antoinedigirolamo/` | l'accueil |
 | Morceaux du thème Avada | 9 | `/element_category/columns/`, `/faq-items/` | l'accueil |
 | Liens courts WordPress | 3 | `/?page_id=8` | l'accueil |
@@ -266,4 +266,4 @@ Décision de Mehdi, le 14/10 vers 15h10 : « Publie, on fera des modifs plus tar
 
 Les neuf autres (et `/tout-savoir-sur-la-maintenance-industrielle/`) n'ont pas de ligne en base : le code s'applique dès le déploiement.
 
-**Un désaccord base / code relevé le 14/10 à la relecture (lecture seule, rien écrit en base).** Sur les 21 lignes de `redirects`, 20 donnent la même page finale que le code. La 21e : `/actualites/` vaut `/ressources/` en base, alors que `0003_redirections.sql`, `lib/redirections-ancien-site.ts` et le plan (csv) disent `/ressources/articles/`. La base l'emporte : en préproduction, `/actualites/` et ses paginations partent vers `/ressources/`, en un seul saut, vers une page en 200. Rien n'est perdu, mais la ligne a été changée hors de ce dépôt. **À trancher par Mehdi** : remettre `/ressources/articles/` en base (la liste de l'ancien blog, la cible la plus proche), ou aligner le code et le plan sur `/ressources/`.
+**Base et code relus côte à côte le 14/10 à la relecture (lecture seule, rien écrit en base) : les 21 lignes de `redirects` donnent la même page finale que le code.** La seule ligne changée hors de ce dépôt, `/actualites/` vers `/ressources/` (contre `/ressources/articles/` dans `0003_redirections.sql`), suit la décision de Mehdi du même jour : les pages de rubrique de l'ancienne maquette, dont `/ressources/articles/`, partent vers le hub Ressources v2. Le code et le plan (csv) portent désormais la même cible, pour `/actualites/`, `/category/articles/` et leurs paginations.
