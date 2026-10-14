@@ -79,7 +79,12 @@ export const LIBELLES: Record<
   mesure_audience: {
     titre: "Mesure d'audience",
     texte:
-      "Voir quelles pages sont lues, pour améliorer celles qui vous servent et clarifier les autres. Les statistiques sont agrégées, elles ne servent pas à vous contacter.",
+      /* 14/10 : « Les statistiques sont agrégées » retiré. Faux pour GA4 : le
+         cookie `_ga` porte un numéro aléatoire propre au navigateur, et Google
+         reçoit chaque page vue rattachée à ce numéro. C'est ce qui sépare GA4
+         d'une mesure exemptée de consentement. Ce qui reste vrai : aucun
+         `user_id` n'est envoyé (Tags.tsx), et GA4 n'alimente pas HubSpot. */
+      "Voir quelles pages sont lues, pour améliorer celles qui vous servent et clarifier les autres. Google Analytics vous compte sous un numéro aléatoire, jamais sous votre nom, et ces mesures ne servent pas à vous contacter.",
     destinataires: ["Google (Google Analytics 4)", "Google (Tag Manager)"],
   },
   publicite: {

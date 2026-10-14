@@ -9,6 +9,7 @@
  */
 
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 
 import {
   COOKIE_NOM,
@@ -150,5 +151,23 @@ for (const brut of [chrome, "x".repeat(4000), "Opera/9.80 Linux"]) {
   const etiquette = etiquetteUserAgent(brut);
   assert.ok(etiquette !== null && etiquette.length <= 32);
 }
+
+// ------------------------------------------------- vérité des libellés (14/10)
+// Le tag LinkedIn ne lit pas Consent Mode et sert aussi au reciblage : chargé
+// sur la seule publicité, refuser la personnalisation (« via Google ou
+// LinkedIn ») resterait sans effet. Sa garde doit porter les deux finalités.
+{
+  const tags = readFileSync(new URL("./Tags.tsx", import.meta.url), "utf8");
+  const garde = tags.match(/\{([^{}]*)&&\s*LINKEDIN\s*&&/);
+  assert.ok(garde, "garde du tag LinkedIn introuvable dans Tags.tsx");
+  assert.ok(
+    /\bpublicite\b/.test(garde[1]) && /\bpersonnalisation\b/.test(garde[1]),
+    `LinkedIn chargé sans exiger publicité ET personnalisation : « ${garde[1].trim()} »`,
+  );
+  assert.match(LIBELLES.personnalisation.texte, /LinkedIn/);
+}
+// GA4 rattache chaque page vue au numéro aléatoire du cookie `_ga` : promettre
+// des statistiques « agrégées » ferait passer GA4 pour une mesure exemptée.
+assert.doesNotMatch(LIBELLES.mesure_audience.texte, /agrégé/i);
 
 console.log("Consentement : toutes les assertions passent.");

@@ -44,6 +44,7 @@ export default function Tags() {
 
   const mesure = choix.choix.mesure_audience;
   const publicite = choix.choix.publicite;
+  const personnalisation = choix.choix.personnalisation;
   const suiviCommercial = choix.choix.suivi_commercial;
 
   // Un seul chargement de gtag.js pour GA4 et Google Ads : le script est le
@@ -70,7 +71,14 @@ ${identifiantsGoogle.map((identifiant) => `gtag('config','${identifiant}');`).jo
         </>
       )}
 
-      {!PAR_CONTENEUR && publicite && LINKEDIN && (
+      {/* LinkedIn exige la publicité ET la personnalisation. Son tag ne lit pas
+          Consent Mode : une fois chargé, il sert à la fois à compter les
+          conversions et à reconstituer des audiences pour recibler le
+          visiteur sur LinkedIn. Chargé sur la seule publicité, un refus de la
+          personnalisation (« via Google ou LinkedIn », dit le panneau) serait
+          resté sans effet côté LinkedIn. Google, lui, borne le reciblage par
+          `ad_personalization` (ConsentMode.tsx). */}
+      {!PAR_CONTENEUR && publicite && personnalisation && LINKEDIN && (
         <>
           <Script id="linkedin-partenaire" strategy="afterInteractive">
             {`window._linkedin_partner_id='${LINKEDIN}';
