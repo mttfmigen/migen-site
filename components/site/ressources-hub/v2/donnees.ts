@@ -270,7 +270,8 @@ export const CONTENUS_ENTREPRISES: readonly ContenuRessource[] = [
    * LES 12 BILLETS REPRIS DE L'ANCIEN BLOG (14/10, en ligne depuis dac01e5),
    * après les 15 de la maquette, du plus récent au plus ancien. Titre, photo,
    * résumé et minutes sortent de leur fiche (`supabase/import/blog-repris/`)
-   * par les règles de `blog-repris.ts`, que `verification-v2.ts` rejoue.
+   * par les règles de `blog-repris.ts`, que `verification-v2.ts` rejoue. Les
+   * minutes sont celles que la page et le lecteur affichent (`contenu.minutes`).
    * Sujet et mots-clés : choix d'après le texte, journal ci-dessous (entre
    * parenthèses, ce que le texte de la page en dit).
    *   pourquoi-externaliser (2026-03-31) Organisation : « contraintes humaines
@@ -396,7 +397,7 @@ export const CONTENUS_ENTREPRISES: readonly ContenuRessource[] = [
     "titre": "Femmes dans l’industrie : Migen© soutient la diversité dans le secteur de la maintenance industrielle",
     "format": "Article",
     "sujet": "Organisation",
-    "minutes": 10,
+    "minutes": 11,
     "resume": "Dans le secteur de la maintenance industrielle, il n’est un secret pour personne que les femmes sont encore sous-représentées.",
     "photo": "/assets/blog/femmes-dans-l-industrie/femmes-dans-l-industrie.webp",
     "etiquettes": [
@@ -433,7 +434,7 @@ export const CONTENUS_ENTREPRISES: readonly ContenuRessource[] = [
     "titre": "Vous connaissez l’expression “Le temps, c’est de l’argent” ?",
     "format": "Article",
     "sujet": "Méthodes",
-    "minutes": 3,
+    "minutes": 4,
     "resume": "Les goulots d’étranglement de la production sont des points de congestion qui réduisent la capacité de production d’une entreprise.",
     "photo": "/assets/blog/machines-goulots/machines-goulots.webp",
     "etiquettes": [

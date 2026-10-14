@@ -1,4 +1,4 @@
-import { minutesDeLecture, normalise, TAXONOMIE_ENTREPRISES } from "../taxonomie";
+import { normalise, TAXONOMIE_ENTREPRISES } from "../taxonomie";
 
 import type { ContenuRessource } from "./donnees";
 
@@ -14,9 +14,14 @@ import type { ContenuRessource } from "./donnees";
  *              phrases entières tant qu'elles tiennent en 190 signes (la
  *              longueur des résumés de la maquette), sinon la première phrase
  *              coupée à un mot et suivie de « … » ;
- *   minutes    la règle du projet (`minutesDeLecture`, 220 mots par minute,
- *              arrondi, plancher 2) sur les mots que la page affiche : h1,
- *              chapô, titres de parties, blocs.
+ *   minutes    celles que la page affiche (`contenu.minutes`), comme le
+ *              lecteur : la règle du projet (220 mots par minute, arrondi,
+ *              plancher 2) appliquée aux mots du billet d'origine, colonne
+ *              « Mots » de `docs/ARTICLES-BLOG-REPRISE.md` (12 sur 12). Les
+ *              recompter sur le texte affiché donnait 10 au lieu de 11
+ *              (femmes dans l'industrie) et 3 au lieu de 4 (machines goulots) :
+ *              la carte disait une durée, la page et le lecteur une autre.
+ *              On ne recalcule pas une donnée qui existe (`taxonomie.ts`).
  * Le sujet et les mots-clés sont choisis article par article, d'après le
  * texte, et journalisés dans `donnees.ts`. Les mots-clés ne sortent pas de la
  * règle `etiquettesDe` des 15 autres cartes : appliquée à ces billets, elle
@@ -31,6 +36,7 @@ export interface FicheBlog {
   contenu: {
     chapo?: string[];
     image?: string;
+    minutes: number;
     parties?: { titre: string; blocs: { type: string; texte?: string; items?: string[] }[] }[];
   };
 }
@@ -50,13 +56,6 @@ const textesDesBlocs = (f: FicheBlog) =>
 /** Le texte que la page affiche : h1, chapô, titres de parties, blocs. */
 export const texteDeLaPage = (f: FicheBlog) =>
   brut([f.titre_h1, ...(f.contenu.chapo ?? []), ...textesDesBlocs(f)].join(" "));
-
-/** Les mots que la page affiche, séparés par des blancs. */
-export function motsDeLaPage(f: FicheBlog): number {
-  return texteDeLaPage(f)
-    .split(" ")
-    .filter((m) => /[\p{L}\p{N}]/u.test(m)).length;
-}
 
 export function resumeDe(f: FicheBlog): string {
   const premier = f.contenu.parties?.flatMap((p) => p.blocs).find((b) => b.type === "paragraphe")?.texte ?? "";
@@ -80,7 +79,7 @@ export function carteDepuisFiche(f: FicheBlog, sujet: string, etiquettes: readon
     titre: f.titre_h1,
     format: "Article",
     sujet,
-    minutes: minutesDeLecture(motsDeLaPage(f)),
+    minutes: f.contenu.minutes,
     resume: resumeDe(f),
     photo: f.contenu.image ?? "",
     etiquettes,

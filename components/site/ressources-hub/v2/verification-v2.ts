@@ -69,7 +69,7 @@ assert.deepEqual(filtre(M, R, "court", "ent").map((x) => x.minutes).slice(0, 3),
 assert.equal(E.length, 27);
 assert.equal(n(E, { cat: "Article" }), 27);
 assert.deepEqual(SUJETS.map((t) => n(E, { ths: [t] })), [10, 6, 7, 4]);
-assert.deepEqual((["s", "m", "l"] as const).map((d) => n(E, { dur: d })), [11, 14, 2]);
+assert.deepEqual((["s", "m", "l"] as const).map((d) => n(E, { dur: d })), [11, 13, 3]);
 assert.equal(n(E, { tags: ["GMAO"] }), 9);
 assert.equal(n(E, { q: "dimomaint" }), 2);
 assert.deepEqual(filtre(E, R, "court", "ent").map((x) => x.minutes).slice(0, 3), [2, 2, 2]);
