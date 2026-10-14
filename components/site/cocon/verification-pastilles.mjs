@@ -166,6 +166,22 @@ for (const f of ["PastillesCocon.tsx", "maillage-mobile.ts"]) {
 
 /* 2. Rendus réels, un par branche de la cascade (dc.html L501-506). */
 const { default: PastillesCocon } = await import("./PastillesCocon.tsx");
+
+/* AUCUN LIBELLÉ NE PORTE UN MOT INTERDIT, sur les 248 entrées de l'index :
+   l'index du client garde des formes que le site ne rend plus (« conçues sur
+   mesure » pour Tournaire, relevé le 14/10), et une pastille l'écrivait sur
+   41 pages. Le libellé passe par lib/decisions-copie.ts. */
+{
+  const { courtLibelle } = await import("./maillage-mobile.ts");
+  const INTERDIT = /sans\s+engagement|\br[ée]gie\b|sur[\s-]mesure|int[ée]rim|mise\s+[àa]\s+disposition|cl[ée]\s+en\s+main|notamment|concrètement|incontournable|découvrez|\blevier\b|\u2014|\u2013/i;
+  const indexPages = JSON.parse(readFileSync(new URL("../../../maquette/contenu/site/index.json", import.meta.url), "utf8"));
+  const fautifs = indexPages.map((x) => courtLibelle(x)).filter((l) => INTERDIT.test(l));
+  if (fautifs.length) fautes.push(`libellés de pastille interdits : ${fautifs.slice(0, 5).join(" | ")}`);
+  else constats.push(`${indexPages.length} libellés de pastille, aucun mot interdit`);
+  // Témoin : la forme brute de l'index EST refusée, sinon la règle ne prouve rien.
+  const brut = indexPages.find((x) => /tournaire/.test(x.url))?.h1 ?? "";
+  if (!INTERDIT.test(brut)) fautes.push("témoin : le h1 brut de Tournaire devrait porter « sur mesure »");
+}
 const rendu = (props) =>
   renderToStaticMarkup(React.createElement(PastillesCocon, props));
 

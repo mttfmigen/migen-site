@@ -32,19 +32,6 @@
   }
 }
 
-/*
- * LE TITRE DES PASTILLES DU COCON GARDE SES 11 PX. `cocon/PastillesCocon.tsx`
- * écrit son `<h2>` en `600 11px` (dc.html L125), en style en ligne ; mais
- * `app/globals.css` pose sous 760 px `.mg-site h2 { font-size: clamp(26px,
- * 7.4vw, 34px) !important }`, et nos trois gabarits vivent sous `.mg-site` :
- * « TOUTES LES PAGES DE LA RUBRIQUE · 11 » sortait en capitales de 29 px,
- * sur deux lignes. Un sélecteur plus précis, ancré sur notre racine, rend au
- * titre la taille de la maquette sans toucher au composant partagé.
- */
-.racine [data-pastilles-cocon] h2 {
-  font-size: 11px !important;
-}
-
 /* ---------------------------------------------------------------- le repli */
 
 /*

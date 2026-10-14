@@ -159,19 +159,6 @@
   }
 }
 
-/* LE TITRE DES PASTILLES DU MAILLAGE GARDE SES 11 PX (dc.html L134).
-   `PastillesCocon` le pose en ligne, mais `app/globals.css` impose sous
-   760 px `.mg-site h2 { font-size: clamp(26px, 7.4vw, 34px) !important }`,
-   et ce `!important` bat le style en ligne : mesuré le 14/10 à 390 px,
-   « DANS LA MÊME RUBRIQUE · 55 » sortait à 29 px sur deux lignes. Deux
-   classes et un élément battent une classe et un élément. Le défaut touche
-   toute page `.mg-site` qui monte ces pastilles : signalé au lot du cocon. */
-@media (max-width: 880px) {
-  .racineVille [data-pastilles-cocon] > h2 {
-    font-size: 11px !important;
-  }
-}
-
 /* LE CHEVRON D'UN BLOC REPLIÉ RESTE SUR LA LIGNE DU TITRE. La bascule est une
    rangée flexible qui passe à la ligne (`SectionPliableMobile.module.css`) :
    un en-tête de largeur `auto` y prend sa largeur de contenu, plus large que

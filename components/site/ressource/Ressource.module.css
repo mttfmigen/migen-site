@@ -454,16 +454,6 @@
     font-size: 16px;
     color: var(--ink);
   }
-  /* LE TITRE DE LA BOÎTE DE PASTILLES GARDE SES 11 PX. `PastillesCocon` les
-     pose en ligne, mais la règle globale des h2 de téléphone
-     (`app/globals.css`, `.mg-site h2`, `clamp(26px, 7.4vw, 34px)
-     !important`) les écrasait : « DANS LA MÊME RUBRIQUE · 4 » sortait en
-     29 px sur deux lignes. Le composant partagé n'est pas de ce lot ; la
-     correction est posée ici, sur l'enveloppe, et signalée. */
-  :global(.mg-site) .pastilles h2 {
-    font-size: 11px !important;
-    line-height: normal !important;
-  }
 }
 
 /* Sur bureau, la bascule de « Sur le même sujet » n'existe pas : le bloc est

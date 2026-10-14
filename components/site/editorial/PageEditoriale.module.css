@@ -651,15 +651,7 @@
   }
 }
 
-/* LE TITRE DE LA BOÎTE DE PASTILLES GARDE SES 11 PX : la règle globale des h2
-   de téléphone (`app/globals.css`, `.mg-site h2`, `!important`) écrasait le
-   style en ligne de `PastillesCocon`. Correction posée sur l'enveloppe de ce
-   gabarit, le composant partagé n'étant pas de ce lot. */
 @media (max-width: 880px) {
-  :global(.mg-site) .pastilles h2 {
-    font-size: 11px !important;
-    line-height: normal !important;
-  }
   .guideCompact article > [data-mobile-seulement] {
     margin-left: 0 !important;
     margin-right: 0 !important;

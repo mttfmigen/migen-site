@@ -43,6 +43,7 @@
  * paquet serveur à la construction. Aucune lecture disque à l'exécution, donc
  * aucun chemin à tracer sur Vercel, et la porte le lit de la même façon.
  */
+import { appliqueDecisions } from "@/lib/decisions-copie";
 import indexBrut from "@/maquette/contenu/site/index.json";
 
 export interface EntreeIndex {
@@ -107,7 +108,9 @@ export function gabaritDe(x: EntreeIndex): string {
  * l'URL de l'index : rien n'est rédigé ici, et la porte le mesure.
  */
 export function courtLibelle(x: EntreeIndex): string {
-  const h = x.h1.replace(/\s+/g, " ").trim();
+  // Les décisions de copie d'abord : l'index du client garde des formes que
+  // le site ne rend plus (« conçues sur mesure » pour Tournaire, interdit).
+  const h = appliqueDecisions(x.h1.replace(/\s+/g, " ").trim(), x.url);
   const gg = gabaritDe(x);
   if (gg === "04") {
     const tm =

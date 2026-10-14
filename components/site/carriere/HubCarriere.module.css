@@ -415,9 +415,4 @@
   .corpsHub {
     --sec: 64px;
   }
-  /* Le titre des pastilles du cocon, rendu à 29 px par `.mg-site h2` :
-     correctif local, voir `metier/FicheMetier.module.css`. */
-  .corpsHub [data-pastilles-cocon] > h2 {
-    font-size: 11px !important;
-  }
 }

@@ -737,6 +737,14 @@ details[open] .g3-plus {
   .mg-site h2 {
     font-size: clamp(26px, 7.4vw, 34px) !important;
   }
+  /* Sauf le sur-titre des pastilles du cocon (« DANS LA MÊME RUBRIQUE · 4 »),
+     un <h2> de 11 px dans la maquette mobile (dc.html) : la règle ci-dessus
+     le portait à 29 px sur deux lignes, sur toutes les pages qui le montent. */
+  .mg-site [data-pastilles-cocon] > h2 {
+    font-size: 11px !important;
+    letter-spacing: 0.14em !important;
+    line-height: normal !important;
+  }
   .mg-site table {
     font-size: 13px;
   }

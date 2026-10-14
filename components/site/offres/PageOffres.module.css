@@ -67,10 +67,4 @@
   .hubOffres [data-bande-appel] {
     display: none;
   }
-  /* Le titre de la boîte de pastilles, ramené à ses 11 px : même raison que
-     dans `offre/PageOffre.module.css`. */
-  .hubOffres [data-pastilles-cocon] h2 {
-    font-size: 11px !important;
-    letter-spacing: 0.14em !important;
-  }
 }

@@ -20,6 +20,8 @@ import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
 import RappelFinalMobile from "@/components/site/mobile/RappelFinalMobile";
 import { varianteDe } from "@/components/site/mobile/conversion-donnees";
+import PastillesCocon from "@/components/site/cocon/PastillesCocon";
+
 import CarrouselRealisations from "./CarrouselRealisations";
 import FilArianeMobile from "./FilArianeMobile";
 import { minutesDeLecture, realisationsLiees } from "./donnees-mobiles";
@@ -1459,16 +1461,14 @@ export default function PagePreuve({
             (« clients→ » devenait « clients→D'autres », compté perdu par la
             porte « aucun mot perdu »).
 
-            « DANS LA MÊME RUBRIQUE » N'EST PAS POSÉ, alors que la capture le
-            porte (L506). `cocon/PastillesCocon` lit le h1 BRUT de l'index de la
-            maquette : pour /preuves/tournaire/, « …machines conçues sur
-            mesure », mot interdit que le site a réécrit « en interne » sur la
-            page elle-même. Monté ici, il l'écrivait sur les 41 études de cas.
-            Le module est partagé : voir le rapport du lot. */}
+            « DANS LA MÊME RUBRIQUE » (capture L506) : les pastilles du cocon
+            passent leurs libellés par lib/decisions-copie.ts depuis le 14/10,
+            Tournaire y est « conçues en interne » comme sur sa page. */}
         {chemin ? (
           <>
             {" "}
-            <CarrouselRealisations cartes={autresRealisations} />
+            <CarrouselRealisations cartes={autresRealisations} />{" "}
+            <PastillesCocon chemin={chemin} variante="soeurs" />{" "}
             <RappelFinalMobile variante={varianteDe(chemin, "02")} />{" "}
           </>
         ) : null}

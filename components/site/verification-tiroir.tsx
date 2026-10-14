@@ -268,8 +268,11 @@ for (const cible of cibles) {
 
 /* ------------------------------------- 3 et 4 · le rendu, replié mais entier */
 
+// Le menu FERMÉ : c'est l'état de la page servie, celui que Google lit. Ses
+// liens doivent y être, sous un `hidden` qui les cache aux yeux et au clavier.
 const rendu = renderToStaticMarkup(
   <TiroirMobile
+    ouvert={false}
     landingPage={false}
     onFermer={() => {}}
     telephone={TELEPHONE_SITE}
@@ -277,6 +280,7 @@ const rendu = renderToStaticMarkup(
     libelleCta="Décrire mon besoin"
   />,
 );
+assert.ok(/^<div hidden="">/.test(rendu), "le menu fermé doit porter hidden, sinon il s'affiche");
 
 const sansSlash = (chemin: string) =>
   chemin.length > 1 && chemin.endsWith("/") ? chemin.slice(0, -1) : chemin;

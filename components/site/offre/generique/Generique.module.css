@@ -156,11 +156,4 @@
   .racineMobile article > [data-mobile-seulement] {
     margin-bottom: 28px !important;
   }
-
-  /* Le titre de la boîte de pastilles garde ses 11 px : même correction que
-     dans `offre/PageOffre.module.css` (`.mg-site h2` le portait à 28 px). */
-  .racineMobile [data-pastilles-cocon] h2 {
-    font-size: 11px !important;
-    letter-spacing: 0.14em !important;
-  }
 }

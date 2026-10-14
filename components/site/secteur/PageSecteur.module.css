@@ -156,15 +156,6 @@
     padding: var(--sec) 40px 0;
   }
 
-  /* LE TITRE DES PASTILLES DU COCON GARDE SES 11 PX. `cocon/PastillesCocon`
-     les écrit en ligne (dc.html L134, `font:600 11px`), mais
-     `app/globals.css` pose `.mg-site h2 { font-size: clamp(26px,7.4vw,34px)
-     !important }` : mesuré le 14/10 à 390 px, 28,86 px, un surtitre devenu
-     titre. ponytail: rustine locale, la cause est dans deux fichiers partagés
-     hors de ce gabarit ; elle part quand l'un des deux est corrigé. */
-  .gabarit .pastilles h2 {
-    font-size: 11px !important;
-  }
 }
 
 /* LE TITRE D'UNE ÉTIQUETTE DE BASCULE GARDE LA TAILLE DES AUTRES ÉTIQUETTES

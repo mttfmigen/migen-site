@@ -540,7 +540,14 @@ const EXPERT_TECHNIQUE: Regle[] = [
   ],
 ];
 
-const REGLES = [...SELECTION, ...SIEGE, ...PHOTOS_VILLE, ...TELEPHONE, ...ORTHUS, ...META_REDACTION, ...NOTAMMENT, ...ASTREINTE, ...NOUS_REJOINDRE];
+/* TOURNAIRE, ARBITRAGE DU 08/10 : le titre de l'étude de cas est reformulé
+   « Maintenir des machines conçues en interne », « sur mesure » étant interdit
+   par le contrat. Le relais disque le portait déjà ; l'index du client écrit
+   encore l'ancienne forme, que le cocon mobile reprenait dans ses pastilles
+   (relevé le 14/10 sur les 41 études de cas). Les deux casses de la capture. */
+const TOURNAIRE: Regle[] = [[/(conçues) sur mesure/gi, (_m, c: string) => `${c} en interne`]];
+
+const REGLES = [...SELECTION, ...SIEGE, ...PHOTOS_VILLE, ...TELEPHONE, ...ORTHUS, ...META_REDACTION, ...NOTAMMENT, ...ASTREINTE, ...NOUS_REJOINDRE, ...TOURNAIRE];
 
 /** Les règles qui s'appliquent à cette page : les globales, plus les siennes. */
 function reglesDe(page?: string): Regle[] {

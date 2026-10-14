@@ -312,18 +312,6 @@
   }
 }
 
-/* LE TITRE DE LA BOÎTE DE PASTILLES GARDE SES 11 PX. `PastillesCocon` le pose
-   en `<h2>` à 11 px (dc.html L125), mais `app/globals.css` impose sous 760 px
-   `.mg-site h2 { font-size: clamp(26px, 7.4vw, 34px) !important }` : posé
-   dans `.mg-site`, « ALLER PLUS LOIN · 2 » sortait à 28 px, mesuré le 14/10.
-   Correction locale, sur ce gabarit ; le défaut est signalé au composant. */
-@media (max-width: 880px) {
-  .gabaritOffre [data-pastilles-cocon] h2 {
-    font-size: 11px !important;
-    letter-spacing: 0.14em !important;
-  }
-}
-
 /* LES BANDES D'APPEL CÈDENT LEUR PLACE À LA CADENCE MOBILE, sur ce gabarit
    seulement. La maquette mobile v2 ne porte aucune des trois bandes « Appel »
    du bureau : son appel entre les sections est le photo + CTA et le bandeau

@@ -354,15 +354,14 @@ export default function Entete({
         )}
       </div>
 
-      {tiroir && (
-        <TiroirMobile
-          landingPage={landingPage}
-          onFermer={() => setTiroir(false)}
-          telephone={telephone}
-          hrefCta={hrefCta}
-          libelleCta={libelleCta}
-        />
-      )}
+      <TiroirMobile
+        ouvert={tiroir}
+        landingPage={landingPage}
+        onFermer={() => setTiroir(false)}
+        telephone={telephone}
+        hrefCta={hrefCta}
+        libelleCta={libelleCta}
+      />
     </div>
   );
 }

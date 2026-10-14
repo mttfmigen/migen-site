@@ -13,6 +13,10 @@ import {
 } from "./entete-donnees";
 
 export interface TiroirMobileProps {
+  /** Monté en permanence, masqué par `hidden` quand il est fermé : ses liens
+      sont dans le HTML servi, comme dans la maquette, qui garde son menu dans
+      le DOM. Fermé, rien n'est visible ni atteignable au clavier. */
+  ouvert: boolean;
   landingPage: boolean;
   /** Appelé par Échap, le fond de page, et chaque lien suivi. */
   onFermer: () => void;
@@ -34,11 +38,13 @@ const SELECTEUR_FOCUSABLES = "a[href],button:not([disabled])";
  *
  * Ce que la maquette ne dit pas et que le site exige : Échap ferme, le focus
  * reste dans le feuillet tant qu'il est ouvert et revient au bouton qui l'a
- * ouvert, et le fond de page ne défile pas pendant ce temps. Le composant
- * n'est monté que lorsque le tiroir est ouvert, donc montage et démontage
- * valent ouverture et fermeture.
+ * ouvert, et le fond de page ne défile pas pendant ce temps. Ces effets ne
+ * jouent que tiroir ouvert : le composant, lui, reste monté (voir `ouvert`).
+ * Il n'était monté qu'à l'ouverture jusqu'au 14/10, et ses 62 liens
+ * n'existaient pas dans la page lue par Google.
  */
 export default function TiroirMobile({
+  ouvert,
   landingPage,
   onFermer,
   telephone,
@@ -48,6 +54,7 @@ export default function TiroirMobile({
   const feuillet = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (!ouvert) return;
     const declencheur = document.activeElement as HTMLElement | null;
     const defilementAvant = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -60,7 +67,7 @@ export default function TiroirMobile({
       // du document et la navigation au clavier recommence de zéro.
       declencheur?.focus?.();
     };
-  }, []);
+  }, [ouvert]);
 
   function surTouche(evenement: React.KeyboardEvent) {
     if (evenement.key === "Escape") {
@@ -89,7 +96,7 @@ export default function TiroirMobile({
   }
 
   return (
-    <div onKeyDown={surTouche}>
+    <div onKeyDown={surTouche} hidden={!ouvert}>
       {/* Fond de page : un bouton et non un div, pour que « fermer » existe
           aussi au clavier et pour les technologies d'assistance. */}
       <button

@@ -522,14 +522,3 @@
   }
 }
 
-/* LE TITRE DES PASTILLES DU COCON (« Dans la même rubrique · 7 »).
-   `PastillesCocon` le dessine en 11 px, mais la règle globale `.mg-site h2`
-   (globals.css, sous 760 px, `!important`) le passait à 29 px : un surtitre
-   devenu le plus gros titre de la page. Correctif LOCAL, ancré sur le `<main>`
-   de la famille pour l'emporter en spécificité ; le correctif de fond
-   appartient au composant partagé (signalé). */
-@media (max-width: 760px) {
-  .corpsMetier [data-pastilles-cocon] > h2 {
-    font-size: 11px !important;
-  }
-}
