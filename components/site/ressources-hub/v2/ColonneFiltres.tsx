@@ -399,7 +399,7 @@ export default function ColonneFiltres({
                   type="button"
                   aria-expanded={tousLesMots}
                   aria-controls="rs-mots"
-                  aria-label={tousLesMots ? "Afficher moins de mots-clés" : `Afficher ${enPlus} mots-clés de plus`}
+                  aria-label={`${tousLesMots ? "Moins" : `+${enPlus}`} ${ent ? "mots-clés" : "compétences"}`}
                   onClick={() => setTousLesMots((v) => !v)}
                   style={{
                     display: "inline-flex",
@@ -422,7 +422,12 @@ export default function ColonneFiltres({
             <button
               type="button"
               className={s.dashed}
-              onClick={onReinitialise}
+              onClick={(e) => {
+                // Le bouton disparaît avec les filtres : le focus passe à « Tout » du Format.
+                const tout = e.currentTarget.parentElement?.querySelector<HTMLButtonElement>("button[aria-pressed]");
+                onReinitialise();
+                tout?.focus();
+              }}
               style={{
                 border: "1px dashed var(--line)",
                 background: "none",

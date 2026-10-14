@@ -338,19 +338,18 @@ export function ProcessSelection({ etape, onEtape }: { etape: number; onEtape: (
                   <span style={{ display: "block", font: "600 17px/1.25 var(--ft)", letterSpacing: "-.025em", color: fg }}>
                     {x.titre}
                   </span>
-                  {on ? (
-                    <span
-                      className={s.fade}
-                      style={{
-                        display: "block",
-                        marginTop: 8,
-                        font: "400 14.5px/1.6 var(--fb)",
-                        color: "rgba(255,255,255,.78)",
-                      }}
-                    >
-                      {x.texte}
-                    </span>
-                  ) : null}
+                  {/* Replié, jamais retiré : le texte d'une étape fermée reste dans la page. */}
+                  <span
+                    className={s.fade}
+                    style={{
+                      display: on ? "block" : "none",
+                      marginTop: 8,
+                      font: "400 14.5px/1.6 var(--fb)",
+                      color: "rgba(255,255,255,.78)",
+                    }}
+                  >
+                    {x.texte}
+                  </span>
                 </span>
                 <span aria-hidden="true" style={{ paddingTop: 10, font: "400 22px/1 var(--fb)", textAlign: "right", color: fg }}>
                   {on ? "–" : "+"}

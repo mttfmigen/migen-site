@@ -384,7 +384,13 @@ export default function HubRessources() {
                     type="button"
                     className={s.fade}
                     aria-label={`Retirer le filtre ${c.libelle}`}
-                    onClick={() => retire(c.cle)}
+                    onClick={(e) => {
+                      // La puce disparaît : le focus passe à sa voisine, ou à la recherche s'il n'en reste aucune.
+                      const voisins = [...(e.currentTarget.parentElement?.querySelectorAll("button") ?? [])];
+                      const i = voisins.indexOf(e.currentTarget);
+                      retire(c.cle);
+                      (chips.length > 1 ? (voisins[i + 1] ?? voisins[i - 1]) : recherche.current)?.focus();
+                    }}
                     style={{
                       display: "inline-flex",
                       alignItems: "center",
@@ -411,7 +417,10 @@ export default function HubRessources() {
                 {!auRepos ? (
                   <button
                     type="button"
-                    onClick={reinitialise}
+                    onClick={() => {
+                      reinitialise();
+                      recherche.current?.focus();
+                    }}
                     style={{
                       border: "none",
                       background: "none",
