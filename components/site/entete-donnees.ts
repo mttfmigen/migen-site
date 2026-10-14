@@ -316,6 +316,13 @@ export const CHIFFRES: Chiffre[] = [
  *    porte aujourd'hui aucun formulaire ni champ e-mail (mesuré en production
  *    le 12/10). Soit la page gagne son échange, soit la ligne reste courte.
  */
+/*
+ * ORDRE DU HUB DEPUIS LE 14/10 : Articles, Fiches pratiques, Fiches techniques,
+ * Livres blancs, Process, c'est l'ordre de la colonne « Format » de l'espace
+ * Entreprises du hub /ressources/ (maquette Ressources v2, `FORMATS.ent` de
+ * `ressources-hub/v2/filtrage.ts`). Le panneau et le hub disent la même chose
+ * dans le même ordre ; `scripts/verifie-menu-ressources.mjs` le tient.
+ */
 export const RES_FORMATS: FormatRessource[] = [
   {
     numero: "15",
@@ -336,16 +343,16 @@ export const RES_FORMATS: FormatRessource[] = [
     href: "/ressources/fiches-techniques/",
   },
   {
-    numero: "04",
-    libelle: "Process",
-    description: "Nos procédures, publiées telles quelles",
-    href: "/ressources/process/",
-  },
-  {
     numero: "02",
     libelle: "Livres blancs",
     description: "Deux dossiers de fond",
     href: "/ressources/livres-blancs/",
+  },
+  {
+    numero: "04",
+    libelle: "Process",
+    description: "Nos procédures, publiées telles quelles",
+    href: "/ressources/process/",
   },
 ];
 
@@ -381,6 +388,37 @@ export const RES_SITUATIONS: Lien[] = [
   },
   { libelle: "Je prépare un arrêt", href: "/ressources/process/" },
   { libelle: "Je n’arrive pas à recruter", href: "/carriere/" },
+];
+
+/**
+ * « À la une » du panneau Ressources : les trois articles que le hub
+ * /ressources/ met à la une (liste `UNE` de `ressources-hub/v2/HubRessources.tsx`),
+ * dans son ordre, avec SON titre, SA photo et SA durée (« 11 min de lecture »,
+ * le libellé de ses cartes). Rien n'est rédigé ici : la porte
+ * `scripts/verifie-menu-ressources.mjs` relit le hub et refuse tout écart.
+ *
+ * Recopié plutôt qu'importé : `donnees.ts` du hub pèse ses 28 contenus, et
+ * l'en-tête est un composant client chargé sur chaque page.
+ */
+export const RES_A_LA_UNE: Offre[] = [
+  {
+    libelle: "Coût d'un arrêt de production",
+    description: "11 min de lecture",
+    href: "/ressources/articles/cout-arret-de-production/",
+    image: "/assets/web/x-auto-ligne.jpg",
+  },
+  {
+    libelle: "IA maintenance : ce qui change vraiment",
+    description: "8 min de lecture",
+    href: "/ressources/articles/ia-maintenance/",
+    image: "/assets/web/ph-robots-solaire.jpg",
+  },
+  {
+    libelle: "Comment organiser un service de maintenance",
+    description: "9 min de lecture",
+    href: "/ressources/articles/organiser-service-maintenance/",
+    image: "/assets/web/team-duo.jpg",
+  },
 ];
 
 /* ----------------------------------------------------- panneau À propos */
@@ -645,6 +683,19 @@ export const TIROIR: SectionTiroir[] = [
         libelle: "Réussir un transfert industriel",
         href: "/guides/reussir-un-transfert-industriel/",
       },
+      /* AJOUT DU 14/10, hors `menuG` de la maquette mobile v2 : les trois
+         articles « À la une » du hub /ressources/ (maquette Ressources v2),
+         les mêmes que le panneau du bureau, `RES_A_LA_UNE`. Déclaré et
+         revérifié par `verification-tiroir.tsx`. */
+      { type: "sous-tete", libelle: "À la une" },
+      ...RES_A_LA_UNE.map(
+        ({ libelle, href, description }): EntreeTiroir => ({
+          type: "lien",
+          libelle,
+          href,
+          description,
+        }),
+      ),
       { type: "lien", libelle: "Toutes les ressources", href: "/ressources/" },
     ],
   },

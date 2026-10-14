@@ -49,7 +49,31 @@ const RACINE = fileURLToPath(new URL("..", import.meta.url));
 const chemin = (relatif) => new URL(relatif, new URL("..", import.meta.url));
 
 const donnees = await import(String(chemin("components/site/entete-donnees.ts")));
-const { RES_FORMATS, RES_SITUATIONS, NAV_CARRIERE, TOTAL_RESSOURCES } = donnees;
+const { RES_FORMATS, RES_SITUATIONS, NAV_CARRIERE, TOTAL_RESSOURCES, RES_A_LA_UNE } = donnees;
+
+/* ------------------------------- le hub /ressources/ (maquette Ressources v2) */
+
+/**
+ * DEPUIS LE 14/10, le panneau dit ce que dit le hub : l'ordre de ses formats
+ * côté Entreprises (`FORMATS.ent`), le compte de ses articles, et sa une (liste
+ * `UNE` de `HubRessources.tsx`, titre, durée et photo de `donnees.ts`). Tout
+ * est relu dans le code du hub à chaque exécution, rien n'est recopié ici.
+ */
+const hubDonnees = await import(String(chemin("components/site/ressources-hub/v2/donnees.ts")));
+const hubFiltrage = await import(String(chemin("components/site/ressources-hub/v2/filtrage.ts")));
+const hubSource = readFileSync(
+  new URL("components/site/ressources-hub/v2/HubRessources.tsx", chemin(".")),
+  "utf8",
+);
+const urlsUne = [...(hubSource.match(/const UNE = \[([\s\S]*?)\]/)?.[1] ?? "").matchAll(/"([^"]+)"/g)].map(
+  (m) => m[1],
+);
+const HUB = {
+  /** Libellés des formats Entreprises du hub, « Tout » excepté, dans son ordre. */
+  formats: hubFiltrage.FORMATS.ent.filter(([cle]) => cle !== "all").map(([, libelle]) => libelle),
+  articles: hubDonnees.CONTENUS_ENTREPRISES.filter((x) => x.format === "Article").length,
+  une: urlsUne.map((url) => hubDonnees.CONTENUS_ENTREPRISES.find((x) => x.url === url)),
+};
 
 /**
  * Les commentaires sont retirés avant tout jugement sur la copie : le premier
@@ -124,7 +148,7 @@ const MOTS_INTERDITS = [
  * @param {string} cas.panneau     la source du composant du panneau
  * @param {Map} cas.reelles        familles réelles et leurs comptes
  */
-function defauts({ formats, situations, carriere, panneau, reelles }) {
+function defauts({ formats, situations, carriere, panneau, reelles, une, hub }) {
   const trouves = [];
   const dit = (message) => trouves.push(message);
 
@@ -209,8 +233,27 @@ function defauts({ formats, situations, carriere, panneau, reelles }) {
     }
   }
 
+  // 8. Le panneau dit ce que dit le hub /ressources/.
+  const ordre = formats.map((format) => format.libelle).join(" · ");
+  if (ordre !== hub.formats.join(" · ")) {
+    dit(`formats du panneau « ${ordre} », le hub écrit « ${hub.formats.join(" · ")} ».`);
+  }
+  const articles = formats.find((format) => format.libelle === "Articles");
+  if (articles && Number(articles.numero) !== hub.articles) {
+    dit(`le panneau annonce ${articles.numero} articles, le hub en montre ${hub.articles}.`);
+  }
+  if (hub.une.length !== 3 || hub.une.some((x) => !x)) {
+    dit("la une du hub est illisible : liste UNE introuvable ou article inconnu.");
+  } else {
+    const attendue = hub.une.map((x) => `${x.titre} | ${x.minutes} min de lecture | ${x.url} | ${x.photo}`);
+    const servie = une.map((x) => `${x.libelle} | ${x.description} | ${x.href} | ${x.image}`);
+    if (servie.join("\n") !== attendue.join("\n")) {
+      dit(`« À la une » du panneau diffère du hub :\n  servi   ${servie.join("\n          ")}\n  attendu ${attendue.join("\n          ")}`);
+    }
+  }
+
   // 7. Les interdits de copie, dans les libellés comme dans les descriptions.
-  for (const lien of [...formats, ...situations, carriere]) {
+  for (const lien of [...formats, ...situations, carriere, ...une]) {
     const texte = `${lien.libelle} ${lien.description ?? ""}`;
     if (texte.includes("—")) {
       dit(`tiret cadratin dans « ${lien.libelle} », interdit dans la copie visible.`);
@@ -231,6 +274,8 @@ const CAS_REEL = {
   carriere: NAV_CARRIERE,
   panneau: PANNEAU,
   reelles: REELLES,
+  une: RES_A_LA_UNE,
+  hub: HUB,
 };
 
 /* ------------------------------------------- contrôle positif, avant le reste */
@@ -316,6 +361,19 @@ const TEMOINS = [
     }),
   ],
   [
+    "deux formats intervertis par rapport au hub",
+    /le hub écrit/,
+    (cas) => ({ ...cas, formats: [cas.formats[1], cas.formats[0], ...cas.formats.slice(2)] }),
+  ],
+  [
+    "une durée « À la une » qui dérive du hub",
+    /diffère du hub/,
+    (cas) => ({
+      ...cas,
+      une: cas.une.map((x, rang) => (rang === 0 ? { ...x, description: "12 min de lecture" } : x)),
+    }),
+  ],
+  [
     "un mot interdit dans une description",
     /mot interdit/,
     (cas) => ({
@@ -362,6 +420,7 @@ if (process.argv.includes("--en-ligne")) {
   const cibles = [
     ...RES_FORMATS.map((format) => format.href),
     ...RES_SITUATIONS.map((lien) => lien.href),
+    ...RES_A_LA_UNE.map((article) => article.href),
     NAV_CARRIERE.href,
     "/ressources/",
   ];

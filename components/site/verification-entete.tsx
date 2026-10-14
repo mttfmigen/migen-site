@@ -218,10 +218,17 @@ const echappe = (t: string) => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const SUR_TITRES = ["Nos offres", "Conception &amp; réalisation", "Par format", "Par situation", "L’entreprise", "Nos engagements"];
 const styleSurTitre = (html: string, libelle: string) =>
   new RegExp(`<div style="([^"]*font:600 11px[^"]*)">(?:<a\\b[^>]*>)?${echappe(libelle)}<`).exec(html)?.[1];
+/* Depuis le 14/10, le panneau Ressources suit le hub /ressources/ (maquette
+   Ressources v2) : « Par format » y devient « Entreprises », le nom de l'espace
+   du hub, et la colonne « À la une » s'ajoute. Même dessin que le sur-titre
+   « Par format » de l'autonome, tenu ici libellé par libellé. */
+const RENOMMES: Record<string, readonly string[]> = { "Par format": ["Entreprises", "À la une"] };
 for (const libelle of SUR_TITRES) {
   const attendu = styleSurTitre(autonome, libelle);
   assert.ok(attendu, `la maquette ne porte plus le sur-titre « ${libelle} »`);
-  assert.equal(styleSurTitre(panneaux, libelle), attendu, `sur-titre « ${libelle} » : style différent de la maquette`);
+  for (const servi of RENOMMES[libelle] ?? [libelle]) {
+    assert.equal(styleSurTitre(panneaux, servi), attendu, `sur-titre « ${servi} » : style différent de la maquette`);
+  }
 }
 // « Nos offres » est un lien dans le site : il garde la couleur de son sur-titre.
 assert.match(readFileSync("components/site/megamenu/Offres.tsx", "utf8"), /href="\/offres\/" className=\{s\.lienSurTitre\}/);
@@ -231,7 +238,7 @@ assert.match(
   "« Nos offres » ne garde plus la couleur de son sur-titre",
 );
 assert.throws(
-  () => assert.equal(styleSurTitre(panneaux.replace("margin-bottom:14px\">Par format", "margin-bottom:12px\">Par format"), "Par format"), styleSurTitre(autonome, "Par format")),
+  () => assert.equal(styleSurTitre(panneaux.replace("margin-bottom:14px\">Entreprises", "margin-bottom:12px\">Entreprises"), "Entreprises"), styleSurTitre(autonome, "Par format")),
   "le contrôle des sur-titres laisse passer une marge de 12 px",
 );
 

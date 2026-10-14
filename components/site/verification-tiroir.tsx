@@ -45,6 +45,7 @@ import {
   TIROIR,
   TIROIR_ACCUEIL,
 } from "@/components/site/entete-donnees";
+import { CONTENUS_ENTREPRISES } from "@/components/site/ressources-hub/v2/donnees";
 
 const CONTROLE = process.argv.includes("--controle");
 
@@ -239,7 +240,51 @@ function menuAttendu(): SectionTiroir[] {
   return groupes;
 }
 
-const attendu = menuAttendu();
+/**
+ * LE SEUL AJOUT À LA MAQUETTE MOBILE, déclaré le 14/10 : le groupe
+ * « Ressources » porte, avant « Toutes les ressources », la sous-tête
+ * « À la une » et les trois articles que le hub /ressources/ (maquette
+ * Ressources v2) met à la une. Recalculé ici depuis le hub lui-même : la liste
+ * `UNE` de `HubRessources.tsx`, et le titre et la durée de chaque article dans
+ * `donnees.ts`. Que le hub change sa une, et le tiroir doit suivre.
+ */
+function avecLaUneDuHub(groupes: SectionTiroir[]): SectionTiroir[] {
+  const source = readFileSync(
+    "components/site/ressources-hub/v2/HubRessources.tsx",
+    "utf8",
+  );
+  const bloc = source.match(/const UNE = \[([\s\S]*?)\]/)?.[1] ?? "";
+  const urls = [...bloc.matchAll(/"([^"]+)"/g)].map((m) => m[1]);
+  assert.equal(urls.length, 3, "la liste UNE du hub /ressources/ est introuvable");
+  const une: EntreeTiroir[] = urls.map((url) => {
+    const article = CONTENUS_ENTREPRISES.find((x) => x.url === url);
+    assert.ok(article, `article à la une inconnu des données du hub : ${url}`);
+    return {
+      type: "lien",
+      libelle: article.titre,
+      href: article.url,
+      description: `${article.minutes} min de lecture`,
+    };
+  });
+  return groupes.map((groupe) => {
+    if (groupe.libelle !== "Ressources") return groupe;
+    const rang = groupe.entrees.findIndex(
+      (e) => e.type === "lien" && e.href === "/ressources/",
+    );
+    assert.ok(rang > -1, "« Toutes les ressources » a quitté le groupe Ressources");
+    return {
+      ...groupe,
+      entrees: [
+        ...groupe.entrees.slice(0, rang),
+        { type: "sous-tete", libelle: "À la une" },
+        ...une,
+        ...groupe.entrees.slice(rang),
+      ],
+    };
+  });
+}
+
+const attendu = avecLaUneDuHub(menuAttendu());
 
 /* -------------------------------------------------- 1 · les données, mot à mot */
 
