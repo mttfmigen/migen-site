@@ -92,6 +92,27 @@ assert.ok(valideCharge({ ...correct }).erreurs.formulaire);
 assert.ok(valideCharge({ ...correct, formulaire: "Contact Général" }).erreurs.formulaire);
 assert.deepEqual(valideCharge({ ...correct, formulaire: "contact" }).erreurs, {});
 
+// L'IDENTIFIANT DE CHAQUE PAGE DOIT PASSER, et c'est le défaut du 14/10 : la
+// règle plafonnait à 40 caractères, or `app/[...slug]/page.tsx` le fabrique
+// depuis l'adresse (`cocon` + chemin, plus `-hero` pour le panneau du haut).
+// 74 pages sur 158 dépassaient : leur formulaire répondait 422 « Quelques champs
+// demandent une correction » sans qu'aucun champ visible soit en faute, et
+// aucun lead n'en partait. On rejoue ici chaque adresse de l'index du client.
+const INDEX_PAGES: { url: string }[] = (
+  await import("@/maquette/contenu/site/index.json", { with: { type: "json" } })
+).default;
+for (const { url } of INDEX_PAGES) {
+  for (const id of [`cocon${url.replace(/\//g, "-")}`, `cocon${url.replace(/\//g, "-")}-hero`]) {
+    assert.deepEqual(
+      valideCharge({ ...correct, formulaire: id }).erreurs,
+      {},
+      `formulaire refusé sur ${url} : ${id} (${id.length} caractères)`,
+    );
+  }
+}
+// Le plafond reste un plafond : un identifiant démesuré est toujours refusé.
+assert.ok(valideCharge({ ...correct, formulaire: "a".repeat(121) }).erreurs.formulaire);
+
 // Un champ d'un autre type qu'une chaîne vaut absent, il ne passe pas en force.
 assert.ok(valideCharge({ ...correct, email: 42, formulaire: "contact" }).erreurs.email);
 

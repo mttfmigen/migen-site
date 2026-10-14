@@ -91,8 +91,12 @@ const FORME_EMAIL = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;
 /** Chiffres, espaces, points, tirets, parenthèses et un éventuel indicatif. */
 const FORME_TELEPHONE = /^\+?[\d\s.\-()]{9,}$/;
 
-/** Identifiant de formulaire : un slug, pour qu'il serve de clé d'analyse. */
-const FORME_FORMULAIRE = /^[a-z0-9-]{2,40}$/;
+/** Identifiant de formulaire : un slug, pour qu'il serve de clé d'analyse.
+    Il était plafonné à 40 caractères, mais les pages le fabriquent depuis leur
+    adresse (`cocon` + chemin + `-hero`) : jusqu'à 70 caractères mesurés le
+    14/10, et 74 pages sur 158 voyaient leur demande refusée en 422. 120 laisse
+    la marge d'une adresse plus profonde sans laisser passer n'importe quoi. */
+const FORME_FORMULAIRE = /^[a-z0-9-]{2,120}$/;
 
 const LIBELLES: Record<ChampContact, string> = {
   entreprise: "Entreprise",
