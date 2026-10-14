@@ -785,20 +785,24 @@ details[open] .g3-plus {
 
    Ce que coûtait l'absence de ces règles, mesuré à 320 px : 80 px de gouttière
    sur 320, soit UN QUART de l'écran perdu, et 240 px de contenu utile. */
-@media (max-width: 389px) {
-  /* La gouttière de page. Les deux sélecteurs ne visent QUE les conteneurs de
-     1200 px dont le rembourrage horizontal vaut 40 px : `0 40px` pour la
-     gouttière nue, `px 40px` pour les variantes qui portent aussi un
-     rembourrage vertical (« 44px 40px 0 »). Un conteneur à 1200 px SANS
-     gouttière n'est pas touché, et c'est voulu : lui en poser une doublerait
-     celle de son parent. React écrit l'attribut sans espace après les
-     deux-points, d'où la forme du sélecteur. */
+/* DÉCISION DE MEHDI DU 14/10 : sur téléphone, 18 px de gouttière comme la
+   maquette mobile v2 (dc.html : `margin:… 18px`, ses panneaux à 18 px), et non
+   plus 40 px. Elle remplace celle du 08/10 décrite plus haut (40 px jusqu'à
+   390 px, 20 px en dessous). C'était la première cause de hauteur au
+   téléphone : une colonne de 310 px au lieu de 354, donc plus de lignes. Même
+   seuil que toute la couche mobile (880 px) : le bureau ne bouge pas.
+   Les deux sélecteurs ne visent QUE les conteneurs de 1200 px dont le
+   rembourrage horizontal vaut 40 px : `0 40px` pour la gouttière nue,
+   `px 40px` pour les variantes qui portent aussi un rembourrage vertical
+   (« 44px 40px 0 »). Un conteneur à 1200 px SANS gouttière n'est pas touché :
+   lui en poser une doublerait celle de son parent. React écrit l'attribut
+   sans espace après les deux-points, d'où la forme du sélecteur. */
+@media (max-width: 880px) {
   [style*="max-width:1200px"][style*="0 40px"],
   [style*="max-width:1200px"][style*="px 40px"] {
-    padding-left: 20px !important;
-    padding-right: 20px !important;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
   }
-
 }
 
 /* SOUS 430 PX, pour ce qui ne touche PAS la gouttière. La gouttière reste à
