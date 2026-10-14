@@ -755,6 +755,11 @@ en [ ]. La série 6 inscrit les demandes du 14/10.
       qu'une rotation d'écran le lui rende.
       CHECK: SITE_URL=https://migen-site.vercel.app node scripts/verifie-responsive.mjs | grep "bascule(s) focalisable"
       EXPECT: 0 bascule(s) focalisable(s)
+      PLANTÉE LE 14/10 À 14H15 ET À 14H56, rien n'est prouvé dans un sens ni
+      dans l'autre : c'est la même porte que G57, et elle rend « MESURE NON
+      CONCLUANTE : 70 relevé(s) sur 110 » pour la même raison, des blocs servis
+      ouverts sous 880 px. Elle se rejouera quand G57 sera soldée, par le même
+      chantier, Mobile vague 2.
 
 ### G61 — Du Markdown brut à l'écran, révélé par le résumé enfin peint
 - [x] FAIT. Les dix appelants de `SectionPliableMobile` construisaient le
@@ -1158,6 +1163,9 @@ registre. Chaque entrée porte la commande qui décide de son état.
       fichier de l'arbre principal, et accusé à tort une réponse juste. Elle
       accepte les deux noms. ANCIENNE COMMANDE : la même sans
       `NEXT_PUBLIC_OPENAI_PIXEL_SRC`.
+      TIENT DE NOUVEAU LE 14/10 À 14H46, depuis un arbre à jour : le lot
+      tag-manager a versionné `.env.example` (`582fd3a`, « !.env.example »
+      au `.gitignore`).
       CHECK: grep -c "NEXT_PUBLIC_GA\|NEXT_PUBLIC_GOOGLE_ADS_ID\|NEXT_PUBLIC_LINKEDIN_PARTNER_ID\|NEXT_PUBLIC_OPENAI_PIXEL_ID\|NEXT_PUBLIC_OPENAI_PIXEL_SRC\|GSC_SERVICE_ACCOUNT_JSON\|CRON_SECRET" .env.example
       EXPECT: au moins 6
 
@@ -1273,6 +1281,16 @@ toutes les pages, porter la maquette mobile v2) restent sous D1 et D16.
       même ensemble des deux côtés, chaque adresse en 200 sans redirection,
       chaque `<loc>` sur https://migen.fr. Tant que cette porte n'est pas au
       dépôt, la commande imprime les deux comptes et pas de jeton.
+      POUSSÉ LE 14/10 (`833364f`), ET LA PORTE TOMBE SUR UNE SEULE FAUTE.
+      Mesuré en production à 14h47 : 260 adresses des deux côtés (la page
+      `/cgv/` s'y est ajoutée, `e0b9b2b`), 260 en 200 sans redirection, mais
+      « liens égaux au H1 servi : 259 sur 260 », « (e) /ressources/ : le plan
+      écrit « Guide maintenance industrielle », la page sert « Le terrain, mis
+      par écrit. » ». Le hub `/ressources/` sert depuis `edf930d` (14/10) le h1
+      de la maquette Ressources v2, et le plan lit encore l'ancien.
+      QUI LA SOLDE : le lot plan-du-site, dans `lib/pages-publiees.ts`, le h1
+      servi faisant foi ; `app/ressources/**` est au chantier Ressources et
+      n'a pas à bouger.
       CHECK: if test -f scripts/verifie-plan-et-sitemap.mjs; then node scripts/verifie-plan-et-sitemap.mjs https://migen-site.vercel.app | tail -1; else p=$(curl -s https://migen-site.vercel.app/plan-du-site/ | grep -o '<main.*</main>' | grep -oE 'href="/[^"#?]*"' | sort -u | wc -l | tr -d ' '); s=$(curl -s https://migen-site.vercel.app/sitemap.xml | grep -o '<loc>' | wc -l | tr -d ' '); echo "porte du plan pas encore au depot ; plan du site : $p adresses, sitemap : $s"; fi
       EXPECT: PLAN_ET_SITEMAP_ALIGNES
 
@@ -1284,10 +1302,12 @@ toutes les pages, porter la maquette mobile v2) restent sous D1 et D16.
       formes), 4 conservées, 144 redirigées en une 301, 35 techniques en 404 ;
       259 adresses du plan du site en 200 », puis le jeton. Sa porte a son
       propre témoin, `--controle`.
-      CE QUI RESTE EST À MEHDI, section 5 du plan : la page `/cgv/`, que les
-      devis citent, n'existe pas sur le nouveau site et part provisoirement
-      vers `/mentions-legales/`, qui ne contient pas les CGV (bloquant avant
-      la bascule) ; et six choix de cible à valider.
+      LE BLOQUANT `/cgv/` EST LEVÉ : la page que les devis citent est publiée
+      avec le texte de l'ancienne page mot pour mot, et sa 301 provisoire vers
+      `/mentions-legales/` est retirée (`e0b9b2b`, 14/10). Mesuré à 14h47 :
+      `/cgv/` répond 200.
+      CE QUI RESTE EST À MEHDI, section 5 du plan : six choix de cible à
+      valider.
       CHECK: node scripts/verifie-redirections.mjs https://migen-site.vercel.app | tail -1
       EXPECT: REDIRECTIONS_SANS_PERTE
 
@@ -1321,7 +1341,12 @@ toutes les pages, porter la maquette mobile v2) restent sous D1 et D16.
       EXPECT: SITEMAP_SERVI_SUR_MIGEN_FR
 
 ### D27 — « Ensuite on va devoir intégrer le Tag Manager » (N41)
-- [ ] EN COURS, lot « tag-manager ». Mesuré le 14/10 : aucune trace de
+- [x] FAIT POUR LE CODE, lot « tag-manager », `582fd3a` (14/10). Mesuré à
+      14h46 depuis un arbre à jour : la commande ci-dessous rend son jeton.
+      La preuve au navigateur est celle que le lot remonte dans son commit :
+      `verifie-tag-manager.mjs`, jeton AUCUN_TAG_AVANT_CONSENTEMENT,
+      contre-essai fait. Elle n'est PAS rejouée ici (build local avec un
+      identifiant de test). Avant le lot, le 14/10 : aucune trace de
       Google Tag Manager au dépôt ni en production. Le lot pose
       `components/consentement/TagManager.tsx`, monté dans `app/layout.tsx`
       juste après le mode consentement, qui ne charge le conteneur QUE si un

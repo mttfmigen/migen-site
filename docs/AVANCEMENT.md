@@ -13,16 +13,16 @@ Une donnée absente s'y écrit « non calculable » avec son motif. Jamais zéro
 
 ```json avancement
 {
-  "remesureLe": "14/10/2026 à 14:45",
+  "remesureLe": "14/10/2026 à 15:00",
   "brancheDeployee": {
     "reference": "origin/phase-2-gabarits",
     "recuperee": "oui, à l’instant",
-    "tete": "e0b9b2b",
-    "commitsDepuisMinuit": 49
+    "tete": "f00fa34",
+    "commitsDepuisMinuit": 51
   },
   "arbreOuTourneLeScript": {
     "branche": "worktree-wf_d782a073-806-8",
-    "tete": "76b9938",
+    "tete": "1df1052",
     "fichiersNonCommites": 2
   },
   "contenu": {
@@ -68,11 +68,12 @@ ne sont pas relancées à chaque passage du rapport : leur horodatage fait foi.
 
 | Mesure | Résultat | Prise le |
 |---|---|---|
-| Registre des retours client | 48 promesses : 37 tenues, **6 rompues**, 3 plantées, 2 chantiers ouverts | 14/10 14:15 |
+| Registre des retours client, lancé depuis la branche à jour | 58 promesses : 45 tenues, **7 rompues** (G20, G55, G57, G58, G59, G63, G66), 1 plantée (G60, non concluante comme G57), 5 chantiers ouverts (D1, D8, D16, D23, D25), 0 illisible. À 14h15, depuis l'arbre principal en retard : 48 promesses, 37 tenues, 6 rompues, 3 plantées | 14/10 14:56 |
 | Redirections de l'ancien migen.fr | 181 adresses, 144 en une 301, 4 conservées, 35 techniques en 404, 259 adresses du plan en 200 : **REDIRECTIONS_SANS_PERTE** | 14/10 14:33 |
 | Interdits du contrat éditorial | **1 formulation interdite**, `lib/decisions-copie.ts:548`, le motif d'une règle qui la retire de la copie (G55) | 14/10 14:41 |
 | Responsive, 5 largeurs, 22 pages | **non concluante** : 70 relevés sur 110, des blocs servis ouverts sous 880 px (G57) | 14/10 14:32 |
 | Blocs repliables | **163 défauts sur 1851 blocs**, « Ils nous font confiance » sans corps texte (G20) | 14/10 14:27 |
+| Plan du site et sitemap | 260 adresses des deux côtés, 260 en 200 sans redirection, **1 titre faux**, `/ressources/` (D23) | 14/10 14:47 |
 
 Commandes, dans l'ordre :
 
@@ -81,6 +82,7 @@ Commandes, dans l'ordre :
     node scripts/verifie-interdits.mjs
     SITE_URL=https://migen-site.vercel.app node scripts/verifie-responsive.mjs
     SITE_URL=https://migen-site.vercel.app node scripts/verifie-blocs-pliables.mjs
+    node scripts/verifie-plan-et-sitemap.mjs https://migen-site.vercel.app
 
 ## Ce qui bloque la mise en ligne, côté code
 
@@ -140,7 +142,8 @@ commande est rejouée par `node scripts/verifie-le-registre.mjs`.
 - **N52** Purge des prix : vérifier si le travail n'était pas déjà fait, restituer les phrases perdues. Commande : `node scripts/verifie-purge-des-prix.mjs`.
 - **N61** Logos clients : accords écrits (B4). Commande : `grep -n -A1 'B4' GATES.md`.
 - **N02** « Voir nos secteurs → » devient un vrai bouton sur `/nous-connaitre/`, libellé et cible inchangés (lot « cta-nous-connaitre », `f461219`, en production à 14h40). Au registre : D29.
-- **N42** Plan de redirection 301 de l'ancien migen.fr, FAIT POUR LE CODE (`4a336e5`, `d76960f`) ; la page `/cgv/` et six choix restent à Mehdi, plus bas. Commande : `node scripts/verifie-redirections.mjs https://migen-site.vercel.app | tail -1`. Au registre : D24.
+- **N41** Google Tag Manager derrière le consentement, FAIT POUR LE CODE (lot « tag-manager », `582fd3a`) : inerte tant que l'identifiant du conteneur n'est pas posé, voir plus bas. Au registre : D27.
+- **N42** Plan de redirection 301 de l'ancien migen.fr, FAIT POUR LE CODE (`4a336e5`, `d76960f`), et la page `/cgv/` que citent les devis est publiée (`e0b9b2b`, 200 à 14h47) ; six choix restent à Mehdi, plus bas. Commande : `node scripts/verifie-redirections.mjs https://migen-site.vercel.app | tail -1`. Au registre : D24.
 
 ## En cours, par chantier
 
@@ -151,10 +154,12 @@ D16), et les sept promesses rompues ci-dessus.
 Commandes : `node scripts/verifie-repli-mobile.mjs https://migen-site.vercel.app | tail -3`,
 puis `node scripts/verifie-le-registre.mjs`.
 
-**Ressources** (N10, « y'a un bug, vérifie », 14/10 12h23). Sept fichiers de
-`components/site/ressources-hub/` modifiés dans une copie de travail, non
-poussés au 14/10 14h10.
-Commande : `git log origin/phase-2-gabarits --oneline --since=2026-10-14T12:00 -- components/site/ressources-hub/`
+**Ressources** (N10, « y'a un bug, vérifie », 14/10 12h23). Poussé après
+14h10 : `639077d` (le hub passe de 23 106 à 11 772 px à 390 px) et `edf930d`
+(le hub sur la maquette Ressources v2). Au chantier de dire si le bug de
+12h23 est soldé. Effet de bord mesuré à 14h47 : le h1 de `/ressources/` a
+changé, et la porte du plan du site tombe dessus (D23).
+Commande : `git log origin/phase-2-gabarits --oneline --since=2026-10-14T12:00 -- components/site/ressources-hub/ app/ressources/`
 
 **Redirections du LISEZMOI mobile** (N17). Les six adresses `/offres/chantier/`,
 `/offres/construction/`, `/offres/retrofit/`, `/offres/audit-conseil-maintenance/`,
@@ -174,8 +179,8 @@ Commandes : `node scripts/instantane-texte-main.mjs`, `bun run build`.
 
 | Lot | Demande | État à 14h45 | Commande |
 |---|---|---|---|
-| plan-du-site | N43 : les 259 adresses du sitemap aussi au plan du site (aujourd'hui 145) | pas encore poussé | au registre D23, jeton `PLAN_ET_SITEMAP_ALIGNES` |
-| tag-manager | N41 : Google Tag Manager derrière le consentement | pas encore poussé | au registre D27, jeton `TAG_MANAGER_DERRIERE_LE_CONSENTEMENT` |
+| plan-du-site | N43 : toutes les adresses du sitemap aussi au plan du site (145 avant le lot) | poussé (`833364f`) : 260 des deux côtés, porte rouge sur un seul titre, celui de `/ressources/` | au registre D23, jeton `PLAN_ET_SITEMAP_ALIGNES` |
+| tag-manager | N41 : Google Tag Manager derrière le consentement | **fait pour le code** (`582fd3a`), attend l'identifiant de Mehdi | au registre D27, jeton `TAG_MANAGER_DERRIERE_LE_CONSENTEMENT` |
 | cta-nous-connaitre | N02 : « Voir nos secteurs → » en bouton | **fait, en ligne** | au registre D29 |
 | rapport-avancement | N46 : ce rapport, remis à jour toutes les dix minutes | prose réécrite, remise à jour réarmée | au registre D8 |
 
@@ -183,8 +188,7 @@ Commandes : `node scripts/instantane-texte-main.mjs`, `bun run build`.
 
 | Sujet | Ce qu'il faut de lui | Commande qui dira que c'est fait |
 |---|---|---|
-| Page `/cgv/` (N42) | **bloquant avant la bascule** : les devis citent https://migen.fr/cgv, le nouveau site n'a pas de page CGV. Fournir le texte, puis retirer la ligne `/cgv/` des redirections | `node scripts/verifie-redirections.mjs https://migen-site.vercel.app` |
-| Six choix de redirection (N42, N17) | section 5 de `docs/PLAN-REDIRECTIONS.md` | même commande, puis D25 du registre |
+| Six choix de redirection (N42, N17) | section 5 de `docs/PLAN-REDIRECTIONS.md`. La page `/cgv/`, ancien bloquant de cette section, est publiée depuis `e0b9b2b` | `node scripts/verifie-redirections.mjs https://migen-site.vercel.app`, puis D25 du registre |
 | `SITE_INDEXABLE` (N43) | **le jour de la bascule** : poser `SITE_INDEXABLE=oui` sur Vercel, sinon robots.txt reste « Disallow: / » ; puis soumettre le sitemap dans la Search Console | `curl -s https://migen.fr/robots.txt` |
 | Identifiant Tag Manager (N41) | l'identifiant GTM-XXXXXXX, à poser sur Vercel en Production (`NEXT_PUBLIC_GTM_ID`), les balises du conteneur avec les contrôles de consentement, puis le test des deux parcours avec Google Tag Assistant | `bunx vercel@62.7.0 env ls production \| awk '{print $1}' \| grep -cx NEXT_PUBLIC_GTM_ID` |
 | Formulaire de bout en bout (N31) | un envoi réel depuis `/contact/` avec une vraie adresse, puis le voir dans les soumissions du formulaire 18757747 dans HubSpot. Une session ne crée pas de faux contact | journal Vercel « lead » depuis le 14/10 8h (UTC), contacts HubSpot convertis depuis le 12/10 |
