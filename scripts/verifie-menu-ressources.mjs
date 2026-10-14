@@ -165,7 +165,8 @@ function defauts({ espaces, une, panneau, tiroir, carriere, hub }) {
   // ne doit réapparaître dans le rendu tant que la décision tient.
   for (const espace of espaces) {
     for (const format of espace.formats) {
-      if (new RegExp(`\\b${format.nombre} ${format.libelle}\\b`).test(visible)) {
+      // Sans casse : l'ancien bloc écrivait « 7 fiches métiers » en minuscules.
+      if (new RegExp(`\\b${format.nombre} ${format.libelle}\\b`, "i").test(visible)) {
         dit(`la catégorie « ${format.nombre} ${format.libelle} » est de nouveau rendue, masquée par Mehdi le 14/10.`);
       }
     }
@@ -259,7 +260,7 @@ const TEMOINS = [
   [
     "une catégorie de nouveau rendue",
     /de nouveau rendue/,
-    (cas) => ({ ...cas, panneau: `${cas.panneau}<span>7 Fiches métiers</span>` }),
+    (cas) => ({ ...cas, panneau: `${cas.panneau}<span>7 fiches métiers</span>` }),
   ],
   [
     "le bouton vers le hub retiré du panneau",

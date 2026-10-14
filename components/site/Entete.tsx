@@ -76,19 +76,50 @@ export default function Entete({
 
   /** Ferme le panneau et rend le focus à l'entrée qui l'avait ouvert. */
   function fermerPanneauAuClavier() {
-    const ferme = panneau;
-    setPanneau(null);
-    if (ferme) {
+    // Le focus D'ABORD : rendu à l'entrée, il la rouvrirait (son onFocus) si
+    // la fermeture passait avant lui, quand Échap part d'un lien du panneau.
+    if (panneau) {
       barre.current
-        ?.querySelector<HTMLElement>(`[data-panneau="${ferme}"]`)
+        ?.querySelector<HTMLElement>(`[data-panneau="${panneau}"]`)
         ?.focus();
     }
+    setPanneau(null);
   }
 
   function surTouche(evenement: React.KeyboardEvent) {
     if (evenement.key === "Escape" && panneau) {
       evenement.preventDefault();
       fermerPanneauAuClavier();
+      return;
+    }
+    if (evenement.key === "Tab" && panneau) passerParLePanneau(evenement);
+  }
+
+  /**
+   * Le feuillet est rendu APRÈS toute la barre : sans ce relais, Tab depuis une
+   * entrée ouverte passait à l'entrée suivante, qui ouvre son propre panneau,
+   * et les liens des quatre premiers panneaux n'étaient jamais atteints au
+   * clavier (relevé le 14/10 sur Ressources). Tab entre dans le panneau, en
+   * ressort vers l'entrée suivante ; Maj+Tab revient à l'entrée.
+   */
+  function passerParLePanneau(evenement: React.KeyboardEvent) {
+    const entree = barre.current?.querySelector<HTMLElement>(
+      `[data-panneau="${panneau}"]`,
+    );
+    const liens = [
+      ...(barre.current?.querySelectorAll<HTMLElement>(
+        "#mg-megamenu a[href], #mg-megamenu button",
+      ) ?? []),
+    ];
+    const ici = evenement.target;
+    const cible = evenement.shiftKey
+      ? ici === liens[0] && entree
+      : ici === entree
+        ? liens[0]
+        : ici === liens.at(-1) && entree?.nextElementSibling;
+    if (cible instanceof HTMLElement) {
+      evenement.preventDefault();
+      cible.focus();
     }
   }
 
@@ -273,6 +304,7 @@ export default function Entete({
                   alignItems: "center",
                 }}
                 onMouseEnter={() => setPanneau(null)}
+                onFocus={() => setPanneau(null)}
               >
                 {NAV_CARRIERE.libelle}
               </Link>

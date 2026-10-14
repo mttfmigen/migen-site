@@ -313,16 +313,6 @@ export const RES_ESPACES: EspaceRessources[] = [
   },
 ];
 
-/** « 27 articles », « 7 fiches métiers » : le compte d'un format, en clair. */
-export const compteFormat = (format: FormatEspace): string =>
-  `${format.nombre} ${format.libelle.toLowerCase()}`;
-
-/** « Entreprises : 27 articles. Techniciens : 7 fiches métiers, … » */
-export const RESUME_ESPACES: string = RES_ESPACES.map(
-  (espace) =>
-    `${espace.libelle} : ${espace.formats.map(compteFormat).join(", ")}.`,
-).join(" ");
-
 /**
  * « À la une » du panneau Ressources : les trois articles que le hub
  * /ressources/ met à la une (liste `UNE` de `ressources-hub/v2/HubRessources.tsx`),
