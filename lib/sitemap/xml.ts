@@ -12,8 +12,9 @@ import { FEUILLE_DU_PLAN } from "@/lib/sitemap/adresses";
  *    n'est pas connue (jamais l'heure du build à la place) ;
  *  - l'indentation par tabulations.
  *
- * Fonctions pures : `lib/sitemap/verification-plan-xml.ts` les éprouve sans
- * serveur ni base.
+ * Fonctions pures. Leur sortie servie est éprouvée par
+ * `scripts/verifie-sitemap.mjs` (format, dates, images, 301), dont
+ * `--controle` prouve qu'elle sait échouer.
  */
 
 export interface EntreePlan {

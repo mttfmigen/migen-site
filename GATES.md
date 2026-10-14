@@ -1333,7 +1333,7 @@ toutes les pages, porter la maquette mobile v2) restent sous D1 et D16.
       EXPECT: REDIRECTIONS_DU_LISEZMOI_EN_PLACE
 
 ### D26 — « Oublie pas le sitemap » (N43)
-- [x] FAIT POUR LE CODE. `/sitemap.xml` est servi, toutes ses adresses sur
+- [x] FAIT POUR LE CODE. Le plan XML est servi, toutes ses adresses sur
       https://migen.fr, et les 259 répondent 200 sans redirection (mesuré
       par la porte de D24 le 14/10 à 14h33). `app/robots.ts` le déclare dès
       que `SITE_INDEXABLE` vaut « oui ». CONTRE-ESSAI JOUÉ LE 14/10 : la même
@@ -1341,9 +1341,15 @@ toutes les pages, porter la maquette mobile v2) restent sous D1 et D16.
       dont 0 » et pas de jeton.
       CE QUI RESTE EST À MEHDI, le jour de la bascule : poser
       `SITE_INDEXABLE=oui` sur Vercel (sinon robots.txt reste « Disallow: / »),
-      puis soumettre https://migen.fr/sitemap.xml dans la Search Console
+      puis soumettre https://migen.fr/sitemap_index.xml dans la Search Console
       (étape 10 de `docs/PLAN-REDIRECTIONS.md`).
-      CHECK: x=$(curl -s https://migen-site.vercel.app/sitemap.xml); n=$(printf %s "$x" | grep -o '<loc>' | wc -l | tr -d ' '); m=$(printf %s "$x" | grep -o '<loc>https://migen.fr/' | wc -l | tr -d ' '); echo "sitemap : $n adresses, dont $m sur https://migen.fr"; [ "$n" -ge 1 ] && [ "$n" = "$m" ] && echo SITEMAP_SERVI_SUR_MIGEN_FR
+      DEPUIS `02a0876` (14/10), LE PLAN SUIT LE FORMAT DE L'ANCIEN SITE (Yoast) :
+      l'index `/sitemap_index.xml` et ses sous-plans, `/sitemap.xml` en 301
+      vers l'index (`docs/PLAN-DU-SITE-XML.md`). L'ancienne commande lisait
+      `/sitemap.xml` sans suivre la 301 et rendait « 0 adresses » (mesuré en
+      production le 14/10 au soir) : elle lit maintenant le plan par
+      `scripts/plan-xml.mjs`, l'index puis ses sous-plans.
+      CHECK: node --input-type=module -e 'import { locsDuPlan } from "./scripts/plan-xml.mjs"; const l = await locsDuPlan("https://migen-site.vercel.app"); const m = l.filter((u) => u.startsWith("https://migen.fr/")).length; console.log(`plan : ${l.length} adresses, dont ${m} sur https://migen.fr`); if (l.length > 0 && l.length === m) console.log("SITEMAP_SERVI_SUR_MIGEN_FR")'
       EXPECT: SITEMAP_SERVI_SUR_MIGEN_FR
 
 ### D27 — « Ensuite on va devoir intégrer le Tag Manager » (N41)
