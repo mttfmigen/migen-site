@@ -337,10 +337,17 @@ export default function PostulerMetier() {
     setEtat("envoi");
     setAnnonce("");
     try {
-      const r = await fetch("/api/candidature", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+      /* LE CV PART AVEC LA CANDIDATURE (14/10) : formulaire en plusieurs
+         parties, « donnees » en JSON et « cv » le fichier. */
+      const fichierCv = donnees.get("cv");
+      const cvJoint = fichierCv instanceof File && fichierCv.size > 0 ? fichierCv : null;
+      if (cvJoint && cvJoint.size > 4 * 1024 * 1024) {
+        setEtat("erreur");
+        setAnnonce("Votre CV dépasse 4 Mo. Envoyez une version plus légère, ou écrivez-nous à recrutement@migen.fr.");
+        return;
+      }
+      const corpsEnvoi = new FormData();
+      corpsEnvoi.append("donnees", JSON.stringify({
           prenom: lis("firstname"),
           nom: lis("lastname"),
           courriel: lis("email"),
@@ -356,15 +363,11 @@ export default function PostulerMetier() {
           message: lis("message"),
           origine: window.location.pathname,
           metier: document.querySelector("h1")?.textContent?.trim() ?? "",
-          /* Le fichier ne part pas, mais son NOM part : le recruteur sait
-             qu'un CV existe et peut le réclamer, au lieu de ne rien savoir. */
-          cv: (() => {
-            const f = donnees.get("cv");
-            return f instanceof File && f.name ? `${f.name} (non transmis, à réclamer au candidat)` : "";
-          })(),
+          cv: cvJoint?.name ?? "",
           [CHAMP_PIEGE]: lis(CHAMP_PIEGE),
-        }),
-      });
+        }));
+      if (cvJoint) corpsEnvoi.append("cv", cvJoint);
+      const r = await fetch("/api/candidature", { method: "POST", body: corpsEnvoi });
       const corps: unknown = await r.json().catch(() => null);
       const message =
         typeof corps === "object" && corps !== null && typeof (corps as { message?: unknown }).message === "string"

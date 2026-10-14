@@ -210,10 +210,16 @@ function Formulaire({ onEnvoye, retour }: { onEnvoye: () => void; retour: boolea
     setEnvoi(true);
     setErreur("");
     try {
-      const r = await fetch("/api/candidature", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+      /* LE CV PART AVEC LA CANDIDATURE (14/10) : formulaire en plusieurs
+         parties, « donnees » en JSON et « cv » le fichier. */
+      const fichierCv = f.get("cv");
+      const cvJoint = fichierCv instanceof File && fichierCv.size > 0 ? fichierCv : null;
+      if (cvJoint && cvJoint.size > 4 * 1024 * 1024) {
+        setErreur("Votre CV dépasse 4 Mo. Envoyez une version plus légère, ou écrivez-nous à recrutement@migen.fr.");
+        return;
+      }
+      const corpsEnvoi = new FormData();
+      corpsEnvoi.append("donnees", JSON.stringify({
           prenom,
           nom: reste.join(" "),
           courriel: v.mail,
@@ -225,12 +231,11 @@ function Formulaire({ onEnvoye, retour }: { onEnvoye: () => void; retour: boolea
           experience: `${v.exp} ${Number(v.exp) > 1 ? "années" : "année"}`,
           pretentions: `${v.sal} € brut / an`,
           origine: `${window.location.pathname} (espace Techniciens)`,
-          /* Le fichier ne part pas (la route ne prend que du JSON), son NOM
-             part : le recruteur sait qu'un CV existe et peut le réclamer. */
-          cv: cv ? `${cv} (non transmis, à réclamer au candidat)` : "",
+          cv: cvJoint?.name ?? "",
           [CHAMP_PIEGE]: lis(CHAMP_PIEGE),
-        }),
-      });
+        }));
+      if (cvJoint) corpsEnvoi.append("cv", cvJoint);
+      const r = await fetch("/api/candidature", { method: "POST", body: corpsEnvoi });
       if (!r.ok) {
         setErreur((await messageDe(r)) ?? SECOURS);
         return;
@@ -301,6 +306,7 @@ function Formulaire({ onEnvoye, retour }: { onEnvoye: () => void; retour: boolea
         </span>
         <input
           type="file"
+          name="cv"
           accept=".pdf,.doc,.docx"
           className={c.masque}
           onChange={(e) => setCv(e.target.files?.[0]?.name ?? "")}

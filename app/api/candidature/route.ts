@@ -1,8 +1,9 @@
-import type { NextRequest } from "next/server";
+import { after, type NextRequest } from "next/server";
 
 import { CHAMP_PIEGE } from "@/components/formulaire/validation";
 import { empreinteIp, tropDeDepots } from "@/components/formulaire/debit";
-import { deposeCandidature, teamtailorConfigure } from "@/lib/teamtailor";
+import { CV_MAX_OCTETS, deposeCv, extensionCv, supprimeCv } from "@/lib/cv-stockage";
+import { deposeCandidature, teamtailorAUnCv, teamtailorConfigure } from "@/lib/teamtailor";
 
 /**
  * Dépôt d'une candidature dans TeamTailor.
@@ -56,17 +57,37 @@ export async function POST(requete: NextRequest): Promise<Response> {
   if (requete.headers.get("sec-fetch-site") === "cross-site") {
     return reponse(403, "Requête refusée.");
   }
-  const typeContenu = requete.headers.get("content-type") ?? "";
-  if (!typeContenu.toLowerCase().includes("application/json")) {
+  const typeContenu = (requete.headers.get("content-type") ?? "").toLowerCase();
+  /* DEUX FORMATS (14/10) : du JSON comme avant, ou un formulaire en
+     plusieurs parties quand le candidat joint son CV (« donnees » en JSON,
+     « cv » le fichier). Le plafond suit : 16 ko sans fichier, 4,5 Mo avec. */
+  const avecFichier = typeContenu.includes("multipart/form-data");
+  if (!avecFichier && !typeContenu.includes("application/json")) {
     return reponse(415, "Format de requête non accepté.");
   }
   const annonceTaille = Number(requete.headers.get("content-length") ?? "0");
-  if (Number.isFinite(annonceTaille) && annonceTaille > CHARGE_MAX_OCTETS) {
-    return reponse(413, "Candidature trop volumineuse.");
+  const plafond = avecFichier ? CV_MAX_OCTETS + 300_000 : CHARGE_MAX_OCTETS;
+  if (Number.isFinite(annonceTaille) && annonceTaille > plafond) {
+    return reponse(413, "Votre CV dépasse 4 Mo. Envoyez une version plus légère, ou écrivez-nous à recrutement@migen.fr.");
   }
 
-  const brut: unknown = await requete.json().catch(() => null);
-  if (brut === null) return reponse(400, "Requête illisible.");
+  let brut: unknown = null;
+  let fichier: File | null = null;
+  if (avecFichier) {
+    const formulaire = await requete.formData().catch(() => null);
+    if (!formulaire) return reponse(400, "Requête illisible.");
+    const donnees = formulaire.get("donnees");
+    try {
+      brut = typeof donnees === "string" ? JSON.parse(donnees) : null;
+    } catch {
+      brut = null;
+    }
+    const f = formulaire.get("cv");
+    if (f instanceof File && f.size > 0) fichier = f;
+  } else {
+    brut = await requete.json().catch(() => null);
+  }
+  if (brut === null || typeof brut !== "object") return reponse(400, "Requête illisible.");
   const source = brut as Record<string, unknown>;
 
   /* Champ piège : rempli, la candidature est jetée et la réponse reste un
@@ -85,6 +106,10 @@ export async function POST(requete: NextRequest): Promise<Response> {
   if (!courriel) champs.courriel = "Votre adresse électronique nous manque.";
   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(courriel)) {
     champs.courriel = "Cette adresse ne semble pas valide.";
+  }
+  if (fichier) {
+    if (fichier.size > CV_MAX_OCTETS) champs.cv = "Votre CV dépasse 4 Mo.";
+    else if (!extensionCv(fichier.name)) champs.cv = "Le CV doit être un PDF ou un document Word.";
   }
   if (Object.keys(champs).length > 0) {
     return reponse(422, "Quelques champs demandent une correction.", champs);
@@ -107,6 +132,17 @@ export async function POST(requete: NextRequest): Promise<Response> {
      transmettait que quatre et jetait le poste visé, la mobilité, le trajet,
      la disponibilité, l'expérience et les prétentions, c'est-à-dire
      précisément ce qui sert à qualifier un candidat. */
+  /* LE CV, DÉPOSÉ DANS LE STOCKAGE PRIVÉ PUIS REMIS À TEAMTAILOR PAR UN LIEN
+     SIGNÉ. Si le dépôt échoue, la candidature part quand même, sans CV, et
+     le commentaire le dit : rien n'est perdu en silence. */
+  const cvDepose = fichier ? await deposeCv(fichier).catch(() => null) : null;
+  const nomCv = fichier?.name.slice(0, 160);
+  const mentionCv = cvDepose
+    ? `${nomCv} (joint au profil)`
+    : nomCv
+      ? `${nomCv} (non transmis, à réclamer au candidat)`
+      : texte(source.cv, 200);
+
   const resultat = await deposeCandidature({
     prenom: prenom!,
     nom: nom!,
@@ -121,12 +157,32 @@ export async function POST(requete: NextRequest): Promise<Response> {
     message: texte(source.message, 2000),
     origine: texte(source.origine, 200),
     metier: texte(source.metier, 120),
-    cv: texte(source.cv, 200),
+    cv: mentionCv,
+    cvUrl: cvDepose?.url,
   });
 
   if (!resultat.depose) {
     console.error("[candidature] dépôt refusé :", resultat.raison, resultat.detail);
+    if (cvDepose) after(() => supprimeCv(cvDepose.chemin));
     return reponse(resultat.raison === "non-configure" ? 503 : 502, ECHEC_DEPOT);
+  }
+
+  /* LA COPIE DU SITE NE SERT PLUS DÈS QUE TEAMTAILOR A LE CV : on vérifie,
+     après la réponse au candidat, puis on la supprime. Si TeamTailor ne l'a
+     pas encore pris au bout de 8 s, la copie est gardée et le journal le dit
+     (le lien signé, lui, expire au bout d'une heure). */
+  if (cvDepose) {
+    const candidatId = resultat.candidatId;
+    after(async () => {
+      for (let essai = 0; essai < 4; essai++) {
+        await new Promise((fin) => setTimeout(fin, 2000));
+        if (await teamtailorAUnCv(candidatId).catch(() => false)) {
+          await supprimeCv(cvDepose.chemin);
+          return;
+        }
+      }
+      console.error(`[cv] TeamTailor n'a pas encore le CV du profil ${candidatId}, copie gardée : ${cvDepose.chemin}`);
+    });
   }
 
   return reponse(200, CONFIRMATION);

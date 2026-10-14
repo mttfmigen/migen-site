@@ -65,6 +65,12 @@ export interface Candidature {
   metier?: string;
   /** Le candidat a-t-il joint un fichier ? Son nom, à défaut du fichier. */
   cv?: string;
+  /**
+   * Lien temporaire (signé) vers le CV déposé dans le stockage privé du site.
+   * TeamTailor télécharge le fichier depuis ce lien à la création du profil
+   * (attribut `resume`) : c'est ainsi que le CV arrive joint à la fiche.
+   */
+  cvUrl?: string;
 }
 
 /**
@@ -150,6 +156,28 @@ function raisonApi(donnee: unknown): string {
     .slice(0, 300);
 }
 
+async function lit(chemin: string, cle: string): Promise<{ ok: boolean; donnee: unknown }> {
+  const r = await fetch(`${API}${chemin}`, {
+    headers: { Authorization: `Token token=${cle}`, "X-Api-Version": VERSION_API },
+    signal: AbortSignal.timeout(DELAI_MS),
+  });
+  return { ok: r.ok, donnee: await r.json().catch(() => null) };
+}
+
+/**
+ * Vrai quand TeamTailor a récupéré le CV du candidat (attribut `resume` rempli
+ * par TeamTailor). Sert à supprimer la copie du site dès qu'elle ne sert plus.
+ */
+export async function teamtailorAUnCv(candidatId: number): Promise<boolean> {
+  const conf = config();
+  if (!conf) return false;
+  const r = await lit(`/candidates/${candidatId}`, conf.cle).catch(() => ({ ok: false, donnee: null }));
+  if (!r.ok) return false;
+  const attributs = (r.donnee as { data?: { attributes?: Record<string, unknown> } } | null)?.data?.attributes;
+  const cv = attributs?.resume;
+  return typeof cv === "string" && cv.length > 0;
+}
+
 /** L'identifiant numérique rendu par TeamTailor, ou null si la forme surprend. */
 function identifiant(donnee: unknown): number | null {
   if (typeof donnee !== "object" || donnee === null) return null;
@@ -180,19 +208,25 @@ export async function deposeCandidature(c: Candidature): Promise<ResultatDepot> 
   const commentaire = commentaireDeLaCandidature(c);
 
   try {
-    const profil = await appelle("/candidates", conf.cle, {
-      data: {
-        type: "candidates",
-        attributes: {
-          "first-name": c.prenom,
-          "last-name": c.nom,
-          email: c.courriel,
-          phone: c.telephone ?? null,
-          sourced: true,
-          pitch: `Candidature site${c.poste ? ` · ${c.poste}` : ""}`.slice(0, 140),
-        },
-      },
+    const attributsProfil = {
+      "first-name": c.prenom,
+      "last-name": c.nom,
+      email: c.courriel,
+      phone: c.telephone ?? null,
+      sourced: true,
+      pitch: `Candidature site${c.poste ? ` · ${c.poste}` : ""}`.slice(0, 140),
+    };
+    /* LE CV PART AVEC LE PROFIL (14/10, Mehdi : « j'ai pas le CV joint »).
+       TeamTailor télécharge le fichier depuis le lien signé. Si la création
+       échoue AVEC le CV, on la retente SANS : une candidature sans CV vaut
+       mieux qu'une candidature perdue, et le commentaire dit qu'il manque. */
+    let profil = await appelle("/candidates", conf.cle, {
+      data: { type: "candidates", attributes: c.cvUrl ? { ...attributsProfil, resume: c.cvUrl } : attributsProfil },
     });
+    if (!profil.ok && c.cvUrl) {
+      console.error(`[teamtailor] profil refusé avec le CV : ${profil.statut} ${raisonApi(profil.donnee)}, nouvel essai sans CV`);
+      profil = await appelle("/candidates", conf.cle, { data: { type: "candidates", attributes: attributsProfil } });
+    }
     if (!profil.ok) {
       return { depose: false, raison: "refus-api", detail: `création du profil : ${profil.statut}` };
     }
