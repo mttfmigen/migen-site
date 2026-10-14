@@ -45,7 +45,11 @@ import {
   TIROIR,
   TIROIR_ACCUEIL,
 } from "@/components/site/entete-donnees";
-import { CONTENUS_ENTREPRISES } from "@/components/site/ressources-hub/v2/donnees";
+import {
+  CONTENUS_ENTREPRISES,
+  CONTENUS_TECHNICIENS,
+} from "@/components/site/ressources-hub/v2/donnees";
+import { type Espace, FORMATS } from "@/components/site/ressources-hub/v2/filtrage";
 
 const CONTROLE = process.argv.includes("--controle");
 
@@ -241,13 +245,30 @@ function menuAttendu(): SectionTiroir[] {
 }
 
 /**
- * LE SEUL AJOUT À LA MAQUETTE MOBILE, déclaré le 14/10 : le groupe
- * « Ressources » porte, avant « Toutes les ressources », la sous-tête
- * « À la une » et les trois articles que le hub /ressources/ (maquette
- * Ressources v2) met à la une. Recalculé ici depuis le hub lui-même : la liste
- * `UNE` de `HubRessources.tsx`, et le titre et la durée de chaque article dans
- * `donnees.ts`. Que le hub change sa une, et le tiroir doit suivre.
+ * LE SEUL ÉCART À LA MAQUETTE MOBILE, déclaré le 14/10 et demandé par Mehdi :
+ * le groupe « Ressources » ne mène plus qu'à la maquette Ressources v2. Ses
+ * entrées calculées par la maquette mobile (sous-rubriques de l'ancienne
+ * maquette, guides) sont REMPLACÉES par la sous-tête « À la une », les trois
+ * articles que le hub /ressources/ met à la une, et « Toutes les ressources »
+ * avec les vrais comptes des deux espaces du hub. Recalculé ici depuis le hub
+ * lui-même : la liste `UNE` de `HubRessources.tsx`, `donnees.ts` et `FORMATS`.
+ * Que le hub change, et le tiroir doit suivre.
  */
+function resumeDuHub(): string {
+  const espaces: [Espace, string][] = [["ent", "Entreprises"], ["tech", "Techniciens"]];
+  const contenus = { ent: CONTENUS_ENTREPRISES, tech: CONTENUS_TECHNICIENS };
+  return espaces
+    .map(([cle, nom]) => {
+      const comptes = FORMATS[cle]
+        .filter(([format]) => format !== "all")
+        .map(([format, libelle]) => [contenus[cle].filter((x) => x.format === format).length, libelle] as const)
+        .filter(([nombre]) => nombre > 0)
+        .map(([nombre, libelle]) => `${nombre} ${libelle.toLowerCase()}`);
+      return `${nom} : ${comptes.join(", ")}.`;
+    })
+    .join(" ");
+}
+
 function avecLaUneDuHub(groupes: SectionTiroir[]): SectionTiroir[] {
   const source = readFileSync(
     "components/site/ressources-hub/v2/HubRessources.tsx",
@@ -263,22 +284,21 @@ function avecLaUneDuHub(groupes: SectionTiroir[]): SectionTiroir[] {
       type: "lien",
       libelle: article.titre,
       href: article.url,
-      description: `${article.minutes} min de lecture`,
+      description: `${article.format} · ${article.minutes} min de lecture`,
     };
   });
   return groupes.map((groupe) => {
     if (groupe.libelle !== "Ressources") return groupe;
-    const rang = groupe.entrees.findIndex(
+    const tout = groupe.entrees.find(
       (e) => e.type === "lien" && e.href === "/ressources/",
     );
-    assert.ok(rang > -1, "« Toutes les ressources » a quitté le groupe Ressources");
+    assert.ok(tout, "la maquette mobile ne mène plus au hub /ressources/");
     return {
       ...groupe,
       entrees: [
-        ...groupe.entrees.slice(0, rang),
         { type: "sous-tete", libelle: "À la une" },
         ...une,
-        ...groupe.entrees.slice(rang),
+        { ...tout, description: resumeDuHub() },
       ],
     };
   });
@@ -473,8 +493,8 @@ const nombreDeLiens = cibles.length;
 console.log(
   `tiroir vérifié contre la maquette mobile v2 : ${TIROIR.length} groupes, ` +
     `${nombreDeLiens} liens (Accueil compris), tous dans l'inventaire ` +
-    `(${connues.size} adresses) ; groupes Ressources et Carrière recalculés ` +
-    `depuis l'index ; les ${TIROIR.length} groupes sont des <details> et les ` +
+    `(${connues.size} adresses) ; groupe Carrière recalculé depuis l'index, ` +
+    `groupe Ressources depuis le hub /ressources/ ; les ${TIROIR.length} groupes sont des <details> et les ` +
     `${nombreDeLiens} liens restent dans le DOM replié ; compteurs, ` +
     `sous-têtes et descriptions rendus` +
     (CONTROLE ? " ; 4 témoins d'échec tombés." : "."),

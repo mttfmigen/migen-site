@@ -127,44 +127,28 @@ export function RangeeOffre({ offre }: { offre: Offre }) {
   );
 }
 
-/** Rangée titre + description des panneaux Ressources et À propos. */
+/** Rangée titre + description du panneau À propos. */
 export function RangeeDecrite({
   href,
   libelle,
   description,
-  numero,
 }: {
   href: string;
   libelle: string;
   description: string;
-  /** Compteur monospace du panneau Ressources, absent ailleurs. */
-  numero?: string;
 }) {
   return (
     <Link
       href={href}
       className={s.rangee}
       style={{
-        display: numero ? "flex" : "block",
+        display: "block",
         alignItems: "baseline",
         gap: 11,
         padding: "9px 11px",
         borderRadius: 11,
       }}
     >
-      {numero && (
-        <span
-          style={{
-            font: "600 10px ui-monospace,Menlo,monospace",
-            color: "var(--acc)",
-            flex: "none",
-            width: 16,
-            paddingTop: 3,
-          }}
-        >
-          {numero}
-        </span>
-      )}
       <span>
         <span
           style={{

@@ -1,126 +1,98 @@
 /**
- * Le panneau « Ressources » de l'en-tête annonce ce qu'il sert.
+ * Le menu « Ressources » de l'en-tête (panneau du bureau et groupe du tiroir)
+ * ne mène qu'à la maquette Ressources v2, et dit ce que dit le hub.
  *
  *   bun scripts/verifie-menu-ressources.mjs
  *   bun scripts/verifie-menu-ressources.mjs --controle   (contrôle positif)
- *   bun scripts/verifie-menu-ressources.mjs --en-ligne   (codes HTTP de prod)
+ *   bun scripts/verifie-menu-ressources.mjs --en-ligne   (codes HTTP)
  *
- * `bun` et non `node` : la porte importe les données telles que le site les
- * rend (`components/site/entete-donnees.ts`) plutôt que d'en relire le texte à
- * l'expression régulière. Une porte qui devine le contenu d'un tableau finit
- * par se tromper en même temps que lui.
+ * `bun` et non `node` : la porte importe les données et REND le panneau tel
+ * que le site le sert, plutôt que d'en relire le texte à l'expression
+ * régulière.
  *
- * POURQUOI ELLE EXISTE. Signalé par Mehdi le 12/10 : « dans le menu le bloc
- * ressources ne va pas. Fiche métiers, cela renvoie vers migen recrutement,
- * mais pour la partie ressources c'est pas ce à quoi on s'attend », et « quand
- * je clique sur le truc 23 RESSOURCES ça me renvoie vers guide de maintenance
- * industrielle ». Deux défauts d'une même nature : le panneau annonçait un
- * inventaire qui n'était pas le sien.
+ * POURQUOI ELLE EXISTE. Signalé par Mehdi le 14/10 : « dans le menu ressources
+ * il y a plein de trucs type articles etc. qui renvoient vers d'autres pages
+ * ressources hors maquette, de l'ancienne maquette qui ne devrait plus
+ * exister ». Le panneau menait aux cinq sous-rubriques de l'ancienne maquette
+ * (dont quatre formats en pause) et le tiroir à deux guides.
  *
- * TROIS CHOSES SE RELÂCHENT SANS BRUIT, et c'est ce que la porte tient :
- *   1. UNE CIBLE QUI SORT DES RESSOURCES. « Fiches métier » menait à
- *      `/carriere/` : une rangée de la colonne « Par format » qui envoyait au
- *      recrutement. Le panneau ne doit mener que sous `/ressources/`.
- *   2. UNE FAMILLE SANS PORTE. Le panneau n'exposait que 3 des 5
- *      sous-rubriques servies : Process et Livres blancs n'étaient atteignables
- *      depuis aucun menu. Les cinq familles de l'index doivent y être, chacune
- *      une fois.
- *   3. UN COMPTE QUI DÉRIVE. Les numéros venaient de la maquette (04, 07, 07,
- *      et « Les 23 ressources ») et décrivaient SA bibliothèque, pas le site.
- *      Chaque numéro doit valoir le nombre réel de pages de sa famille, et le
- *      total annoncé la somme des cinq.
- *
- * LA RÉFÉRENCE DES COMPTES est `maquette/contenu/site/index.json`, l'index des
- * 248 pages du client, celui qui attribue son gabarit à chaque page (CLAUDE.md
- * §16). Une ressource y est une page à trois segments sous `/ressources/`, par
- * exemple `/ressources/articles/gmao/` ; les hubs (`/ressources/`) et les
- * sous-rubriques (`/ressources/articles/`) n'en sont pas.
+ * CE QU'ELLE TIENT :
+ *   1. ZÉRO LIEN HORS RESSOURCES V2. Chaque lien du panneau rendu et du
+ *      groupe Ressources du tiroir mène au hub /ressources/ ou à un contenu du
+ *      hub (`donnees.ts`). Les formats en pause (fiches pratiques, fiches
+ *      techniques, livres blancs, process) sont nommés et refusés à part.
+ *   2. LES VRAIS COMPTES. Les espaces et leurs formats valent ceux du hub :
+ *      libellés de `FORMATS` (filtrage.ts), dans son ordre, formats publiés
+ *      seulement, et nombre de contenus recompté dans `donnees.ts`.
+ *   3. LA UNE DU HUB. Titre, photo, format, durée et adresse des trois cartes
+ *      valent la liste `UNE` de `HubRessources.tsx`, dans son ordre.
+ *   4. LE RENDU. Le panneau rendu porte chaque compte, chaque carte et le lien
+ *      « Toutes les ressources → » ; aucun compte n'est écrit en dur.
+ *   5. Slash final, libellé de /carriere/ (« Rejoindre migen », 12/10), et
+ *      interdits de copie (mots du contrat, tirets cadratin et demi-cadratin).
  *
  * ELLE SAIT ÉCHOUER : `--controle` rejoue chaque vérification sur des données
- * fautives et exige que LA RÈGLE VISÉE tombe, reconnue à son message. Neuf
- * témoins.
+ * fautives et exige que LA RÈGLE VISÉE tombe, reconnue à son message.
  */
 
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { fileURLToPath } from "node:url";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 
-const RACINE = fileURLToPath(new URL("..", import.meta.url));
 const chemin = (relatif) => new URL(relatif, new URL("..", import.meta.url));
 
 const donnees = await import(String(chemin("components/site/entete-donnees.ts")));
-const { RES_FORMATS, RES_SITUATIONS, NAV_CARRIERE, TOTAL_RESSOURCES, RES_A_LA_UNE } = donnees;
+const { RES_ESPACES, RES_A_LA_UNE, NAV_CARRIERE, TIROIR } = donnees;
+const { default: PanneauRessources } = await import(
+  String(chemin("components/site/megamenu/Ressources.tsx"))
+);
 
 /* ------------------------------- le hub /ressources/ (maquette Ressources v2) */
 
-/**
- * DEPUIS LE 14/10, le panneau dit ce que dit le hub : l'ordre de ses formats
- * côté Entreprises (`FORMATS.ent`), le compte de ses articles, et sa une (liste
- * `UNE` de `HubRessources.tsx`, titre, durée et photo de `donnees.ts`). Tout
- * est relu dans le code du hub à chaque exécution, rien n'est recopié ici.
- */
 const hubDonnees = await import(String(chemin("components/site/ressources-hub/v2/donnees.ts")));
 const hubFiltrage = await import(String(chemin("components/site/ressources-hub/v2/filtrage.ts")));
-const hubSource = readFileSync(
-  new URL("components/site/ressources-hub/v2/HubRessources.tsx", chemin(".")),
-  "utf8",
-);
+const hubSource = readFileSync(chemin("components/site/ressources-hub/v2/HubRessources.tsx"), "utf8");
 const urlsUne = [...(hubSource.match(/const UNE = \[([\s\S]*?)\]/)?.[1] ?? "").matchAll(/"([^"]+)"/g)].map(
   (m) => m[1],
 );
-const HUB = {
-  /** Libellés des formats Entreprises du hub, « Tout » excepté, dans son ordre. */
-  formats: hubFiltrage.FORMATS.ent.filter(([cle]) => cle !== "all").map(([, libelle]) => libelle),
-  articles: hubDonnees.CONTENUS_ENTREPRISES.filter((x) => x.format === "Article").length,
-  une: urlsUne.map((url) => hubDonnees.CONTENUS_ENTREPRISES.find((x) => x.url === url)),
+
+const CONTENUS = {
+  ent: hubDonnees.CONTENUS_ENTREPRISES,
+  tech: hubDonnees.CONTENUS_TECHNICIENS,
 };
-
-/**
- * Les commentaires sont retirés avant tout jugement sur la copie : le premier
- * jet de cette porte refusait le panneau à cause du commentaire qui CITE
- * « Les 23 ressources » de la maquette pour l'expliquer. Une porte doit juger
- * ce qui s'affiche, pas ce qui se raconte à côté.
- */
-const sansCommentaires = (source) =>
-  source.replace(/\{\s*\/\*[\s\S]*?\*\/\s*\}/g, "").replace(/\/\*[\s\S]*?\*\//g, "");
-
-const PANNEAU = sansCommentaires(
-  readFileSync(
-    new URL("components/site/megamenu/Ressources.tsx", chemin(".")),
-    "utf8",
-  ),
-);
-
-/* -------------------------------------------------- l'index du client, compté */
-
-const index = JSON.parse(
-  readFileSync(new URL("maquette/contenu/site/index.json", chemin(".")), "utf8"),
-);
-const PAGES = Array.isArray(index) ? index : index.pages;
-
-/** Familles réelles : sous-rubrique de l'index, et nombre de ses ressources. */
-function famillesReelles() {
-  const comptes = new Map();
-  for (const page of PAGES) {
-    const url = page.url ?? "";
-    if (!url.startsWith("/ressources/")) continue;
-    const segments = url.split("/").filter(Boolean);
-    if (segments.length === 2) {
-      // `/ressources/articles/` : la sous-rubrique elle-même.
-      if (!comptes.has(url)) comptes.set(url, 0);
-    } else if (segments.length === 3) {
-      const famille = `/${segments[0]}/${segments[1]}/`;
-      comptes.set(famille, (comptes.get(famille) ?? 0) + 1);
-    }
-  }
-  return comptes;
+/** Libellé de chaque espace, tel que la colonne de filtres du hub l'écrit. */
+const NOMS = { ent: "Entreprises", tech: "Techniciens" };
+const colonne = readFileSync(chemin("components/site/ressources-hub/v2/ColonneFiltres.tsx"), "utf8");
+for (const nom of Object.values(NOMS)) {
+  assert.ok(new RegExp(`>\\s*${nom}\\s*<`).test(colonne), `le hub n'écrit plus l'espace « ${nom} »`);
 }
 
-const REELLES = famillesReelles();
+const HUB = {
+  /** Les espaces, leurs formats publiés dans l'ordre de `FORMATS`, comptés. */
+  espaces: Object.entries(NOMS).map(([cle, libelle]) => ({
+    libelle,
+    formats: hubFiltrage.FORMATS[cle]
+      .filter(([format]) => format !== "all")
+      .map(([format, libelleFormat]) => ({
+        libelle: libelleFormat,
+        nombre: CONTENUS[cle].filter((x) => x.format === format).length,
+      }))
+      .filter((format) => format.nombre > 0),
+  })),
+  une: urlsUne.map((url) => CONTENUS.ent.find((x) => x.url === url)),
+  /** Les adresses de la maquette Ressources v2 : le hub et ses contenus. */
+  adresses: new Set(["/ressources/", ...CONTENUS.ent.map((x) => x.url), ...CONTENUS.tech.map((x) => x.url)]),
+};
+assert.ok(HUB.adresses.size >= 28, `contenus du hub mal lus : ${HUB.adresses.size}`);
+
+const PANNEAU = renderToStaticMarkup(createElement(PanneauRessources));
+const GROUPE_TIROIR = TIROIR.find((groupe) => groupe.libelle === "Ressources");
+assert.ok(GROUPE_TIROIR, "le tiroir n'a plus de groupe Ressources");
 
 /* ------------------------------------------------------------- les interdits */
 
-/** Interdits de rédaction du contrat (CLAUDE.md §9) et le tiret cadratin. */
+/** Interdits de rédaction du contrat (CLAUDE.md §9) et de la mission du 14/10. */
 const MOTS_INTERDITS = [
   "régie",
   "intérim",
@@ -133,207 +105,168 @@ const MOTS_INTERDITS = [
   "notamment",
   "incontournable",
   "découvrez",
+  "en savoir plus",
 ];
+const EN_PAUSE = /^\/ressources\/(fiches-pratiques|fiches-techniques|livres-blancs|process)\//;
+
+/** Le texte visible d'un rendu, balises retirées. */
+const texte = (html) => html.replace(/<[^>]+>/g, " ").replace(/&#x27;/g, "'").replace(/&amp;/g, "&");
 
 /* ------------------------------------------------------------ la vérification */
 
-/**
- * Rend la liste des défauts. Zéro défaut vaut succès : c'est cette fonction
- * que le contrôle positif rejoue sur des données abîmées.
- *
- * @param {object} cas
- * @param {Array} cas.formats      le tableau RES_FORMATS à juger
- * @param {Array} cas.situations   le tableau RES_SITUATIONS à juger
- * @param {object} cas.carriere    l'entrée NAV_CARRIERE à juger
- * @param {string} cas.panneau     la source du composant du panneau
- * @param {Map} cas.reelles        familles réelles et leurs comptes
- */
-function defauts({ formats, situations, carriere, panneau, reelles, une, hub }) {
+function defauts({ espaces, une, panneau, tiroir, carriere, hub }) {
   const trouves = [];
   const dit = (message) => trouves.push(message);
 
-  // 1. Le panneau « Par format » ne mène que sous /ressources/.
-  for (const format of formats) {
-    if (!format.href.startsWith("/ressources/")) {
-      dit(
-        `« ${format.libelle} » sort des ressources : ${format.href}. La colonne ` +
-          `« Par format » annonce des ressources, elle doit y mener.`,
-      );
+  // 1. Zéro lien hors Ressources v2, dans le panneau rendu et dans le tiroir.
+  const liensPanneau = [...panneau.matchAll(/href="([^"]*)"/g)].map((m) => m[1]);
+  const liensTiroir = tiroir.entrees.filter((e) => e.type === "lien").map((e) => e.href);
+  for (const [ou, liens] of [["panneau", liensPanneau], ["tiroir", liensTiroir]]) {
+    if (liens.length === 0) dit(`le ${ou} Ressources ne porte aucun lien.`);
+    for (const href of liens) {
+      const canonique = href.endsWith("/") ? href : `${href}/`;
+      if (EN_PAUSE.test(canonique)) {
+        dit(`${ou} : lien vers un format en pause, ${href}.`);
+      } else if (!hub.adresses.has(canonique)) {
+        dit(`${ou} : lien hors de la maquette Ressources v2, ${href}.`);
+      }
     }
   }
-
-  // 2. Les cinq familles de l'index, chacune une fois, et aucune inventée.
-  const exposees = formats.map((format) => format.href);
-  for (const famille of reelles.keys()) {
-    if (!exposees.includes(famille)) {
-      dit(`famille servie mais absente du panneau : ${famille}`);
-    }
+  if (!liensPanneau.some((href) => href.replace(/\/?$/, "/") === "/ressources/")) {
+    dit("le panneau ne mène plus au hub /ressources/.");
   }
-  for (const href of exposees) {
-    if (href.startsWith("/ressources/") && !reelles.has(href)) {
-      dit(`famille annoncée par le panneau mais inconnue de l'index : ${href}`);
-    }
-  }
-  const doublons = exposees.filter((href, rang) => exposees.indexOf(href) !== rang);
-  for (const href of new Set(doublons)) {
-    dit(`famille exposée deux fois dans le panneau : ${href}`);
+  if (!liensTiroir.includes("/ressources/")) {
+    dit("le tiroir ne mène plus au hub /ressources/.");
   }
 
-  // 3. Chaque numéro vaut le compte réel de sa famille.
-  for (const format of formats) {
-    const reel = reelles.get(format.href);
-    if (reel === undefined) continue; // déjà signalé en 2.
-    if (!/^\d{2}$/.test(format.numero)) {
-      dit(
-        `« ${format.libelle} » : numéro « ${format.numero} » hors forme, deux ` +
-          `chiffres attendus comme dans la maquette.`,
-      );
-      continue;
-    }
-    if (Number(format.numero) !== reel) {
-      dit(
-        `« ${format.libelle} » annonce ${format.numero} ressources, l'index en ` +
-          `porte ${reel} (${format.href}).`,
-      );
-    }
+  // 2. Les vrais comptes du hub, espace par espace, format par format.
+  const lis = (liste) =>
+    liste.map((e) => `${e.libelle} : ${e.formats.map((f) => `${f.nombre} ${f.libelle}`).join(", ")}`).join(" | ");
+  if (lis(espaces) !== lis(hub.espaces)) {
+    dit(`les espaces du panneau disent « ${lis(espaces)} », le hub compte « ${lis(hub.espaces)} ».`);
   }
 
-  // 4. Le total annoncé est la somme, et il est calculé, pas écrit.
-  const somme = formats.reduce((cumul, format) => cumul + Number(format.numero), 0);
-  const attendu = [...reelles.values()].reduce((cumul, n) => cumul + n, 0);
-  if (somme !== attendu) {
-    dit(`la somme des familles du panneau vaut ${somme}, l'index en porte ${attendu}.`);
-  }
-  const ecrit = panneau.match(/Les\s+(\d+)\s+ressources/);
-  if (ecrit) {
-    dit(
-      `le pied du panneau écrit « Les ${ecrit[1]} ressources » en dur : ce compte ` +
-        `dérive du jour où une famille bouge, il doit être calculé.`,
-    );
-  }
-  if (!/Les \{TOTAL_RESSOURCES\} ressources/.test(panneau)) {
-    dit("le pied du panneau n'affiche plus TOTAL_RESSOURCES.");
-  }
-
-  // 5. Le libellé de /carriere/ dans la barre, tranché par Mehdi le 12/10.
-  if (carriere.href !== "/carriere/") {
-    dit(`l'entrée de carrière ne mène plus à /carriere/ : ${carriere.href}`);
-  }
-  if (carriere.libelle !== "Rejoindre migen") {
-    dit(
-      `l'entrée de carrière est libellée « ${carriere.libelle} », Mehdi a ` +
-        `demandé « Rejoindre migen » le 12/10.`,
-    );
-  }
-
-  // 6. Slash final partout, sans quoi chaque clic part en redirection.
-  for (const lien of [...formats, ...situations, carriere]) {
-    if (!lien.href.endsWith("/")) {
-      dit(`cible sans slash final : ${lien.href}`);
-    }
-  }
-
-  // 8. Le panneau dit ce que dit le hub /ressources/.
-  const ordre = formats.map((format) => format.libelle).join(" · ");
-  if (ordre !== hub.formats.join(" · ")) {
-    dit(`formats du panneau « ${ordre} », le hub écrit « ${hub.formats.join(" · ")} ».`);
-  }
-  const articles = formats.find((format) => format.libelle === "Articles");
-  if (articles && Number(articles.numero) !== hub.articles) {
-    dit(`le panneau annonce ${articles.numero} articles, le hub en montre ${hub.articles}.`);
-  }
+  // 3. La une du hub, carte pour carte.
   if (hub.une.length !== 3 || hub.une.some((x) => !x)) {
     dit("la une du hub est illisible : liste UNE introuvable ou article inconnu.");
   } else {
-    const attendue = hub.une.map((x) => `${x.titre} | ${x.minutes} min de lecture | ${x.url} | ${x.photo}`);
-    const servie = une.map((x) => `${x.libelle} | ${x.description} | ${x.href} | ${x.image}`);
+    const attendue = hub.une.map((x) => `${x.titre} | ${x.format} | ${x.minutes} | ${x.url} | ${x.photo}`);
+    const servie = une.map((x) => `${x.libelle} | ${x.format} | ${x.minutes} | ${x.href} | ${x.image}`);
     if (servie.join("\n") !== attendue.join("\n")) {
       dit(`« À la une » du panneau diffère du hub :\n  servi   ${servie.join("\n          ")}\n  attendu ${attendue.join("\n          ")}`);
     }
   }
 
-  // 7. Les interdits de copie, dans les libellés comme dans les descriptions.
-  for (const lien of [...formats, ...situations, carriere, ...une]) {
-    const texte = `${lien.libelle} ${lien.description ?? ""}`;
-    if (texte.includes("—")) {
-      dit(`tiret cadratin dans « ${lien.libelle} », interdit dans la copie visible.`);
-    }
-    for (const mot of MOTS_INTERDITS) {
-      if (texte.toLowerCase().includes(mot)) {
-        dit(`mot interdit « ${mot} » dans « ${lien.libelle} ».`);
+  // 4. Le rendu porte ce que disent les données, et le lien vers le hub.
+  const visible = texte(panneau).replace(/\s+/g, " ");
+  for (const espace of espaces) {
+    if (!visible.includes(espace.libelle)) dit(`l'espace « ${espace.libelle} » n'est pas rendu.`);
+    for (const format of espace.formats) {
+      if (!new RegExp(`\\b${format.nombre} ${format.libelle}\\b`).test(visible)) {
+        dit(`le compte « ${format.nombre} ${format.libelle} » n'est pas rendu.`);
       }
     }
+  }
+  for (const article of une) {
+    if (!visible.includes(article.libelle)) dit(`la carte « ${article.libelle} » n'est pas rendue.`);
+    if (!visible.includes(`${article.minutes} min de lecture`)) {
+      dit(`la durée de « ${article.libelle} » n'est pas rendue.`);
+    }
+  }
+  if (!visible.includes("Toutes les ressources →")) {
+    dit("le lien « Toutes les ressources → » n'est plus rendu.");
+  }
+
+  // 5. Slash final, libellé de carrière, interdits de copie.
+  for (const lien of [...une, ...tiroir.entrees.filter((e) => e.type === "lien"), carriere]) {
+    if (!lien.href.endsWith("/")) dit(`cible sans slash final : ${lien.href}`);
+  }
+  if (carriere.href !== "/carriere/" || carriere.libelle !== "Rejoindre migen") {
+    dit(`l'entrée de carrière est « ${carriere.libelle} » vers ${carriere.href}, Mehdi a demandé « Rejoindre migen » vers /carriere/ le 12/10.`);
+  }
+  const copie = [
+    visible,
+    ...tiroir.entrees.map((e) => `${e.libelle} ${e.description ?? ""}`),
+  ].join(" ");
+  if (/[—–]/.test(copie)) dit("tiret cadratin ou demi-cadratin dans la copie visible.");
+  for (const mot of MOTS_INTERDITS) {
+    if (copie.toLowerCase().includes(mot)) dit(`mot interdit « ${mot} » dans le menu Ressources.`);
   }
 
   return trouves;
 }
 
 const CAS_REEL = {
-  formats: RES_FORMATS,
-  situations: RES_SITUATIONS,
-  carriere: NAV_CARRIERE,
-  panneau: PANNEAU,
-  reelles: REELLES,
+  espaces: RES_ESPACES,
   une: RES_A_LA_UNE,
+  panneau: PANNEAU,
+  tiroir: GROUPE_TIROIR,
+  carriere: NAV_CARRIERE,
   hub: HUB,
 };
 
 /* ------------------------------------------- contrôle positif, avant le reste */
 
-/**
- * Chaque témoin abîme UNE règle et doit faire tomber CETTE règle, reconnue à
- * son message. Se contenter de « la porte a dit quelque chose » laisse passer
- * une règle morte dont une voisine couvrait le cas : c'est arrivé ici au
- * premier jet, le témoin du slash final tombait sur la règle des familles.
- */
+const avecLienTiroir = (cas, href) => ({
+  ...cas,
+  tiroir: { ...cas.tiroir, entrees: [...cas.tiroir.entrees, { type: "lien", libelle: "x", href }] },
+});
+
 const TEMOINS = [
   [
-    "une rangée de format qui mène au recrutement",
-    /sort des ressources/,
-    (cas) => ({
-      ...cas,
-      formats: [
-        ...cas.formats,
-        { numero: "07", libelle: "Fiches métier", description: "x", href: "/carriere/" },
-      ],
-    }),
+    "un lien du tiroir vers un format en pause",
+    /format en pause/,
+    (cas) => avecLienTiroir(cas, "/ressources/fiches-pratiques/"),
   ],
   [
-    "une famille servie retirée du panneau",
-    /absente du panneau/,
-    (cas) => ({ ...cas, formats: cas.formats.slice(1) }),
+    "un lien du panneau vers l'ancienne sous-rubrique Articles",
+    /panneau : lien hors de la maquette Ressources v2/,
+    (cas) => ({ ...cas, panneau: `${cas.panneau}<a href="/ressources/articles/">Articles</a>` }),
   ],
   [
-    "une famille inventée, inconnue de l'index",
-    /inconnue de l'index/,
-    (cas) => ({
-      ...cas,
-      formats: [
-        ...cas.formats,
-        { numero: "03", libelle: "Fiches métier", description: "x", href: "/ressources/fiches-metier/" },
-      ],
-    }),
+    "un guide de l'ancienne maquette dans le tiroir",
+    /tiroir : lien hors de la maquette Ressources v2/,
+    (cas) => avecLienTiroir(cas, "/guides/reussir-un-transfert-industriel/"),
   ],
   [
-    "un numéro faux",
-    /annonce 04 ressources/,
+    "un compte faux",
+    /le hub compte/,
     (cas) => ({
       ...cas,
-      formats: cas.formats.map((format, rang) =>
-        rang === 0 ? { ...format, numero: "04" } : format,
+      espaces: cas.espaces.map((e, rang) =>
+        rang === 0 ? { ...e, formats: [{ ...e.formats[0], nombre: 14 }] } : e,
       ),
     }),
   ],
   [
-    "un total écrit en dur dans le panneau",
-    /en dur/,
+    "un format en pause annoncé dans un espace",
+    /le hub compte/,
     (cas) => ({
       ...cas,
-      panneau: cas.panneau.replace(
-        "Les {TOTAL_RESSOURCES} ressources",
-        "Les 23 ressources",
+      espaces: cas.espaces.map((e, rang) =>
+        rang === 0 ? { ...e, formats: [...e.formats, { libelle: "Process", nombre: 4 }] } : e,
       ),
     }),
+  ],
+  [
+    "une durée « À la une » qui dérive du hub",
+    /diffère du hub/,
+    (cas) => ({ ...cas, une: cas.une.map((x, rang) => (rang === 0 ? { ...x, minutes: 12 } : x)) }),
+  ],
+  [
+    "un compte retiré du rendu",
+    /n'est pas rendu/,
+    (cas) => ({ ...cas, panneau: cas.panneau.replace(/>15</, "><") }),
+  ],
+  [
+    "le lien vers le hub retiré du panneau",
+    /Toutes les ressources →/,
+    (cas) => ({ ...cas, panneau: cas.panneau.replace("Toutes les ressources →", "Tout") }),
+  ],
+  [
+    "une cible qui perd son slash final",
+    /sans slash final/,
+    (cas) => ({ ...cas, une: cas.une.map((x, rang) => (rang === 0 ? { ...x, href: x.href.slice(0, -1) } : x)) }),
   ],
   [
     "le libellé de carrière revenu à « Carrière »",
@@ -341,47 +274,20 @@ const TEMOINS = [
     (cas) => ({ ...cas, carriere: { ...cas.carriere, libelle: "Carrière" } }),
   ],
   [
-    "une situation qui perd son slash final",
-    /sans slash final/,
+    "un tiret demi-cadratin dans une description du tiroir",
+    /demi-cadratin/,
     (cas) => ({
       ...cas,
-      situations: cas.situations.map((lien, rang) =>
-        rang === 0 ? { ...lien, href: lien.href.slice(0, -1) } : lien,
-      ),
+      tiroir: {
+        ...cas.tiroir,
+        entrees: cas.tiroir.entrees.map((e) => (e.type === "lien" ? { ...e, description: "Article – 11 min" } : e)),
+      },
     }),
   ],
   [
-    "un tiret cadratin dans une description",
-    /tiret cadratin/,
-    (cas) => ({
-      ...cas,
-      formats: cas.formats.map((format, rang) =>
-        rang === 0 ? { ...format, description: "Gestes — seuils" } : format,
-      ),
-    }),
-  ],
-  [
-    "deux formats intervertis par rapport au hub",
-    /le hub écrit/,
-    (cas) => ({ ...cas, formats: [cas.formats[1], cas.formats[0], ...cas.formats.slice(2)] }),
-  ],
-  [
-    "une durée « À la une » qui dérive du hub",
-    /diffère du hub/,
-    (cas) => ({
-      ...cas,
-      une: cas.une.map((x, rang) => (rang === 0 ? { ...x, description: "12 min de lecture" } : x)),
-    }),
-  ],
-  [
-    "un mot interdit dans une description",
+    "un mot interdit dans le panneau",
     /mot interdit/,
-    (cas) => ({
-      ...cas,
-      formats: cas.formats.map((format, rang) =>
-        rang === 0 ? { ...format, description: "Des fiches sur mesure" } : format,
-      ),
-    }),
+    (cas) => ({ ...cas, panneau: `${cas.panneau}<span>En savoir plus</span>` }),
   ],
 ];
 
@@ -417,28 +323,22 @@ if (trouves.length > 0) {
 
 if (process.argv.includes("--en-ligne")) {
   const BASE = process.env.BASE_SITE ?? "https://migen-site.vercel.app";
-  const cibles = [
-    ...RES_FORMATS.map((format) => format.href),
-    ...RES_SITUATIONS.map((lien) => lien.href),
-    ...RES_A_LA_UNE.map((article) => article.href),
-    NAV_CARRIERE.href,
+  const cibles = new Set([
     "/ressources/",
-  ];
+    ...RES_A_LA_UNE.map((article) => article.href),
+    ...GROUPE_TIROIR.entrees.filter((e) => e.type === "lien").map((e) => e.href),
+  ]);
   let fautes = 0;
-  for (const cible of new Set(cibles)) {
+  for (const cible of cibles) {
     const reponse = await fetch(`${BASE}${cible}`, { redirect: "manual" });
-    const verdict = reponse.status === 200 ? "200" : String(reponse.status);
     if (reponse.status !== 200) fautes += 1;
-    console.log(`  ${verdict}  ${cible}`);
+    console.log(`  ${reponse.status}  ${cible}`);
   }
-  assert.equal(fautes, 0, `${fautes} cible(s) du panneau ne répondent pas 200.`);
+  assert.equal(fautes, 0, `${fautes} cible(s) du menu Ressources ne répondent pas 200.`);
 }
 
-const familles = [...REELLES.entries()]
-  .map(([href, compte]) => `${href.split("/")[2]}=${compte}`)
-  .join(", ");
 console.log(
-  `panneau Ressources vérifié : ${RES_FORMATS.length} familles, ` +
-    `${TOTAL_RESSOURCES} ressources annoncées et comptées (${familles}) ; ` +
-    `${TEMOINS.length} témoins d’échec passés ; racine ${RACINE}`,
+  `menu Ressources vérifié : ${RES_ESPACES.map((e) => `${e.libelle} (${e.formats.map((f) => `${f.nombre} ${f.libelle.toLowerCase()}`).join(", ")})`).join(", ")}, ` +
+    `${RES_A_LA_UNE.length} articles à la une, ${HUB.adresses.size} adresses Ressources v2 admises ; ` +
+    `${TEMOINS.length} témoins d’échec passés.`,
 );

@@ -36,16 +36,6 @@ export interface Offre extends LienDecrit {
   etiquette?: string;
 }
 
-export interface FormatRessource extends LienDecrit {
-  /**
-   * Nombre de ressources publiées dans la famille, sur deux chiffres, affiché
-   * en monospace comme dans la maquette. COMPTÉ, jamais écrit à la main : la
-   * porte `scripts/verifie-menu-ressources.mjs` le recompte dans
-   * `maquette/contenu/site/index.json` et refuse un écart.
-   */
-  numero: string;
-}
-
 export interface CasClient {
   client: string;
   sousTitre: string;
@@ -271,155 +261,102 @@ export const CHIFFRES: Chiffre[] = [
 
 /* --------------------------------------------------- panneau Ressources */
 
+/** Un format d'un espace du hub /ressources/, et son nombre de contenus. */
+export interface FormatEspace {
+  libelle: string;
+  nombre: number;
+}
+
+/** Un espace du hub /ressources/ (« Entreprises », « Techniciens »). */
+export interface EspaceRessources {
+  libelle: string;
+  formats: FormatEspace[];
+}
+
+/** Un article « À la une » du hub, en carte à photo dans le panneau. */
+export interface ArticleALaUne extends Lien {
+  image: string;
+  format: string;
+  minutes: number;
+}
+
 /**
- * Les CINQ familles de ressources, et rien d'autre : ce panneau annonce des
- * ressources, il mène à des ressources.
+ * REFAIT LE 14/10, demandé par Mehdi : « dans le menu ressources il y a plein
+ * de trucs type articles etc. qui renvoient vers d'autres pages ressources hors
+ * maquette, de l'ancienne maquette qui ne devrait plus exister ».
  *
- * RECOMPOSÉ LE 12/10, signalé par Mehdi : « dans le menu le bloc ressources ne
- * va pas. Fiche métiers, cela renvoie vers migen recrutement, mais pour la
- * partie ressources c'est pas ce à quoi on s'attend. »
+ * LE PANNEAU NE MÈNE PLUS QU'À LA MAQUETTE RESSOURCES V2 : le hub /ressources/
+ * et ses contenus. Sont retirés : les cinq sous-rubriques de l'ancienne
+ * maquette (articles, fiches pratiques, fiches techniques, livres blancs,
+ * process : les quatre derniers formats sont en pause, décision de Mehdi), la
+ * colonne « Par situation » qui y menait, et les deux guides du tiroir.
  *
- * CE QUI ÉTAIT FAUX, et ce n'était pas la maquette. Son panneau porte trois
- * rangées, « 04 Articles », « 07 Fiches métier » et « 07 Fiches pratiques &
- * techniques », et ses trois gestes sont `goResArticle`, `goResMetier` et
- * `goResPratique`. Les trois appellent `openRes(kind)`, qui ouvre SA
- * bibliothèque filtrée sur le format : jamais son écran de recrutement, qui a
- * son propre geste, `goCarriere`. Rattacher « Fiches métier » à `/carriere/`
- * est donc une faute de portage, pas une fidélité.
- *
- * POURQUOI LA RANGÉE DISPARAÎT QUAND MÊME. Le site n'a aucune famille de
- * fiches métier sous `/ressources/` : les 13 pages métier sont les enfants de
- * `/carriere/` (gabarit « 07 Métier et carrière » dans
- * `maquette/contenu/site/index.json`). Pointer la rangée vers une famille qui
- * n'existe pas serait inventer une page ; la laisser sur `/carriere/` est le
- * défaut signalé. Elle sort donc du panneau, et le chemin vers les métiers
- * reste ouvert deux fois : « Je n'arrive pas à recruter » juste à côté, et
- * l'entrée de barre `NAV_CARRIERE`.
- *
- * ET DEUX FAMILLES RÉELLES Y ENTRENT. Le panneau n'exposait que 3 des 5
- * sous-rubriques servies : Process et Livres blancs n'avaient aucune porte
- * dans la navigation. La rangée fusionnée « Fiches pratiques & techniques »
- * est séparée en deux pour la même raison, les fiches techniques n'étaient
- * atteignables que par « Ma ligne s'arrête souvent ».
- *
- * LES LIBELLÉS ET LES DESCRIPTIONS NE SONT PAS RÉDIGÉS ICI : ils sont relus
- * dans la maquette, table `SHELF` de `site-final-autonome.html`, qui donne une
- * ligne par famille. « Ce qu'on observe en atelier » est gardé tel quel, c'est
- * la description du panneau pour Articles.
- *
- * ÉCARTS DE COPIE À ARBITRER PAR MEHDI, déclarés et non tranchés :
- *  - « Gestes, seuils, valeurs de référence » (description de la rangée
- *    fusionnée) n'a plus de rangée : chaque moitié reprend sa propre ligne de
- *    `SHELF`.
- *  - Livres blancs : `SHELF` écrit « Deux dossiers de fond, en échange d'un
- *    e-mail ». La seconde moitié est retirée, `/ressources/livres-blancs/` ne
- *    porte aujourd'hui aucun formulaire ni champ e-mail (mesuré en production
- *    le 12/10). Soit la page gagne son échange, soit la ligne reste courte.
+ * Les deux espaces du hub, avec les libellés de ses formats (`FORMATS` de
+ * `ressources-hub/v2/filtrage.ts`) et ses VRAIS comptes (`donnees.ts`). Seuls
+ * les formats qui ont des contenus publiés sont listés. Recopiés plutôt
+ * qu'importés : `donnees.ts` porte les 28 contenus, et l'en-tête est un
+ * composant client chargé sur chaque page. `scripts/verifie-menu-ressources.mjs`
+ * recompte le hub à chaque exécution et refuse tout écart.
  */
-/*
- * ORDRE DU HUB DEPUIS LE 14/10 : Articles, Fiches pratiques, Fiches techniques,
- * Livres blancs, Process, c'est l'ordre de la colonne « Format » de l'espace
- * Entreprises du hub /ressources/ (maquette Ressources v2, `FORMATS.ent` de
- * `ressources-hub/v2/filtrage.ts`). Le panneau et le hub disent la même chose
- * dans le même ordre ; `scripts/verifie-menu-ressources.mjs` le tient.
- */
-export const RES_FORMATS: FormatRessource[] = [
+export const RES_ESPACES: EspaceRessources[] = [
   {
-    numero: "15",
-    libelle: "Articles",
-    description: "Ce qu’on observe en atelier",
-    href: "/ressources/articles/",
+    libelle: "Entreprises",
+    formats: [{ libelle: "Articles", nombre: 15 }],
   },
   {
-    numero: "05",
-    libelle: "Fiches pratiques",
-    description: "À imprimer et à emporter en atelier",
-    href: "/ressources/fiches-pratiques/",
-  },
-  {
-    numero: "09",
-    libelle: "Fiches techniques",
-    description: "Les caractéristiques, sans commentaire",
-    href: "/ressources/fiches-techniques/",
-  },
-  {
-    numero: "02",
-    libelle: "Livres blancs",
-    description: "Deux dossiers de fond",
-    href: "/ressources/livres-blancs/",
-  },
-  {
-    numero: "04",
-    libelle: "Process",
-    description: "Nos procédures, publiées telles quelles",
-    href: "/ressources/process/",
+    libelle: "Techniciens",
+    formats: [
+      { libelle: "Fiches métiers", nombre: 7 },
+      { libelle: "Guides carrière", nombre: 5 },
+      { libelle: "Alternance", nombre: 1 },
+    ],
   },
 ];
 
-/**
- * Le compte annoncé par le pied du panneau Ressources, SOMME des familles
- * ci-dessus et non une constante de son côté.
- *
- * LA MAQUETTE ÉCRIT « Les 23 ressources → », et 23 est juste CHEZ ELLE : sa
- * table `CATS` déclare 4 articles, 7 fiches métier, 3 fiches pratiques,
- * 3 process, 2 livres blancs et 4 fiches techniques, soit 23. Le site publié
- * n'a pas cette bibliothèque : 35 ressources réparties en 5 familles, et
- * aucune fiche métier sous `/ressources/`. Laisser 23 était annoncer un
- * inventaire qui n'existe pas.
- *
- * Le calcul remplace le chiffre écrit pour que l'écart ne puisse plus
- * réapparaître : ajouter ou retirer une famille corrige le pied tout seul.
- */
-export const TOTAL_RESSOURCES = RES_FORMATS.reduce(
-  (somme, format) => somme + Number(format.numero),
-  0,
-);
+/** « 15 articles », « 7 fiches métiers » : le compte d'un format, en clair. */
+export const compteFormat = (format: FormatEspace): string =>
+  `${format.nombre} ${format.libelle.toLowerCase()}`;
 
-/**
- * Colonne de droite du panneau, les trois situations de la maquette, mot pour
- * mot. « Je n'arrive pas à recruter » vers `/carriere/` est légitime ici : la
- * colonne range par BESOIN, pas par format, et c'est bien la bonne réponse au
- * besoin. Les trois cibles répondent 200 en production, mesuré le 12/10.
- */
-export const RES_SITUATIONS: Lien[] = [
-  {
-    libelle: "Ma ligne s’arrête souvent",
-    href: "/ressources/fiches-techniques/",
-  },
-  { libelle: "Je prépare un arrêt", href: "/ressources/process/" },
-  { libelle: "Je n’arrive pas à recruter", href: "/carriere/" },
-];
+/** « Entreprises : 15 articles. Techniciens : 7 fiches métiers, … » */
+export const RESUME_ESPACES: string = RES_ESPACES.map(
+  (espace) =>
+    `${espace.libelle} : ${espace.formats.map(compteFormat).join(", ")}.`,
+).join(" ");
 
 /**
  * « À la une » du panneau Ressources : les trois articles que le hub
  * /ressources/ met à la une (liste `UNE` de `ressources-hub/v2/HubRessources.tsx`),
- * dans son ordre, avec SON titre, SA photo et SA durée (« 11 min de lecture »,
- * le libellé de ses cartes). Rien n'est rédigé ici : la porte
- * `scripts/verifie-menu-ressources.mjs` relit le hub et refuse tout écart.
- *
- * Recopié plutôt qu'importé : `donnees.ts` du hub pèse ses 28 contenus, et
- * l'en-tête est un composant client chargé sur chaque page.
+ * dans son ordre, avec SON titre, SA photo, SON format et SA durée. Rien n'est
+ * rédigé ici : `scripts/verifie-menu-ressources.mjs` relit le hub et refuse
+ * tout écart.
  */
-export const RES_A_LA_UNE: Offre[] = [
+export const RES_A_LA_UNE: ArticleALaUne[] = [
   {
     libelle: "Coût d'un arrêt de production",
-    description: "11 min de lecture",
     href: "/ressources/articles/cout-arret-de-production/",
     image: "/assets/web/x-auto-ligne.jpg",
+    format: "Article",
+    minutes: 11,
   },
   {
     libelle: "IA maintenance : ce qui change vraiment",
-    description: "8 min de lecture",
     href: "/ressources/articles/ia-maintenance/",
     image: "/assets/web/ph-robots-solaire.jpg",
+    format: "Article",
+    minutes: 8,
   },
   {
     libelle: "Comment organiser un service de maintenance",
-    description: "9 min de lecture",
     href: "/ressources/articles/organiser-service-maintenance/",
     image: "/assets/web/team-duo.jpg",
+    format: "Article",
+    minutes: 9,
   },
 ];
+
+/** « 11 min de lecture », le libellé des cartes du hub. */
+export const dureeLecture = (article: ArticleALaUne): string =>
+  `${article.minutes} min de lecture`;
 
 /* ----------------------------------------------------- panneau À propos */
 
@@ -479,12 +416,13 @@ export const TIROIR_ACCUEIL: Lien = { libelle: "Accueil", href: "/" };
  * Les six groupes du tiroir, repris du bloc `menuG` de la maquette mobile v2
  * (`maquette/mobile-v2/maquette/Migen - Mobile v2.dc.html`) : libellés,
  * descriptions, sous-têtes orange et ordre tels qu'elle les rend, soit
- * 60 liens, plus « Accueil » ci-dessus. Les groupes « Ressources » et
- * « Carrière » y sont CALCULÉS depuis l'index des pages (sous-rubriques de
- * `/ressources/`, guides, fiches de `/carriere/`, libellés dérivés des h1 par
- * sa fonction `short`) : la liste écrite ici est le résultat de ce calcul sur
- * `maquette/contenu/site/index.json`, et `verification-tiroir.tsx` refait le
- * calcul à chaque exécution pour refuser l'écart, l'ellipse du guide comprise.
+ * 60 liens, plus « Accueil » ci-dessus. Le groupe « Carrière » y est CALCULÉ
+ * depuis l'index des pages (fiches de `/carriere/`, libellés dérivés des h1
+ * par sa fonction `short`) : la liste écrite ici est le résultat de ce calcul
+ * sur `maquette/contenu/site/index.json`, et `verification-tiroir.tsx` refait
+ * le calcul à chaque exécution pour refuser l'écart. Le groupe « Ressources »
+ * s'en écarte depuis le 14/10 : il suit le hub /ressources/ (maquette
+ * Ressources v2), comme le panneau du bureau.
  *
  * TROIS ADRESSES SONT RAPPORTÉES AUX ROUTES RÉELLES, et c'est documenté
  * plutôt que silencieux : la maquette vise `/a-propos/nous-connaitre/`,
@@ -653,50 +591,26 @@ export const TIROIR: SectionTiroir[] = [
   },
   {
     libelle: "Ressources",
+    /* REFAIT LE 14/10, à la logique du panneau du bureau : plus aucune
+       sous-rubrique de l'ancienne maquette ni guide, seulement la maquette
+       Ressources v2. Écart déclaré avec le `menuG` de la maquette mobile v2,
+       recalculé depuis le hub par `verification-tiroir.tsx`. */
     entrees: [
-      { type: "lien", libelle: "Articles", href: "/ressources/articles/" },
-      {
-        type: "lien",
-        libelle: "Fiches pratiques",
-        href: "/ressources/fiches-pratiques/",
-      },
-      {
-        type: "lien",
-        libelle: "Fiches techniques",
-        href: "/ressources/fiches-techniques/",
-      },
-      {
-        type: "lien",
-        libelle: "Livres blancs",
-        href: "/ressources/livres-blancs/",
-      },
-      { type: "lien", libelle: "Process", href: "/ressources/process/" },
-      {
-        /* L'ellipse est celle de la maquette : son `short` coupe à 54 signes
-           le h1 « Comment choisir une entreprise de maintenance industrielle ». */
-        type: "lien",
-        libelle: "Comment choisir une entreprise de maintenance…",
-        href: "/guides/choisir-une-entreprise-de-maintenance/",
-      },
-      {
-        type: "lien",
-        libelle: "Réussir un transfert industriel",
-        href: "/guides/reussir-un-transfert-industriel/",
-      },
-      /* AJOUT DU 14/10, hors `menuG` de la maquette mobile v2 : les trois
-         articles « À la une » du hub /ressources/ (maquette Ressources v2),
-         les mêmes que le panneau du bureau, `RES_A_LA_UNE`. Déclaré et
-         revérifié par `verification-tiroir.tsx`. */
       { type: "sous-tete", libelle: "À la une" },
       ...RES_A_LA_UNE.map(
-        ({ libelle, href, description }): EntreeTiroir => ({
+        (article): EntreeTiroir => ({
           type: "lien",
-          libelle,
-          href,
-          description,
+          libelle: article.libelle,
+          href: article.href,
+          description: `${article.format} · ${dureeLecture(article)}`,
         }),
       ),
-      { type: "lien", libelle: "Toutes les ressources", href: "/ressources/" },
+      {
+        type: "lien",
+        libelle: "Toutes les ressources",
+        href: "/ressources/",
+        description: RESUME_ESPACES,
+      },
     ],
   },
   {
