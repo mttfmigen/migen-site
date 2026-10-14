@@ -103,14 +103,19 @@ Ce sont des pages que WordPress fabrique tout seul, sans visite ni lien d'un aut
 
 **Le filet.** Au-delà des 35, toute adresse au format de l'ancien WordPress qui n'est ni une page du nouveau site ni une redirection connue part en 301 vers l'accueil, ou vers le parent évident. Il est posé dans `lib/filet-ancien-site.ts`, appliqué par `proxy.ts` **après** la table `redirects` et les lignes de `lib/redirections-ancien-site.ts`. Les motifs :
 
-- `/wp-…` (dont `/wp-content/`, `/wp-includes/`, `/wp-admin`, `/wp-login.php`, `/wp-json/`) et tout fichier `.php` (`/xmlrpc.php`) ;
-- `/author/`, `/category/`, `/tag/`, `/blocks/`, `/element_category/`, `/fusion_tb_category/`, `/portfolio-items/`, `/faq-items/`, `/featured_item/`, `/shop/`, `/product-category/`, `/product/`, `/cart/`, `/checkout/`, `/my-account/`, `/lost-password/`, `/comments/` ;
+- `/wp-…` (dont `/wp-content/`, `/wp-includes/`, `/wp-admin`, `/wp-login.php`, `/wp-json/`) et tout fichier `.php` (`/xmlrpc.php`), en toute casse ;
+- les plans de site de Yoast (`/sitemap_index.xml`, `/page-sitemap.xml`, `/post-sitemap.xml`, `/category-sitemap.xml`…) : 301 vers `/sitemap.xml`, ajouté le 14/10 à la relecture (ils répondaient 404 et sont connus de la Search Console) ;
+- `/author/`, `/category/`, `/tag/`, `/search/`, `/blocks/`, `/element_category/`, `/fusion_tb_category/`, `/portfolio-items/`, `/faq-items/`, `/featured_item/`, `/shop/`, `/product-category/`, `/product/`, `/cart/`, `/checkout/`, `/my-account/`, `/lost-password/`, `/comments/` ;
 - les archives datées `/AAAA/` et `/AAAA/MM/…` ;
-- `…/page/N/` et `…/feed/` : la cible de la page qui précède (`/actualites/page/2/` part comme `/actualites/`), l'accueil sinon ;
-- `?p=`, `?page_id=`, `?cat=`, `?s=` sur l'accueil. Une page du nouveau site garde ses paramètres ;
-- les six plans de site de Yoast, en 200 sur l'ancien site et hors des 181 (`/sitemap_index.xml`, `/page-sitemap.xml`, `/post-sitemap.xml`, `/category-sitemap.xml`, `/element_category-sitemap.xml`, `/fusion_tb_category-sitemap.xml`) : vers `/sitemap.xml`. Ajoutés le 14/10 à la relecture : le proxy ne voyait pas les `.xml`, ils restaient en 404.
+- `…/page/N/`, `…/feed/` (et `feed/rss2/`, `feed/atom/`), `…/embed/`, `…/trackback/`, `…/amp/`, `…/comment-page-N/` : la cible de la page qui précède (`/actualites/page/2/` part comme `/actualites/`), l'accueil sinon ;
+- `?p=`, `?page_id=`, `?cat=`, `?s=`, `?attachment_id=`, `?author=`, `?feed=`, `?m=`, `?tag=`, `?paged=` sur l'accueil. Une page du nouveau site garde ses paramètres ;
+- les débris du thème Avada que les robots ont pris pour des liens (archives du 14/10, 1 300 formes) : SVG de remplissage du chargement différé (`/maintenance-industrielle-lyon/%3Csvg…`), variables et valeurs CSS (`/--awb-bg-color`, `/0,0,0,0.3`, `/20,%2022,%2023/`, `/-0px%20/%202/`), et quelques isolés (`/desktop`, une clé reCAPTCHA, `/.svg`, `/contact-form-7/v1`). Sous une ancienne adresse redirigée, un débris prend sa cible (`/maintenance-industrielle-lyon/%3Csvg…` part vers `/implantations/lyon/`) ; ailleurs, l'accueil. Ajouté le 14/10 à la relecture, règle de Mehdi : « sur les pages introuvables, renvoie-les vers la home quand même ». Une suite en forme d'adresse sous une ancienne adresse n'est PAS un débris : `/a-propos/` est redirigée, `/a-propos/equipe/` est une page, `/a-propos/inconnue/` garde sa 404.
 
-**Les paramètres de campagne passent la 301.** Une ancienne adresse appelée avec `?utm_source=…` ou `?gclid=…` arrive sur sa cible avec ces paramètres : le formulaire garde l'attribution. Les paramètres de WordPress (`p`, `page_id`, `cat`, `s`) tombent, sans quoi l'accueil relancerait le filet en un deuxième saut.
+**Les paramètres de campagne passent la 301.** Une ancienne adresse appelée avec `?utm_source=…` ou `?gclid=…` arrive sur sa cible avec ces paramètres : le formulaire garde l'attribution. Les paramètres de WordPress (`p`, `page_id`, `cat`, `s`, `attachment_id`, `author`, `feed`, `m`, `tag`, `paged`) tombent, sans quoi l'accueil relancerait le filet en un deuxième saut, ou en boucle.
+
+Restent en 404, volontairement : les fichiers standard que l'ancien site n'a jamais eus et que des robots sondent (`/.well-known/…`, `ads.txt`, `app-ads.txt`, `atom.xml`, `feed.xml`, `index.xml`, `/feeds/all.atom.xml`). Ils répondaient 404 avant ; un `ads.txt` ou un `security.txt` redirigé vers une page HTML serait lu comme un fichier invalide.
+
+Deux sauts, hors de portée du proxy : une adresse à double barre (`/wp-content/plugins/scroll_magic//assets/…`, deux fichiers de l'ancien thème) reçoit d'abord une 308 de Next, qui fusionne les barres avant le proxy, puis la 301 du filet. Même chose pour `http://` et `www.` à la bascule : la redirection du domaine passe avant (voir la liste de mise en ligne).
 
 Aucun motif ne touche une adresse du nouveau site : les 272 adresses du plan du site répondent 200, et une adresse inventée qui ne ressemble pas à WordPress (`/offres/nexistepas/`) garde sa 404. Le contrôle `bun lib/verification-filet.ts` (dans `bun run verifie`) prouve chaque motif et ces témoins.
 
@@ -204,7 +209,7 @@ curl -sI https://migen.fr/maintenance-industrielle-lyon/ | grep -i -E "^(HTTP|lo
 ### Juste après la bascule
 
 9. Relancer la vérification **contre le vrai domaine** : `node scripts/verifie-redirections.mjs https://migen.fr`. Dernière ligne attendue : `REDIRECTIONS_SANS_PERTE`.
-10. **Search Console** : soumettre `https://migen.fr/sitemap.xml` ; retirer l'ancien plan de Yoast (`sitemap_index.xml`), qui répond désormais 404. Inspecter quelques adresses clés (l'accueil, `/offres/retrofit/`, `/implantations/lyon/`) et demander leur indexation.
+10. **Search Console** : soumettre `https://migen.fr/sitemap.xml` ; retirer l'ancien plan de Yoast (`sitemap_index.xml`), qui part désormais en 301 vers `/sitemap.xml`. Inspecter quelques adresses clés (l'accueil, `/offres/retrofit/`, `/implantations/lyon/`) et demander leur indexation.
 11. Mettre à jour les liens que Migen contrôle, pour qu'ils visent la nouvelle adresse directement : signatures de mail, LinkedIn, fiche Google, annuaires, modèles de devis (lien CGV).
 
 ### La première semaine
@@ -260,3 +265,5 @@ Décision de Mehdi, le 14/10 vers 15h10 : « Publie, on fera des modifs plus tar
 | `/pourquoi-faire-appel-a-une-entreprise-de-maintenance-externalisee/` | `/offres/maintenance-externalisee/` (le proxy la mène à `/offres/full-service/`) | `/ressources/articles/pourquoi-externaliser/` |
 
 Les neuf autres (et `/tout-savoir-sur-la-maintenance-industrielle/`) n'ont pas de ligne en base : le code s'applique dès le déploiement.
+
+**Un désaccord base / code relevé le 14/10 à la relecture (lecture seule, rien écrit en base).** Sur les 21 lignes de `redirects`, 20 donnent la même page finale que le code. La 21e : `/actualites/` vaut `/ressources/` en base, alors que `0003_redirections.sql`, `lib/redirections-ancien-site.ts` et le plan (csv) disent `/ressources/articles/`. La base l'emporte : en préproduction, `/actualites/` et ses paginations partent vers `/ressources/`, en un seul saut, vers une page en 200. Rien n'est perdu, mais la ligne a été changée hors de ce dépôt. **À trancher par Mehdi** : remettre `/ressources/articles/` en base (la liste de l'ancien blog, la cible la plus proche), ou aligner le code et le plan sur `/ressources/`.

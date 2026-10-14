@@ -18,24 +18,46 @@
  * final sauf fichier).
  */
 
-/** Pagination et flux d'une archive : la cible est celle de l'archive. */
-const SUFFIXE = /^(.*\/)(?:page\/\d+|feed)\/$/;
+/**
+ * Suffixes qu'ajoute WordPress à toute page ou archive (pagination, flux, embed
+ * oEmbed, trackback, AMP, pages de commentaires) : la cible est celle du parent.
+ */
+const SUFFIXE =
+  /^(.*\/)(?:page\/\d+|feed(?:\/(?:rss2?|rdf|atom))?|embed|trackback|amp|comment-page-\d+)\/$/;
 
 /** Familles WordPress, thème Avada et WooCommerce, sans équivalent ici. */
 const FAMILLES =
-  /^\/(?:wp-|(?:author|category|tag|blocks|element_category|fusion_tb_category|portfolio-items|faq-items|featured_item|shop|product-category|product|cart|checkout|my-account|lost-password|comments)\/|\d{4}\/(?:\d{2}\/)?)|\.php$/;
+  /^\/(?:wp-|(?:author|category|tag|search|blocks|element_category|fusion_tb_category|portfolio-items|faq-items|featured_item|contact-form-7|shop|product-category|product|cart|checkout|my-account|lost-password|comments)\/|\d{4}\/(?:\d{2}\/)?)|\.php$/;
 
 /**
- * Plans de site de Yoast (`/sitemap_index.xml`, `/page-sitemap.xml`…), en 200
- * sur l'ancien site et soumis à la Search Console : ils vont au plan du site.
+ * Plans de site de Yoast (`/sitemap_index.xml`, `/page-sitemap.xml`…), connus
+ * de la Search Console : ils partent sur le plan du nouveau site.
  */
-const PLANS_YOAST = /^\/(?:sitemap_index|[a-z_-]+-sitemap\d*)\.xml$/;
+const PLAN_YOAST = /^\/(?:sitemap_index|[a-z0-9_-]+-sitemap\d*)\.xml$/;
 
 /**
- * Liens courts et recherche de WordPress, posés sur l'accueil. Le proxy les
- * retire aussi des paramètres qu'il reporte sur la cible d'une redirection.
+ * Débris du thème Avada que les robots ont pris pour des liens (archives du
+ * 14/10) : SVG de remplissage du chargement différé (`…/%3Csvg…`), variables
+ * et valeurs CSS (`/--awb-bg-color`, `/20,%2022,%2023`, `/-0px%20/%202`).
+ * Aucune adresse du site ne porte un segment qui commence par « - » ni une
+ * virgule, une espace ou un `<svg`.
  */
-export const PARAMETRES_WORDPRESS = ["p", "page_id", "cat", "s"];
+const DEBRIS = /\/(?:%3csvg|-|[^/]*(?:,|%20))/;
+
+/** Débris isolés relevés dans les archives (clé reCAPTCHA, fichiers sans nom). */
+const RESIDUS = new Set([
+  "/desktop/",
+  "/6letuuqfaaaaaj7pg3nganb3ffxbbs78vf7sccbh/",
+  "/.svg",
+  "/.png",
+]);
+
+/**
+ * Variables de requête de WordPress, posées sur l'accueil. Le proxy les
+ * retire aussi des paramètres qu'il reporte sur la cible d'une redirection :
+ * reportées sur l'accueil, elles relanceraient le filet (une boucle).
+ */
+export const PARAMETRES_WORDPRESS = ["p", "page_id", "cat", "s", "attachment_id", "author", "feed", "m", "tag", "paged"];
 
 /**
  * La destination du filet, ou `null` si l'adresse n'est pas de l'ancien format.
@@ -49,10 +71,21 @@ export function cibleFilet(
   requete: URLSearchParams,
   connue: (chemin: string) => string | undefined,
 ): string | null {
+  // Un débris sous une ancienne adresse redirigée (`/maintenance-industrielle-lyon/%3csvg…`,
+  // `…/&`) : la cible de cette adresse. Seulement si la suite n'a pas la forme
+  // d'une adresse : `/a-propos/` est redirigée, `/a-propos/equipe/` est une page.
+  const racine = /^\/[^/]+\//.exec(chemin)?.[0];
+  const sousAncienne =
+    racine !== undefined && /[^a-z0-9/_-]/.test(chemin.slice(racine.length))
+      ? connue(racine)
+      : undefined;
+
   const parent = SUFFIXE.exec(chemin)?.[1];
   if (parent !== undefined) return connue(parent) ?? "/";
-  if (FAMILLES.test(chemin)) return "/";
-  if (PLANS_YOAST.test(chemin)) return "/sitemap.xml";
+  if (PLAN_YOAST.test(chemin)) return "/sitemap.xml";
+  if (FAMILLES.test(chemin) || RESIDUS.has(chemin)) return "/";
+  if (sousAncienne !== undefined) return sousAncienne;
+  if (DEBRIS.test(chemin)) return "/";
   // Seulement sur l'accueil : une page du nouveau site garde ses paramètres.
   if (chemin === "/" && PARAMETRES_WORDPRESS.some((p) => requete.has(p))) return "/";
   return null;

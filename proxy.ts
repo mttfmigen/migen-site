@@ -263,16 +263,21 @@ export async function proxy(request: NextRequest): Promise<NextResponse> {
  * le dernier segment porte une extension, ce qui couvre `public/`.
  *
  * Repris pour le filet de l'ancien WordPress : `/wp-…` (images de
- * `/wp-content/uploads/`, `/wp-login.php`) et tout `.php` (`/xmlrpc.php`).
- * Le site n'a aucun fichier sous ces formes. Et les plans de site de Yoast
- * (`/sitemap_index.xml`, `/page-sitemap.xml`…), qui partent sur `/sitemap.xml`.
+ * `/wp-content/uploads/`, `/wp-login.php`), tout `.php` (`/xmlrpc.php`), en
+ * toute casse, les plans de site de Yoast (`/sitemap_index.xml`,
+ * `/page-sitemap.xml`), en toute casse aussi, et les débris du thème à
+ * extension apparente (une virgule, `/.svg`). Le site n'a aucun fichier sous
+ * ces formes : son plan est `/sitemap.xml`, que ces motifs ne voient pas.
  */
 export const config = {
   matcher: [
     "/((?!api/|_next/|.*\\.[a-zA-Z0-9]+$).*)",
-    "/(wp-.*)",
-    "/(.*\\.php)",
-    "/(sitemap_index\\.xml)",
-    "/([a-zA-Z_-]+-sitemap[0-9]*\\.xml)",
+    "/([wW][pP]-.*)",
+    "/(.*\\.[pP][hH][pP])",
+    "/([sS][iI][tT][eE][mM][aA][pP]_[iI][nN][dD][eE][xX]\\.[xX][mM][lL])",
+    "/([a-zA-Z0-9_-]+-[sS][iI][tT][eE][mM][aA][pP][0-9]*\\.[xX][mM][lL])",
+    // Débris du thème Avada à extension apparente (`/0,0,0,0.3`, `/.svg`).
+    "/(.*,.*)",
+    "/(\\.[sS][vV][gG]|\\.[pP][nN][gG])",
   ],
 };

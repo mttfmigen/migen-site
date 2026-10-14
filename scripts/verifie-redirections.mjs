@@ -132,6 +132,23 @@ const FILET = [
   "/sitemap_index.xml",
   "/post-sitemap.xml",
   "/fusion_tb_category-sitemap.xml",
+  "/maintenance-industrielle-lyon/embed/",
+  "/maintenance-industrielle-lyon/feed/rss2/",
+  "/page-sitemap.xml",
+  "/WP-CONTENT/uploads/x.PNG",
+  "/XMLRPC.PHP",
+  "/search/%7Bsearch_term_string%7D/",
+  "/?attachment_id=12",
+  "/PAGE-SITEMAP.XML",
+  "/maintenance-industrielle-lyon/%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%3E%3C%2Fsvg%3E",
+  "/mentions-legales/%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%3E/",
+  "/technicien-de-maintenance-centre-logistique/&",
+  "/--awb-bg-color",
+  "/0,0,0,0.3",
+  "/-0px%20/%202/",
+  "/desktop",
+  "/.svg",
+  "/contact-form-7/v1",
 ];
 
 /**
@@ -141,11 +158,18 @@ const FILET = [
 const ATTRIBUTION = [
   ["/maintenance-industrielle-lyon/?utm_source=x&gclid=y", "?utm_source=x&gclid=y"],
   ["/?page_id=8&utm_source=x", "?utm_source=x"],
+  ["/?attachment_id=12&utm_source=x", "?utm_source=x"],
 ];
 
 /** Témoins : [chemin, code attendu sans redirection]. */
 const TEMOINS = [
   ["/offres/nexistepas/", 404],
+  // Sous une ancienne adresse redirigée (`/a-propos/`), une suite en forme
+  // d'adresse n'est pas un débris : 404, comme `/a-propos/equipe/` reste une page.
+  ["/a-propos/inconnue/", 404],
+  // Fichiers standard que l'ancien site n'a jamais eus : 404, jamais l'accueil.
+  ["/ads.txt", 404],
+  ["/.well-known/security.txt", 404],
   ["/sitemap.xml", 200],
   ["/robots.txt", 200],
   ["/favicon.ico", 200],
