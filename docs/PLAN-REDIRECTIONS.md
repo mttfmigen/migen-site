@@ -234,13 +234,14 @@ Décision de Mehdi, le 14/10 vers 15h10 : « Publie, on fera des modifs plus tar
 | `/vous-connaissez-lexpression-le-temps-cest-de-largent/` | `/ressources/fiches-techniques/trs/` | `/ressources/articles/machines-goulots/` |
 | `/guide-maintenance-industrielle/` | `/ressources/` | `/ressources/articles/guide-maintenance-industrielle/` |
 | `/la-digitalisation-des-manuels-de-maintenance-industrielle/` | `/ressources/articles/digitalisation-maintenance/` | `/ressources/articles/digitalisation-des-manuels/` |
+| `/tout-savoir-sur-la-maintenance-industrielle/` | `/ressources/` | `/ressources/articles/guide-maintenance-industrielle/` (ajoutée à la relecture : l'ancien WordPress la renvoie vers le guide, mesuré le 14/10) |
 
-**Trois lignes de la table `redirects` l'emportent encore sur le code** (lues en base le 14/10, rien n'y a été écrit). Tant qu'elles ne changent pas, ces trois adresses gardent leur ancienne cible, toujours en un seul saut :
+**Trois lignes de la table `redirects` l'emportaient sur le code** au moment de la publication. **Relu en base le 14/10 à la relecture : les trois portent désormais la nouvelle cible** (changées hors de ce dépôt, aucune écriture faite d'ici). Mesuré en préproduction le même jour : les trois anciennes adresses arrivent sur leur article en une seule 301. Pour mémoire, ce qui a été changé :
 
-| source | en base aujourd'hui | valeur à poser |
+| source | en base avant | valeur posée |
 |---|---|---|
 | `/migen-et-dimomaint-en-alliance-strategique/` | `/partenaires/` | `/ressources/articles/partenariat-dimomaint/` |
 | `/migen-savoye-et-dimomaint-une-cooperation-strategique-au-service-de-la-performance-industrielle/` | `/partenaires/` | `/ressources/articles/savoye-dimomaint/` |
 | `/pourquoi-faire-appel-a-une-entreprise-de-maintenance-externalisee/` | `/offres/maintenance-externalisee/` (le proxy la mène à `/offres/full-service/`) | `/ressources/articles/pourquoi-externaliser/` |
 
-Les neuf autres n'ont pas de ligne en base : le code s'applique dès le déploiement.
+Les neuf autres (et `/tout-savoir-sur-la-maintenance-industrielle/`) n'ont pas de ligne en base : le code s'applique dès le déploiement.

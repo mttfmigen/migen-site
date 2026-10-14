@@ -138,7 +138,7 @@ export const REDIRECTIONS_ANCIEN_SITE: ReadonlyArray<
   ["/quelles-sont-les-competences-cles-necessaires-pour-les-professionnels-de-la-maintenance-industrielle-aujourdhui-et-comment-se-former-efficacement-dans-ce-domaine/", "/carriere/technicien-de-maintenance/formation/"],
   // Articles, guides et fiches de l'ancien blog : vers la ressource du même sujet, sinon le hub.
   ["/guide-maintenance-industrielle/", "/ressources/articles/guide-maintenance-industrielle/"], // billet republié le 14/10
-  ["/tout-savoir-sur-la-maintenance-industrielle/", "/ressources/"],
+  ["/tout-savoir-sur-la-maintenance-industrielle/", "/ressources/articles/guide-maintenance-industrielle/"], // WordPress la renvoie vers ce guide, republié le 14/10
   ["/category/articles/", "/ressources/articles/"],
   ["/vers-une-france-reindustrialisee-avantages-defis-et-strategies/", "/ressources/articles/reindustrialisation/"], // billet republié le 14/10
   ["/la-digitalisation-des-manuels-de-maintenance-industrielle/", "/ressources/articles/digitalisation-des-manuels/"], // billet republié le 14/10

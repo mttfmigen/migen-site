@@ -114,14 +114,14 @@ source,destination,code,raison,confiance,trafic,domaines_referents
 /migen-consultation-accompagne-eaton-pour-la-mise-en-production-de-son-site-automobile/,/preuves/eaton-mise-en-production/,301,"Étude de cas Eaton, même mission (démarrage du parc machines)",haute,0,0
 /migen-consultation-debute-en-belgique-pour-mccain/,/preuves/mccain-belgique/,301,"Étude de cas McCain, premier contrat en Belgique",haute,0,0
 /migen-et-danone-maintenance-continu-sur-site/,/preuves/danone-lignes-de-production/,301,déjà en base (0003_redirections.sql),haute,0,0
-/migen-et-dimomaint-en-alliance-strategique/,/ressources/articles/partenariat-dimomaint/,301,billet de l'ancien blog republié mot pour mot sous /ressources/articles/ (décision de Mehdi du 14/10). Une ligne en base l'emporte encore,haute,0,0
+/migen-et-dimomaint-en-alliance-strategique/,/ressources/articles/partenariat-dimomaint/,301,billet de l'ancien blog republié mot pour mot sous /ressources/articles/ (décision de Mehdi du 14/10). Ligne en base alignée le 14/10,haute,0,0
 /migen-et-savoye-en-alliance-strategique/,/preuves/savoye/,301,Page dédiée à l'alliance Savoye (maintenance intralogistique),haute,0,0
 /migen-et-suez-remise-en-etat-site-industriel/,/preuves/suez-remise-en-etat/,301,déjà en base (0003_redirections.sql),haute,0,0
 /migen-intervention-en-partenariat-avec-eiffage/,/preuves/eiffage/,301,"Étude de cas Eiffage, préventif photovoltaïque",haute,0,0
 /migen-intervention-et-soprema-pour-des-travaux-ponctuels/,/preuves/soprema/,301,"Étude de cas Soprema, montage et déplacement de machines",haute,0,0
 /migen-intervention-travail-sur-des-casques-a-realite-virtuelle-pour-timescope/,/preuves/timescope/,301,"Étude de cas Timescope, casques de réalité virtuelle",haute,0,0
 /migen-la-ou-le-bien-etre-au-travail-nest-pas-juste-un-slogan/,/ressources/articles/bien-etre-au-travail/,301,billet de l'ancien blog republié mot pour mot sous /ressources/articles/ (décision de Mehdi du 14/10),haute,0,0
-/migen-savoye-et-dimomaint-une-cooperation-strategique-au-service-de-la-performance-industrielle/,/ressources/articles/savoye-dimomaint/,301,billet de l'ancien blog republié mot pour mot sous /ressources/articles/ (décision de Mehdi du 14/10). Une ligne en base l'emporte encore,haute,0,0
+/migen-savoye-et-dimomaint-une-cooperation-strategique-au-service-de-la-performance-industrielle/,/ressources/articles/savoye-dimomaint/,301,billet de l'ancien blog republié mot pour mot sous /ressources/articles/ (décision de Mehdi du 14/10). Ligne en base alignée le 14/10,haute,0,0
 /migen-sur-site-et-alstef-group-en-collaboration/,/preuves/alstef-group/,301,"Étude de cas Alstef Group, contrôle de chantier",haute,0,0
 /migen-sur-site-et-autoliv-pour-le-maintien-dun-site-industriel/,/preuves/autoliv/,301,"Étude de cas Autoliv, technicien dédié au parc",haute,0,0
 /migen-sur-site-pour-eriks/,/preuves/eriks/,301,"Étude de cas Eriks, prestation sur site",haute,0,0
@@ -139,7 +139,7 @@ source,destination,code,raison,confiance,trafic,domaines_referents
 /partenaires/,/partenaires/,200,page conservée au même chemin,haute,0,0
 /politique-de-confidentialite/,/confidentialite/,301,déjà en base (0003_redirections.sql),haute,0,0
 /portfolio-items/,,404,"archive vide du thème Avada : 404 attendue, pas de 301 de contenu",,0,0
-/pourquoi-faire-appel-a-une-entreprise-de-maintenance-externalisee/,/ressources/articles/pourquoi-externaliser/,301,billet de l'ancien blog republié mot pour mot sous /ressources/articles/ (décision de Mehdi du 14/10). Une ligne en base l'emporte encore,haute,0,0
+/pourquoi-faire-appel-a-une-entreprise-de-maintenance-externalisee/,/ressources/articles/pourquoi-externaliser/,301,billet de l'ancien blog republié mot pour mot sous /ressources/articles/ (décision de Mehdi du 14/10). Ligne en base alignée le 14/10,haute,0,0
 /product-category/uncategorized/,,404,"reliquat WooCommerce : 404 attendue, pas de 301 de contenu",,0,0
 /quelles-sont-les-competences-cles-necessaires-pour-les-professionnels-de-la-maintenance-industrielle-aujourdhui-et-comment-se-former-efficacement-dans-ce-domaine/,/carriere/technicien-de-maintenance/formation/,301,Même sujet : se former à la maintenance industrielle,haute,0,0
 /quels-sont-les-avantages-davoir-un-mainteneur-industriel-en-regie/,/offres/residence/prestataire-ou-salarie/,301,Ancien slug de l'article régie contre salarié ; même sujet que le comparatif prestataire ou salarié de l'offre résidence,haute,0,0
@@ -170,7 +170,7 @@ source,destination,code,raison,confiance,trafic,domaines_referents
 /technicien-de-maintenance-industrie-pharmaceutique/,/secteurs/pharmaceutique/,301,Même secteur : maintenance en industrie pharmaceutique,haute,0,0
 /technicien-de-maintenance-menuiserie-industrielle/,/secteurs/menuiserie-industrielle/,301,Même secteur : maintenance en menuiserie industrielle,haute,0,0
 /technicien-de-maintenance/,/carriere/technicien-de-maintenance/,301,déjà en base (0003_redirections.sql),haute,0,0
-/tout-savoir-sur-la-maintenance-industrielle/,/ressources/,301,"WordPress la renvoie vers le guide de la maintenance industrielle ; /ressources/ est la page « Guide maintenance industrielle » du nouveau site (même mot-clé), mais c'est une bibliothèque, pas l'article repris tel quel",moyenne,0,0
+/tout-savoir-sur-la-maintenance-industrielle/,/ressources/articles/guide-maintenance-industrielle/,301,"WordPress la renvoie vers /guide-maintenance-industrielle/ (mesuré le 14/10), billet republié mot pour mot sous /ressources/articles/ le 14/10 : même cible que lui, en un seul saut",haute,0,0
 /tout-savoir-sur-les-automates-programmables-industriels-siemens/,/ressources/fiches-techniques/automates-siemens/,301,"Guide repris en fiche technique (API, gammes SIMATIC, programmation, maintenance)",haute,22,0
 /transfert-demenagement-industriel/,/offres/chantier/,301,"à valider : ou /travaux-industriels/transfert-industriel/. Même offre ©Chantier : transfert industriel (audit, démontage, remontage)",haute,2,0
 /valeo-choisit-migen-consultation-pour-plusieurs-usines-en-france/,/preuves/valeo-usines/,301,"Étude de cas Valeo, plusieurs usines",haute,0,0

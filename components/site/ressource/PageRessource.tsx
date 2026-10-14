@@ -18,6 +18,8 @@ import styles from "./Ressource.module.css";
 import * as H from "./habillage";
 import { cadragePhoto } from "@/lib/cadrage-photos";
 import { altPhoto } from "@/lib/descriptions-photos";
+import { filAriane as filArianeJsonLd, jsonLdTexte, organisation } from "@/lib/seo/jsonld";
+import { urlAbsolue, urlImage } from "@/lib/seo/url";
 
 /**
  * Le gabarit « 01 Article et fiche » : `MigenRessource.dc.html`, branche
@@ -254,6 +256,52 @@ function Appel() {
   );
 }
 
+/**
+ * Article et BreadcrumbList pour les moteurs (CLAUDE.md §6), absents du
+ * gabarit jusqu'au 14/10 : il rend le fil visible par `FilArianeVue`, qui
+ * n'émet pas de données structurées, et `FilAriane` (qui en émet) n'est pas
+ * monté ici. Le fil est celui que la page affiche, précédé de l'accueil.
+ * AUCUNE DATE : le relais disque horodate ses pages au 01/01/1970, une date
+ * publiée serait fausse (décision 4 du 14/10 pour les billets repris).
+ */
+function DonneesStructurees({
+  titre,
+  chemin,
+  etapes,
+  image,
+}: {
+  titre: string;
+  chemin: string;
+  etapes: { titre: string; path: string | null }[];
+  image?: string;
+}) {
+  // Nœud imbriqué : sans son `@context` (JSON.stringify omet `undefined`).
+  const editeur = { ...organisation(), "@context": undefined };
+  const donnees = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: titre,
+      url: urlAbsolue(chemin),
+      mainEntityOfPage: urlAbsolue(chemin),
+      ...(image ? { image: urlImage(image) } : {}),
+      author: editeur,
+      publisher: editeur,
+    },
+    filArianeJsonLd([
+      { titre: "Accueil", chemin: "/" },
+      ...etapes.map((e) => ({ titre: e.path ? e.titre : titre, chemin: e.path ?? chemin })),
+    ]),
+  ];
+  return (
+    <>
+      {donnees.map((d) => (
+        <script key={d["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdTexte(d) }} />
+      ))}
+    </>
+  );
+}
+
 export interface ProprietesPageRessource {
   titre: string;
   contenu: ContenuRessource;
@@ -293,6 +341,7 @@ export default function PageRessource({ titre, contenu, chemin }: ProprietesPage
 
   return (
     <div className="mg-site">
+      {chemin ? <DonneesStructurees titre={titre} chemin={chemin} etapes={etapes} image={contenu.image} /> : null}
       <main style={{ paddingTop: H.HAUT_DE_PAGE }}>
         <section data-screen-label="Ressources · héros" style={H.SECTION_HEROS}>
           <div style={{ marginBottom: 26 }}>
