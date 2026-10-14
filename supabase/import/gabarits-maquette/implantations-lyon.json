@@ -8,7 +8,7 @@
   "contenu": {
     "gabarit": "ville",
     "pastille": "Nos implantations",
-    "chapeau": "Entre les procédés continus de la vallée de la chimie, au sud, et les ateliers de mécanique de l'est lyonnais, deux mondes qui n'ont ni les mêmes consignations ni les mêmes fenêtres d'arrêt. Migen est née ici en 2021, siège à Limonest et bureaux à Écully, et nos techniciens, basés à Lyon, connaissent les deux.",
+    "chapeau": "Entre les procédés continus de la vallée de la chimie, au sud, et les ateliers de mécanique de l'est lyonnais, deux mondes qui n'ont ni les mêmes consignations ni les mêmes fenêtres d'arrêt. Migen est née ici en 2021, siège à Limonest et bureaux à Écully, et nos techniciens, basés à Lyon, connaissent les deux. Une entreprise de maintenance industrielle née au milieu des usines, avec une expertise qui couvre le préventif comme le dépannage.",
     "actions": [
       {
         "libelle": "Faire chiffrer ma maintenance à Lyon",
@@ -43,7 +43,7 @@
       "photo": "/assets/villes/ville-lyon.jpg",
       "badge": "Hub Migen",
       "nom": "Hub Lyon",
-      "texte": "Une équipe de techniciens installée à Lyon, au plus près de vos sites, appuyée par le réseau national Migen.",
+      "texte": "Une équipe de techniciens installée à Lyon, au plus près de vos sites, appuyée par le réseau national Migen. Chimie, pharmacie, mécanique, agroalimentaire, logistique, énergie : chaque secteur de l'activité industrielle lyonnaise a ses équipements critiques et ses fenêtres d'arrêt. Un seul point d'entrée, cinq pages de détail : chaque lien ouvre le détail local.",
       "bouton": "Demander une intervention à Lyon",
       "cartes": [
         {
@@ -56,7 +56,7 @@
         {
           "surtitre": "Aussi présent",
           "titre": "Logistique",
-          "texte": "Notre terrain est l'équipement de production industrielle : lignes, machines-outils, convoyeurs, utilités de process.",
+          "texte": "Notre terrain est l'équipement de production industrielle : lignes, machines-outils, convoyeurs, utilités de process. Convoyeurs, trieurs, quais : la maintenance des plateformes logistiques au rythme du e-commerce et de la grande distribution.",
           "lien": "Notre approche logistique",
           "href": "/secteurs/logistique/"
         }
@@ -98,11 +98,11 @@
         "puces": [
           {
             "accroche": "Au sud, l'arrêt se prépare ou ne se fait pas.",
-            "texte": "Vallée de la chimie, procédés continus, consignations cadrées : le geste vient après le plan de prévention validé, jamais avant."
+            "texte": "Vallée de la chimie, procédés continus, consignations cadrées : le geste vient après le plan de prévention validé, jamais avant. Pompes, échangeurs, vannes, armoires électriques en atmosphère contrôlée : les exigences légales de sécurité y sont strictes."
           },
           {
             "accroche": "À l'est, la densité joue contre vous.",
-            "texte": "Vénissieux, Saint-Priest, Corbas, Genas : le tissu de mécanique et de logistique le plus serré de la métropole, et des techniciens que tout le monde s'arrache."
+            "texte": "Vénissieux, Saint-Priest, Corbas, Genas : le tissu de mécanique et de logistique le plus serré de la métropole, et des techniciens que tout le monde s'arrache. Transmissions, réducteurs, moteurs, machines spéciales, lignes de fabrication : l'est lyonnais concentre la mécanique de production."
           },
           {
             "accroche": "Le fleuve impose ses accès.",
@@ -110,11 +110,11 @@
           },
           {
             "accroche": "Le bassin recrute contre vous.",
-            "texte": "Une fiche de poste en maintenance reste des mois en ligne dans la métropole, pendant que le préventif s'accumule en retard."
+            "texte": "Une fiche de poste en maintenance reste des mois en ligne dans la métropole, pendant que le préventif s'accumule en retard. Les offres d'emploi s'accumulent, et les CDI comme les CDD de renfort ne se pourvoient pas plus vite ; les parcours vont du bac professionnel au titre professionnel, et l'insertion professionnelle passe souvent par l'alternance. Nous pouvons intervenir en relais de votre équipe maintenance, le temps que le recrutement de votre entreprise aboutisse."
           },
           {
             "accroche": "La panne qui revient coûte deux fois.",
-            "texte": "Personne n'a cherché la cause racine la première fois, et le budget correctif dérape."
+            "texte": "Personne n'a cherché la cause racine la première fois, et le budget correctif dérape. L'objectif d'un contrat de maintenance préventive, avec le contenu des visites écrit et la traçabilité en gestion de maintenance assistée par ordinateur : moins de maintenance corrective, un taux de disponibilité qui monte, un taux de panne qui baisse. Zéro arrêt propose trois niveaux de couverture sur devis."
           }
         ],
         "variante": "rangee"
@@ -134,35 +134,35 @@
               "accroche": "Consignation, plan de prévention et accueil sécurité écrits avant le premier geste obligatoires en site classé.",
               "texte": ""
             },
-            "benefice": "Une intervention en zone à risque ne dérape pas sur un point de procédure."
+            "benefice": "Une intervention en zone à risque ne dérape pas sur un point de procédure. Chaufferies, traitement des eaux, électricité de puissance : des installations et des énergies pilotées par automates programmables. L'électricité des process exige des électriciens habilités : les nôtres le sont."
           },
           {
             "prestation": {
               "accroche": "Automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc en appui de l'équipe locale.",
               "texte": ""
             },
-            "benefice": "Un automate en défaut ou un robot arrêté trouve son spécialiste, sans sous-traitance en cascade."
+            "benefice": "Un automate en défaut ou un robot arrêté trouve son spécialiste, sans sous-traitance en cascade. Un automate programmable en défaut se reprend grâce au retour d'expérience du groupe : sauvegardes, reprise du programme de l'automate, systèmes de supervision. L'automatisation industrielle se maintient comme le reste, les automates programmables industriels vieillissent bien quand on s'en occupe, et nous accompagnons aussi vos projets d'automatisation, avec les ressources du groupe en appui."
           },
           {
             "prestation": {
               "accroche": "Couverture complète des domaines",
               "texte": "Mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique, robotique, soudure."
             },
-            "benefice": "Un seul contrat pour un parc qui mélange toujours plusieurs technologies."
+            "benefice": "Un seul contrat pour un parc qui mélange toujours plusieurs technologies. Transmissions et révision générale, armoires électriques et recherche de défaut, contrôles hydrauliques en fonctionnement, soudure et chaudronnerie pour les réparations d'urgence : une équipe spécialisée par domaine, l'appui des ressources du groupe pour les cas pointus, voilà l'expertise réellement mobilisable."
           },
           {
             "prestation": {
               "accroche": "Astreinte la nuit, le week-end et les jours fériés en option portée par l'agence du siège et son hub de techniciens lyonnais.",
               "texte": ""
             },
-            "benefice": "Une alerte de nuit sur une installation en continu trouve un interlocuteur, pas un répondeur."
+            "benefice": "Une alerte de nuit sur une installation en continu trouve un interlocuteur, pas un répondeur. Au siège, les fonctions d'appui : la feuille de route des contrats, la gestion des priorités du réseau."
           },
           {
             "prestation": {
               "accroche": "Relais sur tout le territoire de l'agence",
               "texte": "Rhône, Grenoble, Valence, Haute-Savoie, Saint-Étienne."
             },
-            "benefice": "Un groupe régional multi-sites garde un seul contrat et un seul interlocuteur."
+            "benefice": "Un groupe régional multi-sites garde un seul contrat et un seul interlocuteur. Dépannage ponctuel, contrat de maintenance ou renfort à intégrer durablement : trois solutions, une seule adresse."
           }
         ]
       },
@@ -171,7 +171,7 @@
         "etapes": [
           {
             "titre": "L'appel qualifié",
-            "texte": "Vous décrivez la panne par téléphone, rappel dans l'heure aux horaires ouvrés. Machine, symptômes, accès, niveau d'urgence : le pré-diagnostic évite le déplacement pour rien."
+            "texte": "Vous décrivez la panne par téléphone, rappel dans l'heure aux horaires ouvrés. Machine, symptômes, accès, niveau d'urgence : le pré-diagnostic évite le déplacement pour rien. Ce premier contact affine la description du défaut, et cette description précise oriente vers le bon métier."
           },
           {
             "titre": "Le bon profil en route",
@@ -179,7 +179,7 @@
           },
           {
             "titre": "L'accès cadré",
-            "texte": "Plan de prévention, consignation, protections. En site classé de la vallée de la chimie, cette étape se valide avant le départ du technicien."
+            "texte": "Plan de prévention, consignation, protections. En site classé de la vallée de la chimie, cette étape se valide avant le départ du technicien. Pas de premier geste avant validation."
           },
           {
             "titre": "Le diagnostic",
@@ -191,7 +191,7 @@
           },
           {
             "titre": "Le compte rendu qui reste",
-            "texte": "Causes, actions, pièces, préconisations, photos, versés dans votre GMAO. Un dossier par machine, tenu à jour visite après visite."
+            "texte": "Causes, actions, pièces, préconisations, photos, versés dans votre GMAO. Un dossier par machine, tenu à jour visite après visite. Recherche de cause et préconisations correctives : la qualité documentaire compte autant que le geste, avec une qualité mesurée : comptes rendus systématiques, des indicateurs suivis et un niveau de service lisible."
           }
         ]
       },
@@ -200,15 +200,15 @@
         "puces": [
           {
             "accroche": "Le même technicien aussi longtemps que possible",
-            "texte": "Sur un contrat suivi, vous gardez l'intervenant qui connaît vos machines. Pas de visage différent à chaque visite, pas de profil parachuté sans encadrement."
+            "texte": "Sur un contrat suivi, vous gardez l'intervenant qui connaît vos machines. Pas de visage différent à chaque visite, pas de profil parachuté sans encadrement. Des salariés Migen, électriciens, électromécaniciens et automaticiens, avec la formation continue et l'aide du groupe. Prestation de services de droit français : Migen reste l'employeur, un référent contrôle la qualité, le remplacement est organisé."
           },
           {
             "accroche": "Une compétence vérifiée avant l'arrivée",
-            "texte": "Entretien technique et comportemental, 10 % des techniciens retenus, résultats d'évaluation présentés avant la première intervention chez vous."
+            "texte": "Entretien technique et comportemental, 10 % des techniciens retenus, résultats d'évaluation présentés avant la première intervention chez vous. Validation des acquis en conditions réelles, habilitations et certifications vérifiées. Dites votre filière et votre parc : nous vous présentons un client déjà servi, au contexte proche du vôtre."
           },
           {
             "accroche": "Un périmètre écrit et des pièces au prix réel",
-            "texte": "Ce qui est inclus, ce qui ne l'est pas, les conditions de sortie. L'exceptionnel se chiffre avant, jamais en fin de facture."
+            "texte": "Ce qui est inclus, ce qui ne l'est pas, les conditions de sortie. L'exceptionnel se chiffre avant, jamais en fin de facture. Un dossier cadré au devis, un contenu de contrat sans mention en petits caractères, un taux horaire homogène en France, et la validation finale vous revient. Chaque mission se lit dans nos études de cas, avec son périmètre et ses résultats : des références client vérifiables, pas des logos en vitrine."
           }
         ]
       },
@@ -305,5 +305,79 @@
       }
     ]
   },
-  "trous": []
+  "trous": [],
+  "ajouts": [
+    {
+      "ligne": "Une entreprise de maintenance industrielle née au milieu des usines, avec une expertise qui couvre le préventif comme le dépannage.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, héro"
+    },
+    {
+      "ligne": "Chimie, pharmacie, mécanique, agroalimentaire, logistique, énergie : chaque secteur de l'activité industrielle lyonnaise a ses équipements critiques et ses fenêtres d'arrêt. Un seul point d'entrée, cinq pages de détail : chaque lien ouvre le détail local.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Les secteurs industriels du territoire"
+    },
+    {
+      "ligne": "Convoyeurs, trieurs, quais : la maintenance des plateformes logistiques au rythme du e-commerce et de la grande distribution.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Logistique et distribution"
+    },
+    {
+      "ligne": "Pompes, échangeurs, vannes, armoires électriques en atmosphère contrôlée : les exigences légales de sécurité y sont strictes.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Vallée de la chimie et Chimie et pétrochimie"
+    },
+    {
+      "ligne": "Transmissions, réducteurs, moteurs, machines spéciales, lignes de fabrication : l'est lyonnais concentre la mécanique de production.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Est lyonnais et Mécanique et machines spéciales"
+    },
+    {
+      "ligne": "Les offres d'emploi s'accumulent, et les CDI comme les CDD de renfort ne se pourvoient pas plus vite ; les parcours vont du bac professionnel au titre professionnel, et l'insertion professionnelle passe souvent par l'alternance. Nous pouvons intervenir en relais de votre équipe maintenance, le temps que le recrutement de votre entreprise aboutisse.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Vous recrutez en interne"
+    },
+    {
+      "ligne": "L'objectif d'un contrat de maintenance préventive, avec le contenu des visites écrit et la traçabilité en gestion de maintenance assistée par ordinateur : moins de maintenance corrective, un taux de disponibilité qui monte, un taux de panne qui baisse. Zéro arrêt propose trois niveaux de couverture sur devis.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, FAQ contrats de maintenance préventive"
+    },
+    {
+      "ligne": "Chaufferies, traitement des eaux, électricité de puissance : des installations et des énergies pilotées par automates programmables. L'électricité des process exige des électriciens habilités : les nôtres le sont.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Énergie et environnement"
+    },
+    {
+      "ligne": "Un automate programmable en défaut se reprend grâce au retour d'expérience du groupe : sauvegardes, reprise du programme de l'automate, systèmes de supervision. L'automatisation industrielle se maintient comme le reste, les automates programmables industriels vieillissent bien quand on s'en occupe, et nous accompagnons aussi vos projets d'automatisation, avec les ressources du groupe en appui.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Domaines couverts et FAQ automates"
+    },
+    {
+      "ligne": "Transmissions et révision générale, armoires électriques et recherche de défaut, contrôles hydrauliques en fonctionnement, soudure et chaudronnerie pour les réparations d'urgence : une équipe spécialisée par domaine, l'appui des ressources du groupe pour les cas pointus, voilà l'expertise réellement mobilisable.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Domaines couverts"
+    },
+    {
+      "ligne": "Au siège, les fonctions d'appui : la feuille de route des contrats, la gestion des priorités du réseau.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Nord-ouest et monts d'Or"
+    },
+    {
+      "ligne": "Dépannage ponctuel, contrat de maintenance ou renfort à intégrer durablement : trois solutions, une seule adresse.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Vous cherchez un prestataire"
+    },
+    {
+      "ligne": "Ce premier contact affine la description du défaut, et cette description précise oriente vers le bon métier.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Le premier contact"
+    },
+    {
+      "ligne": "Recherche de cause et préconisations correctives : la qualité documentaire compte autant que le geste, avec une qualité mesurée : comptes rendus systématiques, des indicateurs suivis et un niveau de service lisible.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Le compte rendu qui reste et Qualité mesurée"
+    },
+    {
+      "ligne": "Des salariés Migen, électriciens, électromécaniciens et automaticiens, avec la formation continue et l'aide du groupe. Prestation de services de droit français : Migen reste l'employeur, un référent contrôle la qualité, le remplacement est organisé.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, FAQ Qui sont vos techniciens et cadre du technicien intégré"
+    },
+    {
+      "ligne": "Validation des acquis en conditions réelles, habilitations et certifications vérifiées. Dites votre filière et votre parc : nous vous présentons un client déjà servi, au contexte proche du vôtre.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, FAQ techniciens et Mise en relation"
+    },
+    {
+      "ligne": "Un dossier cadré au devis, un contenu de contrat sans mention en petits caractères, un taux horaire homogène en France, et la validation finale vous revient. Chaque mission se lit dans nos études de cas, avec son périmètre et ses résultats : des références client vérifiables, pas des logos en vitrine.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, FAQ cadre du technicien intégré et Études de cas ouvertes"
+    },
+    {
+      "ligne": "Pas de premier geste avant validation.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Vallée de la chimie (validation du plan de prévention avant le premier geste)"
+    }
+  ]
 }

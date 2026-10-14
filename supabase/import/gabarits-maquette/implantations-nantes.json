@@ -8,7 +8,7 @@
   "contenu": {
     "gabarit": "ville",
     "pastille": "Nos implantations",
-    "chapeau": "Trois industries se partagent le bassin et n'ont rien en commun : l'aéronautique de la Basse-Loire, qui exige une traçabilité totale, le naval de Saint-Nazaire, qui vit de mécanique lourde et de soudure, et l'agroalimentaire du Grand Ouest, qui lave ses lignes tous les jours. Notre hub de techniciens de Nantes couvre les trois avec les mêmes techniciens évalués.",
+    "chapeau": "Trois industries se partagent le bassin et n'ont rien en commun : l'aéronautique de la Basse-Loire, qui exige une traçabilité totale, le naval de Saint-Nazaire, qui vit de mécanique lourde et de soudure, et l'agroalimentaire du Grand Ouest, qui lave ses lignes tous les jours. Notre hub de techniciens de Nantes couvre les trois avec les mêmes techniciens évalués. Dépannage, préventif, travaux d'amélioration : Migen, entreprise de maintenance industrielle, accompagne les entreprises industrielles du territoire comme partenaire maintenance, au quotidien comme en urgence, pour répondre au bon niveau d'exigence.",
     "actions": [
       {
         "libelle": "Faire chiffrer ma maintenance à Nantes",
@@ -39,7 +39,7 @@
       "photo": "/assets/villes/ville-nantes.jpg",
       "badge": "Hub Migen",
       "nom": "Hub Nantes",
-      "texte": "Une équipe de techniciens installée à Nantes, au plus près de vos sites, appuyée par le réseau national Migen.",
+      "texte": "Une équipe de techniciens installée à Nantes, au plus près de vos sites, appuyée par le réseau national Migen. Un chargé d'affaires dédié, des intervenants qui travaillent à proximité de votre usine, une vraie connaissance du tissu industriel local, où chaque secteur impose ses contraintes de fonctionnement. Une équipe spécialisée rayonne sur toute la Loire-Atlantique et monte vers la Bretagne ; quand une panne dépasse l'intervenant présent, un spécialiste du groupe prend le relais au sein de vos ateliers ou à distance : automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc, soudeurs, profils spécialisés en hydraulique.",
       "bouton": "Demander une intervention à Nantes",
       "cartes": [
         {
@@ -100,19 +100,19 @@
         "puces": [
           {
             "accroche": "Le lavage intensif use les équipements plus vite.",
-            "texte": "Agroalimentaire du Grand Ouest : eau, soude, températures, et des roulements qui ne tiennent pas les durées théoriques."
+            "texte": "Agroalimentaire du Grand Ouest : eau, soude, températures, et des roulements qui ne tiennent pas les durées théoriques. Laiteries, biscuiteries, plats préparés : un environnement qui use les équipements et impose des réparations durables, pas des rustines."
           },
           {
             "accroche": "L'aéronautique ne tolère aucun trou documentaire.",
-            "texte": "Un contrôle manqué vaut un arrêt, même quand la machine fonctionne."
+            "texte": "Un contrôle manqué vaut un arrêt, même quand la machine fonctionne. L'industrie aéronautique structure le bassin d'emploi industriel autour de Bouguenais et de la Basse-Loire : traçabilité maximale, contrôle continu, haute disponibilité attendue des moyens de production."
           },
           {
             "accroche": "Le naval travaille sur des pièces qui ne passent pas la porte.",
-            "texte": "Reprise sur site, soudure, chaudronnerie : l'atelier vient à la pièce, pas l'inverse."
+            "texte": "Reprise sur site, soudure, chaudronnerie : l'atelier vient à la pièce, pas l'inverse. Le pôle de Saint-Nazaire tire toute une chaîne de sous-traitance en mécanique, soudure et chaudronnerie, et les énergies marines renouvelables y ajoutent de nouveaux besoins en maintenance. L'actualité industrielle du bassin, extensions, arrêts techniques programmés, en apporte chaque année."
           },
           {
             "accroche": "Le bassin est étendu, la compétence concentrée.",
-            "texte": "Entre l'estuaire, le vignoble et la Vendée, trouver un automaticien disponible prend plus de temps que réparer."
+            "texte": "Entre l'estuaire, le vignoble et la Vendée, trouver un automaticien disponible prend plus de temps que réparer. Ateliers d'usinage, fabrication de pièces, machines-outils, de Saint-Herblain aux zones d'activités de la périphérie : le socle historique de l'industrie nantaise. Les centres de formation des Pays de la Loire proposent du Bac pro au BTS en alternance, et nos collaborateurs se forment en continu chez les constructeurs. Migen recrute aussi en CDI dans la région nantaise."
           },
           {
             "accroche": "Un prestataire local seul plafonne vite.",
@@ -129,7 +129,7 @@
               "accroche": "Des gammes adaptées au lavage intensif",
               "texte": "Points de contrôle, étanchéité, protection des moteurs, éléments d'usure suivis."
             },
-            "benefice": "Vos lignes agroalimentaires tiennent les cadences sans réparations à répétition."
+            "benefice": "Vos lignes agroalimentaires tiennent les cadences sans réparations à répétition. Zones sous sas d'hygiène, lavage intensif, cadences élevées : la disponibilité machine reste le fil conducteur."
           },
           {
             "prestation": {
@@ -143,28 +143,28 @@
               "accroche": "Soudure et chaudronnerie sur site",
               "texte": "Reprise de bâtis, tuyauterie, réparations d'urgence."
             },
-            "benefice": "Une pièce lourde se répare où elle est, sans démontage complet ni transport."
+            "benefice": "Une pièce lourde se répare où elle est, sans démontage complet ni transport. Un savoir-faire directement lié à la culture navale du territoire."
           },
           {
             "prestation": {
               "accroche": "Le champ technique complet",
               "texte": "Mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique, soudure."
             },
-            "benefice": "Un seul contrat pour un parc qui mélange toujours plusieurs technologies."
+            "benefice": "Un seul contrat pour un parc qui mélange toujours plusieurs technologies. Machines-outils, centres d'usinage, convoyeurs, presses, pompes, compresseurs, robots. Roulements, transmissions, réducteurs et mesures vibratoires ; armoire électrique, moteurs, variateurs et contrôle des installations ; le duo moteur et mécanique, la compétence en électrotechnique la plus demandée sur le bassin ; centrales, vérins et réseaux d'air comprimé, où il faut rechercher l'origine des fuites et remettre en conformité. Chaque intervenant sait travailler sur plusieurs technologies, avec l'objectif de maintenir la disponibilité de vos équipements."
           },
           {
             "prestation": {
               "accroche": "Astreinte la nuit, le week-end et les jours fériés en option pour les sites en continu.",
               "texte": ""
             },
-            "benefice": "Une panne du dimanche soir ne devient pas un lundi matin sacrifié."
+            "benefice": "Une panne du dimanche soir ne devient pas un lundi matin sacrifié. Production d'énergie, traitement de l'eau et des déchets : des installations qui tournent en continu et ne tolèrent aucun arrêt non planifié. Convoyeurs, trieurs, quais, espaces de stockage : la logistique exige une réactivité sans faille. Migen propose aussi l'astreinte seule et les arrêts techniques planifiés : demandez, on vous oriente vers la bonne offre, avec l'aide de nos spécialistes."
           },
           {
             "prestation": {
               "accroche": "Relais du Grand Ouest",
               "texte": "Loire-Atlantique, Rennes, Brest."
             },
-            "benefice": "Un industriel réparti entre Bretagne et Pays de la Loire garde un seul interlocuteur."
+            "benefice": "Un industriel réparti entre Bretagne et Pays de la Loire garde un seul interlocuteur. Nous couvrons la métropole, l'estuaire jusqu'à Saint-Nazaire, le vignoble, le pays de Grand-Lieu et le nord du département, et nos équipes du Grand Ouest interviennent vers Rennes, Brest, Angers et la Vendée."
           }
         ]
       },
@@ -173,27 +173,27 @@
         "etapes": [
           {
             "titre": "Vous décrivez la situation",
-            "texte": "Panne bloquante, dérive d'équipement ou retard de préventif, par téléphone ou par le formulaire."
+            "texte": "Panne bloquante, dérive d'équipement ou retard de préventif, par téléphone ou par le formulaire. Votre appel reçoit un accueil professionnel, pas un standard anonyme."
           },
           {
             "titre": "Rappel dans l'heure",
-            "texte": "Aux horaires ouvrés, un chargé d'affaires qualifie la machine, l'accès, les habilitations et les pièces pressenties. Vous savez rapidement si nous avons le technicien, et lequel."
+            "texte": "Aux horaires ouvrés, un chargé d'affaires qualifie la machine, l'accès, les habilitations et les pièces pressenties. Vous savez rapidement si nous avons le technicien, et lequel. Le chargé d'affaires analyse le besoin, avec une information complète sur la mission proposée."
           },
           {
             "titre": "La préparation",
-            "texte": "Brief technique, consignes de sécurité du site, accueil sécurité, plan de prévention. Rien n'est découvert sur place."
+            "texte": "Brief technique, consignes de sécurité du site, accueil sécurité, plan de prévention. Rien n'est découvert sur place. Une usine a besoin de savoir qui vient, quand, et avec quelles compétences, pour un retour rapide à l'état de marche."
           },
           {
             "titre": "L'intervention",
-            "texte": "Mesures, contrôles, diagnostic, réparation, essais, remise en cadence avec vos opérateurs."
+            "texte": "Mesures, contrôles, diagnostic, réparation, essais, remise en cadence avec vos opérateurs. L'analyse commence par les faits : mesures, contrôles, analyse des causes. Sur un dépannage, cette aide à l'analyse joue directement sur la durée d'immobilisation, une réduction nette du coût de la panne, et la capacité à rechercher la cause racine évite que la panne revienne."
           },
           {
             "titre": "Le compte rendu",
-            "texte": "Causes, actions, pièces, préconisations, versés dans votre GMAO, avec ce que le premier niveau doit surveiller ensuite."
+            "texte": "Causes, actions, pièces, préconisations, versés dans votre GMAO, avec ce que le premier niveau doit surveiller ensuite. Le premier niveau de maintenance a de quoi anticiper la prochaine dérive, mise à jour de l'historique comprise."
           },
           {
             "titre": "Le point périodique",
-            "texte": "Disponibilité, récurrence par équipement, retard de préventif résorbé. Les chiffres décident de la suite."
+            "texte": "Disponibilité, récurrence par équipement, retard de préventif résorbé. Les chiffres décident de la suite. L'objectif ne change pas : réduire vos arrêts et le coût complet de votre maintenance, avec une information claire avant, pendant et après chaque opération. L'analyse vibratoire, l'analyse d'huiles ou l'analyse des historiques complètent le préventif quand les équipements le justifient. Un plan de maintenance préventive pour anticiper les pannes, au contenu chiffré sur devis après un état des lieux sur le terrain : la solution la plus rapide pour garantir le bon fonctionnement et la disponibilité de vos équipements au quotidien."
           }
         ]
       },
@@ -202,15 +202,15 @@
         "puces": [
           {
             "accroche": "La même équipe dans la durée",
-            "texte": "Pas de personne différente à chaque visite. Sur un contrat suivi, l'intervenant qui connaît vos machines revient, et l'historique reste sur le site."
+            "texte": "Pas de personne différente à chaque visite. Sur un contrat suivi, l'intervenant qui connaît vos machines revient, et l'historique reste sur le site. Une seule personne vous suit dans la durée : votre entreprise garde l'historique de ses machines. Nos études de cas décrivent le contexte, le travail réalisé et chaque mesure de résultat, domaine par domaine."
           },
           {
             "accroche": "Une compétence vérifiée avant l'arrivée",
-            "texte": "Entretien technique et comportemental, 10 % des techniciens retenus, résultats d'évaluation présentés avant la première intervention."
+            "texte": "Entretien technique et comportemental, 10 % des techniciens retenus, résultats d'évaluation présentés avant la première intervention. La qualité se prouve, elle ne se déclare pas. Grâce à cette exigence de recrutement, l'intervenant qui entre dans votre atelier sait travailler en environnement contraint : plan de prévention, accueil sécurité, consignation. Le recrutement est un métier à part entière chez nous, et notre expertise grandit avec chaque embauche réussie. La confiance se construit mission après mission, sur le terrain."
           },
           {
             "accroche": "Un refus net plutôt qu'un dépannage raté",
-            "texte": "Si un matériel sort de notre périmètre, nous le disons au premier échange. Le périmètre couvert est écrit au devis."
+            "texte": "Si un matériel sort de notre périmètre, nous le disons au premier échange. Le périmètre couvert est écrit au devis. Une PME de mécanique a les mêmes pannes qu'un grand groupe, avec moins de ressources pour les absorber, et la réduction des coûts d'arrêt y pèse encore plus lourd. Nos offres se dimensionnent au besoin réel : Migen se veut le partenaire de chaque entreprise, avec des solutions au bon format pour chaque activité. Ces offres se combinent, et le contenu de chaque engagement est écrit noir sur blanc : le contenu du plan de maintenance s'écrit au sein de vos ateliers, pas depuis un bureau."
           }
         ]
       },
@@ -315,6 +315,88 @@
     {
       "ligne": "Oui, c'est l'offre Résidence : un technicien salarié Migen intégré à votre équipe, encadré par un référent, prise de poste en 2 à 3 semaines et remplacement assuré en cas d'absence.",
       "pourquoi": "délai chiffré (« prise de poste en 2 à 3 semaines ») : seul « rappel dans l'heure » est autorisé (contrat de rédaction et passation du client), et Résidence n'a aucune durée affichée. Première phrase de la réponse à la question Résidence (09 Questions), la suite reste."
+    }
+  ],
+  "ajouts": [
+    {
+      "ligne": "Dépannage, préventif, travaux d'amélioration : Migen, entreprise de maintenance industrielle, accompagne les entreprises industrielles du territoire comme partenaire maintenance, au quotidien comme en urgence, pour répondre au bon niveau d'exigence.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, héro"
+    },
+    {
+      "ligne": "Un chargé d'affaires dédié, des intervenants qui travaillent à proximité de votre usine, une vraie connaissance du tissu industriel local, où chaque secteur impose ses contraintes de fonctionnement. Une équipe spécialisée rayonne sur toute la Loire-Atlantique et monte vers la Bretagne ; quand une panne dépasse l'intervenant présent, un spécialiste du groupe prend le relais au sein de vos ateliers ou à distance : automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc, soudeurs, profils spécialisés en hydraulique.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Un hub de techniciens à Nantes, l'appui d'un groupe"
+    },
+    {
+      "ligne": "Laiteries, biscuiteries, plats préparés : un environnement qui use les équipements et impose des réparations durables, pas des rustines.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Agroalimentaire"
+    },
+    {
+      "ligne": "L'industrie aéronautique structure le bassin d'emploi industriel autour de Bouguenais et de la Basse-Loire : traçabilité maximale, contrôle continu, haute disponibilité attendue des moyens de production.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Aéronautique"
+    },
+    {
+      "ligne": "Le pôle de Saint-Nazaire tire toute une chaîne de sous-traitance en mécanique, soudure et chaudronnerie, et les énergies marines renouvelables y ajoutent de nouveaux besoins en maintenance. L'actualité industrielle du bassin, extensions, arrêts techniques programmés, en apporte chaque année.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Naval et énergies marines"
+    },
+    {
+      "ligne": "Ateliers d'usinage, fabrication de pièces, machines-outils, de Saint-Herblain aux zones d'activités de la périphérie : le socle historique de l'industrie nantaise. Les centres de formation des Pays de la Loire proposent du Bac pro au BTS en alternance, et nos collaborateurs se forment en continu chez les constructeurs. Migen recrute aussi en CDI dans la région nantaise.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Mécanique et métallurgie, Vous cherchez une formation"
+    },
+    {
+      "ligne": "Zones sous sas d'hygiène, lavage intensif, cadences élevées : la disponibilité machine reste le fil conducteur.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Agroalimentaire et FAQ équipements"
+    },
+    {
+      "ligne": "Un savoir-faire directement lié à la culture navale du territoire.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Soudure et chaudronnerie"
+    },
+    {
+      "ligne": "Machines-outils, centres d'usinage, convoyeurs, presses, pompes, compresseurs, robots. Roulements, transmissions, réducteurs et mesures vibratoires ; armoire électrique, moteurs, variateurs et contrôle des installations ; le duo moteur et mécanique, la compétence en électrotechnique la plus demandée sur le bassin ; centrales, vérins et réseaux d'air comprimé, où il faut rechercher l'origine des fuites et remettre en conformité. Chaque intervenant sait travailler sur plusieurs technologies, avec l'objectif de maintenir la disponibilité de vos équipements.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Les domaines couverts et FAQ équipements"
+    },
+    {
+      "ligne": "Production d'énergie, traitement de l'eau et des déchets : des installations qui tournent en continu et ne tolèrent aucun arrêt non planifié. Convoyeurs, trieurs, quais, espaces de stockage : la logistique exige une réactivité sans faille. Migen propose aussi l'astreinte seule et les arrêts techniques planifiés : demandez, on vous oriente vers la bonne offre, avec l'aide de nos spécialistes.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Énergie et environnement, Logistique, encadré offres"
+    },
+    {
+      "ligne": "Nous couvrons la métropole, l'estuaire jusqu'à Saint-Nazaire, le vignoble, le pays de Grand-Lieu et le nord du département, et nos équipes du Grand Ouest interviennent vers Rennes, Brest, Angers et la Vendée.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, FAQ Loire-Atlantique"
+    },
+    {
+      "ligne": "Votre appel reçoit un accueil professionnel, pas un standard anonyme.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Vous décrivez la situation"
+    },
+    {
+      "ligne": "Le chargé d'affaires analyse le besoin, avec une information complète sur la mission proposée.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Nous vous rappelons dans l'heure"
+    },
+    {
+      "ligne": "L'analyse commence par les faits : mesures, contrôles, analyse des causes. Sur un dépannage, cette aide à l'analyse joue directement sur la durée d'immobilisation, une réduction nette du coût de la panne, et la capacité à rechercher la cause racine évite que la panne revienne.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Le technicien intervient et encadré dépannage"
+    },
+    {
+      "ligne": "Le premier niveau de maintenance a de quoi anticiper la prochaine dérive, mise à jour de l'historique comprise.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Le technicien intervient"
+    },
+    {
+      "ligne": "L'objectif ne change pas : réduire vos arrêts et le coût complet de votre maintenance, avec une information claire avant, pendant et après chaque opération. L'analyse vibratoire, l'analyse d'huiles ou l'analyse des historiques complètent le préventif quand les équipements le justifient. Un plan de maintenance préventive pour anticiper les pannes, au contenu chiffré sur devis après un état des lieux sur le terrain : la solution la plus rapide pour garantir le bon fonctionnement et la disponibilité de vos équipements au quotidien.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Trois façons de confier votre maintenance et FAQ préventif"
+    },
+    {
+      "ligne": "Une seule personne vous suit dans la durée : votre entreprise garde l'historique de ses machines. Nos études de cas décrivent le contexte, le travail réalisé et chaque mesure de résultat, domaine par domaine.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, FAQ Résidence"
+    },
+    {
+      "ligne": "La qualité se prouve, elle ne se déclare pas. Grâce à cette exigence de recrutement, l'intervenant qui entre dans votre atelier sait travailler en environnement contraint : plan de prévention, accueil sécurité, consignation. Le recrutement est un métier à part entière chez nous, et notre expertise grandit avec chaque embauche réussie. La confiance se construit mission après mission, sur le terrain.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Des preuves plutôt que des slogans, Emploi formation ou prestataire"
+    },
+    {
+      "ligne": "Une PME de mécanique a les mêmes pannes qu'un grand groupe, avec moins de ressources pour les absorber, et la réduction des coûts d'arrêt y pèse encore plus lourd. Nos offres se dimensionnent au besoin réel : Migen se veut le partenaire de chaque entreprise, avec des solutions au bon format pour chaque activité. Ces offres se combinent, et le contenu de chaque engagement est écrit noir sur blanc : le contenu du plan de maintenance s'écrit au sein de vos ateliers, pas depuis un bureau.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, FAQ PME ou grands groupes"
+    },
+    {
+      "ligne": "Une usine a besoin de savoir qui vient, quand, et avec quelles compétences, pour un retour rapide à l'état de marche.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Des engagements tenus"
     }
   ]
 }

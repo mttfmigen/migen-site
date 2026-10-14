@@ -8,7 +8,7 @@
   "contenu": {
     "gabarit": "ville",
     "pastille": "Nos implantations",
-    "chapeau": "Le bassin toulousain vit un paradoxe : une concentration d'ingénierie aéronautique et spatiale unique en Europe, et des techniciens de maintenance introuvables, parce que les bureaux d'études recrutent les mêmes profils que les ateliers. Notre hub de techniciens de Toulouse emploie, évalue et encadre ces profils, de la sous-traitance aérostructure aux plateformes logistiques de la couronne nord.",
+    "chapeau": "Le bassin toulousain vit un paradoxe : une concentration d'ingénierie aéronautique et spatiale unique en Europe, et des techniciens de maintenance introuvables, parce que les bureaux d'études recrutent les mêmes profils que les ateliers. Notre hub de techniciens de Toulouse emploie, évalue et encadre ces profils, de la sous-traitance aérostructure aux plateformes logistiques de la couronne nord. Nos équipes portent nos interventions en Occitanie et en Nouvelle-Aquitaine : de Toulouse à Bordeaux, l'entreprise de maintenance industrielle reste la même, avec un interlocuteur local.",
     "actions": [
       {
         "libelle": "Faire chiffrer ma maintenance à Toulouse",
@@ -39,7 +39,7 @@
       "photo": "/assets/photos/env-industrial-infrastructure-with-blue-sky-and-cl.jpg",
       "badge": "Hub Migen",
       "nom": "Hub Toulouse",
-      "texte": "Une équipe de techniciens installée à Toulouse, au plus près de vos sites, appuyée par le réseau national Migen.",
+      "texte": "Une équipe de techniciens installée à Toulouse, au plus près de vos sites, appuyée par le réseau national Migen. Une entreprise de maintenance se juge sur place, machine en panne : voici ce que notre hub apporte à votre usine, au quotidien. L'industrie aéronautique structure la métropole autour de Toulouse-Blagnac, et son ingénierie tire tout le tissu local, de Blagnac à Ramonville-Saint-Agne, de Colomiers à Saint-Jory, et jusqu'à Saint-Gaudens. Conserveries et plats préparés d'Occitanie, chimie, énergie : nos intervenants croisent chaque jour des lignes de fabrication très différentes, chaque secteur avec ses règles, et savoir apporter les méthodes d'une ligne à une autre, c'est ce qui distingue les entreprises de maintenance généralistes.",
       "bouton": "Demander une intervention à Toulouse",
       "cartes": [
         {
@@ -52,7 +52,7 @@
         {
           "surtitre": "Aussi présent",
           "titre": "Industrie métallique",
-          "texte": "Nos techniciens interviennent sur les sites de l’industrie métallique du bassin.",
+          "texte": "Nos techniciens interviennent sur les sites de l’industrie métallique du bassin. Machines-outils, presses, lignes d'assemblage : à Toulouse, fabrication mécanique et aéronautique se nourrissent l'une l'autre, le socle historique de la fabrication du territoire.",
           "lien": "Notre approche industrie métallique",
           "href": "/secteurs/industrie-metallique/"
         },
@@ -66,7 +66,7 @@
         {
           "surtitre": "Notre offre",
           "titre": "Migen Résidence",
-          "texte": "Un technicien intégré à votre équipe, sur votre planning, avec remplacement garanti.",
+          "texte": "Un technicien intégré à votre équipe, sur votre planning, avec remplacement garanti. Un professionnel Migen encadré par un référent métier.",
           "lien": "Voir l’offre",
           "href": "/offres/residence/"
         }
@@ -105,19 +105,19 @@
           },
           {
             "accroche": "La traçabilité conditionne la livraison.",
-            "texte": "Un contrôle manquant bloque une pièce conforme, et la maintenance fait partie du dossier."
+            "texte": "Un contrôle manquant bloque une pièce conforme, et la maintenance fait partie du dossier. Ateliers d'usinage, traitement de surface, bancs d'essais : la traçabilité y est reine."
           },
           {
             "accroche": "Les plateformes de la couronne nord travaillent la nuit.",
-            "texte": "Eurocentre, Saint-Jory, Labège : les convoyeurs et les trieurs tournent quand les camions partent, et s'arrêtent au pire moment."
+            "texte": "Eurocentre, Saint-Jory, Labège : les convoyeurs et les trieurs tournent quand les camions partent, et s'arrêtent au pire moment. Logistique et transport : convoyeurs, trieurs, quais, et une continuité de service exigée toute l'année."
           },
           {
             "accroche": "Le bassin d'emploi joue contre les usines.",
-            "texte": "L'ingénierie aspire les profils techniques, les offres de technicien de maintenance restent ouvertes des mois, et chaque départ use l'équipe en place."
+            "texte": "L'ingénierie aspire les profils techniques, les offres de technicien de maintenance restent ouvertes des mois, et chaque départ use l'équipe en place. L'ingénierie aéronautique et spatiale aspire les profils, et cette ingénierie recrute les mêmes profils que les usines. Recruter prend des mois, chaque départ est une alerte, et chaque mois sans renfort use l'équipe de votre entreprise. Externaliser tout ou partie de la maintenance sécurise la continuité de production pendant que votre recherche continue."
           },
           {
             "accroche": "De Toulouse à Bordeaux, le parc s'étale.",
-            "texte": "Un industriel du Sud-Ouest se retrouve vite avec un prestataire différent par département."
+            "texte": "Un industriel du Sud-Ouest se retrouve vite avec un prestataire différent par département. Notre hub de Toulouse porte la maintenance industrielle de Bordeaux, de la Gironde et de la Charente, avec des tournées pensées pour mutualiser les trajets : l'intervenant vient de la base la plus proche, le savoir vient du groupe. Au-delà, le réseau, de Lyon à Nantes, couvre la France entière."
           }
         ]
       },
@@ -143,28 +143,28 @@
               "accroche": "Le préventif calé sur vos heures de fonctionnement réelles resserré avant les pics.",
               "texte": ""
             },
-            "benefice": "Vous entretenez au rythme de la charge, pas au rythme d'un calendrier constructeur."
+            "benefice": "Vous entretenez au rythme de la charge, pas au rythme d'un calendrier constructeur. Préventive, en complément de la maintenance corrective, la politique de maintenance se construit avec vos données : historique de pannes, criticité par équipement, chemin critique de vos arrêts, heures de fonctionnement."
           },
           {
             "prestation": {
               "accroche": "Des interventions en heures creuses tôt le matin, entre deux équipes, de nuit.",
               "texte": ""
             },
-            "benefice": "Les opérations lourdes ne mangent jamais une vague d'expédition."
+            "benefice": "Les opérations lourdes ne mangent jamais une vague d'expédition. L'optimisation des tournées travaille pour vous : un déplacement lointain se mutualise avec une visite préventive, pour réduire la part de transport dans votre facture."
           },
           {
             "prestation": {
               "accroche": "Le champ technique complet",
               "texte": "Mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique, robotique."
             },
-            "benefice": "Un seul contrat pour machines-outils, lignes d'assemblage, convoyeurs et utilités."
+            "benefice": "Un seul contrat pour machines-outils, lignes d'assemblage, convoyeurs et utilités. Électricité industrielle : armoires, variateurs, moteurs, schémas électriques, et un diagnostic précis évite un remplacement inutile. Électromécanique : moteurs électriques, pompes, ventilateurs, motoréducteurs, le couple moteur-pompe est notre quotidien. Automatisme SIEMENS et Schneider, robotique ABB et Fanuc qui ferme la boucle avec l'automatisme, hydraulique et réseaux d'air comprimé, où la recherche de fuites se fait composant par composant, mesure à l'appui : tout équipement de production courant, y compris vos installations les plus anciennes."
           },
           {
             "prestation": {
               "accroche": "Un contrat unique de Toulouse à Bordeaux",
-              "texte": "Haute-Garonne, Bordeaux, Gironde, Charente."
+              "texte": "Haute-Garonne, Bordeaux, Gironde, Charente. Bordeaux et sa métropole : ateliers, chais et lignes d'embouteillage, sites de fabrication de la rive droite. Le département autour de Bordeaux, du Libournais au bassin d'Arcachon, installations portuaires comprises. Pour une installation critique près de Bordeaux, les modalités sont écrites noir sur blanc : préventif groupé, astreinte, pièces en dépôt."
             },
-            "benefice": "Un industriel multi-sites du Sud-Ouest garde un seul interlocuteur et un taux horaire homogène."
+            "benefice": "Un industriel multi-sites du Sud-Ouest garde un seul interlocuteur et un taux horaire homogène. Trois offres, trois niveaux d'engagement : le chargé d'affaires vous oriente selon la criticité de vos équipements, et les trois se combinent."
           }
         ]
       },
@@ -173,27 +173,27 @@
         "etapes": [
           {
             "titre": "Le contact",
-            "texte": "Vous décrivez la panne ou le besoin par téléphone, en précisant la machine, la marque et les horaires du site."
+            "texte": "Vous décrivez la panne ou le besoin par téléphone, en précisant la machine, la marque et les horaires du site. Pour contacter le chargé d'affaires, le téléphone ou une demande par internet : merci d'indiquer aussi le symptôme, la réponse n'en sera que plus rapide."
           },
           {
             "titre": "La qualification",
-            "texte": "Rappel dans l'heure aux horaires ouvrés. Le chargé d'affaires confirme le périmètre, le technicien pressenti et les moyens à prévoir."
+            "texte": "Rappel dans l'heure aux horaires ouvrés. Le chargé d'affaires confirme le périmètre, le technicien pressenti et les moyens à prévoir. Une alerte claire vaut mieux qu'un long formulaire : le contenu de chaque demande est qualifié, avec la préparation nécessaire en matière d'accès, et un temps de trajet annoncé avant, jamais découvert après. Face à un matériel très spécifique, c'est dit d'emblée."
           },
           {
             "titre": "Le devis",
-            "texte": "Périmètre, moyens et conditions posés noir sur blanc. Un imprévu se chiffre et s'accepte avant les travaux, jamais après."
+            "texte": "Périmètre, moyens et conditions posés noir sur blanc. Un imprévu se chiffre et s'accepte avant les travaux, jamais après. Le contenu du devis est précis : toute l'information avant de signer. Vos données de contact restent privées et relèvent de notre politique de confidentialité."
           },
           {
             "titre": "L'intervention",
-            "texte": "Accueil sécurité, consignation, diagnostic, réparation, essais, remise en production."
+            "texte": "Accueil sécurité, consignation, diagnostic, réparation, essais, remise en production. Un déroulé identique pour un moteur grillé ou un automate muet, et le chemin le plus court entre la panne et le redémarrage."
           },
           {
             "titre": "Le compte rendu",
-            "texte": "Causes, travaux réalisés, pièces remplacées, préconisations, versés dans votre GMAO."
+            "texte": "Causes, travaux réalisés, pièces remplacées, préconisations, versés dans votre GMAO. Une information écrite, exploitable dans l'outil de gestion de la maintenance, transmise à la personne de votre choix en toute confidentialité."
           },
           {
             "titre": "Le bilan périodique",
-            "texte": "Disponibilité, récurrence par équipement, retard de préventif. Les fréquences s'ajustent sur les chiffres, pas sur une habitude."
+            "texte": "Disponibilité, récurrence par équipement, retard de préventif. Les fréquences s'ajustent sur les chiffres, pas sur une habitude. L'analyse annuelle sert à optimiser les fréquences et la durée de vie du parc, à améliorer la fiabilité au quotidien, et à trier les méthodes innovantes qui paient, capteurs et suivi d'état en tête : une aide à la décision, pas un abonnement aveugle."
           }
         ]
       },
@@ -202,15 +202,15 @@
         "puces": [
           {
             "accroche": "Un chargé d'affaires nommé",
-            "texte": "Un interlocuteur qui connaît vos machines, votre site et vos contraintes d'accès, avec sa ligne directe. Pas de standard anonyme."
+            "texte": "Un interlocuteur qui connaît vos machines, votre site et vos contraintes d'accès, avec sa ligne directe. Pas de standard anonyme. Il vous accompagne et vous oriente : une seule demande, la solution adaptée, l'offre qui colle à votre besoin, avec une aide pour arbitrer réparation ou remplacement. Client Zéro arrêt : priorité de passage sur les demandes ponctuelles."
           },
           {
             "accroche": "La sélection montrée, pas promise",
-            "texte": "Entretien technique et comportemental, 10 % des techniciens retenus. Vous lisez les résultats d'évaluation avant de valider l'intervenant."
+            "texte": "Entretien technique et comportemental, 10 % des techniciens retenus. Vous lisez les résultats d'évaluation avant de valider l'intervenant. Chaque entreprise reçoit le même accueil et la même qualité de service : chaque projet démarre par un état des lieux, un périmètre écrit, des résultats mesurés. Nos intervenants transmettent au quotidien les gestes de premier niveau et la méthode de diagnostic ; grâce à ce transfert, votre équipe gagne en compétence à chaque passage. Une approche innovante du métier ? Non : du bon sens, outillé."
           },
           {
             "accroche": "Des pièces consultées au prix du marché",
-            "texte": "Pas de coefficient caché, et un conseil de stock minimal de pièces critiques dimensionné sur vos historiques et les délais fournisseur."
+            "texte": "Pas de coefficient caché, et un conseil de stock minimal de pièces critiques dimensionné sur vos historiques et les délais fournisseur. De la maintenance corrective au juste besoin, sans abonnement. Réparer avant de remplacer : de l'électricité à la robotique, du moteur au réducteur, chercher l'optimisation avant le remplacement. Le matériel reste votre propriété, et notre bureau d'études, cellule d'ingénierie du groupe, prolonge la vie des machines et repousse l'achat de matériel neuf."
           }
         ]
       },
@@ -306,5 +306,95 @@
         "question": "Besoin d'un prestataire de maintenance présent de la Haute-Garonne à la Gironde, sous un seul contrat ?"
       }
     ]
-  }
+  },
+  "ajouts": [
+    {
+      "ligne": "Nos équipes portent nos interventions en Occitanie et en Nouvelle-Aquitaine : de Toulouse à Bordeaux, l'entreprise de maintenance industrielle reste la même, avec un interlocuteur local.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, héro"
+    },
+    {
+      "ligne": "Une entreprise de maintenance se juge sur place, machine en panne : voici ce que notre hub apporte à votre usine, au quotidien. L'industrie aéronautique structure la métropole autour de Toulouse-Blagnac, et son ingénierie tire tout le tissu local, de Blagnac à Ramonville-Saint-Agne, de Colomiers à Saint-Jory, et jusqu'à Saint-Gaudens. Conserveries et plats préparés d'Occitanie, chimie, énergie : nos intervenants croisent chaque jour des lignes de fabrication très différentes, chaque secteur avec ses règles, et savoir apporter les méthodes d'une ligne à une autre, c'est ce qui distingue les entreprises de maintenance généralistes.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Notre hub et zone Haute-Garonne"
+    },
+    {
+      "ligne": "Machines-outils, presses, lignes d'assemblage : à Toulouse, fabrication mécanique et aéronautique se nourrissent l'une l'autre, le socle historique de la fabrication du territoire.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Mécanique et fabrication"
+    },
+    {
+      "ligne": "Un professionnel Migen encadré par un référent métier.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Le technicien en résidence"
+    },
+    {
+      "ligne": "Ateliers d'usinage, traitement de surface, bancs d'essais : la traçabilité y est reine.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Aéronautique et spatial"
+    },
+    {
+      "ligne": "Logistique et transport : convoyeurs, trieurs, quais, et une continuité de service exigée toute l'année.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Logistique et transport, Énergie et environnement"
+    },
+    {
+      "ligne": "L'ingénierie aéronautique et spatiale aspire les profils, et cette ingénierie recrute les mêmes profils que les usines. Recruter prend des mois, chaque départ est une alerte, et chaque mois sans renfort use l'équipe de votre entreprise. Externaliser tout ou partie de la maintenance sécurise la continuité de production pendant que votre recherche continue.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Pour les industriels"
+    },
+    {
+      "ligne": "Notre hub de Toulouse porte la maintenance industrielle de Bordeaux, de la Gironde et de la Charente, avec des tournées pensées pour mutualiser les trajets : l'intervenant vient de la base la plus proche, le savoir vient du groupe. Au-delà, le réseau, de Lyon à Nantes, couvre la France entière.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, FAQ Bordeaux et Un site hors de ces zones"
+    },
+    {
+      "ligne": "Préventive, en complément de la maintenance corrective, la politique de maintenance se construit avec vos données : historique de pannes, criticité par équipement, chemin critique de vos arrêts, heures de fonctionnement.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, FAQ visites préventives"
+    },
+    {
+      "ligne": "L'optimisation des tournées travaille pour vous : un déplacement lointain se mutualise avec une visite préventive, pour réduire la part de transport dans votre facture.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, L'optimisation des tournées"
+    },
+    {
+      "ligne": "Électricité industrielle : armoires, variateurs, moteurs, schémas électriques, et un diagnostic précis évite un remplacement inutile. Électromécanique : moteurs électriques, pompes, ventilateurs, motoréducteurs, le couple moteur-pompe est notre quotidien. Automatisme SIEMENS et Schneider, robotique ABB et Fanuc qui ferme la boucle avec l'automatisme, hydraulique et réseaux d'air comprimé, où la recherche de fuites se fait composant par composant, mesure à l'appui : tout équipement de production courant, y compris vos installations les plus anciennes.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Machines et domaines techniques couverts, FAQ types de machines"
+    },
+    {
+      "ligne": "Trois offres, trois niveaux d'engagement : le chargé d'affaires vous oriente selon la criticité de vos équipements, et les trois se combinent.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Dépannage, contrat ou technicien intégré"
+    },
+    {
+      "ligne": "Pour contacter le chargé d'affaires, le téléphone ou une demande par internet : merci d'indiquer aussi le symptôme, la réponse n'en sera que plus rapide.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Le contact et FAQ devis"
+    },
+    {
+      "ligne": "Une alerte claire vaut mieux qu'un long formulaire : le contenu de chaque demande est qualifié, avec la préparation nécessaire en matière d'accès, et un temps de trajet annoncé avant, jamais découvert après. Face à un matériel très spécifique, c'est dit d'emblée.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Vos délais et FAQ types de machines"
+    },
+    {
+      "ligne": "Le contenu du devis est précis : toute l'information avant de signer. Vos données de contact restent privées et relèvent de notre politique de confidentialité.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, FAQ devis"
+    },
+    {
+      "ligne": "Une information écrite, exploitable dans l'outil de gestion de la maintenance, transmise à la personne de votre choix en toute confidentialité.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Le compte rendu"
+    },
+    {
+      "ligne": "L'analyse annuelle sert à optimiser les fréquences et la durée de vie du parc, à améliorer la fiabilité au quotidien, et à trier les méthodes innovantes qui paient, capteurs et suivi d'état en tête : une aide à la décision, pas un abonnement aveugle.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, FAQ visites préventives"
+    },
+    {
+      "ligne": "Il vous accompagne et vous oriente : une seule demande, la solution adaptée, l'offre qui colle à votre besoin, avec une aide pour arbitrer réparation ou remplacement. Client Zéro arrêt : priorité de passage sur les demandes ponctuelles.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Une seule demande, la solution adaptée"
+    },
+    {
+      "ligne": "De la maintenance corrective au juste besoin, sans abonnement. Réparer avant de remplacer : de l'électricité à la robotique, du moteur au réducteur, chercher l'optimisation avant le remplacement. Le matériel reste votre propriété, et notre bureau d'études, cellule d'ingénierie du groupe, prolonge la vie des machines et repousse l'achat de matériel neuf.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Réparer avant de remplacer, Le matériel reste à vous, Bureau d'études"
+    },
+    {
+      "ligne": "Bordeaux et sa métropole : ateliers, chais et lignes d'embouteillage, sites de fabrication de la rive droite. Le département autour de Bordeaux, du Libournais au bassin d'Arcachon, installations portuaires comprises. Pour une installation critique près de Bordeaux, les modalités sont écrites noir sur blanc : préventif groupé, astreinte, pièces en dépôt.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, zones Bordeaux et Gironde, FAQ Bordeaux"
+    },
+    {
+      "ligne": "Un déroulé identique pour un moteur grillé ou un automate muet, et le chemin le plus court entre la panne et le redémarrage.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, Une intervention, étape par étape"
+    },
+    {
+      "ligne": "Chaque entreprise reçoit le même accueil et la même qualité de service : chaque projet démarre par un état des lieux, un périmètre écrit, des résultats mesurés. Nos intervenants transmettent au quotidien les gestes de premier niveau et la méthode de diagnostic ; grâce à ce transfert, votre équipe gagne en compétence à chaque passage. Une approche innovante du métier ? Non : du bon sens, outillé.",
+      "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, FAQ PME et grands groupes, Pour les équipes en place"
+    }
+  ]
 }

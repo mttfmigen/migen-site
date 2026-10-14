@@ -99,6 +99,15 @@ interface PageRelais {
   titre_h1?: string;
   contenu: ContenuVille;
   trous?: Trou[];
+  /**
+   * L'INVERSE D'UN TROU (14/10) : une phrase rendue que la capture ne porte
+   * pas, ajoutée à la fin d'un champ existant pour relever le score Thot SEO
+   * de la page, reprise des brouillons de septembre. Chacune est déclarée ici,
+   * mot pour mot, avec sa raison : la page la rend, la capture ne l'a pas, et
+   * tout le reste du texte reste jugé contre la capture. Une phrase ajoutée
+   * sans être déclarée tombe toujours (« texte rendu absent de la capture »).
+   */
+  ajouts?: Trou[];
 }
 
 /* -------------------------------------------------------------- les textes */
@@ -111,6 +120,16 @@ function decode(html: string): string {
     .replace(/&lt;/g, "<")
     .replace(/&gt;/g, ">")
     .replace(/&amp;/g, "&");
+}
+
+/** Un texte tel que `renderToStaticMarkup` l'écrit dans le HTML (l'inverse de `decode`). */
+function echappeHtml(texte: string): string {
+  return texte
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#x27;");
 }
 
 /** La forme de comparaison : espaces unifiés, apostrophes droites. Le fichier, lui, garde le littéral. */
@@ -535,7 +554,11 @@ const ECARTS_LITTERAUX_PARTAGES: readonly { texte: string; fois: number; pourquo
 /** Les écarts d'une page à SA capture. Vide : conforme. */
 function controle(page: PageRelais, captureBrute: string, htmlBrut: string): string[] {
   const capture = substitue(sansEcartsFormulaire(captureBrute));
-  const html = sansEcartsFormulaire(htmlBrut);
+  const htmlComplet = sansEcartsFormulaire(htmlBrut);
+  // Les ajouts déclarés sont retirés du HTML, tels que React les échappe :
+  // tout ce qui suit juge le reste contre la capture, comme avant.
+  const ajouts = page.ajouts ?? [];
+  const html = ajouts.reduce((h, a) => h.split(echappeHtml(a.ligne)).join(""), htmlComplet);
   const ecarts: string[] = [];
   const trous = (page.trous ?? []).map((t) => normalise(t.ligne));
 
@@ -553,6 +576,13 @@ function controle(page: PageRelais, captureBrute: string, htmlBrut: string): str
   for (const trou of trous) {
     if (!texteCapture.includes(trou)) ecarts.push(`trou déclaré absent de la capture : « ${trou.slice(0, 90)} »`);
     if (texteRendu.includes(trou)) ecarts.push(`trou déclaré mais rendu : « ${trou.slice(0, 90)} »`);
+  }
+
+  // 4 bis. Les ajouts : rendus, absents de la capture, chacun avec sa raison.
+  for (const { ligne, pourquoi } of ajouts) {
+    if (!ligne || !pourquoi) ecarts.push("un ajout sans ligne ou sans raison");
+    else if (!htmlComplet.includes(echappeHtml(ligne))) ecarts.push(`ajout déclaré mais pas rendu : « ${ligne.slice(0, 90)} »`);
+    else if (texteCapture.includes(normalise(ligne))) ecarts.push(`ajout déclaré que la capture porte déjà : « ${ligne.slice(0, 90)} »`);
   }
 
   // 2. Mot pour mot, dans l'ordre.
@@ -610,9 +640,10 @@ function controle(page: PageRelais, captureBrute: string, htmlBrut: string): str
     if (!existsSync(join(RACINE, "public", photo))) ecarts.push(`photo absente de public/ : ${photo}`);
   }
 
-  // 7. Les interdits, sur le texte rendu.
+  // 7. Les interdits, sur le texte rendu, ajouts compris.
+  const texteComplet = noeuds(htmlComplet).join(" ");
   for (const [motif, raison] of INTERDITS) {
-    const trouve = texteRendu.match(motif);
+    const trouve = texteComplet.match(motif);
     if (trouve) ecarts.push(`interdit rendu (${raison}) : « ${trouve[0]} »`);
   }
 
@@ -816,6 +847,25 @@ const ALTERATIONS: [string, PageRelais, RegExp, ((html: string) => string)?][] =
     /trou déclaré mais rendu/,
   ],
   [
+    "un ajout déclaré qui n'est pas rendu",
+    altere((p) => (p.ajouts = [...(p.ajouts ?? []), { ligne: "Une phrase que la page ne rend pas.", pourquoi: "essai" }])),
+    /ajout déclaré mais pas rendu/,
+  ],
+  [
+    "un ajout rendu sans être déclaré",
+    altere((p) => (p.contenu.chapeau = `${p.contenu.chapeau} Une phrase ajoutée en douce.`)),
+    /texte rendu absent de la capture/,
+  ],
+  [
+    "un ajout déclaré qui couvre un interdit",
+    altere((p) => {
+      const ligne = "Comptez 450 € par visite.";
+      p.contenu.chapeau = `${p.contenu.chapeau} ${ligne}`;
+      p.ajouts = [...(p.ajouts ?? []), { ligne, pourquoi: "essai" }];
+    }),
+    /interdit rendu \(montant/,
+  ],
+  [
     "un lien inventé",
     altere((p) => (p.contenu.hubLocal!.cartes[0].href = "/secteurs/aeronautique/")),
     /lien absent de la capture/,
@@ -954,7 +1004,7 @@ for (const { nom, page } of pages) {
       ? controle(page, capture, rend(page))
       : [`aucune capture maquette/rendu/${cleDe(page.url)}.html`];
   if (ecarts.length === 0) {
-    console.log(`OK  ${nom}  (${(page.trous ?? []).length} trou(s) déclaré(s))`);
+    console.log(`OK  ${nom}  (${(page.trous ?? []).length} trou(s), ${(page.ajouts ?? []).length} ajout(s) déclaré(s))`);
     continue;
   }
   enEchec++;
