@@ -488,13 +488,22 @@ const sansSlash = (href: string) => href.replace(/\/+$/, "") || "/";
  * libellés des champs et le bouton d'envoi restent comparés (depuis le 08/10,
  * il répète le titre du panneau, comme la capture) :
  *  - le champ piège anti-robot « Site web », masqué (`aria-hidden`) ;
- *  - la mention RGPD et son lien `/confidentialite` (RGPD articles 13 et 14).
+ *  - la mention RGPD et son lien `/confidentialite` (RGPD articles 13 et 14) ;
+ *  - la mention de prospection donnée par Mehdi le 13/10 au soir
+ *    (`MENTION_PROSPECTION`, commit 1a7ff9a), un `<p>` à elle seule : la
+ *    capture ne la porte pas, et c'est normal, elle lui est postérieure.
+ *    C'est la même ligne qu'a dû poser `verification-secteurs-hub` (G66).
+ *    CHAÎNE EXACTE, pas un motif : une phrase voisine resterait refusée.
  */
 function sansEcartsFormulaire(html: string): string {
   return html.replace(/<form\b[\s\S]*?<\/form>/g, (form) =>
     form
       .replace(/<div aria-hidden="true"[^>]*><label[^>]*>Site web<\/label>[\s\S]*?<\/div>/g, "")
-      .replace(/<p[^>]*>Données traitées par Migen[\s\S]*?<\/p>/g, ""),
+      .replace(/<p[^>]*>Données traitées par Migen[\s\S]*?<\/p>/g, "")
+      .replace(
+        /<p[^>]*>Vos informations seront conservées et utilisées pour vous proposer nos produits et services\. Vous restez libre de vous désinscrire à tout moment\.<\/p>/g,
+        "",
+      ),
   );
 }
 
@@ -682,10 +691,16 @@ function controle(page: PageRelais, captureBrute: string, htmlBrut: string): str
      réclamait un `name` partagé qu'un bloc replié n'a pas, et refusait qu'il
      soit ouvert. Les blocs repliables se reconnaissent à leur
      `data-pliable-mobile` et ont leur propre porte,
-     `scripts/verifie-blocs-pliables.mjs`. */
+     `scripts/verifie-blocs-pliables.mjs`.
+
+     MÊME CAS DEPUIS LE 14/10 POUR LA BASCULE DU FORMULAIRE DU HÉROS
+     (`RepliFormulaireMobile`, `data-repli-formulaire`) : la maquette mobile v2
+     n'a pas de formulaire dans son héros, celui du site se replie donc au
+     téléphone. Ce n'est pas une question ; sa porte est
+     `verification-mobile-ville.tsx`, verdict 2. */
   const plis = [...html.matchAll(/<details\b([^>]*)>/g)]
     .map((m) => m[1])
-    .filter((attributs) => !/\bdata-pliable-mobile\b/.test(attributs));
+    .filter((attributs) => !/\bdata-(?:pliable-mobile|repli-formulaire)\b/.test(attributs));
   const plisCapture = (capture.match(/<details\b/g) ?? []).length;
   if (plis.length !== plisCapture) ecarts.push(`${plis.length} question(s) repliable(s) au lieu de ${plisCapture}`);
   const noms = new Set(plis.map((a) => (a.match(/\sname="([^"]*)"/) ?? [])[1] ?? ""));

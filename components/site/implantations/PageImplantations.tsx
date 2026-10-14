@@ -1,14 +1,21 @@
 import Link from "next/link";
-import type { ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
+
+import { FilArianeVue } from "@/components/cocon/FilAriane";
 
 import TexteRiche from "@/components/site/blocs/TexteRiche";
+import { entreeDe, gabaritDe } from "@/components/site/cocon/maillage-mobile";
+import { DerouleRepliable } from "@/components/site/implantation/SectionsRepliables";
+import { etapesDe } from "@/components/site/implantation/fil-ariane-mobile";
+import OuvreLaCible from "@/components/site/implantation/OuvreLaCible";
+import PanneauHerosRepliable from "@/components/site/implantation/PanneauHerosRepliable";
+import stylesVille from "@/components/site/implantation/PageVille.module.css";
 import ProblemeCartes from "@/components/site/implantation/ProblemeCartes";
 import MaillageVille from "@/components/site/implantation/MaillageVille";
 import QuestionsVille from "@/components/site/implantation/QuestionsVille";
 import AppelFinal from "@/components/site/offre/AppelFinal";
 import AppelOffre from "@/components/site/offre/AppelOffre";
 import BandeAppel from "@/components/site/offre/BandeAppel";
-import DerouleOffre from "@/components/site/offre/DerouleOffre";
 import GarantiesOffre from "@/components/site/offre/GarantiesOffre";
 import {
   BOUTON_HERO,
@@ -27,11 +34,11 @@ import {
   SECTION_CHIFFRES,
   TITRE1,
 } from "@/components/site/offre/habillage-offre";
+import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
 import { liensSurs } from "@/components/site/offre/LiensOffre";
 import LogosClients from "@/components/site/offre/LogosClients";
 import stylesOffre from "@/components/site/offre/PageOffre.module.css";
 import stylesOffres from "@/components/site/offres/PageOffres.module.css";
-import PanneauFormulaire from "@/components/site/offre/PanneauFormulaire";
 import PointsOffre from "@/components/site/offre/PointsOffre";
 import Reassurance from "@/components/site/offre/Reassurance";
 import ReferencesOffre from "@/components/site/offre/ReferencesOffre";
@@ -58,6 +65,12 @@ export interface ProprietesPageImplantations {
   titre: string;
   contenu: ContenuImplantations;
   formulaire: string;
+  /**
+   * Le chemin de la page (« /implantations/ »), passé par la route. Il porte la
+   * couche mobile v2 : fil d'Ariane du héros et cadence de conversion, tous
+   * deux dérivés de l'index de la maquette. Absent, elle ne se rend pas.
+   */
+  chemin?: string;
   filAriane?: ReactNode;
   maillage?: ReactNode;
 }
@@ -66,7 +79,14 @@ function sectionDeType<T extends TypeSection>(sections: readonly Section[], type
   return sections.find((s) => s.type === type) as Extract<Section, { type: T }> | undefined;
 }
 
-export default function PageImplantations({ titre, contenu, formulaire, filAriane, maillage }: ProprietesPageImplantations) {
+export default function PageImplantations({
+  titre,
+  contenu,
+  formulaire,
+  chemin,
+  filAriane,
+  maillage,
+}: ProprietesPageImplantations) {
   const c = contenu;
   const h1 = titre;
 
@@ -83,6 +103,36 @@ export default function PageImplantations({ titre, contenu, formulaire, filArian
 
   const bande = (variante?: "sombre") =>
     c.mention || c.appelBouton ? <BandeAppel mention={c.mention} bouton={c.appelBouton} variante={variante} /> : null;
+
+  /* LA COUCHE MOBILE V2 (14/10), même composition que `PageVille` : rien ne
+     change au-dessus de 880 px. Le gabarit vient de l'index (« 10 Hub de
+     rubrique ») ; sans entrée d'index, ni fil ni cadence. */
+  const etapes = chemin ? etapesDe(chemin) : [];
+  const entree = chemin ? entreeDe(chemin) : undefined;
+  const cadence = entree ? gabaritDe(entree) : undefined;
+
+  /* Les cinq sections NUMÉROTÉES du corpus, celles que la maquette compte
+     (`nD`) : problème, offre, déroulé, garanties, références. Les bandes
+     d'appel et « 07 Appel » de bureau suivent leur section dans le même
+     fragment, sans compter. « Nos hubs » non plus (dc.html L463 : `return`
+     avant `nD++`) : « Nos villes » reste donc hors de la cadence, à sa place
+     de bureau. Le problème, première section, reste OUVERT (`nOpen = 1`). */
+  const contenus = [
+    <Fragment key="probleme">{probleme ? <ProblemeCartes section={probleme} /> : null}</Fragment>,
+    <Fragment key="offre">
+      {offre ? <PointsOffre section={offre} /> : null}
+      {bande("sombre")}
+    </Fragment>,
+    <Fragment key="deroule">{deroule ? <DerouleRepliable section={deroule} /> : null}</Fragment>,
+    <Fragment key="garanties">
+      {garanties ? <GarantiesOffre section={garanties} /> : null}
+      {c.brefBande ? <AppelOffre question={c.brefBande} bouton={c.brefBouton} mention={c.brefMention} /> : null}
+    </Fragment>,
+    <Fragment key="preuves">
+      {preuves ? <ReferencesOffre section={preuves} dateBrute /> : null}
+      {bande()}
+    </Fragment>,
+  ];
 
   return (
     /*
@@ -103,17 +153,24 @@ export default function PageImplantations({ titre, contenu, formulaire, filArian
      * pixel. Le `.racine` du hub reste en place, il porte autre chose
      * (`--sec`, l'écart de `.mg-r2`).
      */
-    <div className={`mg-site ${stylesOffre.gabarit}`}>
+    <div className={`mg-site ${stylesOffre.gabarit} ${stylesVille.racineVille}`}>
       {/* `racine` : la racine `.mgx-root` du gabarit d'offre, comme le hub `/offres/`. */}
       <main className={stylesOffres.racine} style={{ paddingTop: 62 }}>
         {filAriane}
 
-        <section style={HERO}>
+        <section className={stylesVille.herosVille} style={HERO}>
           <div
             className="mg-r2"
             style={{ display: "grid", gridTemplateColumns: HERO_GRILLE, gap: 52, alignItems: "start" }}
           >
             <div>
+              {/* Le fil d'Ariane de la maquette mobile (dc.html L104), sous
+                  881 px seulement, comme sur les pages villes. */}
+              {etapes.length > 0 ? (
+                <div data-mobile-seulement="" className={stylesVille.filMobile}>
+                  <FilArianeVue etapes={etapes} />
+                </div>
+              ) : null}
               {c.pastille ? (
                 <div style={HERO_RANGEE_PASTILLE}>
                   <span style={PASTILLE}>
@@ -122,9 +179,11 @@ export default function PageImplantations({ titre, contenu, formulaire, filArian
                   </span>
                 </div>
               ) : null}
-              <h1 style={TITRE1}>{h1}</h1>
+              <h1 className={stylesVille.titreHerosMobile} style={TITRE1}>
+                {h1}
+              </h1>
               {c.chapeau ? (
-                <p style={CHAPEAU_HERO}>
+                <p className={stylesVille.chapeauHerosMobile} style={CHAPEAU_HERO}>
                   <TexteRiche texte={c.chapeau} />
                 </p>
               ) : null}
@@ -145,14 +204,12 @@ export default function PageImplantations({ titre, contenu, formulaire, filArian
               ) : null}
               {c.mention ? <p style={HERO_MENTION}>{c.mention}</p> : null}
             </div>
-            <div style={{ position: "relative" }}>
-              <PanneauFormulaire
-                id="besoin"
-                formulaire={`${formulaire}-hero`}
-                titre={c.formulaireHeroTitre ?? ""}
-                pastille={c.formulaireHeroMention}
-              />
-            </div>
+            {/* G2 : le panneau se replie au téléphone, voir le composant. */}
+            <PanneauHerosRepliable
+              formulaire={formulaire}
+              titre={c.formulaireHeroTitre ?? ""}
+              pastille={c.formulaireHeroMention}
+            />
           </div>
         </section>
 
@@ -179,14 +236,15 @@ export default function PageImplantations({ titre, contenu, formulaire, filArian
         <Reassurance />
         {bande()}
 
-        {probleme ? <ProblemeCartes section={probleme} /> : null}
-        {offre ? <PointsOffre section={offre} /> : null}
-        {bande("sombre")}
-        {deroule ? <DerouleOffre section={deroule} /> : null}
-        {garanties ? <GarantiesOffre section={garanties} /> : null}
-        {c.brefBande ? <AppelOffre question={c.brefBande} bouton={c.brefBouton} mention={c.brefMention} /> : null}
-        {preuves ? <ReferencesOffre section={preuves} dateBrute /> : null}
-        {bande()}
+        {cadence ? (
+          /* Pas de rappel final ajouté : « 10 Appel final » porte déjà le
+             formulaire de bas de page, comme sur les pages villes. */
+          <AvecConversionMobile chemin={chemin!} gabarit={cadence} bouton={actions[0]} rappelFinal={false}>
+            {contenus}
+          </AvecConversionMobile>
+        ) : (
+          contenus
+        )}
 
         {c.villes ? <NosVilles villes={c.villes} /> : null}
 
@@ -194,11 +252,18 @@ export default function PageImplantations({ titre, contenu, formulaire, filArian
         <MaillageVille />
 
         {/* La capture pose l'ancre `#mgx-form` sur l'appel final, cible de « Poser ma question ». */}
-        <div id="mgx-form" style={{ scrollMarginTop: 90 }}>
-          <AppelFinal question={ctaFinal?.question} formulaire={formulaire} bouton={c.appelBouton} />
+        {/* `#etre-rappele`, cible du bandeau de la couche mobile, enveloppe
+            l'appel final sans dessin : voir `PageVille`. */}
+        <div id="etre-rappele" style={{ scrollMarginTop: 90 }}>
+          <div id="mgx-form" style={{ scrollMarginTop: 90 }}>
+            <AppelFinal question={ctaFinal?.question} formulaire={formulaire} bouton={c.appelBouton} />
+          </div>
         </div>
 
         {maillage ? <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px 80px" }}>{maillage}</div> : null}
+
+        {/* En dernier : son effet passe après ceux qui replient les blocs. */}
+        <OuvreLaCible />
       </main>
     </div>
   );

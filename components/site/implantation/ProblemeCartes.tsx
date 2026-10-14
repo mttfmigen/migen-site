@@ -262,7 +262,20 @@ const TEXTE_SOMBRE: CSSProperties = {
   color: "rgba(255,255,255,.62)",
 };
 
-export function ProblemePanneau({ section, sansTitre }: { section: SectionProbleme; sansTitre?: boolean }) {
+export function ProblemePanneau({
+  section,
+  sansTitre,
+  toujoursOuvert = false,
+}: {
+  section: SectionProbleme;
+  sansTitre?: boolean;
+  /**
+   * Reste ouvert au chargement sur téléphone. La maquette mobile v2 garde la
+   * PREMIÈRE section de contenu ouverte (dc.html L451, `nOpen = 1`), et le
+   * problème est la première du gabarit ville : `PageVille` le passe.
+   */
+  toujoursOuvert?: boolean;
+}) {
   const { titre, suite } = decoupe(section, sansTitre);
   /* Le contenu replié, écrit une seule fois : il est rendu tel quel quand le
      panneau n'a pas de H2, et dans le bloc repliable quand il en a un. */
@@ -317,6 +330,7 @@ export function ProblemePanneau({ section, sansTitre }: { section: SectionProble
                 au lieu de faire rougir une porte. */}
             {titre ? (
               <SectionPliableMobile
+                toujoursOuvert={toujoursOuvert}
                 enTete={
                   <span>
                     <span style={{ ...SURTITRE, display: "block" }}>Votre problématique</span>

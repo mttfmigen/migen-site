@@ -94,3 +94,197 @@
   background: var(--acc) !important;
   color: #fff !important;
 }
+
+/* =========================================================================
+   LA COUCHE MOBILE V2 DU HÉROS (14/10). Tout vit sous `max-width: 880px`,
+   le seuil de `SectionPliableMobile.module.css` : au-dessus, ces classes
+   sont vides et le style en ligne de la capture reste seul maître.
+   ========================================================================= */
+
+/* Le fil d'Ariane du héros mobile : `margin-bottom: 12px` de la maquette
+   (dc.html L104). Visible sous 881 px seulement : l'attribut
+   `data-mobile-seulement` posé à côté de cette classe est masqué au-dessus
+   par `app/globals.css` (`display: none !important`). */
+.filMobile {
+  margin-bottom: 12px;
+}
+
+/* Le héros compact de la maquette mobile (dc.html L103-109) : gouttières de
+   18 px, h1 à 27px/1.1, sous-titre à 15px/1.6. `!important` parce que les
+   valeurs de bureau sont des styles EN LIGNE (habillage-offre.ts) : sans lui,
+   la règle ne s'appliquerait jamais. Mesure du 14/10 : héros à 1 850 px à
+   390 px sur le gabarit 04, 1 939 px sur le 06.
+
+   LE H1 PASSE PAR `.herosVille .titreHerosMobile`, DEUX CLASSES, et c'est
+   indispensable : `app/globals.css` pose sous 760 px
+   `.mg-site h1 { font-size: clamp(32px, 9vw, 42px) !important }`, une classe
+   et un élément. À importance égale la plus spécifique gagne : une classe
+   seule perdait, et le h1 restait à 35 px au lieu des 27 de la maquette.
+
+   L'ÉCART DE LA GRILLE DU HÉROS, 52 px en ligne (capture de bureau), tombe à
+   18 px : sur une colonne il séparait le texte du panneau replié par un
+   vide que la maquette mobile ne porte pas. */
+@media (max-width: 880px) {
+  .herosVille {
+    padding: 28px 18px 0 !important;
+  }
+  .herosVille > div {
+    gap: 18px !important;
+  }
+  .herosVille .titreHerosMobile {
+    font: 600 27px/1.1 var(--ft) !important;
+    letter-spacing: -0.04em !important;
+  }
+  .herosVille .chapeauHerosMobile {
+    font: 400 15px/1.6 var(--fb) !important;
+    margin-top: 12px !important;
+  }
+}
+
+/* LE RYTHME DES SECTIONS AU TÉLÉPHONE (G1). La racine du gabarit pose
+   `--sec: 120px` EN LIGNE, valeur de la maquette de BUREAU relevée à 390 px le
+   08/10. La maquette mobile v2, désormais la référence sous 880 px, enchaîne
+   ses blocs à 12-22 px d'écart : 120 px avant chacune des quinze sections
+   pesaient à eux seuls 1 800 px de vide. On revient à la règle mobile du site,
+   `--sec: 64px` (`app/globals.css`, `.mg-site` sous 760 px), qu'on étend
+   jusqu'à 880 px, le seuil de la couche mobile. `!important` : la valeur de
+   bureau est en ligne. Au-dessus de 880 px, rien ne change. */
+@media (max-width: 880px) {
+  /* `main` aussi : le hub `/implantations/` pose son propre `--sec: 120px`
+     sur son `<main>` (`offres/PageOffres.module.css`, `.racine`), qui
+     l'emporterait sur la valeur héritée de la racine. */
+  .racineVille,
+  .racineVille main {
+    --sec: 64px !important;
+  }
+}
+
+/* LE TITRE DES PASTILLES DU MAILLAGE GARDE SES 11 PX (dc.html L134).
+   `PastillesCocon` le pose en ligne, mais `app/globals.css` impose sous
+   760 px `.mg-site h2 { font-size: clamp(26px, 7.4vw, 34px) !important }`,
+   et ce `!important` bat le style en ligne : mesuré le 14/10 à 390 px,
+   « DANS LA MÊME RUBRIQUE · 55 » sortait à 29 px sur deux lignes. Deux
+   classes et un élément battent une classe et un élément. Le défaut touche
+   toute page `.mg-site` qui monte ces pastilles : signalé au lot du cocon. */
+@media (max-width: 880px) {
+  .racineVille [data-pastilles-cocon] > h2 {
+    font-size: 11px !important;
+  }
+}
+
+/* LE CHEVRON D'UN BLOC REPLIÉ RESTE SUR LA LIGNE DU TITRE. La bascule est une
+   rangée flexible qui passe à la ligne (`SectionPliableMobile.module.css`) :
+   un en-tête de largeur `auto` y prend sa largeur de contenu, plus large que
+   l'écran pour tout titre de deux lignes, et repousse le chevron seul sur
+   une ligne à lui, entre le titre et le résumé (relevé le 14/10 à 390 px sur
+   l'offre, le déroulé, les garanties, le hub local, le maillage). Une base
+   nulle lui fait prendre la place qui RESTE à côté du chevron. Téléphone
+   seulement : au-dessus de 880 px le chevron n'existe pas. */
+@media (max-width: 880px) {
+  .racineVille details[data-pliable-mobile] > summary > :first-child {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+}
+
+/* --------------- un bloc enveloppé de l'extérieur, replié au téléphone
+
+   `DerouleRepliable` met la SECTION entière de `DerouleOffre` dans le corps du
+   `<details>` : la bascule se trouve donc hors de la section, sans son
+   rembourrage haut ni ses gouttières. Sous 880 px on lui rend les deux
+   (`--sec` au-dessus, 20 px de côté, la gouttière `.mg-pad` du site), et on
+   retire le rembourrage haut de la section enveloppée, sans quoi le bloc
+   ouvert porterait deux fois l'espace de section. Au-dessus de 880 px, la
+   bascule n'existe pas (`blocPliablePartage`) et la section garde le sien. */
+@media (max-width: 880px) {
+  .repliHorsSection > details > summary {
+    margin: 0;
+    padding: var(--sec) 20px 0;
+  }
+  .repliHorsSection > details > div > section {
+    padding-top: 0 !important;
+  }
+}
+
+/* --------------- le panneau de formulaire du héros, replié au téléphone
+   (`RepliFormulaireMobile`). Le seuil est 880 px, celui de
+   `SectionPliableMobile.module.css` : les deux doivent rester d'accord.
+
+   L'étiquette n'existe que sous 880 px, et s'efface une fois le panneau
+   OUVERT : le panneau rend alors son propre titre, le même texte, et le dire
+   deux fois n'aiderait personne. Le chevron reste la poignée. */
+.basculeFormulaire {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.basculeFormulaire::-webkit-details-marker {
+  display: none;
+}
+
+.etiquettePanneau {
+  flex: 1 1 0;
+  min-width: 0;
+  font: 600 16px/1.25 var(--ft);
+  letter-spacing: -0.025em;
+  color: var(--ink);
+}
+
+.chevronFormulaire {
+  flex: 0 0 auto;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--ink2);
+  transition: transform 0.2s;
+}
+
+@media (max-width: 880px) {
+  .repliFormulaire[open] > summary > .etiquettePanneau {
+    display: none;
+  }
+  .repliFormulaire[open] > summary {
+    margin-bottom: 8px;
+  }
+  .repliFormulaire[open] > summary > .chevronFormulaire {
+    transform: rotate(90deg);
+  }
+  /* Fermé, le panneau se lit comme une carte qu'on touche, celle des blocs
+     repliés de la maquette mobile (dc.html L130 : rayon 20 px, fond blanc,
+     filet rgba(28,27,25,.08), 14 px 16 px). Ouvert, il ne reste que le
+     chevron au-dessus du panneau, qui porte déjà sa propre carte. */
+  .repliFormulaire:not([open]) > summary {
+    padding: 14px 16px;
+    border-radius: 20px;
+    background: #fff;
+    border: 1px solid rgba(28, 27, 25, 0.08);
+    /* 24 px de cible tactile au moins, WCAG 2.5.8 : la carte en fait 50. */
+  }
+}
+
+/* SUR BUREAU, LA BASCULE N'EXISTE PAS DU TOUT, et le panneau reste affiché
+   même refermé : `display: none` retire le `<summary>` de la vue et de l'ordre
+   de tabulation ; `::details-content` et la règle historique par enfant
+   gardent le contenu visible, comme `SectionPliableMobile.module.css`. Le
+   bloc est rendu `open` et ne se referme que sous 880 px : la capture de
+   bureau ne bouge pas. */
+@media (min-width: 881px) {
+  .repliFormulaire > summary {
+    display: none;
+  }
+  .repliFormulaire:not([open]) > *:not(summary) {
+    display: revert;
+  }
+  .repliFormulaire::details-content {
+    content-visibility: visible;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chevronFormulaire {
+    transition: none;
+  }
+}

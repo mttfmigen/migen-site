@@ -443,3 +443,15 @@ mot perdu » interdit de la remplacer sans décision. À trancher par Mehdi.
 | Parcours, carte 06 (`lib/parcours-mobile.ts`) | « Il me faut un dépannage, vite », offre « Intervention », vers `/offres/depannage-industriel/` | « Je veux confier toute ma maintenance à un seul partenaire », offre « Full service », vers `/offres/full-service/`. Le README de la maquette redirige d'ailleurs `/offres/depannage-industriel/` vers `/offres/zero-arret/`. |
 | Bande de logos | « Plus de 200 clients accompagnés » | « Ils nous font confiance » |
 | Bouton de « Notre sélection » et de Résidence | « Découvrir migen© Résidence », « Découvrir Résidence » | « Découvrir Résidence » (dc.html, `homeModel`). Le mot est voisin de « découvrez », proscrit : la maquette l'emploie, la liste ne vise que l'impératif. À confirmer. |
+
+---
+
+## G. Lot villes et implantations, maquette mobile v2 (14/10) : la copie qui diffère, NON réécrite
+
+Gabarits 04 Ville et 06 Département (74 pages) et hub `/implantations/`.
+Signalé, non corrigé : c'est la copie servie, on ne la remplace pas sans
+décision. À trancher par Mehdi.
+
+| Où | Le site sert (et la capture de bureau) | La maquette mobile v2 écrit |
+|---|---|---|
+| Mention des horaires, 45 pages villes, jusqu'à quatre fois par page (héros et trois bandes d'appel) | « Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés en option, nuits, week-ends et jours fériés. » La seconde phrase dit deux fois la même chose. Relevé tel quel dans `maquette/rendu/implantations--lille.html` (4 fois) et dans les 45 fichiers `supabase/import/gabarits-maquette/implantations-*.json`. | « Astreinte en option, nuits, week-ends et jours fériés. » (45 occurrences dans `maquette/mobile-v2/maquette/mobile-v2-data.js`, zéro de la version doublée) |
