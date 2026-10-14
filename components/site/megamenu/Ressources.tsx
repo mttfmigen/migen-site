@@ -25,8 +25,8 @@ const PASTILLE_VERRE: React.CSSProperties = {
  * articles.
  *
  * Depuis le 14/10 au soir (Mehdi, catégories masquées) : sur toute la largeur,
- * les trois articles « À la une » du hub en cartes à photo (format, durée de
- * lecture, titre) et le bouton « Accéder à toutes nos ressources ». Les
+ * les trois articles « À la une » du hub en cartes à photo (sujet, format,
+ * durée de lecture, titre) et le bouton « Accéder à toutes nos ressources ». Les
  * données sont dans `entete-donnees.ts`, tenues par
  * `scripts/verifie-menu-ressources.mjs`.
  */
@@ -121,7 +121,9 @@ export default function PanneauRessources() {
                   font: "600 11px var(--fb)",
                 }}
               >
-                {article.format}
+                {/* Le sujet, comme la pastille des cartes à la une du hub :
+                    « Article » trois fois de suite ne distinguait rien. */}
+                {article.sujet}
               </span>
               <div
                 style={{
@@ -138,12 +140,14 @@ export default function PanneauRessources() {
                     marginBottom: 6,
                   }}
                 >
-                  {dureeLecture(article)}
+                  {article.format} · {dureeLecture(article)}
                 </div>
                 <div
                   style={{
-                    font: "600 15px/1.25 var(--ft)",
-                    letterSpacing: "-.02em",
+                    /* 18 px, le titre des petites cartes à la une du hub : à
+                       15 px il se perdait dans une carte de 337 x 232. */
+                    font: "600 18px/1.22 var(--ft)",
+                    letterSpacing: "-.03em",
                     textWrap: "balance",
                   }}
                 >

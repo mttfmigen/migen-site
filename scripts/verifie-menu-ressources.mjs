@@ -24,10 +24,11 @@
  *   2. LES VRAIS COMPTES. Les espaces et leurs formats valent ceux du hub :
  *      libellés de `FORMATS` (filtrage.ts), dans son ordre, formats publiés
  *      seulement, et nombre de contenus recompté dans `donnees.ts`.
- *   3. LA UNE DU HUB. Titre, photo, format, durée et adresse des trois cartes
+ *   3. LA UNE DU HUB. Titre, photo, format, sujet, durée et adresse des trois cartes
  *      valent la liste `UNE` de `HubRessources.tsx`, dans son ordre.
- *   4. LE RENDU. Le panneau rendu porte chaque compte, chaque carte et le lien
- *      « Toutes les ressources → » ; aucun compte n'est écrit en dur.
+ *   4. LE RENDU. Le panneau rendu porte chaque carte (titre, sujet, durée) et
+ *      le bouton « Accéder à toutes nos ressources » ; aucune catégorie ni
+ *      aucun compte n'y est rendu (masqués par Mehdi le 14/10).
  *   5. Slash final, libellé de /carriere/ (« Rejoindre migen », 12/10), et
  *      interdits de copie (mots du contrat, tirets cadratin et demi-cadratin).
  *
@@ -150,8 +151,8 @@ function defauts({ espaces, une, panneau, tiroir, carriere, hub }) {
   if (hub.une.length !== 3 || hub.une.some((x) => !x)) {
     dit("la une du hub est illisible : liste UNE introuvable ou article inconnu.");
   } else {
-    const attendue = hub.une.map((x) => `${x.titre} | ${x.format} | ${x.minutes} | ${x.url} | ${x.photo}`);
-    const servie = une.map((x) => `${x.libelle} | ${x.format} | ${x.minutes} | ${x.href} | ${x.image}`);
+    const attendue = hub.une.map((x) => `${x.titre} | ${x.format} | ${x.sujet} | ${x.minutes} | ${x.url} | ${x.photo}`);
+    const servie = une.map((x) => `${x.libelle} | ${x.format} | ${x.sujet} | ${x.minutes} | ${x.href} | ${x.image}`);
     if (servie.join("\n") !== attendue.join("\n")) {
       dit(`« À la une » du panneau diffère du hub :\n  servi   ${servie.join("\n          ")}\n  attendu ${attendue.join("\n          ")}`);
     }
@@ -173,6 +174,7 @@ function defauts({ espaces, une, panneau, tiroir, carriere, hub }) {
   }
   for (const article of une) {
     if (!visible.includes(article.libelle)) dit(`la carte « ${article.libelle} » n'est pas rendue.`);
+    if (!visible.includes(article.sujet)) dit(`le sujet de « ${article.libelle} » n'est pas rendu.`);
     if (!visible.includes(`${article.minutes} min de lecture`)) {
       dit(`la durée de « ${article.libelle} » n'est pas rendue.`);
     }
@@ -256,6 +258,11 @@ const TEMOINS = [
     "une durée « À la une » qui dérive du hub",
     /diffère du hub/,
     (cas) => ({ ...cas, une: cas.une.map((x, rang) => (rang === 0 ? { ...x, minutes: 12 } : x)) }),
+  ],
+  [
+    "un sujet « À la une » qui dérive du hub",
+    /diffère du hub/,
+    (cas) => ({ ...cas, une: cas.une.map((x, rang) => (rang === 1 ? { ...x, sujet: "Article" } : x)) }),
   ],
   [
     "une catégorie de nouveau rendue",

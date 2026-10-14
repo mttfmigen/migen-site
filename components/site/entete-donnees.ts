@@ -277,6 +277,8 @@ export interface EspaceRessources {
 export interface ArticleALaUne extends Lien {
   image: string;
   format: string;
+  /** Le sujet du hub (« Digital & IA »), celui de la pastille de ses cartes à la une. */
+  sujet: string;
   minutes: number;
 }
 
@@ -316,7 +318,7 @@ export const RES_ESPACES: EspaceRessources[] = [
 /**
  * « À la une » du panneau Ressources : les trois articles que le hub
  * /ressources/ met à la une (liste `UNE` de `ressources-hub/v2/HubRessources.tsx`),
- * dans son ordre, avec SON titre, SA photo, SON format et SA durée. Rien n'est
+ * dans son ordre, avec SON titre, SA photo, SON format, SON sujet et SA durée. Rien n'est
  * rédigé ici : `scripts/verifie-menu-ressources.mjs` relit le hub et refuse
  * tout écart.
  */
@@ -326,6 +328,7 @@ export const RES_A_LA_UNE: ArticleALaUne[] = [
     href: "/ressources/articles/cout-arret-de-production/",
     image: "/assets/web/x-auto-ligne.jpg",
     format: "Article",
+    sujet: "Coûts & environnement",
     minutes: 11,
   },
   {
@@ -333,6 +336,7 @@ export const RES_A_LA_UNE: ArticleALaUne[] = [
     href: "/ressources/articles/ia-maintenance/",
     image: "/assets/web/ph-robots-solaire.jpg",
     format: "Article",
+    sujet: "Digital & IA",
     minutes: 8,
   },
   {
@@ -340,6 +344,7 @@ export const RES_A_LA_UNE: ArticleALaUne[] = [
     href: "/ressources/articles/organiser-service-maintenance/",
     image: "/assets/web/team-duo.jpg",
     format: "Article",
+    sujet: "Organisation",
     minutes: 9,
   },
 ];
