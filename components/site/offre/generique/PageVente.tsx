@@ -1,7 +1,15 @@
 import Link from "next/link";
 import { Fragment } from "react";
 
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import PastillesCocon from "@/components/site/cocon/PastillesCocon";
 import { appliqueDecisions } from "@/lib/decisions-copie";
+
+import CadenceOffre, { AncreRappel } from "../CadenceOffre";
+import EtiquettePli from "../EtiquettePli";
+import offre from "../PageOffre.module.css";
+import TelephoneHeros from "../TelephoneHeros";
 
 import { BlocLecture, GRAS, LIEN } from "./BlocsLecture";
 import { BlocVente } from "./BlocsVente";
@@ -82,6 +90,9 @@ function Heros({ v, chemin }: { v: Vue } & AvecChemin) {
           ) : null}
           <div style={css("display:flex;gap:12px;margin-top:28px;flex-wrap:wrap")}>
             <a className={h.bouton} href="#cx-form" style={css(BOUTON)}>Décrire mon besoin</a>
+            {/* Le téléphone du héros mobile, mobile seulement : voir
+                `offre/TelephoneHeros`. */}
+            <TelephoneHeros />
           </div>
           <div style={css("display:flex;align-items:center;gap:22px;margin-top:30px;padding-top:24px;border-top:1px solid var(--line);flex-wrap:wrap")}>
             <div>
@@ -100,7 +111,9 @@ function Heros({ v, chemin }: { v: Vue } & AvecChemin) {
             </div>
           </div>
         </div>
-        <div style={css(`border-radius:var(--rad);padding:30px 32px 32px;${VERRE}`)}>
+        {/* `panneauHeros` : replié sous 881 px, héros compact de la maquette
+            mobile v2 (voir `Generique.module.css`). */}
+        <div className={h.panneauHeros} style={css(`border-radius:var(--rad);padding:30px 32px 32px;${VERRE}`)}>
           <div style={css("display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:6px;flex-wrap:wrap")}>
             <div style={css("font:600 calc(19px * var(--ts)) var(--ft);letter-spacing:-.03em;color:var(--ink)")}>Être rappelé</div>
             <span style={css("font:600 10.5px var(--fb);letter-spacing:.1em;text-transform:uppercase;color:var(--acc-ink);white-space:nowrap")}>Sous une heure</span>
@@ -147,8 +160,15 @@ function Constat({ v }: { v: Vue }) {
   ];
   return (
     <section id="sp-problem" style={css("padding:var(--sec) 0 0;scroll-margin-top:96px")}>
-      <div style={css("max-width:1200px;margin:0 auto;padding:0 40px")}>
-        <div style={css("border-radius:40px;background:var(--panel);padding:56px 56px 52px;position:relative;overflow:hidden")}>
+      <div className={offre.blocPliablePartage} style={css("max-width:1200px;margin:0 auto;padding:0 40px")}>
+        {/* DÉPLIÉ AU CHARGEMENT : la première section de contenu de la
+            maquette mobile (dc.html L451, `nOpen = 1`). Repliable au doigt. */}
+        <SectionPliableMobile
+          toujoursOuvert
+          enTete={<EtiquettePli surtitre="Le problème" titre={p.title} />}
+          resume={p.lead}
+        >
+        <div className={h.panneauConstat} style={css("border-radius:40px;background:var(--panel);padding:56px 56px 52px;position:relative;overflow:hidden")}>
           <div style={css("position:absolute;width:460px;height:460px;right:-180px;top:-200px;background:radial-gradient(circle,rgba(255,124,60,.28),transparent 68%);pointer-events:none")}></div>
           <div className="mg-r2" style={css("position:relative;display:grid;grid-template-columns:.92fr 1.08fr;gap:52px;align-items:start")}>
             <div>
@@ -183,6 +203,7 @@ function Constat({ v }: { v: Vue }) {
             </div>
           </div>
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );
@@ -192,7 +213,11 @@ function Methode({ v }: { v: Vue }) {
   if (!v.spHasMethod) return null;
   return (
     <section id="sp-method" style={css("padding:var(--sec) 0 0;scroll-margin-top:96px")}>
-      <div style={css("max-width:1200px;margin:0 auto;padding:0 40px")}>
+      <div className={offre.blocPliablePartage} style={css("max-width:1200px;margin:0 auto;padding:0 40px")}>
+        <SectionPliableMobile
+          enTete={<EtiquettePli surtitre="La méthode" titre={v.spMethod.title} />}
+          resume={resumeDe(v.spMethod.steps.map((x) => x.title || x.text))}
+        >
         <div className="mg-r2" style={css("display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:end;margin-bottom:36px")}>
           <div>
             <div style={SURTITRE}>La méthode</div>
@@ -214,6 +239,7 @@ function Methode({ v }: { v: Vue }) {
           <span style={css("font:500 15.5px var(--fb);color:var(--ink1)")}>Un arrêt, un besoin, une ligne à tenir&nbsp;? On cadre ensemble.</span>
           <a className={h.bouton} href="#cx-form" style={css(`${BOUTON};padding:12px 22px;font-size:14.5px`)}>Cadrer mon besoin</a>
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );
@@ -225,7 +251,14 @@ function References({ v }: { v: Vue }) {
   const rail = [...LOGOS_REFERENCES, ...LOGOS_REFERENCES];
   return (
     <section id="sp-proof" style={css("padding:var(--sec) 0 0;scroll-margin-top:96px")}>
-      <div style={css("max-width:1200px;margin:0 auto;padding:0 40px")}>
+      <div className={offre.blocPliablePartage} style={css("max-width:1200px;margin:0 auto;padding:0 40px")}>
+        {/* DÉPLIÉ AU CHARGEMENT, comme les références de la maquette mobile
+            (dc.html L476, `isRef`). */}
+        <SectionPliableMobile
+          toujoursOuvert
+          enTete={<EtiquettePli surtitre="Références" titre={v.spProof.title} />}
+          resume={resumeDe(v.spProof.cases.map((k) => k.client))}
+        >
         <div className="mg-r2" style={css("display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:end;margin-bottom:36px")}>
           <div>
             <div style={SURTITRE}>Références</div>
@@ -253,6 +286,7 @@ function References({ v }: { v: Vue }) {
             </Link>
           ))}
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );
@@ -284,7 +318,16 @@ function Titre({ sec }: { sec: Section }) {
 
 function SectionNumerotee({ sec, chemin }: { sec: Section } & AvecChemin) {
   return (
-    <section id={sec.id} style={css(sec.bandCss ?? "")}>
+    /* REPLIÉE SUR TÉLÉPHONE, à pleine largeur : sa gouttière est portée par sa
+       grille intérieure, d'où `pliPleineLargeur` (voir le module CSS). Le
+       `<h2>` reste à sa place dans la grille ; l'étiquette le répète sous
+       880 px. Au-dessus, la bascule n'existe pas (`.blocPliablePartage`). */
+    <section
+      id={sec.id}
+      className={`${offre.blocPliablePartage} ${h.pliPleineLargeur}`}
+      style={css(sec.bandCss ?? "")}
+    >
+      <SectionPliableMobile enTete={<EtiquettePli surtitre={sec.num} titre={sec.title} />}>
       <div className={`mg-r2 ${sec.faqCls ?? ""}`} style={css(sec.gridCss ?? "")}>
         <div style={css(sec.asideCss ?? "")}>
           {sec.titleAside ? <Titre sec={sec} /> : null}
@@ -338,6 +381,7 @@ function SectionNumerotee({ sec, chemin }: { sec: Section } & AvecChemin) {
           </div>
         </div>
       ) : null}
+      </SectionPliableMobile>
     </section>
   );
 }
@@ -396,21 +440,36 @@ function Appel({ v }: { v: Vue }) {
 
 export default function PageVente({ v, formulaire, chemin }: { v: Vue; formulaire: string } & AvecChemin) {
   return (
-    <div className="mg-site">
+    <div className={`mg-site ${h.racineMobile}`}>
       <main style={css("padding-top:96px")}>
         <Heros v={v} chemin={chemin} />
         <Bandeau v={v} />
-        <Constat v={v} />
-        <Methode v={v} />
-        <References v={v} />
-        {v.spRest.map((sec) => (
-          <Fragment key={sec.id}>
-            <SectionNumerotee sec={sec} chemin={chemin} />
-          </Fragment>
-        ))}
+        {/* LA CADENCE DE CONVERSION MOBILE entre les sections de contenu
+            (voir `offre/CadenceOffre`). Chaque enfant compte pour une section :
+            les blocs qui ne rendent rien sans donnée sont donc testés ICI, un
+            composant qui rend `null` compterait quand même. Le photo + CTA
+            reprend le bouton du héros, « Décrire mon besoin », vers le
+            formulaire de bas de page. */}
+        <CadenceOffre
+          chemin={chemin}
+          actions={[{ libelle: "Décrire mon besoin", href: "#cx-form" }]}
+        >
+          {v.spHasProblem && v.spProblem.hasSplit ? <Constat key="constat" v={v} /> : null}
+          {v.spHasMethod ? <Methode key="methode" v={v} /> : null}
+          {v.spHasProof ? <References key="references" v={v} /> : null}
+          {v.spRest.map((sec) => (
+            <Fragment key={sec.id}>
+              <SectionNumerotee sec={sec} chemin={chemin} />
+            </Fragment>
+          ))}
+        </CadenceOffre>
         <Questions v={v} />
         <Appel v={v} />
         <Liees v={v} />
+        {/* Les pastilles du maillage mobile, puis la cible du bandeau
+            « Être rappelé » : mêmes raisons que dans `PageOffre`. */}
+        {chemin ? <PastillesCocon chemin={chemin} /> : null}
+        <AncreRappel chemin={chemin} />
         <Besoin formulaire={formulaire} />
       </main>
     </div>

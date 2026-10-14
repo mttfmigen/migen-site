@@ -1,7 +1,11 @@
 import Link from "next/link";
 
 import { FormulaireContact } from "@/components/formulaire/FormulaireContact";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
 
+import EtiquettePli from "../EtiquettePli";
+import offre from "../PageOffre.module.css";
 import { css } from "./css";
 import type { Vue } from "./types";
 import h from "./Generique.module.css";
@@ -36,7 +40,14 @@ export function Liees({ v }: { v: Vue }) {
   if (!v.cHasRelated) return null;
   return (
     <section style={css("padding:var(--sec) 0 0")}>
-      <div style={css("max-width:1200px;margin:0 auto;padding:0 40px")}>
+      <div className={offre.blocPliablePartage} style={css("max-width:1200px;margin:0 auto;padding:0 40px")}>
+        {/* REPLIÉ SUR TÉLÉPHONE : la maquette mobile v2 n'a pas cette grille,
+            son maillage est la boîte de pastilles posée juste après. Servi en
+            entier ; au-dessus de 880 px rien ne change. */}
+        <SectionPliableMobile
+          enTete={<EtiquettePli surtitre="Pour aller plus loin" titre="Pages liées" />}
+          resume={resumeDe(v.cRelated.map((p) => p.h1))}
+        >
         <div style={css("font:600 11.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:14px")}>Pour aller plus loin</div>
         <h2 style={css("font:600 calc(clamp(26px,3vw,42px) * var(--ts))/1.08 var(--ft);letter-spacing:-.04em;color:var(--ink);margin:0;text-wrap:balance;margin-bottom:26px")}>Pages liées</h2>
         <div style={css("display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px")}>
@@ -48,6 +59,7 @@ export function Liees({ v }: { v: Vue }) {
             </Link>
           ))}
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

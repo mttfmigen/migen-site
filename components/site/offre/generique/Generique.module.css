@@ -106,3 +106,61 @@
     padding: 28px 22px !important;
   }
 }
+
+/* ------------------------------------------------ la maquette mobile v2
+
+   Les huit sous-pages du gabarit 03 servies par ces deux gabarits génériques
+   prennent, sur téléphone, le dessin de la maquette mobile v2 : héros
+   compact, sections repliées (la première dépliée, les références aussi),
+   cadence de conversion. Toutes les règles sont SOUS 881 PX : au-dessus,
+   rien ne change, et la référence reste la capture de bureau. */
+@media (max-width: 880px) {
+  /* L'écart entre sections suit la maquette mobile (12 à 14 px entre ses
+     cartes) plutôt que les 64 px de `.mg-site` : des sections repliées
+     séparées par plus de vide qu'elles n'occupent se lisent mal. */
+  .racineMobile {
+    --sec: 40px !important;
+  }
+
+  /* LE PANNEAU « ÊTRE RAPPELÉ » DU HÉROS SE REPLIE, il n'est pas retiré : la
+     maquette mobile v2 n'a aucun formulaire dans son héros (dc.html L111), et
+     la page se ferme déjà sur le sien (`#cx-form`). Le DOM le garde. */
+  .panneauHeros {
+    display: none;
+  }
+
+  /* La bascule d'un bloc replié posé à pleine largeur (sections numérotées,
+     dont la gouttière de 40 px est portée par leur grille intérieure) : sans
+     ce retrait, l'étiquette et le chevron touchaient les bords de l'écran. */
+  .pliPleineLargeur > details[data-pliable-mobile] > summary {
+    padding-inline: 40px;
+  }
+
+  /* LE PANNEAU SOMBRE DU CONSTAT, resserré : ses 56 px de marge intérieure,
+     ajoutés aux 40 px de gouttière, laissaient 180 px de texte à 390 px, une
+     colonne de deux mots par ligne (1 689 px de haut, mesuré le 14/10). Même
+     resserrement que la carte des questions, plus haut. */
+  .panneauConstat {
+    padding: 28px 22px !important;
+    border-radius: 28px !important;
+  }
+
+  /* LES SECTIONS DE LECTURE REPLIÉES SE SUIVENT DE PLUS PRÈS, et la cadence
+     de conversion respire. Chaque section porte 56 px de marge basse et
+     aucune en haut : repliées, elles laissaient plus de vide que de titre, et
+     le photo + CTA, posé sans marge basse, venait coller l'étiquette suivante
+     (mesuré le 14/10 sur le cahier des charges). */
+  .racineMobile article > section:not([data-mobile-seulement]) {
+    padding-bottom: 28px !important;
+  }
+  .racineMobile article > [data-mobile-seulement] {
+    margin-bottom: 28px !important;
+  }
+
+  /* Le titre de la boîte de pastilles garde ses 11 px : même correction que
+     dans `offre/PageOffre.module.css` (`.mg-site h2` le portait à 28 px). */
+  .racineMobile [data-pastilles-cocon] h2 {
+    font-size: 11px !important;
+    letter-spacing: 0.14em !important;
+  }
+}

@@ -179,7 +179,7 @@ export default function PageOffre({
         {vue.cVente ? (
           <PageVente v={vue} formulaire={formulaire} chemin={chemin} />
         ) : (
-          <PageEdito v={vue} formulaire={formulaire} />
+          <PageEdito v={vue} formulaire={formulaire} chemin={chemin} />
         )}
       </>
     );

@@ -537,8 +537,42 @@ function compte(texte: string, motif: string): number {
   return n;
 }
 
+/**
+ * Le balisage SANS la couche du téléphone : chaque élément marqué
+ * `data-mobile-seulement` est retiré avec tout son contenu.
+ *
+ * POURQUOI (14/10, maquette mobile v2). Le chemin ne sert plus seulement aux
+ * décisions de copie : il allume aussi la cadence de conversion mobile, les
+ * pastilles du maillage et l'ancre « Être rappelé », toutes masquées au-dessus
+ * de 880 px. La promesse que garde ce contrôle (« sans chemin, le rendu d'avant
+ * le 13/10, mot pour mot ») porte sur ce que le bureau affiche : elle se
+ * vérifie donc une fois la couche du téléphone ôtée, et seulement elle.
+ */
+function sansCoucheMobile(html: string): string {
+  const ouverture = /<([a-z][a-z0-9]*)\b[^>]*\bdata-mobile-seulement\b[^>]*>/i;
+  let reste = html;
+  for (let m = ouverture.exec(reste); m; m = ouverture.exec(reste)) {
+    const balise = new RegExp(`<(/?)${m[1]}\\b[^>]*>`, "gi");
+    balise.lastIndex = m.index + m[0].length;
+    let profondeur = 1;
+    let fin = -1;
+    for (let t = balise.exec(reste); t; t = balise.exec(reste)) {
+      if (t[0].endsWith("/>")) continue;
+      profondeur += t[1] ? -1 : 1;
+      if (profondeur === 0) {
+        fin = t.index + t[0].length;
+        break;
+      }
+    }
+    if (fin < 0) throw new Error(`balise <${m[1]}> mobile sans fermeture dans le rendu`);
+    reste = reste.slice(0, m.index) + reste.slice(fin);
+  }
+  return reste;
+}
+
 function verifieBascule(quoi: string, libelle: string, noeud: (chemin?: string) => ReactElement): void {
-  const rendu = (chemin?: string) => normaliseTexte(texteLisible(renderToStaticMarkup(noeud(chemin))));
+  const rendu = (chemin?: string) =>
+    normaliseTexte(texteLisible(sansCoucheMobile(renderToStaticMarkup(noeud(chemin)))));
   const brut = normaliseTexte(libelle);
   const decide = normaliseTexte(appliqueDecisions(libelle, EN_PORTEE));
   const dans = rendu(EN_PORTEE);

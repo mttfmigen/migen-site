@@ -16,11 +16,12 @@ import {
  * au gabarit 10. Hors index, « 03 », celui de la famille.
  *
  * LE BOUTON DU PHOTO + CTA est celui de la page quand la maquette en a un
- * (dc.html L412, `P.cta`) : le bouton d'action du héros. Il vise ici le
- * formulaire de bas de page, `#mgx-form`, et non `#besoin` : depuis le milieu
- * de la page, l'appel descend vers le formulaire au lieu de remonter au héros.
- * Un bouton d'action qui ne mène pas au formulaire (« Les cinq offres »,
- * vers `/offres/`) n'est pas un appel : le photo + CTA garde alors celui de la
+ * (dc.html L412, `P.cta`) : le bouton d'action du héros, quand il vise un
+ * formulaire de la page (une ancre). `#besoin`, le panneau du héros, devient
+ * `#mgx-form`, le formulaire de bas de page : depuis le milieu de la page,
+ * l'appel descend vers le formulaire au lieu de remonter au héros. Un bouton
+ * d'action qui ne mène pas à un formulaire (« Les cinq offres », vers
+ * `/offres/`) n'est pas un appel : le photo + CTA garde alors celui de la
  * maquette, « Décrire mon besoin ».
  *
  * `rappelFinal={false}` : voir `AncreRappel`.
@@ -38,12 +39,16 @@ export default function CadenceOffre({
 }) {
   if (!chemin) return <>{children}</>;
   const entree = entreeDe(chemin);
-  const action = actions.find((a) => a.href === "#besoin");
+  const action = actions.find((a) => a.href.startsWith("#"));
   return (
     <AvecConversionMobile
       chemin={chemin}
       gabarit={entree ? gabaritDe(entree) : "03"}
-      bouton={action ? { libelle: action.libelle, href: "#mgx-form" } : undefined}
+      bouton={
+        action
+          ? { libelle: action.libelle, href: action.href === "#besoin" ? "#mgx-form" : action.href }
+          : undefined
+      }
       rappelFinal={false}
     >
       {children}

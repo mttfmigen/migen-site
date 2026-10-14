@@ -1,3 +1,10 @@
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import PastillesCocon from "@/components/site/cocon/PastillesCocon";
+
+import CadenceOffre, { AncreRappel } from "../CadenceOffre";
+import EtiquettePli from "../EtiquettePli";
+import offre from "../PageOffre.module.css";
+import TelephoneHeros from "../TelephoneHeros";
 import { BlocsLecture, GRAS, LIEN } from "./BlocsLecture";
 import { Besoin, Fil, Liees } from "./CommunGenerique";
 import { css } from "./css";
@@ -14,9 +21,21 @@ import h from "./Generique.module.css";
  * et styles recopiés de son gabarit ; la vue est calculée par son code.
  */
 
-function SectionLecture({ sec }: { sec: Section }) {
+function SectionLecture({ sec, ouverte }: { sec: Section; ouverte: boolean }) {
   return (
-    <section id={sec.id} className={sec.faqCls || undefined} style={css("scroll-margin-top:100px;padding-bottom:56px")}>
+    <section
+      id={sec.id}
+      className={[sec.faqCls, offre.blocPliablePartage].filter(Boolean).join(" ")}
+      style={css("scroll-margin-top:100px;padding-bottom:56px")}
+    >
+      {/* REPLIÉE SUR TÉLÉPHONE, sauf la première (dc.html L451, `nOpen = 1`) :
+          motif « Blocs communs (pliables) » de la maquette mobile. Le `<h2>`
+          reste à sa place ; l'étiquette le répète sous 880 px. Au-dessus, la
+          bascule n'existe pas (`.blocPliablePartage`). */}
+      <SectionPliableMobile
+        toujoursOuvert={ouverte}
+        enTete={<EtiquettePli surtitre={sec.num} titre={sec.title} />}
+      >
       <div style={css("display:flex;align-items:baseline;gap:14px;margin-bottom:20px")}>
         <span style={css("font:600 12px ui-monospace,Menlo,monospace;letter-spacing:.06em;color:var(--acc);flex:none")}><span>{sec.num}</span></span>
         <h2 style={css("font:600 calc(clamp(23px,2.5vw,34px) * var(--ts))/1.14 var(--ft);letter-spacing:-.036em;color:var(--ink);margin:0;max-width:28ch;text-wrap:balance")}><span>{sec.title}</span></h2>
@@ -53,13 +72,23 @@ function SectionLecture({ sec }: { sec: Section }) {
           <a className={h.bouton} href="#cx-form" style={css("position:relative;display:inline-flex;align-items:center;gap:9px;padding:15px 26px;border-radius:999px;background:var(--acc);color:#fff;font:600 15px var(--fb);white-space:nowrap;box-shadow:0 12px 30px -12px rgba(255,124,60,.9);transition:filter var(--tr),transform var(--tr);flex:none")}>Décrire mon besoin</a>
         </div>
       ) : null}
+      </SectionPliableMobile>
     </section>
   );
 }
 
-export default function PageEdito({ v, formulaire }: { v: Vue; formulaire: string }) {
+export default function PageEdito({
+  v,
+  formulaire,
+  chemin,
+}: {
+  v: Vue;
+  formulaire: string;
+  /** Le chemin de la page : sans lui, ni cadence ni pastilles mobiles. */
+  chemin?: string;
+}) {
   return (
-    <div className="mg-site">
+    <div className={`mg-site ${h.racineMobile}`}>
       <main style={css("padding-top:96px")}>
         <section style={css("max-width:1200px;margin:0 auto;padding:56px 40px 0")}>
           <Fil v={v} />
@@ -72,6 +101,12 @@ export default function PageEdito({ v, formulaire }: { v: Vue; formulaire: strin
             <p style={css("font:400 18px/1.7 var(--fb);color:var(--ink1);margin:22px 0 0;max-width:60ch;text-wrap:pretty")}>
               <Segs segs={v.cLeadSegs} gras={GRAS} lien={LIEN} survol={h.acc} />
             </p>
+            {/* Le téléphone du héros mobile (`offre/TelephoneHeros`). Ce héros
+                de lecture n'a pas de bouton : la rangée n'existe que sous
+                881 px, le bureau reste celui de la capture. */}
+            <div data-mobile-seulement="" style={css("display:flex;gap:12px;margin-top:22px;flex-wrap:wrap")}>
+              <TelephoneHeros />
+            </div>
           </div>
         </section>
         <section style={css("max-width:1200px;margin:0 auto;padding:64px 40px 0")}>
@@ -94,13 +129,25 @@ export default function PageEdito({ v, formulaire }: { v: Vue; formulaire: strin
                   <BlocsLecture blocs={v.cIntro} groupe="intro" />
                 </div>
               ) : null}
-              {v.cSections.map((sec) => (
-                <SectionLecture key={sec.id} sec={sec} />
-              ))}
+              {/* La cadence de conversion mobile entre les sections (voir
+                  `offre/CadenceOffre`), bouton « Décrire mon besoin » vers le
+                  formulaire de bas de page, comme celui du sommaire. */}
+              <CadenceOffre
+                chemin={chemin}
+                actions={[{ libelle: "Décrire mon besoin", href: "#cx-form" }]}
+              >
+                {v.cSections.map((sec, rang) => (
+                  <SectionLecture key={sec.id} sec={sec} ouverte={rang === 0} />
+                ))}
+              </CadenceOffre>
             </article>
           </div>
         </section>
         <Liees v={v} />
+        {/* Les pastilles du maillage mobile, puis la cible du bandeau
+            « Être rappelé » : mêmes raisons que dans `PageOffre`. */}
+        {chemin ? <PastillesCocon chemin={chemin} /> : null}
+        <AncreRappel chemin={chemin} />
         <Besoin formulaire={formulaire} />
       </main>
     </div>
