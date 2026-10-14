@@ -194,11 +194,47 @@
           },
           {
             "question": "Faites-vous le montage de pneus sur véhicule ?",
-            "reponse": "Non. Le montage, l'équilibrage et le recreusage relèvent d'un atelier automobile et d'un autre métier. Notre activité porte sur l'air comprimé d'une usine et sur tout ce qu'il actionne."
+            "reponse": "Non. Le montage, l'équilibrage et le recreusage relèvent d'un atelier automobile et d'un autre métier. Notre activité porte sur l'air comprimé d'une usine et sur tout ce qu'il actionne. Le mot « pneumatique » désigne deux métiers sans rapport : la pneumatique industrielle (air comprimé, vérins, distributeurs, circuits d'usine) et la pneumatique véhicule (pneu, roue, équilibrage, recreusage), qui s'exerce en atelier automobile, en centre de commerce et de vente de pneumatiques ou en dépannage sur route. Pour un véhicule léger, visez un atelier automobile ; pour un poids lourd ou un véhicule industriel, un spécialiste du pneumatique poids lourds ; pour du matériel agricole ou de génie civil, un spécialiste des pneumatiques agraires. Le métier de technicien pneumatique véhicule concerne le pneu d'un véhicule : il demande de vérifier l'usure, de contrôler les réglages et de réaliser l'équilibrage de chaque roue. Migen tient la première ligne, et seulement elle."
           },
           {
             "question": "Couvrez-vous notre région, et les petites structures ?",
             "reponse": "Oui aux deux. 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et des hubs de techniciens dans les grandes villes de France partout en France. Un réseau d'atelier se contrôle aussi utilement qu'un réseau d'usine."
+          },
+          {
+            "question": "Que recouvre la maintenance pneumatique industrielle ?",
+            "reponse": "La maintenance pneumatique industrielle couvre la production, le traitement, la distribution et l'utilisation de l'air comprimé dans une usine. Notre périmètre va du compresseur jusqu'au vérin : production d'air (compresseur, sécheur, cuve tampon), traitement (filtre à particules, séparateur d'eau, filtre coalesceur, lubrificateur), distribution (réseau de conduites, piquages, raccords rapides, flexibles), actionneurs, commande et contrôle instrumenté. Mesure de pression, capteurs de position, pressostats : l'outil de diagnostic du circuit pneumatique, à utiliser avant toute pièce changée."
+          },
+          {
+            "question": "Quelles grandeurs faut-il vérifier sur un réseau d'air comprimé ?",
+            "reponse": "La pression du réseau : un réglage trop élevé use tout le matériel et gonfle la facture énergétique inutilement. Le point de rosée et la classe de filtration : l'humidité résiduelle après séchage détermine la durée de vie de vos distributeurs, et le niveau de propreté exigé dépend de l'utilisation, il n'est pas le même en agroalimentaire et en métallurgie. Le débit consommé : le comparer au débit produit permet d'estimer le taux de fuite du réseau."
+          },
+          {
+            "question": "Que contrôle une visite préventive complète ?",
+            "reponse": "Voici ce qu'un technicien doit vérifier, et vos équipes peuvent en réaliser une partie en interne. Vérifier les purges automatiques et l'état des filtres : une purge bouchée envoie l'eau dans tout le réseau, c'est le premier point à contrôler, et le plus souvent oublié. Contrôler les flexibles et les raccords : chaque pièce suspecte se remplace avant la casse. Réaliser un relevé de consommation. Vérifier les réglages de chaque poste : beaucoup d'équipements fonctionnent bien en dessous de la consigne appliquée par habitude. Contrôler la lubrification des actionneurs : trop d'huile encrasse, pas assez use. Réaliser un essai de sécurité : blocs de coupure, échappement, remise en service progressive."
+          },
+          {
+            "question": "Préventif, curatif, amélioratif : que faites-vous ?",
+            "reponse": "Réparer, c'est le minimum. En maintenance préventive : purges, remplacement de filtre, contrôle des réglages, vérification des flexibles, pour moins d'arrêts subis et un air propre. En maintenance curative : recherche de panne, remplacement de composant, réglage, essais, pour un redémarrage propre et une cause identifiée. En amélioratif : baisse du réglage réseau, sectionnement, suppression des usages inutiles, pour une facture énergétique allégée."
+          },
+          {
+            "question": "Sur quels équipements pneumatiques travaillez-vous ?",
+            "reponse": "Sur ce qui est installé chez vous, sans défendre aucune marque. Compresseurs à vis ou à pistons, sécheurs, cuves tampons ; réseaux de distribution et conduites ; filtres, régulateurs, lubrificateurs, purgeurs automatiques ; vérins de tous formats, moteur pneumatique, pinces, ventouses, vibreurs, et leurs pièces d'usure ; distributeurs, électrovannes, blocs de sécurité ; outil pneumatique de ligne, visseuses, meuleuses, agrafeuses, et leur alimentation en air. Nos équipes couvrent également l'hydraulique, l'électricité, la mécanique et l'automatisme des mêmes machines : maintenance, réparation et remise en service forment un seul geste."
+          },
+          {
+            "question": "Comment évaluez-vous vos spécialistes ?",
+            "reponse": "Le pire scénario n'est pas la panne : c'est le renfort qui arrive et qui ne sait pas faire. Chaque spécialiste que nous mobilisons franchit une évaluation en deux temps, menée par un homme de terrain. L'évaluation technique : lecture de schéma pneumatique, méthode de recherche, choix du bon composant, réglage, jamais un simple questionnaire. L'évaluation comportementale : rigueur, sécurité, qualité du compte rendu, tenue chez un client. Un acquis technique mal transmis ne sert à rien."
+          },
+          {
+            "question": "Comment se déroule le déplacement d'un technicien ?",
+            "reponse": "Bon profil, bonne date, bonnes habilitations : le déplacement se décide au téléphone. Le technicien intervient en autonomie : consignation, purge du circuit, recherche, réparation, essais, application de vos consignes de sécurité. Vous recevez un écrit exploitable : cause identifiée, travaux réalisés, pièces changées, recommandations pour la suite."
+          },
+          {
+            "question": "Proposez-vous un entretien annuel ?",
+            "reponse": "Oui, nous pouvons étudier une solution d'entretien annuel, avec un nombre de déplacements défini à l'avance. C'est souvent la formule nécessaire pour assurer un fonctionnement stable toute l'année, quelle que soit l'utilisation de votre système d'air comprimé. Le document de synthèse de chaque visite permet à un responsable maintenance d'assurer le suivi d'une année sur l'autre."
+          },
+          {
+            "question": "Quelle formation mène au métier de technicien de maintenance pneumatique ?",
+            "reponse": "Niveau bac, puis après le bac : bac pro maintenance des équipements industriels ou bac pro pilotage de systèmes de production, souvent en alternance, puis BTS maintenance des systèmes, BUT génie industriel et maintenance. En reconversion : titre professionnel de technicien de maintenance industrielle. Les compétences acquises : lecture de schéma, mesure, diagnostic de circuit, réglage d'actionneur, sécurité des énergies. Ce métier ne s'apprend pas entièrement en salle : les acquis se consolident sur les machines, aux côtés d'un technicien expérimenté. Migen n'est pas un centre de formation : nous recrutons des professionnels déjà opérationnels, et nos offres d'emploi sont publiées sur notre site et sur les plateformes d'emploi."
           }
         ]
       },

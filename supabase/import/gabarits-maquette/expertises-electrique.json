@@ -217,11 +217,11 @@
           },
           {
             "question": "Nous avons un contrat ailleurs. Comment on reprend nos armoires ?",
-            "reponse": "Par un état des lieux : inventaire des armoires critiques, thermographie, repérage de ce qui n'est plus documenté. Vous récupérez un plan d'action chiffré et classé par urgence, avant même de changer de prestataire."
+            "reponse": "Par un état des lieux : inventaire des armoires critiques, thermographie, repérage de ce qui n'est plus documenté. Vous récupérez un plan d'action chiffré et classé par urgence, avant même de changer de prestataire. Les schémas sont mis à jour à l'appui, pour garantir que le prochain passage ne reparte pas de zéro."
           },
           {
             "question": "Quelle habilitation faut-il pour intervenir sur nos installations ?",
-            "reponse": "Cela dépend de l'opération. Un dépannage basse tension demande un titre BR, une consignation relève d'un chargé de consignation BC, des travaux encadrés relèvent du B2 ou B2V. Nos techniciens arrivent avec le titre exigé par la nature des travaux."
+            "reponse": "Cela dépend de l'opération. Un dépannage basse tension demande un titre BR, une consignation relève d'un chargé de consignation BC, des travaux encadrés relèvent du B2 ou B2V. Nos techniciens arrivent avec le titre exigé par la nature des travaux. Personne ne devrait ouvrir une armoire sans y être autorisé. Titres d'habilitation, attestations de formation et rapports sont fournis, puis archivés dans le dossier de la machine."
           },
           {
             "question": "Qui intervient vraiment chez nous ?",
@@ -229,11 +229,63 @@
           },
           {
             "question": "Faites-vous la vérification réglementaire annuelle ?",
-            "reponse": "Non, elle relève d'un organisme agréé et indépendant : c'est un autre métier et une autre responsabilité. Nous réalisons les travaux issus de son rapport. L'électricité tertiaire et le second œuvre ne sont pas non plus notre terrain."
+            "reponse": "Non, elle relève d'un organisme agréé et indépendant : c'est un autre métier et une autre responsabilité. Nous réalisons les travaux issus de son rapport. L'électricité tertiaire et le second œuvre ne sont pas non plus notre terrain. L'environnement industriel, lui, est notre activité."
           },
           {
             "question": "Couvrez-vous notre région, et les petits ateliers ?",
-            "reponse": "Oui aux deux. 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et des hubs de techniciens dans les grandes villes de France partout en France, avec la même politique de sécurité électrique sur chaque site."
+            "reponse": "Oui aux deux. 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et des hubs de techniciens dans les grandes villes de France partout en France, avec la même politique de sécurité électrique sur chaque site. Un atelier de dix personnes avec deux machines critiques a autant besoin de fiabilité électrique qu'une grande usine. La formule change, l'exigence non, et le devis s'adapte à votre besoin réel."
+          },
+          {
+            "question": "Qu'est-ce que la maintenance électrique industrielle ?",
+            "reponse": "La maintenance électrique industrielle, c'est l'ensemble des opérations qui assurent le fonctionnement et la sécurité des installations électriques d'une usine : contrôles préventifs, dépannage, réparation, remise en conformité, amélioration. Elle couvre la distribution, les armoires, les moteurs, les capteurs et la chaîne de sécurité, du transformateur au capteur, et fait partie de nos domaines de maintenance des équipements industriels."
+          },
+          {
+            "question": "Électrique, mécanique ou électromécanique : qui appeler ?",
+            "reponse": "La frontière compte pour appeler le bon professionnel du premier coup. La maintenance électrique industrielle traite les courants, les connexions, la commande et l'énergie : un variateur en défaut, une connexion échauffée. La maintenance mécanique traite les pièces mobiles, l'usure et la transmission. L'électromécanique traite les matériels qui combinent les deux, comme un motoréducteur qui chauffe et vibre. Dans les faits, un électricien de maintenance passe sa journée à la frontière des trois, avec des incursions en hydraulique et en automatisme : nos techniciens de maintenance sont recrutés sur leur polyvalence réelle, jamais sur une case."
+          },
+          {
+            "question": "Quelles pannes électriques traitez-vous le plus souvent ?",
+            "reponse": "Le disjoncteur qui déclenche sans raison apparente (surcharge, défaut d'isolement, harmoniques), le moteur qui chauffe ou refuse de démarrer, le capteur muet (entrée automate figée, câble blindé abîmé) et le défaut intermittent, le pire de tous. Le résoudre demande de l'expertise technique, de la rigueur et de l'enregistrement de données. Une recherche méthodique évite de remplacer du matériel sain : un dysfonctionnement se traite à sa cause, pas à son symptôme."
+          },
+          {
+            "question": "Préventif, correctif, amélioratif : que faites-vous ?",
+            "reponse": "Trois façons de travailler, un seul but : garantir que votre production ne s'arrête pas pour une raison électrique. En préventif, des relevés électriques (intensités, déséquilibres, harmoniques), la donnée nécessaire pour anticiper la défaillance, et une approche prédictive sur les moteurs critiques : la mesure répétée révèle l'anomalie naissante et permet de programmer l'arrêt au lieu de le subir. En maintenance corrective, le diagnostic, la réparation du composant défectueux, la remise en service et un compte rendu qui alimente votre gestion de maintenance. En amélioration, l'optimisation énergétique, le rétrofit électrique et la reprise des réseaux de distribution internes, avec un effet direct sur la productivité."
+          },
+          {
+            "question": "Ces travaux de maintenance se font-ils au contrat ou au projet ?",
+            "reponse": "Les deux. Ces travaux de maintenance se mènent ponctuellement comme dans le cadre d'un contrat d'entretien régulier. Un projet plus large, un transfert de ligne ou une refonte d'armoires se pilote en mode projet, avec un interlocuteur unique et un planning tenu. Un projet de rétrofit se chiffre sur étude avant de le réaliser. Une solution de continuité permet d'assurer la production pendant les travaux : par tranches, de nuit ou pendant un arrêt planifié."
+          },
+          {
+            "question": "Pouvez-vous intervenir sur des réseaux haute tension ?",
+            "reponse": "Oui, avec les titres d'habilitation correspondants et dans le respect des procédures de consignation de l'usine. Les opérations sur poste de livraison se préparent toujours en amont, avec votre exploitant et votre distributeur d'énergie. Sur un ensemble de plusieurs bâtiments, les réseaux électriques internes deviennent un sujet à part entière : garantir que chaque atelier reste alimenté, et assurer un pré-diagnostic rapide en cas de coupure."
+          },
+          {
+            "question": "Pouvez-vous intervenir en urgence sur une panne électrique ?",
+            "reponse": "Oui, partout en France, y compris en dehors des heures ouvrées grâce à l'astreinte, pour les usines qui en disposent. La prise en charge démarre dès l'appel : nous qualifions la situation avec vous et vous rappelons dans l'heure pour préciser la suite. Un doute sur votre armoire ou votre réseau ? Contacter le 04 78 33 72 05 : un technicien vous répond, pas un standard."
+          },
+          {
+            "question": "À quelle fréquence contrôler une installation électrique industrielle ?",
+            "reponse": "La vérification périodique réglementaire est annuelle pour la plupart des entreprises. Au delà de cette obligation, une thermographie une à deux fois par an sur les armoires critiques détecte les échauffements avant la panne : le meilleur rapport entre coût et risque évité."
+          },
+          {
+            "question": "Comment réduire les pannes électriques d'un atelier ?",
+            "reponse": "Réenclencher et attendre la prochaine fois ne règle rien : le problème revient, un peu plus cher à chaque tour. Trois moyens, dans l'ordre : traiter les causes racines des défauts déjà survenus, programmer des contrôles préventifs ciblés sur les équipements critiques, et remettre à niveau les installations vieillissantes plutôt que de les rafistoler. Le retour se mesure en immobilisations évitées."
+          },
+          {
+            "question": "Fabriquez-vous des pièces ?",
+            "reponse": "Non : pas d'usinage de pièces, pas de tôlerie. Un besoin d'usinage est confié à un atelier partenaire, et nous posons la pièce. Nos clients usineurs, eux, comptent sur nous pour la disponibilité de leurs machines d'usinage."
+          },
+          {
+            "question": "Vendez-vous du matériel électrique ?",
+            "reponse": "Non, et c'est un avantage à connaître : aucun lien commercial avec un fabricant, donc un conseil de remplacement indépendant de tout catalogue. Le second avantage suit : nous proposons systématiquement la solution la plus économique à qualité égale."
+          },
+          {
+            "question": "Comment devenir technicien de maintenance électrique ?",
+            "reponse": "Le métier recrute plus vite que les écoles ne forment, et comprendre les parcours aide à évaluer un prestataire : demandez toujours d'où viennent ses techniciens. Du CAP BEP au bac pro : le bac pro MELEC forme aux installations électriques, le bac pro maintenance forme au dépannage de systèmes de production. Puis BTS et licence professionnelle : électrotechnique, maintenance des systèmes, informatique industrielle. Une certification professionnelle en électrotechnique s'obtient également en reconversion, en centre de formation ou en alternance. Viennent ensuite les formations complémentaires : habilitations électriques, formation automatisme, formation soudage pour les profils polyvalents, formation robot pour les usines robotisées."
+          },
+          {
+            "question": "Que recherchez-vous chez un électricien de maintenance ?",
+            "reponse": "Chaque technicien de maintenance industrielle passe la même sélection : une épreuve technique sur cas réels et un entretien comportemental. La sécurité comme réflexe : consignation, EPI, respect des consignes, quelle que soit l'urgence. Le sens du client : expliquer simplement ce qui s'est passé, au chef d'atelier comme à la direction technique. Et une formation maintenance qui ne s'arrête pas à l'embauche, habilitations, automatisme, nouveaux matériels, pour garder chaque compétence à jour. Nos collaborateurs travaillent au sein d'équipes stables. Technicienne, technicien de maintenance : nous recrutons en permanence, dans toute la France, avec un accès direct aux usines les plus intéressantes : contactez-nous directement."
           }
         ]
       },

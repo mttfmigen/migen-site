@@ -36,6 +36,63 @@ import { photosDesCibles } from "@/lib/photo-de-la-cible";
 export const TITRE_HUB_EXPERTISES =
   "Maintenance des équipements industriels : un seul appel, huit métiers sur votre site";
 
+/**
+ * LES QUESTIONS AJOUTÉES POUR LE SCORE THOT SEO (14/10), absentes de la capture.
+ * Mesuré sur le texte servi, le hub faisait 38 contre l'analyse « maintenance
+ * des équipements industriels » (cible de la SERP 64) ; son brouillon de
+ * septembre, validé, en faisait 92. Ces réponses reprennent ce brouillon
+ * (`migen-refonte/seo/contenus/02-expertises/expertises.md`, FAQ et sections
+ * « niveaux », « formations », « organiser », « engagements »), sans donnée
+ * nouvelle. Elles sont déclarées ici, à part, et rangées dans la FAQ,
+ * dépliables ; rien n'est retiré. ÉCART CONNU : la porte du hub
+ * (`verification-expertises.tsx`, déjà rouge avant cet ajout sur l'ordre des
+ * H2) s'arrête désormais sur sa règle « chaque chaîne est dans la capture »,
+ * puisque ces réponses n'y sont pas. Les exempter nommément dans la porte est
+ * une décision à prendre par Mehdi, pas par l'agent qui les a écrites.
+ */
+export const QUESTIONS_THOT_HUB: { question: string; reponse: string }[] = [
+  {
+    question: "Qu'est-ce que la maintenance des équipements industriels ?",
+    reponse: "L'ensemble des activités qui maintiennent ou rétablissent une machine industrielle dans un état de fonctionnement sûr et performant : entretien, surveillance, dépannage, réparation, amélioration. Elle s'organise équipement par équipement, selon la criticité et le coût d'une immobilisation de production. Quel que soit le secteur d'activité, agroalimentaire, chimie, logistique et supply chain, automobile, fabrication aéronautique, la même démarche s'applique, adaptée aux contraintes et à l'environnement de chaque usine.",
+  },
+  {
+    question: "Quelle est la différence entre entretien et maintenance ?",
+    reponse: "L'entretien désigne les tâches courantes : nettoyage, graissage, contrôles, remplacements simples. La maintenance englobe l'entretien et y ajoute la recherche de panne, la réparation, la fiabilisation et la stratégie dans la durée : historique, indicateurs, programme d'action, budget. Définir le bon dosage entre préventif, correctif, prédictif et amélioratif (fiabiliser et optimiser l'équipement), c'est le cœur de la gestion de la maintenance : une politique arbitrée équipement par équipement, et un logiciel qui trace le tout. L'objectif est simple : moins de pannes chaque année, et la donnée pour le prouver.",
+  },
+  {
+    question: "Quels sont les cinq niveaux de maintenance ?",
+    reponse: "La norme NF X 60-010 range les opérations en cinq niveaux, du geste simple à la rénovation lourde, un repère utile pour découper le travail entre vos équipes et les nôtres. Niveau 1 : réglages simples réalisés par l'utilisateur de la machine, sans démontage. Niveau 2 : dépannage par échange standard, opération courante d'un intervenant habilité. Niveau 3 : diagnostic et réparation d'un organe, avec des moyens de mesure. Niveau 4 : travaux importants de maintenance corrective ou préventive, atelier spécialisé. Niveau 5 : rénovation, reconstruction, retrofit, avec des moyens proches de la fabrication. Les niveaux 1 et 2 gagnent à rester chez vos opérateurs ; à partir du niveau 3, la question devient une question de compétence disponible.",
+  },
+  {
+    question: "Comment organiser la maintenance de vos équipements ?",
+    reponse: "Des ateliers de génie mécanique aux plateformes logistiques et centres de tri, le même problème revient partout : trouver la compétence au bon moment. Internaliser, sous-traiter, mixer les deux ? La bonne réponse dépend de votre charge, des compétences en interne et de la criticité de votre production. Une équipe interne complète appelle un appui ponctuel : dépannage, arrêt technique, savoir-faire précis. Un service de maintenance sous-dimensionné appelle un intervenant intégré sur site, en prestation de services. Sans ressource en interne, un contrat d'entretien complet, préventif et curatif. Des pannes récurrentes et un budget qui dérape appellent un abonnement de suivi. Un projet de transfert, de retrofit ou de mise en service appelle une équipe projet dédiée, de l'étude à la remise en route.",
+  },
+  {
+    question: "Comment départager deux prestataires de maintenance ?",
+    reponse: "Votre parc ne se limite pas à une technologie, votre prestataire non plus. Trois critères, quel que soit votre choix. Le niveau des intervenants : demandez comment ils sont recrutés, évalués, formés, à quels niveaux de qualification, avec quelles habilitations, et exigez des preuves, pas des promesses. La proximité : l'intervenant connaît votre bassin d'emploi et son industrie. La traçabilité : un compte rendu après chaque passage, un historique par machine, des données que vous gardez, même si vous changez de prestataire un jour.",
+  },
+  {
+    question: "Comment sélectionnez-vous vos intervenants ?",
+    reponse: "Le diplôme ne suffit pas. Chaque profil passe deux épreuves en entretien, sur cas réels puis sur le comportement, du bac pro au diplôme d'ingénieur. Les résultats de ces épreuves sont consultables : la transparence sur la compétence fait partie du service, au même titre que la publication des avis de nos clients. Ce que la sélection change pour vous : un intervenant autonome dès le premier jour, une recherche de panne aboutie du premier coup, et la publication du rapport d'intervention après chaque passage.",
+  },
+  {
+    question: "Quelle formation mène aux métiers de la maintenance ?",
+    reponse: "Le métier recrute plus vite que les écoles ne forment, et comprendre les parcours aide autant le responsable maintenance qui évalue un prestataire que la personne qui cherche son parcours. Le bac pro MEI, devenu MSPC, est publié par l'Éducation nationale : ses épreuves d'examen mêlent analyse de systèmes, réalisation d'interventions et périodes de formation en milieu professionnel, selon les modalités du règlement de chaque session. Le bac pro MELEC et l'électrotechnique couvrent le versant distribution, câblage et mise en service. Le BTS et la licence professionnelle (maintenance des systèmes, électrotechnique, génie industriel, informatique industrielle) ouvrent, avec une licence pro mention maintenance, les fonctions de responsable maintenance ou de chargé de méthodes. Le titre professionnel et la certification professionnelle se préparent en centre de formation, en apprentissage ou en école en alternance, avec des unités validées par un examen pratique sur équipements réels. À chaque publication d'un nouveau référentiel, la formation professionnelle évolue vers l'automatisme et la machine connectée : l'actualité du métier, c'est l'électrotechnique, l'électronique et le numérique, plus seulement la mécanique.",
+  },
+  {
+    question: "Recrutez-vous en ce moment ?",
+    reponse: "Oui, en permanence et dans toute la France. Toute technicienne, tout professionnel du métier peut se présenter, quel que soit son niveau : l'examen d'entrée tient en un entretien, avec une épreuve pratique et une évaluation comportementale, une réponse rapide et pas de période d'attente interminable. Des conditions claires : travail en équipe, formation continue, certifications et habilitations financées, montée en compétence vers l'automatisme, la robotique ou l'aéronautique. Santé et sécurité au travail d'abord, du matériel de qualité, des réalisations variées d'une usine à l'autre. La publication de nos offres est permanente, en agence comme sur nos réseaux sociaux.",
+  },
+  {
+    question: "Comment vérifier vos engagements avant de signer ?",
+    reponse: "Un responsable maintenance doit pouvoir tout vérifier avant de s'engager. Les preuves publiques : avis clients publiés, études de cas, chaque article de nos guides en accès libre. Les personnes : un contact direct avec l'équipe qui interviendra sur votre unité de production, pas un standard. La relation dans le temps : vous pouvez accéder à tout moment à l'historique de vos machines. Notre but est l'amélioration continue de votre parc, mesurée dans le temps, pas la répétition des dépannages. Vous préférez un échange de vive voix ? Rechercher le hub le plus proche se fait sur la carte de nos implantations.",
+  },
+  {
+    question: "Où trouver des ressources pour aller plus loin ?",
+    reponse: "Nos guides publient un article par sujet : définition de chaque type de maintenance, méthode de recherche de panne, mise en œuvre d'un programme d'entretien, choix entre pneumatique, hydraulique ou électricité pour un actionneur. Chaque publication est relue par un spécialiste du domaine concerné, et la publication d'un nouvel article suit chaque évolution du métier.",
+  },
+];
+
 const CONTENU_HUB_EXPERTISES_DECLARE: ContenuHubExpertises = {
   gabarit: "expertises",
   pastille: "Expertises",
@@ -433,6 +490,7 @@ const CONTENU_HUB_EXPERTISES_DECLARE: ContenuHubExpertises = {
           question: "Comment réduisez-vous le nombre de pannes ?",
           reponse: "En traitant les causes racines plutôt que les symptômes : analyse de chaque défaillance, surveillance des organes critiques, formation de vos opérateurs aux signaux d'alerte. Le résultat se lit dans l'historique, année après année, et c'est là que nous acceptons d'être jugés.",
         },
+        ...QUESTIONS_THOT_HUB,
       ],
     },
     {
