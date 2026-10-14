@@ -499,3 +499,26 @@ recomposée (« Un parc entier à mettre sous suivi ? Avant de vous engager,
 l'audit et conseil en maintenance chiffre… »), deux phrases de la fiche
 cousues sans le lien vers Zéro arrêt. **À trancher** si ces trois pages
 doivent retrouver leurs liens.
+
+---
+
+## I. Lot contact, maquette mobile v2 (14/10) : la copie qui diffère, NON réécrite
+
+`/contact/` (`app/contact/page.tsx`, `components/site/contact/`). L'écran
+contact de la maquette mobile v2 (m-CT, dc.html bloc `isContact`) a sa propre
+copie de haut de page. Le site sert celle de l'écran de bureau « Contact /
+devis », mesurée contre la maquette vivante par
+`components/site/contact/verification-contact.tsx`. Rien n'a été réécrit :
+seule l'échelle mobile a été portée. À trancher par Mehdi.
+
+| Où | Le site sert (et la maquette de bureau) | La maquette mobile v2 écrit |
+|---|---|---|
+| Sur-titre | pastille « Rappel dans l’heure », puis « Astreinte » | « Nous contacter » |
+| h1 | « Dites-nous ce qu’il faut tenir. On vous rappelle dans l’heure. » | « Décrivez votre besoin » |
+| Chapô | « Un chargé d’affaires étudie votre demande, sélectionne les techniciens adaptés et vous les présente pour validation avant toute intervention. Ligne à l’arrêt ? Appelez directement l’astreinte. » | « Un chargé d’affaires vous rappelle dans l’heure, du lundi au vendredi de 8h00 à 18h30. » |
+| Bouton d’envoi (lot formulaire, `components/formulaire/`, non touché ici) | « On me rappelle dans l’heure » | « Envoyer ma demande » |
+
+Les capsules (« Les six offres », l’astreinte), les trois repères et les
+sections « Après votre demande », « Nos agences » et « Vous êtes
+technicien ? » n’existent pas sur l’écran mobile : elles sont gardées,
+resserrées ou repliées, jamais retirées.

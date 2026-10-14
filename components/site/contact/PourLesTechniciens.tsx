@@ -44,6 +44,10 @@ import styles from "./Contact.module.css";
  *     même oubli : un trou double avant elle, et la carte candidature COLLÉE
  *     au pied de page, sans un pixel d'air. La règle de la maquette est
  *     maintenant appliquée à la bonne section.
+ *   · SOUS 881 PX, ELLE PREND LA CARTE DES RANGÉES REPLIÉES qui la précèdent
+ *     (`Contact.module.css`), sans se replier : c'est déjà un lien d'une
+ *     ligne. L'écran contact de la maquette mobile v2 ne la porte pas ; la
+ *     garder visible laisse au candidat égaré son chemin.
  */
 
 /** L'habillage de verre de la maquette, recopié valeur par valeur. */
@@ -58,7 +62,10 @@ const VERRE_CARTE: CSSProperties = {
 
 export default function PourLesTechniciens() {
   return (
-    <section style={{ padding: "var(--sec) 0 var(--sec)" }}>
+    <section
+      className={styles.sectionFin}
+      style={{ padding: "var(--sec) 0 var(--sec)" }}
+    >
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <div data-reveal="">
           <Link
@@ -75,6 +82,7 @@ export default function PourLesTechniciens() {
           >
             <div>
               <div
+                className={styles.surTitrePli}
                 style={{
                   font: "600 10.5px var(--fb)",
                   letterSpacing: ".14em",
@@ -86,6 +94,7 @@ export default function PourLesTechniciens() {
                 Vous êtes technicien&nbsp;?
               </div>
               <h2
+                className={styles.titrePli}
                 style={{
                   font: "600 calc(22px * var(--ts)) var(--ft)",
                   letterSpacing: "-.035em",
@@ -96,6 +105,7 @@ export default function PourLesTechniciens() {
                 Postulez directement en ligne
               </h2>
               <p
+                className={styles.chapoPli}
                 style={{
                   font: "400 13.5px/1.5 var(--fb)",
                   color: "var(--ink2)",

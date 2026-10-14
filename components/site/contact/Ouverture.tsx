@@ -29,10 +29,19 @@ import styles from "./Contact.module.css";
  * (écran « Contact / devis ») et n'existent pas sur l'écran mobile v2, qui
  * enchaîne fil d'Ariane, titre, chapô, formulaire. Les retirer sous 881 px
  * perdrait leur texte : ils restent, resserrés à l'échelle mobile de la
- * maquette (boutons `600 14.5px`, tuile de chiffre `600 21px/1.08`, libellé
- * `12.5px`). Son fil d'Ariane, lui, n'est PAS repris : il AJOUTERAIT du texte
- * que le bureau ne rend pas, et la preuve du lot est un `textContent`
- * identique aux deux largeurs.
+ * maquette (boutons `600 14px` sur une rangée à 8 px d'écart, comme la paire
+ * « bouton + Appeler » de dc.html L127 ; tuile de chiffre `600 21px/1.08`,
+ * libellé `12.5px`, les trois repères sur une seule rangée).
+ *
+ * LE FIL D'ARIANE DE LA MAQUETTE est posé par `app/contact/page.tsx`, en tête
+ * du `<main>` et sous 881 px seulement (`data-mobile-seulement`) : le garder
+ * hors de ce composant laisse au bureau son rendu exact.
+ *
+ * LA CARTE DE VERRE DU FORMULAIRE TOMBE SOUS 881 PX : l'écran mobile v2 pose
+ * son formulaire à même la page (`<form … margin-top:20px>`, sans carte), ses
+ * champs blancs sur le fond gris. Seul l'habillage tombe (fond, filet, ombre,
+ * rembourrage) : le titre « Décrire mon besoin » et la mention « Rappel dans
+ * l'heure » restent au-dessus des champs.
  *
  * Porte : `bun components/site/contact/verification-mobile.tsx --controle`.
  */
@@ -248,6 +257,7 @@ export default function Ouverture() {
         <div style={{ position: "relative" }}>
           <div
             id="besoin"
+            className={styles.carteFormulaireMobile}
             style={{
               position: "relative",
               background: "rgba(255,255,255,var(--gl-a))",

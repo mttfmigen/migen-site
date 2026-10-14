@@ -33,7 +33,12 @@
  *      portage est additif, il n'a pas le droit de toucher au gabarit bureau
  *      que `verification-contact.tsx` mesure contre la maquette vivante.
  *
- * Le mode `--controle` rejoue huit régressions et exige que CHACUNE fasse
+ *   6. SOUS LE FORMULAIRE, « Après votre demande » et « Nos agences » SE
+ *      REPLIENT (l'écran mobile v2 s'arrête au formulaire) : un `<details>`
+ *      rendu ouvert, titre et chapô dans la bascule, contenu intact. La bande
+ *      technicien reste un lien, non replié.
+ *
+ * Le mode `--controle` rejoue douze régressions et exige que CHACUNE fasse
  * échouer la porte : une porte qui ne sait pas échouer ne prouve rien.
  */
 
@@ -41,7 +46,10 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { renderToStaticMarkup } from "react-dom/server";
 
+import Agences from "@/components/site/contact/Agences";
+import ApresDemande from "@/components/site/contact/ApresDemande";
 import Ouverture from "@/components/site/contact/Ouverture";
+import PourLesTechniciens from "@/components/site/contact/PourLesTechniciens";
 
 const CONTROLE = process.argv.includes("--controle");
 
@@ -131,7 +139,20 @@ const CLASSES_MOBILES = [
   "repereMobile",
   "traitMobile",
   "valeurMobile",
+  "carteFormulaireMobile",
 ] as const;
+
+/** Les classes des RANGÉES REPLIÉES sous le formulaire, par fichier qui les
+ *  pose. Mêmes contrôles de portée que celles du haut de page. */
+const CLASSES_REPLIS: Readonly<Record<string, readonly string[]>> = {
+  "ApresDemande.tsx": ["sectionPliee", "surTitrePli", "titrePli", "chapoPli", "etapeMobile"],
+  "Agences.tsx": ["sectionPliee", "surTitrePli", "titrePli", "chapoPli", "listeAgencesMobile"],
+  "PourLesTechniciens.tsx": ["sectionFin", "surTitrePli", "titrePli", "chapoPli"],
+};
+const TOUTES_CLASSES = [
+  ...CLASSES_MOBILES,
+  ...new Set(Object.values(CLASSES_REPLIS).flat()),
+];
 
 /** Corps de la règle d'un sélecteur dans un bloc CSS. */
 function regle(corps: string, classe: string): string {
@@ -184,7 +205,7 @@ function verifieFeuille(feuilleBrute: string): void {
   );
 
   // Portée : chaque classe mobile vit DANS le bloc media, et nulle part ailleurs.
-  for (const classe of CLASSES_MOBILES) {
+  for (const classe of TOUTES_CLASSES) {
     let position = css.indexOf(`.${classe}`);
     assert.ok(position >= 0, `« .${classe} » absente de la feuille`);
     while (position >= 0) {
@@ -309,6 +330,93 @@ function verifieClasses(source: string): void {
 }
 verifieClasses(SOURCE_OUVERTURE);
 
+const SOURCES_REPLIS: Readonly<Record<string, string>> = Object.fromEntries(
+  Object.keys(CLASSES_REPLIS).map((fichier) => [
+    fichier,
+    readFileSync(new URL(`./${fichier}`, import.meta.url), "utf8"),
+  ]),
+);
+function verifieClassesReplis(sources: Readonly<Record<string, string>>): void {
+  for (const [fichier, classes] of Object.entries(CLASSES_REPLIS)) {
+    for (const classe of classes) {
+      assert.ok(
+        sources[fichier].includes(`styles.${classe}`),
+        `la classe « ${classe} » n'est posée sur aucun élément de ${fichier}`,
+      );
+    }
+  }
+}
+verifieClassesReplis(SOURCES_REPLIS);
+
+// ────────────────────── 3 bis. les rangées repliées sous le formulaire
+
+/* L'écran contact de la maquette mobile v2 s'arrête au formulaire. Les deux
+   sections qui suivent se REPLIENT (jamais retirées) : un `<details>` rendu
+   OUVERT par le serveur (le bureau et Google lisent tout), refermé sous
+   881 px par `SectionPliableMobile`. Le titre ET le chapô vivent dans la
+   bascule : le chapô est l'accroche de la rangée repliée, sans phrase
+   ajoutée. La bande technicien, elle, n'est pas un repli : c'est un lien. */
+interface Repli {
+  readonly nom: string;
+  readonly html: string;
+  readonly titre: string;
+  readonly chapo: string;
+  readonly corps: string;
+}
+const REPLIS: readonly Repli[] = [
+  {
+    nom: "Après votre demande",
+    html: renderToStaticMarkup(<ApresDemande />),
+    titre: "Trois étapes, un interlocuteur nommé.",
+    chapo: "Pas de standard ni de ticket : la personne qui vous rappelle",
+    corps: "Vous rencontrez chaque profil retenu avant son arrivée sur site.",
+  },
+  {
+    nom: "Nos agences",
+    html: renderToStaticMarkup(<Agences />),
+    titre: "Quatre agences, dix hubs de techniciens.",
+    chapo: "Le technicien part du hub le plus proche de votre site",
+    corps: "Toutes les implantations et les hubs",
+  },
+];
+
+function verifieRepli(repli: Repli): void {
+  const details = /<details\b[^>]*>/.exec(repli.html);
+  assert.ok(details, `« ${repli.nom} » ne se replie pas : aucun <details>`);
+  assert.ok(
+    /\sopen=""/.test(details[0]) && details[0].includes("data-pliable-mobile"),
+    `« ${repli.nom} » doit être rendu OUVERT par le serveur (repli au chargement, sous 881 px seulement)`,
+  );
+  const debut = repli.html.indexOf("<summary");
+  const fin = repli.html.indexOf("</summary>");
+  assert.ok(debut >= 0 && fin > debut, `« ${repli.nom} » n'a pas de bascule`);
+  const bascule = texteNu(repli.html.slice(debut, fin));
+  assert.ok(
+    bascule.includes(normalise(repli.titre)),
+    `« ${repli.nom} » : le titre n'est plus dans la bascule, la rangée repliée serait muette`,
+  );
+  assert.ok(
+    bascule.includes(normalise(repli.chapo)),
+    `« ${repli.nom} » : le chapô n'est plus dans la bascule, la rangée repliée perd son accroche`,
+  );
+  assert.ok(
+    texteNu(repli.html.slice(fin)).includes(normalise(repli.corps)),
+    `« ${repli.nom} » : le contenu replié a perdu du texte`,
+  );
+}
+REPLIS.forEach(verifieRepli);
+
+const HTML_TECHNICIENS = renderToStaticMarkup(<PourLesTechniciens />);
+function verifieBandeTechnicien(rendu: string): void {
+  assert.ok(
+    !rendu.includes("<details"),
+    "la bande technicien est un lien d'une ligne : la replier cacherait son chemin au candidat",
+  );
+  // Sous bun, `next/link` rend le chemin sans sa barre finale (`/carriere`).
+  assert.ok(/<a\b[^>]*href="\/carriere\/?"/.test(rendu), "la bande technicien a perdu son lien");
+}
+verifieBandeTechnicien(HTML_TECHNICIENS);
+
 /* Le bureau est INTACT : les styles en ligne mesurés par
    `verification-contact.tsx` contre la maquette vivante sont toujours là. */
 const BUREAU_INTACT = [
@@ -330,7 +438,8 @@ console.log(
   "Haut de page mobile v2 de /contact/ : valeurs relues dans la maquette " +
     `(h1 ${H1_TAILLE}px/${H1_INTERLIGNE} à ${H1_INTERLETTRE}em, chapô ${CHAPO_TAILLE}px/${CHAPO_INTERLIGNE}, ` +
     `gouttière ${GOUTTIERE_PX}px, tuile ${TUILE_TAILLE}px/${TUILE_INTERLIGNE}), ` +
-    `${CLASSES_MOBILES.length} classes sous un seul bloc media, ${TEXTE_DU_HAUT.length} phrases tenues, 3 liens, bureau intact.`,
+    `${TOUTES_CLASSES.length} classes sous un seul bloc media, ${TEXTE_DU_HAUT.length} phrases tenues, 3 liens, bureau intact, ` +
+    `${REPLIS.length} sections repliées (titre et chapô dans la bascule), bande technicien en lien.`,
 );
 
 // ─────────────────────────────────────────────────── 4. contrôles négatifs
@@ -399,4 +508,33 @@ controle("« styles.enTeteMobile » retirée d'Ouverture.tsx", () =>
   verifieClasses(SOURCE_OUVERTURE.replace("styles.enTeteMobile", "")),
 );
 
-console.log("\nLa porte sait échouer : 8 contrôles négatifs tenus.");
+// 9. Le repli RETIRÉ : la section n'est plus un <details>.
+controle("« Après votre demande » rendue sans <details>", () =>
+  verifieRepli({
+    ...REPLIS[0],
+    html: REPLIS[0].html.replace(/<details\b[^>]*>/, "<div>"),
+  }),
+);
+
+// 10. La bascule vidée : titre et chapô sortis du <summary>.
+controle("titre et chapô sortis de la bascule des agences", () =>
+  verifieRepli({
+    ...REPLIS[1],
+    html: REPLIS[1].html.replace(/(<summary\b[^>]*>)/, "$1</summary>"),
+  }),
+);
+
+// 11. La bande technicien repliée.
+controle("bande technicien passée en <details>", () =>
+  verifieBandeTechnicien(`<details open="">${HTML_TECHNICIENS}</details>`),
+);
+
+// 12. Une classe de repli n'est plus posée.
+controle("« styles.chapoPli » retirée d'Agences.tsx", () =>
+  verifieClassesReplis({
+    ...SOURCES_REPLIS,
+    "Agences.tsx": SOURCES_REPLIS["Agences.tsx"].replace("styles.chapoPli", ""),
+  }),
+);
+
+console.log("\nLa porte sait échouer : 12 contrôles négatifs tenus.");

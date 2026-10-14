@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { FilArianeVue } from "@/components/cocon/FilAriane";
 import Agences from "@/components/site/contact/Agences";
 import ApresDemande from "@/components/site/contact/ApresDemande";
 import Ouverture from "@/components/site/contact/Ouverture";
@@ -97,6 +98,14 @@ export default function Contact() {
     // gabarit bureau.
     <div className="mg-site">
       <main style={{ paddingTop: "96px" }}>
+        {/* Le fil d'Ariane de l'écran contact de la maquette mobile v2
+            (« Accueil › Contact »), sous 881 px seulement : au-dessus,
+            `data-mobile-seulement` le masque et le bureau garde son rendu.
+            Même rangée que les autres gabarits (`FilArianeVue`, séparateur
+            « / »), et clos par un blanc pour ne coller aucun mot au héros. */}
+        <div data-mobile-seulement="" style={{ padding: "14px 18px 0" }}>
+          <FilArianeVue etapes={[{ titre: "Contact", path: CHEMIN }]} />{" "}
+        </div>
         <Ouverture />
         <ApresDemande />
         <Agences />

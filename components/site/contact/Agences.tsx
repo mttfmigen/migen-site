@@ -1,6 +1,12 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
 
+import SectionPliableMobile, {
+  ENTETE_DANS_BASCULE,
+} from "@/components/site/blocs/SectionPliableMobile";
+
+import styles from "./Contact.module.css";
+
 /**
  * « Nos agences » : la liste des implantations.
  * Porté de `maquette/accueil-rendu.html`, lignes 3012 à 3021.
@@ -41,6 +47,12 @@ import type { CSSProperties } from "react";
  *    bas revient à 0, et c'est `PourLesTechniciens` qui ferme. Mesuré en
  *    production avant correction : 120 / 120 / 240 / 0 px entre contenus, la
  *    carte candidature collée au pied de page.
+ *
+ * 4. SOUS 881 PX, LA SECTION EST UNE RANGÉE REPLIÉE, comme « Après votre
+ *    demande » : l'écran contact de la maquette mobile v2 n'a pas de liste
+ *    d'agences, et « replier, jamais retirer » la garde, fermée. L'en-tête
+ *    passe tel quel dans la bascule, le bureau ne bouge pas. Voir
+ *    `ApresDemande.tsx` et `Contact.module.css`.
  */
 
 interface Agence {
@@ -63,111 +75,123 @@ const RANGEE: CSSProperties = {
 };
 
 export default function Agences() {
+  const enTete = (
+    <div
+      className="mg-r2"
+      style={{
+        ...ENTETE_DANS_BASCULE,
+        display: "grid",
+        gridTemplateColumns: "1.1fr .9fr",
+        gap: 56,
+        alignItems: "end",
+        marginBottom: 34,
+      }}
+    >
+      <div>
+        <div
+          className={styles.surTitrePli}
+          style={{
+            font: "600 11.5px var(--fb)",
+            letterSpacing: ".14em",
+            textTransform: "uppercase",
+            color: "var(--acc)",
+            marginBottom: 16,
+          }}
+        >
+          Nos agences
+        </div>
+        <h2
+          className={styles.titrePli}
+          style={{
+            font: "600 calc(clamp(30px,3.3vw,48px) * var(--ts))/1.06 var(--ft)",
+            letterSpacing: "-.04em",
+            margin: 0,
+            maxWidth: "22ch",
+            textWrap: "balance",
+          }}
+        >
+          Quatre agences, dix hubs de techniciens.
+        </h2>
+      </div>
+      <p
+        className={styles.chapoPli}
+        style={{
+          font: "400 16.5px/1.7 var(--fb)",
+          color: "var(--ink2)",
+          margin: 0,
+          maxWidth: "46ch",
+        }}
+      >
+        Le technicien part du hub le plus proche de votre site, jamais du
+        siège.
+      </p>
+    </div>
+  );
+
   return (
-    <section style={{ padding: "var(--sec) 0 0" }}>
+    <section
+      className={styles.sectionPliee}
+      style={{ padding: "var(--sec) 0 0" }}
+    >
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <div data-reveal="">
-          <div
-            className="mg-r2"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1.1fr .9fr",
-              gap: 56,
-              alignItems: "end",
-              marginBottom: 34,
-            }}
-          >
-            <div>
-              <div
-                style={{
-                  font: "600 11.5px var(--fb)",
-                  letterSpacing: ".14em",
-                  textTransform: "uppercase",
-                  color: "var(--acc)",
-                  marginBottom: 16,
-                }}
-              >
-                Nos agences
-              </div>
-              <h2
-                style={{
-                  font: "600 calc(clamp(30px,3.3vw,48px) * var(--ts))/1.06 var(--ft)",
-                  letterSpacing: "-.04em",
-                  margin: 0,
-                  maxWidth: "22ch",
-                  textWrap: "balance",
-                }}
-              >
-                Quatre agences, dix hubs de techniciens.
-              </h2>
-            </div>
-            <p
+          <SectionPliableMobile enTete={enTete}>
+            <div
+              className={styles.listeAgencesMobile}
               style={{
-                font: "400 16.5px/1.7 var(--fb)",
-                color: "var(--ink2)",
-                margin: 0,
-                maxWidth: "46ch",
+                background: "rgba(255,255,255,var(--gl-a))",
+                backdropFilter: "blur(var(--gl-b)) saturate(150%)",
+                WebkitBackdropFilter: "blur(var(--gl-b)) saturate(150%)",
+                border: "1px solid var(--gbd)",
+                boxShadow:
+                  "0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3)",
+                borderRadius: "var(--rad)",
+                padding: "12px 30px 18px",
               }}
             >
-              Le technicien part du hub le plus proche de votre site, jamais du
-              siège.
-            </p>
-          </div>
-
-          <div
-            style={{
-              background: "rgba(255,255,255,var(--gl-a))",
-              backdropFilter: "blur(var(--gl-b)) saturate(150%)",
-              WebkitBackdropFilter: "blur(var(--gl-b)) saturate(150%)",
-              border: "1px solid var(--gbd)",
-              boxShadow:
-                "0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3)",
-              borderRadius: "var(--rad)",
-              padding: "12px 30px 18px",
-            }}
-          >
-            {AGENCES.map((agence) => (
-              <div key={agence.nom} style={RANGEE}>
-                <div
-                  style={{
-                    font: "600 15px var(--ft)",
-                    letterSpacing: "-.02em",
-                    color: "var(--ink)",
-                  }}
-                >
-                  {agence.nom}
-                </div>
-                {agence.adresse ? (
+              {AGENCES.map((agence) => (
+                <div key={agence.nom} style={RANGEE}>
                   <div
                     style={{
-                      font: "400 13.5px/1.55 var(--fb)",
-                      color: "var(--ink3)",
-                      marginTop: 3,
+                      font: "600 15px var(--ft)",
+                      letterSpacing: "-.02em",
+                      color: "var(--ink)",
                     }}
                   >
-                    {agence.adresse}
+                    {agence.nom}
                   </div>
-                ) : null}
+                  {agence.adresse ? (
+                    <div
+                      style={{
+                        font: "400 13.5px/1.55 var(--fb)",
+                        color: "var(--ink3)",
+                        marginTop: 3,
+                      }}
+                    >
+                      {agence.adresse}
+                    </div>
+                  ) : null}
+                </div>
+              ))}
+              <div style={RANGEE}>
+                <Link
+                  href="/implantations/"
+                  style={{
+                    font: "600 13.5px var(--fb)",
+                    color: "var(--acc)",
+                    // Seul dans sa rangée, donc une cible tactile à lui : mesuré
+                    // à 19 px de haut sur téléphone, sous les 24 px du critère
+                    // 2.5.8 de la WCAG 2.2. Le remplissage agrandit la zone de
+                    // contact sans déplacer le texte.
+                    display: "inline-block",
+                    padding: "3px 0",
+                  }}
+                >
+                  Toutes les implantations et les hubs
+                </Link>
               </div>
-            ))}
-            <div style={RANGEE}>
-              <Link
-                href="/implantations/"
-                style={{
-                  font: "600 13.5px var(--fb)",
-                  color: "var(--acc)",
-                  // Seul dans sa rangée, donc une cible tactile à lui : mesuré
-                  // à 19 px de haut sur téléphone, sous les 24 px du critère
-                  // 2.5.8 de la WCAG 2.2. Le remplissage agrandit la zone de
-                  // contact sans déplacer le texte.
-                  display: "inline-block",
-                  padding: "3px 0",
-                }}
-              >
-                Toutes les implantations et les hubs
-              </Link>
             </div>
-          </div>
+          </SectionPliableMobile>
         </div>
       </div>
     </section>
