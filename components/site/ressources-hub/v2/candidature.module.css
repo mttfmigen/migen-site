@@ -30,6 +30,20 @@
   filter: brightness(0.93);
 }
 
+/* Sur deux colonnes, le formulaire de la maquette mesure 538 px à 1440 px :
+   ses champs nombre imposent leur largeur et mordent de 12 px sur la marge
+   droite de 40 px. Recopier ce mécanisme ferait déborder la carte de 104 px à
+   1280 px ; on reprend donc son RÉSULTAT (marge droite de 28 px), qui rend
+   les 14 pastilles sur 4 rangées comme la maquette, sans aucun débordement. */
+@media (min-width: 1001px) {
+  .carte {
+    padding-right: 28px !important;
+  }
+  .basDeux {
+    grid-template-columns: minmax(0, 252fr) minmax(0, 275fr) !important;
+  }
+}
+
 /* `.rs-form2` de la maquette : une colonne sous 640 px. */
 @media (max-width: 640px) {
   .form2 {

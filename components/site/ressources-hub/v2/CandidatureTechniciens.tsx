@@ -331,7 +331,7 @@ function Formulaire({ onEnvoye }: { onEnvoye: () => void }) {
           })}
         </div>
       </div>
-      <div className={c.form2} style={DEUX}>
+      <div className={`${c.form2} ${c.basDeux}`} style={DEUX}>
         <Champ etiquette="Temps de trajet maximal *">
           <Liste nom="trajet" vide="Entre domicile et site" options={TRAJETS} />
         </Champ>
@@ -382,7 +382,7 @@ function Formulaire({ onEnvoye }: { onEnvoye: () => void }) {
       </div>
       {/* Information au point de collecte (RGPD, articles 13 et 14). */}
       <p style={{ margin: 0, font: "400 12px/1.5 var(--fb)", color: "var(--ink2)" }}>
-        Données traitées par Migen pour étudier votre candidature. Droits et durées de conservation&nbsp;:{" "}
+        Données traitées par Migen pour étudier votre candidature, enregistrées dans Teamtailor. Droits et durées de conservation&nbsp;:{" "}
         <Link href="/confidentialite/" style={{ textDecoration: "underline" }}>
           politique de confidentialité
         </Link>
@@ -485,6 +485,7 @@ export default function CandidatureTechniciens() {
           </div>
         </div>
         <div
+          className={c.carte}
           style={{
             borderRadius: 32,
             background: "var(--glass)",
