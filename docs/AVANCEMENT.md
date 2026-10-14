@@ -13,7 +13,7 @@ Une donnée absente s'y écrit « non calculable » avec son motif. Jamais zéro
 
 ```json avancement
 {
-  "remesureLe": "14/10/2026 à 15:00",
+  "remesureLe": "14/10/2026 à 15:02",
   "brancheDeployee": {
     "reference": "origin/phase-2-gabarits",
     "recuperee": "oui, à l’instant",
@@ -22,7 +22,7 @@ Une donnée absente s'y écrit « non calculable » avec son motif. Jamais zéro
   },
   "arbreOuTourneLeScript": {
     "branche": "worktree-wf_d782a073-806-8",
-    "tete": "1df1052",
+    "tete": "93b43a9",
     "fichiersNonCommites": 2
   },
   "contenu": {
@@ -74,6 +74,7 @@ ne sont pas relancées à chaque passage du rapport : leur horodatage fait foi.
 | Responsive, 5 largeurs, 22 pages | **non concluante** : 70 relevés sur 110, des blocs servis ouverts sous 880 px (G57) | 14/10 14:32 |
 | Blocs repliables | **163 défauts sur 1851 blocs**, « Ils nous font confiance » sans corps texte (G20) | 14/10 14:27 |
 | Plan du site et sitemap | 260 adresses des deux côtés, 260 en 200 sans redirection, **1 titre faux**, `/ressources/` (D23) | 14/10 14:47 |
+| Texte du `<main>`, 1280 px, contre l'instantané de 13h12 | **2 pages perdent du texte** sur 158 : `/plan-du-site/` 141 mots (D23), `/confidentialite/` 2 mots (D27). Aucun retrait décidé par Mehdi à citer | 14/10 15:02 |
 
 Commandes, dans l'ordre :
 
@@ -83,6 +84,7 @@ Commandes, dans l'ordre :
     SITE_URL=https://migen-site.vercel.app node scripts/verifie-responsive.mjs
     SITE_URL=https://migen-site.vercel.app node scripts/verifie-blocs-pliables.mjs
     node scripts/verifie-plan-et-sitemap.mjs https://migen-site.vercel.app
+    node scripts/instantane-texte-main.mjs prends <adresse> 1280 <après.json>, puis compare <avant.json> <après.json>
 
 ## Ce qui bloque la mise en ligne, côté code
 

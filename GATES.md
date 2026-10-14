@@ -1291,6 +1291,12 @@ toutes les pages, porter la maquette mobile v2) restent sous D1 et D16.
       QUI LA SOLDE : le lot plan-du-site, dans `lib/pages-publiees.ts`, le h1
       servi faisant foi ; `app/ressources/**` est au chantier Ressources et
       n'a pas à bouger.
+      PORTE DU TEXTE, 14/10 vers 15h, build local de la branche à `e0b9b2b`
+      contre l'instantané de 13h12 à 1280 px : « PERTE /plan-du-site/ : 141
+      mot(s) », dont « 145 », « siège Lyon, dix hubs techniciens »,
+      « interventions partout ». Les intitulés du plan sont devenus les h1
+      servis, comme le lot le demandait ; ce retrait n'a pas de décision écrite
+      de Mehdi à citer. À trancher par le lot plan-du-site.
       CHECK: if test -f scripts/verifie-plan-et-sitemap.mjs; then node scripts/verifie-plan-et-sitemap.mjs https://migen-site.vercel.app | tail -1; else p=$(curl -s https://migen-site.vercel.app/plan-du-site/ | grep -o '<main.*</main>' | grep -oE 'href="/[^"#?]*"' | sort -u | wc -l | tr -d ' '); s=$(curl -s https://migen-site.vercel.app/sitemap.xml | grep -o '<loc>' | wc -l | tr -d ' '); echo "porte du plan pas encore au depot ; plan du site : $p adresses, sitemap : $s"; fi
       EXPECT: PLAN_ET_SITEMAP_ALIGNES
 
@@ -1346,7 +1352,11 @@ toutes les pages, porter la maquette mobile v2) restent sous D1 et D16.
       La preuve au navigateur est celle que le lot remonte dans son commit :
       `verifie-tag-manager.mjs`, jeton AUCUN_TAG_AVANT_CONSENTEMENT,
       contre-essai fait. Elle n'est PAS rejouée ici (build local avec un
-      identifiant de test). Avant le lot, le 14/10 : aucune trace de
+      identifiant de test). PORTE DU TEXTE, 14/10 vers 15h, contre
+      l'instantané de 13h12 à 1280 px : « PERTE /confidentialite/ : 2
+      mot(s) : Destinataire 4) », la page que le lot modifie en ajoutant
+      Google (Tag Manager) aux destinataires. À relire par le lot
+      tag-manager. Avant le lot, le 14/10 : aucune trace de
       Google Tag Manager au dépôt ni en production. Le lot pose
       `components/consentement/TagManager.tsx`, monté dans `app/layout.tsx`
       juste après le mode consentement, qui ne charge le conteneur QUE si un
