@@ -79,13 +79,13 @@ export const LIBELLES: Record<
   mesure_audience: {
     titre: "Mesure d'audience",
     texte:
-      "Compter les visites et voir quelles pages sont lues, pour améliorer le site. Les statistiques sont agrégées, elles ne servent pas à vous contacter.",
+      "Voir quelles pages sont lues, pour améliorer celles qui vous servent et clarifier les autres. Les statistiques sont agrégées, elles ne servent pas à vous contacter.",
     destinataires: ["Google (Google Analytics 4)", "Google (Tag Manager)"],
   },
   publicite: {
     titre: "Publicité",
     texte:
-      "Savoir quelle annonce vous a amené ici, pour arrêter de payer celles qui n'intéressent personne. Rien n'est revendu.",
+      "Savoir quelle annonce vous a amené ici, pour garder celles qui vous sont utiles et arrêter celles qui n'intéressent personne. Rien n'est revendu.",
     /* 09/10, « OPENAI » RETIRÉ DE CETTE LISTE. Audit de Nathan Jorez du 09/10,
        vérifié avant de retirer : `.env.local` ne porte PAS
        NEXT_PUBLIC_OPENAI_PIXEL_SRC, la seule variable que
@@ -109,13 +109,13 @@ export const LIBELLES: Record<
   personnalisation: {
     titre: "Personnalisation des annonces",
     texte:
-      "Adapter les annonces que nous diffusons ailleurs à ce que vous avez consulté sur migen.fr. Refuser n'enlève rien au site.",
+      "Adapter nos annonces diffusées ailleurs, via Google ou LinkedIn, à ce que vous avez consulté sur migen.fr, pour qu'elles parlent de ce qui vous concerne. Refuser n'enlève rien au site.",
     destinataires: ["Google (Google Ads)", "Google (Tag Manager)", "LinkedIn"],
   },
   suivi_commercial: {
     titre: "Suivi commercial",
     texte:
-      "Rattacher votre visite à une fiche de contact dans notre outil commercial, pour que la personne qui vous répond sache ce que vous avez consulté. Refuser n'empêche pas d'envoyer un formulaire ni d'obtenir une réponse.",
+      "Suivre les pages que vous consultez et, si vous nous écrivez, les rattacher à votre fiche de contact dans notre outil commercial : la personne qui vous répond sait ce que vous avez lu, vous n'avez pas à tout réexpliquer. Refuser n'empêche pas d'envoyer un formulaire ni d'obtenir une réponse.",
     destinataires: ["HubSpot"],
   },
 };

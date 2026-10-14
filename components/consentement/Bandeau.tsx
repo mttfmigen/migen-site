@@ -86,7 +86,7 @@ export default function Bandeau() {
     >
       <div className="flex items-start gap-4">
         <h2 id="consentement-titre" className={`${s.titre} flex-1`}>
-          Vos traceurs, votre choix
+          Pour un site plus utile
         </h2>
         {/* Sortie explicite, puisque le navigateur n'en fournit pas hors
             `showModal()`. Elle ne décide rien : voir `ferme` dans etat.ts. */}
@@ -96,10 +96,10 @@ export default function Bandeau() {
       </div>
 
       <p className={s.texte}>
-        Nous déposons des traceurs pour mesurer l&apos;audience du site, savoir
-        quelles annonces vous ont amené ici et rattacher votre visite à votre
-        fiche si vous nous écrivez. Rien n&apos;est déposé avant votre accord, et vous
-        pouvez revenir sur ce choix à tout moment depuis le pied de page.{" "}
+        Des cookies nous aident à améliorer nos pages, à vous montrer des
+        annonces qui vous concernent et, si vous nous écrivez, à vous répondre
+        en sachant ce que vous avez lu. Rien ne s&apos;active sans votre accord,
+        et vous pouvez changer d&apos;avis à tout moment en pied de page.{" "}
         <a href={LIEN_CONFIDENTIALITE} className={s.lien}>
           Politique de confidentialité
         </a>

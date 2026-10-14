@@ -393,6 +393,17 @@ for (const finalite of FINALITES) {
     );
   }
 }
+// Chaque finalité garde sa phrase, rendue en entier, sans « traceur » ni la
+// promesse fausse d'« aucun cookie publicitaire ».
+for (const finalite of FINALITES) {
+  const phrase = LIBELLES[finalite].texte.replaceAll("’", "'");
+  assert.ok(texte.includes(phrase), `phrase de la finalité absente du rendu : ${finalite}`);
+}
+assert.ok(!/traceur/i.test(texte), "le panneau parle encore de « traceurs »");
+assert.ok(
+  !/aucun cookie publicitaire/i.test(texte),
+  "« aucun cookie publicitaire » est faux : Google Ads et LinkedIn sont chargés avec l'accord",
+);
 assert.ok(
   texte.includes("Suivi commercial"),
   "la finalité « suivi_commercial » a disparu : HubSpot doit rester séparé de la mesure d'audience",

@@ -288,7 +288,25 @@ assert.ok(
 );
 
 // ------------------------------------------------------- textes et interdits
-assert.ok(HTML.includes("Vos traceurs, votre choix"), "titre du bandeau perdu");
+assert.ok(
+  HTML.includes("Pour un site plus utile"),
+  "titre du bandeau perdu",
+);
+// Le bandeau parle de cookies, pas de « traceurs » (demande de Mehdi, 14/10),
+// et ne promet jamais « aucun cookie publicitaire » : Google Ads et LinkedIn
+// sont chargés derrière la finalité publicité, la phrase serait fausse.
+assert.ok(HTML.includes("cookies"), "le bandeau ne nomme plus les cookies");
+assert.ok(!/traceur/i.test(HTML), "le bandeau parle encore de « traceurs »");
+assert.ok(
+  !/aucun cookie publicitaire/i.test(HTML),
+  "« aucun cookie publicitaire » est faux : Google Ads et LinkedIn sont chargés avec l'accord",
+);
+// Rien ne s'active avant l'accord, et le retour sur le choix reste annoncé.
+assert.ok(
+  HTML.replaceAll("&#x27;", "'").includes("Rien ne s'active sans votre accord"),
+  "le bandeau ne dit plus que rien ne s'active avant l'accord",
+);
+assert.ok(HTML.includes("changer d"), "le bandeau ne dit plus qu'on peut changer d'avis");
 assert.ok(
   HTML.includes("Politique de confidentialit"),
   "lien vers la politique de confidentialité perdu",
