@@ -125,6 +125,17 @@ Seules entorses au mot pour mot, toutes journalisées dans le fichier :
 
 Les photos sont sous `https://migen.fr/wp-content/uploads/`. Elles ne sont pas encore copiées dans `public/assets/` : à faire au moment de publier, avant que l'ancien site ne s'éteigne.
 
+### Relecture du rendu, 14/10 après publication (mise en forme, aucun mot changé)
+
+Captures des 12 à 1280, 390 et 320 px, comparées au HTML WordPress. La publication avait gardé les mots mais perdu la forme :
+- **Listes rendues en paragraphes nus** : les `<li><p>` de WordPress étaient sortis en paragraphes. Externalisation (4 puces) et Savoye DimoMaint (2 listes de 3) retrouvent leur liste à puces.
+- **Sous-titres en gras devenus du texte courant** : les 25 lignes en `<strong>` de « Femmes dans l'industrie » sont des intertitres (h3) ; les 14 « Maintenance préventive : », « Inspections régulières : »... du guide retrouvent leur gras ; les sous-titres de réindustrialisation (11) et des machines goulots (12) deviennent des intertitres.
+- **Deux parties vides** dans « Qualités du mainteneur » (titres de groupe de l'original, suivis directement d'autres titres) : au téléphone, deux volets s'ouvraient sur rien. Leurs sous-parties y sont rangées en intertitres, l'article passe de 13 à 6 parties.
+- **Espace insécable** avant « : ? ! ; » et dans les guillemets des 12 fiches : le H1 de DimoMaint ouvrait une ligne par « : la complémentarité », un « ? » restait seul sur sa ligne dans le sommaire.
+- **Galerie à 320 px** : une seule colonne de 250 px servait des photos de 160 px (floues). Deux colonnes désormais.
+
+Script idempotent, à relancer après `publie.py` : `scratchpad/blog-revue/structure_fix.py`, journal dans `journal-structure.json` (79 changements, texte vérifié identique mot pour mot).
+
 ## Ce qu'il faut décider (Mehdi)
 
 1. **Publier ou laisser perdre.** Trafic nul sur les 12. Les plus utiles à garder sont les quatre billets récents de 2026 (MASE EcoVadis, deux sur DimoMaint, externalisation) et l'interview de Nathan sur BFMTV.

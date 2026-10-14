@@ -204,10 +204,14 @@ function Bloc({ bloc }: { bloc: BlocRessource }) {
   }
 }
 
-/** Les photos d'un billet repris : une grille qui passe à deux colonnes au téléphone. */
+/**
+ * Les photos d'un billet repris : une grille qui passe à deux colonnes au téléphone.
+ * `min(140px, 40%)` : à 320 px la colonne ne laisse que 250 px, une seule photo
+ * de 140 px y tenait et s'affichait sur 250 px, floue (servie à 160 px par `sizes`).
+ */
 const GALERIE: CSSProperties = {
   display: "grid",
-  gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))",
+  gridTemplateColumns: "repeat(auto-fill, minmax(min(140px, 40%), 1fr))",
   gap: 10,
   margin: "8px 0 24px",
 };

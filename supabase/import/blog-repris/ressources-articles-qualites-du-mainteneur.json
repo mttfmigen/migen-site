@@ -41,38 +41,35 @@
       },
       {
         "titre": "Le comportement attendu d’un mainteneur industriel",
-        "blocs": []
-      },
-      {
-        "titre": "Fiabilité et intégrité",
         "blocs": [
+          {
+            "type": "intertitre",
+            "texte": "Fiabilité et intégrité"
+          },
           {
             "type": "paragraphe",
             "texte": "Chez migen, nous nous attendons à ce que nos mainteneurs soient fiables et intègres. Ils sont responsables de l’entretien de machines coûteuses et cruciales pour la production de nos clients. Leur fiabilité et leur intégrité sont donc indispensables."
-          }
-        ]
-      },
-      {
-        "titre": "Bonne communication et esprit d’équipe",
-        "blocs": [
+          },
+          {
+            "type": "intertitre",
+            "texte": "Bonne communication et esprit d’équipe"
+          },
           {
             "type": "paragraphe",
             "texte": "Les mainteneurs industriels de Migen travaillent en équipe. Une bonne communication et un fort esprit d’équipe sont essentiels pour assurer un travail efficace et de qualité."
-          }
-        ]
-      },
-      {
-        "titre": "Adaptabilité",
-        "blocs": [
+          },
+          {
+            "type": "intertitre",
+            "texte": "Adaptabilité"
+          },
           {
             "type": "paragraphe",
             "texte": "L’environnement industriel évolue rapidement. Nos mainteneurs doivent donc être capables de s’adapter à de nouvelles technologies et méthodes de travail."
-          }
-        ]
-      },
-      {
-        "titre": "Autonomie",
-        "blocs": [
+          },
+          {
+            "type": "intertitre",
+            "texte": "Autonomie"
+          },
           {
             "type": "paragraphe",
             "texte": "Bien que le travail en équipe soit important, nos mainteneurs doivent également faire preuve d’autonomie. Ils doivent être capables de travailler de manière indépendante et prendre des décisions éclairées lorsqu’ils sont confrontés à un problème."
@@ -80,30 +77,28 @@
         ]
       },
       {
-        "titre": "Pourquoi travailler en tant que mainteneur industriel chez migen ?",
-        "blocs": []
-      },
-      {
-        "titre": "Un environnement stimulant",
+        "titre": "Pourquoi travailler en tant que mainteneur industriel chez migen ?",
         "blocs": [
+          {
+            "type": "intertitre",
+            "texte": "Un environnement stimulant"
+          },
           {
             "type": "paragraphe",
             "texte": "Travailler chez migen, c’est travailler dans un environnement stimulant et dynamique. Nos mainteneurs sont constamment confrontés à de nouveaux défis qui les poussent à se surpasser."
-          }
-        ]
-      },
-      {
-        "titre": "Opportunités de croissance",
-        "blocs": [
+          },
+          {
+            "type": "intertitre",
+            "texte": "Opportunités de croissance"
+          },
           {
             "type": "paragraphe",
             "texte": "Nous offrons de nombreuses opportunités de croissance professionnelle à nos mainteneurs. Chez migen, vous pouvez développer vos compétences et progresser dans votre carrière."
-          }
-        ]
-      },
-      {
-        "titre": "Un rôle essentiel",
-        "blocs": [
+          },
+          {
+            "type": "intertitre",
+            "texte": "Un rôle essentiel"
+          },
           {
             "type": "paragraphe",
             "texte": "Nos mainteneurs jouent un rôle essentiel dans notre entreprise. Ils sont responsables de la maintenance des machines de nos clients et contribuent directement à notre succès."

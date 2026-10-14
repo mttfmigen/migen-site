@@ -4,7 +4,7 @@
     "meta_title": "Machines goulots et temps de production | Migen",
     "meta_description": "Le temps, c'est de l'argent. Identifiez et éliminez les goulots d’étranglement de votre production pour maximiser l’efficacité et réduire les pertes de temps."
   },
-  "titre_h1": "Vous connaissez l’expression “Le temps, c’est de l’argent” ?",
+  "titre_h1": "Vous connaissez l’expression “Le temps, c’est de l’argent” ?",
   "contenu": {
     "gabarit": "ressource",
     "rayon": "articles",
@@ -23,7 +23,7 @@
         "titre": "Méthodologie pour identifier les goulots d’étranglement",
         "blocs": [
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "1. Analyse des processus de production"
           },
           {
@@ -31,7 +31,7 @@
             "texte": "Pour identifier les goulots d’étranglement, commencez par analyser les processus de production en place. Cela implique de comprendre les différentes étapes de la production, les machines impliquées et les interactions entre elles."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "2. Évaluation des capacités de production"
           },
           {
@@ -39,7 +39,7 @@
             "texte": "Il est important d’évaluer la capacité de production de chaque machine et de chaque étape. Cela vous permet de déterminer si une machine fonctionne à pleine capacité ou si elle est sous-utilisée, ce qui pourrait indiquer un goulot d’étranglement."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "3. Suivi des indicateurs clés de performance"
           },
           {
@@ -52,7 +52,7 @@
         "titre": "Techniques pour résoudre les goulots d’étranglement",
         "blocs": [
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "1. Augmentation de la capacité"
           },
           {
@@ -60,7 +60,7 @@
             "texte": "L’une des méthodes les plus simples pour résoudre un goulot d’étranglement est d’augmenter la capacité de production. Cela peut être réalisé en ajoutant des machines supplémentaires, en augmentant les heures de travail ou en améliorant l’efficacité des machines existantes."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "2. Redistribution des tâches"
           },
           {
@@ -68,7 +68,7 @@
             "texte": "Une autre solution pour résoudre les goulots d’étranglement est de redistribuer les tâches entre les différentes machines et les étapes de production. Cela permet de répartir la charge de travail de manière plus équilibrée et de réduire la pression sur les machines en goulot d’étranglement."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "3. Amélioration continue"
           },
           {
@@ -81,7 +81,7 @@
         "titre": "Exemple d’identification et de résolution d’un goulot d’étranglement",
         "blocs": [
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "1. Analyse des processus de production"
           },
           {
@@ -89,7 +89,7 @@
             "texte": "Dans cet exemple, une entreprise de fabrication de produits électroniques a identifié un problème de production. Les délais de livraison augmentent et les coûts de production sont en hausse. L’équipe décide d’analyser les processus de production pour identifier les goulots d’étranglement potentiels."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "2. Évaluation des capacités de production"
           },
           {
@@ -97,7 +97,7 @@
             "texte": "L’équipe évalue la capacité de production de chaque machine et découvre que l’une des machines d’assemblage fonctionne qu’à 60 % de sa capacité. Ce goulot d’étranglement ralentit l’ensemble de la ligne de production et entraîne des coûts supplémentaires."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "3. Suivi des indicateurs clés de performance"
           },
           {
@@ -105,7 +105,7 @@
             "texte": "L’équipe suit les KPI tels que le temps de cycle, le taux de défectuosité et le taux d’utilisation des machines pour mieux comprendre le goulot d’étranglement. Ils constatent que le temps de cycle de la machine d’assemblage est plus long que prévu et que le taux de défectuosité est élevé."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "4. Augmentation de la capacité"
           },
           {
@@ -113,7 +113,7 @@
             "texte": "Pour résoudre ce goulot d’étranglement, l’entreprise décide d’investir dans une nouvelle machine d’assemblage pour augmenter la capacité de production. Cette décision permet de réduire les délais de livraison et les coûts de production."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "5. Redistribution des tâches"
           },
           {
@@ -121,7 +121,7 @@
             "texte": "L’équipe décide également de redistribuer les tâches entre les différentes machines et les étapes de production pour équilibrer la charge de travail. Cette stratégie permet de réduire la pression sur la machine d’assemblage en goulot d’étranglement et d’améliorer l’efficacité de l’ensemble de la ligne de production."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "6. Amélioration continue"
           },
           {

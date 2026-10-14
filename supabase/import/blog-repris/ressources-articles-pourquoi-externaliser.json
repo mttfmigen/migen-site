@@ -4,7 +4,7 @@
     "meta_title": "Pourquoi externaliser sa maintenance industrielle | Migen",
     "meta_description": "Manque d’effectif, recrutement, absences ou pics d’activité : voici pourquoi faire appel à une entreprise de maintenance externalisée."
   },
-  "titre_h1": "Pourquoi faire appel à une entreprise de maintenance externalisée ?",
+  "titre_h1": "Pourquoi faire appel à une entreprise de maintenance externalisée ?",
   "contenu": {
     "gabarit": "ressource",
     "rayon": "articles",
@@ -45,27 +45,20 @@
         ]
       },
       {
-        "titre": "Externalisation de la maintenance : un facteur de performance",
+        "titre": "Externalisation de la maintenance : un facteur de performance",
         "blocs": [
           {
             "type": "paragraphe",
-            "texte": "Au-delà de la gestion des ressources, l’externalisation de la maintenance industrielle est un véritable moyen pour :"
+            "texte": "Au-delà de la gestion des ressources, l’externalisation de la maintenance industrielle est un véritable moyen pour :"
           },
           {
-            "type": "paragraphe",
-            "texte": "Optimiser la disponibilité des équipements"
-          },
-          {
-            "type": "paragraphe",
-            "texte": "Réduire les arrêts non planifiés"
-          },
-          {
-            "type": "paragraphe",
-            "texte": "Améliorer l’organisation du service maintenance"
-          },
-          {
-            "type": "paragraphe",
-            "texte": "Gagner en flexibilité opérationnelle"
+            "type": "puces",
+            "items": [
+              "Optimiser la disponibilité des équipements",
+              "Réduire les arrêts non planifiés",
+              "Améliorer l’organisation du service maintenance",
+              "Gagner en flexibilité opérationnelle"
+            ]
           },
           {
             "type": "paragraphe",

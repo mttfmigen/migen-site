@@ -4,19 +4,19 @@
     "meta_title": "Réindustrialisation de la France : les enjeux | Migen",
     "meta_description": "Quels sont les enjeux, les défis et les opportunités de la France réindustrialisée ? Migen est à vos côtés pour renforcer la compétitivité et l’innovation."
   },
-  "titre_h1": "Vers une France réindustrialisée : Avantages, Défis et Stratégies",
+  "titre_h1": "Vers une France réindustrialisée : Avantages, Défis et Stratégies",
   "contenu": {
     "gabarit": "ressource",
     "rayon": "articles",
     "chapo": [
-      "Avez-vous déjà réfléchi à l’importance de l’industrie dans l’économie d’un pays ? Nous allons plonger dans le sujet de la réindustrialisation en France. C’est un sujet qui préoccupe beaucoup de monde, de l’homme politique au citoyen lambda."
+      "Avez-vous déjà réfléchi à l’importance de l’industrie dans l’économie d’un pays ? Nous allons plonger dans le sujet de la réindustrialisation en France. C’est un sujet qui préoccupe beaucoup de monde, de l’homme politique au citoyen lambda."
     ],
     "parties": [
       {
-        "titre": "Pourquoi la désindustrialisation ?",
+        "titre": "Pourquoi la désindustrialisation ?",
         "blocs": [
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Cause de la désindustrialisation en France"
           },
           {
@@ -24,7 +24,7 @@
             "texte": "Dans les années 70 et 80, la France, comme de nombreux pays occidentaux, a connu une vague de désindustrialisation. Cette situation est le résultat de multiples facteurs, dont la globalisation et la recherche d’une main-d’œuvre moins coûteuse à l’étranger. Vous l’avez peut-être remarqué, les usines qui peuplaient autrefois nos villes ont progressivement disparu."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Conséquences de la désindustrialisation"
           },
           {
@@ -37,7 +37,7 @@
         "titre": "Pourquoi faut-il réindustrialiser la France?",
         "blocs": [
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Création d’emplois et stabilité économique"
           },
           {
@@ -45,7 +45,7 @@
             "texte": "Un premier argument en faveur de la réindustrialisation est la création d’emplois. L’industrie pourrait permettre de réduire le chômage en créant des emplois durables et bien rémunérés. N’est-ce pas ce que nous voulons tous, un travail stable et bien payé?"
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Renforcement de l’indépendance nationale"
           },
           {
@@ -53,15 +53,15 @@
             "texte": "Imaginez un instant que notre pays soit autonome en matière de production. La réindustrialisation renforcerait l’indépendance nationale, nous rendant moins vulnérables aux fluctuations des marchés internationaux."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Protection de l’environnement"
           },
           {
             "type": "paragraphe",
-            "texte": "Paradoxalement, la réindustrialisation pourrait également bénéficier à l’environnement. Des industries locales réduiraient l’empreinte carbone liée au transport des marchandises à travers le monde. Et si on pouvait contribuer à la lutte contre le réchauffement climatique tout en favorisant notre économie ?"
+            "texte": "Paradoxalement, la réindustrialisation pourrait également bénéficier à l’environnement. Des industries locales réduiraient l’empreinte carbone liée au transport des marchandises à travers le monde. Et si on pouvait contribuer à la lutte contre le réchauffement climatique tout en favorisant notre économie ?"
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Innovation et compétitivité mondiale"
           },
           {
@@ -74,7 +74,7 @@
         "titre": "Comment peut-on réindustrialiser la France?",
         "blocs": [
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Investissement dans l’innovation et la technologie"
           },
           {
@@ -82,7 +82,7 @@
             "texte": "La clé de la réindustrialisation pourrait résider dans l’investissement dans l’innovation et la technologie. Des industries modernes, technologiques et respectueuses de l’environnement, ça fait rêver, non?"
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Formation de la main-d’œuvre"
           },
           {
@@ -90,7 +90,7 @@
             "texte": "La réindustrialisation requiert également une main-d’œuvre qualifiée. Pour cela, il est essentiel d’investir dans la formation professionnelle. Imaginez-vous, équipé de nouvelles compétences, prêt à relever les défis de l’industrie du futur."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Politiques économiques pro-industrielles"
           },
           {
@@ -103,7 +103,7 @@
         "titre": "Défis et obstacles à la réindustrialisation",
         "blocs": [
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Globalisation et compétitivité internationale"
           },
           {
@@ -111,7 +111,7 @@
             "texte": "Malgré ses avantages, la réindustrialisation n’est pas sans défis. La globalisation et la compétitivité internationale constituent un obstacle majeur. Comment faire face à la compétition de pays où la main d’œuvre est moins coûteuse?"
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Défis environnementaux"
           },
           {

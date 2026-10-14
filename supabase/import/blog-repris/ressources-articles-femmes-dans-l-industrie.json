@@ -4,7 +4,7 @@
     "meta_title": "Femmes dans l'industrie et la maintenance | Migen",
     "meta_description": "Migen s'engage pour plus de diversité dans la maintenance industrielle et soutient l’intégration des femmes dans un secteur en pleine mutation."
   },
-  "titre_h1": "Femmes dans l’industrie : Migen© soutient la diversité dans le secteur de la maintenance industrielle",
+  "titre_h1": "Femmes dans l’industrie : Migen© soutient la diversité dans le secteur de la maintenance industrielle",
   "contenu": {
     "gabarit": "ressource",
     "rayon": "articles",
@@ -13,14 +13,14 @@
     ],
     "parties": [
       {
-        "titre": "Un défi à relever : La sous-représentation des femmes",
+        "titre": "Un défi à relever : La sous-représentation des femmes",
         "blocs": [
           {
             "type": "paragraphe",
             "texte": "Le secteur de la maintenance industrielle est indéniablement dominé par les hommes, et cette inégalité représente un défi majeur dans la construction d’un avenir plus équitable et diversifié. La sous-représentation des femmes dans ce domaine est plus qu’une simple statistique, c’est un reflet d’une problématique profonde et complexe."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Un héritage culturel difficile"
           },
           {
@@ -28,7 +28,7 @@
             "texte": "Le manque de femmes dans l’industrie n’est pas un hasard. Il découle d’une histoire et d’une culture qui ont longtemps associé les métiers techniques et industriels aux hommes. Cette perception a contribué à créer un environnement qui peut sembler intimidant ou même hostile pour de nombreuses femmes."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "La nécessité d’une approche sensible au genre"
           },
           {
@@ -36,7 +36,7 @@
             "texte": "Reconnaître le défi ne suffit pas. Il est crucial de comprendre que le recrutement de femmes dans la maintenance industrielle nécessite une approche différente, sensible au genre. Cela signifie reconnaître et répondre aux besoins spécifiques des femmes, que ce soit en termes de formation, de mentorat, de développement de carrière ou de soutien au quotidien."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Les barrières à l’entrée"
           },
           {
@@ -44,7 +44,7 @@
             "texte": "Plusieurs obstacles empêchent les femmes d’entrer dans le domaine de la maintenance industrielle. Cela peut inclure le manque de modèles féminins dans l’industrie, des parcours de formation inadaptés, ou même une simple méconnaissance des opportunités de carrière disponibles."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "L’importance des alliés"
           },
           {
@@ -52,8 +52,8 @@
             "texte": "Pour surmonter ces défis, il est essentiel de construire un réseau de soutien solide. Les hommes, en tant que collègues et supérieurs, doivent devenir des alliés actifs dans la promotion de l’égalité des sexes. L’éducation, la sensibilisation et un engagement en faveur de l’égalité peuvent contribuer à créer un environnement plus inclusif."
           },
           {
-            "type": "paragraphe",
-            "texte": "Migen© : un acteur engagé"
+            "type": "intertitre",
+            "texte": "Migen© : un acteur engagé"
           },
           {
             "type": "paragraphe",
@@ -73,7 +73,7 @@
             "texte": "La diversité n’est pas qu’un simple mot à la mode ou une tendance passagère. C’est une force motrice essentielle pour l’innovation, la croissance et la pérennité d’une entreprise. Dans un monde en constante évolution, la capacité à intégrer des perspectives variées est non seulement souhaitable, mais absolument nécessaire."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Une reconnaissance de la richesse des talents"
           },
           {
@@ -81,7 +81,7 @@
             "texte": "Chez Migen©, nous sommes fermement convaincus que chaque individu, indépendamment de son sexe, de son origine ou de sa formation, apporte une valeur unique à notre équipe. La diversité des idées, des expériences et des compétences enrichit notre entreprise et renforce notre capacité à répondre aux besoins diversifiés de nos clients."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Création d’un environnement inclusif"
           },
           {
@@ -95,14 +95,14 @@
         ]
       },
       {
-        "titre": "Accompagnement et formation : une voie vers l’égalité et la réussite",
+        "titre": "Accompagnement et formation : une voie vers l’égalité et la réussite",
         "blocs": [
           {
             "type": "paragraphe",
-            "texte": "L’industrie de la maintenance, bien qu’offrant d’innombrables opportunités de carrière et de développement, demeure encore largement dominée par les hommes. Chez Migen©, nous reconnaissons que la route vers la parité passe par une action déterminée et réfléchie. Notre engagement ne se limite pas à la simple embauche de femmes; il s’étend à la création d’un écosystème qui favorise leur réussite. Voici comment le détail de notre stratégie :"
+            "texte": "L’industrie de la maintenance, bien qu’offrant d’innombrables opportunités de carrière et de développement, demeure encore largement dominée par les hommes. Chez Migen©, nous reconnaissons que la route vers la parité passe par une action déterminée et réfléchie. Notre engagement ne se limite pas à la simple embauche de femmes; il s’étend à la création d’un écosystème qui favorise leur réussite. Voici comment le détail de notre stratégie :"
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Programme de mentorat"
           },
           {
@@ -110,7 +110,7 @@
             "texte": "Nous avons établi un programme de mentorat robuste qui vise à aider les femmes nouvellement embauchées à naviguer dans le monde complexe de la maintenance industrielle. Nos mentors expérimentés fournissent un soutien continu, des conseils, et servent de modèles pour leurs protégées, assurant ainsi une transition en douceur dans l’entreprise."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Formation spécifique et adaptée"
           },
           {
@@ -118,7 +118,7 @@
             "texte": "Reconnaissant que les femmes peuvent avoir des besoins et des défis uniques dans ce domaine, Migen© a développé des programmes de formation spécifiques. Ces formations visent à équiper nos employées avec les compétences techniques nécessaires, tout en renforçant leur confiance et leur capacité à s’épanouir dans un environnement majoritairement masculin."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Opportunités de carrière et de progression"
           },
           {
@@ -126,7 +126,7 @@
             "texte": "L’égalité des chances est au cœur de notre philosophie. Nous veillons à ce que toutes les opportunités de carrière et de progression soient ouvertes et accessibles à tous, indépendamment du genre. Nous encourageons activement nos employées à viser des postes de leadership et à participer à des projets ambitieux."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Soutien et réseau communautaire"
           },
           {
@@ -140,14 +140,14 @@
         ]
       },
       {
-        "titre": "Migen© : une solution adaptée pour une représentation équilibrée",
+        "titre": "Migen© : une solution adaptée pour une représentation équilibrée",
         "blocs": [
           {
             "type": "paragraphe",
             "texte": "Migen© prend des mesures actives pour créer un environnement de travail inclusif et équitable. Nous ne nous contentons pas d’observer la situation, mais nous agissons avec détermination pour rétablir un équilibre."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Analyse et compréhension des besoins"
           },
           {
@@ -155,7 +155,7 @@
             "texte": "Nous comprenons que chaque individu a des besoins et des aspirations uniques. C’est pourquoi nous commençons par écouter et comprendre ce que les femmes attendent de leur carrière dans la maintenance industrielle. Cette analyse nous permet de mettre en place des mesures qui répondent aux besoins spécifiques des femmes dans l’industrie."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Environnement de travail flexible et supportif"
           },
           {
@@ -163,7 +163,7 @@
             "texte": "Migen© offre des conditions de travail flexibles qui peuvent s’adapter aux différents besoins de la vie personnelle et professionnelle. Que ce soit par des horaires ajustables ou des opportunités de télétravail pour certains rôles, nous faisons en sorte que notre environnement de travail puisse convenir à tous."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Politique d’embauche équitable"
           },
           {
@@ -184,7 +184,7 @@
             "texte": "La force de Migen© ne réside pas uniquement dans sa technologie de pointe ou dans ses pratiques innovantes, mais dans son équipe dynamique et empathique qui s’efforce de comprendre chaque employé. Pour nous, la compréhension mutuelle et le respect vont au-delà des simples mots. Ce sont des valeurs centrales qui guident notre interaction quotidienne avec nos collègues."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Écoute active et communication ouverte"
           },
           {
@@ -192,7 +192,7 @@
             "texte": "Nous croyons en l’importance de l’écoute active et de la communication ouverte. Chez Migen©, chaque voix compte et chaque opinion est valorisée. Nos employés sont encouragés à partager leurs pensées, leurs préoccupations et leurs idées dans un environnement où ils sont entendus et compris."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Développement des compétences en soft skills"
           },
           {
@@ -200,7 +200,7 @@
             "texte": "L’empathie et la compréhension ne viennent pas toujours naturellement à tout le monde. C’est pourquoi nous investissons dans le développement continu de nos employés en soft skills. Ces compétences interpersonnelles aident notre équipe à mieux se comprendre et à collaborer de manière plus efficace."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Promotion de la diversité et de l’inclusion"
           },
           {
@@ -208,7 +208,7 @@
             "texte": "Nous comprenons que la diversité apporte une richesse de perspectives et d’idées. En favorisant une culture d’inclusion, où chaque employé se sent accepté et valorisé, nous créons une équipe qui comprend la valeur de la diversité et qui sait comment travailler dans un environnement multiculturel."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Soutien et mentorat"
           },
           {
@@ -216,7 +216,7 @@
             "texte": "Migen© propose un programme de mentorat où les nouveaux employés sont jumelés avec des mentors expérimentés qui peuvent les guider et les soutenir dans leur parcours professionnel. Ce soutien personnalisé contribue à une meilleure compréhension des besoins individuels et favorise une intégration réussie au sein de l’équipe."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Activités de team building"
           },
           {
@@ -224,7 +224,7 @@
             "texte": "L’esprit d’équipe est cultivé par des activités régulières de team building qui renforcent la cohésion et la confiance mutuelle. Ces événements permettent aux membres de l’équipe de se connaître à un niveau plus personnel, facilitant ainsi la compréhension et l’empathie au sein de l’équipe."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Reconnaissance et valorisation"
           },
           {
@@ -242,10 +242,10 @@
         "blocs": [
           {
             "type": "paragraphe",
-            "texte": "La maintenance industrielle est un domaine passionnant et en constante évolution, où chaque jour apporte de nouveaux défis et opportunités. Chez Migen©, nous sommes persuadés que chaque individu peut faire la différence. Si vous êtes une femme passionnée par la technologie, désireuse d’apprendre, et déterminée à contribuer à un secteur vital de l’industrie, nous voulons vous entendre. Voici comment vous pouvez rejoindre notre équipe et faire la différence :"
+            "texte": "La maintenance industrielle est un domaine passionnant et en constante évolution, où chaque jour apporte de nouveaux défis et opportunités. Chez Migen©, nous sommes persuadés que chaque individu peut faire la différence. Si vous êtes une femme passionnée par la technologie, désireuse d’apprendre, et déterminée à contribuer à un secteur vital de l’industrie, nous voulons vous entendre. Voici comment vous pouvez rejoindre notre équipe et faire la différence :"
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Un environnement où votre contribution compte"
           },
           {
@@ -253,7 +253,7 @@
             "texte": "Nous valorisons les contributions de chaque membre de notre équipe et reconnaissons l’importance de la diversité des talents et des perspectives. Votre voix et vos idées seront non seulement entendues mais encouragées et valorisées. Vous n’êtes pas juste un numéro chez Migen©, vous êtes une partie essentielle de notre succès."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Des opportunités de carrière et de croissance personnelle"
           },
           {
@@ -261,7 +261,7 @@
             "texte": "Nous offrons de vastes opportunités de développement professionnel et de croissance personnelle. Que vous soyez débutante ou expérimentée, nous vous fournirons les outils, les formations, et le soutien nécessaires pour atteindre vos objectifs de carrière. Nous croyons en l’investissement dans nos employés et en leur permettant d’atteindre leur plein potentiel."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Participez à des projets innovants et impactants"
           },
           {
@@ -269,7 +269,7 @@
             "texte": "Chez Migen©, vous aurez l’opportunité de travailler sur des projets novateurs qui façonnent l’avenir de l’industrie. Votre travail aura un impact direct sur la manière dont les entreprises opèrent et réussissent dans un monde de plus en plus compétitif et technologique. Vous ne ferez pas que suivre la tendance, vous serez en première ligne à la définir."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Une culture de l’inclusion et du respect"
           },
           {
@@ -277,7 +277,7 @@
             "texte": "Nous comprenons que le succès réside dans la création d’un environnement où chaque employé se sent respecté, inclus, et valorisé. Nous nous efforçons de construire une culture où vous pouvez être vous-même, où vos différences sont célébrées, et où vous pouvez équilibrer vie professionnelle et vie privée."
           },
           {
-            "type": "paragraphe",
+            "type": "intertitre",
             "texte": "Contribuez à un futur plus équitable"
           },
           {
