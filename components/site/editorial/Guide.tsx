@@ -3,6 +3,7 @@ import { Fragment, type CSSProperties, type ReactNode } from "react";
 
 import { FormulaireContact } from "@/components/formulaire/FormulaireContact";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
+import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
 import type { VueGuide, BlocGuide } from "@/types/editorial";
 
 import BlocsGuide from "./BlocsGuide";
@@ -151,21 +152,115 @@ function resumeDeLaSection(blocs: BlocGuide[]): string {
  * fichier doit rester montable depuis un contrôle hors base, exactement la
  * raison déjà écrite pour `filAriane` et `maillage` dans `PageEditoriale`.
  */
+/**
+ * Le format du hub `/ressources/` : le même discriminant que
+ * `PageEditoriale.tsx` (la pastille de la capture), pour séparer le hub
+ * (gabarit « 10 Hub de rubrique ») des deux guides (gabarit « 01 Article et
+ * fiche ») sans champ inventé.
+ */
+const FORMAT_HUB_RESSOURCES = "Ressources";
+
 export default function Guide({
   titre,
   vue,
   bibliotheque,
+  chemin,
 }: {
   titre: string;
   vue: VueGuide;
   bibliotheque?: ReactNode;
+  /**
+   * Le chemin de la page, avec slash final, passé par la route pour les deux
+   * guides. Il pose la cadence de conversion de la maquette MOBILE v2 entre
+   * les sections. Absent (le hub, les contrôles hors base), rien ne s'ajoute.
+   */
+  chemin?: string;
 }) {
+  const estHub = vue.format === FORMAT_HUB_RESSOURCES;
+  /* LE NOMBRE DE SECTIONS OUVERTES AU TÉLÉPHONE vient de la maquette mobile
+     v2, et il est ÉCRIT dans son dc.html : `nOpen = g === "01" ? 2 : …`. Les
+     deux guides sont du gabarit 01 : leurs DEUX premières sections restent
+     ouvertes. Le hub `/ressources/` n'est pas de ce lot : il garde sa règle
+     d'une section ouverte, posée le 12/10, et rien d'autre ne change pour lui
+     dans ce fichier (pas de chemin passé par sa route, pas de héros
+     compact). */
+  const nOuvertes = estHub ? 1 : 2;
+  /* G2, LE HÉROS COMPACT DU TÉLÉPHONE, pour les guides seulement : les règles
+     vivent sous 880 px dans `PageEditoriale.module.css`. */
+  const compact = !estHub;
+
+  /* LES SECTIONS, rendues une fois : la cadence de conversion s'intercale
+     entre elles quand la route a passé le chemin (gabarit 01, variante
+     « article » : photo + CTA après la 2e, bandeau aux 5e, 8e…). Le rappel
+     final n'est PAS posé ici (`rappelFinal={false}`) : la page porte déjà son
+     formulaire complet `#cx-form` juste sous le corps, et la maquette n'en
+     pose qu'un. */
+  const sections = vue.sections.map((s, i) => {
+    const entete = (
+      <div style={{ display: "flex", alignItems: "baseline", gap: 14, marginBottom: 20 }}>
+        <span
+          style={{
+            font: "600 12px ui-monospace,Menlo,monospace",
+            letterSpacing: ".06em",
+            color: "var(--acc)",
+            flex: "none",
+          }}
+        >
+          {numero(i)}
+        </span>
+        <h2
+          style={{
+            font: "600 calc(clamp(23px,2.5vw,34px) * var(--ts))/1.14 var(--ft)",
+            letterSpacing: "-.036em",
+            color: "var(--ink)",
+            margin: 0,
+            maxWidth: "28ch",
+            textWrap: "balance",
+          }}
+        >
+          {s.titre}
+        </h2>
+      </div>
+    );
+    const corps = <BlocsGuide blocs={s.blocs} groupe={`faq-c${i + 1}`} />;
+    return (
+      <section key={s.titre} id={`c${i + 1}`} style={{ scrollMarginTop: 100, paddingBottom: 56 }}>
+        {i === 0 ? (
+          <>
+            {entete}
+            {corps}
+          </>
+        ) : (
+          /* Une section ouverte au-delà de la première reste REPLIABLE
+             (`toujoursOuvert`) : sa bascule et son résumé restent dans le
+             document, le texte servi ne change pas d'un mot. */
+          <SectionPliableMobile
+            enTete={
+              <span data-mobile-seulement="" className={styles.etiquettePli}>
+                <span style={ETIQUETTE_SURTITRE}>{numero(i)}</span>
+                <span style={ETIQUETTE_TITRE}>{s.titre}</span>
+              </span>
+            }
+            resume={resumeDeLaSection(s.blocs)}
+            toujoursOuvert={i < nOuvertes}
+          >
+            {entete}
+            {corps}
+          </SectionPliableMobile>
+        )}
+      </section>
+    );
+  });
+
   return (
     <div className="mg-site">
       {/* `corpsGuide` est la PORTEE des deux regles de bureau des blocs
           repliables : elles ne doivent toucher que ce gabarit, jamais un
           selecteur global. Deux autres gabarits partagent ce module CSS. */}
-      <main className={styles.corpsGuide} style={{ paddingTop: 96 }}>
+      <main
+        className={compact ? `${styles.corpsGuide} ${styles.guideCompact}` : styles.corpsGuide}
+        style={{ paddingTop: 96 }}
+      >
         <section style={{ maxWidth: 1200, margin: "0 auto", padding: "56px 40px 0" }}>
           <nav
             aria-label="Fil d'Ariane"
@@ -210,6 +305,7 @@ export default function Guide({
               </span>
             </div>
             <h1
+              className={compact ? styles.titreCompact : undefined}
               style={{
                 font: "600 calc(clamp(32px,3.9vw,56px) * var(--ts))/1.05 var(--ft)",
                 letterSpacing: "-.045em",
@@ -222,7 +318,7 @@ export default function Guide({
               {titre}
             </h1>
             <p
-              className={styles.riche}
+              className={compact ? `${styles.riche} ${styles.chapoCompact}` : styles.riche}
               style={{
                 font: "400 18px/1.7 var(--fb)",
                 color: "var(--ink1)",
@@ -311,8 +407,10 @@ export default function Guide({
                   <BlocsGuide blocs={vue.intro} groupe="intro" />
                 </div>
               ) : null}
-              {/* CHAQUE SECTION SE REPLIE AU TELEPHONE SAUF LA PREMIERE, regle
-                  de la maquette mobile : `isOpen = si < 1 || secOpen[...]`.
+              {/* CHAQUE SECTION SE REPLIE AU TELEPHONE SAUF LES PREMIERES,
+                  et leur COMPTE vient de la maquette mobile v2 : `nOpen =
+                  g === "01" ? 2 : …` (voir `nOuvertes` plus haut). Les deux
+                  guides gardent DEUX sections ouvertes, le hub une seule.
                   Mesure du 12/10 : les deux guides etaient les pages les plus
                   longues du site, 36,2 et 25,8 ecrans, sans aucun repli.
                   L'ANCRE `#c<n>` RESTE SUR LA SECTION pour que le sommaire
@@ -324,58 +422,13 @@ export default function Guide({
                   comme le faisait la version du matin, laissait 30 bascules
                   focalisables sur grand ecran et 12 px de trop sous chaque
                   titre. */}
-              {vue.sections.map((s, i) => {
-                const entete = (
-                  <div style={{ display: "flex", alignItems: "baseline", gap: 14, marginBottom: 20 }}>
-                    <span
-                      style={{
-                        font: "600 12px ui-monospace,Menlo,monospace",
-                        letterSpacing: ".06em",
-                        color: "var(--acc)",
-                        flex: "none",
-                      }}
-                    >
-                      {numero(i)}
-                    </span>
-                    <h2
-                      style={{
-                        font: "600 calc(clamp(23px,2.5vw,34px) * var(--ts))/1.14 var(--ft)",
-                        letterSpacing: "-.036em",
-                        color: "var(--ink)",
-                        margin: 0,
-                        maxWidth: "28ch",
-                        textWrap: "balance",
-                      }}
-                    >
-                      {s.titre}
-                    </h2>
-                  </div>
-                );
-                const corps = <BlocsGuide blocs={s.blocs} groupe={`faq-c${i + 1}`} />;
-                return (
-                  <section key={s.titre} id={`c${i + 1}`} style={{ scrollMarginTop: 100, paddingBottom: 56 }}>
-                    {i === 0 ? (
-                      <>
-                        {entete}
-                        {corps}
-                      </>
-                    ) : (
-                      <SectionPliableMobile
-                        enTete={
-                          <span data-mobile-seulement="" className={styles.etiquettePli}>
-                            <span style={ETIQUETTE_SURTITRE}>{numero(i)}</span>
-                            <span style={ETIQUETTE_TITRE}>{s.titre}</span>
-                          </span>
-                        }
-                        resume={resumeDeLaSection(s.blocs)}
-                      >
-                        {entete}
-                        {corps}
-                      </SectionPliableMobile>
-                    )}
-                  </section>
-                );
-              })}
+              {chemin ? (
+                <AvecConversionMobile chemin={chemin} gabarit="01" rappelFinal={false}>
+                  {sections}
+                </AvecConversionMobile>
+              ) : (
+                sections
+              )}
             </article>
           </div>
         </section>

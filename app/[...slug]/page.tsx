@@ -187,7 +187,7 @@ export default async function PageDuCocon({
   // porte aucun, le fil est dans le héros et le maillage est « Sur le même
   // sujet », tous deux rendus par `PageRessource`.
   if (estRessource(page.contenu)) {
-    return <PageRessource titre={page.titre_h1} contenu={page.contenu} />;
+    return <PageRessource titre={page.titre_h1} contenu={page.contenu} chemin={page.path} />;
   }
 
   if (estEditorial(page.contenu)) {
@@ -195,6 +195,7 @@ export default async function PageDuCocon({
       <PageEditoriale
         titre={page.titre_h1}
         contenu={page.contenu}
+        chemin={page.path}
         filAriane={<FilAriane path={page.path} />}
         maillage={
           <>

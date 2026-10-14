@@ -3,10 +3,17 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 import { FilArianeVue } from "@/components/cocon/FilAriane";
+import PastillesCocon from "@/components/site/cocon/PastillesCocon";
+import RappelFinalMobile from "@/components/site/mobile/RappelFinalMobile";
+import { varianteDe } from "@/components/site/mobile/conversion-donnees";
 import type { ContenuRessource, LectureRessource } from "@/types/ressource";
 import type { Question } from "@/types/contenu";
 
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
+
 import CorpsRessource, { EnLigne } from "./CorpsRessource";
+import FermeAuTelephone from "./FermeAuTelephone";
 import styles from "./Ressource.module.css";
 import * as H from "./habillage";
 import { cadragePhoto } from "@/lib/cadrage-photos";
@@ -93,7 +100,7 @@ function CarteLivre() {
 
 function Questions({ questions }: { questions: Question[] }) {
   return (
-    <section data-screen-label="Questions fréquentes" style={H.SECTION_SUITE}>
+    <section data-screen-label="Questions fréquentes" className={styles.sectionSuite} style={H.SECTION_SUITE}>
       <div className={styles.faq} style={H.FAQ_CARTE}>
         <Image src={H.FAQ_PHOTO} alt={altPhoto(H.FAQ_PHOTO)} fill sizes="1120px" style={{ objectFit: "cover" }} />
         <div aria-hidden="true" style={H.FAQ_VOILE} />
@@ -102,7 +109,9 @@ function Questions({ questions }: { questions: Question[] }) {
           <h2 style={{ ...H.TITRE_SECTION, margin: "0 0 24px", color: "#fff" }}>
             {H.COPIE.faqTitre}
           </h2>
-          <div style={H.FAQ_LISTE}>
+          {/* Au téléphone, toutes les questions repliées, comme la maquette
+              mobile v2 : `FermeAuTelephone` EST la liste, même style. */}
+          <FermeAuTelephone style={H.FAQ_LISTE}>
             {questions.map((q, i) => (
               <details
                 key={q.question}
@@ -135,7 +144,7 @@ function Questions({ questions }: { questions: Question[] }) {
                 <p style={H.FAQ_REPONSE}>{q.reponse}</p>
               </details>
             ))}
-          </div>
+          </FermeAuTelephone>
         </div>
       </div>
     </section>
@@ -151,7 +160,23 @@ function Lectures({
 }) {
   const libelle = (rayon && H.RAYONS[rayon]?.libelle) || "ressources";
   return (
-    <section data-screen-label="À lire ensuite" style={H.SECTION_SUITE}>
+    <section data-screen-label="À lire ensuite" className={styles.sectionSuite} style={H.SECTION_SUITE}>
+      {/* G3 : « SUR LE MÊME SUJET », SECTION DE BUREAU, SE REPLIE AU
+          TÉLÉPHONE. La maquette mobile v2 n'a pas ces trois grandes cartes
+          photo : elle sert le maillage en pastilles (« Dans la même
+          rubrique », plus bas). REPLIER, JAMAIS RETIRER : en-tête, lien du
+          rayon et cartes restent dans le DOM, sous une étiquette de
+          téléphone qui s'efface une fois ouvert ; sur bureau la bascule
+          n'existe pas (`.lectures`, module CSS). */}
+      <SectionPliableMobile
+        enTete={
+          <span data-mobile-seulement="" className={styles.etiquettePli}>
+            <span style={H.ETIQUETTE_SURTITRE}>{H.COPIE.lecturesSurtitre}</span>
+            <span style={H.ETIQUETTE_TITRE}>{H.COPIE.lecturesTitre}</span>
+          </span>
+        }
+        resume={resumeDe(lectures.map((lecture) => lecture.titre))}
+      >
       <div style={H.LECTURES_TETE}>
         <div>
           <div style={H.SURTITRE}>{H.COPIE.lecturesSurtitre}</div>
@@ -194,14 +219,20 @@ function Lectures({
           );
         })}
       </div>
+      </SectionPliableMobile>
     </section>
   );
 }
 
 function Appel() {
   return (
-    <section id="mr-cta" data-screen-label="Ressources · appel" style={H.SECTION_APPEL}>
-      <div className={styles.deux} style={H.APPEL}>
+    <section
+      id="mr-cta"
+      data-screen-label="Ressources · appel"
+      className={styles.sectionAppel}
+      style={H.SECTION_APPEL}
+    >
+      <div className={`${styles.deux} ${styles.appelCompact}`} style={H.APPEL}>
         <div aria-hidden="true" style={H.APPEL_LUEUR} />
         <div style={{ position: "relative" }}>
           <div style={H.APPEL_SURTITRE}>{H.COPIE.appelSurtitre}</div>
@@ -226,12 +257,20 @@ function Appel() {
 export interface ProprietesPageRessource {
   titre: string;
   contenu: ContenuRessource;
+  /**
+   * Le chemin de la page, avec slash final (« /ressources/articles/gmao/ »),
+   * passé par la route. Il porte les apports de la maquette MOBILE v2 :
+   * cadence de conversion entre les parties, pastilles « Dans la même
+   * rubrique », rappel final. Absent (les contrôles hors base), ces blocs ne
+   * se rendent pas ; le reste de la page ne change pas.
+   */
+  chemin?: string;
   /** Passés par la route, non rendus : voir l'en-tête du fichier. */
   filAriane?: ReactNode;
   maillage?: ReactNode;
 }
 
-export default function PageRessource({ titre, contenu }: ProprietesPageRessource) {
+export default function PageRessource({ titre, contenu, chemin }: ProprietesPageRessource) {
   const { rayon, chapo = [], parties = [], questions = [], aLire = [] } = contenu;
   const rayonVu = rayon ? H.RAYONS[rayon] : undefined;
   const livre = rayon === "livres-blancs";
@@ -259,17 +298,23 @@ export default function PageRessource({ titre, contenu }: ProprietesPageRessourc
           <div style={{ marginBottom: 26 }}>
             <FilArianeVue etapes={etapes} />
           </div>
-          <div className={styles.deux} style={H.GRILLE_HEROS}>
+          {/* G2, LE HÉROS COMPACT DU TÉLÉPHONE : photo en tête et plus basse,
+              titre et chapô à l'échelle de la maquette mobile v2. Tout vit
+              dans `Ressource.module.css` sous 880 px : au-dessus, ces classes
+              ne portent rien et la capture de bureau ne bouge pas. */}
+          <div className={`${styles.deux} ${styles.herosCompact}`} style={H.GRILLE_HEROS}>
             <div style={colonneTexte}>
               {rayonVu ? (
-                <span style={H.PASTILLE}>
+                <span className={styles.pastilleHeros} style={H.PASTILLE}>
                   <span style={H.POINT} />
                   {rayonVu.format}
                 </span>
               ) : null}
-              <h1 style={H.TITRE1}>{titre}</h1>
+              <h1 className={styles.titreHeros} style={H.TITRE1}>
+                {titre}
+              </h1>
               {paragraphes.map((paragraphe, i) => (
-                <p key={i} style={H.CHAPO}>
+                <p key={i} className={styles.chapoHeros} style={H.CHAPO}>
                   <EnLigne texte={paragraphe} lien={H.LIEN_PROSE} />
                 </p>
               ))}
@@ -297,7 +342,7 @@ export default function PageRessource({ titre, contenu }: ProprietesPageRessourc
             {livre ? (
               <CarteLivre />
             ) : contenu.image ? (
-              <div style={H.PHOTO_HEROS}>
+              <div className={styles.photoHeros} style={H.PHOTO_HEROS}>
                 <Image
                   src={contenu.image}
                   alt={altPhoto(contenu.image)}
@@ -311,11 +356,40 @@ export default function PageRessource({ titre, contenu }: ProprietesPageRessourc
           </div>
         </section>
 
-        <CorpsRessource avant={contenu.avant} parties={parties} />
+        <CorpsRessource
+          avant={contenu.avant}
+          parties={parties}
+          chemin={chemin}
+          photoHeros={contenu.image}
+        />
 
         {questions.length > 0 ? <Questions questions={questions} /> : null}
 
         {aLire.length > 0 ? <Lectures lectures={aLire} rayon={rayon} /> : null}
+
+        {/* LES PASTILLES DU MAILLAGE MOBILE, boîte basse « Dans la même
+            rubrique » de la maquette v2 (le gabarit 01 n'a pas d'enfants, la
+            cascade du composant tombe sur les sœurs, comme `kidsBottom` du
+            dc.html). Le composant est déjà mobile-seulement et rend null
+            sans donnée : rien ne change sur bureau.
+            PUIS LE RAPPEL FINAL `#etre-rappele`, juste sous elle, à la place
+            où la maquette le pose (dc.html L576, avant le pied). Il est posé
+            ICI et non par `AvecConversionMobile` (`rappelFinal={false}` dans
+            `CorpsRessource`) : la cadence enveloppe les parties, et son
+            rappel serait tombé entre la dernière partie et la FAQ. L'appel de
+            bureau `#mr-cta` reste en dessous, tel quel. */}
+        {chemin ? (
+          <>
+            {/* `.pastilles` rend au titre de la boîte ses 11 px : voir
+                `Ressource.module.css`. */}
+            <div className={styles.pastilles}>
+              <PastillesCocon chemin={chemin} />
+            </div>
+            <div className={styles.rappel}>
+              <RappelFinalMobile variante={varianteDe(chemin, "01")} />
+            </div>
+          </>
+        ) : null}
 
         <Appel />
       </main>

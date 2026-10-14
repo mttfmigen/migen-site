@@ -224,6 +224,12 @@ export interface ProprietesPageEditoriale {
    */
   filAriane?: ReactNode;
   maillage?: ReactNode;
+  /**
+   * Le chemin de la page, passé par la route. Il ne sert qu'aux apports de
+   * la maquette MOBILE v2 des vues guide et rubrique (cadence de conversion,
+   * pastilles du cocon, rappel final) ; absent, elles rendent comme avant.
+   */
+  chemin?: string;
 }
 
 export default function PageEditoriale({
@@ -231,6 +237,7 @@ export default function PageEditoriale({
   contenu,
   filAriane,
   maillage,
+  chemin,
 }: ProprietesPageEditoriale) {
   // Les huit pages portées contre leur capture apportent leur vue ; elle
   // porte son propre fil, ses pages liées et son appel, comme la capture : le
@@ -252,13 +259,14 @@ export default function PageEditoriale({
       <Guide
         titre={titre}
         vue={contenu.edito}
+        chemin={chemin}
         bibliotheque={
           contenu.edito.format === FORMAT_HUB_RESSOURCES ? <SectionBibliotheque /> : undefined
         }
       />
     );
   }
-  if (contenu.rubrique) return <Rubrique titre={titre} vue={contenu.rubrique} />;
+  if (contenu.rubrique) return <Rubrique titre={titre} vue={contenu.rubrique} chemin={chemin} />;
 
   // Le sommaire se déduit des titres de niveau 2 : jamais saisi deux fois, donc
   // jamais désynchronisé du corps. Sous trois entrées, il n'aide personne et

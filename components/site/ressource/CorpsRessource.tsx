@@ -7,6 +7,7 @@ import type { BlocRessource, PartieRessource } from "@/types/ressource";
 import styles from "./Ressource.module.css";
 import * as H from "./habillage";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
 
 /**
  * La section « Article · corps » de `MigenRessource.dc.html` : le sommaire
@@ -134,8 +135,20 @@ function Bloc({ bloc }: { bloc: BlocRessource }) {
         </ol>
       );
     case "tableau":
+      /* SOUS 881 PX, UNE CARTE PAR LIGNE, motif « tableau » du LISEZMOI de la
+         maquette mobile v2 (bloc `isTb` : chaque ligne devient une carte à
+         bord et fond propres). Le motif est COPIÉ de `blocs/Offre.tsx`
+         (`tableauEnCartes`), adapté à un vrai `<table>` : rien ne quitte le
+         DOM, aucune cellule n'est dupliquée, c'est le même texte restylé.
+         Mesure du 14/10 : tableaux bruts à 390 px sur le gabarit 01. Les
+         règles vivent dans `Ressource.module.css`, TOUTES sous
+         `@media (max-width: 880px)` : au-dessus, pas un pixel ne change.
+         `data-tableau-en-cartes` est la prise de mesure de la porte, comme
+         chez `Offre.tsx` : une classe de module est hachée au build. */
       return (
         <div
+          className={styles.tableauEnCartes}
+          data-tableau-en-cartes=""
           style={H.TABLEAU_CADRE}
           tabIndex={0}
           role="region"
@@ -245,31 +258,111 @@ function resumeDeLaPartie(partie: PartieRessource): string {
 export default function CorpsRessource({
   avant = [],
   parties = [],
+  chemin,
+  photoHeros,
 }: {
   avant?: BlocRessource[];
   parties?: PartieRessource[];
+  /** Le chemin de la page : sans lui, aucune cadence de conversion mobile. */
+  chemin?: string;
+  /** La photo du héros, écartée du tirage du photo + CTA de la cadence. */
+  photoHeros?: string;
 }) {
   if (avant.length === 0 && parties.length === 0) return null;
 
+  const blocsDesParties = parties.map((partie, k) => {
+    const titre = (
+      <h2 id={`mr-s${k + 1}`} style={H.TITRE2}>
+        <span style={H.TITRE2_NUMERO}>{numero(k)}</span>
+        {partie.titre}
+      </h2>
+    );
+    const corps = (
+      <>
+        {partie.blocs.map((bloc, i) => (
+          <Bloc key={i} bloc={bloc} />
+        ))}
+      </>
+    );
+    return (
+      <Fragment key={k}>
+        {k === 0 ? (
+          <>
+            {titre}
+            {corps}
+          </>
+        ) : (
+          /* LA BASCULE PORTE UNE ETIQUETTE, PAS LE `<h2>` DE LA PARTIE.
+             Le titre et son numero restent dans le corps du bloc, a leur
+             place et a la taille de leur capture ; l'etiquette n'existe
+             que sous 880 px et s'efface des que la partie est ouverte.
+             Voir `habillage.ETIQUETTE_SURTITRE` pour le pourquoi, et
+             `Ressource.module.css` pour le seuil. L'ancre `#mr-s<n>` du
+             sommaire reste sur le `<h2>` : les liens du sommaire tombent
+             au meme endroit qu'avant. */
+          <SectionPliableMobile
+            enTete={
+              <span data-mobile-seulement="" className={styles.etiquettePli}>
+                <span style={H.ETIQUETTE_SURTITRE}>{numero(k)}</span>
+                <span style={H.ETIQUETTE_TITRE}>{partie.titre}</span>
+              </span>
+            }
+            resume={resumeDeLaPartie(partie)}
+            /* LA DEUXIÈME PARTIE RESTE OUVERTE AU TÉLÉPHONE (`nOpen = 2` du
+               gabarit 01), mais REPLIABLE, comme dans la maquette où les
+               sections ouvertes sont des `<details open>`. `toujoursOuvert`
+               plutôt qu'un rendu nu : la bascule et son résumé restent dans
+               le document, le texte servi ne change donc pas d'un mot. */
+            toujoursOuvert={k === 1}
+          >
+            {titre}
+            {corps}
+          </SectionPliableMobile>
+        )}
+        {k === 1 ? <BandeAppel /> : null}
+      </Fragment>
+    );
+  });
+
   return (
-    <section data-screen-label="Article · corps" style={H.SECTION_CORPS}>
+    <section data-screen-label="Article · corps" className={styles.sectionCorps} style={H.SECTION_CORPS}>
       <div className={styles.deux} style={H.GRILLE_CORPS}>
         <nav aria-label={H.COPIE.sommaire} className={styles.sommaire} style={H.SOMMAIRE}>
-          <div style={H.SOMMAIRE_TITRE}>{H.COPIE.sommaire}</div>
-          {parties.map((partie, i) => (
-            <a
-              key={i}
-              href={`#mr-s${i + 1}`}
-              className={styles.entree}
-              style={H.SOMMAIRE_ENTREE}
-            >
-              <span style={H.NUMERO_MONO}>{numero(i)}</span>
-              {partie.titre}
+          {/* G3 : LE SOMMAIRE, BLOC DE BUREAU, SE REPLIE AU TÉLÉPHONE au lieu
+              d'y disparaître. Il était `display: none` sous 980 px ; la
+              maquette mobile v2 le sert replié sous « Sommaire · N parties »
+              (dc.html, `hasToc`, `<details data-open="0">`). Le titre
+              EXISTANT sert d'en-tête de la bascule, il n'est pas doublé ; le
+              compte des parties n'existe qu'au téléphone. Sur bureau la
+              bascule se lit comme avant (chevron et résumé masqués, arrêt de
+              tabulation retiré par le composant partagé). */}
+          <SectionPliableMobile
+            enTete={
+              <div className={styles.sommaireTitre} style={H.SOMMAIRE_TITRE}>
+                {H.COPIE.sommaire}
+                {parties.length > 0 ? (
+                  <span data-mobile-seulement="" className={styles.sommaireCompte}>
+                    {`${parties.length} parties`}
+                  </span>
+                ) : null}
+              </div>
+            }
+          >
+            {parties.map((partie, i) => (
+              <a
+                key={i}
+                href={`#mr-s${i + 1}`}
+                className={styles.entree}
+                style={H.SOMMAIRE_ENTREE}
+              >
+                <span style={H.NUMERO_MONO}>{numero(i)}</span>
+                {partie.titre}
+              </a>
+            ))}
+            <a href="#mr-cta" style={H.SOMMAIRE_BOUTON}>
+              {H.COPIE.expert}
             </a>
-          ))}
-          <a href="#mr-cta" style={H.SOMMAIRE_BOUTON}>
-            {H.COPIE.expert}
-          </a>
+          </SectionPliableMobile>
         </nav>
         {/* `styles.colonne` ne porte AUCUN dessin : il sert d'ancre à la règle
             qui annule, au-dessus de 880 px, les pixels que le repli mobile
@@ -278,10 +371,16 @@ export default function CorpsRessource({
           {avant.map((bloc, i) => (
             <Bloc key={`a${i}`} bloc={bloc} />
           ))}
-          {/* CHAQUE PARTIE SE REPLIE AU TÉLÉPHONE, SAUF LA PREMIÈRE.
-              C'est la règle de la maquette mobile, `MigenMobile.dc.html` :
-              `isOpen = si < 1 || secOpen[...]`, la première section reste
-              ouverte et les suivantes sont repliées sous un résumé.
+          {/* CHAQUE PARTIE SE REPLIE AU TÉLÉPHONE, SAUF LES DEUX PREMIÈRES.
+              C'est la règle de la maquette mobile v2 pour le gabarit 01, et
+              elle est ÉCRITE dans `Migen - Mobile v2.dc.html` :
+              `nOpen = g === "01" ? 2 : …`, puis `op = isRef || dI++ < nOpen`.
+              Les DEUX premières sections de contenu restent ouvertes, les
+              suivantes sont repliées sous un résumé.
+              CORRIGÉ LE 14/10 : la version précédente n'en laissait qu'UNE
+              (`k === 0`), règle des autres gabarits. La mesure des onze
+              gabarits à 390 px l'a vue : le gabarit 01 était le seul à rendre
+              MOINS haut que la maquette (-12 %), tout le reste étant replié.
               Mehdi, le 12/10 : « tu n'as pas déployé toute la maquette mobile,
               il n'y a que quelques pages ». Mesure du même jour : 1 567
               sections auraient dû se replier, 141 le faisaient, et les 41
@@ -291,53 +390,24 @@ export default function CorpsRessource({
               les liens du sommaire continuent de tomber au bon endroit.
               Sur ordinateur rien ne change, le repli n'a lieu qu'en dessous de
               880 px. */}
-          {parties.map((partie, k) => {
-            const titre = (
-              <h2 id={`mr-s${k + 1}`} style={H.TITRE2}>
-                <span style={H.TITRE2_NUMERO}>{numero(k)}</span>
-                {partie.titre}
-              </h2>
-            );
-            const corps = (
-              <>
-                {partie.blocs.map((bloc, i) => (
-                  <Bloc key={i} bloc={bloc} />
-                ))}
-              </>
-            );
-            return (
-              <Fragment key={k}>
-                {k === 0 ? (
-                  <>
-                    {titre}
-                    {corps}
-                  </>
-                ) : (
-                  /* LA BASCULE PORTE UNE ETIQUETTE, PAS LE `<h2>` DE LA PARTIE.
-                     Le titre et son numero restent dans le corps du bloc, a leur
-                     place et a la taille de leur capture ; l'etiquette n'existe
-                     que sous 880 px et s'efface des que la partie est ouverte.
-                     Voir `habillage.ETIQUETTE_SURTITRE` pour le pourquoi, et
-                     `Ressource.module.css` pour le seuil. L'ancre `#mr-s<n>` du
-                     sommaire reste sur le `<h2>` : les liens du sommaire tombent
-                     au meme endroit qu'avant. */
-                  <SectionPliableMobile
-                    enTete={
-                      <span data-mobile-seulement="" className={styles.etiquettePli}>
-                        <span style={H.ETIQUETTE_SURTITRE}>{numero(k)}</span>
-                        <span style={H.ETIQUETTE_TITRE}>{partie.titre}</span>
-                      </span>
-                    }
-                    resume={resumeDeLaPartie(partie)}
-                  >
-                    {titre}
-                    {corps}
-                  </SectionPliableMobile>
-                )}
-                {k === 1 ? <BandeAppel /> : null}
-              </Fragment>
-            );
-          })}
+          {/* LA CADENCE DE CONVERSION DE LA MAQUETTE MOBILE V2, gabarit 01,
+              variante « article » (« Passer à l'action ») : photo + CTA après
+              la 2e partie, bandeau « Être rappelé » après la 5e, la 8e…
+              Tout ce qu'elle ajoute est masqué au-dessus de 880 px. Le rappel
+              final est posé par `PageRessource`, sous les pastilles, là où la
+              maquette le met. */}
+          {chemin ? (
+            <AvecConversionMobile
+              chemin={chemin}
+              gabarit="01"
+              photoHeros={photoHeros}
+              rappelFinal={false}
+            >
+              {blocsDesParties}
+            </AvecConversionMobile>
+          ) : (
+            blocsDesParties
+          )}
         </div>
       </div>
     </section>

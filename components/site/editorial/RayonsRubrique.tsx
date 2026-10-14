@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Fragment, useState, type CSSProperties } from "react";
+import { Fragment, useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
 import type { CarteCatalogue, VueRubrique } from "@/types/editorial";
 
@@ -75,11 +76,43 @@ function Filtre({
   );
 }
 
-export default function RayonsRubrique({ titre, vue }: { titre: string; vue: VueRubrique }) {
+/* L'étiquette de la bascule du catalogue, téléphone seulement, à l'échelle du
+   titre d'une section repliée de la maquette mobile v2 (`600 16.5px/1.3`). */
+const ETIQUETTE_CATALOGUE: CSSProperties = {
+  display: "block",
+  font: "600 16.5px/1.3 var(--ft)",
+  letterSpacing: "-.025em",
+  color: "var(--ink)",
+};
+
+export default function RayonsRubrique({
+  titre,
+  vue,
+  apresHeros,
+}: {
+  titre: string;
+  vue: VueRubrique;
+  /**
+   * Ce qui se pose ENTRE le héros et le catalogue : les pastilles « Tous les
+   * contenus » du téléphone (`PastillesCocon`, composant SERVEUR), rendues par
+   * le parent et passées toutes faites, pour que ce composant client n'embarque
+   * ni le module du maillage ni son index.
+   */
+  apresHeros?: ReactNode;
+}) {
   const [rayon, setRayon] = useState(vue.rayon);
   const [recherche, setRecherche] = useState("");
+  const rayons = useRef<HTMLElement>(null);
 
   const q = recherche.toLowerCase().trim();
+
+  /* Le catalogue est replié au téléphone (voir plus bas) : une recherche
+     tapée dans le héros doit montrer ses résultats, donc elle le déplie.
+     Sans effet sur bureau, où le bloc est toujours ouvert. */
+  useEffect(() => {
+    const pli = rayons.current?.querySelector<HTMLDetailsElement>("details[data-pliable-mobile]");
+    if (q && pli) pli.open = true;
+  }, [q]);
   const parRayon =
     rayon === "tout" ? vue.catalogue : vue.catalogue.filter((c) => rayonDe(c) === rayon);
   const liste = q
@@ -151,6 +184,7 @@ export default function RayonsRubrique({ titre, vue }: { titre: string; vue: Vue
               {vue.court}
             </span>
             <h1
+              className={styles.titreCompact}
               style={{
                 font: "600 clamp(36px,4.4vw,60px)/1.04 var(--ft)",
                 letterSpacing: "-.045em",
@@ -164,7 +198,7 @@ export default function RayonsRubrique({ titre, vue }: { titre: string; vue: Vue
             {vue.chapo.map((paragraphe) => (
               <p
                 key={paragraphe.slice(0, 24)}
-                className={styles.chapo}
+                className={`${styles.chapo} ${styles.chapoCompact}`}
                 style={{
                   font: "400 18px/1.62 var(--fb)",
                   color: "var(--ink1)",
@@ -229,6 +263,7 @@ export default function RayonsRubrique({ titre, vue }: { titre: string; vue: Vue
             </div>
           </div>
           <div
+            className={styles.photoCompacte}
             style={{
               position: "relative",
               borderRadius: 32,
@@ -279,10 +314,38 @@ export default function RayonsRubrique({ titre, vue }: { titre: string; vue: Vue
         </div>
       </section>
 
+      {apresHeros}
+
       <section
+        ref={rayons}
         data-screen-label="Ressources · rayons"
+        className={styles.sectionRubrique}
         style={{ maxWidth: 1200, margin: "0 auto", padding: "44px 40px 0" }}
       >
+        {/* G3 : LE CATALOGUE, SECTION DE BUREAU, SE REPLIE AU TÉLÉPHONE. Le
+            gabarit 11 de la maquette mobile v2 ne déroule pas cette grille :
+            il sert le maillage en pastilles (« Tous les contenus »,
+            `apresHeros` juste au-dessus). REPLIER, JAMAIS RETIRER : filtres
+            et cartes restent dans le DOM, sous une bascule dont l'étiquette
+            est le nom du rayon (`vue.court`, la pastille de la capture). Le
+            catalogue n'a pas de titre à lui : un `<h2>` du TÉLÉPHONE SEUL le
+            lui donne, et l'étiquette le reprend mot pour mot, la règle que
+            `verification-editorial.tsx` (`controleEtiquettes`) tient pour
+            chaque bloc repliable de la famille. La capture de bureau n'a pas
+            ce titre : il est masqué au-dessus de 880 px, comme la bascule
+            (`.corpsRubrique`). La recherche du héros reste hors du pli, et
+            l'ouvre dès qu'on tape (effet plus haut). */}
+        <SectionPliableMobile
+          enTete={
+            <span data-mobile-seulement="" className={styles.etiquettePli}>
+              <span style={ETIQUETTE_CATALOGUE}>{vue.court}</span>
+            </span>
+          }
+          resume={`${liste.length} ressources`}
+        >
+        <h2 data-mobile-seulement="" style={{ ...ETIQUETTE_CATALOGUE, margin: "0 0 14px" }}>
+          {vue.court}
+        </h2>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 26 }}>
           {vue.categories.map((c) => (
             <Filtre
@@ -473,6 +536,7 @@ export default function RayonsRubrique({ titre, vue }: { titre: string; vue: Vue
             Aucune ressource ne correspond à votre recherche.
           </div>
         ) : null}
+        </SectionPliableMobile>
       </section>
     </>
   );
