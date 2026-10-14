@@ -157,7 +157,9 @@ export default function FeuilleLecteur({
           outline: "none",
         }}
       >
+        {/* `data-libelle-lecteur` : les mots de la barre sont au lecteur, pas à la page. */}
         <div
+          data-libelle-lecteur=""
           style={{
             position: "sticky",
             top: 0,
