@@ -322,6 +322,8 @@ export default function HubRessources() {
                 style={{
                   flex: 1,
                   minWidth: 0,
+                  // Le retrait par défaut du navigateur, que la maquette garde (le site le remet à 0).
+                  padding: "1px 2px",
                   border: "none",
                   background: "none",
                   outline: "none",
