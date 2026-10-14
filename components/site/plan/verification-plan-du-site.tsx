@@ -13,6 +13,12 @@
  *   MIGEN_FAUTE=tailwind ... (une classe de couleur Tailwind)
  *   MIGEN_FAUTE=rubrique ... (le regroupement perd les pages dont le parent
  *                             n'est pas publié)
+ *   MIGEN_FAUTE=accueil  ... (le regroupement saute l'accueil, comme avant le
+ *                             14/10, alors que le plan XML le déclare)
+ *   MIGEN_FAUTE=robots   ... (robots.txt ouvert ne déclare plus le plan XML)
+ *
+ * Les CHEMINS eux-mêmes (les mêmes des deux côtés, tous en 200) se vérifient
+ * en ligne : `node scripts/verifie-plan-et-sitemap.mjs <url>`.
  *
  * CE QU'IL DÉCIDE.
  *
@@ -32,6 +38,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { renderToStaticMarkup } from "react-dom/server";
 
+import robots from "@/app/robots";
 import PlanDuSite, {
   rubriques,
   type EntreePlan,
@@ -103,19 +110,21 @@ function deLaMaquette(source: string, valeur: string): string {
  * qui donne du sens à l'assertion sur le regroupement.
  */
 const PAGES: EntreePlan[] = [
-  { path: "/offres/", titre_h1: "Entreprise maintenance industrielle" },
-  { path: "/offres/residence/", titre_h1: "Techniciens en résidence" },
+  { path: "/", titre: "La maintenance industrielle, sans rupture de production." },
+  { path: "/offres/", titre: "Entreprise maintenance industrielle" },
+  { path: "/offres/residence/", titre: "Techniciens en résidence" },
   {
     path: "/offres/retrofit/remise-en-etat/",
-    titre_h1: "Remise en état des machines",
+    titre: "Remise en état des machines",
   },
-  { path: "/implantations/lyon/", titre_h1: "Maintenance industrielle à Lyon" },
+  { path: "/implantations/lyon/", titre: "Maintenance industrielle à Lyon" },
   {
     path: "/implantations/lyon/haute-savoie/",
-    titre_h1: "La maintenance industrielle en Haute-Savoie, de l’Arve au Genevois",
+    titre: "La maintenance industrielle en Haute-Savoie, de l’Arve au Genevois",
   },
-  { path: "/preuves/eiffage/", titre_h1: "Eiffage" },
-  { path: "/ressources/fiches-pratiques/", titre_h1: "Fiches pratiques" },
+  { path: "/preuves/eiffage/", titre: "Eiffage" },
+  { path: "/ressources/fiches-pratiques/", titre: "Fiches pratiques" },
+  { path: "/carriere/", titre: "Nous rejoindre" },
 ];
 
 let html = renderToStaticMarkup(<PlanDuSite pages={PAGES} />);
@@ -250,10 +259,32 @@ assert.ok(
   "le survol de la maquette n'est pas porté par le module CSS",
 );
 
+/* Le libellé de rubrique reste à 11 px sous 760 px : sans cette exception,
+   `.mg-site h2` (app/globals.css, `!important`) le porte à 28,86 px à 390 px,
+   mesuré en production le 14/10. */
+assert.ok(
+  /@media \(max-width: 760px\)\s*\{\s*:global\(\.mg-site\) h2\.libelle\s*\{\s*font-size: 11px !important;/.test(MODULE),
+  "le libellé de rubrique n'a plus son exception mobile : il repasse à 29 px",
+);
+assert.ok(
+  /\bstyles\.libelle\b/.test(SOURCE),
+  "le <h2> de rubrique ne porte plus la classe qui garde ses 11 px sur mobile",
+);
+
 /* ---------------------------- le regroupement ne perd aucune page publiée */
 
-const groupes = rubriques(PAGES);
+/* Faute injectée : le regroupement d'avant le 14/10, qui sautait l'accueil
+   (« L'accueil n'a pas de rubrique ») alors que le plan XML le déclare. */
+const groupes =
+  FAUTE === "accueil"
+    ? rubriques(PAGES).filter((g) => g.segment !== "")
+    : rubriques(PAGES);
 const portees = groupes.reduce((total, g) => total + g.pages.length, 0);
+assert.ok(
+  groupes.some((g) => g.pages.some((p) => p.path === "/")),
+  "l'accueil manque au plan du site : sitemap.xml le déclare, le plan HTML " +
+    "doit lister exactement les mêmes chemins",
+);
 assert.equal(
   portees,
   PAGES.length,
@@ -262,13 +293,23 @@ assert.equal(
 );
 assert.deepEqual(
   groupes.map((g) => g.segment),
-  ["offres", "implantations", "preuves", "ressources"],
+  ["", "offres", "implantations", "preuves", "ressources", "carriere"],
   "l'ordre des rubriques n'est plus celui des chemins reçus",
 );
+/* L'accueil n'a pas de segment : son libellé est celui que le menu et le pied
+   de page lui donnent déjà, pas un mot écrit pour le plan. */
+assert.equal(groupes[0].libelle, "Accueil", "la rubrique de l'accueil a perdu son libellé");
+/* Une rubrique nouvelle prend le libellé déduit de son chemin, sans texte
+   inventé : « carriere », en capitales par la feuille de style. */
+assert.equal(groupes[5].libelle, "carriere", "le libellé d'une rubrique n'est plus son segment");
 assert.deepEqual(
-  groupes[0].pages.map((p) => p.path),
+  groupes[1].pages.map((p) => p.path),
   ["/offres/", "/offres/residence/", "/offres/retrofit/remise-en-etat/"],
   "la racine de la rubrique n'arrive plus avant ses filles",
+);
+assert.ok(
+  html.includes(">La maintenance industrielle, sans rupture de production.</a>"),
+  "le lien de l'accueil ne porte pas son H1",
 );
 
 /* Faute injectée : le regroupement d'avant, par parenté de chemin direct, qui
@@ -302,7 +343,8 @@ assert.ok(
    `components/cocon/verification-rubriques.tsx`. */
 for (const lien of html.matchAll(/href="([^"]*)"/g)) {
   assert.ok(
-    /^\/([a-z0-9-]+\/)*[a-z0-9-]+\/?$/.test(lien[1]),
+    // « / » compris : l'accueil est au plan depuis le 14/10.
+    /^\/(([a-z0-9-]+\/)*[a-z0-9-]+\/?)?$/.test(lien[1]),
     `cible non canonique dans le plan du site : ${lien[1]}`,
   );
 }
@@ -358,7 +400,36 @@ assert.ok(
   "la loupe doit être masquée aux lecteurs d'écran",
 );
 
+/* ------------------------------------------------------------- robots.txt */
+
+/* robots.txt ne se réécrit pas ici, il se prouve. Fermé par défaut (le site est
+   en préproduction sur vercel.app), ouvert par `SITE_INDEXABLE=oui` le jour de
+   la bascule de migen.fr, et alors il déclare le plan XML sur le domaine
+   final. */
+const indexable = process.env.SITE_INDEXABLE;
+try {
+  process.env.SITE_INDEXABLE = "oui";
+  const ouvert = robots();
+  assert.equal(
+    FAUTE === "robots" ? undefined : ouvert.sitemap,
+    "https://migen.fr/sitemap.xml",
+    "robots.txt ouvert ne déclare pas https://migen.fr/sitemap.xml",
+  );
+
+  delete process.env.SITE_INDEXABLE;
+  const ferme = robots();
+  assert.deepEqual(
+    ferme.rules,
+    { userAgent: "*", disallow: "/" },
+    "sans SITE_INDEXABLE=oui, robots.txt doit rendre Disallow: /",
+  );
+  assert.equal(ferme.sitemap, undefined, "robots.txt fermé ne doit rien déclarer");
+} finally {
+  if (indexable === undefined) delete process.env.SITE_INDEXABLE;
+  else process.env.SITE_INDEXABLE = indexable;
+}
+
 console.log(
   `Plan du site : ${groupes.length} rubriques, ${portees} pages portées, ` +
-    "toutes les assertions passent.",
+    "robots.txt prouvé ouvert et fermé, toutes les assertions passent.",
 );

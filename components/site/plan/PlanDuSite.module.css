@@ -35,3 +35,20 @@
   background: var(--acc-w);
   color: var(--acc-ink);
 }
+
+/*
+ * LE LIBELLÉ DE RUBRIQUE GARDE SES 11 PX SUR MOBILE.
+ *
+ * Mesuré le 14/10 en production à 390 px : `app/globals.css` porte, sous
+ * 760 px, `.mg-site h2 { font-size: clamp(26px,7.4vw,34px) !important }`, une
+ * échelle de TITRE DE SECTION. Le libellé de rubrique est un <h2> de 11 px dans
+ * la maquette (ligne 2943) : la règle le portait à 28,86 px, en capitales
+ * espacées, sur chaque carte. Même exception que les pastilles du cocon
+ * (`[data-pastilles-cocon] > h2`), posée ici et non dans le fichier partagé.
+ * La classe sur le <h2> donne la spécificité qui bat l'`!important` global.
+ */
+@media (max-width: 760px) {
+  :global(.mg-site) h2.libelle {
+    font-size: 11px !important;
+  }
+}

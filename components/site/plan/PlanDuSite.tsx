@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 
 import { VERRE } from "@/components/site/blocs/habillage";
+import { TIROIR_ACCUEIL } from "@/components/site/entete-donnees";
 
 import styles from "./PlanDuSite.module.css";
 
@@ -19,19 +20,21 @@ import styles from "./PlanDuSite.module.css";
  * composants client côté serveur au premier passage, et Google reçoit donc la
  * liste complète en HTML. La lecture de la base, elle, reste dans la page.
  *
- * CE QUE LA MAQUETTE NE DIT PAS, et qui vient donc de la base. La maquette
- * liste vingt et un mots dans sept cartes de démonstration (`planFams`, avec
- * ses `hint-placeholder-count`). Un plan du site qui liste des exemples ne sert
- * personne. Les rubriques, leurs pages et leurs comptes sont lus dans la table
- * `pages`, statut publié seulement : le plan ne peut donc pas annoncer une page
- * que le site ne sert pas, et il se met à jour tout seul à chaque publication.
+ * CE QUE LA MAQUETTE NE DIT PAS, et qui vient donc des pages publiées. La
+ * maquette liste vingt et un mots dans sept cartes de démonstration
+ * (`planFams`, avec ses `hint-placeholder-count`). Un plan du site qui liste
+ * des exemples ne sert personne. Les rubriques, leurs pages et leurs comptes
+ * viennent de `lib/pages-publiees.ts`, la liste que `sitemap.xml` lit aussi :
+ * le plan annonce exactement les chemins du plan XML, accueil compris, et le
+ * texte de chaque lien est le H1 que la page sert.
  *
  * LE LIBELLÉ DE RUBRIQUE EST DÉDUIT DU CHEMIN, et ce n'est pas un pis-aller :
- * `titre_h1` d'une page de niveau 1 est une phrase de vente (« Un siège à Lyon,
+ * le H1 d'une page de niveau 1 est une phrase de vente (« Un siège à Lyon,
  * dix hubs de techniciens, des interventions partout en France. »), illisible
  * dans la pastille en capitales de la maquette. Le premier segment du chemin,
  * lui, est court, vrai, et déjà la rubrique. Inventer un libellé court serait
- * de la donnée inventée.
+ * de la donnée inventée. L'accueil, qui n'a pas de segment, prend le libellé
+ * que le site lui donne déjà dans son menu et son pied de page : « Accueil ».
  *
  * REGROUPEMENT PAR SEGMENT, et non par `parent_id` : seize pages publiées ont
  * un parent qui ne l'est pas (`/preuves/eiffage/`, `/ressources/fiches-pratiques/`,
@@ -43,7 +46,8 @@ import styles from "./PlanDuSite.module.css";
 /** Une page du plan, telle que la page serveur la lit. */
 export interface EntreePlan {
   path: string;
-  titre_h1: string;
+  /** Le H1 servi par la page, texte du lien. */
+  titre: string;
 }
 
 export interface PlanDuSiteProps {
@@ -59,9 +63,12 @@ interface Rubrique {
   pages: EntreePlan[];
 }
 
-/** « bureau-etudes » devient « bureau etudes ». Les capitales sont en CSS. */
+/**
+ * « bureau-etudes » devient « bureau etudes ». Les capitales sont en CSS.
+ * L'accueil (segment vide) reprend le libellé du lien « Accueil » du menu.
+ */
 function libelleRubrique(segment: string): string {
-  return segment.replace(/-/g, " ");
+  return segment ? segment.replace(/-/g, " ") : TIROIR_ACCUEIL.libelle;
 }
 
 /**
@@ -87,8 +94,9 @@ function aplati(texte: string): string {
 export function rubriques(pages: EntreePlan[]): Rubrique[] {
   const parSegment = new Map<string, Rubrique>();
   for (const page of pages) {
-    const segment = page.path.split("/").filter(Boolean)[0];
-    if (!segment) continue; // L'accueil n'a pas de rubrique.
+    // L'accueil a sa propre rubrique, au segment vide : le plan XML le déclare,
+    // le plan HTML le liste aussi.
+    const segment = page.path.split("/").filter(Boolean)[0] ?? "";
     const connue = parSegment.get(segment);
     if (connue) connue.pages.push(page);
     else {
@@ -259,7 +267,7 @@ const LISTE: CSSProperties = {
  * panneaux du menu) : mêmes 9 px sur 11, même rayon de 11, même transition, et
  * la typographie de son titre. Rien d'inventé, et rien de recopié de mémoire.
  *
- * L'interlignage est le seul ajout : un `titre_h1` tient sur trois lignes dans
+ * L'interlignage est le seul ajout : un H1 tient sur trois lignes dans
  * une colonne de 250 px, et la maquette n'avait que des libellés d'un mot.
  */
 const RANGEE: CSSProperties = {
@@ -286,7 +294,7 @@ export default function PlanDuSite({ pages }: PlanDuSiteProps) {
       .map((rubrique) => ({
         ...rubrique,
         pages: rubrique.pages.filter((page) =>
-          aplati(`${page.titre_h1} ${page.path}`).includes(cherche),
+          aplati(`${page.titre} ${page.path}`).includes(cherche),
         ),
       }))
       .filter((rubrique) => rubrique.pages.length > 0);
@@ -348,7 +356,9 @@ export default function PlanDuSite({ pages }: PlanDuSiteProps) {
               {groupes.map((rubrique) => (
                 <li key={rubrique.segment} style={CARTE}>
                   <div style={TETE_CARTE}>
-                    <h2 style={LIBELLE_RUBRIQUE}>{rubrique.libelle}</h2>
+                    <h2 style={LIBELLE_RUBRIQUE} className={styles.libelle}>
+                      {rubrique.libelle}
+                    </h2>
                     <span style={COMPTE_RUBRIQUE}>{rubrique.pages.length}</span>
                   </div>
                   <ul style={LISTE}>
@@ -359,7 +369,7 @@ export default function PlanDuSite({ pages }: PlanDuSiteProps) {
                           style={RANGEE}
                           className={styles.rangee}
                         >
-                          {page.titre_h1}
+                          {page.titre}
                         </Link>
                       </li>
                     ))}

@@ -1,14 +1,10 @@
 import type { Metadata } from "next";
 
 import PlanDuSite, { type EntreePlan } from "@/components/site/plan/PlanDuSite";
-import {
-  cheminNormalise,
-  SOURCES_REFONTE,
-  sourcesRedirigees,
-} from "@/lib/redirections";
+import { pagesPubliees } from "@/lib/pages-publiees";
+import { SOURCES_REFONTE, sourcesRedirigees } from "@/lib/redirections";
 import { urlAbsolue } from "@/lib/seo/url";
 import { vignetteDeLaPage } from "@/lib/seo/vignette";
-import { lectureContenu } from "@/lib/supabase";
 
 /**
  * Plan du site, écran « Plan du site » de la maquette locale
@@ -89,20 +85,29 @@ async function cheminsRedirigees(): Promise<ReadonlySet<string>> {
   }
 }
 
-export default async function PagePlanDuSite() {
-  // La RLS ne remonte que les contenus publiés : le plan ne peut pas annoncer
-  // un brouillon, et il n'a donc pas à filtrer sur le statut.
-  const [{ data, error }, redirigees] = await Promise.all([
-    lectureContenu().from("pages").select("path, titre_h1").order("path"),
-    cheminsRedirigees(),
-  ]);
-
-  if (error) {
-    console.error("Plan du site indisponible :", error.message);
+/**
+ * Les mêmes chemins que `sitemap.xml`, accueil et routes statiques compris : la
+ * liste vient de `lib/pages-publiees.ts`, que le plan XML lit aussi. Mesuré le
+ * 14/10 avant ce partage : 259 adresses au plan XML, 145 ici.
+ *
+ * Triées par chemin, comme la table `pages` les rendait : la racine d'une
+ * rubrique arrive avant ses filles, et les rubriques dans l'ordre alphabétique.
+ */
+async function entreesDuPlan(): Promise<EntreePlan[]> {
+  try {
+    const pages = await pagesPubliees(await cheminsRedirigees());
+    return pages
+      .map(({ path, titre }) => ({ path, titre }))
+      .sort((a, b) => a.path.localeCompare(b.path, "fr"));
+  } catch (erreur) {
+    console.error(
+      "Plan du site indisponible :",
+      erreur instanceof Error ? erreur.message : erreur,
+    );
+    return [];
   }
+}
 
-  const pages: EntreePlan[] = (data ?? []).filter(
-    (page) => !redirigees.has(cheminNormalise(page.path)),
-  );
-  return <PlanDuSite pages={pages} />;
+export default async function PagePlanDuSite() {
+  return <PlanDuSite pages={await entreesDuPlan()} />;
 }
