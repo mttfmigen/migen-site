@@ -1,7 +1,11 @@
 import Link from "next/link";
-import type { ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
 
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
+import PastillesCocon from "@/components/site/cocon/PastillesCocon";
+import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
+import { CIBLE_CONTACT, ID_RAPPEL_FINAL } from "@/components/site/mobile/conversion-donnees";
 import OffresDomaine from "@/components/site/expertises/domaine/OffresDomaine";
 import ProblemeDomaine from "@/components/site/expertises/domaine/ProblemeDomaine";
 import AppelFinal from "@/components/site/offre/AppelFinal";
@@ -41,6 +45,7 @@ import { estSecteurOffre, type ContenuPageSecteur } from "@/types/secteur";
 import ExpertisesSecteur from "./ExpertisesSecteur";
 import LogosSecteur from "./LogosSecteur";
 import PageSecteurHistorique from "./PageSecteurHistorique";
+import PliSecteur from "./PliSecteur";
 
 import styles from "./PageSecteur.module.css";
 
@@ -99,6 +104,12 @@ export interface ProprietesPageSecteur {
   formulaire?: string;
   filAriane?: ReactNode;
   maillage?: ReactNode;
+  /**
+   * Le chemin de la page, `/secteurs/aeronautique/`. Il monte la couche de
+   * conversion de la maquette mobile v2 (cadence et pastilles du cocon), qui
+   * n'existe que sous 881 px. Absent, la page rend son seul dessin de bureau.
+   */
+  chemin?: string;
 }
 
 /** La section du corpus de ce type, s'il y en a une. Sans elle, rien. */
@@ -115,6 +126,7 @@ export default function PageSecteur({
   formulaire = "cocon-secteurs",
   filAriane,
   maillage,
+  chemin,
 }: ProprietesPageSecteur) {
   if (!estSecteurOffre(contenu)) {
     return <PageSecteurHistorique titre={titre} contenu={contenu} filAriane={filAriane} maillage={maillage} />;
@@ -135,6 +147,124 @@ export default function PageSecteur({
   /* Même règle que `PageOffre` : la PRÉSENCE du champ monte le panneau. */
   const heroFormulaire = typeof contenu.formulaireHeroTitre === "string";
   const bandeVisible = !!(contenu.mention || contenu.appelBouton);
+
+  /* Les bandes « Appel » ne répètent que la mention et le bouton du héros. La
+     maquette mobile v2 n'en dessine aucune : sa cadence (photo + CTA, bandeau
+     « Être rappelé ») les remplace. Elles quittent donc l'écran sous 881 px
+     (`bureauSeulement`), et leur texte reste dans le HTML servi. */
+  const bandeAppel = (variante?: "sombre") =>
+    bandeVisible ? (
+      <div className={styles.bureauSeulement}>
+        <BandeAppel mention={contenu.mention} bouton={contenu.appelBouton} variante={variante} />
+      </div>
+    ) : null;
+
+  /* Le bouton du photo + CTA mobile, celui du héros (dc.html L436, `P.cta`).
+     La maquette le fait viser `/contact/`, comme le corpus l'écrit
+     (« [Étudier…](/contact/) · 04 78 33 72 05 »). */
+  const boutonMobile = actions[0] ? { libelle: actions[0].libelle, href: CIBLE_CONTACT } : undefined;
+
+  /*
+   * LES SECTIONS DE CONTENU, dans l'ordre, telles que la cadence mobile les
+   * compte (dc.html `nD` : 01 problème, 02 offre, 03 déroulé, 04 garanties,
+   * 05 références, puis les questions). Le photo + CTA tombe ainsi après
+   * l'offre et le bandeau après les références, comme sur la capture mobile
+   * de /secteurs/aeronautique/. Les écrans de bureau que la maquette mobile ne
+   * dessine pas (bandes d'appel, complément, expertises, offres du secteur,
+   * marques) suivent la section du corpus qu'ils suivent déjà : l'ordre de la
+   * page ne change pas d'un écran.
+   */
+  const sectionsContenu: ReactNode[] = [
+    /* ------------------------------------------- 5. « 03 Problème » */
+    probleme ? (
+      <ProblemeDomaine key="probleme" section={probleme} altPhoto={titre} photo={contenu.problemePhoto} />
+    ) : null,
+
+    <Fragment key="offre">
+      {/* --------------------------------------------- 6. « 04 Offre » */}
+      {offre ? <PointsOffre section={offre} /> : null}
+
+      {/* ------------------------------------------- 7. Appel · offre */}
+      {bandeAppel("sombre")}
+
+      {/* ---------------------------------------- 7 bis. Complément 4 */}
+      {contenu.complementOffre?.length ? <ComplementsOffre blocs={contenu.complementOffre} /> : null}
+    </Fragment>,
+
+    /* ------------------------------------------- 8. « 05 Déroulé » */
+    deroule ? (
+      <PliSecteur
+        key="deroule"
+        pleinePage
+        surtitre="Notre méthode"
+        /* Le titre par défaut est celui de `DerouleOffre`, que les 12 fiches
+           ne surchargent pas. */
+        titre={contenu.derouleTitre ?? "Un appel. Un plan. Une ligne qui repart."}
+        resume={resumeDe(deroule.etapes.map((etape) => etape.titre))}
+      >
+        <DerouleOffre section={deroule} titre={contenu.derouleTitre} />
+      </PliSecteur>
+    ) : null,
+
+    <Fragment key="garanties">
+      {/* ----------------------------------------- 9. « 06 Garanties » */}
+      {garanties ? <GarantiesOffre section={garanties} /> : null}
+
+      {/* -------------------------------------------- 10. « 07 Appel » */}
+      {contenu.brefBande ? (
+        <AppelOffre question={contenu.brefBande} bouton={contenu.brefBouton} mention={contenu.brefMention} />
+      ) : null}
+
+      {/* -------------------- 11 et 12. Expertises et offres du secteur */}
+      {contenu.expertises?.length ? (
+        <>
+          <ExpertisesSecteur
+            titre={contenu.expertisesTitre}
+            chapeau={contenu.expertisesChapeau}
+            cartes={contenu.expertises}
+          />
+          {/* L'enveloppe ne porte que les replis de la source, voir
+              `PageSecteur.module.css` (« Offres du secteur »). */}
+          <PliSecteur pleinePage surtitre="Nos offres" titre="Six façons de travailler ensemble, selon votre besoin">
+            <div className={styles.offres}>
+              <OffresDomaine />
+            </div>
+          </PliSecteur>
+        </>
+      ) : null}
+
+      {/* ---------------------------------- 13. « Marques maintenues » */}
+      {contenu.marquesFamille ? (
+        <PliSecteur pleinePage surtitre="Marques et constructeurs" titre="Les équipements que nous maintenons déjà">
+          <MarquesOffre famille={contenu.marquesFamille} familles={contenu.marquesFamilles} />
+        </PliSecteur>
+      ) : null}
+    </Fragment>,
+
+    <Fragment key="references">
+      {/* ---------------------------------------- 14. « 08 Références » */}
+      {preuves ? <ReferencesOffre section={preuves} /> : null}
+
+      {/* ----------------------------------- 15. Appel · références */}
+      {bandeAppel()}
+    </Fragment>,
+
+    /* ----------------------------------------- 16. « 09 Questions » */
+    objections ? (
+      <QuestionsPhoto
+        key="questions"
+        donnees={{
+          surtitre: "Questions fréquentes",
+          titre: objections.titre ?? "Vos questions avant de nous appeler",
+          lienTexte: "Poser ma question",
+          lienHref: "#mgx-form",
+          bouton: true,
+          photo: "/assets/web/faq-offre.jpg",
+          questions: objections.questions.map((q) => ({ question: q.question, reponse: q.reponse ?? "" })),
+        }}
+      />
+    ) : null,
+  ];
 
   return (
     <div className={`mg-site ${styles.gabarit}`}>
@@ -197,7 +327,15 @@ export default function PageSecteur({
             </div>
 
             {heroFormulaire ? (
-              <div style={{ position: "relative" }}>
+              /* HÉROS COMPACT AU TÉLÉPHONE (G2) : la maquette mobile v2 ne pose
+                 aucun formulaire dans son héros, son formulaire vit en bas de
+                 page. `panneauHero` masque donc le panneau sous 881 px, SAUF
+                 quand il est la cible de l'adresse (`#besoin`) : tous les
+                 boutons de la page qui le visent le font réapparaître et
+                 défilent jusqu'à lui. Aucun bouton ne mène nulle part, le
+                 panneau reste dans le HTML servi, et au-dessus de 880 px rien
+                 ne change. Voir `PageSecteur.module.css`. */
+              <div className={styles.panneauHero} style={{ position: "relative" }}>
                 <PanneauFormulaire
                   id="besoin"
                   formulaire={`${formulaire}-hero`}
@@ -230,103 +368,62 @@ export default function PageSecteur({
           </section>
         ) : null}
 
-        {/* ----------------------------------------------- 2. « 02 Logos » */}
+        {/* LOGOS ET RÉASSURANCE, REPLIÉS ENSEMBLE AU TÉLÉPHONE (G3) : deux
+            écrans de bureau que la maquette mobile v2 ne dessine pas (1 240 px
+            à 390 px), tous deux de la preuve de confiance. L'étiquette est le
+            surtitre du premier, « Ils nous font confiance », et le résumé
+            nomme les deux cartes du second : rien n'est rédigé. Aucun des
+            deux n'a de titre à lui : l'étiquette porte le `<h2>`. */}
+        <PliSecteur
+          pleinePage
+          titreDeSection
+          titre="Ils nous font confiance"
+          resume={resumeDe(["Certifications", "Qui intervient chez vous"])}
+        >
+          {/* --------------------------------------------- 2. « 02 Logos » */}
 
-        <LogosSecteur titre={contenu.logosTitre} logos={contenu.logos} />
+          <LogosSecteur titre={contenu.logosTitre} logos={contenu.logos} />
 
-        {/* --------------------------------------------- 3. Réassurance */}
+          {/* ------------------------------------------- 3. Réassurance */}
 
-        <Reassurance reperes={contenu.reperesReassurance} />
+          <Reassurance reperes={contenu.reperesReassurance} />
+        </PliSecteur>
 
         {/* ----------------------------------------- 4. Appel · domaines */}
 
-        {bandeVisible ? <BandeAppel mention={contenu.mention} bouton={contenu.appelBouton} /> : null}
+        {bandeAppel()}
 
-        {/* -------------------------------------------- 5. « 03 Problème » */}
+        {chemin ? (
+          <AvecConversionMobile chemin={chemin} gabarit="08" bouton={boutonMobile} rappelFinal={false}>
+            {sectionsContenu}
+          </AvecConversionMobile>
+        ) : (
+          sectionsContenu
+        )}
 
-        {probleme ? <ProblemeDomaine section={probleme} altPhoto={titre} photo={contenu.problemePhoto} /> : null}
-
-        {/* ------------------------------------------------ 6. « 04 Offre » */}
-
-        {offre ? <PointsOffre section={offre} /> : null}
-
-        {/* --------------------------------------------- 7. Appel · offre */}
-
-        {bandeVisible ? (
-          <BandeAppel mention={contenu.mention} bouton={contenu.appelBouton} variante="sombre" />
-        ) : null}
-
-        {/* ------------------------------------------ 7 bis. Complément 4 */}
-
-        {contenu.complementOffre?.length ? <ComplementsOffre blocs={contenu.complementOffre} /> : null}
-
-        {/* --------------------------------------------- 8. « 05 Déroulé » */}
-
-        {deroule ? <DerouleOffre section={deroule} titre={contenu.derouleTitre} /> : null}
-
-        {/* ------------------------------------------- 9. « 06 Garanties » */}
-
-        {garanties ? <GarantiesOffre section={garanties} /> : null}
-
-        {/* ---------------------------------------------- 10. « 07 Appel » */}
-
-        {contenu.brefBande ? (
-          <AppelOffre question={contenu.brefBande} bouton={contenu.brefBouton} mention={contenu.brefMention} />
-        ) : null}
-
-        {/* ---------------------- 11 et 12. Expertises et offres du secteur */}
-
-        {contenu.expertises?.length ? (
-          <>
-            <ExpertisesSecteur
-              titre={contenu.expertisesTitre}
-              chapeau={contenu.expertisesChapeau}
-              cartes={contenu.expertises}
-            />
-            {/* L'enveloppe ne porte que les replis de la source, voir
-                `PageSecteur.module.css` (« Offres du secteur »). */}
-            <div className={styles.offres}>
-              <OffresDomaine />
-            </div>
-          </>
-        ) : null}
-
-        {/* ------------------------------------ 13. « Marques maintenues » */}
-
-        {contenu.marquesFamille ? (
-          <MarquesOffre famille={contenu.marquesFamille} familles={contenu.marquesFamilles} />
-        ) : null}
-
-        {/* ------------------------------------------ 14. « 08 Références » */}
-
-        {preuves ? <ReferencesOffre section={preuves} /> : null}
-
-        {/* ------------------------------------- 15. Appel · références */}
-
-        {bandeVisible ? <BandeAppel mention={contenu.mention} bouton={contenu.appelBouton} /> : null}
-
-        {/* ------------------------------------------- 16. « 09 Questions » */}
-
-        {objections ? (
-          <QuestionsPhoto
-            donnees={{
-              surtitre: "Questions fréquentes",
-              titre: objections.titre ?? "Vos questions avant de nous appeler",
-              lienTexte: "Poser ma question",
-              lienHref: "#mgx-form",
-              bouton: true,
-              photo: "/assets/web/faq-offre.jpg",
-              questions: objections.questions.map((q) => ({ question: q.question, reponse: q.reponse ?? "" })),
-            }}
-          />
+        {/* Les pastilles « Dans la même rubrique » de la maquette mobile v2,
+            juste AVANT le rappel de fin comme dans la maquette (dc.html L134,
+            `kidsBottom` précède `showEndCta`). Le composant ne rend rien au-dessus
+            de 880 px, ni pour une page hors index. */}
+        {chemin ? (
+          <div className={styles.pastilles}>
+            <PastillesCocon chemin={chemin} />
+          </div>
         ) : null}
 
         {/* ---------------------------------------- 17. « 10 Appel final » */}
 
         {/* L'ancre `#mgx-form` est celle de la capture, sur cette section : le
-            bouton de la FAQ et celui des offres du secteur la visent. */}
-        <div id="mgx-form" style={{ scrollMarginTop: 90 }}>
-          <AppelFinal question={ctaFinal?.question} formulaire={formulaire} bouton={contenu.appelBouton} />
+            bouton de la FAQ et celui des offres du secteur la visent.
+            `#etre-rappele` est celle du bandeau « Être rappelé » de la cadence
+            mobile (dc.html L437). La page pose déjà son formulaire de bas de
+            page ici : le rappel final de la cadence n'est pas rendu
+            (`rappelFinal={false}`), sans quoi le téléphone empilerait deux
+            formulaires, et le bandeau vise celui-ci. */}
+        <div id={ID_RAPPEL_FINAL} style={{ scrollMarginTop: 90 }}>
+          <div id="mgx-form" style={{ scrollMarginTop: 90 }}>
+            <AppelFinal question={ctaFinal?.question} formulaire={formulaire} bouton={contenu.appelBouton} />
+          </div>
         </div>
 
         {maillage ? (

@@ -34,6 +34,10 @@
  *  6. LES INTERDITS du contrat sont absents du rendu.
  *  7. « NOS RÉFÉRENCES » : mêmes cas liés que la capture, même ordre, cartes
  *     mot pour mot (le compte de cas comparés est affiché : 89).
+ *  8. LA COUCHE MOBILE V2 (14/10) : la page est rendue avec son chemin, comme
+ *     la route la sert. Les points 1 à 7 jugent le rendu de BUREAU (le brut
+ *     moins `data-mobile-seulement`) ; celui-ci juge le brut : un photo + CTA,
+ *     un bandeau, et aucune ancre `#…` sans sa cible unique.
  *
  * IL PROUVE QU'IL SAIT ÉCHOUER : il altère d'abord une page de huit façons et
  * exige que chacune soit vue, puis il éprouve le contrôle des références.
@@ -46,6 +50,7 @@ import { fileURLToPath } from "node:url";
 
 import { renderToStaticMarkup } from "react-dom/server";
 
+import { ID_BANDEAU, ID_PHOTO_CTA } from "@/components/site/mobile/conversion-donnees";
 import { appliqueDecisions } from "@/lib/decisions-copie";
 import type { ContenuSecteurOffre } from "@/types/secteur";
 
@@ -135,6 +140,12 @@ const AJOUTS_PAGE: readonly Ecart[] = [
 const AJOUTS: readonly string[] = [
   "Site web",
   "Données traitées par Migen pour répondre à votre demande, enregistrées dans HubSpot. Droits et durées de conservation : politique de confidentialité",
+  /* LA MENTION DE PROSPECTION, donnée par Mehdi le 13/10 au soir (commit
+     1a7ff9a), absente de toute capture : la maquette ne la porte nulle part.
+     La porte du hub `/secteurs/` l'a déclarée le jour même, celle-ci non :
+     elle tombait depuis sur ses 24 formulaires (deux par page) pour cette
+     seule phrase. Chaîne EXACTE, pas un motif : une phrase voisine tombe. */
+  "Vos informations seront conservées et utilisées pour vous proposer nos produits et services. Vous restez libre de vous désinscrire à tout moment.",
 ];
 
 /**
@@ -385,8 +396,39 @@ export function ecartsBandeUnique(section: string, logos: readonly { src: string
 
 /* ------------------------------------------------------------- le jugement */
 
-const rendre = (page: PageRelais) =>
-  renderToStaticMarkup(<PageSecteur titre={page.titre_h1} contenu={page.contenu} formulaire="cocon-secteurs-" />);
+/** Le rendu BRUT, tel que la route le sert : avec son chemin, donc avec la couche mobile v2. */
+const rendreBrut = (page: PageRelais) =>
+  renderToStaticMarkup(
+    <PageSecteur titre={page.titre_h1} contenu={page.contenu} formulaire="cocon-secteurs-" chemin={page.url} />,
+  );
+
+/**
+ * Le rendu que voit un visiteur de BUREAU, celui qu'on compare à la capture :
+ * le brut moins ce qui porte `data-mobile-seulement` (photo + CTA, bandeau,
+ * pastilles du cocon, téléphone du héros, étiquettes de bascule), masqué
+ * au-dessus de 880 px. Sans ce retrait, le découpage par `<section` compterait
+ * les sections du téléphone.
+ */
+const rendre = (page: PageRelais) => retireOrnementsMobiles(rendreBrut(page));
+
+/**
+ * 8. LA COUCHE MOBILE V2 (14/10), jugée sur le rendu BRUT : un seul photo +
+ * CTA, un seul bandeau « Être rappelé » (six sections de contenu, cadence 2
+ * puis 5, `conversion-donnees.ts`), et AUCUNE ANCRE SANS CIBLE : chaque
+ * `href="#…"` de la page vise un `id` présent une fois et une seule. C'est ce
+ * qui tient `#etre-rappele`, la cible du bandeau, que la page porte sur son
+ * appel final faute de rappel final de cadence (`rappelFinal={false}`).
+ */
+function ecartsMobile(brut: string): string[] {
+  const ecarts: string[] = [];
+  const cibles = (id: string) => occurrences(brut, ` id="${id}"`);
+  if (cibles(ID_PHOTO_CTA) !== 1) ecarts.push(`${cibles(ID_PHOTO_CTA)} photo + CTA, un attendu`);
+  if (cibles(ID_BANDEAU) !== 1) ecarts.push(`${cibles(ID_BANDEAU)} bandeau « Être rappelé », un attendu`);
+  for (const ancre of new Set([...brut.matchAll(/href="#([^"]+)"/g)].map((m) => m[1]))) {
+    if (cibles(ancre) !== 1) ecarts.push(`l'ancre #${ancre} a ${cibles(ancre)} cible(s), une attendue`);
+  }
+  return ecarts;
+}
 
 function juge(page: PageRelais): { fautes: string[]; cas: number } {
   const fautes: string[] = [];
@@ -538,6 +580,8 @@ function juge(page: PageRelais): { fautes: string[]; cas: number } {
   const htmlCapture = capture.sections.map((s) => s.html).join("");
   for (const e of ecartsReferences(rendu, htmlCapture)) faute(`08 Références : ${e}`);
 
+  for (const e of ecartsMobile(rendreBrut(page))) faute(`couche mobile : ${e}`);
+
   return { fautes, cas: casLies(htmlCapture).length };
 }
 
@@ -627,6 +671,20 @@ const PAGES: PageRelais[] = ATTENDUES.map((url) => {
   for (const [nom, html, logos] of EPREUVES) {
     if (ecartsBandeUnique(html, logos).length === 0) throw new Error(`la bande unique laisse passer : ${nom}`);
   }
+
+  /* La couche mobile, éprouvée sur le brut vrai puis altéré : le contrôle doit
+     partir d'une page juste, et voir chaque altération. */
+  const brut = rendreBrut(base);
+  const depMobile = ecartsMobile(brut);
+  if (depMobile.length) throw new Error(`l’épreuve mobile part d’une page fausse : ${depMobile.join(" ; ")}`);
+  for (const [nom, html] of [
+    ["la cible du bandeau retirée", brut.replace(' id="etre-rappele"', "")],
+    ["le photo + CTA retiré", brut.replace(` id="${ID_PHOTO_CTA}"`, "")],
+    ["un second bandeau", brut.replace(` id="${ID_BANDEAU}"`, ` id="${ID_BANDEAU}"></div><div id="${ID_BANDEAU}"`)],
+    ["le panneau du héros sans son ancre", brut.replace(' id="besoin"', "")],
+  ] as const) {
+    if (ecartsMobile(html).length === 0) throw new Error(`le contrôle mobile laisse passer : ${nom}`);
+  }
 }
 
 /* -------------------------------------------------------- puis les vraies pages */
@@ -647,5 +705,6 @@ console.log(
     `liens, photos et logos par empreinte, interdits), ${cas} cas liés identiques à la capture (mêmes URL, même ordre, ` +
     `cartes mot pour mot), ${TROUS.length} trous et ${AJOUTS.length + AJOUTS_PAGE.length} ajouts déclarés, ` +
     `une seule bande de logos par page (écart déclaré du 09/10), ` +
-    `8 altérations, 4 épreuves de références et 3 épreuves de bande unique toutes vues.`,
+    `couche mobile v2 (cadence, ancres), ` +
+    `8 altérations, 4 épreuves de références, 3 épreuves de bande unique et 4 épreuves mobiles toutes vues.`,
 );

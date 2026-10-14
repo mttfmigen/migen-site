@@ -51,18 +51,14 @@
 }
 
 /* ------------------------------------------------- la respiration à 390 px
-   `app/globals.css` ramène `--sec` à 64px sous 760px sur tout `.mg-site`. La
-   maquette qui rend ces pages (`MigenExpertise.dc.html`) n'applique pas cette
-   règle : mesuré le 08/10 à 390px sur /secteurs/agroalimentaire/, chaque
-   section y garde 120px en tête (Réassurance, Problème, Offre, Déroulé…), là
-   où le site en posait 64. Rétabli ici pour ce gabarit seulement, la règle
-   globale étant hors de son périmètre ; la spécificité double l'emporte sur
-   `.mg-site` quel que soit l'ordre des feuilles. */
-@media (max-width: 760px) {
-  :global(.mg-site).gabarit {
-    --sec: 120px;
-  }
-}
+   RETIRÉ LE 14/10 : ce gabarit portait `--sec: 120px` sous 760px, relevé le
+   08/10 sur la maquette de BUREAU rendue à 390px (`MigenExpertise.dc.html`).
+   La référence du téléphone est désormais la maquette mobile v2, qui espace
+   ses sections de 12 à 14px (`Migen - Mobile v2.dc.html`, `m: "12px 18px 0"`) :
+   120px en tête de chacune des quinze sections faisaient 840px de vide de
+   plus que la règle commune. Le gabarit reprend donc celle de
+   `app/globals.css`, 64px sous 760px, comme le reste du site. Au-dessus de
+   760px rien ne change. */
 
 /* Même cause, même mesure (08/10, 390px) : sous 900px la source de ce gabarit
    replie `.mg-r2` avec une gouttière de 32px (`MigenExpertise.dc.html`, l. 37),
@@ -125,4 +121,76 @@
    de production »), et à 390px le site les coupait au bord du bouton. */
 .gabarit form button[type="submit"] {
   white-space: normal !important;
+}
+
+/* ------------------------------------------- la maquette mobile v2 (14/10)
+   RIEN HORS MEDIA QUERY : au-dessus de 880 px, le dessin de bureau ne bouge
+   pas d'un pixel. Le seuil est celui de `SectionPliableMobile.module.css` et
+   de `[data-mobile-seulement]` dans `app/globals.css`. */
+
+@media (max-width: 880px) {
+  /* LE HÉROS COMPACT (G2). La maquette mobile ne pose aucun formulaire dans
+     son héros (dc.html L111 : bouton d'action et téléphone), le sien vit en
+     bas de page, et celui de cette page aussi (« 10 Appel final »). Le
+     panneau du héros quitte donc l'écran, SAUF quand il est la cible de
+     l'adresse : les boutons qui visent `#besoin` (héros, « 07 Appel ») le
+     font réapparaître, et le navigateur défile jusqu'à lui. Un navigateur
+     sans `:has()` ignore la règle entière et garde le panneau : il ne perd
+     rien, il garde l'ancien dessin. Le panneau reste dans le HTML servi. */
+  .panneauHero:not(:has(:target)) {
+    display: none;
+  }
+
+  /* Les bandes d'appel qui ne répètent que la mention et le bouton du héros,
+     voir `PageSecteur.tsx`. */
+  .bureauSeulement {
+    display: none;
+  }
+
+  /* LA BASCULE D'UN ÉCRAN PARTAGÉ REPLIÉ PAR LA PAGE (`PliSecteur`,
+     `pleinePage`). Elle vit HORS de la section qu'elle enveloppe : elle en
+     reprend donc la respiration (`--sec`, `blocs/habillage` SECTION) et la
+     gouttière (40 px, `LARGEUR`), sans quoi le bloc replié collerait au
+     précédent et au bord de l'écran. */
+  .pliPleinePage > details > summary {
+    padding: var(--sec) 40px 0;
+  }
+
+  /* LE TITRE DES PASTILLES DU COCON GARDE SES 11 PX. `cocon/PastillesCocon`
+     les écrit en ligne (dc.html L134, `font:600 11px`), mais
+     `app/globals.css` pose `.mg-site h2 { font-size: clamp(26px,7.4vw,34px)
+     !important }` : mesuré le 14/10 à 390 px, 28,86 px, un surtitre devenu
+     titre. ponytail: rustine locale, la cause est dans deux fichiers partagés
+     hors de ce gabarit ; elle part quand l'un des deux est corrigé. */
+  .gabarit .pastilles h2 {
+    font-size: 11px !important;
+  }
+}
+
+/* LE TITRE D'UNE ÉTIQUETTE DE BASCULE GARDE LA TAILLE DES AUTRES ÉTIQUETTES
+   (`habillage-secteur` ETIQUETTE_TITRE, 22 px à 390 px) quand il est un `<h2>`
+   (`PliSecteur titreDeSection`) : même règle `.mg-site h2 !important` que
+   ci-dessus, même parade. L'étiquette n'existe pas au-dessus de 880 px. */
+.gabarit .titrePli {
+  font-size: calc(clamp(22px, 2.4vw, 30px) * var(--ts)) !important;
+  margin: 0;
+}
+
+/* LE GARDE-FOU DU DOUBLE REPLI. `PliSecteur pleinePage` replie de l'extérieur
+   des écrans dont le composant appartient à un autre gabarit (offre, domaine).
+   Si ce composant se replie un jour LUI-MÊME, deux bascules s'empileraient :
+   l'enveloppe s'efface alors, sa bascule disparaît et son contenu reste
+   affiché, et c'est la bascule du composant qui sert. Réservé aux navigateurs
+   qui savent afficher le contenu d'un `<details>` fermé (`::details-content`) :
+   ailleurs la règle ne s'applique pas, et le visiteur garde deux bascules
+   plutôt qu'un contenu inaccessible. */
+@supports selector(::details-content) {
+  @media (max-width: 880px) {
+    .pliPleinePage:has(details[data-pliable-mobile] details[data-pliable-mobile]) > details > summary {
+      display: none;
+    }
+    .pliPleinePage:has(details[data-pliable-mobile] details[data-pliable-mobile]) > details::details-content {
+      content-visibility: visible;
+    }
+  }
 }

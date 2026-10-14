@@ -222,6 +222,7 @@ export default async function PageDuCocon({
         formulaire={`cocon${page.path.replace(/\//g, "-")}`}
         filAriane={<FilAriane path={page.path} />}
         maillage={<Maillage page={page} />}
+        chemin={page.path}
       />
     );
   }

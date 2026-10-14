@@ -3,9 +3,11 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 
 import { LARGEUR, SECTION, SURTITRE } from "@/components/site/blocs/habillage";
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
 import type { CarteExpertiseSecteur } from "@/types/secteur";
 
 import styles from "./PageSecteur.module.css";
+import PliSecteur from "./PliSecteur";
 import { altPhoto } from "@/lib/descriptions-photos";
 
 /**
@@ -92,6 +94,11 @@ export default function ExpertisesSecteur({ titre, chapeau, cartes }: Proprietes
   return (
     <section style={SECTION}>
       <div style={LARGEUR}>
+        {/* REPLIÉ AU TÉLÉPHONE (G3) : écran de bureau que la maquette mobile
+            v2 ne dessine pas, 1 280 px déplié à 390 px. Le surtitre et le
+            `<h2>` restent dans leur rangée ; l'étiquette les répète sous
+            881 px. Résumé : les intitulés des cartes. */}
+        <PliSecteur surtitre="Nos expertises" titre={titre} resume={resumeDe(cartes.map((carte) => carte.titre))}>
         <div className="mg-r2" style={ENTETE}>
           <div>
             <div style={{ ...SURTITRE, marginBottom: 14 }}>Nos expertises</div>
@@ -132,6 +139,7 @@ export default function ExpertisesSecteur({ titre, chapeau, cartes }: Proprietes
             </Link>
           ))}
         </div>
+        </PliSecteur>
       </div>
     </section>
   );

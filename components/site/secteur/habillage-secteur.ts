@@ -103,3 +103,22 @@ export const PANNEAU_APPEL: CSSProperties = {
   flexWrap: "wrap",
 };
 
+/* -------------------------------------------- la maquette mobile v2 */
+
+/** L'étiquette d'une bascule mobile, mêmes valeurs que `offre/PointsOffre.tsx`. */
+export const ETIQUETTE_SURTITRE: CSSProperties = {
+  display: "block",
+  font: "600 11px var(--fb)",
+  letterSpacing: ".14em",
+  textTransform: "uppercase",
+  color: "var(--acc)",
+  marginBottom: 6,
+};
+
+export const ETIQUETTE_TITRE: CSSProperties = {
+  display: "block",
+  font: "600 calc(clamp(22px,2.4vw,30px) * var(--ts))/1.15 var(--ft)",
+  letterSpacing: "-.035em",
+  color: "var(--ink)",
+};
+
