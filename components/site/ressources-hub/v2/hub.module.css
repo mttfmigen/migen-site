@@ -150,6 +150,12 @@
   box-shadow: 0 0 0 2px #ff7c3c, var(--shadow) !important;
 }
 
+/* Bloc atteint par « Demander mon diagnostic » (`allerA`, BlocsBas.tsx) : il
+   reçoit le focus pour que le clavier reparte de lui, sans encadrer la section. */
+.rs section[tabindex="-1"]:focus {
+  outline: none;
+}
+
 /* Grille avant le premier calcul du navigateur (rendu serveur) : les seuils
    exacts de `colonnes()` (filtrage.ts) pour les 15 contenus Entreprises,
    largeur du contenu = largeur de la fenêtre. Le composant pose ensuite le
