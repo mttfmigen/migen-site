@@ -77,8 +77,10 @@ function lisLeRegistre(texte) {
   for (const ligne of lignes) {
     /* `G` pour les séries 1 à 4, `D` pour les demandes du 13/10. Sans le `D`,
        les dix-neuf entrées de la série 5 étaient toutes attribuées au dernier
-       `G` rencontré, et le rapport nommait la mauvaise entrée comme rompue. */
-    const titre = ligne.match(/^### ([GD]\d+) — (.+)$/)
+       `G` rencontré, et le rapport nommait la mauvaise entrée comme rompue.
+       Même défaut pour `B`, la section « Bloqué sur Mehdi » : la première
+       commande qui y est posée (B7, 14/10) serait allée au dernier `D`. */
+    const titre = ligne.match(/^### ([GDB]\d+) — (.+)$/)
     if (titre) {
       entree = titre[1]
       etat = '?'

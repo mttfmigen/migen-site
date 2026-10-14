@@ -14,6 +14,10 @@
  * D'OÙ VIENT CHAQUE TEXTE, et rien n'est inventé :
  *  - les huit `hub-*.jpg` reprennent mot pour mot le texte que l'accueil
  *    posait déjà sur la même photo (`HubsAccueil.tsx`, avant le 14/10) ;
+ *  - `hub-metz.jpg` et `hub-dijon.jpg`, livrées le 14/10, traduisent leur
+ *    titre Envato (`docs/PHOTOS-VILLES-ENVATO.md`). La photo de Dijon montre
+ *    MEURSAULT, à 25 km : son texte nomme Meursault et la Côte-d'Or, jamais
+ *    Dijon, qu'elle ne montre pas ;
  *  - les dix `ville-*.jpg` traduisent le titre Envato inscrit dans
  *    `docs/PHOTOS-VILLES-ENVATO.md`, complété par ce que la photo montre, après
  *    l'avoir ouverte. Une photo qui ne montre pas sa ville ne la nomme pas : le
@@ -23,9 +27,11 @@
  */
 const DESCRIPTIONS_VILLES: Readonly<Record<string, string>> = {
   "hub-bordeaux.jpg": "Bordeaux, les quais de la Garonne",
+  "hub-dijon.jpg": "Vignes de Meursault en Côte-d'Or sous l'hiver",
   "hub-lille.jpg": "Façades du centre de Lille",
   "hub-lyon.jpg": "Lyon, la basilique de Fourvière au coucher du soleil",
   "hub-marseille.jpg": "Marseille, le Vieux-Port",
+  "hub-metz.jpg": "Metz et sa cathédrale Saint-Étienne",
   "hub-nantes.jpg": "Vue aérienne de Nantes",
   "hub-paris.jpg": "Paris et la tour Eiffel",
   "hub-strasbourg.jpg": "Strasbourg, les Ponts couverts",

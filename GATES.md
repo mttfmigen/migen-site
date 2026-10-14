@@ -552,7 +552,10 @@ un paragraphe daté « REQUALIFIÉE LE 14/10 ».
       VÉRIFIÉ EN LIGNE : 7 résumés, 7 dans le `<summary>`, 0 après.
 
 ### G53 — Metz et Dijon n'ont pas de photo de leur ville
-- [ ] BLOQUÉ SUR MEHDI, il faut les fichiers
+- [x] FAIT LE 14/10, avec B7 : les deux photos sous licence sont déposées dans
+      `components/site/accueil/hubs/metz.jpg` et `dijon.jpg` et servies par les
+      dix cartes de hub. Preuve et commande en B7.
+      Avant le 14/10 : BLOQUÉ SUR MEHDI, il faut les fichiers
       MESURE : 8 hubs sur 10 ont déjà une vraie photo de ville dans
       `components/site/accueil/hubs/`. Metz et Dijon sont les deux seuls sans,
       et retombent sur une scène d'usine, d'où son « la photo de Metz ne
@@ -1153,7 +1156,28 @@ dernière entrée `D` lue, et l'accuserait à tort. Leur mesure est écrite en
       n'est réécrit sans eux.
 
 ### B7 — Les photos de Metz et Dijon sous licence (ex-D13, même sujet que G53)
-- [ ] ACHAT OU TÉLÉCHARGEMENT DE MEHDI. Historique de D13, repris tel quel :
+- [x] FAIT LE 14/10. Mehdi, 14/10 : « pour Metz et Dijon va sur Envato ».
+      Les deux versions sous licence ont été téléchargées depuis son compte
+      Envato, au projet de licence existant « migen.fr » (aucun autre créé,
+      rien acheté) : `cathedral-in-metz-france-…-utc.jpg` (6899 x 4753,
+      26,3 Mo) et `vineyard-rows-stretching-toward-a-village-on-a-hil-…-utc.jpg`
+      (5419 x 3613, 3,2 Mo, Meursault). Versions web de 2000 px dans
+      `public/assets/villes/hub-metz.jpg` et `hub-dijon.jpg`, mêmes octets
+      dans `components/site/accueil/hubs/metz.jpg` et `dijon.jpg`.
+      BRANCHÉES aux trois endroits : `PHOTO_DU_HUB` de
+      `components/site/implantations/photos-hubs.ts` (cartes de l'accueil et
+      mosaïque de `/implantations/`, `HUBS_SANS_PHOTO` vidé) et `hubLocal.photo`
+      des deux fiches ville. Textes alternatifs dans `lib/descriptions-villes.ts`,
+      celui de Dijon nomme Meursault et jamais Dijon. Carte de Metz cadrée à
+      72 % : centrée, le chevet de la cathédrale sortait du cadre (mesure dans
+      `HubsAccueil.tsx`, vérifiée par la règle 4 de `verification-photos.tsx`).
+      La commande échoue si un fichier manque (`ls`), si une fiche ne pointe
+      pas sa photo (`grep -q`), ou si le rail ne sert pas dix photos de ville
+      et vingt images décrites. CONTRE-ESSAI : avant le branchement, la même
+      porte affichait « Nos hubs : 8 photos » et « HubsAccueil : 16 photo(s) ».
+      CHECK: cd "/Users/mehdi/Landing lovable/migen-site" && ls public/assets/villes/hub-metz.jpg public/assets/villes/hub-dijon.jpg components/site/accueil/hubs/metz.jpg components/site/accueil/hubs/dijon.jpg && grep -q '"/assets/villes/hub-metz.jpg"' supabase/import/gabarits-maquette/implantations-maintenance-industrielle-metz.json && grep -q '"/assets/villes/hub-dijon.jpg"' supabase/import/gabarits-maquette/implantations-maintenance-industrielle-dijon.json && bun components/site/accueil/verification-photos.tsx
+      EXPECT: Nos hubs : 10 photos, HubsAccueil : 20 photo(s), toutes décrites
+      Avant le 14/10 : ACHAT OU TÉLÉCHARGEMENT DE MEHDI. Historique de D13, repris tel quel :
       « CHOISIES, PAS LIVRÉES. Metz : la cathédrale par RossHelen, même
       photographe et même série que Nantes et Bordeaux. Dijon : Meursault, en
       Côte-d'Or, seule photo de vignes authentiquement bourguignonne du

@@ -24,12 +24,13 @@ export interface HubAccueil {
    * donc rien n'est annoncé deux fois, mais un moteur ne lit pas `aria-hidden`
    * et y voyait seize images de ville dont huit sans description.
    *
-   * ABSENTE QUAND LE HUB N'A PAS DE PHOTO, et ce n'est pas un oubli : décrire
-   * une image qui n'est pas là reviendrait à l'inventer. Les deux `alt` qui
-   * vivaient ici jusqu'au 14/10, « Site industriel en Lorraine » et « Atelier
-   * industriel en Bourgogne », annonçaient une localisation que RIEN ne
-   * documente : la première photo est une cimenterie, la seconde un métier à
-   * tisser. Deux données inventées, retirées avec leurs photos.
+   * JAMAIS POSÉE SUR UN HUB SANS PHOTO : décrire une image qui n'est pas là
+   * reviendrait à l'inventer. Les deux `alt` qui vivaient ici jusqu'au 14/10,
+   * « Site industriel en Lorraine » et « Atelier industriel en Bourgogne »,
+   * annonçaient une localisation que RIEN ne documente : la première photo
+   * était une cimenterie, la seconde un métier à tisser. Deux données
+   * inventées, retirées avec leurs photos. Les vraies photos de Metz et Dijon,
+   * livrées le même jour, ont leur texte dans `lib/descriptions-villes.ts`.
    */
   alt?: string;
   /**
@@ -70,12 +71,11 @@ interface Proprietes {
  * source unique partagée avec la mosaïque de `/implantations/`. Les deux pages
  * portaient jusqu'ici deux listes d'imports des MÊMES huit fichiers, et elles
  * avaient déjà divergé : `/implantations/` rendait Metz et Dijon en panneau
- * sombre, l'accueil leur posait une scène d'usine. Une seule vérité, donc, et
- * le jour où Mehdi dépose `hub-metz.jpg`, les deux pages l'affichent.
+ * sombre, l'accueil leur posait une scène d'usine. Une seule vérité, donc :
+ * leurs photos, livrées le 14/10, sont apparues sur les deux pages à la fois.
  *
- * Les huit photos sous licence vivent dans `./hubs/` et sont importées
- * statiquement (next/image les sert à la taille de la carte). Metz et Dijon
- * n'en ont pas : voir `photos-hubs.ts`.
+ * Les dix photos sous licence vivent dans `./hubs/` et sont importées
+ * statiquement (next/image les sert à la taille de la carte).
  */
 const HUBS: readonly HubAccueil[] = [
   {
@@ -141,6 +141,15 @@ const HUBS: readonly HubAccueil[] = [
     titre: "Hub Metz",
     couverture: "Moselle, Nancy, sillon lorrain",
     chemin: "/implantations/maintenance-industrielle-metz/",
+    /* LE CADRAGE DE METZ, mesuré le 14/10 comme celui de Bordeaux.
+       La photo fait 2000x1378 : en `cover` dans 300x400, elle déborde de 967 px
+       horizontalement et de 0 verticalement. Centrée, la fenêtre montre les
+       colonnes 483 à 1517, alors que la cathédrale, du pignon du transept aux
+       flèches du chevet, occupe les colonnes 703 à 1727 : tout le chevet
+       sortait par le bord droit. À 72 %, la fenêtre va de 696 à 1729 et la
+       cathédrale y tient entière. Dijon reste centrée : son clocher, seul
+       repère de l'image, est à la colonne 1060, au milieu de la fenêtre. */
+    cadrage: "72% center",
   },
   {
     ville: "Dijon",
@@ -156,13 +165,13 @@ const HUBS: readonly HubAccueil[] = [
  * Mehdi, le 12/10 : « la photo de Metz ne correspond pas ». Elle ne
  * correspondait pas parce que ce n'était pas Metz : la carte servait
  * `mq-dcd9cac6ffbf.jpg`, une cimenterie, et Dijon `x-cablerie.jpg`, un métier à
- * tisser. Aucune photo de Metz ni de Dijon n'est sous licence au dépôt : les
- * deux pages Envato sont choisies et inscrites dans
- * `docs/PHOTOS-VILLES-ENVATO.md`, il manque les fichiers.
+ * tisser. Les deux tuiles sont restées en panneau sombre jusqu'à la livraison
+ * de leurs photos de ville, le 14/10.
  *
- * On ne remet donc PAS une scène d'usine en attendant, c'est exactement ce qui
- * a déclenché son retour. La tuile se rend en panneau sombre, le manque se
- * voit, et c'est le but. Même traitement que la mosaïque de `/implantations/`.
+ * Aucun hub n'en dépend plus aujourd'hui, mais la règle reste : un hub sans
+ * photo de sa ville ne reçoit PAS une scène d'usine, il se rend en panneau
+ * sombre et le manque se voit. Même traitement que la mosaïque de
+ * `/implantations/`.
  */
 const PANNEAU_SANS_PHOTO: CSSProperties = {
   position: "absolute",
@@ -268,8 +277,8 @@ export default function HubsAccueil({ hubs = HUBS }: Proprietes) {
       >
         {[0, 1].flatMap((passe) =>
           hubs.map((hub) => {
-            /* La photo est lue à la clé `ville`, jamais écrite dans la carte :
-               huit hubs en ont une, Metz et Dijon non. Voir `photos-hubs.ts`. */
+            /* La photo est lue à la clé `ville`, jamais écrite dans la carte.
+               Voir `photos-hubs.ts`. */
             const photo = PHOTO_DU_HUB[hub.ville];
             return (
             <Link

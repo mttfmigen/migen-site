@@ -26,7 +26,7 @@ Ce sont les photos les plus récentes de la maquette.
 | **Metz** | Cathédrale de Metz, France · RossHelen | https://elements.envato.com/fr/cathedral-in-metz-france-DAJBNVY | **hub-metz.jpg** |
 | **Dijon** | Vue panoramique de Meursault en hiver · wirestock | https://elements.envato.com/fr/scenic-shot-of-meursault-during-winter-wooden-stic-S99SNG5 | **hub-dijon.jpg** |
 
-### Metz et Dijon, choisies le 13/10
+### Metz et Dijon, choisies le 13/10, livrées le 14/10
 
 Mehdi, 13/10 : « pour dijon mets des vignes en bourgogne » et « pour metz
 trouves un truc ». Les deux lignes ci-dessus remplacent l'ancienne mention
@@ -47,9 +47,26 @@ le nom de Dijon aurait été une donnée fausse.
 Variante si tu préfères une ville à des vignes : « Beaune, Bourgogne » par
 SteveAllenPhoto999, https://elements.envato.com/fr/beaune-burgundy-france-KVYZQHS
 
-CE QUE JE NE PEUX PAS FAIRE : télécharger la version sous licence. Le catalogue
-ne me rend que l'aperçu de 600 px avec son filigrane. Il faut les deux fichiers
-depuis le compte Envato de Migen, en JPG, plus grande taille.
+LIVRÉES LE 14/10. Mehdi, 14/10 : « pour Metz et Dijon va sur Envato ». Les deux
+versions sous licence ont été téléchargées depuis le compte Envato de Migen,
+licence enregistrée au projet existant « migen.fr », aucun autre projet créé :
+
+| Hub | Titre sur app.envato.com | Fichier Envato | Original | Version web |
+|---|---|---|---|---|
+| Metz | Cathedral in Metz, France · RossHelen | cathedral-in-metz-france-2026-09-24-06-03-02-utc.jpg | 6899 x 4753, 26,3 Mo | 2000 x 1378, 629 Ko |
+| Dijon | Vineyard Rows Stretching toward a Village on a Hill · wirestock | vineyard-rows-stretching-toward-a-village-on-a-hil-2026-09-23-11-39-08-utc.jpg | 5419 x 3613, 3,2 Mo | 2000 x 1333, 707 Ko |
+
+Le lien Elements de Dijon redirige vers la nouvelle fiche app.envato.com, qui a
+perdu le nom de Meursault dans son titre anglais ; c'est le même élément, même
+auteur, mêmes piquets de vigne. Version web : 2000 px au plus grand côté, JPEG
+qualité 82, progressif, sans métadonnées, dans `public/assets/villes/` et, mêmes
+octets, dans `components/site/accueil/hubs/` (`metz.jpg`, `dijon.jpg`).
+
+Branchées sur les cartes de l'accueil, la mosaïque de `/implantations/` et le
+bloc « Votre hub local » des deux pages ville. Textes alternatifs dans
+`lib/descriptions-villes.ts` : « Metz et sa cathédrale Saint-Étienne » et
+« Vignes de Meursault en Côte-d'Or sous l'hiver ». La photo de Dijon montre
+Meursault, pas Dijon : aucun texte ne doit l'annoncer comme Dijon.
 
 ## Bloc « Votre hub local » des pages ville
 
@@ -67,9 +84,13 @@ depuis le compte Envato de Migen, en JPG, plus grande taille.
 | /implantations/maintenance-industrielle-lorient/ | Vannes · Unai82 (la maquette met une photo de Vannes sur la page Lorient) | https://elements.envato.com/vannes-coastal-medieval-town-traditional-colored-w-MGSCP62 | ville-lorient.jpg |
 | /implantations/maintenance-industrielle-le-havre/ | Port à conteneurs · nikonlamp | https://elements.envato.com/view-of-the-cargo-seaport-NNCPJDF | ville-le-havre.jpg |
 | /implantations/maintenance-industrielle-dunkerque/ | Port et centrale · IndustryAndTravel | https://elements.envato.com/container-harbor-and-power-station-at-night-NQMPBSL | ville-dunkerque.jpg |
+| /implantations/maintenance-industrielle-metz/ | Cathédrale de Metz · RossHelen (hors maquette, 14/10) | (même photo que la carte Metz) | hub-metz.jpg |
+| /implantations/maintenance-industrielle-dijon/ | Meursault en hiver · wirestock (hors maquette, 14/10) | (même photo que la carte Dijon) | hub-dijon.jpg |
 
-Les 54 autres pages ville n'ont pas de photo de la ville dans la maquette : elles
-reprennent une photo d'atelier du site.
+Les 52 autres pages ville n'ont pas de photo de la ville : elles reprennent une
+photo d'atelier du site. Metz et Dijon n'en avaient pas non plus dans la
+maquette ; leur photo de ville est une demande de Mehdi (12/10 et 13/10),
+déclarée dans `HORS_MAQUETTE` de `components/site/implantation/verification-ville.tsx`.
 
 Liens retrouvés le 08/10 : ceux du deuxième tableau viennent de
 `maquette/contenu/site/photos-villes.json` ; ceux des cartes ont été retrouvés par

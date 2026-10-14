@@ -37,11 +37,12 @@
  *  4. SUJET D'UNE PHOTO DE HUB COUPÉ PAR LE BORD. Mesuré en pixels une fois,
  *     déclaré ici avec sa méthode, vérifié par le calcul à chaque passage.
  *
- *  5. TUILE SANS PHOTO : Metz et Dijon n'ont aucune photo de ville sous licence
- *     au dépôt. La porte exige qu'ils n'en portent AUCUNE, et aucun texte
- *     alternatif : une scène d'usine sous le nom de Metz est exactement ce que
- *     Mehdi a refusé, et « Site industriel en Lorraine » sous une photo de
- *     cimenterie était une donnée inventée.
+ *  5. TUILE SANS PHOTO : un hub déclaré sans photo de ville (`HUBS_SANS_PHOTO`)
+ *     n'en porte AUCUNE, ni texte alternatif : une scène d'usine sous le nom
+ *     de Metz est exactement ce que Mehdi a refusé, et « Site industriel en
+ *     Lorraine » sous une photo de cimenterie était une donnée inventée. La
+ *     liste est vide depuis le 14/10, Metz et Dijon ont reçu leur photo ; la
+ *     règle reste, et son témoin prouve toujours qu'elle sait refuser.
  *
  *  6. SUJET D'UNE CASE DU BENTO BESOINS. Une photo du registre qui ne porte que
  *     des thèmes de SECTEUR (metallurgie, agro, chimie…) montre une industrie,
@@ -372,16 +373,23 @@ assert.deepEqual(
 const CADRE_HUB = { largeur: 300, hauteur: 400 };
 
 /**
- * LES SUJETS MESURÉS, un seul à ce jour, et sa méthode est écrite.
+ * LES SUJETS MESURÉS, chacun avec sa méthode écrite.
  *
  * Bordeaux : luminance du JPEG, bande des rangées 20 % à 62 % (au-dessus de la
  * ligne de toits, détectée à 66,7 % de la hauteur), colonnes dont plus de trois
  * pixels tombent 40 niveaux sous la médiane du ciel. Le bloc Saint-Michel, la
  * nef et sa flèche, occupe les colonnes 929 à 1527 sur 2000. Centrée, la carte
  * ne montrait que 499 à 1501 : la flèche était tranchée par le bord droit.
+ *
+ * Metz (14/10) : bande des rangées 25 % à 45 %, où seule la cathédrale se
+ * détache du ciel, colonnes dont plus de trois pixels sont de la pierre (rouge
+ * au-dessus de 120 et de 40 niveaux au-dessus du bleu). Plus long segment
+ * continu : colonnes 703 à 1727 sur 2000. Centrée, la carte ne montrait que
+ * 483 à 1517 : le chevet sortait par le bord droit.
  */
 const SUJETS: Readonly<Record<string, { de: number; a: number; quoi: string }>> = {
   Bordeaux: { de: 929, a: 1527, quoi: "l'église et la flèche Saint-Michel" },
+  Metz: { de: 703, a: 1727, quoi: "la cathédrale, du pignon du transept au chevet" },
 };
 
 /** Les cadrages déclarés, relus dans le composant plutôt que recopiés. */
@@ -512,6 +520,10 @@ if (CONTROLE) {
     "le même sujet entier à 70 %",
     sujetsCoupes([{ ...bordeaux, cadrage: "70% center" }], 300, 400),
   );
+  const metz = { nom: "Metz", largeur: 2000, hauteur: 1378, sujet: SUJETS.Metz! };
+  nie("la cathédrale de Metz coupée, cadrage centré", sujetsCoupes([metz], 300, 400));
+  nie("la même coupée à 70 %, 17 colonnes de trop", sujetsCoupes([{ ...metz, cadrage: "70% center" }], 300, 400));
+  accepte("la même entière à 72 %", sujetsCoupes([{ ...metz, cadrage: "72% center" }], 300, 400));
 
   // Règle 5 : une tuile déclarée sans photo qui en sert une quand même.
   const carte = (ville: string, img: string) =>
@@ -630,7 +642,9 @@ for (const ville of HUBS_SANS_PHOTO) {
 const tuilesFautives = tuilesAvecPhotoInterdite(htmlHubs, HUBS_SANS_PHOTO);
 assert.deepEqual(tuilesFautives, [], `tuile sans photo : ${tuilesFautives.join(" ; ")}`);
 rapport.push(
-  `hubs sans photo : ${HUBS_SANS_PHOTO.join(" et ")}, panneau sombre, aucune image servie`,
+  HUBS_SANS_PHOTO.length > 0
+    ? `hubs sans photo : ${HUBS_SANS_PHOTO.join(" et ")}, panneau sombre, aucune image servie`
+    : `hubs sans photo : aucun, les ${Object.keys(PHOTO_DU_HUB).length} hubs servent leur ville`,
 );
 
 // 6. Chaque case du bento besoins montre un geste de maintenance.

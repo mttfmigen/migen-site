@@ -3,9 +3,11 @@ import type { StaticImageData } from "next/image";
 import { altPhoto } from "@/lib/descriptions-photos";
 
 import bordeaux from "@/components/site/accueil/hubs/bordeaux.jpg";
+import dijon from "@/components/site/accueil/hubs/dijon.jpg";
 import lille from "@/components/site/accueil/hubs/lille.jpg";
 import lyon from "@/components/site/accueil/hubs/lyon.jpg";
 import marseille from "@/components/site/accueil/hubs/marseille.jpg";
+import metz from "@/components/site/accueil/hubs/metz.jpg";
 import nantes from "@/components/site/accueil/hubs/nantes.jpg";
 import paris from "@/components/site/accueil/hubs/paris.jpg";
 import strasbourg from "@/components/site/accueil/hubs/strasbourg.jpg";
@@ -30,19 +32,18 @@ import toulouse from "@/components/site/accueil/hubs/toulouse.jpg";
  * rien ne documentait. Depuis le 14/10 l'accueil lit CE fichier : il ne garde
  * plus sa propre liste d'imports, et la divergence ne peut plus revenir.
  *
- * HUIT HUBS SUR DIX ONT LEUR PHOTO. Metz et Dijon n'en ont pas : les deux
- * fichiers sous licence manquent encore, Mehdi doit les télécharger depuis le
- * compte Envato de Migen. Les pages sont choisies et inscrites dans
- * `docs/PHOTOS-VILLES-ENVATO.md` (la cathédrale de Metz par RossHelen, même
- * série que Nantes et Bordeaux ; Meursault en Côte-d'Or pour Dijon). Déposer
- * les deux fichiers dans `components/site/accueil/hubs/` et ajouter leur ligne
- * ci-dessous suffit : les deux pages les afficheront.
+ * LES DIX HUBS ONT LEUR PHOTO DEPUIS LE 14/10. Metz et Dijon sont arrivés en
+ * dernier, téléchargés sous licence depuis le compte Envato de Migen (projet
+ * « migen.fr ») : la cathédrale de Metz par RossHelen, même série que Nantes
+ * et Bordeaux, et pour Dijon des vignes de MEURSAULT, en Côte-d'Or, à 25 km :
+ * leur texte alternatif ne dit donc jamais « Dijon ». Détail dans
+ * `docs/PHOTOS-VILLES-ENVATO.md`.
  *
- * CE QU'ON NE FAIT PAS, et c'est une règle du projet : leur poser une scène
- * d'usine en attendant. C'est précisément ce que faisait l'accueil, et c'est
- * ce qui a déclenché son retour du 12/10, « pour le hub de Metz je veux une
- * photo de la ville ». Une tuile sans photo se rend en panneau sombre, et le
- * manque se voit, ce qui est le but.
+ * CE QU'ON NE FAIT PAS, et c'est une règle du projet : poser une scène d'usine
+ * sur un hub dont la photo de ville manque. C'est ce que faisait l'accueil, et
+ * c'est ce qui a déclenché son retour du 12/10, « pour le hub de Metz je veux
+ * une photo de la ville ». Un hub ajouté demain sans photo se rend en panneau
+ * sombre, et le manque se voit, ce qui est le but.
  *
  * LE CADRAGE RESTE PROPRE À CHAQUE USAGE, et c'est délibéré. La tuile de
  * `/implantations/` est plus large que haute, comme les photos de ville : le
@@ -60,12 +61,14 @@ export const PHOTO_DU_HUB: Readonly<Record<string, StaticImageData>> = {
   Nantes: nantes,
   Toulouse: toulouse,
   Bordeaux: bordeaux,
+  Metz: metz,
+  Dijon: dijon,
 };
 
 /**
  * LE TEXTE ALTERNATIF DE CHAQUE PHOTO DE HUB, lu et non recopié.
  *
- * Les huit fichiers de `components/site/accueil/hubs/` sont les mêmes octets
+ * Les dix fichiers de `components/site/accueil/hubs/` sont les mêmes octets
  * que `public/assets/villes/hub-<ville>.jpg` (md5 identiques, 14/10) : leur
  * description vit donc à UN endroit, `lib/descriptions-villes.ts`, et sert
  * l'accueil, la mosaïque de `/implantations/` et les cartes de `/carriere/`.
@@ -79,5 +82,8 @@ export const ALT_DU_HUB: Readonly<Record<string, string>> = Object.fromEntries(
   ]),
 );
 
-/** Les hubs dont la photo de ville manque encore, nommés et non devinés. */
-export const HUBS_SANS_PHOTO: readonly string[] = ["Metz", "Dijon"];
+/**
+ * Les hubs dont la photo de ville manque, nommés et non devinés. Vide depuis
+ * le 14/10 : Metz et Dijon y étaient jusqu'à la livraison de leurs fichiers.
+ */
+export const HUBS_SANS_PHOTO: readonly string[] = [];

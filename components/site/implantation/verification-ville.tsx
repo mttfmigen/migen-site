@@ -385,6 +385,18 @@ const SOUS_LICENCE: Record<string, string> = {
   }
 }
 
+/* LES PHOTOS DE VILLE CHOISIES APRÈS LA MAQUETTE, hors de la comparaison
+   ci-dessus, qui ne porte que sur les photos que la maquette sert. Celle-ci ne
+   donne à Metz et Dijon qu'une photo d'atelier ; Mehdi, le 12/10 : « pour le
+   hub de Metz je veux une photo de la ville », puis le 13/10 « pour dijon mets
+   des vignes en bourgogne ». Téléchargées sous licence le 14/10, ce sont les
+   photos de leur carte de hub, comme Marseille et Bordeaux. Détail dans
+   `docs/PHOTOS-VILLES-ENVATO.md`. */
+const HORS_MAQUETTE: Record<string, string> = {
+  "/implantations/maintenance-industrielle-metz/": "hub-metz.jpg",
+  "/implantations/maintenance-industrielle-dijon/": "hub-dijon.jpg",
+};
+
 /* ÉCART MAJEUR À LA MAQUETTE, DÉCLARÉ LE 09/10/2025, DEMANDÉ PAR MEHDI.
    Les trois contrôles de photo de cette porte (hub local, photo du problème,
    photos des références) exigeaient LA photo que la maquette calcule, et rien
@@ -406,7 +418,7 @@ function photoAdmise(photo: string | null | undefined, ...attendues: (string | u
 /** `cityImg` de `MigenExpertise.dc.html`, à l'identique : `h = h * 31 + code`, sur 32 bits non signés. */
 const REPLIS = ["sv-convoyeur", "sv-armoire", "sv-duo-impact", "sv-portrait", "team-grind-front", "team-electric"];
 function photoAttendue(url: string): { photo: string; credit?: string } {
-  const licence = SOUS_LICENCE[url];
+  const licence = SOUS_LICENCE[url] ?? HORS_MAQUETTE[url];
   if (licence) return { photo: `/assets/villes/${licence}` };
   const envato = PHOTOS_VILLES[url];
   if (envato?.src) return { photo: envato.src, credit: envato.credit };
