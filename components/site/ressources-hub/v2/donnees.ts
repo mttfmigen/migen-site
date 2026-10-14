@@ -10,6 +10,10 @@
  * leurs formats sous « Bientôt ». Les étiquettes sont celles que la maquette
  * calcule (TAXE / TAXT) ; la carte en montre les trois premières.
  * Aucune date : la maquette n'en a pas.
+ *
+ * Seule entorse, voulue par Mehdi (« republie les articles sur le nouveau
+ * site », 14/10) : les 12 billets repris de l'ancien blog suivent les 15
+ * articles de la maquette côté Entreprises, soit 27. Journal plus bas.
  */
 
 export interface ContenuRessource {
@@ -260,6 +264,197 @@ export const CONTENUS_ENTREPRISES: readonly ContenuRessource[] = [
       "Indicateurs",
       "Organisation",
       "TPM"
+    ]
+  },
+  /*
+   * LES 12 BILLETS REPRIS DE L'ANCIEN BLOG (14/10, en ligne depuis dac01e5),
+   * après les 15 de la maquette, du plus récent au plus ancien. Titre, photo,
+   * résumé et minutes sortent de leur fiche (`supabase/import/blog-repris/`)
+   * par les règles de `blog-repris.ts`, que `verification-v2.ts` rejoue.
+   * Sujet et mots-clés : choix d'après le texte, journal ci-dessous (entre
+   * parenthèses, ce que le texte de la page en dit).
+   *   pourquoi-externaliser (2026-03-31) Organisation : « contraintes humaines
+   *     et organisationnelles », renfort d'équipes ; #Organisation, #Arrêt de
+   *     production (« réduire les arrêts non planifiés »), #Externalisation (titre).
+   *   savoye-dimomaint (2026-03-18) Organisation : « articulation coordonnée des
+   *     métiers » des trois partenaires ; #GMAO, #Organisation, #Digital
+   *     (« la donnée maintenance au cœur des projets »).
+   *   partenariat-dimomaint (2026-03-06) Digital & IA : GMAO et « digitalisation
+   *     de la maintenance » ; #GMAO, #Indicateurs (MTBF, MTTR), #Digital.
+   *   certifications-mase-ecovadis (2026-01-06) Coûts & environnement : MASE et
+   *     démarche RSE EcoVadis ; #Sécurité, #Environnement.
+   *   interview-nathan-jorez (2023-11-20) Organisation : recrutement et talents ;
+   *     aucun mot-clé, aucun des seize n'apparaît dans le texte.
+   *   bien-etre-au-travail (2023-10-13) Organisation : « équipe soudée » ;
+   *     #Organisation. Pas #Coûts (le motif lit « écoute »), pas
+   *     #Environnement (« environnement de travail »).
+   *   digitalisation-des-manuels (2023-10-13) Digital & IA ; #Coûts
+   *     (« réductions de coûts »), #Digital.
+   *   femmes-dans-l-industrie (2023-08-21) Organisation : diversité des
+   *     équipes ; #Organisation. Pas #Coûts ni #Environnement, mêmes faux motifs.
+   *   reindustrialisation (2023-07-01) Coûts & environnement : « main-d'œuvre
+   *     moins coûteuse », « Protection de l'environnement » ; #Coûts, #Environnement.
+   *   qualites-du-mainteneur (2023-05-26) Organisation : « esprit d'équipe » ;
+   *     #Organisation. Pas #Environnement (« environnement stimulant »).
+   *   machines-goulots (2023-04-28) Méthodes : « Méthodologie pour identifier les
+   *     goulots » ; #Indicateurs (KPI), #Coûts.
+   *   guide-maintenance-industrielle (2023-04-26) Méthodes : types de maintenance ;
+   *     #Préventive, #Corrective, #Prédictive, #Coûts, #Arrêt de production.
+   */
+  {
+    "url": "/ressources/articles/pourquoi-externaliser/",
+    "titre": "Pourquoi faire appel à une entreprise de maintenance externalisée ?",
+    "format": "Article",
+    "sujet": "Organisation",
+    "minutes": 2,
+    "resume": "Dans un contexte industriel de plus en plus exigeant, les entreprises doivent garantir la disponibilité de leurs équipements tout en faisant face à des contraintes humaines et…",
+    "photo": "/assets/blog/pourquoi-externaliser/pourquoi-externaliser.webp",
+    "etiquettes": [
+      "Organisation",
+      "Arrêt de production",
+      "Externalisation"
+    ]
+  },
+  {
+    "url": "/ressources/articles/savoye-dimomaint/",
+    "titre": "Migen, Savoye et DimoMaint : une offre de solutions intégrées pour une performance industrielle et logistique durable",
+    "format": "Article",
+    "sujet": "Organisation",
+    "minutes": 2,
+    "resume": "Face aux exigences croissantes de souveraineté, de résilience et de compétitivité dans l’industrie et la supply chain, Migen, Savoye et DimoMaint ont uni leurs forces pour proposer une…",
+    "photo": "/assets/blog/savoye-dimomaint/savoye-dimomaint.webp",
+    "etiquettes": [
+      "GMAO",
+      "Organisation",
+      "Digital"
+    ]
+  },
+  {
+    "url": "/ressources/articles/partenariat-dimomaint/",
+    "titre": "Migen et DimoMaint : la complémentarité entre interviention terrain et pilotage de la maintenance",
+    "format": "Article",
+    "sujet": "Digital & IA",
+    "minutes": 2,
+    "resume": "Dans un contexte industriel où la performance des équipements repose de plus en plus sur la digitalisation de la maintenance, les entreprises doivent s’appuyer sur des outils capables…",
+    "photo": "/assets/blog/partenariat-dimomaint/partenariat-dimomaint.webp",
+    "etiquettes": [
+      "GMAO",
+      "Indicateurs",
+      "Digital"
+    ]
+  },
+  {
+    "url": "/ressources/articles/certifications-mase-ecovadis/",
+    "titre": "Qualité et responsabilité : comment Migen valorise ses certifications MASE et EcoVadis",
+    "format": "Article",
+    "sujet": "Coûts & environnement",
+    "minutes": 2,
+    "resume": "Dans le secteur de la maintenance industrielle, la performance technique ne suffit plus.",
+    "photo": "/assets/blog/certifications-mase-ecovadis/certifications-mase-ecovadis.webp",
+    "etiquettes": [
+      "Sécurité",
+      "Environnement"
+    ]
+  },
+  {
+    "url": "/ressources/articles/interview-nathan-jorez/",
+    "titre": "Migen : Une Vision Innovante de la Maintenance Industrielle par Nathan Jorez, CEO",
+    "format": "Article",
+    "sujet": "Organisation",
+    "minutes": 2,
+    "resume": "La maintenance industrielle est un secteur crucial pour l’économie, mais souvent méconnu et sous-évalué.",
+    "photo": "/assets/blog/interview-nathan-jorez/interview-nathan-jorez.webp",
+    "etiquettes": []
+  },
+  {
+    "url": "/ressources/articles/bien-etre-au-travail/",
+    "titre": "Migen, là où le Bien-être au Travail n’est pas juste un Slogan",
+    "format": "Article",
+    "sujet": "Organisation",
+    "minutes": 4,
+    "resume": "Lorsque vous entendez « Maintenance industrielle« , vous imaginez probablement des hangars froids, des machines gigantesques, des visages concentrés, l’odeur du métal et une rumeur…",
+    "photo": "/assets/blog/bien-etre-au-travail/bien-etre-au-travail.webp",
+    "etiquettes": [
+      "Organisation"
+    ]
+  },
+  {
+    "url": "/ressources/articles/digitalisation-des-manuels/",
+    "titre": "La digitalisation des manuels de maintenance industrielle",
+    "format": "Article",
+    "sujet": "Digital & IA",
+    "minutes": 4,
+    "resume": "Avez-vous déjà songé à la manière dont la technologie modifie notre façon de travailler?",
+    "photo": "/assets/blog/digitalisation-des-manuels/digitalisation-des-manuels.webp",
+    "etiquettes": [
+      "Coûts",
+      "Digital"
+    ]
+  },
+  {
+    "url": "/ressources/articles/femmes-dans-l-industrie/",
+    "titre": "Femmes dans l’industrie : Migen© soutient la diversité dans le secteur de la maintenance industrielle",
+    "format": "Article",
+    "sujet": "Organisation",
+    "minutes": 10,
+    "resume": "Dans le secteur de la maintenance industrielle, il n’est un secret pour personne que les femmes sont encore sous-représentées.",
+    "photo": "/assets/blog/femmes-dans-l-industrie/femmes-dans-l-industrie.webp",
+    "etiquettes": [
+      "Organisation"
+    ]
+  },
+  {
+    "url": "/ressources/articles/reindustrialisation/",
+    "titre": "Vers une France réindustrialisée : Avantages, Défis et Stratégies",
+    "format": "Article",
+    "sujet": "Coûts & environnement",
+    "minutes": 3,
+    "resume": "Avez-vous déjà réfléchi à l’importance de l’industrie dans l’économie d’un pays ? Nous allons plonger dans le sujet de la réindustrialisation en France.",
+    "photo": "/assets/blog/reindustrialisation/reindustrialisation.webp",
+    "etiquettes": [
+      "Coûts",
+      "Environnement"
+    ]
+  },
+  {
+    "url": "/ressources/articles/qualites-du-mainteneur/",
+    "titre": "Les qualités essentielles d’un mainteneur industriel migen",
+    "format": "Article",
+    "sujet": "Organisation",
+    "minutes": 2,
+    "resume": "Chez migen, nous sommes fiers de nos mainteneurs industriels. Ils sont la colonne vertébrale de notre entreprise, garantissant que nos opérations se déroulent sans accroc.",
+    "photo": "/assets/blog/qualites-du-mainteneur/qualites-du-mainteneur.webp",
+    "etiquettes": [
+      "Organisation"
+    ]
+  },
+  {
+    "url": "/ressources/articles/machines-goulots/",
+    "titre": "Vous connaissez l’expression “Le temps, c’est de l’argent” ?",
+    "format": "Article",
+    "sujet": "Méthodes",
+    "minutes": 3,
+    "resume": "Les goulots d’étranglement de la production sont des points de congestion qui réduisent la capacité de production d’une entreprise.",
+    "photo": "/assets/blog/machines-goulots/machines-goulots.webp",
+    "etiquettes": [
+      "Indicateurs",
+      "Coûts"
+    ]
+  },
+  {
+    "url": "/ressources/articles/guide-maintenance-industrielle/",
+    "titre": "Guide Complet de la Maintenance Industrielle : Techniques, Coûts et Conseils",
+    "format": "Article",
+    "sujet": "Méthodes",
+    "minutes": 4,
+    "resume": "La maintenance industrielle est un aspect essentiel des industries de fabrication et de production.",
+    "photo": "/assets/blog/guide-maintenance-industrielle/guide-maintenance-industrielle.webp",
+    "etiquettes": [
+      "Préventive",
+      "Corrective",
+      "Prédictive",
+      "Coûts",
+      "Arrêt de production"
     ]
   }
 ];

@@ -1,7 +1,7 @@
 # Reprise des articles de blog de l'ancien site
 
 Mesuré le 14/10/2026 sur l'ancien WordPress encore en ligne (https://migen.fr, API `wp-json/wp/v2/posts`, 64 billets, soit tout `post-sitemap.xml`).
-**Publié le 14/10** sur décision de Mehdi (« Publie, on fera des modifs plus tard ») : les 12 reprises sont servies sous `/ressources/articles/<slug>/` par le relais disque (`supabase/import/blog-repris/`), leurs anciennes adresses y mènent en une 301 (`docs/PLAN-REDIRECTIONS.md`, section 8). Rien n'est écrit en base. Les mots interdits ont été remplacés au plus près du sens (13 occurrences, plus 3 dans des meta descriptions d'origine) ; tout le reste est mot pour mot. Pas encore dans les cartes du hub `/ressources/`.
+**Publié le 14/10** sur décision de Mehdi (« Publie, on fera des modifs plus tard ») : les 12 reprises sont servies sous `/ressources/articles/<slug>/` par le relais disque (`supabase/import/blog-repris/`), leurs anciennes adresses y mènent en une 301 (`docs/PLAN-REDIRECTIONS.md`, section 8). Rien n'est écrit en base. Les mots interdits ont été remplacés au plus près du sens (13 occurrences, plus 3 dans des meta descriptions d'origine) ; tout le reste est mot pour mot. Depuis le 14/10 au soir, les 12 sont aussi des cartes du hub `/ressources/` (côté Entreprises, format Articles, après les 15 de la maquette) : titre, photo, résumé et minutes dérivés de la fiche (`components/site/ressources-hub/v2/blog-repris.ts`), sujet et mots-clés choisis d'après le texte et journalisés dans `donnees.ts`, porte `verification-v2.ts`.
 
 ## En bref
 
