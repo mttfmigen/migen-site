@@ -34,6 +34,15 @@ Dernière relecture : 13/10 au soir, les 49 commandes du registre rejouées une
 par une, et le vérificateur lui-même remis d'aplomb (trois défauts, voir plus
 bas G35, G58, G66, D1 et D19).
 
+Requalification du 14/10 : les sept entrées « à requalifier » (case non
+cochée, porte qui passe) ont chacune été remesurées, en production ou au
+dépôt. G35, D6, D7 et D10 sont faites, cochées, et portent désormais une
+commande qui mesure le correctif lui-même, contre-essai à l'appui. D16 reste
+ouverte avec une porte qui échoue aujourd'hui. G67 et D13, ainsi que la partie
+copie de D7, sont des décisions ou des achats de Mehdi : déplacées en B5, B6
+et B7. Chaque entrée garde son ancien texte, son ancienne commande en clair et
+un paragraphe daté « REQUALIFIÉE LE 14/10 ».
+
 ---
 
 ## Série 1, la liste de neuf points du 12/10 au matin
@@ -280,7 +289,8 @@ bas G35, G58, G66, D1 et D19).
 - [x] FAIT, même passage que G33. Les onze cartes bordées deviennent un annuaire en cinq colonnes.
 
 ### G35 — /offres/ : « c'est que des photos avec des avions, on doit voir du technicien »
-- [~] PLAN PRÊT, PAS ENCORE APPLIQUÉ. 385 photos jugées image ouverte, 64 disqualifiées, trois sceptiques en ont annulé 20 : 44 restent interdites sur une page commerciale. Vivier propre de 341. Les plans de réattribution sont rendus par famille de pages.
+- [x] FAIT, REQUALIFIÉE LE 14/10 (paragraphe daté en fin d'entrée). Cette
+      entrée portait [~] et disait : « PLAN PRÊT, PAS ENCORE APPLIQUÉ. 385 photos jugées image ouverte, 64 disqualifiées, trois sceptiques en ont annulé 20 : 44 restent interdites sur une page commerciale. Vivier propre de 341. Les plans de réattribution sont rendus par famille de pages. »
       MESURE : sur les 17 photos de contenu de /offres/, 5 sont de
       l'aéronautique et 2 de la menuiserie. Les 7 portent TOUTES le thème
       `technicien` au registre, donc aucun sélecteur demandant « un technicien »
@@ -305,8 +315,35 @@ bas G35, G58, G66, D1 et D19).
       (« toute photo portant un thème de secteur ») : il ne décide donc pas
       G35. Le discriminant voulu, le SUJET DOMINANT de l'image, n'est toujours
       pas outillé, et c'est pour ça que l'entrée reste ouverte.
-      CHECK: cd "/Users/mehdi/Landing lovable/migen-site" && node scripts/inventorie-photos-hors-sujet.mjs | sed -n 's/^MANQUEMENTS ÉCRITS EN DUR : //p'
-      EXPECT: 0
+      ANCIENNE COMMANDE, retirée du passage le 14/10 et gardée ici pour
+      l'histoire : `cd "/Users/mehdi/Landing lovable/migen-site" && node
+      scripts/inventorie-photos-hors-sujet.mjs | sed -n 's/^MANQUEMENTS ÉCRITS
+      EN DUR : //p'`, attente « 0 ». Elle passait sous une case [~], et le
+      vérificateur la classait donc « à requalifier » : elle mesurait un état
+      (aucune photo écrite en dur dans un composant), pas le correctif.
+      REQUALIFIÉE LE 14/10 : FAIT, et mesuré sur le correctif lui-même. Le
+      discriminant que cette entrée réclamait, le SUJET DOMINANT, est outillé :
+      la porte existait depuis le 12/10 (`2578aee`) mais criait au loup dix
+      fois sur onze, et c'est le 14/10 (`8b630f6`) qu'elle est devenue
+      fiable, la onzième, une vraie photo d'avion sur
+      `/expertises/mecanique/lubrification/`, corrigée au passage.
+      `scripts/verifie-photo-sujet.mjs` porte les 44 photos
+      dont le sujet n'est pas de l'industrie (16 d'aviation, 17 de bois, 4 de
+      laboratoire, 1 de bureau, 6 autres), établies image ouverte, et refuse leur présence sur
+      toute page commerciale, /offres/ en tête. Mesure du 14/10 : 249 pages
+      lues, 106 adresses commerciales sous contrôle, aucun manquement. En
+      production, `/offres/` ne sert AUCUNE des 44 (inventaire du 14/10, #3).
+      La commande tient les deux moitiés : la porte du dépôt, puis le HTML
+      servi de `/offres/` contre la liste même de la porte. Son jeton ne sort
+      que si les deux passent.
+      CONTRE-ESSAIS JOUÉS LE 14/10, la commande sait échouer : (1) la même
+      commande pointée sur `/secteurs/aeronautique/`, où l'avion est chez lui,
+      compte 68 occurrences des 44 photos et ne sort pas le jeton, code 1 ;
+      (2) `node scripts/verifie-photo-sujet.mjs --controle` rend 4/4 fautes
+      injectées détectées (dont un avion sur /offres/), 2/2 exceptions de
+      marché respectées, 1/1 hors contrôle assumé.
+      CHECK: node scripts/verifie-photo-sujet.mjs && n=$(curl -s https://migen-site.vercel.app/offres/ | grep -oFf <(grep -oE 'fichier: "[^"]+"' scripts/verifie-photo-sujet.mjs | cut -d'"' -f2) | wc -l | tr -d ' ') && echo "photos hors industrie sur /offres/ en ligne : $n" && [ "$n" = 0 ] && echo OFFRES_SANS_PHOTO_HORS_INDUSTRIE
+      EXPECT: OFFRES_SANS_PHOTO_HORS_INDUSTRIE
 
 ### G36 — /offres/zero-arret/ : le bloc « Également dans cette offre » ne sert à rien
 - [x] FAIT. Le bloc passe de 7 à 25 prestations sur les 4 pages qui le portent.
@@ -649,7 +686,17 @@ bas G35, G58, G66, D1 et D19).
       les six étaient rendues normalement. Elle exige toujours une GRILLE, ce
       qui est le fond du contrôle, sans exiger la liste ni l'ordre de ses
       propriétés, qui n'en est pas. Réparée, pas assouplie.
-      CHECK: bun run verifie:pied
+      COMMANDE CORRIGÉE LE 14/10, et le site n'y est pour rien. Elle était
+      `bun run verifie:pied` tout court : sans `SITE_URL`, la porte vise
+      `http://localhost:4340`, le serveur que nos propres règles déclarent
+      périmé (même défaut que G63 et G65 le 13/10). Au passage du 14/10 aucun
+      serveur n'y tournait, la porte est morte sur « localhost:4340
+      injoignable », et le vérificateur l'a comptée PROMESSE ROMPUE et non
+      plantée : il reconnaît la pile d'une exception à la signature
+      « Node.js v… », et `bun` signe « Bun v1.3.14 ». Pointée sur la
+      production, la même porte rend mot pour mot l'attente : 26 libellés, 4
+      colonnes, 52 liens internes à 200, témoins d'échec tombés.
+      CHECK: SITE_URL=https://migen-site.vercel.app bun run verifie:pied
       EXPECT: 26 libellés de navigation et 4 colonnes de maillage
 
 ### G63 — verifie-offre-rendu, de 4 anomalies à zéro
@@ -764,15 +811,9 @@ bas G35, G58, G66, D1 et D19).
       EXPECT: 16 sections conformes
 
 ### G67 — Une erreur eslint préexistante, à arbitrer
-- [ ] PAS FAIT, DÉLIBÉRÉMENT. `components/formulaire/ChampEntreprise.tsx:101`
-      appelle `setPropositions([])` en synchrone dans un effet. C'est la seule
-      erreur eslint du dépôt, elle est antérieure à cette nuit, et le fichier
-      n'a été touché par personne. Le remède naturel, déplacer l'effacement
-      dans le minuteur, décale de 250 ms la disparition de la liste
-      d'autocomplétion : c'est un comportement de FORMULAIRE, et la règle est
-      de ne pas y toucher. À trancher par Mehdi.
-      CHECK: bunx eslint components/formulaire/ChampEntreprise.tsx
-      EXPECT: 1 error
+- DÉPLACÉE LE 14/10 EN B5, section « Bloqué sur Mehdi », avec son historique
+      complet. C'est une décision de Mehdi sur un comportement de formulaire,
+      pas un travail à nous.
 
 
 ---
@@ -831,23 +872,81 @@ registre. Chaque entrée porte la commande qui décide de son état.
       EXPECT: au moins 1
 
 ### D6 — Le colis du 13/10 : Ressources v2 et Implantations
-- [ ] ANALYSÉ, PAS PORTÉ. 40 écarts relevés, 8 confirmés par relecture adverse,
+- [x] FAIT, REQUALIFIÉE LE 14/10 (paragraphe daté plus bas). Cette entrée
+      portait [ ] et disait : « ANALYSÉ, PAS PORTÉ. 40 écarts relevés, 8 confirmés par relecture adverse,
       20 réfutés. Ressources v2 est une refonte de gabarit dont le blocage est
       la DONNÉE : les 4 thèmes, les 14 étiquettes et les durées de lecture
       n'existent pas au dépôt. Implantations n'est pas un gain partout : sa
       mosaïque fait 4 292 px au téléphone contre 537 aujourd'hui, et six de ses
-      dix photos sont des aperçus filigranés.
-      CHECK: ls maquette/colis-13-10/ | wc -l | tr -d ' '
-      EXPECT: 5
+      dix photos sont des aperçus filigranés. »
+      ANCIENNE COMMANDE, retirée du passage le 14/10 : `ls maquette/colis-13-10/
+      | wc -l`, attente « 5 ». Elle comptait les fichiers du colis déposés au
+      dépôt, donc elle passait que le colis soit porté ou non.
+      REQUALIFIÉE LE 14/10 : FAIT, les deux moitiés sont portées et servies
+      en production. Cette entrée a été poussée le 13/10 à 19h30 (`a10b2f5`),
+      avant le portage, qui a suivi le soir même.
+      · Implantations : `ec5dba8` (20h04, la mosaïque de tuiles photo) puis
+        `41f4400` (21h32, la répartition en douze colonnes et le panneau des
+        bassins à onze onglets). Le colis n'a pas été copié là où il perdait :
+        les huit photos sous licence au lieu des aperçus filigranés, Metz et
+        Dijon en panneau sombre (voir B7), les 48 villes toutes dans le HTML
+        au lieu de la seule région ouverte, une colonne et le bloc replié sous
+        880 px.
+      · Ressources v2 : `eeee130` (21h44), `components/site/ressources-hub/`.
+        Le blocage annoncé, la donnée, a été levé en la relisant dans la
+        maquette elle-même (`window.__MGRES`) : ses 4 thèmes, ses étiquettes
+        calculées par sa propre règle (16 motifs, qui rendent les 14
+        étiquettes de son rendu), et les minutes de lecture comptées sur les
+        mots.
+        Non porté, et c'est délibéré : le panneau de lecture en tiroir, qui
+        aurait dupliqué 48 pages dans le hub (son propre LISEZMOI demande de
+        vraies pages), et les formulaires du colis, auxquels on ne touche pas.
+      Ce que la commande ne rejoue PAS : les 8 écarts confirmés le 13/10, un
+      par un. Elle prouve que les deux colis sont en ligne, pas que chaque écart
+      relevé avant le portage est soldé.
+      CONTRE-ESSAIS JOUÉS LE 14/10, la commande sait échouer : la même
+      commande avec `/carriere/` à la place de `/ressources/` rend « 0 sur 2 »
+      thèmes et pas de jeton, code 1 ; avec `/implantations/lyon/` à la place
+      de `/implantations/`, « tuiles de hub : 0, onglets de region : 0 » et pas
+      de jeton, code 1. Mesure du jour : 2 sur 2, 10 tuiles, 11 onglets.
+      CHECK: t=$(curl -s https://migen-site.vercel.app/ressources/ | grep -oE 'Digital &amp; IA|Coûts &amp; environnement' | sort -u | wc -l | tr -d ' '); i=$(curl -s https://migen-site.vercel.app/implantations/); m=$(printf %s "$i" | grep -o 'data-empan=' | wc -l | tr -d ' '); o=$(printf %s "$i" | grep -o 'type="radio"' | wc -l | tr -d ' '); echo "themes de Ressources v2 : $t sur 2, tuiles de hub : $m, onglets de region : $o"; [ "$t" -ge 2 ] && [ "$m" -ge 10 ] && [ "$o" -ge 11 ] && echo COLIS_DU_TREIZE_PORTE_EN_LIGNE
+      EXPECT: COLIS_DU_TREIZE_PORTE_EN_LIGNE
 
 ### D7 — Retour de Nathan : « /nous-connaitre/ ultra spé résidence »
-- [~] UNE FAUTE CORRIGÉE, SIX ARBITRAGES OUVERTS. La frise disait « Migen » là
+- [x] FAIT POUR CE QUI EST À NOUS, REQUALIFIÉE LE 14/10 (paragraphe daté plus
+      bas). Les arbitrages de copie sont DÉPLACÉS EN B6. Cette entrée portait
+      [~] et disait : « UNE FAUTE CORRIGÉE, SIX ARBITRAGES OUVERTS. La frise disait « Migen » là
       où son arbitrage du 09/10 impose « Migen Travaux » : c'était la seule
       phrase de la page nommant la marque qui porte les deux offres hors
       placement. Les six autres points sont sa copie, écrits avec leurs options
-      dans docs/NOUS-CONNAITRE-ARBITRAGES.md.
-      CHECK: curl -s https://migen-site.vercel.app/nous-connaitre/ | grep -c "Migen Travaux lance les travaux industriels"
-      EXPECT: au moins 1
+      dans docs/NOUS-CONNAITRE-ARBITRAGES.md. »
+      ANCIENNE COMMANDE, retirée du passage le 14/10 : `curl -s
+      https://migen-site.vercel.app/nous-connaitre/ | grep -c "Migen Travaux
+      lance les travaux industriels"`, attente « au moins 1 ». Elle passait
+      sous une case [~] : elle ne mesurait qu'une des trois corrections, et
+      `grep -c` sur un HTML d'une seule ligne compte des lignes, pas des
+      occurrences (piège 3 de `docs/PASSATION.md`).
+      REQUALIFIÉE LE 14/10 : tout ce qui relevait de notre main est fait et
+      mesuré en production, et c'est ce que l'inventaire du 14/10 range en
+      « fait » (#6).
+      · La frise nomme « Migen Travaux » (`b9a55c9`).
+      · Le `<main>` lie les six offres, six adresses distinctes, contre 0 le
+        13/10 au matin (`663ff3a`).
+      · La description que lisent Google, LinkedIn et les aperçus de lien
+        nomme les trois métiers, maintenance, bureau d'études et travaux
+        industriels, au lieu de la seule affectation de techniciens
+        (`498a56c`, section D de `docs/NOUS-CONNAITRE-ARBITRAGES.md`).
+      Ce qui reste est la copie du client, h1 compris : ce sont des décisions,
+      elles partent en B6.
+      CONTRE-ESSAIS JOUÉS LE 14/10, la commande sait échouer : la même
+      commande sur `/offres/residence/` rend « description aux trois metiers :
+      0, offres liees dans le main : 5 sur 6, frise Migen Travaux : 0 » et pas
+      de jeton, code 1 ; l'ANCIENNE description (« Nous ne faisons qu'une
+      chose, affecter sur vos sites des techniciens qui entretiennent les
+      machines, et rien d'autre. ») passée au même filtre rend 0. Mesure du
+      jour : 1, 6 sur 6, 2.
+      CHECK: h=$(curl -s https://migen-site.vercel.app/nous-connaitre/); d=$(printf %s "$h" | grep -o '<meta name="description" content="[^"]*"' | grep -c 'maintenance.*bureau d.*travaux industriels'); p=$(printf %s "$h" | grep -o '<main.*</main>' | grep -oE 'href="/(offres/(residence|full-service|zero-arret|arret-technique|bureau-etudes)|travaux-industriels)/"' | sort -u | wc -l | tr -d ' '); f=$(printf %s "$h" | grep -o 'Migen Travaux lance les travaux industriels' | wc -l | tr -d ' '); echo "description aux trois metiers : $d, offres liees dans le main : $p sur 6, frise Migen Travaux : $f"; [ "$d" = 1 ] && [ "$p" = 6 ] && [ "$f" -ge 1 ] && echo NOUS_CONNAITRE_NOMME_LES_TROIS_METIERS
+      EXPECT: NOUS_CONNAITRE_NOMME_LES_TROIS_METIERS
 
 ### D8 — « Refais moi le doc rapport d'avancement, à jour toutes les 10 minutes »
 - [x] FAIT. docs/AVANCEMENT.md, dont le bloc de chiffres est réécrit par un
@@ -864,11 +963,30 @@ registre. Chaque entrée porte la commande qui décide de son état.
       EXPECT: 200
 
 ### D10 — « Normalement tu as l'id du formulaire »
-- [ ] IL MANQUE, ET C'EST LE POINT LE PLUS GRAVE DU SITE. Le portail 148000737
+- [x] FAIT, REQUALIFIÉE LE 14/10 (paragraphe daté plus bas). Cette entrée
+      portait [ ] et disait : « IL MANQUE, ET C'EST LE POINT LE PLUS GRAVE DU SITE. Le portail 148000737
       est en dur dans le code, mais `HUBSPOT_FORM_ID` est absent des variables
       Vercel, et le code renvoie 502 au visiteur quand il manque. Aucun
-      formulaire ne dépose de lead en production.
-      CHECK: grep -c "HUBSPOT_FORM_ID absent de l'environnement" app/api/lead/route.ts
+      formulaire ne dépose de lead en production. »
+      ANCIENNE COMMANDE, retirée du passage le 14/10 : `grep -c
+      "HUBSPOT_FORM_ID absent de l'environnement" app/api/lead/route.ts`,
+      attente « au moins 1 ». Elle lisait le message d'erreur du CODE, qui
+      existe que la variable soit posée ou non : elle passait donc toujours,
+      et ne pouvait rien dire du correctif.
+      REQUALIFIÉE LE 14/10 : FAIT. `HUBSPOT_FORM_ID` est posée sur Vercel en
+      Production, et l'inventaire du 14/10 (#10) mesure les deux blocages
+      levés : la variable, puis `company` à envoyer sur l'objet Société. Les
+      six champs obligatoires du portail sont acceptés, vérifié contre le
+      portail.
+      La commande ne garde que la PREMIÈRE COLONNE de `vercel env ls`, les
+      noms : cette version de la console affiche le début des valeurs des
+      variables de type « Config », et aucune valeur n'a à sortir dans ce
+      registre. Ce qu'elle ne prouve pas : qu'un lead arrive, ce qu'on ne
+      rejoue pas ici pour ne pas déposer de faux contact chez HubSpot.
+      CONTRE-ESSAIS JOUÉS LE 14/10, la commande sait échouer : avec
+      `TEAMTAILOR_API_KEY`, variable connue absente (B1), elle rend 0 ; lancée
+      hors d'un dossier lié au projet Vercel, elle rend 0. Mesure du jour : 1.
+      CHECK: bunx vercel@62.7.0 env ls production 2>/dev/null | awk '{print $1}' | grep -cx HUBSPOT_FORM_ID
       EXPECT: au moins 1
 
 ### D11 — « Donne-moi le lien pour Supabase »
@@ -883,13 +1001,9 @@ registre. Chaque entrée porte la commande qui décide de son état.
       EXPECT: bordeaux.jpg
 
 ### D13 — « Pour Dijon mets des vignes en Bourgogne » et « pour Metz trouve un truc »
-- [ ] CHOISIES, PAS LIVRÉES. Metz : la cathédrale par RossHelen, même
-      photographe et même série que Nantes et Bordeaux. Dijon : Meursault, en
-      Côte-d'Or, seule photo de vignes authentiquement bourguignonne du
-      catalogue. Il manque les versions sous licence : le catalogue ne rend que
-      l'aperçu de 600 px filigrané.
-      CHECK: grep -c "hub-metz.jpg\|hub-dijon.jpg" docs/PHOTOS-VILLES-ENVATO.md
-      EXPECT: au moins 2
+- DÉPLACÉE LE 14/10 EN B7, section « Bloqué sur Mehdi », avec son historique
+      complet. Les deux photos sont choisies ; il manque leur version sous
+      licence, à télécharger depuis son compte Envato.
 
 ### D14 — « TeamTailor, je ne peux pas la publier, trouve une solution »
 - [x] RÉSOLU, ET IL N'A RIEN À PUBLIER. L'offre 8200692 de son propre compte est
@@ -914,8 +1028,29 @@ registre. Chaque entrée porte la commande qui décide de son état.
       nulle part ailleurs : mesuré, 0 à 2 extraits sur 6 se retrouvent sur les
       pages d'offre. Un défaut de contraste évité au passage, 2,3 pour 1 corrigé
       en 8,07.
-      CHECK: curl -s https://migen-site.vercel.app/ | grep -c "nomOffre"
-      EXPECT: au moins 1
+      ANCIENNE COMMANDE, retirée du passage le 14/10 : `curl -s
+      https://migen-site.vercel.app/ | grep -c "nomOffre"`, attente « au moins
+      1 ». Elle mesurait le premier pas, qui est fait, et passait donc sous une
+      case [~] : « à requalifier ». Elle comptait en outre des LIGNES sur un
+      HTML d'une seule ligne (piège 3 de `docs/PASSATION.md`).
+      REQUALIFIÉE LE 14/10 : PAS FAIT, et c'est à nous. La case reste [~] :
+      le premier pas est en ligne, la version mobile ne l'est pas. Ce qui
+      reste est le portage de la maquette mobile v2 (`maquette/mobile-v2/`,
+      livrée le 13/10 au soir, `9138f0d`), le « à toi » n° 6 de
+      `docs/PASSATION.md`, en cours le 14/10 dans une autre session. C'est le
+      même chantier que D1.
+      LA COMMANDE EST DONC CELLE DE D1, et ce n'est pas un raccourci : la
+      règle n° 2 de la maquette mobile v2 (« Replier, jamais retirer. Les
+      sections sont des `<details>` natifs ») est exactement ce que mesure
+      `scripts/verifie-repli-mobile.mjs`. Sa prémisse, suspendue le 13/10 au
+      soir faute de maquette, est rétablie par cette maquette-là. Elle ÉCHOUE
+      aujourd'hui, et c'est le but : mesure du 14/10 en production, 144
+      sections sans repli sur 207, 18 pages touchées, 40 s, code 1. L'entrée
+      se lira « ouvert » jusqu'à ce que D1 passe, et passera avec lui.
+      SA PREUVE D'ÉCHEC : `node scripts/verifie-repli-mobile.mjs --controle`,
+      6/6 épreuves, dont l'accueil du 13/10 à 21 sections sans repli.
+      CHECK: node scripts/verifie-repli-mobile.mjs https://migen-site.vercel.app | tail -1
+      EXPECT: TOUTES_LES_SECTIONS_SE_REPLIENT
 
 ### D17 — « C'est quoi le mieux, je demande à Design »
 - [x] RÉPONDU, trois consignes mesurées : une vraie page par adresse, replier
@@ -959,6 +1094,86 @@ registre. Chaque entrée porte la commande qui décide de son état.
 
 ### B4 — 38 accords de logo
 - [x] LEVÉ le 12/10 : Mehdi confirme que les accords écrits sont obtenus.
+
+LES TROIS ENTRÉES QUI SUIVENT ONT ÉTÉ DÉPLACÉES ICI LE 14/10, depuis les
+séries 4 et 5, lors de la requalification des entrées « à requalifier ». Leur
+historique est repris mot pour mot. AUCUNE ne porte de ligne de commande
+exécutable, et c'est voulu : le vérificateur ne reconnaît que les titres `G` et
+`D`, si bien qu'une commande posée sous un titre `B` serait rattachée à la
+dernière entrée `D` lue, et l'accuserait à tort. Leur mesure est écrite en
+`MANUEL`, avec la commande qui les tranchera le jour où Mehdi aura répondu.
+
+### B5 — Une erreur eslint préexistante, à arbitrer (ex-G67)
+- [ ] DÉCISION DE MEHDI. Historique de G67, repris tel quel :
+      « PAS FAIT, DÉLIBÉRÉMENT. `components/formulaire/ChampEntreprise.tsx:101`
+      appelle `setPropositions([])` en synchrone dans un effet. C'est la seule
+      erreur eslint du dépôt, elle est antérieure à cette nuit, et le fichier
+      n'a été touché par personne. Le remède naturel, déplacer l'effacement
+      dans le minuteur, décale de 250 ms la disparition de la liste
+      d'autocomplétion : c'est un comportement de FORMULAIRE, et la règle est
+      de ne pas y toucher. À trancher par Mehdi. »
+      Son ancienne commande, `bunx eslint
+      components/formulaire/ChampEntreprise.tsx` avec l'attente « 1 error »,
+      mesurait la présence du défaut sous une case non cochée : elle passait,
+      et le vérificateur la classait « à requalifier ».
+      MANUEL, mesuré le 14/10 : l'erreur est toujours là, une seule, règle
+      `react-hooks/set-state-in-effect`, ligne 101. Conséquence à connaître :
+      `bun run verifie` enchaîne `bunx eslint .` et s'arrête donc sur elle
+      tant que Mehdi n'a pas tranché.
+      CE QU'IL FAUT DE LUI : accepter, ou non, que la liste d'autocomplétion
+      du champ Entreprise disparaisse 250 ms plus tard. S'il accepte, le
+      correctif est fait par une session autorisée à toucher aux formulaires,
+      et la commande qui le tranchera, à poser sous un titre `G` : `bunx
+      eslint components/formulaire/ChampEntreprise.tsx && echo
+      CHAMP_ENTREPRISE_SANS_ERREUR`, avec ce jeton pour attente (eslint
+      n'imprime rien quand tout passe, une attente « 0 » ne trancherait rien).
+
+### B6 — Les arbitrages de copie de /nous-connaitre/ (ex-D7, partie copie)
+- [ ] DÉCISION DE MEHDI, ou de Nathan pour lui. D7 garde la partie qui était à
+      nous, faite et mesurée. Restent les points B1 à B10 de
+      `docs/NOUS-CONNAITRE-ARBITRAGES.md` (sa numérotation, distincte de
+      celle-ci), tous sur SA copie, chacun avec ses options rédigées. Le plus
+      visible est son point B8, le h1 : « Un seul métier : technicien de
+      maintenance. », mot pour mot sa maquette (`maquette/accueil-rendu.html`
+      ligne 5208), qui ne nomme qu'un métier sur trois juste au dessus d'un
+      chapô qui en nomme trois. Les autres : le schéma en trois cases (B1), un
+      intitulé pour le bloc des six offres (B2), « un technicien ou deux en
+      avril 2021 » (B4), les jalons de trois offres absents de la frise (B5),
+      l'offre de chacun des 41 cas de /preuves/ (B6), les deux colonnes du
+      périmètre (B7), « Nos terrains d'excellence » (B9), les « trois
+      personnes » de l'équipe proche (B10).
+      MANUEL, mesuré le 14/10 en production : le h1 servi est toujours
+      « Un seul métier : technicien de maintenance. ». La porte de la page,
+      `bun components/site/nous-connaitre/verification-nous-connaitre.tsx`,
+      imprime « ARBITRAGE OUVERT, B8 » à chaque passage, et elle tombera le
+      jour où le h1 change : c'est le signal attendu, pas une régression.
+      CE QU'IL FAUT DE LUI : pour le h1, un mot, il reste ou il nomme les
+      trois métiers (deux formulations prises dans ses propres mots sont
+      proposées au document). Pour le reste, ses choix point par point. Rien
+      n'est réécrit sans eux.
+
+### B7 — Les photos de Metz et Dijon sous licence (ex-D13, même sujet que G53)
+- [ ] ACHAT OU TÉLÉCHARGEMENT DE MEHDI. Historique de D13, repris tel quel :
+      « CHOISIES, PAS LIVRÉES. Metz : la cathédrale par RossHelen, même
+      photographe et même série que Nantes et Bordeaux. Dijon : Meursault, en
+      Côte-d'Or, seule photo de vignes authentiquement bourguignonne du
+      catalogue. Il manque les versions sous licence : le catalogue ne rend que
+      l'aperçu de 600 px filigrané. »
+      Son ancienne commande, `grep -c "hub-metz.jpg\|hub-dijon.jpg"
+      docs/PHOTOS-VILLES-ENVATO.md` avec l'attente « au moins 2 », comptait
+      les deux noms de fichier écrits dans la documentation : elle mesurait le
+      CHOIX, qui est fait, et non la LIVRAISON, qui ne l'est pas.
+      MANUEL, mesuré le 14/10 : `public/assets/villes/` porte les huit
+      `hub-*.jpg` des autres hubs et ni `hub-metz.jpg` ni `hub-dijon.jpg` ;
+      `components/site/implantations/photos-hubs.ts` déclare
+      `HUBS_SANS_PHOTO = ["Metz", "Dijon"]`, et les deux tuiles se rendent en
+      panneau sombre plutôt que de servir une photo qui ne serait pas la
+      ville (Metz servait une cimenterie, Dijon un métier à tisser).
+      CE QU'IL FAUT DE LUI : les deux fichiers sous licence, depuis son compte
+      Envato (adresses des deux pages dans `docs/PHOTOS-VILLES-ENVATO.md`). La
+      commande qui tranchera la livraison : `ls public/assets/villes/hub-metz.jpg
+      public/assets/villes/hub-dijon.jpg`, plus le retrait des deux noms de
+      `HUBS_SANS_PHOTO`.
 
 ---
 
