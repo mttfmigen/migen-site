@@ -125,6 +125,14 @@
   --logo-f: grayscale(1);
   --map-a: rgba(255, 255, 255, 0.95);
   --map-b: rgba(255, 255, 255, 0.55);
+
+  /* Ombres du README du colis du 14/10, « Mise en forme » : celle des cartes
+     et celle du bouton principal orange (fond --acc, texte blanc, graisse
+     600, rayon 999px, filter: brightness(.93) au survol). Nommées ici pour
+     les composants à venir ; aucun composant existant ne change de valeur. */
+  --ombre-carte: 0 1px 1px rgba(0, 0, 0, 0.04),
+    0 22px 50px -32px rgba(0, 0, 0, 0.3);
+  --ombre-bouton: 0 10px 24px -12px rgba(255, 124, 60, 0.85);
 }
 
 /* --------------------------------------------------------- palette sombre
@@ -139,9 +147,11 @@
    sombre. Celles-ci sont choisies et mesurées : 6,3:1 et 7,8:1 sur --card,
    7,3:1 et 9,1:1 sur --bg.
 
-   Deux sélecteurs, une seule liste : le choix mémorisé (data-theme, posé par
-   le script de app/layout.tsx avant le premier rendu) l'emporte sur le
-   système, et sans choix le système décide. */
+   ÉCRITE, PAS ACTIVÉE (décision de Mehdi du 14/10 : « thème clair d'abord »).
+   Rien ne pose `data-theme="sombre"` : ni bouton (BasculeTheme n'est pas
+   monté), ni le script de app/layout.tsx, qui ne relit plus le choix
+   mémorisé. Pour l'allumer : remonter <BasculeTheme /> dans Entete.tsx et
+   rendre au script de layout.tsx la lecture de localStorage["migen-theme"]. */
 :root[data-theme="sombre"] {
   --bg: #15141a;
   --card: #232229;

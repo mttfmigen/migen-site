@@ -1,4 +1,3 @@
-import PanneauApropos from "./megamenu/Apropos";
 import PanneauExpertises from "./megamenu/Expertises";
 import PanneauOffres from "./megamenu/Offres";
 import PanneauPreuves from "./megamenu/Preuves";
@@ -57,7 +56,6 @@ export default function MegaMenu({
         {panneau === "expertises" && <PanneauExpertises />}
         {panneau === "preuves" && <PanneauPreuves />}
         {panneau === "ressources" && <PanneauRessources />}
-        {panneau === "apropos" && <PanneauApropos />}
       </div>
     </div>
   );

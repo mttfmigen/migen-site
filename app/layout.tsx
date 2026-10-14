@@ -148,24 +148,24 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       // défilement. La mise en page vient maintenant de la maquette, dont le
       // conteneur `.mg-site` porte son propre `min-height: 100vh`.
       className={poppins.variable}
-      // Le script de thème ci-dessous pose `data-theme` avant l'hydratation :
-      // sans cet attribut, React signalerait l'écart entre le HTML serveur et
-      // la racine. Ne couvre que les attributs de <html>, pas ses enfants.
+      // Le script ci-dessous pose `data-js` avant l'hydratation : sans cet
+      // attribut, React signalerait l'écart entre le HTML serveur et la
+      // racine. Ne couvre que les attributs de <html>, pas ses enfants.
       suppressHydrationWarning
     >
       <head>
-        {/* Thème mémorisé, posé AVANT le premier rendu pour éviter l'éclair
-            clair chez qui a choisi « Sombre » (et l'inverse). Même clé et mêmes
-            valeurs que la maquette (`localStorage["migen-theme"]`, « Clair » ou
-            « Sombre »). Sans choix, aucun attribut : globals.css suit alors
-            prefers-color-scheme. try/catch : stockage bloqué ou navigation
-            privée, la page reste sur le réglage du système. */}
+        {/* THÈME CLAIR SEUL depuis le 14/10 (décision de Mehdi : tokens
+            sombres posés, NON activés). Ce script relisait le choix mémorisé
+            (`localStorage["migen-theme"]`) et posait `data-theme="sombre"` :
+            un visiteur qui l'avait gardé d'un ancien déploiement recevait la
+            palette sombre sur des composants aux couleurs fixes du clair. La
+            lecture revient le jour où le sombre s'allume (voir globals.css). */}
         <script
           dangerouslySetInnerHTML={{
-            // `data-js` d'abord : il active, sous 880 px, le masquage des blocs
+            // `data-js` : il active, sous 880 px, le masquage des blocs
             // repliables jusqu'à leur montage (globals.css, « sans décalage au
             // chargement »). Sans JavaScript, il n'est jamais posé.
-            __html: `document.documentElement.setAttribute("data-js","");try{var t=localStorage.getItem("migen-theme");if(t==="Sombre"||t==="Clair")document.documentElement.setAttribute("data-theme",t==="Sombre"?"sombre":"clair")}catch(e){}`,
+            __html: `document.documentElement.setAttribute("data-js","")`,
           }}
         />
       </head>

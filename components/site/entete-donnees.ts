@@ -2,24 +2,19 @@
  * Entrées de navigation, en données plutôt qu'en balisage répété.
  *
  * Deux sources, et c'est voulu : la maquette « Site final » pilote les
- * mega-menus du bureau, la maquette MOBILE V2 (`maquette/mobile-v2/`) pilote
- * le tiroir tactile. Leurs listes ne sont pas les mêmes : le tiroir porte les
- * groupes « Cas clients » et « Ressources », des sous-têtes et des
- * descriptions que le bureau n'a pas. Les fusionner produirait une liste que
- * le client n'a validée ni d'un côté ni de l'autre, donc chacune reste à sa
- * place.
+ * mega-menus du bureau, la maquette MOBILE du colis du 14/10
+ * (`maquette/colis-14-10/MigenMobile.dc.html`) pilote le tiroir tactile. Leurs
+ * listes ne sont pas les mêmes, et chacune reste à sa place.
  *
  * Aucun chemin inventé : chaque `href` du tiroir est une page de
  * `maquette/contenu/site/index.json`, une route statique de `app/`, ou la
  * réécriture `/diagnostic-zero-arret/` de `next.config.ts`
- * (`verification-tiroir.tsx` le revérifie). Pour les mega-menus, les deux
- * entrées de la maquette de bureau sans URL existante (Diagnostic Zéro arrêt,
- * Test technicien) restent passées en props à l'en-tête, et l'entrée ne
- * s'affiche pas si l'appelant ne fournit rien.
+ * (`verification-tiroir.tsx` le revérifie). Pour les mega-menus, l'entrée
+ * « Diagnostic gratuit » reste passée en props à l'en-tête, et ne s'affiche
+ * pas si l'appelant ne fournit rien.
  */
 
-export type PanneauId =
-  "offres" | "expertises" | "preuves" | "ressources" | "apropos";
+export type PanneauId = "offres" | "expertises" | "preuves" | "ressources";
 
 export interface Lien {
   libelle: string;
@@ -61,59 +56,48 @@ export interface Chiffre {
   accent?: boolean;
 }
 
-/** Un lien du tiroir, avec sa ligne grise quand la maquette en écrit une. */
-export interface LienTiroir extends Lien {
-  description?: string;
-}
-
 /**
- * Une entrée du tiroir : un lien, ou une sous-tête orange qui scinde la liste
- * (« Conception et réalisation », « Par constructeur »…). C'est la distinction
- * `L_` / `HD_` du `menuG` de la maquette mobile v2.
+ * Un groupe dépliable du tiroir : un titre, sa ligne grise, ses liens. C'est
+ * l'objet `{ l, d, items }` du tableau `GROUPS` de la maquette mobile.
  */
-export type EntreeTiroir =
-  | { type: "sous-tete"; libelle: string }
-  | ({ type: "lien" } & LienTiroir);
-
 export interface SectionTiroir {
   libelle: string;
-  entrees: EntreeTiroir[];
+  description: string;
+  liens: Lien[];
 }
 
 /* ------------------------------------------------------------------ barre */
 
 /**
- * Les cinq entrées qui ouvrent un panneau, dans l'ordre de la maquette.
+ * Les quatre entrées qui ouvrent un panneau, dans l'ordre de la barre.
  *
- * CHACUNE PORTE L'ADRESSE DE SON HUB depuis le 11/10. Elles étaient des
- * `<button>` sans lien : au clic, le méga-menu s'ouvrait et rien d'autre, le
- * visiteur devait ensuite viser « Toutes nos expertises → » à l'intérieur.
- * Mehdi l'a signalé : « le menu quand je clique dessus ça me renvoie pas vers
- * les pages de niveau un ». Elles sont maintenant de vrais liens : le survol
- * et le focus clavier ouvrent le panneau, le clic mène à la page.
+ * LA BARRE DU COLIS DU 14/10, tranchée par Mehdi le 14/10 vers 15 h 30 :
+ * Offres, Expertises, Réalisations, Ressources, Carrière, puis « Décrire mon
+ * besoin ». C'est la barre de `Migen - Ressources v2.dc.html` (sa `<nav>`,
+ * relue par `verification-entete.tsx`). Elle remplace les choix du 12/10
+ * (« Cas clients », « À propos », « Rejoindre migen » et le téléphone dans la
+ * barre).
+ *
+ * « Réalisations » mène à `/preuves/` : c'est la cible de `goReal` dans
+ * « Migen - Site final.dc.html » (`this.cxGo("/preuves/")`), et elle ouvre le
+ * panneau des études de cas, celui de l'ancienne entrée « Cas clients ».
+ *
+ * Chaque entrée est un vrai lien depuis le 11/10 : le survol et le focus
+ * clavier ouvrent le panneau, le clic mène à la page.
  */
 export const NAV_PANNEAUX: { id: PanneauId; libelle: string; href: string }[] = [
   { id: "offres", libelle: "Offres", href: "/offres/" },
   { id: "expertises", libelle: "Expertises", href: "/expertises/" },
-  { id: "preuves", libelle: "Cas clients", href: "/preuves/" },
+  { id: "preuves", libelle: "Réalisations", href: "/preuves/" },
   { id: "ressources", libelle: "Ressources", href: "/ressources/" },
-  { id: "apropos", libelle: "À propos", href: "/nous-connaitre/" },
 ];
 
 /**
- * Sixième entrée, sans panneau : elle ferme celui qui serait ouvert.
- *
- * LIBELLÉ DEMANDÉ PAR MEHDI LE 12/10 : « déjà la page devrait s'appeler
- * rejoindre migen ». C'est un ÉCART ASSUMÉ avec la maquette, qui écrit
- * « Carrière » sur sa pilule de barre comme dans son tiroir, et dont la
- * capture `maquette/rendu/carriere.html` titre la page « Migen recrutement ».
- * La maquette n'écrit « Rejoindre Migen » qu'en h2 de la bande d'appel de
- * cette page, et « Rejoindre migen© » en sur-titre de deux panneaux de
- * candidature. Le titre de la page n'est donc PAS touché ici : seul le libellé
- * du menu change, et le reste attend l'arbitrage de Mehdi.
+ * Cinquième entrée, sans panneau : elle ferme celui qui serait ouvert.
+ * Libellé et cible de la maquette (`goCarriere`, `this.cxGo("/carriere/")`).
  */
 export const NAV_CARRIERE: Lien = {
-  libelle: "Rejoindre migen",
+  libelle: "Carrière",
   href: "/carriere/",
 };
 
@@ -421,340 +405,106 @@ export const RES_A_LA_UNE: Offre[] = [
   },
 ];
 
-/* ----------------------------------------------------- panneau À propos */
-
-export const APROPOS_ENTREPRISE: LienDecrit[] = [
-  {
-    libelle: "Nous connaître",
-    description: "Histoire, organisation, ce qu’on ne fait pas",
-    href: "/nous-connaitre/",
-  },
-  {
-    libelle: "Équipe & direction",
-    description: "Les huit visages du siège, nom et e-mail",
-    href: "/a-propos/equipe/",
-  },
-  {
-    libelle: "Partenaires",
-    description: "DimoMaint, Savoye",
-    href: "/partenaires/",
-  },
-  {
-    libelle: "Nos implantations",
-    description: "Agences, villes et départements couverts",
-    href: "/implantations/",
-  },
-];
-
-export const APROPOS_ENGAGEMENTS: LienDecrit[] = [
-  {
-    libelle: "Nos valeurs",
-    description: "Cinq règles, et la preuve qui va avec",
-    href: "/valeurs/",
-  },
-  {
-    libelle: "Engagements RSE",
-    description: "Sécurité, emploi, retrofit, proximité",
-    href: "/rse/",
-  },
-];
-
-export const VILLES: Lien[] = [
-  { libelle: "Lyon", href: "/implantations/lyon/" },
-  { libelle: "Paris", href: "/implantations/paris/" },
-  { libelle: "Nantes", href: "/implantations/nantes/" },
-  { libelle: "Strasbourg", href: "/implantations/strasbourg/" },
-  { libelle: "Toulouse", href: "/implantations/toulouse/" },
-];
-
 /* --------------------------------------------------------- tiroir tactile */
 
 /**
- * Le lien « Accueil », seul au-dessus des groupes, comme la maquette mobile v2
- * le pose en tête de son menu.
+ * « Accueil », libellé de la racine. Le tiroir du 14/10 ne le porte plus (le
+ * logo de la pilule mène à l'accueil, comme dans la maquette mobile) ; le plan
+ * du site, lui, s'en sert pour nommer la racine.
  */
 export const TIROIR_ACCUEIL: Lien = { libelle: "Accueil", href: "/" };
 
 /**
- * Les six groupes du tiroir, repris du bloc `menuG` de la maquette mobile v2
- * (`maquette/mobile-v2/maquette/Migen - Mobile v2.dc.html`) : libellés,
- * descriptions, sous-têtes orange et ordre tels qu'elle les rend, soit
- * 60 liens, plus « Accueil » ci-dessus. Les groupes « Ressources » et
- * « Carrière » y sont CALCULÉS depuis l'index des pages (sous-rubriques de
- * `/ressources/`, guides, fiches de `/carriere/`, libellés dérivés des h1 par
- * sa fonction `short`) : la liste écrite ici est le résultat de ce calcul sur
- * `maquette/contenu/site/index.json`, et `verification-tiroir.tsx` refait le
- * calcul à chaque exécution pour refuser l'écart, l'ellipse du guide comprise.
+ * Les cinq groupes du tiroir, repris du tableau `GROUPS` de la maquette mobile
+ * du colis du 14/10 (`maquette/colis-14-10/MigenMobile.dc.html`) : titres,
+ * lignes grises, libellés et ordre tels qu'elle les écrit.
+ * `verification-tiroir.tsx` relit ce tableau à chaque exécution et refuse
+ * l'écart.
  *
- * TROIS ADRESSES SONT RAPPORTÉES AUX ROUTES RÉELLES, et c'est documenté
- * plutôt que silencieux : la maquette vise `/a-propos/nous-connaitre/`,
- * `/a-propos/valeurs/` et `/a-propos/rse/`, pages que ce site sert sur
- * `/nous-connaitre/`, `/valeurs/` et `/rse/` (routes statiques de `app/`,
- * voir `lib/routes-statiques.ts`). Aucun autre écart.
+ * TROIS ADAPTATIONS, déclarées et revérifiées par la porte :
+ *  - « Bureau d’études » : la maquette vise `/bureau-etudes/`, qui sert le
+ *    MÊME h1 que `/offres/bureau-etudes/`. Le panneau Offres du bureau et le
+ *    pied de page visent `/offres/bureau-etudes/` : le tiroir fait de même,
+ *    pour ne pas pousser la page en double.
+ *  - « Toutes les pages » : la maquette ouvre son écran « browse », la liste
+ *    de toutes ses pages. Le site la sert sur `/plan-du-site/`, que le pied de
+ *    page appelle déjà « Toutes nos pages ».
+ *  - « Postuler » : la maquette ouvre son formulaire. Sur le site, c'est le
+ *    formulaire de candidature de `/carriere/`, ancre `#postuler`.
  *
- * Le compteur affiché à droite de chaque groupe n'est PAS écrit ici :
- * `TiroirMobile` compte les entrées de type « lien », comme la maquette
- * (`mg.n`). Un nombre écrit à la main dériverait en silence.
+ * UNE ENTRÉE RETIRÉE, faute de page : « Notre sélection 10 % » ouvre l'écran
+ * « process » de la maquette, qui n'a pas d'adresse sur le site. Elle revient
+ * le jour où une page ou une ancre la porte (à trancher par Mehdi).
  */
 export const TIROIR: SectionTiroir[] = [
   {
     libelle: "Nos offres",
-    entrees: [
-      {
-        type: "lien",
-        libelle: "migen© Résidence",
-        href: "/offres/residence/",
-        description: "Techniciens en résidence, intégrés à votre équipe.",
-      },
-      {
-        type: "lien",
-        libelle: "migen© Full service",
-        href: "/offres/full-service/",
-        description: "Toute votre maintenance, dans un seul contrat.",
-      },
-      {
-        type: "lien",
-        libelle: "migen© Zéro arrêt · abonnement",
-        href: "/offres/zero-arret/",
-        description: "Forfait mensuel : préventif, astreinte, curatif inclus.",
-      },
-      {
-        type: "lien",
-        libelle: "migen© Arrêt technique",
-        href: "/offres/arret-technique/",
-        description: "Arrêts planifiés, tenus à la demi-journée.",
-      },
-      { type: "sous-tete", libelle: "Conception et réalisation" },
-      {
-        type: "lien",
-        libelle: "migen© Bureau d’études",
-        href: "/offres/bureau-etudes/",
-        description:
-          "Conception, schémas électriques, mise en conformité machine.",
-      },
-      {
-        type: "lien",
-        libelle: "migen© Travaux industriels",
-        href: "/travaux-industriels/",
-        description: "Transfert, montage, démantèlement, levage.",
-      },
-      { type: "sous-tete", libelle: "Aller plus loin" },
-      {
-        type: "lien",
-        libelle: "Diagnostic gratuit",
-        href: "/diagnostic-zero-arret/",
-      },
-      { type: "lien", libelle: "Partenaires", href: "/partenaires/" },
-      { type: "lien", libelle: "Toutes les offres", href: "/offres/" },
+    description: "Résidence, Full service, Zéro arrêt…",
+    liens: [
+      { libelle: "Résidence", href: "/offres/residence/" },
+      { libelle: "Full service", href: "/offres/full-service/" },
+      { libelle: "Zéro arrêt", href: "/offres/zero-arret/" },
+      { libelle: "Arrêt technique", href: "/offres/arret-technique/" },
+      { libelle: "Dépannage", href: "/offres/depannage-industriel/" },
+      { libelle: "Travaux industriels", href: "/travaux-industriels/" },
+      { libelle: "Bureau d’études", href: "/offres/bureau-etudes/" },
+      { libelle: "Toutes les offres", href: "/offres/" },
     ],
   },
   {
-    libelle: "Expertises",
-    entrees: [
-      { type: "sous-tete", libelle: "Domaines d’activité" },
-      { type: "lien", libelle: "Mécanique", href: "/expertises/mecanique/" },
-      { type: "lien", libelle: "Hydraulique", href: "/expertises/hydraulique/" },
+    libelle: "Expertises métiers",
+    description: "Automatisme, électrique, mécanique…",
+    liens: [
+      { libelle: "Automatisme", href: "/expertises/automatisme/" },
+      { libelle: "Électrique", href: "/expertises/electrique/" },
+      { libelle: "Électromécanique", href: "/expertises/electromecanique/" },
+      { libelle: "Mécanique", href: "/expertises/mecanique/" },
+      { libelle: "Hydraulique", href: "/expertises/hydraulique/" },
+      { libelle: "Pneumatique", href: "/expertises/pneumatique/" },
+      { libelle: "Robotique", href: "/expertises/robotique/" },
+      { libelle: "Soudure", href: "/expertises/soudure/" },
+      { libelle: "Tuyauterie", href: "/expertises/tuyauterie/" },
+      { libelle: "Tous les métiers", href: "/expertises/" },
+    ],
+  },
+  {
+    libelle: "Expertises sectorielles",
+    description: "Agroalimentaire, automobile, logistique…",
+    liens: [
+      { libelle: "Agroalimentaire", href: "/secteurs/agroalimentaire/" },
+      { libelle: "Automobile", href: "/secteurs/automobile/" },
+      { libelle: "Logistique", href: "/secteurs/logistique/" },
+      { libelle: "Chimie", href: "/secteurs/chimie/" },
+      { libelle: "Pharmaceutique", href: "/secteurs/pharmaceutique/" },
+      { libelle: "Aéronautique", href: "/secteurs/aeronautique/" },
+      { libelle: "Industrie métallique", href: "/secteurs/industrie-metallique/" },
+      { libelle: "Industrie lourde", href: "/secteurs/industrie-lourde/" },
+      { libelle: "Nucléaire", href: "/secteurs/nucleaire/" },
       {
-        type: "lien",
-        libelle: "Électromécanique",
-        href: "/expertises/electromecanique/",
-      },
-      { type: "lien", libelle: "Soudure", href: "/expertises/soudure/" },
-      { type: "lien", libelle: "Électrique", href: "/expertises/electrique/" },
-      { type: "lien", libelle: "Tuyauterie", href: "/expertises/tuyauterie/" },
-      { type: "lien", libelle: "Pneumatique", href: "/expertises/pneumatique/" },
-      { type: "lien", libelle: "Automatisme", href: "/expertises/automatisme/" },
-      { type: "lien", libelle: "Robotique", href: "/expertises/robotique/" },
-      { type: "sous-tete", libelle: "Secteurs d’activité" },
-      {
-        type: "lien",
-        libelle: "Centre logistique",
-        href: "/secteurs/logistique/",
-      },
-      {
-        type: "lien",
-        libelle: "Aéronautique",
-        href: "/secteurs/aeronautique/",
-      },
-      {
-        type: "lien",
-        libelle: "Industrie lourde",
-        href: "/secteurs/industrie-lourde/",
-      },
-      {
-        type: "lien",
-        libelle: "Pharmaceutique",
-        href: "/secteurs/pharmaceutique/",
-      },
-      {
-        type: "lien",
-        libelle: "Industrie métallique",
-        href: "/secteurs/industrie-metallique/",
-      },
-      { type: "lien", libelle: "Chimie", href: "/secteurs/chimie/" },
-      { type: "lien", libelle: "Automobile", href: "/secteurs/automobile/" },
-      {
-        type: "lien",
-        libelle: "Agroalimentaire",
-        href: "/secteurs/agroalimentaire/",
-      },
-      {
-        type: "lien",
         libelle: "Menuiserie industrielle",
         href: "/secteurs/menuiserie-industrielle/",
       },
-      { type: "sous-tete", libelle: "Par constructeur" },
-      {
-        type: "lien",
-        libelle: "Automaticien SIEMENS",
-        href: "/expertises/automatisme/siemens/",
-      },
-      {
-        type: "lien",
-        libelle: "Automaticien Schneider",
-        href: "/expertises/automatisme/schneider/",
-      },
-      {
-        type: "lien",
-        libelle: "Roboticien FANUC",
-        href: "/expertises/robotique/fanuc/",
-      },
-      {
-        type: "lien",
-        libelle: "Roboticien ABB",
-        href: "/expertises/robotique/abb/",
-      },
-      { type: "lien", libelle: "Toutes nos expertises", href: "/expertises/" },
+      { libelle: "Tous les secteurs", href: "/secteurs/" },
     ],
   },
   {
-    libelle: "Cas clients",
-    entrees: [
-      {
-        type: "lien",
-        libelle: "DANONE · lignes de production",
-        href: "/preuves/danone-lignes-de-production/",
-        description: "Deux techniciens en 3x8, lignes liquides et poudre.",
-      },
-      {
-        type: "lien",
-        libelle: "AMAZON · centre logistique",
-        href: "/preuves/amazon-centre-logistique/",
-        description: "Plusieurs dizaines de techniciens, une semaine sur deux.",
-      },
-      {
-        type: "lien",
-        libelle: "AKTID · centre logistique",
-        href: "/preuves/aktid-centre-logistique/",
-        description: "Montage d’un centre logistique.",
-      },
-      { type: "lien", libelle: "Toutes les études de cas", href: "/preuves/" },
-    ],
-  },
-  {
-    libelle: "Ressources",
-    entrees: [
-      { type: "lien", libelle: "Articles", href: "/ressources/articles/" },
-      {
-        type: "lien",
-        libelle: "Fiches pratiques",
-        href: "/ressources/fiches-pratiques/",
-      },
-      {
-        type: "lien",
-        libelle: "Fiches techniques",
-        href: "/ressources/fiches-techniques/",
-      },
-      {
-        type: "lien",
-        libelle: "Livres blancs",
-        href: "/ressources/livres-blancs/",
-      },
-      { type: "lien", libelle: "Process", href: "/ressources/process/" },
-      {
-        /* L'ellipse est celle de la maquette : son `short` coupe à 54 signes
-           le h1 « Comment choisir une entreprise de maintenance industrielle ». */
-        type: "lien",
-        libelle: "Comment choisir une entreprise de maintenance…",
-        href: "/guides/choisir-une-entreprise-de-maintenance/",
-      },
-      {
-        type: "lien",
-        libelle: "Réussir un transfert industriel",
-        href: "/guides/reussir-un-transfert-industriel/",
-      },
-      /* AJOUT DU 14/10, hors `menuG` de la maquette mobile v2 : les trois
-         articles « À la une » du hub /ressources/ (maquette Ressources v2),
-         les mêmes que le panneau du bureau, `RES_A_LA_UNE`. Déclaré et
-         revérifié par `verification-tiroir.tsx`. */
-      { type: "sous-tete", libelle: "À la une" },
-      ...RES_A_LA_UNE.map(
-        ({ libelle, href, description }): EntreeTiroir => ({
-          type: "lien",
-          libelle,
-          href,
-          description,
-        }),
-      ),
-      { type: "lien", libelle: "Toutes les ressources", href: "/ressources/" },
-    ],
-  },
-  {
-    libelle: "À propos",
-    entrees: [
-      { type: "lien", libelle: "Nous connaître", href: "/nous-connaitre/" },
-      { type: "lien", libelle: "Nos valeurs", href: "/valeurs/" },
-      { type: "lien", libelle: "Engagements RSE", href: "/rse/" },
-      {
-        type: "lien",
-        libelle: "Équipe et direction",
-        href: "/a-propos/equipe/",
-      },
-      { type: "lien", libelle: "Nos implantations", href: "/implantations/" },
-      {
-        type: "lien",
-        libelle: "Entreprise de maintenance industrielle",
-        href: "/entreprise-maintenance-industrielle/",
-      },
+    libelle: "Migen",
+    description: "Qui nous sommes, où nous sommes",
+    liens: [
+      { libelle: "Nos réalisations", href: "/preuves/" },
+      { libelle: "Nos hubs en France", href: "/implantations/" },
+      { libelle: "L’équipe", href: "/a-propos/equipe/" },
+      { libelle: "Ressources", href: "/ressources/" },
+      { libelle: "Toutes les pages", href: "/plan-du-site/" },
     ],
   },
   {
     libelle: "Carrière",
-    entrees: [
-      {
-        type: "lien",
-        libelle: "Agent de maintenance industrielle",
-        href: "/carriere/agent-de-maintenance/",
-      },
-      {
-        type: "lien",
-        libelle: "Alternance maintenance industrielle",
-        href: "/carriere/alternance/",
-      },
-      { type: "lien", libelle: "Automaticien", href: "/carriere/automaticien/" },
-      {
-        type: "lien",
-        libelle: "Électromécanicien",
-        href: "/carriere/electromecanicien/",
-      },
-      {
-        type: "lien",
-        libelle: "Responsable maintenance",
-        href: "/carriere/responsable-maintenance/",
-      },
-      { type: "lien", libelle: "Roboticien", href: "/carriere/roboticien/" },
-      {
-        type: "lien",
-        libelle: "Technicien de maintenance",
-        href: "/carriere/technicien-de-maintenance/",
-      },
-      {
-        type: "lien",
-        libelle: "Technicien de maintenance itinérant",
-        href: "/carriere/technicien-itinerant/",
-      },
-      { type: "lien", libelle: "Test technicien", href: "/test-technicien/" },
-      { type: "lien", libelle: "Rejoindre migen", href: "/carriere/" },
+    description: "On recrute des techniciens",
+    liens: [
+      { libelle: "Nos métiers", href: "/carriere/" },
+      { libelle: "Alternance", href: "/carriere/alternance/" },
+      { libelle: "Postuler", href: "/carriere/#postuler" },
     ],
   },
 ];

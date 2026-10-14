@@ -1,0 +1,14 @@
+Colis Claude Design du 14/10 (livre par Mehdi a 15h17), deux sources recopiees telles quelles.
+
+1. MigenMobile.dc.html
+   Parcours mobile. Son tableau GROUPS est le menu du tiroir tactile :
+   components/site/verification-tiroir.tsx le relit a chaque execution.
+
+2. Migen - Ressources v2.dc.html
+   Hub /ressources/. Sa <nav> est la barre du site (Offres, Expertises,
+   Realisations, Ressources, Carriere, Decrire mon besoin) tranchee par Mehdi
+   le 14/10 : components/site/verification-entete.tsx la relit.
+
+Le colis complet (README, regles, autres maquettes) n'est pas versionne ici.
+Aucun fichier de ce dossier n'est importe par le site : un import de maquette/
+casserait le build Vercel. Seules les portes de verification les lisent.

@@ -1,36 +1,25 @@
 /**
- * Contrôle du tiroir tactile contre la maquette mobile v2, sans navigateur.
+ * Contrôle du tiroir tactile contre la maquette mobile du colis du 14/10, sans
+ * navigateur.
  *
  *   bun components/site/verification-tiroir.tsx
  *   bun components/site/verification-tiroir.tsx --controle   (témoins d'échec)
  *
- * LA RÉFÉRENCE est le bloc `menuG` de
- * `maquette/mobile-v2/maquette/Migen - Mobile v2.dc.html`, RELU À CHAQUE
- * EXÉCUTION, jamais recopié : ses groupes écrits en clair (`L_`, `HD_`) sont
- * extraits du source, et ses groupes CALCULÉS (« Ressources », « Carrière »)
- * sont recalculés ici depuis `maquette/contenu/site/index.json` avec le même
- * algorithme (`ofG`, `short`). Si la maquette est ré-exportée ou si l'index
- * change, le contrôle se met à jour tout seul et refuse l'écart.
+ * LA RÉFÉRENCE est le tableau `GROUPS` de
+ * `maquette/colis-14-10/MigenMobile.dc.html`, RELU À CHAQUE EXÉCUTION, jamais
+ * recopié. Si la maquette est ré-exportée, le contrôle refuse l'écart.
  *
  * CE QU'IL TIENT :
- * 1. Les six groupes de `TIROIR` : libellés, cibles, descriptions, sous-têtes
- *    orange, ordre, mot pour mot ceux de la maquette, après les TROIS
- *    adaptations déclarées (`/a-propos/nous-connaitre/` → `/nous-connaitre/`,
- *    etc., pages servies sur les routes statiques de `app/`). Chaque
- *    adaptation est elle-même revérifiée : la cible doit être une route
- *    réelle, la source NE DOIT PAS en être une, sinon l'adaptation ment.
- * 2. ZÉRO LIEN MORT : chaque cible du tiroir est dans l'index des pages, dans
- *    les routes statiques lues sur le disque, ou dans les réécritures de
- *    `next.config.ts` (`/diagnostic-zero-arret/`).
- * 3. REPLIER, JAMAIS RETIRER : le tiroir rendu porte les 61 liens dans le DOM
- *    alors que ses six groupes sont des `<details>` fermés. L'ancien tiroir ne
- *    rendait un groupe qu'une fois déplié.
- * 4. Les compteurs affichés valent le nombre de liens de leur groupe, et les
- *    sous-têtes et descriptions de la maquette sont rendues.
+ * 1. Les cinq groupes de `TIROIR` : titres, lignes grises, libellés, cibles et
+ *    ordre mot pour mot ceux de la maquette, après les adaptations déclarées
+ *    ci-dessous, chacune revérifiée.
+ * 2. ZÉRO LIEN MORT : chaque cible est dans l'index des pages, dans les routes
+ *    statiques lues sur le disque, ou dans les réécritures de `next.config.ts`.
+ * 3. REPLIER, JAMAIS RETIRER : le tiroir rendu FERMÉ porte tous ses liens dans
+ *    le DOM, ses groupes sont des `<details>` exclusifs, le premier ouvert.
+ * 4. Les titres et lignes grises des groupes sont rendus.
  *
- * `--controle` prouve que chaque règle sait échouer, reconnue à son message :
- * un lien vers une page hors index, un lien retiré du DOM rendu, un compteur
- * faussé, un libellé qui dérive de la maquette.
+ * `--controle` prouve que chaque règle sait échouer, reconnue à son message.
  */
 
 import assert from "node:assert/strict";
@@ -39,20 +28,18 @@ import { renderToStaticMarkup } from "react-dom/server";
 
 import TiroirMobile from "@/components/site/TiroirMobile";
 import {
-  type EntreeTiroir,
   type SectionTiroir,
   TELEPHONE_SITE,
   TIROIR,
-  TIROIR_ACCUEIL,
 } from "@/components/site/entete-donnees";
-import { CONTENUS_ENTREPRISES } from "@/components/site/ressources-hub/v2/donnees";
 
 const CONTROLE = process.argv.includes("--controle");
 
 /* ------------------------------------------------------------ l'inventaire */
 
-const index: { url: string; h1?: string; title?: string; gabarit?: string }[] =
-  JSON.parse(readFileSync("maquette/contenu/site/index.json", "utf8"));
+const index: { url: string; h1?: string }[] = JSON.parse(
+  readFileSync("maquette/contenu/site/index.json", "utf8"),
+);
 
 /** Les routes statiques de `app/`, lues sur le disque, jamais écrites à la
  *  main (même lecture que `verification-entete.tsx`). */
@@ -74,17 +61,12 @@ function routesStatiques(dossier = "app", prefixe = "/"): string[] {
   return trouvees;
 }
 
-/** Les chemins servis par réécriture (`/diagnostic-zero-arret/`), lus dans
- *  `next.config.ts` : une page servie sous le domaine sans dossier `app/`. */
-function sourcesReecrites(): string[] {
-  const config = readFileSync("next.config.ts", "utf8");
-  return [...config.matchAll(/source:\s*"(\/[^":]+)\/:[^"]*"/g)].map(
-    (m) => `${m[1]}/`,
-  );
-}
-
 const statiques = routesStatiques();
-const reecrites = sourcesReecrites();
+const reecrites = [
+  ...readFileSync("next.config.ts", "utf8").matchAll(
+    /source:\s*"(\/[^":]+)\/:[^"]*"/g,
+  ),
+].map((m) => `${m[1]}/`);
 const connues = new Set<string>([
   "/",
   ...index.map((entree) => entree.url),
@@ -92,199 +74,80 @@ const connues = new Set<string>([
   ...reecrites,
 ]);
 assert.ok(statiques.length >= 12, `routes statiques mal lues : ${statiques.length}`);
-assert.ok(
-  reecrites.includes("/diagnostic-zero-arret/"),
-  "la réécriture /diagnostic-zero-arret/ n'est plus lue dans next.config.ts",
-);
 assert.ok(connues.size >= 248, `inventaire trop court : ${connues.size}`);
 
+/** Le chemin d'une cible, sans son ancre (`/carriere/#postuler`). */
+const chemin = (href: string) => href.split("#")[0];
+
 function exigeLiensConnus(sections: readonly SectionTiroir[]): string[] {
-  const cibles = [
-    TIROIR_ACCUEIL.href,
-    ...sections.flatMap((section) =>
-      section.entrees.flatMap((entree) =>
-        entree.type === "lien" ? [entree.href] : [],
-      ),
-    ),
-  ];
+  const cibles = sections.flatMap((section) => section.liens.map((l) => l.href));
   for (const cible of cibles) {
     assert.ok(
-      connues.has(cible),
+      connues.has(chemin(cible)),
       `lien du tiroir hors de l'index des pages : ${cible} (ni page de ` +
         "l'index, ni route statique, ni réécriture)",
+    );
+    assert.ok(
+      chemin(cible).endsWith("/"),
+      `cible du tiroir sans slash final : ${cible}`,
     );
   }
   return cibles;
 }
 
-/* ----------------------------------------- la maquette, relue puis rejouée */
+/* ----------------------------------------- la maquette, relue puis adaptée */
 
-const dc = readFileSync(
-  "maquette/mobile-v2/maquette/Migen - Mobile v2.dc.html",
-  "utf8",
-);
-
-/** Un objet littéral `{ "clé": "valeur", … }` du source de la maquette. */
-function objetLitteral(nom: string): Record<string, string> {
-  const brut = new RegExp(`${nom}\\s*=\\s*\\{([^}]*)\\}`).exec(dc)?.[1];
-  assert.ok(brut, `constante ${nom} introuvable dans la maquette`);
-  return Object.fromEntries(
-    [...brut.matchAll(/"([^"]+)":\s*"([^"]+)"/g)].map((m) => [m[1], m[2]]),
-  );
-}
-
-const REMAP = objetLitteral("REMAP");
-const NATIVE = objetLitteral("const NATIVE");
-
-const parUrl = new Map(index.map((entree) => [entree.url, entree]));
-const ok = (href: string) =>
-  href === "/contact/" || href === "/" || parUrl.has(href);
-
-/** Le `short()` de la maquette, pour les gabarits que les groupes calculés
- *  traversent (11 sous-rubrique, 01 article, 07 métier). Les autres branches
- *  ne sont pas portées : si l'index les faisait entrer dans le menu, le
- *  contrôle tombe et demande le portage plutôt que de deviner. */
-function court(entree: { url: string; h1?: string; gabarit?: string }): string {
-  const gabarit = /(\d{1,2})/.exec(String(entree.gabarit ?? ""))?.[1] ?? "";
-  const code = gabarit.padStart(2, "0");
-  assert.ok(
-    ["11", "01", "07"].includes(code),
-    `gabarit ${code} dans un groupe calculé du menu : porter la branche ` +
-      `short() correspondante (${entree.url})`,
-  );
-  const h1 = String(entree.h1 ?? "").replace(/\s+/g, " ").trim();
-  const parties = h1.split(/\s*[:—–]\s+/);
-  const texte =
-    parties.length > 1 && code === "11" ? parties.slice(1).join(" : ") : parties[0];
-  return texte.length > 54
-    ? `${texte.slice(0, texte.lastIndexOf(" ", 52))}…`
-    : texte;
-}
-
-/** Les pages `/famille/x/` de l'index, hors redirections, l'`ofG` de la maquette. */
-function pagesDeFamille(famille: string): typeof index {
-  return index.filter((entree) => {
-    const segments = entree.url.split("/").filter(Boolean);
-    return (
-      segments[0] === famille && segments.length === 2 && !REMAP[entree.url]
-    );
-  });
-}
+const dc = readFileSync("maquette/colis-14-10/MigenMobile.dc.html", "utf8");
 
 /**
- * Les trois adresses de la maquette rapportées aux routes réelles du site,
- * déclarées ici et dans `entete-donnees.ts`. Chacune est revérifiée dans les
- * deux sens : la cible existe, la source n'existe pas. Le jour où le site sert
- * `/a-propos/valeurs/`, le contrôle tombe et demande de retirer l'adaptation.
+ * Les cibles de la maquette rapportées au site, déclarées ici et dans
+ * `entete-donnees.ts`. Une cible qui n'est pas une adresse (« browse »,
+ * « contact ») ouvre un écran du prototype : elle est rapportée à la page qui
+ * porte le même contenu.
  */
 const ADAPTATIONS: Record<string, string> = {
-  "/a-propos/nous-connaitre/": "/nous-connaitre/",
-  "/a-propos/valeurs/": "/valeurs/",
-  "/a-propos/rse/": "/rse/",
+  "/bureau-etudes/": "/offres/bureau-etudes/",
+  browse: "/plan-du-site/",
+  contact: "/carriere/#postuler",
 };
+
+/** Les écrans du prototype sans page sur le site : l'entrée sort du tiroir. */
+const SANS_PAGE = new Set(["process"]);
+
+// Chaque adaptation est revérifiée : la cible existe ; pour une adresse, la
+// source sert le même h1 que la cible (sinon l'adaptation change de page).
+const h1De = (url: string) => index.find((e) => e.url === url)?.h1;
 for (const [source, cible] of Object.entries(ADAPTATIONS)) {
-  assert.ok(connues.has(cible), `adaptation vers une route inconnue : ${cible}`);
-  assert.ok(
-    !connues.has(source),
-    `${source} est maintenant servie : retirer l'adaptation vers ${cible}`,
-  );
-}
-
-/** Le `menuG` de la maquette, groupes écrits extraits du source, groupes
- *  calculés rejoués sur l'index, adaptations appliquées, filtre `okM` compris. */
-function menuAttendu(): SectionTiroir[] {
-  const debut = dc.indexOf("const menuG = [");
-  const fin = dc.indexOf("].map(m => {", debut);
-  assert.ok(debut > 0 && fin > debut, "bloc menuG introuvable dans la maquette");
-  const bloc = dc.slice(debut, fin);
-
-  const groupes: SectionTiroir[] = [];
-  const morceaux = bloc.split(/\{ l: "/).slice(1);
-  assert.equal(morceaux.length, 6, "la maquette ne déclare plus six groupes");
-  for (const morceau of morceaux) {
-    const libelle = morceau.slice(0, morceau.indexOf('"'));
-    const entrees: EntreeTiroir[] = [];
-    for (const famille of morceau.matchAll(/ofG\("([a-z-]+)", 2\)/g)) {
-      for (const page of pagesDeFamille(famille[1])) {
-        entrees.push({ type: "lien", libelle: court(page), href: page.url });
-      }
-    }
-    for (const appel of morceau.matchAll(
-      /(L_|HD_)\("([^"]+)"(?:, "([^"]+)")?(?:, "([^"]+)")?\)/g,
-    )) {
-      if (appel[1] === "HD_") {
-        entrees.push({ type: "sous-tete", libelle: appel[2] });
-      } else {
-        entrees.push({
-          type: "lien",
-          libelle: appel[2],
-          href: ADAPTATIONS[appel[3] ?? ""] ?? appel[3] ?? "",
-          ...(appel[4] ? { description: appel[4] } : {}),
-        });
-      }
-    }
-    /* Le filtre `okM` de la maquette : une cible hors index n'entre que si
-       elle est une page « native » de son prototype. Ici, les natives sont
-       déjà rapportées aux routes réelles, donc connues. */
-    const gardees = entrees.filter(
-      (entree) =>
-        entree.type === "sous-tete" ||
-        ok(entree.href) ||
-        Boolean(NATIVE[entree.href]) ||
-        connues.has(entree.href),
+  assert.ok(connues.has(chemin(cible)), `adaptation vers une route inconnue : ${cible}`);
+  if (source.startsWith("/")) {
+    assert.equal(
+      h1De(source),
+      h1De(cible),
+      `${source} et ${cible} ne servent plus la même page : retirer l'adaptation`,
     );
-    if (gardees.some((entree) => entree.type === "lien")) {
-      groupes.push({ libelle, entrees: gardees });
-    }
   }
-  return groupes;
 }
 
-/**
- * LE SEUL AJOUT À LA MAQUETTE MOBILE, déclaré le 14/10 : le groupe
- * « Ressources » porte, avant « Toutes les ressources », la sous-tête
- * « À la une » et les trois articles que le hub /ressources/ (maquette
- * Ressources v2) met à la une. Recalculé ici depuis le hub lui-même : la liste
- * `UNE` de `HubRessources.tsx`, et le titre et la durée de chaque article dans
- * `donnees.ts`. Que le hub change sa une, et le tiroir doit suivre.
- */
-function avecLaUneDuHub(groupes: SectionTiroir[]): SectionTiroir[] {
-  const source = readFileSync(
-    "components/site/ressources-hub/v2/HubRessources.tsx",
-    "utf8",
-  );
-  const bloc = source.match(/const UNE = \[([\s\S]*?)\]/)?.[1] ?? "";
-  const urls = [...bloc.matchAll(/"([^"]+)"/g)].map((m) => m[1]);
-  assert.equal(urls.length, 3, "la liste UNE du hub /ressources/ est introuvable");
-  const une: EntreeTiroir[] = urls.map((url) => {
-    const article = CONTENUS_ENTREPRISES.find((x) => x.url === url);
-    assert.ok(article, `article à la une inconnu des données du hub : ${url}`);
-    return {
-      type: "lien",
-      libelle: article.titre,
-      href: article.url,
-      description: `${article.minutes} min de lecture`,
-    };
-  });
-  return groupes.map((groupe) => {
-    if (groupe.libelle !== "Ressources") return groupe;
-    const rang = groupe.entrees.findIndex(
-      (e) => e.type === "lien" && e.href === "/ressources/",
-    );
-    assert.ok(rang > -1, "« Toutes les ressources » a quitté le groupe Ressources");
-    return {
-      ...groupe,
-      entrees: [
-        ...groupe.entrees.slice(0, rang),
-        { type: "sous-tete", libelle: "À la une" },
-        ...une,
-        ...groupe.entrees.slice(rang),
-      ],
-    };
-  });
+/** Le tableau `GROUPS` de la maquette, adaptations appliquées. */
+function menuAttendu(): SectionTiroir[] {
+  const debut = dc.indexOf("const GROUPS = [");
+  const fin = dc.indexOf("\n    ];", debut);
+  assert.ok(debut > 0 && fin > debut, "tableau GROUPS introuvable dans la maquette");
+  const bloc = dc.slice(debut, fin);
+  const groupes = [
+    ...bloc.matchAll(/\{ l: "([^"]+)", d: "([^"]+)", items: \[(.*?)\] \}/g),
+  ];
+  assert.equal(groupes.length, 5, "la maquette ne déclare plus cinq groupes");
+  return groupes.map(([, libelle, description, items]) => ({
+    libelle,
+    description,
+    liens: [...items.matchAll(/\["([^"]+)", "([^"]+)"\]/g)]
+      .filter(([, , cible]) => !SANS_PAGE.has(cible))
+      .map(([, l, cible]) => ({ libelle: l, href: ADAPTATIONS[cible] ?? cible })),
+  }));
 }
 
-const attendu = avecLaUneDuHub(menuAttendu());
+const attendu = menuAttendu();
 
 /* -------------------------------------------------- 1 · les données, mot à mot */
 
@@ -292,29 +155,20 @@ function exigeConformeALaMaquette(sections: readonly SectionTiroir[]): void {
   assert.deepEqual(
     sections,
     attendu,
-    "TIROIR dérive du menuG de la maquette mobile v2 (libellé, cible, " +
-      "description, sous-tête ou ordre)",
+    "TIROIR dérive du tableau GROUPS de la maquette mobile (titre, ligne " +
+      "grise, libellé, cible ou ordre)",
   );
 }
 
 exigeConformeALaMaquette(TIROIR);
-assert.deepEqual(
-  TIROIR_ACCUEIL,
-  { libelle: "Accueil", href: "/" },
-  "le lien Accueil du tiroir n'est plus celui de la maquette",
-);
 
 /* ------------------------------------------------------- 2 · zéro lien mort */
 
 const cibles = exigeLiensConnus(TIROIR);
-for (const cible of cibles) {
-  assert.ok(cible.endsWith("/"), `cible du tiroir sans slash final : ${cible}`);
-}
 
 /* ------------------------------------- 3 et 4 · le rendu, replié mais entier */
 
-// Le menu FERMÉ : c'est l'état de la page servie, celui que Google lit. Ses
-// liens doivent y être, sous un `hidden` qui les cache aux yeux et au clavier.
+// Le menu FERMÉ : c'est l'état de la page servie, celui que Google lit.
 const rendu = renderToStaticMarkup(
   <TiroirMobile
     ouvert={false}
@@ -327,84 +181,57 @@ const rendu = renderToStaticMarkup(
 );
 assert.ok(/^<div hidden="">/.test(rendu), "le menu fermé doit porter hidden, sinon il s'affiche");
 
-const sansSlash = (chemin: string) =>
-  chemin.length > 1 && chemin.endsWith("/") ? chemin.slice(0, -1) : chemin;
+const sansSlash = (c: string) => (c.length > 1 && c.endsWith("/") ? c.slice(0, -1) : c);
 
 /** REPLIER, JAMAIS RETIRER : chaque cible est dans le DOM rendu, groupes
- *  fermés compris, et chaque groupe est bien un `<details>`. */
+ *  fermés compris, et chaque groupe est un `<details>` exclusif. */
 function exigeToutDansLeDom(html: string): void {
   const dansLeDom = new Set(
-    [...html.matchAll(/href="([^"#]*)"/g)].map((m) => sansSlash(m[1])),
+    [...html.matchAll(/href="([^"]*)"/g)].map((m) => {
+      const [c, ancre] = m[1].split("#");
+      return ancre ? `${sansSlash(c)}#${ancre}` : sansSlash(c);
+    }),
   );
   for (const cible of cibles) {
+    const [c, ancre] = cible.split("#");
+    const attendue = ancre ? `${sansSlash(c)}#${ancre}` : sansSlash(c);
     assert.ok(
-      dansLeDom.has(sansSlash(cible)),
+      dansLeDom.has(attendue) || dansLeDom.has(attendue.replace(/^(\/[^#]*)#/, "$1/#")),
       `lien du tiroir absent du DOM rendu : ${cible}. La règle de la ` +
         "maquette mobile est « replier, jamais retirer ».",
     );
   }
   const groupes = html.match(/<details\b[^>]*>/g) ?? [];
-  assert.equal(
-    groupes.length,
-    TIROIR.length,
-    "chaque groupe du tiroir doit être un <details> natif",
-  );
-  for (const groupe of groupes) {
+  assert.equal(groupes.length, TIROIR.length, "chaque groupe du tiroir doit être un <details> natif");
+  groupes.forEach((groupe, rang) => {
     assert.ok(
       groupe.includes('name="mg-tiroir-groupes"'),
       "un groupe du tiroir a perdu son name : l'accordéon exclusif de la maquette",
     );
-  }
-}
-
-exigeToutDansLeDom(rendu);
-
-/** Les compteurs rendus : le nombre affiché à droite d'un groupe vaut le
- *  nombre de liens de ce groupe, comme le `mg.n` de la maquette. */
-function exigeCompteursJustes(html: string): void {
-  const bascules = [...html.matchAll(/<summary[\s\S]*?<\/summary>/g)];
-  assert.equal(bascules.length, TIROIR.length, "une bascule de groupe manque");
-  bascules.forEach((bascule, rang) => {
-    const section = TIROIR[rang];
-    const nombre = section.entrees.filter((e) => e.type === "lien").length;
-    const textes = [...bascule[0].matchAll(/>([^<>]+)</g)].map((m) => m[1].trim());
-    assert.ok(
-      textes.includes(section.libelle),
-      `la bascule ${rang} ne porte plus « ${section.libelle} »`,
-    );
-    assert.ok(
-      textes.includes(String(nombre)),
-      `compteur du groupe « ${section.libelle} » : ${nombre} attendu dans la ` +
-        `bascule, trouvé « ${textes.join(" / ")} »`,
+    assert.equal(
+      /\bopen=""/.test(groupe),
+      rang === 0,
+      "seul le premier groupe est ouvert d'emblée (`menuGrp: 0` de la maquette)",
     );
   });
 }
 
-exigeCompteursJustes(rendu);
+exigeToutDansLeDom(rendu);
 
-// Les sous-têtes orange et les descriptions de la maquette sont rendues.
-for (const section of TIROIR) {
-  for (const entree of section.entrees) {
-    if (entree.type === "sous-tete") {
-      assert.ok(
-        rendu.includes(`text-transform:uppercase;color:var(--acc)">${entree.libelle}<`),
-        `sous-tête absente ou sans son dessin orange : « ${entree.libelle} »`,
-      );
-    } else if (entree.description) {
-      assert.ok(
-        rendu.includes(entree.description),
-        `description absente du rendu : « ${entree.description} »`,
-      );
-    }
-  }
+/** Titre et ligne grise de chaque groupe, dans sa bascule. */
+function exigeTitresRendus(html: string): void {
+  const bascules = [...html.matchAll(/<summary[\s\S]*?<\/summary>/g)].map((m) => m[0]);
+  assert.equal(bascules.length, TIROIR.length, "une bascule de groupe manque");
+  TIROIR.forEach((section, rang) => {
+    assert.ok(
+      bascules[rang].includes(`>${section.libelle}<`) &&
+        bascules[rang].includes(`>${section.description}<`),
+      `la bascule ${rang} ne porte plus « ${section.libelle} » et sa ligne grise`,
+    );
+  });
 }
 
-// « Accueil » en tête, avant le premier groupe.
-assert.ok(
-  rendu.indexOf(">Accueil<") > -1 &&
-    rendu.indexOf(">Accueil<") < rendu.indexOf("<details"),
-  "le lien Accueil doit précéder les groupes du tiroir",
-);
+exigeTitresRendus(rendu);
 
 /* ------------------------------------------------------------- les témoins */
 
@@ -412,14 +239,7 @@ if (CONTROLE) {
   // 1 · un lien vers une page absente de l'index doit tomber.
   const falsifie: SectionTiroir[] = TIROIR.map((section, rang) =>
     rang === 0
-      ? {
-          ...section,
-          entrees: section.entrees.map((entree, i) =>
-            i === 0 && entree.type === "lien"
-              ? { ...entree, href: "/page-inventee/" }
-              : entree,
-          ),
-        }
+      ? { ...section, liens: [{ libelle: "x", href: "/page-inventee/" }, ...section.liens] }
       : section,
   );
   assert.throws(
@@ -428,54 +248,41 @@ if (CONTROLE) {
     "le contrôle des liens laisse passer une page hors index",
   );
 
-  // 2 · un lien retiré du DOM rendu (texte disparu) doit tomber.
-  const sansPartenaires = rendu.replace(
-    /<a[^>]*href="\/partenaires[^>]*>[\s\S]*?<\/a>/,
-    "",
-  );
-  assert.notEqual(sansPartenaires, rendu, "témoin mal construit : rien retiré");
+  // 2 · un lien retiré du DOM rendu doit tomber.
+  const sansAlternance = rendu.replace(/<a[^>]*href="\/carriere\/alternance[^>]*>[\s\S]*?<\/a>/, "");
+  assert.notEqual(sansAlternance, rendu, "témoin mal construit : rien retiré");
   assert.throws(
-    () => exigeToutDansLeDom(sansPartenaires),
-    /absent du DOM rendu : \/partenaires\//,
+    () => exigeToutDansLeDom(sansAlternance),
+    /absent du DOM rendu : \/carriere\/alternance\//,
     "le contrôle du DOM laisse passer un lien retiré d'un groupe replié",
   );
 
-  // 3 · un compteur faussé doit tomber.
-  const compteurFausse = rendu.replace(">23<", ">22<");
-  assert.notEqual(compteurFausse, rendu, "témoin mal construit : compteur intact");
+  // 3 · une ligne grise retirée du rendu doit tomber.
+  const sansLigne = rendu.replace(`>${TIROIR[1].description}<`, "><");
   assert.throws(
-    () => exigeCompteursJustes(compteurFausse),
-    /compteur du groupe/,
-    "le contrôle des compteurs laisse passer un nombre faux",
+    () => exigeTitresRendus(sansLigne),
+    /ligne grise/,
+    "le contrôle des bascules laisse passer une ligne grise retirée",
   );
 
   // 4 · un libellé qui dérive de la maquette doit tomber.
-  const libelleDerive: SectionTiroir[] = TIROIR.map((section, rang) =>
-    rang === 2
-      ? {
-          ...section,
-          entrees: section.entrees.map((entree, i) =>
-            i === 0 && entree.type === "lien"
-              ? { ...entree, libelle: "DANONE, lignes de production" }
-              : entree,
-          ),
-        }
+  const derive: SectionTiroir[] = TIROIR.map((section, rang) =>
+    rang === 4
+      ? { ...section, liens: section.liens.map((l, i) => (i === 0 ? { ...l, libelle: "Rejoindre migen" } : l)) }
       : section,
   );
   assert.throws(
-    () => exigeConformeALaMaquette(libelleDerive),
-    /dérive du menuG/,
+    () => exigeConformeALaMaquette(derive),
+    /dérive du tableau GROUPS/,
     "le contrôle de conformité laisse passer un libellé réécrit",
   );
 }
 
-const nombreDeLiens = cibles.length;
 console.log(
-  `tiroir vérifié contre la maquette mobile v2 : ${TIROIR.length} groupes, ` +
-    `${nombreDeLiens} liens (Accueil compris), tous dans l'inventaire ` +
-    `(${connues.size} adresses) ; groupes Ressources et Carrière recalculés ` +
-    `depuis l'index ; les ${TIROIR.length} groupes sont des <details> et les ` +
-    `${nombreDeLiens} liens restent dans le DOM replié ; compteurs, ` +
-    `sous-têtes et descriptions rendus` +
+  `tiroir vérifié contre la maquette mobile du 14/10 : ${TIROIR.length} groupes, ` +
+    `${cibles.length} liens, tous dans l'inventaire (${connues.size} adresses) ; ` +
+    `${Object.keys(ADAPTATIONS).length} adaptations et ${SANS_PAGE.size} entrée sans page ` +
+    "déclarées ; groupes en <details> exclusifs, liens dans le DOM replié, " +
+    "titres et lignes grises rendus" +
     (CONTROLE ? " ; 4 témoins d'échec tombés." : "."),
 );
