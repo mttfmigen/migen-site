@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 
 import CarteBibliotheque from "./CarteBibliotheque";
 import styles from "./Bibliotheque.module.css";
+import { AppelRessourcesMobile } from "./HautDePageRessources";
 import MenuLateral from "./MenuLateral";
 import SommaireComplet from "./SommaireComplet";
 import type { Bibliotheque, CarteBibliotheque as Carte } from "./catalogue";
@@ -207,6 +208,12 @@ export default function BibliothequeRessources({
 
   const auRepos = jetons.length === 0;
 
+  /* « À LA UNE », règle de la maquette mobile v2 : `feat = !q0 && cat ===
+     "all" && !th && dur === "all"`, donc filtres au repos. Elle n'a ni tri ni
+     vue liste ; chez nous la une suit l'ordre de pertinence, en grille. Elle
+     ne dessine qu'au téléphone (voir `CarteBibliotheque`). */
+  const avecUne = auRepos && tri === "pert" && vue === "grid";
+
   const changeEspace = (suivant: "entreprises" | "techniciens") => {
     // `pickSpace` de la maquette remet TOUS les filtres au repos en changeant
     // d'espace : les catégories et les étiquettes des deux espaces n'ont rien
@@ -220,7 +227,7 @@ export default function BibliothequeRessources({
       id="bibliotheque"
       data-screen-label="Ressources · bibliothèque"
       aria-labelledby="bibliotheque-titre"
-      style={{ maxWidth: 1200, margin: "0 auto", padding: "56px 40px 0", scrollMarginTop: 90 }}
+      className={styles.sectionBibliotheque}
     >
       <div className={styles.cadre}>
         <MenuLateral
@@ -285,20 +292,7 @@ export default function BibliothequeRessources({
 
           {/* La recherche. Un `<label>` enveloppant, comme la maquette, pour
               que le clic n'importe où dans la barre donne le focus au champ. */}
-          <label
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 14,
-              minHeight: 62,
-              padding: "0 10px 0 22px",
-              borderRadius: 20,
-              background: "var(--glass, var(--card))",
-              border: "1px solid var(--line)",
-              boxShadow: "var(--shadow)",
-              cursor: "text",
-            }}
-          >
+          <label className={styles.recherche}>
             <span style={{ font: "400 15px var(--fb)", color: "var(--ink3)" }} aria-hidden="true">
               ⚲
             </span>
@@ -351,6 +345,7 @@ export default function BibliothequeRessources({
             }}
           >
             <div
+              className={styles.jetons}
               style={{
                 display: "flex",
                 flexWrap: "wrap",
@@ -471,15 +466,15 @@ export default function BibliothequeRessources({
 
           {resultats.length > 0 ? (
             <div
-              className={styles.grille}
-              style={
-                vue === "grid"
-                  ? { gridTemplateColumns: "repeat(auto-fill,minmax(248px,1fr))" }
-                  : { gridTemplateColumns: "minmax(0,1fr)", gap: 8 }
-              }
+              className={`${styles.grille} ${vue === "grid" ? styles.grilleCartes : styles.grilleListe}`}
             >
-              {resultats.map((carte: Carte) => (
-                <CarteBibliotheque key={carte.url} carte={carte} vue={vue} />
+              {resultats.map((carte: Carte, i) => (
+                <CarteBibliotheque
+                  key={carte.url}
+                  carte={carte}
+                  vue={vue}
+                  place={avecUne && i === 0 ? "une" : avecUne && i < 3 ? "duo" : "rang"}
+                />
               ))}
             </div>
           ) : (
@@ -497,6 +492,7 @@ export default function BibliothequeRessources({
           )}
 
           <SommaireComplet bibliotheque={bibliotheque} />
+          <AppelRessourcesMobile espace={espace} />
         </div>
       </div>
     </section>

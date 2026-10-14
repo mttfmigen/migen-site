@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+
 import styles from "./Bibliotheque.module.css";
 import type { Bibliotheque } from "./catalogue";
 
@@ -23,7 +25,16 @@ import type { Bibliotheque } from "./catalogue";
  * 18 liens internes pour une bibliothèque de 35 ressources, et aucun ne menait
  * à une ressource. Le maillage du cocon s'arrêtait aux cinq rayons.
  *
- * Composant SERVEUR : aucun état, aucun geste, rien à hydrater.
+ * AU TÉLÉPHONE IL SE REPLIE, il ne part pas. La maquette mobile v2 n'a pas
+ * de sommaire : déplié, il coûtait 1 889 px à 390 px (mesuré le 14/10), plus
+ * de deux écrans de liens sous une grille qui les porte déjà. Il passe donc
+ * dans `SectionPliableMobile` : rendu ouvert par le serveur, les 48 liens
+ * restent dans le HTML que Google reçoit, et seul le téléphone le referme
+ * après hydratation. Son résumé est la liste de ses rubriques, fabriqué comme
+ * la maquette fabrique les siens (intitulés joints par « · »).
+ *
+ * Aucun JavaScript de plus : son seul parent est le cadre client de la
+ * bibliothèque, il partait déjà dans le paquet.
  */
 
 const SURTITRE = {
@@ -42,14 +53,30 @@ export default function SommaireComplet({
   const total = espaces.reduce((n, e) => n + e.cartes.length, 0);
   if (total === 0) return null;
 
-  return (
+  /* Les rubriques qui portent au moins une page, dans l'ordre du sommaire. */
+  const rubriques = espaces
+    .flatMap((e) =>
+      e.categories.filter(
+        (c) => c.cle !== "all" && e.cartes.some((x) => x.format === c.cle),
+      ),
+    )
+    .map((c) => c.libelle)
+    .join(" · ");
+
+  const sommaire = (
     <nav
-      className={styles.sommaire}
+      className={`${styles.sommaire} ${styles.navSommaire}`}
       aria-labelledby="sommaire-bibliotheque"
-      style={{ padding: "48px 0 0", borderTop: "1px solid var(--line)", marginTop: 48 }}
     >
-      <h3
+      {/* UN `<h2>` ET NON PLUS UN `<h3>`, sans un pixel de différence : le
+          dessin est tout entier en ligne. Tout bloc repliable du gabarit
+          guide porte exactement UN `<h2>` dans son corps, et l'étiquette de
+          sa bascule le reprend mot pour mot (`controleEtiquettes`,
+          `editorial/verification-editorial.tsx`). Le sommaire est un bloc
+          frère de la grille, pas une de ses parties : le niveau 2 lui va. */}
+      <h2
         id="sommaire-bibliotheque"
+        className={styles.titreSommaire}
         style={{
           font: "600 calc(20px * var(--ts))/1.3 var(--ft)",
           letterSpacing: "-.028em",
@@ -57,7 +84,7 @@ export default function SommaireComplet({
         }}
       >
         Le sommaire complet
-      </h3>
+      </h2>
       <p style={{ font: "400 14px/1.6 var(--fb)", color: "var(--ink2)", margin: "0 0 26px" }}>
         Les {total} pages de la bibliothèque, filtres ou pas.
       </p>
@@ -117,5 +144,24 @@ export default function SommaireComplet({
         </div>
       ))}
     </nav>
+  );
+
+  return (
+    <div className={styles.plieSommaire}>
+      {/* SANS NUMÉRO : une grille de liens n'est pas une section de contenu,
+          la maquette ne numérote pas ces blocs-là, et la suite des sections
+          du guide garde sa numérotation. */}
+      <SectionPliableMobile
+        numero={false}
+        enTete={
+          <span data-mobile-seulement="" data-carte-titre="">
+            Le sommaire complet
+          </span>
+        }
+        resume={rubriques}
+      >
+        {sommaire}
+      </SectionPliableMobile>
+    </div>
   );
 }

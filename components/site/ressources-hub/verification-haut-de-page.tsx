@@ -27,9 +27,17 @@
  *      d'après, occurrence pour occurrence, et le bloc n'en ajoute aucun.
  *   6. LA COPIE RESPECTE LE CONTRAT. Aucun montant, aucun délai chiffré,
  *      aucun mot proscrit, aucun tiret cadratin dans ce que le bloc rend.
+ *   7. LE PANNEAU SOMBRE (`AppelRessourcesMobile`) EST CELUI DE LA MAQUETTE.
+ *      Ses six libellés, deux espaces fois surtitre, phrase et bouton, sont
+ *      relus dans `resV` (`ctaK`, `ctaT`, `ctaL`) et comparés verbatim ; il
+ *      porte `data-mobile-seulement`, sans quoi il paraîtrait sur bureau ; sa
+ *      copie passe la règle 6.
+ *   8. « À LA UNE » AU REPOS. La grille servie, filtres au repos, range ses
+ *      cartes « une », « duo », « duo », puis « rang » : c'est l'ordre de
+ *      `res.feat`, `res.feat2` et `res.items` de la maquette mobile.
  *
  * ELLE SAIT ÉCHOUER : `--controle` rejoue chaque règle sur une donnée fautive
- * et exige que LA RÈGLE VISÉE tombe. Neuf témoins négatifs, dont « un
+ * et exige que LA RÈGLE VISÉE tombe. Treize témoins négatifs, dont « un
  * paragraphe du hub effacé », qui prouve que la porte voit une section perdre
  * son texte, et un témoin positif : la donnée réelle doit passer.
  *
@@ -48,6 +56,8 @@ import type { VueGuide } from "@/types/editorial";
 import BibliothequeRessources from "./BibliothequeRessources";
 import { bibliotheque } from "./catalogue";
 import HautDePageRessources, {
+  APPEL_RESSOURCES,
+  AppelRessourcesMobile,
   KICKER_RESSOURCES,
   SOUS_TITRE_RESSOURCES,
 } from "./HautDePageRessources";
@@ -271,12 +281,71 @@ function regleCopie(rendu: string) {
   }
 }
 
+/** 7. Le panneau sombre : libellés verbatim, téléphone seulement. */
+type LibellesAppel = Record<
+  keyof typeof APPEL_RESSOURCES,
+  { surtitre: string; phrase: string; bouton: string }
+>;
+
+function libellesAppelMaquette(): LibellesAppel {
+  const brut = readFileSync(MAQUETTE_MOBILE, "utf8");
+  const lit = (cle: string) => {
+    const m = brut.match(new RegExp(`${cle}: tech \\? "([^"]+)" : "([^"]+)"`));
+    assert.ok(m, `${cle} est introuvable dans la maquette`);
+    return { techniciens: m[1], entreprises: m[2] };
+  };
+  const [surtitre, phrase, bouton] = ["ctaK", "ctaT", "ctaL"].map(lit);
+  return {
+    entreprises: { surtitre: surtitre.entreprises, phrase: phrase.entreprises, bouton: bouton.entreprises },
+    techniciens: { surtitre: surtitre.techniciens, phrase: phrase.techniciens, bouton: bouton.techniciens },
+  };
+}
+
+function regleAppel(appel: LibellesAppel, rendus: readonly string[]) {
+  const maquette = libellesAppelMaquette();
+  for (const espace of ["entreprises", "techniciens"] as const) {
+    for (const cle of ["surtitre", "phrase", "bouton"] as const) {
+      assert.equal(
+        appel[espace][cle],
+        maquette[espace][cle],
+        `${espace}.${cle} dévie de la maquette : « ${appel[espace][cle]} » au lieu de « ${maquette[espace][cle]} »`,
+      );
+    }
+  }
+  for (const rendu of rendus) {
+    assert.match(
+      rendu,
+      /^<aside\b[^>]*\bdata-mobile-seulement=""/,
+      "le panneau n'est pas marqué data-mobile-seulement : il paraîtrait sur bureau",
+    );
+    regleCopie(rendu);
+  }
+}
+
+/** 8. Au repos, la grille servie range « une », « duo », « duo », puis « rang ». */
+function regleUne(rendu: string) {
+  const places = [...rendu.matchAll(/data-place="([a-z]+)"/g)].map((m) => m[1]);
+  assert.ok(places.length > 3, `${places.length} carte(s) placée(s) dans la grille servie`);
+  assert.deepEqual(
+    places.slice(0, 3),
+    ["une", "duo", "duo"],
+    `la grille commence par ${places.slice(0, 3).join(", ")} au lieu de une, duo, duo`,
+  );
+  assert.ok(
+    places.slice(3).every((p) => p === "rang"),
+    "une carte au-delà de la troisième n'est pas une rangée",
+  );
+}
+
 /* --------------------------------------------------------- la campagne */
 
 const css = readFileSync(MODULE_CSS, "utf8");
 const blocSeul = renderToStaticMarkup(<HautDePageRessources />);
 const sansHaut = renduHub(false);
 const avecHaut = renduHub(true);
+const appels = (["entreprises", "techniciens"] as const).map((espace) =>
+  renderToStaticMarkup(<AppelRessourcesMobile espace={espace} />),
+);
 
 exige("1. libellés verbatim de la maquette mobile", () =>
   regleLibelles(KICKER_RESSOURCES, SOUS_TITRE_RESSOURCES),
@@ -286,12 +355,14 @@ exige("3. visible sous 881 px seulement", () => regleMobileSeulement(css));
 exige("4. la greffe n'ajoute qu'elle-même", () => regleGreffe(sansHaut, avecHaut, blocSeul));
 exige("5. zéro lien perdu", () => regleLiens(sansHaut, avecHaut));
 exige("6. copie conforme au contrat", () => regleCopie(blocSeul));
+exige("7. le panneau sombre de la maquette", () => regleAppel(APPEL_RESSOURCES, appels));
+exige("8. « À la une » au repos", () => regleUne(avecHaut));
 
 /* ----------------------------------------------------------- les témoins */
 
 /**
- * DIX TÉMOINS. Neuf rendent fausse une donnée juste et exigent que la règle
- * visée tombe ; le dixième exige que la donnée réelle passe, sans quoi une
+ * QUATORZE TÉMOINS. Treize rendent fausse une donnée juste et exigent que la
+ * règle visée tombe ; le dernier exige que la donnée réelle passe, sans quoi une
  * porte qui refuse tout aurait l'air de fonctionner.
  */
 function temoins() {
@@ -367,6 +438,27 @@ function temoins() {
     tombe("un montant dans le bloc", () =>
       regleCopie(`${blocSeul}<p>850 € par mois</p>`),
     ),
+    // 7. L'apostrophe droite glissée dans la phrase du panneau.
+    tombe("la phrase du panneau qui dévie de la maquette", () =>
+      regleAppel(
+        {
+          ...APPEL_RESSOURCES,
+          entreprises: {
+            ...APPEL_RESSOURCES.entreprises,
+            phrase: APPEL_RESSOURCES.entreprises.phrase.replace("d’affaires", "d'affaires"),
+          },
+        },
+        appels,
+      ),
+    ),
+    // 7 bis. Le panneau sans sa marque mobile : il paraîtrait sur bureau.
+    tombe("le panneau visible sur bureau", () =>
+      regleAppel(APPEL_RESSOURCES, appels.map((a) => a.replace(' data-mobile-seulement=""', ""))),
+    ),
+    // 8. La une rétrogradée en rangée.
+    tombe("la une rétrogradée en rangée", () =>
+      regleUne(avecHaut.replace('data-place="une"', 'data-place="rang"')),
+    ),
     // Le témoin positif.
     passe("la donnée réelle", () => {
       regleLibelles(KICKER_RESSOURCES, SOUS_TITRE_RESSOURCES);
@@ -375,6 +467,8 @@ function temoins() {
       regleGreffe(sansHaut, avecHaut, blocSeul);
       regleLiens(sansHaut, avecHaut);
       regleCopie(blocSeul);
+      regleAppel(APPEL_RESSOURCES, appels);
+      regleUne(avecHaut);
     }),
   ];
   return resultats.every(Boolean);

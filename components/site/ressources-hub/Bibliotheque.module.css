@@ -81,6 +81,106 @@
   overflow: hidden;
 }
 
+/* ------------------------------------------------- la carte de la grille */
+
+/*
+ * Le dessin de BUREAU de la carte de grille, recopié de ses anciens styles en
+ * ligne, valeur pour valeur. Il est ici pour que le téléphone puisse le
+ * redessiner dans un `@media` (voir « Le téléphone » plus bas) ; au-dessus de
+ * 880 px rien ne change.
+ *
+ * `position: relative` est la seule ligne nouvelle : le badge de format, sorti
+ * de la vignette, se place désormais sur la carte, aux mêmes 12 px du coin.
+ * La carte ne porte pas de `z-index` : aucun contexte d'empilement ne naît.
+ */
+.carteGrille {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+/* L'ombre ne bouge pas au survol, comme avant : en style en ligne elle
+   l'emportait sur l'anneau de `.carte:hover`, seul le soulèvement jouait.
+   Sortie du style en ligne, elle perdait ce duel et le bureau changeait. */
+.carteGrille:hover,
+.carteGrille:focus-visible {
+  box-shadow: var(--shadow);
+}
+
+.vignette {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  background: var(--ph);
+}
+
+/* `letter-spacing: normal` : la ligne de méta qui le porte désormais a son
+   propre interlettrage, que le badge n'héritait pas dans la vignette.
+
+   LE FLOU PASSE PAR UNE VARIABLE, ET CE N'EST PAS UNE COQUETTERIE. Écrit en
+   clair (`backdrop-filter: blur(10px)` puis sa forme `-webkit-`), le
+   minifieur CSS du build ne garde QUE la forme préfixée, que Chrome ignore :
+   mesuré le 14/10, `backdrop-filter` calculé à `none` sur le badge, et le
+   bureau perdait son flou derrière « Article ». Une valeur en `var()` n'est
+   pas fusionnée : les deux formes sortent du build. Le téléphone éteint le
+   flou en vidant la variable. */
+.badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  -webkit-backdrop-filter: var(--flou-badge, blur(10px));
+  backdrop-filter: var(--flou-badge, blur(10px));
+  font: 600 11px var(--fb);
+  letter-spacing: normal;
+  color: #1c1b19;
+}
+
+.texteCarte {
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.ligneMeta {
+  font: 500 11px ui-monospace, Menlo, monospace;
+  letter-spacing: 0.03em;
+  color: var(--ink3);
+}
+
+.titreCarte {
+  font: 600 17px/1.25 var(--ft);
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.extraitGrille {
+  font: 400 13.5px/1.55 var(--fb);
+  color: var(--ink2);
+}
+
+.etiquettesCarte {
+  margin-top: auto;
+  padding-top: 8px;
+  font: 500 11.5px ui-monospace, Menlo, monospace;
+  color: var(--acc);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* ------------------------------------------------------------- disposition */
 
 .cadre {
@@ -139,6 +239,42 @@
   gap: 12px;
 }
 
+/* La barre de recherche, sortie du style en ligne pour que le téléphone la
+   ramène aux 46 px de la maquette. Valeurs de bureau inchangées. */
+.recherche {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 62px;
+  padding: 0 10px 0 22px;
+  border-radius: 20px;
+  background: var(--glass, var(--card));
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  cursor: text;
+}
+
+/* Les deux vues, sorties du style en ligne pour la même raison que la carte. */
+.grilleCartes {
+  grid-template-columns: repeat(auto-fill, minmax(248px, 1fr));
+}
+
+.grilleListe {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+}
+
+/* La section entière, même raison : son rembourrage haut change au
+   téléphone. Hors du style en ligne, la règle de gouttière globale
+   (`app/globals.css`, qui lit l'attribut `style`) ne la voit plus : la
+   gouttière de 18 px est donc posée ici, au même seuil. */
+.sectionBibliotheque {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px 40px 0;
+  scroll-margin-top: 90px;
+}
+
 /* `.rs-app` à 760 px : une colonne, 18 px entre le menu et la bibliothèque, le
    menu rendu au fil du texte, et son corps pliable derrière `.rs-ftoggle`.
    Les quatre règles sont dans le MÊME bloc parce que la maquette les y met :
@@ -164,6 +300,211 @@
   }
 
   .corpsFiltresPlie {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------------ le téléphone */
+
+/*
+ * LA BIBLIOTHÈQUE DE LA MAQUETTE MOBILE V2, sous 881 px, le seuil de toute la
+ * couche mobile du dépôt. Référence : `maquette/mobile-v2/maquette/Migen -
+ * Mobile v2.dc.html`, bloc `isResTop`, et sa capture à 402 px.
+ *
+ * CE QU'ELLE DESSINE, et ce qui coûtait la hauteur. La grille de bureau rend
+ * au téléphone une carte de 380 px par ressource, photo 16/10 en tête : 35
+ * cartes, 13 705 px mesurés au 14/10. La maquette, elle, met UNE ressource
+ * « À la une » (photo pleine, 280 px), DEUX en demi-largeur, puis UNE RANGÉE
+ * par ressource, vignette carrée de 84 px, méta, titre, extrait sur deux
+ * lignes. Les valeurs ci-dessous sont les siennes, relevées dans les styles
+ * en ligne de ce bloc.
+ *
+ * RIEN N'EST RETIRÉ : les étiquettes, que la rangée de la maquette ne montre
+ * pas, et l'extrait des deux demi-cartes, qu'elle ne montre pas non plus,
+ * sont masqués à l'écran et restent dans le document.
+ */
+@media (max-width: 880px) {
+  .sectionBibliotheque {
+    padding: 14px 18px 0;
+  }
+
+  /* La rangée des filtres actifs, vide au repos : sur bureau elle tient sa
+     ligne à côté du tri, au téléphone elle n'était qu'une bande blanche de
+     34 px au-dessus. Vide, elle s'efface ; un filtre posé la fait revenir. */
+  .jetons:empty {
+    display: none !important;
+  }
+
+  /* La recherche de la maquette : `min-height:46px;padding:0 14px;
+     border-radius:14px;background:#fff;border:1px solid rgba(28,27,25,.1)`. */
+  .recherche {
+    gap: 10px;
+    min-height: 46px;
+    padding: 0 8px 0 14px;
+    border-radius: 14px;
+    background: var(--card);
+    box-shadow: none;
+  }
+
+  .grilleCartes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  /* LA RANGÉE, `res.items` : `grid-template-columns:84px minmax(0,1fr);
+     gap:12px; padding:8px 12px 8px 8px; border-radius:18px`. */
+  .carteGrille {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 84px minmax(0, 1fr);
+    gap: 12px;
+    align-items: center;
+    padding: 8px 12px 8px 8px;
+    border-radius: 18px;
+    box-shadow: none;
+  }
+
+  .carteGrille .vignette {
+    width: 84px;
+    height: 84px;
+    aspect-ratio: auto;
+    border-radius: 12px;
+  }
+
+  .carteGrille .texteCarte {
+    min-width: 0;
+    padding: 0;
+    gap: 4px;
+  }
+
+  /* `font:500 11px var(--fb);color:#77736d` : « Article · 10 min de lecture ». */
+  .carteGrille .ligneMeta {
+    font: 500 11px var(--fb);
+    letter-spacing: normal;
+    color: var(--ink3);
+  }
+
+  /* Le badge redevient du texte, en tête de la méta. Le point médian est un
+     ornement de mise en page : il n'entre pas dans le texte du document. */
+  .carteGrille .badge {
+    position: static;
+    padding: 0;
+    border-radius: 0;
+    background: none;
+    --flou-badge: none;
+    font: inherit;
+    color: inherit;
+  }
+
+  .carteGrille .badge::after {
+    content: " · ";
+  }
+
+  .carteGrille .titreCarte {
+    font: 600 14px/1.3 var(--ft);
+    letter-spacing: -0.015em;
+  }
+
+  .carteGrille .extraitGrille {
+    font: 400 12.5px/1.45 var(--fb);
+    color: var(--ink1);
+  }
+
+  .carteGrille .etiquettesCarte {
+    display: none;
+  }
+
+  /* « À LA UNE », `res.feat` : photo pleine sur 280 px au moins, voile
+     dégradé, texte blanc en bas à 18 px des bords. */
+  .carteGrille[data-place="une"] {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 280px;
+    padding: 0;
+    border: 0;
+    border-radius: 24px;
+    background: #2a2927;
+  }
+
+  .carteGrille[data-place="une"] .vignette {
+    position: absolute;
+    inset: 0;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+  }
+
+  .carteGrille[data-place="une"] .vignette::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(18, 17, 16, 0.05) 25%, rgba(18, 17, 16, 0.9) 100%);
+  }
+
+  .carteGrille[data-place="une"] .texteCarte {
+    position: relative;
+    flex: none;
+    padding: 18px;
+    gap: 8px;
+  }
+
+  .carteGrille[data-place="une"] .ligneMeta {
+    font: 600 11px var(--fb);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #ffb08a;
+  }
+
+  .carteGrille[data-place="une"] .ligneMeta::before {
+    content: "À la une · ";
+  }
+
+  .carteGrille[data-place="une"] .titreCarte {
+    font: 600 21px/1.15 var(--ft);
+    letter-spacing: -0.03em;
+    color: #fff;
+  }
+
+  /* La maquette ne coupe pas l'extrait « À la une » ; quatre lignes ici, pour
+     qu'un extrait plus long que le sien ne pousse pas la carte hors d'échelle. */
+  .carteGrille[data-place="une"] .extraitGrille {
+    font: 400 13.5px/1.5 var(--fb);
+    color: rgba(255, 255, 255, 0.82);
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+  }
+
+  /* LES DEUX DEMI-CARTES, `res.feat2` : photo de 104 px, méta, titre. */
+  .carteGrille[data-place="duo"] {
+    grid-column: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0;
+  }
+
+  .carteGrille[data-place="duo"] .vignette {
+    width: 100%;
+    height: 104px;
+    border-radius: 0;
+  }
+
+  .carteGrille[data-place="duo"] .texteCarte {
+    padding: 10px 11px 12px;
+  }
+
+  .carteGrille[data-place="duo"] .ligneMeta {
+    font-size: 10.5px;
+  }
+
+  .carteGrille[data-place="duo"] .titreCarte {
+    font: 600 13px/1.3 var(--ft);
+    letter-spacing: -0.01em;
+  }
+
+  .carteGrille[data-place="duo"] .extraitGrille {
     display: none;
   }
 }
@@ -208,4 +549,53 @@
 .sommaire a:focus-visible {
   color: var(--ink);
   border-bottom-color: var(--acc);
+}
+
+/* Le filet et les 48 px du sommaire, sortis du style en ligne : au téléphone,
+   replié dans sa carte, il n'en garde aucun. */
+.navSommaire {
+  padding: 48px 0 0;
+  border-top: 1px solid var(--line);
+  margin-top: 48px;
+}
+
+/*
+ * LE SOMMAIRE REPLIÉ AU TÉLÉPHONE, par `SectionPliableMobile`.
+ *
+ * Sur bureau il n'existe pas de bascule : le `<summary>` est retiré, pas
+ * seulement vidé (même règle, même raison que `.corpsGuide` dans
+ * `PageEditoriale.module.css` : un `<summary>` muet resterait un arrêt de
+ * tabulation). La règle est posée ICI, sur notre propre racine, pour ne pas
+ * dépendre du gabarit qui monte la bibliothèque.
+ *
+ * Au téléphone, le dessin de la carte (fond, filet, chevron, résumé) est
+ * celui de la carte partagée `details[data-carte-numerotee]` de
+ * `app/globals.css`, sans numéro : rien de plus ici. Le titre reste dans la
+ * bascule, ouvert ou fermé, comme dans la maquette ; le `<h2>` du sommaire,
+ * qui dirait la même chose juste dessous, se masque à l'écran et reste dans
+ * le document.
+ */
+@media (min-width: 881px) {
+  .plieSommaire > details > summary {
+    display: none;
+  }
+}
+
+@media (max-width: 880px) {
+  .navSommaire {
+    padding: 0;
+    border-top: 0;
+    margin-top: 0;
+  }
+
+  /* Une colonne : les 260 px de la grille de bureau ne tiennent plus dans la
+     carte repliable à 320 px (250 px utiles, 10 px de débord mesurés par
+     `verification-coquille.mjs`). `!important` contre le style en ligne. */
+  .navSommaire ul {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .titreSommaire {
+    display: none;
+  }
 }

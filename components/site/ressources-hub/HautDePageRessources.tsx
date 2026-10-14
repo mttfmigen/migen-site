@@ -1,3 +1,7 @@
+import Link from "next/link";
+
+import { CIBLE_CONTACT, CIBLE_POSTULER } from "@/components/site/mobile/conversion-donnees";
+
 import styles from "./HautDePageRessources.module.css";
 
 /**
@@ -41,5 +45,56 @@ export default function HautDePageRessources() {
       <p className={styles.kicker}>{KICKER_RESSOURCES}</p>
       <p className={styles.sousTitre}>{SOUS_TITRE_RESSOURCES}</p>
     </section>
+  );
+}
+
+/**
+ * LE PANNEAU SOMBRE QUI FERME LE HAUT DE PAGE MOBILE, même bloc `isResTop` de
+ * la maquette mobile v2 : surtitre `res.ctaK`, phrase `res.ctaT`, bouton
+ * `res.ctaL` vers `res.ctaH`, une variante par espace. Les chaînes sont
+ * VERBATIM (apostrophe typographique comprise).
+ *
+ * CE N'EST PAS LA CADENCE DE CONVERSION. La maquette n'en pose aucune sur
+ * /ressources/ (`pushCtas` sort tout de suite, dc.html L453) ni de rappel
+ * final (`showEndCta`, L576) : ce panneau-ci est le seul appel de la page,
+ * et il appartient à son haut de page sur mesure, sous la bibliothèque.
+ *
+ * Une seule cible s'écarte de la maquette, et l'écart est celui de toute la
+ * couche mobile : l'ancre `#postuler-chez-migen` n'existe pas sur le site,
+ * la section de candidature s'appelle `#postuler` (`CIBLE_POSTULER`).
+ *
+ * TÉLÉPHONE SEULEMENT (`data-mobile-seulement`, masqué au-dessus de 880 px
+ * par `app/globals.css`) : le bureau ne change pas d'un pixel.
+ */
+export const APPEL_RESSOURCES = {
+  entreprises: {
+    surtitre: "Diagnostic Zéro arrêt",
+    phrase:
+      "Combien vous coûtent vraiment vos arrêts ? Un chargé d’affaires vous rappelle avec une estimation.",
+    bouton: "Demander mon diagnostic",
+    href: CIBLE_CONTACT,
+  },
+  techniciens: {
+    surtitre: "Rejoindre migen",
+    phrase: "Rejoignez les 120 collaborateurs de migen.",
+    bouton: "Postuler chez Migen",
+    href: CIBLE_POSTULER,
+  },
+} as const;
+
+export function AppelRessourcesMobile({
+  espace,
+}: {
+  espace: keyof typeof APPEL_RESSOURCES;
+}) {
+  const appel = APPEL_RESSOURCES[espace];
+  return (
+    <aside data-mobile-seulement="" className={styles.appel} aria-label={appel.surtitre}>
+      <p className={styles.appelSurtitre}>{appel.surtitre}</p>
+      <p className={styles.appelPhrase}>{appel.phrase}</p>
+      <Link href={appel.href} prefetch={false} className={styles.appelBouton}>
+        {appel.bouton}
+      </Link>
+    </aside>
   );
 }

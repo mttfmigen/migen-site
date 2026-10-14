@@ -38,12 +38,25 @@ function etiquettesCourtes(carte: Carte): string {
     .join("   ");
 }
 
+/**
+ * LA PLACE D'UNE CARTE DE GRILLE AU TÉLÉPHONE, maquette mobile v2 (bloc
+ * `isResTop` de `Migen - Mobile v2.dc.html`) : la première ressource « À la
+ * une » en grand (`res.feat`), les deux suivantes en demi-largeur
+ * (`res.feat2`), puis une rangée par ressource, vignette de 84 px
+ * (`res.items`). La maquette ne pose « À la une » que filtres au repos ;
+ * c'est `BibliothequeRessources` qui le décide. Au-dessus de 880 px la place
+ * n'a AUCUN effet : la grille de bureau est celle d'avant, au pixel.
+ */
+export type PlaceCarte = "une" | "duo" | "rang";
+
 export default function CarteBibliotheque({
   carte,
   vue,
+  place = "rang",
 }: {
   carte: Carte;
   vue: "grid" | "list";
+  place?: PlaceCarte;
 }) {
   const meta = `${carte.minutes} min de lecture`;
 
@@ -111,97 +124,52 @@ export default function CarteBibliotheque({
     );
   }
 
+  /*
+    LE DESSIN DE LA CARTE DE GRILLE VIT DANS LE MODULE CSS, et non plus en
+    ligne : le téléphone la redessine en rangée (place « rang »), en carte « À
+    la une » ou en demi-carte, et un style en ligne ne se surcharge pas dans un
+    `@media`. Les valeurs de bureau sont recopiées telles quelles
+    (`.carteGrille`, `.vignette`, `.badge`…).
+
+    LE BADGE DE FORMAT A CHANGÉ DE PARENT, PAS DE PLACE. Il était dans la
+    vignette ; il est maintenant en tête de la ligne de méta, positionné en
+    absolu sur la carte aux mêmes 12 px du coin. Au téléphone il redevient du
+    texte, et la ligne lit « Article · 10 min de lecture » comme la maquette,
+    sans écrire le format deux fois. L'ordre du texte ne bouge pas : le
+    format venait déjà avant les minutes.
+  */
   return (
     <Link
       href={carte.url}
       prefetch={false}
-      className={styles.carte}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        borderRadius: 24,
-        overflow: "hidden",
-        background: "var(--card)",
-        border: "1px solid var(--line)",
-        boxShadow: "var(--shadow)",
-      }}
+      className={`${styles.carte} ${styles.carteGrille}`}
+      data-place={place}
     >
-      <span
-        style={{
-          position: "relative",
-          display: "block",
-          width: "100%",
-          aspectRatio: "16/10",
-          overflow: "hidden",
-          background: "var(--ph)",
-        }}
-      >
+      <span className={styles.vignette}>
         {carte.image ? (
           <Image
             src={carte.image}
             alt={altPhoto(carte.image)}
             fill
+            /* `sizes` INCHANGÉ, et c'est voulu. `next/image` en tire la
+               liste `srcset` : sans « 100vw », elle descend à 384 px et le
+               bureau charge une autre image dans sa case de 300 px (mesuré
+               au pixel le 14/10). Une vignette de 84 px mériterait moins
+               lourd ; pas au prix du bureau. */
             sizes="(max-width: 760px) 100vw, 300px"
             style={{ objectFit: "cover", objectPosition: cadragePhoto(carte.image, 1.6) }}
           />
         ) : null}
-        <span
-          style={{
-            position: "absolute",
-            top: 12,
-            left: 12,
-            padding: "6px 10px",
-            borderRadius: 999,
-            background: "rgba(255,255,255,.9)",
-            backdropFilter: "blur(10px)",
-            WebkitBackdropFilter: "blur(10px)",
-            font: "600 11px var(--fb)",
-            color: "#1c1b19",
-          }}
-        >
-          {carte.format}
-        </span>
       </span>
-      <span
-        style={{
-          padding: "16px 18px 18px",
-          display: "flex",
-          flexDirection: "column",
-          gap: 8,
-          flex: 1,
-        }}
-      >
-        <span style={META}>{meta}</span>
-        <span
-          style={{
-            font: "600 17px/1.25 var(--ft)",
-            letterSpacing: "-.025em",
-            color: "var(--ink)",
-            textWrap: "pretty",
-          }}
-        >
-          {carte.titre}
+      <span className={styles.texteCarte}>
+        <span className={styles.ligneMeta}>
+          <span className={styles.badge}>{carte.format}</span>
+          {meta}
         </span>
-        <span
-          className={styles.extrait}
-          style={{ font: "400 13.5px/1.55 var(--fb)", color: "var(--ink2)" }}
-        >
-          {carte.extrait}
-        </span>
+        <span className={styles.titreCarte}>{carte.titre}</span>
+        <span className={`${styles.extrait} ${styles.extraitGrille}`}>{carte.extrait}</span>
         {carte.etiquettes.length > 0 ? (
-          <span
-            style={{
-              marginTop: "auto",
-              paddingTop: 8,
-              font: "500 11.5px ui-monospace,Menlo,monospace",
-              color: "var(--acc)",
-              whiteSpace: "nowrap",
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-            }}
-          >
-            {etiquettesCourtes(carte)}
-          </span>
+          <span className={styles.etiquettesCarte}>{etiquettesCourtes(carte)}</span>
         ) : null}
       </span>
     </Link>
