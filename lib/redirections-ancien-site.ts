@@ -71,13 +71,17 @@ export const REDIRECTIONS_ANCIEN_SITE: ReadonlyArray<
   ["/maintenance-industrielle-loire-atlantique/", "/implantations/nantes/loire-atlantique/"],
   ["/maintenance-industrielle-rennes/", "/implantations/nantes/rennes/"],
   ["/maintenance-industrielle-paris/", "/implantations/paris/"],
-  ["/maintenance-industrielle-essonne/", "/implantations/paris/essonne/"],
+  // Suivi de positions du 14/10 : la page ne ranke QUE sur des requêtes génériques
+  // (« entreprise de maintenance industrielle »), aucune sur l'Essonne.
+  ["/maintenance-industrielle-essonne/", "/entreprise-maintenance-industrielle/"],
   ["/maintenance-industrielle-rouen/", "/implantations/paris/rouen/"],
   ["/maintenance-industrielle-strasbourg/", "/implantations/strasbourg/"],
   ["/maintenance-industrielle-bas-rhin/", "/implantations/strasbourg/alsace/"],
   ["/maintenance-industrielle-toulouse/", "/implantations/toulouse/"],
   ["/maintenance-industrielle-charente/", "/implantations/toulouse/charente/"],
-  ["/maintenance-industrielle-gironde/", "/implantations/toulouse/gironde/"],
+  // Suivi de positions du 14/10 : 9e sur « entreprise maintenance industrielle »
+  // (1 600 par mois), ses 14 mots clés sont génériques, aucun sur la Gironde.
+  ["/maintenance-industrielle-gironde/", "/entreprise-maintenance-industrielle/"],
   ["/maintenance-industrielle-haute-garonne/", "/implantations/toulouse/haute-garonne/"],
   // Spécialités techniques et types de maintenance.
   ["/maintenance-industrielle-automatisme/", "/expertises/automatisme/"],
@@ -108,7 +112,9 @@ export const REDIRECTIONS_ANCIEN_SITE: ReadonlyArray<
   ["/technicien-de-maintenance-industrie-pharmaceutique/", "/secteurs/pharmaceutique/"],
   // Offres de service.
   ["/bureau-etudes-ingenierie/", "/offres/bureau-etudes/"],
-  ["/transfert-demenagement-industriel/", "/offres/chantier/"], // à valider : ou /travaux-industriels/transfert-industriel/
+  // Suivi de positions du 14/10 : classée sur « déménagement de machines
+  // industrielles » (20e) et « déménagement industriel » : la page dédiée.
+  ["/transfert-demenagement-industriel/", "/offres/chantier/demenagement-machines/"],
   ["/quels-sont-les-avantages-davoir-un-mainteneur-industriel-en-regie/", "/offres/residence/prestataire-ou-salarie/"],
   ["/regie-vs-salarie-le-guide-complet-des-avantages-dun-mainteneur-industriel-pour-votre-entreprise/", "/offres/residence/prestataire-ou-salarie/"],
   ["/retrofit-machine-industriel/", "/offres/retrofit/"],
@@ -126,7 +132,9 @@ export const REDIRECTIONS_ANCIEN_SITE: ReadonlyArray<
   ["/recrutement-chef-service-maintenance-industrielle/", "/carriere/responsable-maintenance/"],
   ["/recrutement-technicien-en-robotique/", "/carriere/roboticien/"],
   ["/les-qualites-essentielles-dun-mainteneur-industriel-migen/", "/carriere/technicien-de-maintenance/"],
-  ["/comment-devenir-technicien-de-maintenance-industrielle/", "/carriere/technicien-de-maintenance/formation/"],
+  // Suivi de positions du 14/10 : « technicien de maintenance industrielle »
+  // (2 400 par mois, 31e) porte sur le métier, pas sur la formation.
+  ["/comment-devenir-technicien-de-maintenance-industrielle/", "/carriere/technicien-de-maintenance/"],
   ["/quelles-sont-les-competences-cles-necessaires-pour-les-professionnels-de-la-maintenance-industrielle-aujourdhui-et-comment-se-former-efficacement-dans-ce-domaine/", "/carriere/technicien-de-maintenance/formation/"],
   // Articles, guides et fiches de l'ancien blog : vers la ressource du même sujet, sinon le hub.
   ["/guide-maintenance-industrielle/", "/ressources/"],
