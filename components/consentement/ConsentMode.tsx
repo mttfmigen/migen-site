@@ -39,11 +39,23 @@ export default function ConsentMode() {
 
   useEffect(() => {
     if (!choix) return;
+    const { mesure_audience, publicite, personnalisation, suivi_commercial } =
+      choix.choix;
     window.gtag?.("consent", "update", {
-      analytics_storage: autorise(choix.choix.mesure_audience),
-      ad_storage: autorise(choix.choix.publicite),
-      ad_user_data: autorise(choix.choix.publicite),
-      ad_personalization: autorise(choix.choix.personnalisation),
+      analytics_storage: autorise(mesure_audience),
+      ad_storage: autorise(publicite),
+      ad_user_data: autorise(publicite),
+      ad_personalization: autorise(personnalisation),
+    });
+    // Le choix en clair, pour les déclencheurs du conteneur Tag Manager
+    // (TagManager.tsx) : un tag LinkedIn ne lit pas Consent Mode, il a besoin
+    // d'un événement qui dise la finalité accordée.
+    window.dataLayer?.push({
+      event: "migen_consentement",
+      mesure_audience,
+      publicite,
+      personnalisation,
+      suivi_commercial,
     });
   }, [choix]);
 

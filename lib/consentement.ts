@@ -33,8 +33,13 @@ export type Choix = Record<Finalite, boolean>;
  * mesure d'audience. Un visiteur qui avait accordé la mesure n'avait pas
  * consenti au rattachement de sa visite à une fiche de contact, son choix
  * précédent ne peut donc pas être reconduit.
+ *
+ * Passée au 2026-10-14 : « Google (Tag Manager) » rejoint les destinataires de
+ * la mesure d'audience, de la publicité et de la personnalisation
+ * (components/consentement/TagManager.tsx). Un accord donné avant ne le
+ * nommait pas.
  */
-export const VERSION_BANDEAU = "2026-10-02";
+export const VERSION_BANDEAU = "2026-10-14";
 
 export const COOKIE_NOM = "migen_consentement";
 
@@ -63,9 +68,9 @@ export const LIEN_CONFIDENTIALITE = "/confidentialite/";
  * les données. Nommer les destinataires est une obligation, pas une politesse :
  * un visiteur ne peut pas consentir à un transfert dont il ignore la cible.
  *
- * Les destinataires listés sont exactement les scripts que Tags.tsx est capable
- * de charger pour la finalité. Ajouter un tag sans l'ajouter ici rendrait cette
- * liste mensongère.
+ * Les destinataires listés sont exactement les scripts que Tags.tsx et
+ * TagManager.tsx sont capables de charger pour la finalité. Ajouter un tag
+ * sans l'ajouter ici rendrait cette liste mensongère.
  */
 export const LIBELLES: Record<
   Finalite,
@@ -75,7 +80,7 @@ export const LIBELLES: Record<
     titre: "Mesure d'audience",
     texte:
       "Compter les visites et voir quelles pages sont lues, pour améliorer le site. Les statistiques sont agrégées, elles ne servent pas à vous contacter.",
-    destinataires: ["Google (Google Analytics 4)"],
+    destinataires: ["Google (Google Analytics 4)", "Google (Tag Manager)"],
   },
   publicite: {
     titre: "Publicité",
@@ -99,13 +104,13 @@ export const LIBELLES: Record<
        VERSION_BANDEAU, et seulement ensuite poser la variable. L'assertion de
        `components/site/confidentialite/verification-confidentialite.tsx` relit
        `.env.local` et refuse les deux états incohérents, dans les deux sens. */
-    destinataires: ["Google (Google Ads)", "LinkedIn"],
+    destinataires: ["Google (Google Ads)", "Google (Tag Manager)", "LinkedIn"],
   },
   personnalisation: {
     titre: "Personnalisation des annonces",
     texte:
       "Adapter les annonces que nous diffusons ailleurs à ce que vous avez consulté sur migen.fr. Refuser n'enlève rien au site.",
-    destinataires: ["Google (Google Ads)", "LinkedIn"],
+    destinataires: ["Google (Google Ads)", "Google (Tag Manager)", "LinkedIn"],
   },
   suivi_commercial: {
     titre: "Suivi commercial",

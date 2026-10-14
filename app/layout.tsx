@@ -8,6 +8,7 @@ import Moteurs from "@/components/site/Moteurs";
 import PiedDePage from "@/components/site/PiedDePage";
 import ConsentMode from "@/components/consentement/ConsentMode";
 import LienReglages from "@/components/consentement/LienReglages";
+import TagManager from "@/components/consentement/TagManager";
 import Tags from "@/components/consentement/Tags";
 import { CaptureUtm } from "@/components/formulaire/CaptureUtm";
 import { jsonLdTexte, organisation } from "@/lib/seo/jsonld";
@@ -177,6 +178,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           le dispositif ne protègerait plus rien.
         */}
         <ConsentMode />
+        {/* Le conteneur Tag Manager, juste après le `default` à `denied` : il ne
+            rend rien sans identifiant, sans choix ou sans finalité Google
+            accordée. */}
+        <TagManager />
         {/* Attribution de la visite, mémorisée dès la page d'entrée. Pas un
             traceur : rien ne sort du navigateur avant l'envoi d'un formulaire. */}
         <CaptureUtm />

@@ -3,6 +3,7 @@
 import Script from "next/script";
 
 import { useConsentement } from "./etat";
+import { CONTENEUR } from "./TagManager";
 
 /**
  * Les traceurs, montés uniquement si la finalité correspondante est accordée.
@@ -30,6 +31,13 @@ const HUBSPOT = process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID;
  */
 const PIXEL_OPENAI = process.env.NEXT_PUBLIC_OPENAI_PIXEL_SRC;
 
+/**
+ * Avec un conteneur Tag Manager valide, GA4, Google Ads et LinkedIn passent
+ * par lui (TagManager.tsx) : les charger aussi ici compterait chaque visite
+ * deux fois. HubSpot et le pixel OpenAI restent chargés ici dans tous les cas.
+ */
+const PAR_CONTENEUR = CONTENEUR !== null;
+
 export default function Tags() {
   const { choix } = useConsentement();
   if (!choix) return null;
@@ -40,10 +48,12 @@ export default function Tags() {
 
   // Un seul chargement de gtag.js pour GA4 et Google Ads : le script est le
   // même, seules les commandes `config` diffèrent.
-  const identifiantsGoogle = [
-    mesure && GA4 ? GA4 : null,
-    publicite && GOOGLE_ADS ? GOOGLE_ADS : null,
-  ].filter((identifiant): identifiant is string => identifiant !== null);
+  const identifiantsGoogle = PAR_CONTENEUR
+    ? []
+    : [
+        mesure && GA4 ? GA4 : null,
+        publicite && GOOGLE_ADS ? GOOGLE_ADS : null,
+      ].filter((identifiant): identifiant is string => identifiant !== null);
 
   return (
     <>
@@ -60,7 +70,7 @@ ${identifiantsGoogle.map((identifiant) => `gtag('config','${identifiant}');`).jo
         </>
       )}
 
-      {publicite && LINKEDIN && (
+      {!PAR_CONTENEUR && publicite && LINKEDIN && (
         <>
           <Script id="linkedin-partenaire" strategy="afterInteractive">
             {`window._linkedin_partner_id='${LINKEDIN}';
