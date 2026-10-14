@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { CSSProperties, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import TexteRiche from "@/components/site/blocs/TexteRiche";
 import PastillesCocon from "@/components/site/cocon/PastillesCocon";
