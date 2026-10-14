@@ -3,6 +3,7 @@ import type { CSSProperties } from "react";
 
 import { appliqueDecisions } from "@/lib/decisions-copie";
 
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import {
   LARGEUR,
   PANNEAU,
@@ -11,6 +12,8 @@ import {
   VERRE,
 } from "@/components/site/blocs/habillage";
 import type { RepereOffre } from "@/types/offre";
+
+import styles from "./PliSansTitre.module.css";
 
 /**
  * Section « Réassurance » de la capture (`maquette/rendu/offres--residence.html`) :
@@ -21,6 +24,12 @@ import type { RepereOffre } from "@/types/offre";
  * Le texte est celui du gabarit, copié mot pour mot de la capture. Les dix
  * hubs et les quatre agences sont la liste mandatée par le contrat du projet
  * (CLAUDE.md §9).
+ *
+ * REPLIÉE AU TÉLÉPHONE (décision de Mehdi du 14/10) : 981 px de moins à
+ * 390 px, mesuré, pour un bloc sans titre de section. Le titre du repli est
+ * celui que Mehdi lui a donné, « Certifications et équipe », mot pour mot ;
+ * au-dessus de 880 px il ne se voit pas (`PliSansTitre.module.css`) et rien
+ * ne change.
  */
 
 /** Le surtitre partagé du site, à la marge de la capture près (18px, pas 16). */
@@ -136,103 +145,107 @@ export default function Reassurance({
   return (
     <section style={SECTION}>
       <div style={LARGEUR}>
-        <div
-          className="mg-r2"
-          style={{
-            display: "grid",
-            gridTemplateColumns: ".9fr 1.1fr",
-            gap: 20,
-            alignItems: "stretch",
-          }}
+        <SectionPliableMobile
+          enTete={<h2 className={styles.titre}>Certifications et équipe</h2>}
         >
-          <div style={CARTE_CERTIFICATIONS}>
-            <div style={SURTITRE_CARTE}>Certifications</div>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 18,
-                marginBottom: 22,
-              }}
-            >
-              <span style={{ ...CADRE_LOGO, width: 132, height: 72 }}>
-                <Image
-                  src="/assets/logos/mase.png"
-                  alt="MASE"
-                  width={108}
-                  height={56}
-                  style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain", display: "block", width: "auto", height: "auto" }}
-                />
-              </span>
-              <span style={{ ...CADRE_LOGO, width: 72, height: 72 }}>
-                <Image
-                  src="/assets/logos/ecovadis.webp"
-                  alt="EcoVadis Committed 2025"
-                  width={56}
-                  height={56}
-                  style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain", display: "block", width: "auto", height: "auto" }}
-                />
-              </span>
-            </div>
-            <p style={{ font: "400 15px/1.65 var(--fb)", color: "var(--ink2)", margin: 0 }}>
-              Démarche{" "}
-              <strong style={{ fontWeight: 600, color: "var(--ink)" }}>MASE</strong>{" "}
-              pour la sécurité de nos interventions et évaluation{" "}
-              <strong style={{ fontWeight: 600, color: "var(--ink)" }}>EcoVadis</strong>{" "}
-              sur notre performance RSE. Les attestations sont transmises avec
-              chaque plan de prévention.
-            </p>
-          </div>
-
-          <div style={PANNEAU_EQUIPE}>
-            <div aria-hidden="true" style={LUEUR} />
-            <div style={{ position: "relative" }}>
-              <div style={{ ...SURTITRE_CARTE, marginBottom: 22 }}>
-                Qui intervient chez vous
-              </div>
-              <div
-                className="mg-rmulti"
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(3,minmax(0,1fr))",
-                  gap: 20,
-                }}
-              >
-                {reperes.map((repere) => (
-                  <div key={repere.valeur}>
-                    <div style={REPERE_VALEUR}>{repere.valeur}</div>
-                    <div style={REPERE_LIBELLE}>{appliqueDecisions(repere.libelle, chemin)}</div>
-                  </div>
-                ))}
-              </div>
+          <div
+            className="mg-r2"
+            style={{
+              display: "grid",
+              gridTemplateColumns: ".9fr 1.1fr",
+              gap: 20,
+              alignItems: "stretch",
+            }}
+          >
+            <div style={CARTE_CERTIFICATIONS}>
+              <div style={SURTITRE_CARTE}>Certifications</div>
               <div
                 style={{
                   display: "flex",
-                  flexWrap: "wrap",
-                  gap: 6,
-                  marginTop: 24,
-                  paddingTop: 20,
-                  borderTop: "1px solid rgba(255,255,255,.12)",
+                  alignItems: "center",
+                  gap: 18,
+                  marginBottom: 22,
                 }}
               >
-                {HUBS.map((hub) => (
-                  <span key={hub} style={PUCE_HUB}>
-                    {hub}
-                  </span>
-                ))}
+                <span style={{ ...CADRE_LOGO, width: 132, height: 72 }}>
+                  <Image
+                    src="/assets/logos/mase.png"
+                    alt="MASE"
+                    width={108}
+                    height={56}
+                    style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain", display: "block", width: "auto", height: "auto" }}
+                  />
+                </span>
+                <span style={{ ...CADRE_LOGO, width: 72, height: 72 }}>
+                  <Image
+                    src="/assets/logos/ecovadis.webp"
+                    alt="EcoVadis Committed 2025"
+                    width={56}
+                    height={56}
+                    style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain", display: "block", width: "auto", height: "auto" }}
+                  />
+                </span>
               </div>
-              <div
-                style={{
-                  font: "400 12.5px var(--fb)",
-                  color: "rgba(255,255,255,.45)",
-                  marginTop: 14,
-                }}
-              >
-                4 agences : Lyon (siège), Montréal, Dubaï, Madrid.
+              <p style={{ font: "400 15px/1.65 var(--fb)", color: "var(--ink2)", margin: 0 }}>
+                Démarche{" "}
+                <strong style={{ fontWeight: 600, color: "var(--ink)" }}>MASE</strong>{" "}
+                pour la sécurité de nos interventions et évaluation{" "}
+                <strong style={{ fontWeight: 600, color: "var(--ink)" }}>EcoVadis</strong>{" "}
+                sur notre performance RSE. Les attestations sont transmises avec
+                chaque plan de prévention.
+              </p>
+            </div>
+
+            <div style={PANNEAU_EQUIPE}>
+              <div aria-hidden="true" style={LUEUR} />
+              <div style={{ position: "relative" }}>
+                <div style={{ ...SURTITRE_CARTE, marginBottom: 22 }}>
+                  Qui intervient chez vous
+                </div>
+                <div
+                  className="mg-rmulti"
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(3,minmax(0,1fr))",
+                    gap: 20,
+                  }}
+                >
+                  {reperes.map((repere) => (
+                    <div key={repere.valeur}>
+                      <div style={REPERE_VALEUR}>{repere.valeur}</div>
+                      <div style={REPERE_LIBELLE}>{appliqueDecisions(repere.libelle, chemin)}</div>
+                    </div>
+                  ))}
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: 6,
+                    marginTop: 24,
+                    paddingTop: 20,
+                    borderTop: "1px solid rgba(255,255,255,.12)",
+                  }}
+                >
+                  {HUBS.map((hub) => (
+                    <span key={hub} style={PUCE_HUB}>
+                      {hub}
+                    </span>
+                  ))}
+                </div>
+                <div
+                  style={{
+                    font: "400 12.5px var(--fb)",
+                    color: "rgba(255,255,255,.45)",
+                    marginTop: 14,
+                  }}
+                >
+                  4 agences : Lyon (siège), Montréal, Dubaï, Madrid.
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

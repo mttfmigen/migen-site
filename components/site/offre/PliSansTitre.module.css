@@ -1,0 +1,92 @@
+/*
+ * LES TROIS BLOCS SANS TITRE, REPLIÉS AU TÉLÉPHONE (décision de Mehdi du 14/10,
+ * docs/NOUS-CONNAITRE-ARBITRAGES.md, « Décisions du 14/10 »).
+ *
+ * `Reassurance`, `LogosClients` et `offres/EncartResidence` n'ont pas de titre
+ * de section dans leur capture de bureau. Pour les replier sous 880 px, Mehdi
+ * leur a donné un titre, qui devient la bascule du repli
+ * (`blocs/SectionPliableMobile`). Au-dessus de 880 px, rien ne change.
+ *
+ * LE TITRE EST UN `<h2>` HORS DE TOUT `data-mobile-seulement`, et c'est exigé
+ * par les portes : `verifie-blocs-pliables.mjs` veut un titre lisible dans le
+ * bloc, `verifie-titres-replies.mjs` (règle 6) refuse un titre enfermé dans un
+ * ornement mobile et (règle 5) refuse qu'une règle de bureau masque une
+ * bascule qui porte le seul titre de son bloc. C'est donc le TITRE qui se
+ * masque sur bureau, pas la bascule.
+ */
+
+/* Le titre d'un bloc replié de la maquette mobile v2 (dc.html L130 : `<h2>`,
+   600 16.5px/1.3, -.025em). `flex` : il occupe la rangée de la bascule, le
+   chevron reste à droite. */
+.titre {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  font: 600 16.5px/1.3 var(--ft);
+  letter-spacing: -0.025em;
+  color: var(--ink);
+}
+
+/* L'en-tête du bandeau de logos : le conteneur de 1 200 px que le composant
+   écrivait en ligne, à l'identique, plus la place que la bascule lui laisse
+   (`ENTETE_DANS_BASCULE`). Il quitte le style en ligne parce que la règle de
+   gouttière de `app/globals.css` vise l'attribut `style` : la bascule doit
+   régler sa gouttière elle-même sous 880 px, chevron compris. */
+.enteteLogos {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 1200px;
+  margin: 0 auto 26px;
+  padding: 0 40px;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 880px) {
+  .enteteLogos {
+    margin: 0;
+    padding: 0 0 0 18px;
+  }
+
+  /* La bascule du bandeau est pleine largeur (le défilement est à fond
+     perdu) : le chevron prend la gouttière de 18 px, et la mention, en
+     capitales de 11,5 px, se centre sur lui. */
+  .logos > details > summary {
+    padding-right: 18px;
+    align-items: center;
+  }
+}
+
+/* `app/globals.css` porte TOUT `<h2>` à `clamp(26px, 7.4vw, 34px) !important`
+   sous 760 px (`.mg-site h2`). Sans cette parade, le titre du repli passerait
+   à 29 px à 390 px, et la mention « Ils nous font confiance », dessinée en
+   capitales de 11,5 px, à 29 px aussi. */
+@media (max-width: 760px) {
+  :global(.mg-site) .titre {
+    font-size: 16.5px !important;
+  }
+  :global(.mg-site) .mention {
+    font-size: 11.5px !important;
+  }
+}
+
+/* AU-DESSUS DE 880 PX, LE TITRE AJOUTÉ NE SE VOIT PAS : la capture n'en porte
+   pas. Il est masqué À L'ŒIL et non retiré (`display: none`) : la bascule,
+   que `SectionPliableMobile` laisse en place sur bureau hors de l'ordre de
+   tabulation, garde ainsi un nom pour un lecteur d'écran au lieu d'être une
+   commande muette. Positionné hors du flux, il ne prend aucune hauteur. */
+@media (min-width: 881px) {
+  .titre {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+}

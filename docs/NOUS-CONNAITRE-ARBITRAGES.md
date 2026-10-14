@@ -522,3 +522,63 @@ Les capsules (« Les six offres », l’astreinte), les trois repères et les
 sections « Après votre demande », « Nos agences » et « Vous êtes
 technicien ? » n’existent pas sur l’écran mobile : elles sont gardées,
 resserrées ou repliées, jamais retirées.
+
+---
+
+## Décisions du 14/10
+
+### Les trois blocs sans titre, repliés au téléphone sous un titre donné par Mehdi
+
+**Décision de Mehdi du 14/10** : les trois blocs que la capture de bureau
+dessine sans titre de section se replient sous 880 px, FERMÉS au chargement,
+sous un titre qu'il a donné lui-même. La copie est validée, écrite mot pour
+mot :
+
+| Bloc | Composant | Titre du repli |
+|---|---|---|
+| Cartes « Certifications » et « Qui intervient chez vous » | `components/site/offre/Reassurance.tsx` | « Certifications et équipe » |
+| Bandeau de logos clients | `components/site/offre/LogosClients.tsx` | « Ils nous font confiance » |
+| Encart Résidence de `/offres/` | `components/site/offres/EncartResidence.tsx` | « Votre technicien intégré à votre site » |
+
+Ce que ça fait, et ce que ça ne fait pas :
+
+- **Replier, jamais retirer.** Le repli passe par `blocs/SectionPliableMobile` :
+  le HTML servi porte le bloc ouvert et tout son texte, un effet client le
+  referme sous 880 px seulement.
+- **Le titre est un `<h2>`**, hors de tout `data-mobile-seulement` : c'est ce
+  qu'exigent `verifie-blocs-pliables.mjs` (un titre lisible dans le bloc) et
+  `verifie-titres-replies.mjs` (règles 5 et 6). Le dessin est dans
+  `components/site/offre/PliSansTitre.module.css`.
+- **Au-dessus de 880 px, rien ne change.** « Certifications et équipe » et
+  « Votre technicien intégré à votre site » sont masqués à l'œil sur bureau :
+  ils nomment la bascule pour un lecteur d'écran, sans prendre de place.
+  « Ils nous font confiance » n'est pas un titre ajouté : c'est la mention
+  existante, passée de `<span>` à `<h2>` sans changer de dessin, comme la
+  maquette mobile v2 l'écrit déjà (dc.html L93). Mesuré : 158 pages sur 158 à
+  la même hauteur qu'avant à 1 280 px, et les rectangles des trois blocs
+  identiques au dixième de pixel sur `/offres/residence/`, `/offres/` et
+  `/secteurs/aeronautique/`.
+- **Le dessin du titre au téléphone** est celui d'un bloc replié de la
+  maquette mobile v2 (dc.html L130 : 600 16,5 px / 1,3). « Ils nous font
+  confiance » garde ses capitales de 11,5 px, comme dans la maquette.
+
+Gain mesuré à 390 px, build de production local contre l'état en ligne au
+départ du lot : 981 px de moins sur `/offres/residence/`,
+`/implantations/lille/` et `/expertises/automatisme/`, 2 086 px sur `/offres/`
+(les trois blocs), 90 367 px cumulés sur les 158 pages.
+
+**Ce qui reste à faire, hors du périmètre de ce lot :**
+
+- **Les douze pages de secteur** repliaient déjà logos et réassurance ensemble
+  (`secteur/PliSecteur`, étiquette « Ils nous font confiance »). La réassurance
+  se repliant désormais elle-même, le garde-fou du double repli de
+  `secteur/PageSecteur.module.css` efface l'enveloppe : le bandeau du secteur
+  se déplie, 176 px de plus par page. Correctif dans `secteur/PageSecteur.tsx` :
+  sortir `<Reassurance>` de `<PliSecteur>`, qui ne replie plus que les logos.
+- **Trois portes ne connaissent pas encore cette décision.**
+  `verifie-offre-rendu.mjs` lit le premier `h1, h2, h3` de chaque section et
+  attend « (aucun) » là où la capture n'a pas de titre : elle doit accepter
+  ces trois titres. `verifie-blocs-pliables.mjs` compte le texte du corps sans
+  les `alt` : un bandeau fait de logos y passe pour vide. `verifie-titres-replies.mjs`
+  voit la règle de bureau de `PliSecteur` masquer la bascule imbriquée de la
+  réassurance, défaut qui tombe avec le correctif de `PageSecteur.tsx`.

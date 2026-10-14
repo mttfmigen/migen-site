@@ -2,7 +2,10 @@ import Image from "next/image";
 import type { CSSProperties } from "react";
 
 import { LOGOS_MAQUETTE as LOGOS } from "@/components/site/accueil/MarqueeClients";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import { SURTITRE } from "@/components/site/blocs/habillage";
+
+import styles from "./PliSansTitre.module.css";
 
 /**
  * « Ils nous font confiance », section « 02 Logos » de la capture
@@ -36,14 +39,23 @@ import { SURTITRE } from "@/components/site/blocs/habillage";
  * 200 clients ». Rien n'est donc changé ici, et c'est une décision, pas un
  * oubli. Le bloc « Marques et constructeurs », lui, nomme des équipements
  * maintenus, pas des clients : ce n'est pas le même propos.
+ *
+ * REPLIÉ AU TÉLÉPHONE (décision de Mehdi du 14/10) : la mention « Ils nous
+ * font confiance » DEVIENT le titre du repli. Elle n'est pas doublée : c'est le
+ * même texte, passé d'un `<span>` à un `<h2>` (la maquette mobile v2 l'écrit
+ * aussi en `<h2>` de 11 px, dc.html L93) et logé dans la bascule. Au-dessus de
+ * 880 px, la bascule reste visible et la mention s'y lit à sa place et à sa
+ * taille : rien ne change.
  */
 
 const MASQUE =
   "linear-gradient(to right,transparent,#000 9%,#000 91%,transparent)";
 
-/** Le surtitre partagé du site, posé sur une ligne flexible : pas de marge. */
+/** Le surtitre partagé du site, posé sur une ligne flexible : pas de marge,
+ *  pas même celle qu'un `<h2>` porte par défaut. */
 const SURTITRE_LIGNE: CSSProperties = {
   ...SURTITRE,
+  marginTop: 0,
   marginBottom: 0,
   flex: "none",
 };
@@ -73,63 +85,59 @@ const IMAGE: CSSProperties = {
 
 export default function LogosClients() {
   return (
-    <section style={{ padding: "64px 0 0" }}>
-      <div
-        style={{
-          maxWidth: 1200,
-          margin: "0 auto 26px",
-          padding: "0 40px",
-          display: "flex",
-          alignItems: "baseline",
-          gap: 16,
-          flexWrap: "wrap",
-        }}
+    <section className={styles.logos} style={{ padding: "64px 0 0" }}>
+      <SectionPliableMobile
+        enTete={
+          <div className={styles.enteteLogos}>
+            <h2 className={styles.mention} style={SURTITRE_LIGNE}>
+              Ils nous font confiance
+            </h2>
+          </div>
+        }
       >
-        <span style={SURTITRE_LIGNE}>Ils nous font confiance</span>
-      </div>
-
-      <div
-        className="mg-marquee"
-        style={{
-          position: "relative",
-          overflow: "hidden",
-          padding: "16px 0",
-          WebkitMaskImage: MASQUE,
-          maskImage: MASQUE,
-        }}
-      >
-        {/* La liste est écrite deux fois : l'animation translate la piste de
-            -50 %, le second exemplaire comble le vide pendant la boucle. Le
-            doublon porte `alt=""` : décoratif, rien à annoncer deux fois. */}
         <div
-          className="mg-track"
+          className="mg-marquee"
           style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 14,
-            width: "max-content",
-            /* 40 s : durée RENDUE par le gabarit offre de la maquette (piste
-               `g3-track`, getComputedStyle du 06/10), là où l'accueil garde la
-               durée de 60 s. */
-            animation: "mgMarquee 40s linear infinite",
-            animationPlayState: "var(--mq-play, running)",
+            position: "relative",
+            overflow: "hidden",
+            padding: "16px 0",
+            WebkitMaskImage: MASQUE,
+            maskImage: MASQUE,
           }}
         >
-          {[0, 1].flatMap((passe) =>
-            LOGOS.map((logo) => (
-              <span key={`${logo.src}-${passe}`} className="mg-logo" style={PASTILLE}>
-                <Image
-                  src={logo.src}
-                  alt={passe === 0 ? logo.alt : ""}
-                  width={120}
-                  height={34}
-                  style={IMAGE}
-                />
-              </span>
-            )),
-          )}
+          {/* La liste est écrite deux fois : l'animation translate la piste de
+              -50 %, le second exemplaire comble le vide pendant la boucle. Le
+              doublon porte `alt=""` : décoratif, rien à annoncer deux fois. */}
+          <div
+            className="mg-track"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 14,
+              width: "max-content",
+              /* 40 s : durée RENDUE par le gabarit offre de la maquette (piste
+                 `g3-track`, getComputedStyle du 06/10), là où l'accueil garde
+                 la durée de 60 s. */
+              animation: "mgMarquee 40s linear infinite",
+              animationPlayState: "var(--mq-play, running)",
+            }}
+          >
+            {[0, 1].flatMap((passe) =>
+              LOGOS.map((logo) => (
+                <span key={`${logo.src}-${passe}`} className="mg-logo" style={PASTILLE}>
+                  <Image
+                    src={logo.src}
+                    alt={passe === 0 ? logo.alt : ""}
+                    width={120}
+                    height={34}
+                    style={IMAGE}
+                  />
+                </span>
+              )),
+            )}
+          </div>
         </div>
-      </div>
+      </SectionPliableMobile>
     </section>
   );
 }
