@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import type { CSSProperties, MouseEvent } from "react";
 import Link from "next/link";
 
 import { demandeDiagnostic } from "@/components/formulaire/besoin";
@@ -89,6 +89,26 @@ export function Coche({ texte }: { texte: string }) {
   );
 }
 
+/**
+ * Le `go()` de la maquette : défile jusqu'au bloc, 96 px sous le haut, sans
+ * écrire l'ancre dans l'adresse. Sans JavaScript, le lien `#id` reste valable.
+ */
+function allerA(id: string) {
+  return (e: MouseEvent<HTMLAnchorElement>) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    e.preventDefault();
+    const doux = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 96, behavior: doux ? "smooth" : "auto" });
+  };
+}
+
+/** `askDiag` de la maquette : présélectionne le besoin, puis défile jusqu'au formulaire. */
+export function diagnostic(e: MouseEvent<HTMLAnchorElement>) {
+  demandeDiagnostic();
+  allerA("rs-form")(e);
+}
+
 /** Bandeau sombre « Diagnostic Zéro arrêt ». */
 export function BandeauDiagnostic() {
   return (
@@ -149,7 +169,7 @@ export function BandeauDiagnostic() {
           </p>
         </div>
         <div style={{ position: "relative", display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
-          <a href="#rs-form" onClick={demandeDiagnostic} className={s.dim} style={BOUTON_ORANGE}>
+          <a href="#rs-form" onClick={diagnostic} className={s.dim} style={BOUTON_ORANGE}>
             Demander mon diagnostic →
           </a>
         </div>

@@ -11,23 +11,30 @@ import { metadonneesSeo } from "@/lib/seo/metadonnees";
  * Diagnostic, formulaire), entre l'en-tête et le pied du site. Elle remplace
  * le gabarit guide et le haut de page mobile qui la portaient avant.
  *
- * Les métadonnées restent celles de la table `seo`, comme avant. Le contenu
- * du hub est versionné (`components/site/ressources-hub/v2/donnees.ts`) : le
- * rendu serveur sert les 28 cartes, sans JavaScript.
+ * Le titre est celui que la maquette pose côté Entreprises (`pageTitle`,
+ * page-dc.jsx), et la description reprend le chapô de la page, mot pour mot :
+ * la ligne `seo` parlait de « fiches pratiques », marquées « Bientôt » sur le
+ * hub. Le reste (canonique, vignette, noindex) vient toujours de la table `seo`.
+ * Le contenu du hub est versionné (`components/site/ressources-hub/v2/donnees.ts`) :
+ * le rendu serveur sert les 28 cartes, sans JavaScript.
  */
 
 export const revalidate = 3600;
 
 const CHEMIN = "/ressources/";
+const TITRE = "Ressources maintenance industrielle | Migen";
+const DESCRIPTION =
+  "Méthodes, organisation, GMAO, intelligence artificielle : écrit par nos équipes, à partir de ce qu’elles voient sur les sites industriels.";
 
 export async function generateMetadata(): Promise<Metadata> {
   const complete = await pageParChemin(CHEMIN);
-  if (!complete) return { title: "Ressources maintenance industrielle | Migen", alternates: { canonical: CHEMIN } };
-  return metadonneesSeo({
-    seo: complete.seo,
-    chemin: CHEMIN,
-    titreRepli: complete.page.titre_h1,
-  });
+  const base = metadonneesSeo({ seo: complete?.seo ?? null, chemin: CHEMIN, titreRepli: TITRE });
+  return {
+    ...base,
+    title: TITRE,
+    description: DESCRIPTION,
+    openGraph: { ...base.openGraph, title: TITRE, description: DESCRIPTION },
+  };
 }
 
 export default function PageHubRessources() {

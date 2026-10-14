@@ -2,7 +2,6 @@
 
 import type { CSSProperties, MouseEvent } from "react";
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import CandidatureTechniciens from "./CandidatureTechniciens";
@@ -119,12 +118,16 @@ export default function HubRessources() {
     else majFiltres({ tags: f.tags.filter((t) => t !== cle.slice(4)) });
   };
 
-  /** Une carte : visible si retenue, dans l'ordre du tri ; sinon masquée mais présente. */
+  /**
+   * Une carte : visible si retenue, masquée mais présente sinon. Les cartes
+   * retenues sont rendues dans l'ordre du tri, dans le DOM et non par `order`,
+   * pour que la touche Tab et le lecteur d'écran suivent l'ordre affiché.
+   */
   const carte = (x: ContenuRessource, sien: Espace) => {
     const i = sien === espace ? rang.get(x.url) : undefined;
     const visible = i !== undefined;
     const large = visible && vue === "grid" && !!grille?.large && i === n - 1;
-    const style: CSSProperties = { order: i ?? 0, display: visible ? (vue === "grid" ? "flex" : "grid") : "none" };
+    const style: CSSProperties = { display: visible ? (vue === "grid" ? "flex" : "grid") : "none" };
     return vue === "grid" ? (
       <CarteGrille key={x.url} x={x} large={large} style={style} />
     ) : (
@@ -222,13 +225,13 @@ export default function HubRessources() {
                 color: "var(--ink3)",
               }}
             >
-              <Link href="/" style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+              <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
                 <span
                   aria-hidden="true"
                   style={{ width: 7, height: 7, borderRadius: 999, background: "#ff7c3c", boxShadow: "0 0 12px rgba(255,124,60,.8)" }}
                 />
                 migen
-              </Link>
+              </span>
               <span aria-hidden="true">/</span>
               <span>ressources</span>
               <span aria-hidden="true">/</span>
@@ -259,6 +262,7 @@ export default function HubRessources() {
                 : "Fiches métiers, salaires, formations et notre process de sélection : tout pour faire carrière dans la maintenance industrielle."}
             </p>
             <label
+              className={s.recherche}
               style={{
                 marginTop: 26,
                 display: "flex",
@@ -513,8 +517,9 @@ export default function HubRessources() {
                   vue === "grid" && grille ? `repeat(${grille.cols},minmax(0,1fr))` : vue === "list" ? "minmax(0,1fr)" : undefined,
               }}
             >
-              {CONTENUS_ENTREPRISES.map((x) => carte(x, "ent"))}
-              {CONTENUS_TECHNICIENS.map((x) => carte(x, "tech"))}
+              {items.map((x) => carte(x, espace))}
+              {CONTENUS_ENTREPRISES.filter((x) => !(ent && rang.has(x.url))).map((x) => carte(x, "ent"))}
+              {CONTENUS_TECHNICIENS.filter((x) => !(!ent && rang.has(x.url))).map((x) => carte(x, "tech"))}
             </div>
           </section>
 

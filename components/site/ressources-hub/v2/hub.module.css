@@ -144,20 +144,27 @@
   }
 }
 
-/* Grille avant le premier calcul du navigateur (rendu serveur) : la règle
-   de la maquette, approchée par la largeur de la fenêtre. Le composant pose
-   ensuite le nombre exact de colonnes. */
-.grilleRepli {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+/* Recherche : la maquette n'a pas de focus visible (outline none sur le champ).
+   Le site l'exige : un contour orange autour du cadre, au clavier. */
+.recherche:has(input:focus-visible) {
+  box-shadow: 0 0 0 2px #ff7c3c, var(--shadow) !important;
 }
-@media (max-width: 1255px) {
+
+/* Grille avant le premier calcul du navigateur (rendu serveur) : les seuils
+   exacts de `colonnes()` (filtrage.ts) pour les 15 contenus Entreprises,
+   largeur du contenu = largeur de la fenêtre. Le composant pose ensuite le
+   nombre de colonnes lui-même. */
+.grilleRepli {
+  grid-template-columns: minmax(0, 1fr);
+}
+@media (min-width: 520px) and (max-width: 760px), (min-width: 800px) {
   .grilleRepli {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
-@media (max-width: 760px) {
+@media (min-width: 1052px) and (max-width: 1100px), (min-width: 1112px) {
   .grilleRepli {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 

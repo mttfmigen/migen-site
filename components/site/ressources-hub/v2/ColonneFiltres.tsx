@@ -1,7 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 
-import { demandeDiagnostic } from "@/components/formulaire/besoin";
-
+import { diagnostic } from "./BlocsBas";
 import { MONO } from "./Cartes";
 import type { ContenuRessource } from "./donnees";
 import { DUREES, deux, duFormat, FORMATS, SUJETS, TAXONOMIE } from "./filtrage";
@@ -119,7 +118,7 @@ export default function ColonneFiltres({
         }}
       >
         <div
-          role="tablist"
+          role="group"
           aria-label="Espace"
           style={{
             position: "relative",
@@ -145,10 +144,10 @@ export default function ColonneFiltres({
               transform: ent ? "translateX(0)" : "translateX(100%)",
             }}
           />
-          <button type="button" role="tab" aria-selected={ent} onClick={() => onEspace("ent")} style={bascule(ent)}>
+          <button type="button" aria-pressed={ent} onClick={() => onEspace("ent")} style={bascule(ent)}>
             Entreprises
           </button>
-          <button type="button" role="tab" aria-selected={!ent} onClick={() => onEspace("tech")} style={bascule(!ent)}>
+          <button type="button" aria-pressed={!ent} onClick={() => onEspace("tech")} style={bascule(!ent)}>
             Techniciens
           </button>
         </div>
@@ -431,7 +430,7 @@ function EncartLateral({ ent }: { ent: boolean }) {
       </div>
       <a
         href={ent ? "#rs-form" : "/test-technicien/"}
-        onClick={ent ? demandeDiagnostic : undefined}
+        onClick={ent ? diagnostic : undefined}
         className={s.dim}
         style={{
           position: "relative",
