@@ -400,6 +400,12 @@ assert.deepEqual(valideBesoin({ ...saisieBesoin, nomComplet: "Rivière" }), { no
 assert.ok(valideCharge(chargeBesoin({ ...saisieBesoin, nomComplet: "Rivière" })).erreurs.prenom);
 // Vide : chaque champ obligatoire de la maquette est signalé, message exclu.
 assert.deepEqual(Object.keys(valideBesoin(SAISIE_VIDE)).sort(), ["besoin", "email", "entreprise", "nomComplet", "telephone"]);
+// Les messages d'erreur portent le libellé du champ AFFICHÉ (« E-mail
+// professionnel »), pas celui de FormulaireContact (« Adresse e-mail »).
+assert.match(valideBesoin({ ...saisieBesoin, email: "pas-une-adresse" }).email ?? "", /^E-mail professionnel : /);
+assert.match(valideBesoin({ ...saisieBesoin, email: "" }).email ?? "", /^E-mail professionnel : /);
+assert.match(valideBesoin({ ...saisieBesoin, telephone: "12" }).telephone ?? "", /^Téléphone : /);
+assert.match(valideBesoin({ ...saisieBesoin, nomComplet: `Camille ${"x".repeat(200)}` }).nomComplet ?? "", /^Prénom et nom : /);
 // Le FormulaireContact, lui, garde son message obligatoire.
 assert.ok(valideContact({ ...correct, message: "" }).message, "les autres formulaires ne changent pas");
 

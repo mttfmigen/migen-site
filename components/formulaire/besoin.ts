@@ -115,6 +115,15 @@ export function versContact(saisie: Saisie): Contact {
   };
 }
 
+/**
+ * Le message partagé porte le libellé de `FormulaireContact` (« Adresse
+ * e-mail : … ») ; sur ce formulaire, il doit porter celui du champ affiché
+ * (« E-mail professionnel : … »), sinon le visiteur cherche un champ absent.
+ */
+function relibelle(texte: string | undefined, libelle: string): string | undefined {
+  return texte?.replace(/^[^:]+ : /, `${libelle} : `);
+}
+
 /** Les erreurs de la validation partagée (ou du serveur), ramenées sur les champs de la maquette. */
 export function erreursVersChamps(erreurs: Erreurs, saisie: Saisie): ErreursBesoin {
   const { prenom } = decoupeNomComplet(saisie.nomComplet);
@@ -124,13 +133,13 @@ export function erreursVersChamps(erreurs: Erreurs, saisie: Saisie): ErreursBeso
       ? "Prénom et nom : ce champ est obligatoire."
       : !prenom
         ? PRENOM_MANQUANT
-        : (erreurs.nom ?? erreurs.prenom);
+        : relibelle(erreurs.nom ?? erreurs.prenom, "Prénom et nom");
   const sortie: ErreursBesoin = {
     nomComplet,
     entreprise: erreurs.entreprise,
-    email: erreurs.email,
-    telephone: erreurs.telephone ?? erreurs.indicatif,
-    message: erreurs.message,
+    email: relibelle(erreurs.email, "E-mail professionnel"),
+    telephone: relibelle(erreurs.telephone ?? erreurs.indicatif, "Téléphone"),
+    message: relibelle(erreurs.message, "Votre message"),
   };
   return Object.fromEntries(Object.entries(sortie).filter(([, v]) => v)) as ErreursBesoin;
 }

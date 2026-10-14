@@ -158,7 +158,7 @@ export function BandeauDiagnostic() {
   );
 }
 
-/** Bloc « Passer à l’action » : panneau sombre + formulaire de contact du site. */
+/** Bloc « Passer à l’action » : panneau sombre + formulaire « Décrivez votre besoin » de la maquette. */
 export function BlocFormulaire() {
   return (
     <section id="rs-form" style={{ position: "relative", padding: "120px 0 0", scrollMarginTop: 96 }}>
