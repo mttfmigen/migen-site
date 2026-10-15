@@ -25,9 +25,11 @@ import {
   articleParChemin,
   cheminCanonique,
   cheminsArticles,
+  cheminsDuRelais,
   cheminsPublies,
   pageParChemin,
 } from "@/lib/contenu";
+import { ROUTES_STATIQUES } from "@/lib/routes-statiques";
 import { metadonneesSeo } from "@/lib/seo/metadonnees";
 import type { ContenuArticle } from "@/types/article";
 import { estCasClients } from "@/types/casclients";
@@ -104,14 +106,28 @@ function sectionsValides(contenu: unknown): Section[] {
  * `app/page.tsx` qui la sert. `dynamicParams` reste à sa valeur par défaut, si
  * bien qu'une page publiée après le build est rendue à la première visite au
  * lieu de renvoyer une 404.
+ *
+ * LE RELAIS DISQUE AUSSI (15/10) : ses quelque cent pages que la base n'a pas
+ * (fiches métier, villes, études de cas, contenus de /ressources/) n'étaient
+ * pas figées. Vercel les rendait à la première visite en passant l'attrape-tout
+ * en une seule chaîne, que Next encode d'un bloc : le serveur voyait
+ * `/carriere%2Felectromecanicien`, d'où l'erreur React #418 des fiches métier
+ * (voir `BarreCollanteParChemin`). Les routes statiques en sont écartées :
+ * `/ressources/` est à la fois au relais et servie par `app/ressources/`.
  */
 export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
   const [pages, articles] = await Promise.all([
     cheminsPublies(),
     cheminsArticles(),
   ]);
-  return [...pages, ...articles]
-    .map((chemin) => ({ slug: chemin.path.split("/").filter(Boolean) }))
+  const statiques: ReadonlySet<string> = new Set(ROUTES_STATIQUES);
+  const chemins = new Set([
+    ...[...pages, ...articles].map((c) => c.path),
+    ...cheminsDuRelais(),
+  ]);
+  return [...chemins]
+    .filter((chemin) => !statiques.has(chemin))
+    .map((chemin) => ({ slug: chemin.split("/").filter(Boolean) }))
     .filter(({ slug }) => slug.length > 0);
 }
 

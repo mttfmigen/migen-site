@@ -20,6 +20,10 @@ import BarreCollanteMobile from "./BarreCollanteMobile";
 export default function BarreCollanteParChemin() {
   const chemin = usePathname() ?? "/";
   if (chemin === "/contact" || chemin.startsWith("/contact/")) return null;
-  const premier = chemin.split("/").filter(Boolean)[0];
+  /* `%2F` aussi : Vercel rend une page non figée à la construction (publiée
+     après le déploiement) avec la barre oblique de l'attrape-tout encodée,
+     `/carriere%2Felectromecanicien`. Lu `/` seul, le serveur rendait
+     « Décrire mon besoin » et le navigateur « Postuler » : erreur React #418. */
+  const premier = chemin.split(/\/|%2F/i).filter(Boolean)[0];
   return <BarreCollanteMobile variante={premier === "carriere" ? "carriere" : "standard"} />;
 }
