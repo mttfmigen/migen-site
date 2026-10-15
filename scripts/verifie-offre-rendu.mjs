@@ -126,14 +126,14 @@ const TITRES_DE_REPLI = [
  * La capture d'offres--residence ne porte aucun cadratin, et la porte le
  * re-vérifie à chaque passage.
  *
- * LE MÊME MÉCANISME porte, depuis le 08/10, la SEULE reformulation que Mehdi
- * a tranchée : le titre de l'étude de cas Tournaire, « Maintenir des machines
- * conçues sur mesure » (interdit « sur mesure », CLAUDE.md §9), devient
- * « Maintenir des machines conçues en interne », expression reprise du texte
- * même de l'étude (« équipée à 80 % de machines conçues en interne »). La
- * page `/preuves/tournaire/` porte ce H1, vérifié des deux côtés par
- * `components/site/preuve/verification-preuve.tsx` ; la carte qui la cite
- * porte le même titre. Ce n'était plus un trou, c'est une substitution.
+ * LE MÊME MÉCANISME a porté, du 08/10 au 14/10, la reformulation Tournaire
+ * tranchée par Mehdi : « Maintenir des machines conçues sur mesure » (interdit
+ * « sur mesure », CLAUDE.md §9) devient « Maintenir des machines conçues en
+ * interne », le H1 de `/preuves/tournaire/`. Depuis b4cc3e2 (14/10), la règle
+ * vit dans `lib/decisions-copie.ts` (`TOURNAIRE`), que cette porte applique à
+ * la référence avant de comparer : la capture lue dit déjà « en interne », et
+ * la déclaration qui restait ici tombait en « exception devenue inutile ».
+ * Retirée le 15/10, la décision n'a plus qu'un seul endroit.
  */
 /* Les huit pages génériques (gabarit « vente » de la maquette, six d'entre
    elles) : son gabarit pose « titre — texte » dans les constats de
@@ -175,16 +175,6 @@ const TIRETS_PAR_PAGE = {
     { maquette: "Les anciennes machines restent concernées — Un équipement mis en service avant l'obligation de marquage doit respecter les prescriptions techniques du code du travail, CE ou pas.", rendu: "Les anciennes machines restent concernées. Un équipement mis en service avant l'obligation de marquage doit respecter les prescriptions techniques du code du travail, CE ou pas.", pourquoi: TIRET_CONSTAT },
     { maquette: "Une modification vous transforme en responsable — Automatiser, augmenter une capacité, changer un usage : la charge de la conformité bascule sur votre entreprise.", rendu: "Une modification vous transforme en responsable. Automatiser, augmenter une capacité, changer un usage : la charge de la conformité bascule sur votre entreprise.", pourquoi: TIRET_CONSTAT },
   ],
-  "/offres/retrofit/remise-en-etat/": [
-    {
-      maquette: "Maintenir des machines conçues sur mesure",
-      rendu: "Maintenir des machines conçues en interne",
-      pourquoi:
-        "titre de la carte Tournaire de « Ils nous ont confié une mission " +
-        "comparable » : « sur mesure » est proscrit, Mehdi a tranché le 08/10 " +
-        "pour le titre reformulé de /preuves/tournaire/, que la carte reprend.",
-    },
-  ],
 };
 const TIRETS_REMPLACES = TIRETS_PAR_PAGE[CHEMIN_PAGE] ?? [];
 
@@ -210,12 +200,24 @@ const AGENCES_FRANCE =
   "jamais reformulé";
 const FAQ_FERMEE =
   "réponse de la FAQ : aucune question n'est ouverte au chargement, arbitrage " +
-  "de Mehdi du 11/10 posé dans components/site/offre/QuestionsOffre.tsx, alors " +
-  "que la capture ouvre la première (1 <details open> sur 4 dans cette " +
-  "section) ; la réponse reste SERVIE dans le HTML, donc lue par Google, elle " +
-  "n'est qu'invisible tant que le visiteur n'a pas cliqué. Déclaré avec " +
-  "`dansLeHtml`, donc vérifié : le jour où la phrase quitte le HTML, la porte " +
-  "le dit";
+  "de Mehdi du 11/10 (9ad0025, point 5) posé dans " +
+  "components/site/offre/QuestionsOffre.tsx, alors que la capture ouvre la " +
+  "première (`<details open>` sur elle seule) ; la réponse reste SERVIE dans " +
+  "le HTML, donc lue par Google, elle n'est qu'invisible tant que le visiteur " +
+  "n'a pas cliqué. Déclaré avec `dansLeHtml`, donc vérifié : le jour où la " +
+  "phrase quitte le HTML, la porte le dit";
+const COMPTEUR_PAGES_LIEES =
+  "compteur « N pages liées » de l'en-tête « Pour aller plus loin », retiré " +
+  "sur arbitrage de Mehdi du 11/10 (9ad0025, point 4, consigné dans " +
+  "components/site/offre/PagesLiees.tsx) alors que la capture le porte : " +
+  "écart à la maquette assumé, demandé explicitement";
+const CAS_HORS_SUJET =
+  "carte de « Nos références » retirée par 91d638d (13/10), sur la règle " +
+  "demandée par Mehdi le 11/10, « les cas clients cités ne correspondent pas " +
+  "à l'expertise » (docs/INVENTAIRE-3-JOURS.md, demande 2 ; " +
+  "docs/INVENTAIRE-13-14-10.md, N20) : la fiche de ce cas ne parle pas du " +
+  "sujet de la page, et scripts/verifie-cas-par-offre.mjs rougit si la carte " +
+  "revient (rejoué le 15/10). Retrait seulement, aucune carte réécrite";
 const PLI_REDUIRE =
   "libellé « Réduire » du pli « Lire la suite » : masqué tant que le pli est " +
   "fermé, sur le site comme dans la maquette (feuille `.cx-more`) ; la capture, " +
@@ -354,8 +356,21 @@ const TROUS_DECLARES = [
          « sur mesure » est proscrit (`verifie-interdits.mjs` : « dire ce qui
          s'adapte, et à quoi »). Déclarée en trou (titre vide) jusqu'au 08/10 ;
          Mehdi a tranché ce jour-là pour « Maintenir des machines conçues en
-         interne », le H1 de /preuves/tournaire/. C'est désormais une
-         SUBSTITUTION, déclarée dans TIRETS_PAR_PAGE, plus un trou.
+         interne », le H1 de /preuves/tournaire/. C'est une SUBSTITUTION,
+         portée depuis le 14/10 par `lib/decisions-copie.ts` (`TOURNAIRE`).
+
+     15/10, ONZE LIGNES DÉCLARÉES, toutes des décisions de Mehdi déjà prises
+     et jamais reportées ici (la page ne tourne pas dans `bun run verifie`) :
+
+       · section 12, les cartes VPK, AKTID, TOURNAIRE et ERIKS du rail : leurs
+         fiches ne parlent pas de remise en état (CAS_HORS_SUJET). La carte
+         Tournaire n'est donc plus rendue du tout, sa substitution comprise ;
+       · section 14, la réponse de la première question, fermée (FAQ_FERMEE) ;
+       · section 15, « 6 pages liées » (COMPTEUR_PAGES_LIEES).
+
+     Les étiquettes AKTID et TOURNAIRE sont écrites en capitales parce que la
+     porte lit `innerText`, qui applique le `text-transform` de la capture
+     (le fichier figé écrit « Aktid » et « Tournaire »).
 
      DEUX AUTRES FORMULATIONS ONT ÉTÉ RENCONTRÉES ET GARDÉES, aucune règle du
      dépôt ne les interdisant, et elles sont à faire arbitrer par Mehdi :
@@ -366,6 +381,22 @@ const TROUS_DECLARES = [
      capture de `/offres/zero-arret/` porte et que son portage a écarté).
      Elles sont rendues, mot pour mot. */
   ["/offres/retrofit/remise-en-etat/", [
+    { section: 12, ligne: "VPK", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "Une usine de carton en 3x8, un technicien qui tient la cadence", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "AKTID", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "Un centre logistique monté en six semaines", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "TOURNAIRE", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "Maintenir des machines conçues en interne", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "ERIKS", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "Un responsable maintenance pour traverser la transition", pourquoi: CAS_HORS_SUJET },
+    {
+      section: 14,
+      ligne:
+        "Chaque cas est chiffré sur devis : l'état constaté, les pièces à remplacer et le degré de finition attendu font le prix. L'état des lieux préalable donne la rentabilité avant l'engagement, et la comparaison avec la valeur actuelle du matériel fait partie de la réponse.",
+      pourquoi: FAQ_FERMEE,
+      dansLeHtml: true,
+    },
+    { section: 15, ligne: "6 pages liées", pourquoi: COMPTEUR_PAGES_LIEES },
   ]],
 
 
@@ -510,7 +541,7 @@ const TROUS_DECLARES = [
      horaire homogène partout » de la même capture se rendait déjà. */
   /* « Maintenir des machines conçues sur mesure » (/offres/retrofit/remise-en-etat/,
      section 12) était déclaré ici : depuis le 08/10, c'est une substitution,
-     voir TIRETS_PAR_PAGE. */
+     portée par `lib/decisions-copie.ts` depuis le 14/10. */
 
   /* ------------------------------------------------------------------
      Déclarés le 07/10 au soir, seconde vague : treize refus du contrat (prix)
@@ -637,7 +668,8 @@ const TROUS_ASSUMES = TROUS_PAR_PAGE[CHEMIN_PAGE] ?? [];
  *
  * { section, rendu, pourquoi }, VÉRIFIÉ DANS LES DEUX SENS : le titre doit
  * être VIDE dans la référence (sinon l'exception est périmée et la porte
- * échoue) et valoir EXACTEMENT `rendu` sur le site.
+ * échoue) et valoir EXACTEMENT `rendu` sur le site. `rendu: null` (15/10) :
+ * le site ne sert AUCUN titre à ce rang, et la porte échoue s'il en sert un.
  */
 const TITRES_VIDES_PAR_PAGE = {
 
@@ -666,6 +698,26 @@ const TITRES_VIDES_PAR_PAGE = {
         "(`<h2><span class=\"sc-interp\"></span></h2>`). Le site sert la " +
         "première phrase du sous-titre du corpus, comme le gabarit le fait " +
         "partout ailleurs.",
+    },
+  ],
+
+  /* LE MÊME TITRE VIDE, TRAITÉ AUTREMENT, et c'est le traitement majoritaire :
+     dix pages du gabarit 03 ont un premier h2 vide dans leur capture (relevé
+     du 15/10 sur `maquette/rendu/`), neuf d'entre elles n'en servent aucun.
+     Leur donnée porte `punchline: ""` depuis le portage contre la capture
+     (41be9d3) : ni titre nu, ni phrase du corpus que la référence n'affiche
+     pas. Seule la page ci-dessus sert la phrase de son corpus. */
+  "/offres/retrofit/remise-en-etat/": [
+    {
+      section: 5,
+      rendu: null,
+      pourquoi:
+        "premier h2, section « 03 Problème » : la capture le rend vide, son " +
+        "paragraphe aussi (`<span class=\"sc-interp\"></span>`). Le site ne sert " +
+        "ni h2 vide (titre nu) ni la phrase en gras du corpus (« Le dépannage " +
+        "revient tous les mois… », absente de la référence), comme les huit " +
+        "autres pages au même défaut. L'écart avec transfert-de-production " +
+        "reste à faire trancher par Mehdi.",
     },
   ],
 
@@ -884,7 +936,8 @@ function estUnTitreDeRepli(section) {
 function titreAttenduAuRendu(rang, titreReference) {
   if (titreReference !== "") return titreReference;
   const arbitrage = TITRES_VIDES.find((t) => t.section === rang);
-  return arbitrage ? normalise(arbitrage.rendu) : titreReference;
+  if (!arbitrage) return titreReference;
+  return arbitrage.rendu === null ? null : normalise(arbitrage.rendu);
 }
 
 /** La forme attendue au rendu d'une ligne de la référence, cadratins arbitrés. */
