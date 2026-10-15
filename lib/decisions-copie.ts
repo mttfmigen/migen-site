@@ -547,7 +547,15 @@ const EXPERT_TECHNIQUE: Regle[] = [
    (relevé le 14/10 sur les 41 études de cas). Les deux casses de la capture. */
 const TOURNAIRE: Regle[] = [[/(conçues) sur mesure/gi, (_m, c: string) => `${c} en interne`]];
 
-const REGLES = [...SELECTION, ...SIEGE, ...PHOTOS_VILLE, ...TELEPHONE, ...ORTHUS, ...META_REDACTION, ...NOTAMMENT, ...ASTREINTE, ...NOUS_REJOINDRE, ...TOURNAIRE];
+/* 15/10, « LEVIER » EST UN MOT INTERDIT. La maquette l'écrit seul, en
+   en-tête d'un tableau de « salaire électromécanicien » ; la page complète le
+   corrigeait déjà en « Ce qui fait la différence »
+   (`scripts/produit-metier-maquette.mjs`), le vocabulaire des deux autres
+   tableaux de la page. Le lecteur des ressources, qui lit la donnée de la
+   maquette, passe par ici : la même correction, pour la cellule seule. */
+const LEVIER: Regle[] = [[/^Levier$/g, () => "Ce qui fait la différence"]];
+
+const REGLES = [...SELECTION, ...SIEGE, ...PHOTOS_VILLE, ...TELEPHONE, ...ORTHUS, ...META_REDACTION, ...NOTAMMENT, ...ASTREINTE, ...NOUS_REJOINDRE, ...TOURNAIRE, ...LEVIER];
 
 /** Les règles qui s'appliquent à cette page : les globales, plus les siennes. */
 function reglesDe(page?: string): Regle[] {
