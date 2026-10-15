@@ -143,6 +143,17 @@ const TITRES_DE_REPLI = [
 const TIRET_CONSTAT =
   "cadratin posé par le gabarit générique entre le titre et le texte d'un " +
   "constat : remplacé par le point du markdown source, mots inchangés";
+/* LE MÊME MÉCANISME, 15/10, pour une ligne que la maquette recrache avec son
+   markdown. `rendu` est ce que le site peint au bureau, toujours une partie
+   mot pour mot de `maquette` : rien n'est réécrit, la syntaxe seule tombe. */
+const PREFIXE_MARKDOWN =
+  "préfixe « [Étude de cas …](/preuves/…) · » que la maquette recrache de son " +
+  "corpus dans le texte de la carte de référence. Relevé par l'audit de Nathan " +
+  "Jorez du 09/10 (huit cartes, /bureau-etudes/ et /offres/bureau-etudes/), " +
+  "retiré par dbe29d6 : le libellé est passé dans `lienLibelle`, le lien de la " +
+  "carte au téléphone (`data-mobile-seulement`), et le texte qui suit reste " +
+  "rendu mot pour mot. Garde : `enTexteNu` dans offre/ReferencesOffre.tsx et " +
+  "components/site/verification-markdown-brut.tsx";
 
 const TIRETS_PAR_PAGE = {
   "/bureau-etudes/bureau-etude-electrique/": [
@@ -174,6 +185,12 @@ const TIRETS_PAR_PAGE = {
     { maquette: "Les protections tombent avec le temps — Un protecteur démonté pour un réglage, un arrêt d'urgence contourné, et la machine sort de son état d'origine.", rendu: "Les protections tombent avec le temps. Un protecteur démonté pour un réglage, un arrêt d'urgence contourné, et la machine sort de son état d'origine.", pourquoi: TIRET_CONSTAT },
     { maquette: "Les anciennes machines restent concernées — Un équipement mis en service avant l'obligation de marquage doit respecter les prescriptions techniques du code du travail, CE ou pas.", rendu: "Les anciennes machines restent concernées. Un équipement mis en service avant l'obligation de marquage doit respecter les prescriptions techniques du code du travail, CE ou pas.", pourquoi: TIRET_CONSTAT },
     { maquette: "Une modification vous transforme en responsable — Automatiser, augmenter une capacité, changer un usage : la charge de la conformité bascule sur votre entreprise.", rendu: "Une modification vous transforme en responsable. Automatiser, augmenter une capacité, changer un usage : la charge de la conformité bascule sur votre entreprise.", pourquoi: TIRET_CONSTAT },
+  ],
+  "/offres/bureau-etudes/": [
+    { maquette: "[Étude de cas Migen Travaux x ECOCEM : nouveau site](/preuves/orthus-ecocem/) · Pilotage complet de la construction d'un site industriel de recherche et développement près de Paris, coordination multi-métiers et jalons tenus.", rendu: "Pilotage complet de la construction d'un site industriel de recherche et développement près de Paris, coordination multi-métiers et jalons tenus.", pourquoi: PREFIXE_MARKDOWN },
+    { maquette: "[Étude de cas JOINT LYONNAIS : défaillances machines](/preuves/joint-lyonnais/) · Lyon, depuis février 2024. Diagnostic technique puis plusieurs solutions chiffrées, arbitrées par le client selon son budget.", rendu: "Lyon, depuis février 2024. Diagnostic technique puis plusieurs solutions chiffrées, arbitrées par le client selon son budget.", pourquoi: PREFIXE_MARKDOWN },
+    { maquette: "[Étude de cas EATON : mise en production](/preuves/eaton-mise-en-production/) · Janvier 2023. Six techniciens multidisciplinaires pour l'installation et la mise en production d'un parc machines neuf.", rendu: "Janvier 2023. Six techniciens multidisciplinaires pour l'installation et la mise en production d'un parc machines neuf.", pourquoi: PREFIXE_MARKDOWN },
+    { maquette: "[Étude de cas Migen Travaux x WASHTEC : installation de stations](/preuves/orthus-washtec/) · Montage des portiques de lavage selon les standards du constructeur, réception, levage et raccordements, partout en France.", rendu: "Montage des portiques de lavage selon les standards du constructeur, réception, levage et raccordements, partout en France.", pourquoi: PREFIXE_MARKDOWN },
   ],
 };
 const TIRETS_REMPLACES = TIRETS_PAR_PAGE[CHEMIN_PAGE] ?? [];
@@ -222,6 +239,15 @@ const PLI_REDUIRE =
   "libellé « Réduire » du pli « Lire la suite » : masqué tant que le pli est " +
   "fermé, sur le site comme dans la maquette (feuille `.cx-more`) ; la capture, " +
   "relue ici sans feuille de style, l'expose";
+/* Pour TITRES_VIDES_PAR_PAGE, plus bas : le traitement majoritaire du h2 vide. */
+const PROBLEME_SANS_TITRE =
+  "premier h2, section « 03 Problème » : la capture le rend vide, son " +
+  "paragraphe aussi (`<span class=\"sc-interp\"></span>`, liaison `of.*` non " +
+  "résolue). Le site ne sert ni h2 vide (titre nu) ni la phrase d'ouverture " +
+  "que le corpus pose sous « ## Le problème », absente de la référence : " +
+  "`punchline: \"\"` depuis 41be9d3, comme " +
+  "neuf des dix pages au même défaut. L'écart avec transfert-de-production, " +
+  "seule à servir la phrase de son corpus, reste à faire trancher par Mehdi";
 
 const TROUS_DECLARES = [
   /* Modèle, à suivre pour déclarer un trou :
@@ -450,8 +476,32 @@ const TROUS_DECLARES = [
      coûterait votre étude avant d'aller plus loin ? », « Combien coûte une
      étude ? » et « Faire chiffrer mon étude » parlent de coût sans énoncer
      aucun prix. Le contrat interdit les prix, pas le mot. Rendues mot pour
-     mot. */
+     mot.
+
+     15/10, SEPT LIGNES DÉCLARÉES, toutes des décisions de Mehdi déjà prises et
+     jamais reportées ici (la page ne tourne pas dans `bun run verifie`) :
+       · section 16, les cartes SAVOYE, ALSTEF GROUP et AMAZON du rail
+         (CAS_HORS_SUJET) : leurs fiches ne parlent pas de bureau d'études,
+         `verifie-cas-par-offre.mjs` rejoué avec les trois cartes remises
+         donne trois manquements ;
+       · section 18, la réponse de la première question (FAQ_FERMEE).
+     Les quatre autres cartes du rail (ECOCEM, JOINT LYONNAIS, EATON, WASHTEC)
+     sont rendues, moins le préfixe markdown que la capture recrache : voir
+     PREFIXE_MARKDOWN dans TIRETS_PAR_PAGE. */
   ["/offres/bureau-etudes/", [
+    { section: 16, ligne: "SAVOYE", pourquoi: CAS_HORS_SUJET },
+    { section: 16, ligne: "Deux automates migrés en deux week-ends, sans arrêter la production", pourquoi: CAS_HORS_SUJET },
+    { section: 16, ligne: "ALSTEF GROUP", pourquoi: CAS_HORS_SUJET },
+    { section: 16, ligne: "Des chantiers automatisés contrôlés point par point", pourquoi: CAS_HORS_SUJET },
+    { section: 16, ligne: "AMAZON", pourquoi: CAS_HORS_SUJET },
+    { section: 16, ligne: "Maintenir un centre logistique qui ne ferme jamais", pourquoi: CAS_HORS_SUJET },
+    {
+      section: 18,
+      ligne:
+        "Chaque mission est chiffrée sur devis, sur la base d'un périmètre écrit. Pas d'heures de dessin vendues au kilomètre. Un petit projet bien cadré reste un petit budget.",
+      pourquoi: FAQ_FERMEE,
+      dansLeHtml: true,
+    },
   ]],
 
   /* ------------------------------------------------------------------
@@ -462,8 +512,27 @@ const TROUS_DECLARES = [
      « +200 / Clients industriels accompagnés » (le corpus l'écrit deux fois
      lui aussi, `contenu/site/Offres/offres--chantier--transfert-de-production.md`,
      « ## Chiffres clés »). Elles étaient déclarées ici ; la règle validée par
-     le client les fait rendre mot pour mot, doublon compris. */
+     le client les fait rendre mot pour mot, doublon compris.
+
+     15/10, SIX LIGNES DÉCLARÉES, des décisions de Mehdi jamais reportées ici :
+       · section 12, les cartes LA PANETIÈRE et AMAZON du rail
+         (CAS_HORS_SUJET), deux manquements quand `verifie-cas-par-offre.mjs`
+         est rejoué avec elles ;
+       · section 14, la réponse de la première question (FAQ_FERMEE) ;
+       · section 15, « 6 pages liées » (COMPTEUR_PAGES_LIEES). */
   ["/offres/chantier/transfert-de-production/", [
+    { section: 12, ligne: "LA PANETIÈRE", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "Un renfort pour que le pain sorte chaque matin", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "AMAZON", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "Maintenir un centre logistique qui ne ferme jamais", pourquoi: CAS_HORS_SUJET },
+    {
+      section: 14,
+      ligne:
+        "Le coût dépend du nombre de lignes, de la distance, des travaux d'adaptation et du niveau d'accompagnement. Il est chiffré sur devis après visite, poste par poste. Repère utile : un chantier mal préparé se paie en semaines d'arrêt, et ces semaines valent presque toujours plus cher que la prestation.",
+      pourquoi: FAQ_FERMEE,
+      dansLeHtml: true,
+    },
+    { section: 15, ligne: "6 pages liées", pourquoi: COMPTEUR_PAGES_LIEES },
   ]],
 
 
@@ -556,12 +625,30 @@ const TROUS_DECLARES = [
      on retire LA phrase, jamais le paragraphe ; celles dont aucune phrase ne
      tombait sous l'interdit sont rendues entières et ne sont plus ici. Les
      huit pages génériques sont déclarées plus bas, en un seul bloc. */
+  /* /offres/chantier/demenagement-machines/, 15/10 : treize lignes de plus,
+     des décisions de Mehdi jamais reportées ici. Section 13, les cartes AKTID,
+     EATON, BAMESA, ERIKS et SALAISON DU MÂCONNAIS du rail (CAS_HORS_SUJET),
+     cinq manquements quand `verifie-cas-par-offre.mjs` est rejoué avec elles ;
+     section 16, « 6 pages liées » (COMPTEUR_PAGES_LIEES). */
   ["/offres/chantier/demenagement-machines/", [
+    { section: 13, ligne: "AKTID", pourquoi: CAS_HORS_SUJET },
+    { section: 13, ligne: "Montage d'un centre logistique, Clermont-Ferrand, 2023.", pourquoi: CAS_HORS_SUJET },
+    { section: 13, ligne: "12 monteurs mécaniciens, 8 engins de levage, site livré à la date prévue.", pourquoi: CAS_HORS_SUJET },
+    { section: 13, ligne: "EATON", pourquoi: CAS_HORS_SUJET },
+    { section: 13, ligne: "Installation et mise en production d'un parc machine, site automobile.", pourquoi: CAS_HORS_SUJET },
+    { section: 13, ligne: "6 techniciens mobilisés, continuité opérationnelle assurée ensuite.", pourquoi: CAS_HORS_SUJET },
+    { section: 13, ligne: "BAMESA", pourquoi: CAS_HORS_SUJET },
+    { section: 13, ligne: "La maintenance tient pendant que l'équipe recrute", pourquoi: CAS_HORS_SUJET },
+    { section: 13, ligne: "ERIKS", pourquoi: CAS_HORS_SUJET },
+    { section: 13, ligne: "Un responsable maintenance pour traverser la transition", pourquoi: CAS_HORS_SUJET },
+    { section: 13, ligne: "SALAISON DU MÂCONNAIS", pourquoi: CAS_HORS_SUJET },
+    { section: 13, ligne: "Du broyage à la cuisson, un seul technicien sur la chaîne", pourquoi: CAS_HORS_SUJET },
     {
       section: 15,
       ligne: "Le montant dépend du nombre de machines, de leur masse, des conditions d'accès et de la distance. Il est chiffré sur devis après l'étude préalable, qui est gratuite. En manutention lourde, un prix donné sans visite se corrige toujours à la hausse.",
       pourquoi: "phrase retirée (prix) : « Il est chiffré sur devis après l'étude préalable, qui est gratuite. » ; le reste de la réponse est rendu mot pour mot",
     },
+    { section: 16, ligne: "6 pages liées", pourquoi: COMPTEUR_PAGES_LIEES },
   ]],
 
   /* ------------------------------------------------------------------
@@ -706,20 +793,13 @@ const TITRES_VIDES_PAR_PAGE = {
      du 15/10 sur `maquette/rendu/`), neuf d'entre elles n'en servent aucun.
      Leur donnée porte `punchline: ""` depuis le portage contre la capture
      (41be9d3) : ni titre nu, ni phrase du corpus que la référence n'affiche
-     pas. Seule la page ci-dessus sert la phrase de son corpus. */
-  "/offres/retrofit/remise-en-etat/": [
-    {
-      section: 5,
-      rendu: null,
-      pourquoi:
-        "premier h2, section « 03 Problème » : la capture le rend vide, son " +
-        "paragraphe aussi (`<span class=\"sc-interp\"></span>`). Le site ne sert " +
-        "ni h2 vide (titre nu) ni la phrase en gras du corpus (« Le dépannage " +
-        "revient tous les mois… », absente de la référence), comme les huit " +
-        "autres pages au même défaut. L'écart avec transfert-de-production " +
-        "reste à faire trancher par Mehdi.",
-    },
-  ],
+     pas. Seule la page ci-dessus sert la phrase de son corpus. Les trois
+     pages d'offre ci-dessous sont celles que cette porte mesure ; les six
+     autres (/bureau-etudes/ et /travaux-industriels/) sont hors gabarit d'offre
+     au sens de `bun run verifie`, et mesurées le 15/10 au même traitement. */
+  "/offres/retrofit/remise-en-etat/": [{ section: 5, rendu: null, pourquoi: PROBLEME_SANS_TITRE }],
+  "/offres/bureau-etudes/": [{ section: 5, rendu: null, pourquoi: PROBLEME_SANS_TITRE }],
+  "/offres/chantier/demenagement-machines/": [{ section: 5, rendu: null, pourquoi: PROBLEME_SANS_TITRE }],
 
 
 
@@ -1096,7 +1176,7 @@ try {
       `${reference.length} sections de référence, ${site.length} servies ` +
       `(${SECTIONS_AJOUTEES.length} ajout(s) déclaré(s)), ${lignes} lignes de texte comparées, ` +
       `${titresDeRepli} titre(s) de repli accepté(s), ` +
-      `${TIRETS_REMPLACES.length} cadratin(s) arbitré(s), ${TROUS_ASSUMES.length} trou(s) assumé(s) ` +
+      `${TIRETS_REMPLACES.length} cadratin(s) ou préfixe(s) arbitré(s), ${TROUS_ASSUMES.length} trou(s) assumé(s) ` +
       `dont ${trousServis} vérifié(s) présent(s) dans le HTML servi.`,
   );
 
