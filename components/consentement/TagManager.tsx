@@ -15,8 +15,8 @@ import { useConsentement } from "./etat";
  *     conteneur, le site part sans lui. Mal formé, rien ne se charge non plus,
  *     et la console le dit (une faute de frappe ne doit pas passer en silence).
  *   · un choix doit exister. Sans réponse au bandeau, aucun script.
- *   · une des trois finalités que le conteneur sert doit être accordée. Le
- *     suivi commercial seul ne suffit pas : HubSpot reste chargé par Tags.tsx.
+ *   · les trois finalités que le conteneur sert doivent être accordées
+ *     (`FINALITES_CONTENEUR`).
  *
  * PAS D'IFRAME GTM EN NOSCRIPT, et ce n'est pas un oubli : l'iframe part
  * sans JavaScript, donc sans bandeau ni choix, et chargerait le conteneur
@@ -30,11 +30,21 @@ import { useConsentement } from "./etat";
 
 const FORMAT = /^GTM-[A-Z0-9]+$/;
 
-/** Les finalités que le conteneur sert : GA4, Google Ads, LinkedIn. */
+/**
+ * LES FINALITÉS EXIGÉES, TOUTES À LA FOIS. Le conteneur GTM-53LHN66 posé le
+ * 15/10 porte GA4 (mesure d'audience), Google Ads et LinkedIn Insight
+ * (publicité), et le script de suivi HubSpot (suivi commercial). GA4 et Ads
+ * lisent Consent Mode ; les balises LinkedIn et HubSpot sont du HTML
+ * personnalisé SANS condition de consentement, et aucun déclencheur n'écoute
+ * `migen_consentement` (relevé dans le gtm.js publié). Chargé sur une seule
+ * finalité, le conteneur les aurait fait partir sans l'accord correspondant.
+ * Tant que ces deux balises n'ont pas leurs vérifications de consentement
+ * dans GTM, il ne se charge que si les trois finalités sont accordées.
+ */
 const FINALITES_CONTENEUR = [
   "mesure_audience",
   "publicite",
-  "personnalisation",
+  "suivi_commercial",
 ] as const satisfies readonly (keyof Choix)[];
 
 /** L'identifiant s'il est utilisable, `null` sinon. Un format faux est signalé. */
@@ -55,7 +65,7 @@ export function sourceConteneur(
   choix: Choix | null,
 ): string | null {
   if (!identifiant || !choix) return null;
-  if (!FINALITES_CONTENEUR.some((finalite) => choix[finalite])) return null;
+  if (!FINALITES_CONTENEUR.every((finalite) => choix[finalite])) return null;
   return `https://www.googletagmanager.com/gtm.js?id=${identifiant}`;
 }
 

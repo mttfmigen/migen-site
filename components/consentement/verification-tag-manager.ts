@@ -48,13 +48,17 @@ assert.equal(identifiantConteneur(VALIDE), VALIDE);
 assert.equal(sourceConteneur(VALIDE, null), null);
 // Tout refusé : rien.
 assert.equal(sourceConteneur(VALIDE, choixUniforme(false)), null);
-// Suivi commercial seul : HubSpot, pas Google. Rien.
-assert.equal(sourceConteneur(VALIDE, seul("suivi_commercial")), null);
-
-// Une finalité Google accordée suffit.
-assert.equal(sourceConteneur(VALIDE, seul("mesure_audience")), ATTENDU);
-assert.equal(sourceConteneur(VALIDE, seul("publicite")), ATTENDU);
-assert.equal(sourceConteneur(VALIDE, seul("personnalisation")), ATTENDU);
+// Une seule finalité ne suffit plus (15/10) : le conteneur porte LinkedIn et
+// HubSpot sans condition de consentement, ils partiraient avec n'importe laquelle.
+for (const f of ["mesure_audience", "publicite", "personnalisation", "suivi_commercial"] as const) {
+  assert.equal(sourceConteneur(VALIDE, seul(f)), null, `chargé sur ${f} seul`);
+}
+// Deux sur trois : rien.
+assert.equal(sourceConteneur(VALIDE, { ...choixUniforme(true), suivi_commercial: false }), null);
+assert.equal(sourceConteneur(VALIDE, { ...choixUniforme(true), publicite: false }), null);
+assert.equal(sourceConteneur(VALIDE, { ...choixUniforme(true), mesure_audience: false }), null);
+// Les trois finalités du conteneur, personnalisation refusée : chargé.
+assert.equal(sourceConteneur(VALIDE, { ...choixUniforme(true), personnalisation: false }), ATTENDU);
 assert.equal(sourceConteneur(VALIDE, choixUniforme(true)), ATTENDU);
 
 // ------------------------------------------------------------- le montage
