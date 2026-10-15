@@ -2,7 +2,9 @@ import type { CSSProperties, ReactNode } from "react";
 
 import { LARGEUR, SECTION, SURTITRE, TITRE2 } from "@/components/site/blocs/habillage";
 import TexteRiche, { enTexteNu } from "@/components/site/blocs/TexteRiche";
-import type { SectionOffre } from "@/types/contenu";
+import type { PrestationBenefice, SectionOffre } from "@/types/contenu";
+
+import ENTETES from "@/lib/entetes-offre-maquette.json";
 
 import { fusionneLigne, numerote } from "./texte-offre";
 
@@ -123,6 +125,59 @@ const PARAGRAPHE: CSSProperties = {
   color: "var(--ink2)",
 };
 
+/* ------------------------------------------------- LE TABLEAU AU TÉLÉPHONE
+   La maquette mobile v2 rend ce tableau du corpus en cartes (dc.html, `isTb`) :
+   une ligne d'en-tête « Col. 1 · Col. 2 » en petites capitales, puis une carte
+   par ligne, la première colonne en gras, la seconde précédée de son intitulé.
+   Pas de titre de bureau, pas de compteur « N points », pas de numéro : ils
+   restaient dans la carte « L'offre » (signalé par Mehdi le 15/10, capture de
+   /offres/bureau-etudes/). Les intitulés varient d'une page à l'autre et ne
+   sont pas dans nos données : `scripts/genere-entetes-offre.mjs` les relève
+   dans le corpus de la maquette, clé = titre de la première prestation. Sans
+   intitulé connu, la carte s'affiche sans eux ; rien n'est deviné. */
+const TB: CSSProperties = { display: "grid", gap: 8, margin: "4px 0 14px" };
+const TB_TETE: CSSProperties = {
+  font: "600 10.5px/1.4 var(--fb)",
+  letterSpacing: ".1em",
+  textTransform: "uppercase",
+  color: "var(--mm-encre-3, #77736d)",
+};
+const TB_LIGNE: CSSProperties = {
+  display: "grid",
+  gap: 8,
+  padding: "14px 15px",
+  borderRadius: 16,
+  background: "var(--mm-fond-doux, #f6f6f7)",
+  border: "1px solid var(--mm-filet, rgba(28,27,25,.08))",
+};
+const TB_LIBELLE: CSSProperties = { ...TB_TETE, letterSpacing: ".08em", marginBottom: 3 };
+const TB_PREMIERE: CSSProperties = { font: "600 14.5px/1.45 var(--fb)", color: "var(--ink1)" };
+const TB_CELLULE: CSSProperties = { font: "400 14px/1.55 var(--fb)", color: "var(--ink1)" };
+
+/** Même normalisation que `cle` de `scripts/genere-entetes-offre.mjs`. */
+const cleEntete = (t: string) =>
+  t.replace(/\[([^\]]+)\]\([^)]*\)/g, "$1").replace(/\*\*/g, "").toLowerCase()
+    .replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+
+function enteteDe(lignes: readonly PrestationBenefice[]): readonly string[] | undefined {
+  const premiere = lignes[0]?.prestation;
+  if (!premiere) return undefined;
+  const table = ENTETES as Record<string, string[]>;
+  return (
+    table[cleEntete(premiere.accroche || "")] ??
+    table[cleEntete(`${premiere.accroche ?? ""} ${premiere.texte ?? ""}`)] ??
+    table[cleEntete(premiere.texte || "")]
+  );
+}
+
+/** La première colonne du corpus, « Intitulé : texte », toute en 600 comme la
+    maquette (un `<strong>` y serait plus gras que la ligne). */
+function premiereCellule({ prestation }: PrestationBenefice): string {
+  const texte = (prestation.texte ?? "").trim().replace(/^\*\*([\s\S]+)\*\*$/, "$1");
+  if (!prestation.accroche) return texte;
+  return texte ? `${prestation.accroche} : ${texte}` : prestation.accroche;
+}
+
 export default function PointsOffre({
   section,
   avant,
@@ -131,6 +186,7 @@ export default function PointsOffre({
   proseMobile = false,
 }: ProprietesPointsOffre) {
   const points = section.lignes.map(fusionneLigne);
+  const entete = enteteDe(section.lignes);
   /* Le premier paragraphe de la section, résumé de la maquette (dc.html
      `teaseOf`) : l'introduction, sinon la prose qui suit le tableau. */
   const premierParagraphe =
@@ -176,7 +232,7 @@ export default function PointsOffre({
 
             `mg-r2` fait tomber la grille en une seule colonne sous 900 px,
             comme dans la maquette. */}
-        <div className="mg-r2" style={ENTETE}>
+        <div className="mg-r2" data-doublon-mobile="" style={ENTETE}>
           <div>
             {/* « L'offre » EST le titre de la carte au téléphone (dc.html,
                 « 02 L'offre ») : ici, il en serait le doublon. */}
@@ -196,6 +252,9 @@ export default function PointsOffre({
             défilement de `Moteurs.tsx` (0,45 px par image), comme dans la
             maquette : sans elle, le rail du site restait immobile là où celui
             de la capture défile seul. */}
+        {/* Le rail de bureau, enveloppé : `[data-mm-kv]` est forcé en grille au
+            téléphone (`app/globals.css`) et battrait un masquage posé sur lui. */}
+        <div data-doublon-mobile="">
         <div data-mm-kv="" className="g3-offrail" style={RAIL}>
           {points.map((point, rang) => (
             <div key={point.titre} style={CARTE}>
@@ -249,6 +308,23 @@ export default function PointsOffre({
                   <TexteRiche texte={point.benefice} />
                 </span>
               </p>
+            </div>
+          ))}
+        </div>
+        </div>
+        <div data-mobile-seulement="" style={TB}>
+          {entete ? <div style={TB_TETE}>{entete.join(" · ")}</div> : null}
+          {section.lignes.map((ligne, rang) => (
+            <div key={rang} style={TB_LIGNE}>
+              <div style={TB_PREMIERE}>
+                <TexteRiche texte={premiereCellule(ligne)} />
+              </div>
+              <div>
+                {entete?.[1] ? <div style={TB_LIBELLE}>{entete[1]}</div> : null}
+                <div style={TB_CELLULE}>
+                  <TexteRiche texte={ligne.benefice} />
+                </div>
+              </div>
             </div>
           ))}
         </div>
