@@ -209,7 +209,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             sélecteur d'attribut sur le document entier, d'où un seul montage
             ici plutôt qu'un par section. Ils ne rendent rien. */}
         <Moteurs />
-        <Entete />
+        {/* « Diagnostic gratuit » du méga-menu Offres (V3 du 16/10) : l'outil
+            servi par la réécriture de `next.config.ts`, la même adresse que
+            le tiroir et le pied de page. */}
+        <Entete hrefDiagnostic="/diagnostic-zero-arret/" />
         {/* Barre d'action basse du motif tactile de la maquette Mobile. Sa règle
             CSS la masque au-delà de 880px, le même seuil où la navigation cède
             au bouton menu. Sans elle, on ne peut pas appeler Migen depuis un

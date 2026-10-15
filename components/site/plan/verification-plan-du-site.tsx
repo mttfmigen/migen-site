@@ -299,9 +299,17 @@ assert.deepEqual(
 /* L'accueil n'a pas de segment : son libellé est celui que le menu et le pied
    de page lui donnent déjà, pas un mot écrit pour le plan. */
 assert.equal(groupes[0].libelle, "Accueil", "la rubrique de l'accueil a perdu son libellé");
-/* Une rubrique nouvelle prend le libellé déduit de son chemin, sans texte
-   inventé : « carriere », en capitales par la feuille de style. */
-assert.equal(groupes[5].libelle, "carriere", "le libellé d'une rubrique n'est plus son segment");
+/* Une rubrique prend le libellé déduit de son chemin, sans texte inventé :
+   « offres », en capitales par la feuille de style. Un segment qui perd ses
+   accents ou son nom dans l'URL a le sien (16/10) : « carriere » s'affichait
+   « CARRIERE », c'est « Nous rejoindre » sur tout le site. */
+assert.equal(groupes[1].libelle, "offres", "le libellé d'une rubrique n'est plus son segment");
+assert.equal(groupes[5].libelle, "nous rejoindre", "la rubrique carrière a perdu le libellé du site");
+assert.equal(
+  rubriques([{ path: "/mentions-legales/", titre: "Mentions légales" }])[0].libelle,
+  "mentions légales",
+  "un libellé de rubrique a perdu ses accents",
+);
 assert.deepEqual(
   groupes[1].pages.map((p) => p.path),
   ["/offres/", "/offres/residence/", "/offres/retrofit/remise-en-etat/"],

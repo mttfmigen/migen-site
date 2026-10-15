@@ -23,9 +23,11 @@ import {
  * formulaire de la page (une ancre). `#besoin`, le panneau du héros, devient
  * `#mgx-form`, le formulaire de bas de page : depuis le milieu de la page,
  * l'appel descend vers le formulaire au lieu de remonter au héros. Un bouton
- * d'action qui ne mène pas à un formulaire (« Les cinq offres », vers
- * `/offres/`) n'est pas un appel : le photo + CTA garde alors celui de la
- * maquette, « Décrire mon besoin ».
+ * d'action qui ne mène pas à un formulaire (un lien vers une autre page)
+ * n'est pas un appel : le photo + CTA garde alors celui de la maquette,
+ * « Décrire mon besoin ». Depuis le 16/10, les offres secondaires portent le
+ * bouton de leur page (« Demander une intervention »…) à la place de « Les
+ * cinq offres », comme la V3 : leur photo + CTA le reprend.
  *
  * `rappelFinal={false}` : voir `AncreRappel`.
  *

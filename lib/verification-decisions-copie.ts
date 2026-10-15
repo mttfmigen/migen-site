@@ -98,6 +98,16 @@ const TEL_INCHANGE = [
 ];
 
 for (const [avant, apres] of PHOTOS) assert.equal(appliqueDecisions(avant).trim(), apres);
+
+/* 16/10, aucun montant : « 500 à 2 000 € » quitte la capture de Zéro arrêt
+   comme il a quitté la fiche. Espaces insécables comprises, celles du rendu ;
+   un salaire n'est pas une fourchette de coût d'arrêt, il reste. */
+assert.equal(
+  appliqueDecisions("De 500 à 2 000 € par heure, et personne ne vous signe un délai."),
+  "Et personne ne vous signe un délai.",
+);
+assert.equal(appliqueDecisions("500 à 2 000 €").trim(), "");
+assert.equal(appliqueDecisions("environ 2 500 à 2 750 € par mois"), "environ 2 500 à 2 750 € par mois");
 for (const [avant, apres] of TEL) assert.equal(appliqueDecisions(avant), apres);
 for (const texte of TEL_INCHANGE) assert.equal(appliqueDecisions(texte), texte);
 

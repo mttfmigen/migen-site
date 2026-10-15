@@ -30,10 +30,6 @@
       {
         "valeur": "12 mois",
         "libelle": "D'engagement, pour un prix mensuel fixe"
-      },
-      {
-        "valeur": "500 à 2 000 €",
-        "libelle": "De production perdue par heure d'arrêt, le coût que Zéro arrêt évite"
       }
     ],
     "brefBande": "Votre site est-il couvert par Zéro arrêt ?",
@@ -48,7 +44,7 @@
         "puces": [
           {
             "accroche": "Pendant ce temps, la production est perdue.",
-            "texte": "De 500 à 2 000 € par heure, et personne ne vous signe un délai."
+            "texte": "Et personne ne vous signe un délai."
           },
           {
             "accroche": "Tout le marché veut intervenir en journée.",

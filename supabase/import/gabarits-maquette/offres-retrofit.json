@@ -10,11 +10,11 @@
     "chapeau": "**Votre machine peut produire plusieurs années de plus, pour un coût total très inférieur à celui du neuf.** Le bâti est sain, c'est la commande qui est morte.",
     "actions": [
       {
-        "libelle": "Les cinq offres",
-        "href": "/offres/"
+        "libelle": "Faire diagnostiquer ma machine",
+        "href": "#besoin"
       }
     ],
-    "formulaireHeroTitre": "Décrire mon besoin",
+    "formulaireHeroTitre": "Faire diagnostiquer ma machine",
     "formulaireHeroMention": "Rappel dans l'heure",
     "brefSurtitre": "En bref",
     "chiffres": [

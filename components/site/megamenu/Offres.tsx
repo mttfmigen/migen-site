@@ -6,9 +6,9 @@ import { PASTILLE, RangeeOffre, SurTitre } from "./blocs";
 
 export interface PanneauOffresProps {
   /**
-   * Cible du « Diagnostic gratuit ». Aucune URL de ce nom n'existe dans
-   * l'inventaire du site : sans valeur, l'entrée ne s'affiche pas plutôt que
-   * de pointer vers un chemin deviné.
+   * Cible du « Diagnostic gratuit » : l'outil réécrit par `next.config.ts`,
+   * passé par `app/layout.tsx`. Sans valeur, l'entrée ne s'affiche pas plutôt
+   * que de pointer vers un chemin deviné.
    */
   hrefDiagnostic?: string;
 }

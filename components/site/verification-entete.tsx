@@ -90,6 +90,15 @@ assert.ok(
   "la réécriture /diagnostic-zero-arret/ n'est plus lue dans next.config.ts",
 );
 
+/* LA PASTILLE « DIAGNOSTIC GRATUIT » DU PANNEAU OFFRES (V3 du 16/10) ne se
+   montre que si l'en-tête du site reçoit sa cible : la mise en page la lui
+   passe, et c'est l'adresse réécrite, pas une page devinée. */
+const miseEnPage = readFileSync("app/layout.tsx", "utf8");
+assert.ok(
+  /<Entete\s+hrefDiagnostic="\/diagnostic-zero-arret\/"\s*\/>/.test(miseEnPage),
+  "l'en-tête du site ne reçoit plus la cible du « Diagnostic gratuit » : la pastille du méga-menu Offres a disparu",
+);
+
 const connues = new Set<string>([
   "/",
   ...index.map((entree) => entree.url).filter((url): url is string => typeof url === "string"),

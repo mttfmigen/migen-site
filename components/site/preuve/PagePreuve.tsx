@@ -940,12 +940,27 @@ function texteDeplace(blocs: readonly BlocComplementPreuve[] | undefined, titre:
 }
 const TITRES_DEPLACES = ["Ce que nous avons mis en place", "Le résultat"];
 
-function Complement({ blocs }: { blocs: BlocComplementPreuve[] }) {
+function Complement({
+  blocs,
+  apresResultat,
+}: {
+  blocs: BlocComplementPreuve[];
+  /** Vrai quand la section « Le résultat » est rendue juste au-dessus. */
+  apresResultat: boolean;
+}) {
   /* Sous 880 px, un bloc rendu dans sa section (voir `texteDeplace`) est
      masqué ici, et la section entière quand il ne reste rien : le texte reste
      dans le DOM, le bureau ne bouge pas. */
   const deplace = (bloc: BlocComplementPreuve) =>
     TITRES_DEPLACES.some((t) => texteDeplace([bloc], t) !== undefined);
+  /* « LE RÉSULTAT » DEUX FOIS DE SUITE (relevé du 16/10, 16 études de cas sur
+     41) : la carte s'ouvrait sur le titre de la section sombre qu'elle suit.
+     Quand un autre bloc ouvre la carte (« Chiffres clés »…), le titre ne
+     suit plus la section et reste.
+     Le premier bloc garde son texte et perd ce titre redit ; la donnée garde
+     le sien, que `texteDeplace` lit au téléphone. */
+  const titreRedit = (bloc: BlocComplementPreuve, rang: number) =>
+    apresResultat && rang === 0 && bloc.titre?.trim().toLowerCase() === "le résultat";
   const toutDeplace = blocs.every(deplace);
   return (
     <section
@@ -956,7 +971,7 @@ function Complement({ blocs }: { blocs: BlocComplementPreuve[] }) {
         <div style={COMPLEMENT_CARTE}>
           {blocs.map((bloc, rang) => (
             <div key={rang} className={deplace(bloc) ? styles.libelleBureau : undefined} style={COMPLEMENT_BLOC}>
-              {bloc.titre ? (
+              {bloc.titre && !titreRedit(bloc, rang) ? (
                 <div style={COMPLEMENT_TITRE_RANGEE}>
                   <span aria-hidden="true" style={COMPLEMENT_TIRET} />
                   <h3 style={COMPLEMENT_TITRE}>{bloc.titre}</h3>
@@ -1596,7 +1611,7 @@ export default function PagePreuve({
         {/* ----------------------------------------- 7 · « Complément » */}
 
         {contenu.complement?.length ? (
-          <Complement blocs={contenu.complement} />
+          <Complement blocs={contenu.complement} apresResultat={resultats.length > 0} />
         ) : null}
 
         {/* --------------------------------------- 8 · « Votre besoin » */}

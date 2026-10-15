@@ -32,6 +32,12 @@
   .panneau {
     gap: 20px;
   }
+
+  /* La carte « +120 collaborateurs » du haut redit celle de la carte large,
+     qui la suit directement une fois la grille sur une colonne. */
+  .doublonMobile {
+    display: none;
+  }
 }
 
 /*

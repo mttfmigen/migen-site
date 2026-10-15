@@ -158,6 +158,16 @@ export default function LogosSecteur({ titre, logos = [] }: ProprietesLogosSecte
         </div>
       ) : null}
 
+      {/* LE TITRE DE LA BANDE, SANS LA GRILLE (V3 du 16/10) : « Ils nous
+          confient leurs lignes agroalimentaires » se lit au-dessus de la barre
+          qui défile, la seule bande depuis le 09/10. Il dit à qui sont les
+          logos de la page ; il n'appartenait pas qu'à la grille. */}
+      {!grille && titre ? (
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
+          <div style={TITRE_GRILLE}>{titre}</div>
+        </div>
+      ) : null}
+
       {/* LE DÉFILEMENT NE SORT QUE SI LA GRILLE N'EST PAS LÀ : une seule bande
           de logos par page, écart déclaré du 09/10 en tête de fichier. */}
       {grille ? null : (

@@ -8,7 +8,7 @@ import type { PanneauId } from "./entete-donnees";
 export interface MegaMenuProps {
   /** Panneau affiché. Le composant n'est monté que lorsqu'il y en a un. */
   panneau: PanneauId;
-  /** Cible du « Diagnostic gratuit », absente de l'inventaire d'URL. */
+  /** Cible du « Diagnostic gratuit » (l'outil réécrit par `next.config.ts`). */
   hrefDiagnostic?: string;
   /** Nom accessible du feuillet : le libellé de l'entrée qui l'a ouvert. */
   libelle: string;

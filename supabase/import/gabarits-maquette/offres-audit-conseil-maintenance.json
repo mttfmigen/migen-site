@@ -10,11 +10,11 @@
     "chapeau": "Un référent technique passe du vrai temps sur votre site et croise la GMAO, les historiques, les contrats et les entretiens terrain. Il vous remet ensuite un plan d'actions chiffré et classé par gain attendu.",
     "actions": [
       {
-        "libelle": "Les cinq offres",
-        "href": "/offres/"
+        "libelle": "Demander mon diagnostic gratuit",
+        "href": "#besoin"
       }
     ],
-    "formulaireHeroTitre": "Décrire mon besoin",
+    "formulaireHeroTitre": "Demander mon diagnostic gratuit",
     "formulaireHeroMention": "Rappel dans l'heure",
     "brefSurtitre": "En bref",
     "chiffres": [
