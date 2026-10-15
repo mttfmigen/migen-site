@@ -68,6 +68,27 @@
     display: none !important;
   }
 
+  /* UNE SOUS-PARTIE (`SOUS_PARTIES` de `carriere/PageHubCarriere.tsx`) garde
+     son titre, en intertitre de carte comme le `###` de la maquette mobile v2
+     (dc.html, `isH3` : filet haut, 600 16px/1.35) ; son surtitre reste masqué. */
+  .mobileV2 details[data-carte-numerotee] [data-sous-partie] h2[data-mc-titre-section] {
+    display: block !important;
+    max-width: none !important;
+    margin: 18px 0 8px !important;
+    padding-top: 14px !important;
+    border-top: 1px solid var(--line) !important;
+    font: 600 16px/1.35 var(--ft) !important;
+    letter-spacing: -0.02em !important;
+    color: var(--ink) !important;
+  }
+
+  /* Un seul chapô par carte : le premier paragraphe d'une sous-partie est du
+     texte courant, comme les paragraphes qui suivent un `###` de la maquette. */
+  .mobileV2 details[data-carte-numerotee] [data-sous-partie] [data-mc-intro]:first-of-type {
+    font: 400 15px/1.65 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+
   .mobileV2 details[data-carte-numerotee] :is([data-mc-entete], [data-mc-pile]) {
     display: block !important;
     position: static !important;
