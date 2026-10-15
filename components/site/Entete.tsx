@@ -153,6 +153,7 @@ export default function Entete({
         }}
       >
         <header
+          className="mg-barre"
           style={{
             width: "max-content",
             maxWidth: "100%",
@@ -204,6 +205,7 @@ export default function Entete({
               migen
             </span>
             <span
+              className="mg-copyright"
               style={{
                 font: "500 9px/1 var(--fb)",
                 color: "var(--ink4)",
@@ -346,30 +348,29 @@ export default function Entete({
             <button
               type="button"
               className="mg-burger"
-              aria-label="Menu"
               aria-expanded={tiroir}
               aria-controls="mg-tiroir"
               onClick={() => {
                 setPanneau(null);
                 setTiroir((ouvert) => !ouvert);
               }}
+              // Le bouton de la maquette mobile v2 (dc.html L69) : une pilule
+              // anthracite écrite « Menu », « Fermer » quand le tiroir est ouvert.
+              // Il n'existe que sous 880 px (`.mg-burger`, `app/globals.css`).
               style={{
                 alignItems: "center",
-                justifyContent: "center",
-                width: 36,
                 height: 36,
+                padding: "0 15px",
                 borderRadius: 999,
-                background: "var(--chip)",
+                background: "#1c1b19",
+                color: "#fff",
                 border: "none",
                 cursor: "pointer",
-                flexDirection: "column",
-                gap: 4,
-                padding: 0,
+                font: "600 13px var(--fb)",
                 flex: "none",
               }}
             >
-              <span style={BARRE_BURGER} />
-              <span style={BARRE_BURGER} />
+              {tiroir ? "Fermer" : "Menu"}
             </button>
           </div>
         </header>
@@ -390,7 +391,6 @@ export default function Entete({
         ouvert={tiroir}
         landingPage={landingPage}
         onFermer={() => setTiroir(false)}
-        telephone={telephone}
         hrefCta={hrefCta}
         libelleCta={libelleCta}
       />
@@ -407,11 +407,4 @@ const STYLE_CTA: React.CSSProperties = {
   font: "600 13.5px var(--fb)",
   whiteSpace: "nowrap",
   boxShadow: "0 8px 20px -10px rgba(255,124,60,.85)",
-};
-
-const BARRE_BURGER: React.CSSProperties = {
-  display: "block",
-  width: 15,
-  height: 1.5,
-  background: "var(--ink)",
 };

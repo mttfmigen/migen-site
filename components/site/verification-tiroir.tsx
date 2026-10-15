@@ -41,7 +41,6 @@ import TiroirMobile from "@/components/site/TiroirMobile";
 import {
   type EntreeTiroir,
   type SectionTiroir,
-  TELEPHONE_SITE,
   TIROIR,
   TIROIR_ACCUEIL,
 } from "@/components/site/entete-donnees";
@@ -343,7 +342,6 @@ const rendu = renderToStaticMarkup(
     ouvert={false}
     landingPage={false}
     onFermer={() => {}}
-    telephone={TELEPHONE_SITE}
     hrefCta="/contact/"
     libelleCta="Décrire mon besoin"
   />,

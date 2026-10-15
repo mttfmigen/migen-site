@@ -61,20 +61,4 @@
   .carte {
     padding: 18px 8px 20px !important;
   }
-  /* LA RANGÉE REPLIÉE S'ALIGNE SUR LES AUTRES. Les cartes repliées de
-     l'accueil débordent de la gouttière de page jusqu'à 18 px du bord
-     (`replis-accueil.module.css`, `--debord-carte`). Cette section est la
-     seule à porter DÉJÀ une gouttière de 18 px sous 640 px (son contenu ouvert
-     en a besoin) : sa carte ne déborde donc pas. Sans cela elle sortait de
-     l'écran de 4 px de chaque côté, mesuré à 390 px. */
-  .wrap {
-    --debord-carte: 0px;
-  }
-}
-@media (max-width: 389px) {
-  /* Sous 390 px, la gouttière de page de `app/globals.css` (20 px, deux
-     sélecteurs d'attribut) bat celle de `.wrap` : la carte revient à 18 px. */
-  .wrap {
-    --debord-carte: -2px;
-  }
 }

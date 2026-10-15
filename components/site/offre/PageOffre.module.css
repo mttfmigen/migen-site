@@ -139,6 +139,14 @@
   .gabarit details:not([data-pliable-mobile]) > div {
     padding-left: 26px !important;
   }
+  /* Sauf deux repliés qui ne sont pas des questions, et dont le corps garde
+     la largeur des cartes au lieu d'un retrait de 26 px à gauche seulement
+     (mesuré le 15/10 sur les pages villes et secteurs) : la suite des
+     pastilles de maillage (« Voir les N autres pages ») et le formulaire
+     « Demander une intervention » de la ville. */
+  .gabarit :is([data-pastilles-cocon] details, details[data-repli-formulaire]) > div {
+    padding-left: 0 !important;
+  }
 }
 
 @media (max-width: 560px) {

@@ -505,6 +505,40 @@ details[open] .g3-plus {
   }
 }
 
+/* LA BARRE DU HAUT DE LA MAQUETTE MOBILE V2 (dc.html L67 à L70), sous 880 px :
+   une barre blanche translucide de toute la largeur, à 12 px des bords, le
+   logo « migen » à gauche et la pilule « Menu » à droite (`.mg-burger`). Elle
+   remplace la pastille centrée du bureau, qui ne bouge pas au-dessus. */
+@media (max-width: 880px) {
+  .mg-topwrap {
+    padding: 12px 12px 0 !important;
+  }
+  .mg-barre {
+    width: auto !important;
+    justify-content: space-between;
+    padding: 6px 6px 6px 14px !important;
+    background: rgba(255, 255, 255, 0.82) !important;
+    backdrop-filter: blur(20px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+    border-color: rgba(255, 255, 255, 0.9) !important;
+    box-shadow: 0 12px 30px -18px rgba(0, 0, 0, 0.35) !important;
+  }
+  .mg-barre > a:first-child {
+    gap: 8px !important;
+    padding: 0 !important;
+  }
+  .mg-barre > a:first-child img {
+    height: 20px !important;
+  }
+  .mg-barre > a:first-child > span {
+    font: 600 15px var(--ft) !important;
+    letter-spacing: -0.02em !important;
+  }
+  .mg-copyright {
+    display: none;
+  }
+}
+
 /* Grilles de valeurs */
 @media (max-width: 1000px) {
   .mg-valg {

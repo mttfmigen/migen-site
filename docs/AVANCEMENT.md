@@ -13,26 +13,26 @@ Une donnée absente s'y écrit « non calculable » avec son motif. Jamais zéro
 
 ```json avancement
 {
-  "remesureLe": "14/10/2026 à 15:02",
+  "remesureLe": "15/10/2026 à 08:14",
   "brancheDeployee": {
     "reference": "origin/phase-2-gabarits",
     "recuperee": "oui, à l’instant",
-    "tete": "f00fa34",
-    "commitsDepuisMinuit": 51
+    "tete": "3c9f092",
+    "commitsDepuisMinuit": 2
   },
   "arbreOuTourneLeScript": {
-    "branche": "worktree-wf_d782a073-806-8",
-    "tete": "93b43a9",
+    "branche": "perimetre-photos-registre",
+    "tete": "3c9f092",
     "fichiersNonCommites": 2
   },
   "contenu": {
     "fichesDeContenu": 246
   },
   "verification": {
-    "portesDeVerification": 58,
-    "entreesAuRegistre": 93,
-    "promessesAvecCommande": 50,
-    "retoursEncoreOuverts": 10
+    "portesDeVerification": 59,
+    "entreesAuRegistre": 103,
+    "promessesAvecCommande": 60,
+    "retoursEncoreOuverts": 13
   }
 }
 ```

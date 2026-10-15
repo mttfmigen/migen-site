@@ -6,7 +6,6 @@ import { useEffect, useRef } from "react";
 import s from "./Entete.module.css";
 import t from "./TiroirMobile.module.css";
 import {
-  type Telephone,
   TIROIR,
   TIROIR_ACCUEIL,
   TIROIR_LP,
@@ -20,7 +19,6 @@ export interface TiroirMobileProps {
   landingPage: boolean;
   /** Appelé par Échap, le fond de page, et chaque lien suivi. */
   onFermer: () => void;
-  telephone: Telephone;
   hrefCta: string;
   libelleCta: string;
 }
@@ -47,7 +45,6 @@ export default function TiroirMobile({
   ouvert,
   landingPage,
   onFermer,
-  telephone,
   hrefCta,
   libelleCta,
 }: TiroirMobileProps) {
@@ -318,7 +315,9 @@ export default function TiroirMobile({
           </div>
         )}
 
-        <div style={{ display: "flex", gap: 8, marginTop: 18 }}>
+        {/* Un seul bouton sous les rubriques, comme la maquette mobile v2
+            (dc.html L207) ; le numéro reste dans la barre collante. */}
+        <div style={{ display: "flex", marginTop: 14 }}>
           <Link
             href={hrefCta}
             onClick={onFermer}
@@ -334,21 +333,6 @@ export default function TiroirMobile({
           >
             {libelleCta}
           </Link>
-          <a
-            href={telephone.href}
-            style={{
-              height: 50,
-              padding: "0 18px",
-              borderRadius: 999,
-              background: "var(--chip)",
-              display: "grid",
-              placeItems: "center",
-              font: "600 14px var(--fb)",
-              whiteSpace: "nowrap",
-            }}
-          >
-            {telephone.affichage}
-          </a>
         </div>
       </div>
     </div>

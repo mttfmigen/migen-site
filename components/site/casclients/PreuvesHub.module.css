@@ -229,9 +229,12 @@
     font: 600 13.5px var(--fb);
     white-space: nowrap;
   }
+  /* Déborde du héros (gouttière de 18 px) jusqu'au bord : les pastilles
+     posent elles-mêmes leurs 18 px de marge. -20 les laissait à 16 px, plus
+     larges que les cartes du reste du site (mesuré le 15/10). */
   .listeRubrique {
     order: 4;
-    margin: 6px -20px 0;
+    margin: 6px -18px 0;
   }
   /* Le chapô de la maquette : « Tout le monde promet… comment. » en gras et
      « Voici nos interventions… terrain. » en romain, UN SEUL paragraphe de

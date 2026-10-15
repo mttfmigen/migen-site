@@ -280,14 +280,13 @@
  * contenu OUVERT, des grilles dessinées pour 310 px. La rangée a donc l'air de
  * la maquette fermée, et le contenu déplié garde toute sa largeur.
  *
- * LA CARTE DÉBORDE DE LA GOUTTIÈRE JUSQU'À 18 PX DU BORD, celle de la maquette
- * et celle que posent en ligne le photo + CTA et les bandeaux de
- * `components/site/mobile/` (`margin: … 18px`). Sans ce débord, les cartes
- * (310 px) et les insertions de conversion (354 px) alternaient deux largeurs
- * sur toute la page. `--debord-carte` vaut 40 − 18 = 22 px de débord, 20 − 18
- * = 2 sous 390 px où la gouttière tombe à 20 ; une section dont la gouttière
- * est déjà de 18 px la remet à zéro (`ProcessSelection.module.css`), une
- * section sans gouttière la porte à 18 (`.repliPleineLargeur`).
+ * LA CARTE EST À 18 PX DU BORD, la largeur de toutes les cartes du site au
+ * téléphone (référence de Mehdi du 15/10 : « Ce que nous garantissons » de
+ * /offres/residence/, 354 px à 390). La gouttière de page vaut elle-même 18 px
+ * sous 880 px depuis le 14/10 : la carte n'en déborde plus. L'ancien débord
+ * de 22 px, calculé pour 40 px de gouttière, la faisait sortir de l'écran de
+ * 4 px de chaque côté (mesuré le 15/10). Une section sans gouttière porte
+ * `--debord-carte` à 18 (`.repliPleineLargeur`).
  *
  * Les jetons sont ceux des cartes du parcours (`ParcoursMobile.module.css`) :
  * `--card` et `--line`, pour que les deux familles de cartes de l'accueil ne
@@ -306,7 +305,7 @@
     align-items: center;
     padding: 15px 16px;
     margin-block: 0;
-    margin-inline: var(--debord-carte, -22px);
+    margin-inline: var(--debord-carte, 0);
     border-radius: 20px;
     background: var(--card);
     border: 1px solid var(--line);
@@ -320,12 +319,6 @@
     border-radius: 999px;
     background: rgba(28, 27, 25, 0.055);
     font-size: 17px;
-  }
-}
-
-@media (max-width: 389px) {
-  .repli :global(details[data-pliable-mobile] > summary) {
-    margin-inline: var(--debord-carte, -2px);
   }
 }
 

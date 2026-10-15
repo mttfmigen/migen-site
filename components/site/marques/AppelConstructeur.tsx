@@ -19,7 +19,11 @@ export default function AppelConstructeur({
   hrefAction,
 }: ProprietesAppelConstructeur) {
   return (
+    // `data-gouttiere-mobile` : 18 px de gouttière sous 880 px (`app/globals.css`),
+    // celle des autres blocs ; son rembourrage ne porte pas « 0 40px », la
+    // règle commune ne le voyait pas et la carte restait à 40 px du bord.
     <section
+      data-gouttiere-mobile=""
       style={{
         maxWidth: 1200,
         margin: "0 auto",

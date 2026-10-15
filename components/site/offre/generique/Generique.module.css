@@ -129,11 +129,24 @@
     display: none;
   }
 
-  /* La bascule d'un bloc replié posé à pleine largeur (sections numérotées,
-     dont la gouttière de 40 px est portée par leur grille intérieure) : sans
-     ce retrait, l'étiquette et le chevron touchaient les bords de l'écran. */
-  .pliPleineLargeur > details[data-pliable-mobile] > summary {
-    padding-inline: 40px;
+  /* UN BLOC REPLIÉ POSÉ À PLEINE LARGEUR (sections numérotées, dont la
+     gouttière est portée par leur grille intérieure) devient la même carte
+     que les autres : 18 px du bord, la largeur de « Ce que nous
+     garantissons » sur /offres/residence/ (référence de Mehdi du 15/10). Sans
+     cela sa carte allait d'un bord à l'autre de l'écran entre des cartes à
+     18 px (six pages, dont /offres/depannage-industriel/panne-machine/). La
+     bande alternée de bureau (fond blanc, filets) s'efface, la carte se pose
+     sur le fond de page comme ses voisines, et la grille intérieure rend sa
+     gouttière, que le corps de la carte porte déjà. */
+  .pliPleineLargeur {
+    background: none !important;
+    border-block: 0 !important;
+  }
+  .pliPleineLargeur > details[data-pliable-mobile] {
+    margin-inline: 18px;
+  }
+  .pliPleineLargeur > details[data-pliable-mobile] .mg-r2 {
+    padding-inline: 0 !important;
   }
 
   /* LE PANNEAU SOMBRE DU CONSTAT, resserré : ses 56 px de marge intérieure,
@@ -155,5 +168,13 @@
   }
   .racineMobile article > [data-mobile-seulement] {
     margin-bottom: 28px !important;
+  }
+  /* Le photo + CTA et le bandeau de rappel posent leurs 18 px de marge en
+     ligne (`components/site/mobile/`), prévus pour un parent sans gouttière.
+     Dans l'article de lecture, la section porte déjà la sienne : sans ce
+     retrait ils tombaient à 36 px du bord, plus étroits que les cartes
+     voisines (mesuré le 15/10 sur les deux pages résidence). */
+  .racineMobile article > [data-mobile-seulement] {
+    margin-inline: 0 !important;
   }
 }

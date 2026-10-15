@@ -234,9 +234,11 @@
   }
 }
 @media (max-width: 640px) {
+  /* 18 px, la gouttière de toutes les autres pages au téléphone (décision
+     du 14/10) ; 14 rendait les cartes de ce hub plus larges qu'ailleurs. */
   .app {
-    padding-left: 14px !important;
-    padding-right: 14px !important;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
   }
   .hcard {
     grid-template-columns: minmax(0, 1fr) !important;
