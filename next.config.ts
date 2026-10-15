@@ -24,13 +24,14 @@ const ENTETES_SECURITE = [
   // Le navigateur s'en tient au Content-Type déclaré, il ne devine pas. Ferme
   // la porte au fichier déposé qui serait réinterprété en script.
   { key: "X-Content-Type-Options", value: "nosniff" },
-  // Deux ans, sous-domaines inclus. `preload` n'est pas déclaré : l'inscription
-  // à la liste des navigateurs est difficile à défaire et engage tous les
-  // sous-domaines de migen.fr, y compris ceux des autres outils. À arbitrer
-  // séparément.
+  // Deux ans, pour migen.fr seul. NI `includeSubDomains` NI `preload` : les
+  // sous-domaines appartiennent à d'autres outils et tous ne servent pas
+  // HTTPS (intervention, send.news, autoconfig, mesuré le 15/10 à la mise en
+  // ligne). Un navigateur passé par migen.fr les aurait refusés en HTTP
+  // pendant deux ans, sans retour possible de notre côté.
   {
     key: "Strict-Transport-Security",
-    value: "max-age=63072000; includeSubDomains",
+    value: "max-age=63072000",
   },
   // Aucune mise en cadre, ce qui coupe le détournement de clic. L'équivalent
   // moderne, `frame-ancestors`, vit dans une CSP : tant qu'il n'y en a pas,
