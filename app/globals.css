@@ -830,10 +830,15 @@ details[open] .g3-plus {
    `px 40px` pour les variantes qui portent aussi un rembourrage vertical
    (« 44px 40px 0 »). Un conteneur à 1200 px SANS gouttière n'est pas touché :
    lui en poser une doublerait celle de son parent. React écrit l'attribut
-   sans espace après les deux-points, d'où la forme du sélecteur. */
+   sans espace après les deux-points, d'où la forme du sélecteur. Un bloc
+   re-rendu par le navigateur voit au contraire son attribut réécrit avec
+   espaces (« max-width: 1200px; padding: 40px 40px 0px ») : la seconde forme
+   le rattrape. Sans elle, 13 fiches métier gardaient 40 px en ligne alors
+   qu'elles avaient 18 px en local (mesuré le 15/10). */
 @media (max-width: 880px) {
   [style*="max-width:1200px"][style*="0 40px"],
-  [style*="max-width:1200px"][style*="px 40px"] {
+  [style*="max-width:1200px"][style*="px 40px"],
+  [style*="max-width: 1200px"][style*="px 40px"] {
     padding-left: 18px !important;
     padding-right: 18px !important;
   }
