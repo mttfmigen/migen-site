@@ -154,6 +154,28 @@ const PREFIXE_MARKDOWN =
   "carte au téléphone (`data-mobile-seulement`), et le texte qui suit reste " +
   "rendu mot pour mot. Garde : `enTexteNu` dans offre/ReferencesOffre.tsx et " +
   "components/site/verification-markdown-brut.tsx";
+/* Les quatre cartes de référence au préfixe recraché : le même rail, mot pour
+   mot, sur les deux pages du bureau d'études. */
+const PREFIXES_BUREAU_ETUDES = [
+  { maquette: "[Étude de cas Migen Travaux x ECOCEM : nouveau site](/preuves/orthus-ecocem/) · Pilotage complet de la construction d'un site industriel de recherche et développement près de Paris, coordination multi-métiers et jalons tenus.", rendu: "Pilotage complet de la construction d'un site industriel de recherche et développement près de Paris, coordination multi-métiers et jalons tenus.", pourquoi: PREFIXE_MARKDOWN },
+  { maquette: "[Étude de cas JOINT LYONNAIS : défaillances machines](/preuves/joint-lyonnais/) · Lyon, depuis février 2024. Diagnostic technique puis plusieurs solutions chiffrées, arbitrées par le client selon son budget.", rendu: "Lyon, depuis février 2024. Diagnostic technique puis plusieurs solutions chiffrées, arbitrées par le client selon son budget.", pourquoi: PREFIXE_MARKDOWN },
+  { maquette: "[Étude de cas EATON : mise en production](/preuves/eaton-mise-en-production/) · Janvier 2023. Six techniciens multidisciplinaires pour l'installation et la mise en production d'un parc machines neuf.", rendu: "Janvier 2023. Six techniciens multidisciplinaires pour l'installation et la mise en production d'un parc machines neuf.", pourquoi: PREFIXE_MARKDOWN },
+  { maquette: "[Étude de cas Migen Travaux x WASHTEC : installation de stations](/preuves/orthus-washtec/) · Montage des portiques de lavage selon les standards du constructeur, réception, levage et raccordements, partout en France.", rendu: "Montage des portiques de lavage selon les standards du constructeur, réception, levage et raccordements, partout en France.", pourquoi: PREFIXE_MARKDOWN },
+];
+/* 15/10, LA MOITIÉ « BUREAU D'ÉTUDES » DE LA DÉCISION ORTHUS. Mehdi, 09/10 :
+   « Orthus = Migen travaux et bureau d'études ». 92bc5f4 l'a appliquée selon
+   l'activité : « Migen Bureau d'études » sur la fiche de /bureau-etudes/,
+   « Migen Travaux » partout ailleurs. `lib/decisions-copie.ts` (bloc ORTHUS)
+   n'en porte que la règle globale, si bien que la capture lue ici dit
+   « Migen Travaux x ECOCEM » quand la page sert, à bon droit, « Migen Bureau
+   d'études x ECOCEM ». Seul le nom de la marque change, l'étiquette reste
+   celle de la capture. /offres/bureau-etudes/ n'est pas concernée : sa fiche
+   n'a pas été réécrite par 92bc5f4 et sert « Migen Travaux », comme la porte
+   l'attend. */
+const ORTHUS_BUREAU_ETUDES =
+  "Orthus devenu « Migen Bureau d'études » sur la fiche de /bureau-etudes/ " +
+  "(décision de Mehdi du 09/10, appliquée par 92bc5f4 selon l'activité), là " +
+  "où la règle globale de lib/decisions-copie.ts en fait « Migen Travaux »";
 
 const TIRETS_PAR_PAGE = {
   "/bureau-etudes/bureau-etude-electrique/": [
@@ -186,11 +208,11 @@ const TIRETS_PAR_PAGE = {
     { maquette: "Les anciennes machines restent concernées — Un équipement mis en service avant l'obligation de marquage doit respecter les prescriptions techniques du code du travail, CE ou pas.", rendu: "Les anciennes machines restent concernées. Un équipement mis en service avant l'obligation de marquage doit respecter les prescriptions techniques du code du travail, CE ou pas.", pourquoi: TIRET_CONSTAT },
     { maquette: "Une modification vous transforme en responsable — Automatiser, augmenter une capacité, changer un usage : la charge de la conformité bascule sur votre entreprise.", rendu: "Une modification vous transforme en responsable. Automatiser, augmenter une capacité, changer un usage : la charge de la conformité bascule sur votre entreprise.", pourquoi: TIRET_CONSTAT },
   ],
-  "/offres/bureau-etudes/": [
-    { maquette: "[Étude de cas Migen Travaux x ECOCEM : nouveau site](/preuves/orthus-ecocem/) · Pilotage complet de la construction d'un site industriel de recherche et développement près de Paris, coordination multi-métiers et jalons tenus.", rendu: "Pilotage complet de la construction d'un site industriel de recherche et développement près de Paris, coordination multi-métiers et jalons tenus.", pourquoi: PREFIXE_MARKDOWN },
-    { maquette: "[Étude de cas JOINT LYONNAIS : défaillances machines](/preuves/joint-lyonnais/) · Lyon, depuis février 2024. Diagnostic technique puis plusieurs solutions chiffrées, arbitrées par le client selon son budget.", rendu: "Lyon, depuis février 2024. Diagnostic technique puis plusieurs solutions chiffrées, arbitrées par le client selon son budget.", pourquoi: PREFIXE_MARKDOWN },
-    { maquette: "[Étude de cas EATON : mise en production](/preuves/eaton-mise-en-production/) · Janvier 2023. Six techniciens multidisciplinaires pour l'installation et la mise en production d'un parc machines neuf.", rendu: "Janvier 2023. Six techniciens multidisciplinaires pour l'installation et la mise en production d'un parc machines neuf.", pourquoi: PREFIXE_MARKDOWN },
-    { maquette: "[Étude de cas Migen Travaux x WASHTEC : installation de stations](/preuves/orthus-washtec/) · Montage des portiques de lavage selon les standards du constructeur, réception, levage et raccordements, partout en France.", rendu: "Montage des portiques de lavage selon les standards du constructeur, réception, levage et raccordements, partout en France.", pourquoi: PREFIXE_MARKDOWN },
+  "/offres/bureau-etudes/": PREFIXES_BUREAU_ETUDES,
+  "/bureau-etudes/": [
+    ...PREFIXES_BUREAU_ETUDES,
+    { maquette: "MIGEN TRAVAUX X ECOCEM", rendu: "MIGEN BUREAU D'ÉTUDES X ECOCEM", pourquoi: ORTHUS_BUREAU_ETUDES },
+    { maquette: "MIGEN TRAVAUX X WASHTEC", rendu: "MIGEN BUREAU D'ÉTUDES X WASHTEC", pourquoi: ORTHUS_BUREAU_ETUDES },
   ],
 };
 const TIRETS_REMPLACES = TIRETS_PAR_PAGE[CHEMIN_PAGE] ?? [];
@@ -248,6 +270,12 @@ const PROBLEME_SANS_TITRE =
   "`punchline: \"\"` depuis 41be9d3, comme " +
   "neuf des dix pages au même défaut. L'écart avec transfert-de-production, " +
   "seule à servir la phrase de son corpus, reste à faire trancher par Mehdi";
+const PHRASE_RAPPEL_TRAVAUX =
+  "mention des horaires retirée de la fiche /travaux-industriels/ sur demande " +
+  "de Mehdi du 12/10 (G41 de GATES.md, a63bd96 : « retire cette phrase du " +
+  "premier hero ») ; le même champ `mention` nourrit les trois bandes d'appel, " +
+  "qui l'ont perdue avec le héros, et la vérification de G41 attend 0 " +
+  "occurrence sur toute la page. Bandes à faire confirmer par Mehdi";
 
 const TROUS_DECLARES = [
   /* Modèle, à suivre pour déclarer un trou :
@@ -306,16 +334,23 @@ const TROUS_DECLARES = [
      y portaient de la copie interdite, « Un prix mensuel fixe, sur 12 mois… »
      (réponse à « Combien coûte l'abonnement ? », laissée vide) et « il relève
      de la régie classique » (réponse à « Et si la panne arrive en journée ? »,
-     dont cette seule phrase n'est pas reprise). « régie » est proscrit. */
+     dont cette seule phrase n'est pas reprise). « régie » est proscrit.
+
+     15/10, « UN PRIX MENSUEL FIXE » EST RENDU, et ses trois trous sont retirés
+     (le chapeau du héros, « 12 mois » et sa légende) : la porte les déclarait
+     « devenus inutiles ». Mehdi a tranché le 09/10 « ne donne aucun tarif, dis
+     juste que c'est sur devis » (CLAUDE.md §9 : un MONTANT reste interdit, pas
+     le mot), et 7981989 (13/10) a rendu ces phrases au client, mot pour mot
+     depuis la capture. Ce qui est écrit plus haut sur elles est caduc ; le
+     délai « sous 48h » reste, lui, un trou.
+
+     15/10, DOUZE LIGNES DE PLUS, des décisions de Mehdi jamais reportées ici :
+       · section 12, les cartes VEEPEE, TIMESCOPE, MCCAIN et AKTID du rail
+         (CAS_HORS_SUJET) : 91d638d fait passer la page de 8 à 4 cas, et
+         `verifie-cas-par-offre.mjs` rejoué avec les quatre cartes remises
+         donne quatre manquements ;
+       · section 14, la réponse de la première question (FAQ_FERMEE). */
   ["/offres/zero-arret/", [
-    {
-      section: 0,
-      ligne:
-        "L'entretien préventif le samedi, le dépannage la nuit. Vous réservez une capacité de maintenance, exclusivement hors production, pour un prix mensuel fixe et sans embauche.",
-      pourquoi:
-        "prix : « un prix mensuel fixe ». Le contrat du projet (CLAUDE.md §9) " +
-        "interdit tout prix sur le site. Le chapeau du héros n'est donc pas rendu.",
-    },
     {
       section: 0,
       ligne:
@@ -324,20 +359,6 @@ const TROUS_DECLARES = [
         "délai chiffré : « une réponse écrite sous 48h ». Seul « rappel dans " +
         "l'heure » est autorisé. C'est la mention des horaires de cette page : " +
         "elle n'est rendue ni dans le héros, ni dans ses trois bandes d'appel.",
-    },
-    {
-      section: 1,
-      ligne: "12 mois",
-      pourquoi:
-        "la légende de cette carte de chiffres porte un prix (ligne suivante). " +
-        "Un chiffre sans sa légende ne se lit pas : la carte entière n'est pas " +
-        "rendue, sa valeur comprise. « 12 mois » n'est pas interdit en soi.",
-    },
-    {
-      section: 1,
-      ligne: "D'engagement, pour un prix mensuel fixe",
-      pourquoi:
-        "prix : « un prix mensuel fixe », interdit par le contrat du projet.",
     },
     {
       section: 4,
@@ -366,6 +387,59 @@ const TROUS_DECLARES = [
         "Votre code postal suffit pour commencer : une réponse écrite sous 48h, couvert, en zone étendue ou refusé.",
       pourquoi:
         "même mention, bande d'appel « références » : délai chiffré interdit.",
+    },
+    { section: 12, ligne: "VEEPEE", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "Contrat de maintenance préventive annuelle sur des sites logistiques", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "Six techniciens polyvalents en permanence, depuis septembre 2023.", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "TIMESCOPE", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "Maintenance sous contrat d'un parc déployé partout en France, réalité virtuelle", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "Depuis février 2024.", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "MCCAIN", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "Contrat de maintenance sur un site agroalimentaire de grande échelle, Belgique", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "Depuis octobre 2024, toujours en cours.", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "AKTID", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "Un centre logistique monté en six semaines", pourquoi: CAS_HORS_SUJET },
+    {
+      section: 14,
+      ligne:
+        "Pour les PME industrielles sans service maintenance structuré, ou dont l'équipe est trop limitée pour absorber à la fois les pannes et l'entretien. Partout en France, sans embauche.",
+      pourquoi: FAQ_FERMEE,
+      dansLeHtml: true,
+    },
+  ]],
+
+  /* ------------------------------------------------------------------
+     /offres/arret-technique/ — déclaré le 15/10, seize lignes, toutes des
+     décisions de Mehdi jamais reportées ici (la page ne tourne pas dans
+     `bun run verifie`) :
+       · section 12, les cartes EATON, SOPREMA, EIFFAGE, VALEO, AMAZON
+         (« Un dispositif rodé… ») et DANONE (BLÉDINA) du rail
+         (CAS_HORS_SUJET) : 91d638d fait passer la page de 8 à 2 cas, six
+         manquements quand `verifie-cas-par-offre.mjs` est rejoué avec elles.
+         L'étiquette AMAZON reste rendue, par l'autre carte Amazon du rail ;
+       · section 14, la réponse de la première question (FAQ_FERMEE). */
+  ["/offres/arret-technique/", [
+    { section: 12, ligne: "EATON", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "Six techniciens sur l'installation et la mise en production d'un parc machine neuf, automobile", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "Janvier 2023.", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "SOPREMA", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "Montage et déplacement de machines en missions ciblées, étanchéité et isolation", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "Sur l'année 2025.", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "EIFFAGE", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "Trois techniciens spécialisés sur un chantier photovoltaïque de plus de six semaines", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "Septembre à novembre 2024.", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "VALEO", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "Trois à cinq techniciens déployés pour accompagner une montée en cadence multi-usines, automobile", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "Depuis septembre 2024.", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "Un dispositif rodé, transposé sur un nouveau site", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "DANONE (BLÉDINA)", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "Pas un poste sans maintenance, week-end compris", pourquoi: CAS_HORS_SUJET },
+    {
+      section: 14,
+      ligne:
+        "Le chiffrage sort du programme de travaux réel, pas d'un forfait au jugé : nombre de techniciens par métier, durée, encadrement, moyens. Quand plusieurs organisations sont possibles, nous proposons la plus économique. Les travaux découverts en cours d'arrêt font l'objet d'un chiffrage et d'un arbitrage avec vous, jamais d'une facture surprise.",
+      pourquoi: FAQ_FERMEE,
+      dansLeHtml: true,
     },
   ]],
 
@@ -462,6 +536,14 @@ const TROUS_DECLARES = [
         "n'est donc pas rendue. Défaut de rendu de la maquette, pas un écart " +
         "de copie.",
     },
+    /* 15/10 : la réponse de la première question, fermée au chargement. */
+    {
+      section: 17,
+      ligne:
+        "Pour ne plus coordonner plusieurs prestataires, accéder à des compétences que le recrutement ne vous donne pas, et transformer un budget subi en budget décidé. Tout est écrit : périmètre, opérations, indicateurs.",
+      pourquoi: FAQ_FERMEE,
+      dansLeHtml: true,
+    },
   ]],
 
 
@@ -556,7 +638,13 @@ const TROUS_DECLARES = [
      deux captures est identique, 432 lignes, différence nulle. Le site, lui,
      SERT les deux URL. Les deux pages rendent donc le même texte : à faire
      arbitrer par Mehdi, c'est consigné en tête de
-     `supabase/import/gabarits-maquette/bureau-etudes.json`. */
+     `supabase/import/gabarits-maquette/bureau-etudes.json`.
+
+     15/10 : toujours aucun trou. Son rail sert les quatre cartes de la
+     capture, moins le préfixe markdown (PREFIXE_MARKDOWN) et avec le nom
+     « Migen Bureau d'études » (ORTHUS_BUREAU_ETUDES), deux substitutions
+     déclarées dans TIRETS_PAR_PAGE ; son h2 vide du bloc « Problème » est dans
+     TITRES_VIDES_PAR_PAGE. */
   ["/bureau-etudes/", [
   ]],
 
@@ -584,8 +672,125 @@ const TROUS_DECLARES = [
      besoin » (parler de coût sans énoncer de prix, même arbitrage que
      `/offres/bureau-etudes/`), et « la ligne tombe à 2h00 du matin » (une
      heure de la journée, pas un délai, même arbitrage que le déroulé de
-     `/offres/zero-arret/`). */
+     `/offres/zero-arret/`).
+
+     15/10 : deux lignes, deux décisions de Mehdi jamais reportées ici, la
+     réponse de la première question (FAQ_FERMEE) et « 6 pages liées »
+     (COMPTEUR_PAGES_LIEES). */
   ["/entreprise-maintenance-industrielle/", [
+    {
+      section: 16,
+      ligne:
+        "Le chiffrage se fait après qualification du besoin, avec une visite quand le périmètre le justifie. Sur un parc industriel, la maintenance planifiée et le dépannage subi n'ont pas le même prix de revient. Nous vous montrons les deux. Le taux horaire est homogène dans toute la France, sans surfacturation régionale. Le devis détaille chaque poste, et nous cherchons la prestation la plus économique pour votre situation, pas la plus grosse ligne de commande.",
+      pourquoi: FAQ_FERMEE,
+      dansLeHtml: true,
+    },
+    { section: 17, ligne: "6 pages liées", pourquoi: COMPTEUR_PAGES_LIEES },
+  ]],
+
+  /* ------------------------------------------------------------------
+     /travaux-industriels/ et ses quatre pages filles — déclarés le 15/10.
+     Toutes des décisions de Mehdi jamais reportées ici (ces pages ne tournent
+     pas dans `bun run verifie`) :
+       · les cartes du rail que 91d638d a retirées (CAS_HORS_SUJET), page par
+         page : `verifie-cas-par-offre.mjs` rejoué avec les fiches d'avant
+         91d638d donne 13 manquements sur ces cinq pages, exactement ces
+         cartes (1 sur le hub, 5 démantèlement, 4 levage, 1 montage,
+         2 transfert) ;
+       · la réponse de la première question (FAQ_FERMEE), servie en entier ;
+       · « 6 pages liées » (COMPTEUR_PAGES_LIEES) sur les quatre filles ;
+       · la phrase de rappel du hub (G41, plus bas).
+     Leur h2 vide du bloc « Problème » est dans TITRES_VIDES_PAR_PAGE. */
+  ["/travaux-industriels/", [
+    /* G41 de GATES.md, a63bd96 (12/10). Mehdi : « retire cette phrase du
+       premier hero ». Le champ `mention` de la fiche a été vidé, et ce champ
+       nourrit AUSSI les trois bandes d'appel : la phrase en est sortie avec
+       lui. La vérification enregistrée de G41 l'accepte (`grep -c "Nous vous
+       rappelons dans"` sur la page, attendu 0). Déclaré tel quel ; que les
+       bandes la retrouvent est à faire confirmer par Mehdi, ses mots ne
+       visaient que le héros. */
+    { section: 0, ligne: "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30.", pourquoi: PHRASE_RAPPEL_TRAVAUX },
+    { section: 4, ligne: "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30.", pourquoi: PHRASE_RAPPEL_TRAVAUX },
+    { section: 7, ligne: "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30.", pourquoi: PHRASE_RAPPEL_TRAVAUX },
+    { section: 14, ligne: "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30.", pourquoi: PHRASE_RAPPEL_TRAVAUX },
+    { section: 13, ligne: "AMAZON", pourquoi: CAS_HORS_SUJET },
+    { section: 13, ligne: "Un dispositif rodé, transposé sur un nouveau site", pourquoi: CAS_HORS_SUJET },
+    {
+      section: 15,
+      ligne:
+        "Quatre familles : le transfert industriel, le démantèlement industriel, le montage industriel et le levage et la manutention lourde. Un même chantier en combine souvent deux ou trois.",
+      pourquoi: FAQ_FERMEE,
+      dansLeHtml: true,
+    },
+  ]],
+  ["/travaux-industriels/demantelement-industriel/", [
+    { section: 12, ligne: "AKTID", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "Montage d'un centre logistique, Clermont-Ferrand, 2023.", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "12 monteurs mécaniciens et 8 engins de levage mobilisés, site livré à la date prévue.", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "MIGEN TRAVAUX X ECOCEM", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "Construction d'un site de R&D bas carbone, région parisienne.", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "Pilotage de chantier de bout en bout par Migen Travaux, coordination multi-métiers.", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "ALSTEF GROUP", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "Contrôle de chantier, projets stratégiques, 2025 à 2026.", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "Suivi des prestataires, vérification des installations, respect des procédures.", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "AMAZON", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "Un dispositif rodé, transposé sur un nouveau site", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "ATENA", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "En finir avec les pannes qui reviennent sur un terminal d'engrais", pourquoi: CAS_HORS_SUJET },
+    {
+      section: 14,
+      ligne:
+        "Le montant dépend du volume d'équipements, des contraintes d'accès, de la part de valorisation et du niveau de remise en état attendu. Chiffrage sur devis après visite, poste par poste. La valeur des matières récupérables apparaît sur une ligne du devis, elle n'y est pas noyée.",
+      pourquoi: FAQ_FERMEE,
+      dansLeHtml: true,
+    },
+    { section: 15, ligne: "6 pages liées", pourquoi: COMPTEUR_PAGES_LIEES },
+  ]],
+  ["/travaux-industriels/levage-manutention/", [
+    { section: 13, ligne: "SAVOYE", pourquoi: CAS_HORS_SUJET },
+    { section: 13, ligne: "Deux automates migrés en deux week-ends, sans arrêter la production", pourquoi: CAS_HORS_SUJET },
+    { section: 13, ligne: "MIGEN TRAVAUX X ECOCEM", pourquoi: CAS_HORS_SUJET },
+    { section: 13, ligne: "Construction d'un site de R&D bas carbone, région parisienne.", pourquoi: CAS_HORS_SUJET },
+    { section: 13, ligne: "Mise en place des installations et raccordements industriels, pilotage Migen Travaux.", pourquoi: CAS_HORS_SUJET },
+    { section: 13, ligne: "ALSTEF GROUP", pourquoi: CAS_HORS_SUJET },
+    { section: 13, ligne: "Des chantiers automatisés contrôlés point par point", pourquoi: CAS_HORS_SUJET },
+    { section: 13, ligne: "AMAZON", pourquoi: CAS_HORS_SUJET },
+    { section: 13, ligne: "Un dispositif rodé, transposé sur un nouveau site", pourquoi: CAS_HORS_SUJET },
+    {
+      section: 15,
+      ligne:
+        "Le montant dépend de la masse, de la géométrie de la charge, des accès, de la durée d'immobilisation de la zone et des moyens à mobiliser. Chiffrage sur devis après relevé sur site. Un prix donné au téléphone sans masse réelle ne tient pas.",
+      pourquoi: FAQ_FERMEE,
+      dansLeHtml: true,
+    },
+    { section: 16, ligne: "6 pages liées", pourquoi: COMPTEUR_PAGES_LIEES },
+  ]],
+  ["/travaux-industriels/montage-industriel/", [
+    { section: 12, ligne: "ATENA", pourquoi: CAS_HORS_SUJET },
+    { section: 12, ligne: "En finir avec les pannes qui reviennent sur un terminal d'engrais", pourquoi: CAS_HORS_SUJET },
+    {
+      section: 14,
+      ligne:
+        "Le montant dépend du nombre d'ensembles, de leur poids, des raccordements à réaliser et du niveau d'essais attendu. Chiffrage sur devis après lecture du dossier technique et visite du site, poste par poste.",
+      pourquoi: FAQ_FERMEE,
+      dansLeHtml: true,
+    },
+    { section: 15, ligne: "6 pages liées", pourquoi: COMPTEUR_PAGES_LIEES },
+  ]],
+  ["/travaux-industriels/transfert-industriel/", [
+    { section: 13, ligne: "AKTID", pourquoi: CAS_HORS_SUJET },
+    { section: 13, ligne: "Montage d'un centre logistique, Clermont-Ferrand, 2023.", pourquoi: CAS_HORS_SUJET },
+    { section: 13, ligne: "12 monteurs mécaniciens et 8 engins de levage mobilisés en pleine période estivale, site livré à la date prévue.", pourquoi: CAS_HORS_SUJET },
+    { section: 13, ligne: "ATENA", pourquoi: CAS_HORS_SUJET },
+    { section: 13, ligne: "En finir avec les pannes qui reviennent sur un terminal d'engrais", pourquoi: CAS_HORS_SUJET },
+    {
+      section: 15,
+      ligne:
+        "Le montant dépend du nombre d'équipements, des contraintes d'accès, de la distance et du niveau de prestation retenu. Le chiffrage est établi sur devis après audit, gratuitement, poste par poste. Un prix annoncé sans visite est un prix qui bougera.",
+      pourquoi: FAQ_FERMEE,
+      dansLeHtml: true,
+    },
+    { section: 16, ligne: "6 pages liées", pourquoi: COMPTEUR_PAGES_LIEES },
   ]],
 
 
@@ -796,10 +1001,18 @@ const TITRES_VIDES_PAR_PAGE = {
      pas. Seule la page ci-dessus sert la phrase de son corpus. Les trois
      pages d'offre ci-dessous sont celles que cette porte mesure ; les six
      autres (/bureau-etudes/ et /travaux-industriels/) sont hors gabarit d'offre
-     au sens de `bun run verifie`, et mesurées le 15/10 au même traitement. */
+     au sens de `bun run verifie`, et mesurées le 15/10 au même traitement.
+     Déclarées à leur tour le 15/10 au soir : `punchline: ""` relu sur leurs
+     six fiches. */
   "/offres/retrofit/remise-en-etat/": [{ section: 5, rendu: null, pourquoi: PROBLEME_SANS_TITRE }],
   "/offres/bureau-etudes/": [{ section: 5, rendu: null, pourquoi: PROBLEME_SANS_TITRE }],
   "/offres/chantier/demenagement-machines/": [{ section: 5, rendu: null, pourquoi: PROBLEME_SANS_TITRE }],
+  "/bureau-etudes/": [{ section: 5, rendu: null, pourquoi: PROBLEME_SANS_TITRE }],
+  "/travaux-industriels/": [{ section: 5, rendu: null, pourquoi: PROBLEME_SANS_TITRE }],
+  "/travaux-industriels/demantelement-industriel/": [{ section: 5, rendu: null, pourquoi: PROBLEME_SANS_TITRE }],
+  "/travaux-industriels/levage-manutention/": [{ section: 5, rendu: null, pourquoi: PROBLEME_SANS_TITRE }],
+  "/travaux-industriels/montage-industriel/": [{ section: 5, rendu: null, pourquoi: PROBLEME_SANS_TITRE }],
+  "/travaux-industriels/transfert-industriel/": [{ section: 5, rendu: null, pourquoi: PROBLEME_SANS_TITRE }],
 
 
 
@@ -839,9 +1052,28 @@ const EXTRAIT = (imbriquees) => {
      bureau n'a aucune raison de les porter. Les compter décalait l'ordre de
      toutes les sections suivantes, et la porte accusait le déroulé d'avoir
      perdu son texte alors qu'il était à sa place, une section plus loin. */
+  /* UN REPLI DU TÉLÉPHONE N'EST PAS UNE SECTION (15/10). Sur /offres/full-service/,
+     la maquette mobile v2 (af93a50) range la réponse directe, la bande d'appel,
+     les types de maintenance et le complément dans deux `<details
+     data-pliable-mobile>` posés AUTOUR de leurs sections, ouverts et sans
+     en-tête au bureau (`PageOffre.tsx`, `CARTES_COUVERTURE_MOBILE`). Lues en
+     enfants directs du <main>, ces quatre sections disparaissaient : 16 servies
+     pour 20, et 150 phrases accusées d'être absentes alors qu'elles étaient
+     peintes à leur place. Une section compte donc quand aucune autre section ne
+     l'englobe, quel que soit l'emballage, et jamais sous un
+     `data-mobile-seulement`. Au-dessus de 880 px un repli ne replie rien, même
+     fermé (`blocs/SectionPliableMobile.module.css`, `::details-content` rendu
+     visible) : le texte reste peint, et la porte le lit. S'il cessait de
+     l'être, la porte nommerait chaque phrase perdue (témoin joué le 15/10 :
+     contenu des deux replis masqué, les 24 lignes des quatre sections
+     nommées ; voir `checkVisibility` plus bas). */
   const sections = imbriquees
     ? principal.querySelectorAll("section:not([data-mobile-seulement])")
-    : principal.querySelectorAll(":scope > section:not([data-mobile-seulement])");
+    : [...principal.querySelectorAll("section")].filter(
+        (s) =>
+          !s.closest("[data-mobile-seulement]") &&
+          s.parentElement.closest("section, main") === principal,
+      );
   const sections2 = [...sections].map((section) => {
     /* UN TITRE DU TÉLÉPHONE N'EST PAS LE TITRE DE LA SECTION (15/10), même
        règle que pour les sections : « Chiffres clés », posé au-dessus des
@@ -850,10 +1082,16 @@ const EXTRAIT = (imbriquees) => {
     const titre = [...section.querySelectorAll("h1, h2, h3")].find(
       (h) => !h.closest("[data-mobile-seulement]"),
     );
+    /* UNE SECTION QUE LE NAVIGATEUR NE PEINT PAS N'A AUCUNE LIGNE (15/10).
+       Sur un élément sans boîte, `innerText` renvoie tout son texte brut, sur
+       une seule ligne : masquée au bureau, une section passait donc la porte,
+       ses phrases « trouvées » dans un texte que personne ne voit. Mesuré en
+       masquant le contenu des replis de /offres/full-service/ : 2 phrases
+       nommées sur 24 avant ce garde-fou, les 24 après. */
     return {
       titre: titre ? titre.innerText : null,
       titreDeRepli: Boolean(titre?.closest("[data-pliable-mobile] > summary")),
-      lignes: (section.innerText || "").split("\n"),
+      lignes: section.checkVisibility() ? (section.innerText || "").split("\n") : [],
     };
   });
   /* LE HTML DU <main>, EN PLUS DU TEXTE VISIBLE. Il sert à vérifier les trous
