@@ -34,7 +34,7 @@
  *     les trois APPELS soient identiques et que la rangée donne trois colonnes
  *     égales.
  *
- * Le bandeau ne rend rien pendant un rendu serveur (`pret` est faux, voir
+ * Le bandeau est servi fermé pendant un rendu serveur (`pret` est faux, voir
  * `etat.ts`) : un greffon Bun remplace `./etat` par un état prêt le temps du
  * contrôle. Rien n'est modifié sur le disque, et `etat.ts` appartient à un
  * autre agent.

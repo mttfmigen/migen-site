@@ -11,6 +11,7 @@ import LienReglages from "@/components/consentement/LienReglages";
 import TagManager from "@/components/consentement/TagManager";
 import Tags from "@/components/consentement/Tags";
 import { CaptureUtm } from "@/components/formulaire/CaptureUtm";
+import { COOKIE_NOM } from "@/lib/consentement";
 import { jsonLdTexte, organisation } from "@/lib/seo/jsonld";
 import { siteUrl } from "@/lib/seo/url";
 import { vignetteParDefaut } from "@/lib/seo/vignette";
@@ -189,6 +190,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             correspondante n'est pas accordée. */}
         <Tags />
         <Bandeau />
+        {/* Ouvre le bandeau, servi fermé, AVANT le premier affichage quand le
+            navigateur n'a aucun choix enregistré : il se peint avec la page au
+            lieu d'arriver après l'hydratation (il était le LCP de l'accueil).
+            Un visiteur qui a déjà répondu ne le voit jamais clignoter. Un choix
+            périmé est rattrapé après l'hydratation par `Bandeau`. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.cookie.split("; ").some(function(c){return c.indexOf("${COOKIE_NOM}=")===0})||document.getElementById("bandeau-consentement").show()`,
+          }}
+        />
 
         {/* La barre de navigation flottante, portée de la maquette. Elle est en
             position fixe : elle vit hors du flux, d'où sa place avant le

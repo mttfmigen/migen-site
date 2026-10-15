@@ -49,12 +49,16 @@ export default function Bandeau() {
 
   const visible = pret && (panneau || (choix === null && !masque));
 
+  // Rien n'est décidé avant `pret` : pendant l'hydratation, React rend avec
+  // l'état serveur (`visible` faux) et fermerait le bandeau que le script en
+  // ligne vient d'ouvrir ; `onClose` le marquerait en plus fermé par le
+  // visiteur, pour tout le chargement.
   useEffect(() => {
     const element = boite.current;
-    if (!element) return;
+    if (!element || !pret) return;
     if (visible && !element.open) element.show();
     if (!visible && element.open) element.close();
-  }, [visible]);
+  }, [visible, pret]);
 
   // Un dialogue non modal ne reçoit pas l'échappement du navigateur : on le
   // branche sur le document, sinon le clavier n'aurait aucune sortie.
@@ -67,9 +71,14 @@ export default function Bandeau() {
     return () => document.removeEventListener("keydown", surTouche);
   }, [visible]);
 
-  // Rien dans le HTML servi : le bandeau est une décision du navigateur, pas
-  // du cache. Voir le commentaire de `pret` dans etat.ts.
-  if (!pret) return null;
+  // SERVI FERMÉ DANS LE HTML, OUVERT PAR LE NAVIGATEUR. La décision reste au
+  // navigateur, jamais au cache (commentaire de `pret` dans etat.ts) : le
+  // script en ligne posé juste après le bandeau (`app/layout.tsx`) l'ouvre
+  // avant le premier affichage quand aucun choix n'est enregistré. Rendu
+  // seulement après l'hydratation, il arrivait en dernier et devenait le plus
+  // grand élément peint de la page : son LCP (6,9 s en 4G lente au téléphone,
+  // mesuré le 15/10). `suppressHydrationWarning` : l'attribut `open` posé par
+  // ce script n'est pas une propriété React.
 
   /* `sm:w-auto` n'est pas un détail : à partir de 640px le bandeau passe en
      `sm:inset-x-4`, donc calé à 16px des deux bords. Mais `w-full` fixe la
@@ -87,6 +96,8 @@ export default function Bandeau() {
   return (
     <dialog
       ref={boite}
+      id="bandeau-consentement"
+      suppressHydrationWarning
       aria-labelledby="consentement-titre"
       aria-describedby="consentement-texte"
       onClose={ferme}
