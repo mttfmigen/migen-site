@@ -27,13 +27,14 @@ import CarrouselRealisations from "./CarrouselRealisations";
 import FilArianeMobile from "./FilArianeMobile";
 import {
   minutesDeLecture,
-  prefixeTitreMaquette,
   realisationsLiees,
   texteResultatApres,
+  titreMobile,
 } from "./donnees-mobiles";
 import { CORPUS_MOBILE, type SegmentCorpus } from "./corpus-mobile";
+import { libelleCas } from "./noms-clients";
 import PhotoMobile from "./PhotoMobile";
-import { copieConforme } from "@/lib/decisions-copie";
+import { appliqueDecisions, copieConforme } from "@/lib/decisions-copie";
 import { photoHerosMobile } from "../casclients/vues-preuves";
 
 /**
@@ -375,12 +376,11 @@ const FIL_HAUT: CSSProperties = {
 /**
  * L'étiquette mobile d'une bascule : surtitre numéroté et titre.
  *
- * MAQUETTE MOBILE V2 (dc.html L130, `isDetails` + `isH`) : la carte ne montre
- * que son NUMÉRO, en colonne, et son TITRE. Le numéro est le compteur CSS de
- * la carte partagée (`data-carte-numerotee`, app/globals.css) ; le surtitre
- * « 02 · Notre réponse » reste dans le DOM mais la feuille le masque sous
- * 880 px (`.etiquetteSurtitre`) : c'est le DOUBLON du surtitre que le corps de
- * la section affiche, mot pour mot, dès qu'elle est ouverte.
+ * MAQUETTE MOBILE V3 (16/10, `hasN: g !== "02"`) : la carte d'une étude de
+ * cas ne montre que son TITRE, sans numéro (`numero={false}` sur chaque
+ * repli). Le surtitre « 02 · Notre réponse » reste dans le DOM mais la
+ * feuille le masque sous 880 px (`.etiquetteSurtitre`), comme son doublon du
+ * corps (`data-carte-surtitre`).
  */
 function EtiquettePli({
   surtitre,
@@ -929,6 +929,13 @@ function CarteReponse({ carte, rang, total }: { carte: CartePreuve; rang: number
   );
 }
 
+/** L'accroche d'une carte fermée tirée de son premier point, « Titre :
+    texte » comme la maquette la compose (dc.html L438, `teaseOf`), ou le
+    titre et sa suite d'un seul tenant quand le texte la continue. */
+function resumeDuPoint(titre: string, texte?: string): string {
+  return texte && continueLeTitre(texte) ? `${titre}${texte}` : [titre, texte].filter(Boolean).join(" : ");
+}
+
 /* Un bloc du complément que la maquette MOBILE range DANS une section
    numérotée (le corpus le pose sous `## CE QUE NOUS AVONS MIS EN PLACE` ou
    `## LE RÉSULTAT`) : un titre identique et un texte seul, sans puces. */
@@ -1052,11 +1059,13 @@ export default function PagePreuve({
   /* La couche MOBILE de la maquette v2, dérivée du chemin (voir
      `donnees-mobiles.ts`). */
   const minutes = chemin ? minutesDeLecture(chemin) : undefined;
-  const prefixeH1 = chemin ? prefixeTitreMaquette(chemin, titre) : undefined;
   const autresRealisations = chemin ? realisationsLiees(chemin) : [];
   /* Les phrases du corpus que seule la maquette MOBILE rend (voir
      `corpus-mobile.ts`), toutes en `data-mobile-seulement`. */
   const corpus = chemin ? CORPUS_MOBILE[chemin] : undefined;
+  /* Le H1 du téléphone, celui de la maquette V3 : « Savoye : alliance
+     intralogistique », le client en casse normale (voir `titreMobile`). */
+  const titreTelephone = chemin ? titreMobile(chemin, corpus?.titreCourt) : undefined;
   const introSituation = introDeLaListe(corpus?.introSituation, contenu.situationProse ?? []);
 
   /* LES SECTIONS DE TEXTE, 01 à 04, rassemblées dans l'ordre : ce sont
@@ -1086,6 +1095,7 @@ export default function PagePreuve({
     <section key="situation" className={styles.sectionPli} style={SECTION}>
       <SectionPliableMobile
         toujoursOuvert
+        numero={false}
         enTete={<EtiquettePli surtitre="01 · La situation" titre="La situation" />}
         resume={resumeSituation}
       >
@@ -1144,18 +1154,14 @@ export default function PagePreuve({
      première puce, « Libellé : texte », tel que la maquette le compose ; la
      feuille partagée le coupe à deux lignes. Il vit dans le `<summary>`, en
      `data-mobile-seulement` : rien ne change à 1280 px. */
-  const premiereCarte = reponse[0];
-  const resumeReponse = premiereCarte
-    ? continueLeTitre(premiereCarte.texte)
-      ? `${premiereCarte.titre}${premiereCarte.texte}`
-      : [premiereCarte.titre, premiereCarte.texte].filter(Boolean).join(" : ")
-    : undefined;
+  const resumeReponse = reponse[0] ? resumeDuPoint(reponse[0].titre, reponse[0].texte) : undefined;
   const texteMisEnPlace = texteDeplace(contenu.complement, "Ce que nous avons mis en place");
   const sectionReponse =
     reponse.length > 0 ? (
       <section key="reponse" className={styles.sectionPli} style={SECTION}>
         <div className={styles.pliClair} style={LARGEUR}>
           <SectionPliableMobile
+            numero={false}
             enTete={
               <EtiquettePli surtitre="02 · Notre réponse" titre="Ce que nous avons mis en place" />
             }
@@ -1183,6 +1189,14 @@ export default function PagePreuve({
     ) : null;
 
   /* ------------------------------------------ 4 · « Le déroulé » */
+  /* L'accroche de la carte fermée, maquette V3 (`teaseOf`) : la première
+     étape, « Rapprochement : Savoye et Migen constatent… ». Et pour le
+     dispositif, sa première rangée, « Client : Savoye, concepteur… » (la V3
+     n'en garde que le libellé, « Client », qui n'annonce rien). */
+  const resumeDeroule = etapes[0] ? resumeDuPoint(etapes[0].titre, etapes[0].texte) : undefined;
+  const resumeDispositif = dispositif[0]
+    ? [dispositif[0].libelle, dispositif[0].valeur].filter(Boolean).join(" : ")
+    : undefined;
   /* Repli manquant mesuré le 14/10 (gabarit 02 de +36 à +51 % plus haut que la
      maquette à 390 px) : le déroulé était la seule section numérotée de la
      maquette sans bascule ici. */
@@ -1191,7 +1205,9 @@ export default function PagePreuve({
       <section key="deroule" className={styles.sectionPli} style={SECTION}>
         <div className={styles.pliClair} style={LARGEUR}>
           <SectionPliableMobile
+            numero={false}
             enTete={<EtiquettePli surtitre="03 · Étape par étape" titre="Le déroulé" />}
+            resume={resumeDeroule}
           >
             <div data-carte-surtitre="" style={KICKER}>
               03 · Étape par étape
@@ -1266,7 +1282,9 @@ export default function PagePreuve({
           </div>
           <div className={styles.pliClair}>
             <SectionPliableMobile
+              numero={false}
               enTete={<EtiquettePli surtitre="04 · Fiche mission" titre="Le dispositif" />}
+              resume={resumeDispositif}
             >
               <div data-carte-surtitre="" style={KICKER}>
                 04 · Fiche mission
@@ -1446,17 +1464,26 @@ export default function PagePreuve({
                 </span>
               </div>
 
-              {/* Le H1 de la maquette MOBILE est celui du corpus, « Étude de
-                  cas AUTOLIV : … » : son préfixe, mot pour mot, n'existe que
-                  sous 880 px, et le nom du client quitte alors la pastille.
-                  Le titre reste un seul nœud texte. */}
+              {/* Le H1 de la maquette MOBILE V3 (16/10) : « Aktid : un centre
+                  logistique… », « Savoye : alliance intralogistique », le
+                  client en casse normale et sans « Étude de cas ». Il n'existe
+                  que sous 880 px, le titre de la capture de bureau au-dessus :
+                  un seul H1, dont chaque largeur ne peint qu'une moitié. Le
+                  nom du client quitte alors la pastille (il ouvre le titre). */}
               <h1 className={styles.titreHeros} style={TITRE1}>
-                {prefixeH1 ? (
-                  <span data-mobile-seulement="" data-prefixe-h1="">
-                    {prefixeH1}
-                  </span>
-                ) : null}
-                {titre}
+                {titreTelephone ? (
+                  <>
+                    {/* L'espace FINIT le titre du téléphone, dans son bloc :
+                        retiré avec lui, le texte de bureau reste celui d'un
+                        rendu sans couche mobile, au caractère près. */}
+                    <span data-mobile-seulement="" data-titre-mobile="">
+                      {`${titreTelephone} `}
+                    </span>
+                    <span className={styles.libelleBureau}>{titre}</span>
+                  </>
+                ) : (
+                  titre
+                )}
               </h1>
 
               {(contenu.chapeau ?? []).map((paragraphe) => (
@@ -1664,14 +1691,17 @@ export default function PagePreuve({
                   </p>
                 ) : null}
                 {/* Une ligne « À lire aussi » du corpus = un bloc, son
-                    libellé et sa pastille (dc.html `isRel`). */}
+                    libellé et sa pastille (dc.html `isRel`). Le libellé est
+                    celui de la V3 (`caseLbl`) : « Savoye : migration… », sans
+                    « Étude de cas », client en casse normale, décisions de
+                    copie d'abord (« ORTHUS » devient « Migen Travaux »). */}
                 {(corpus?.lireAussi ?? [])
                   .filter((l) => cibleSure(l.href))
                   .map((l) => (
                     <div key={l.href} data-mobile-seulement="" className={styles.lireAussi}>
                       <div className={styles.lireAussiLibelle}>À lire aussi</div>
                       <Link href={l.href} prefetch={false} className={styles.pastilleLire}>
-                        {l.t} <span aria-hidden="true">›</span>
+                        {libelleCas(appliqueDecisions(l.t, chemin))} <span aria-hidden="true">›</span>
                       </Link>
                     </div>
                   ))}

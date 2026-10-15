@@ -300,7 +300,8 @@
 
    L'ORDRE DE LA MAQUETTE (dc.html L461) : héros, « Le client et le
    site », « Le résultat » en panneau sombre, puis les sections de texte
-   01 à 04 en cartes numérotées, l'appel à l'action, les réalisations,
+   01 à 04 en cartes (sans numéro depuis la V3 du 16/10), l'appel à
+   l'action, les réalisations,
    la même rubrique, le rappel.
    =================================================================== */
 @media (max-width: 880px) {
@@ -454,8 +455,6 @@
     border-top: 1px solid var(--mm-filet);
     border-top-left-radius: 22px;
     border-top-right-radius: 22px;
-    font: 500 16px/1.6 var(--fb) !important;
-    color: var(--ink) !important;
   }
   .racine .chapeauHeros:first-of-type::before {
     content: "Le client et le site";
@@ -474,10 +473,9 @@
   .racine .ficheFlottante {
     order: 6;
     display: grid;
-    gap: 8px;
-    counter-reset: fiche;
+    gap: 0;
     margin-top: 0 !important;
-    padding: 4px 18px 18px !important;
+    padding: 6px 18px 18px !important;
     background: var(--card) !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
@@ -492,48 +490,42 @@
     border-top: 1px solid var(--mm-filet) !important;
     border-radius: 22px !important;
   }
-  /* Une rangée « libellé | valeur » en petite carte numérotée (L131,
-     `isKv` : 26 px de numéro, 13 px 14 px, rayon 16 px). */
-  .racine .ficheLigne {
-    counter-increment: fiche;
-    grid-template-columns: 26px minmax(0, 1fr) !important;
-    column-gap: 10px !important;
+  /* LE TABLEAU « LIBELLÉ | VALEUR » DE LA MAQUETTE V3 (16/10, `isSpec`),
+     pour la fiche du client comme pour le dispositif : une rangée par ligne,
+     le libellé en petites capitales grises à gauche (40 %), la valeur à
+     droite, un filet entre deux rangées et sous la dernière. Plus de petite
+     carte ni de numéro : l'étude de cas n'est pas numérotée dans la V3.
+     `min-content` en plancher : « ENVIRONNEMENTS » tient d'un seul mot à
+     320 px au lieu de déborder sur la valeur. */
+  .racine .ficheLigne,
+  .racine .dispositifLigne {
+    grid-template-columns: minmax(min-content, 0.4fr) minmax(0, 0.6fr) !important;
+    column-gap: 14px !important;
     row-gap: 0 !important;
-    padding: 13px 14px !important;
-    border: 1px solid var(--mc-filet-kv) !important;
-    border-radius: 16px;
-    background: var(--mc-fond-kv);
+    align-items: baseline;
+    padding: 12px 0 !important;
+    border: 0 !important;
+    border-top: 1px solid var(--mc-filet-kv) !important;
+    border-radius: 0;
+    background: none;
   }
-
-  /* LA NUMÉROTATION DES PETITES CARTES, partagée par la fiche, les objectifs
-     (qui portent déjà leur numéro), le résultat et les tuiles du besoin :
-     compteur CSS, hors du DOM. */
-  .racine .ficheLigne::before,
-  .racine .resultats > div::before,
-  .racine .besoinTuiles > div::before {
-    grid-column: 1;
-    grid-row: 1 / span 2;
-    padding-top: 3px;
-    font: 600 11px ui-monospace, Menlo, monospace;
-    color: var(--acc);
+  .racine .ficheLigne:last-child,
+  .racine .dispositifLigne:last-child {
+    border-bottom: 1px solid var(--mc-filet-kv) !important;
   }
-  .racine .ficheLigne::before {
-    content: counter(fiche, decimal-leading-zero);
-  }
-  .racine .ficheLigne > span {
-    grid-column: 2;
-  }
-  .racine .ficheLigne > span:first-of-type {
+  .racine .ficheLigne > span:first-of-type,
+  .racine .dispositifLigne > span:first-child {
     padding-top: 0 !important;
-    font: 600 14.5px/1.4 var(--ft) !important;
-    letter-spacing: -0.015em !important;
-    text-transform: none !important;
-    color: var(--ink) !important;
+    font: 600 10.5px/1.5 var(--fb) !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    color: var(--mm-encre-3) !important;
   }
-  .racine .ficheLigne > span:last-of-type {
-    margin-top: 4px;
-    font: 400 14px/1.55 var(--fb) !important;
-    color: var(--ink1) !important;
+  .racine .ficheLigne > span:last-of-type,
+  .racine .dispositifLigne > span:last-child {
+    margin-top: 0;
+    font: 500 14px/1.5 var(--fb) !important;
+    color: var(--ink) !important;
   }
 
   /* LES CHIFFRES, en tuiles 2 x 2 blanches (L128, `isStats`), sous la
@@ -594,46 +586,58 @@
     letter-spacing: -0.03em !important;
     color: #fff !important;
   }
+  /* LE RÉSULTAT COCHÉ DE LA MAQUETTE V3 (16/10, `isWin`) : une rangée par
+     point, filet clair au-dessus, la coche dans une pastille orange de 26 px
+     (le trait de la V3, `mv-ic-chk`), le titre puis le texte. La coche de
+     bureau (`✓`, 34 px) est la même pastille, redessinée : plus de numéro. */
   .racine .resultats {
-    gap: 8px !important;
-    counter-reset: resultat;
+    gap: 0 !important;
+    margin: 2px 0 4px;
   }
   .racine .resultats > div {
-    counter-increment: resultat;
     display: grid;
     grid-template-columns: 26px minmax(0, 1fr);
-    column-gap: 10px;
-    padding: 13px 14px !important;
-    border: 1px solid rgba(255, 255, 255, 0.12) !important;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.06);
+    column-gap: 12px;
+    padding: 14px 0 !important;
+    border: 0 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 0;
+    background: none;
   }
-  .racine .resultats > div::before {
-    content: counter(resultat, decimal-leading-zero);
-  }
-  /* La coche de bureau : un ornement sans texte, remplacé par le numéro. */
   .racine .resultats > div > span[aria-hidden="true"] {
-    display: none !important;
+    display: block !important;
+    grid-row: 1 / span 2;
+    width: 26px !important;
+    height: 26px !important;
+    margin: 0 !important;
+    border-radius: 999px !important;
+    background: var(--acc)
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E")
+      center / 13px 13px no-repeat !important;
+    font-size: 0 !important;
+    color: transparent !important;
   }
   .racine .resultats > div > div {
     grid-column: 2;
   }
   .racine .resultats > div > div:first-of-type {
     margin: 0 !important;
-    font: 600 14.5px/1.4 var(--ft) !important;
-    letter-spacing: -0.015em !important;
+    padding-top: 2px;
+    font: 600 15.5px/1.35 var(--ft) !important;
+    letter-spacing: -0.02em !important;
     color: #fff !important;
   }
   .racine .resultats > div > div + div {
     margin-top: 4px !important;
-    font: 400 14px/1.55 var(--fb) !important;
+    font: 400 13.5px/1.55 var(--fb) !important;
     color: rgba(255, 255, 255, 0.84) !important;
   }
 
-  /* G3 · LES SECTIONS DE TEXTE EN CARTES NUMÉROTÉES (L130). La carte est le
-     motif partagé `details[data-carte-numerotee]` (app/globals.css) : 12 px
-     entre deux cartes, la section qui la porte ne rajoute rien. Le numéro est
-     son compteur, le titre son étiquette ; le surtitre de l'étiquette est le
+  /* G3 · LES SECTIONS DE TEXTE EN CARTES (L130). La carte est le motif
+     partagé `details[data-carte-numerotee]` (app/globals.css) : 12 px entre
+     deux cartes, la section qui la porte ne rajoute rien. Elle ne porte pas
+     de numéro (`data-sans-numero`, maquette V3 du 16/10 : l'étude de cas
+     n'est pas numérotée), le titre est son étiquette ; le surtitre de l'étiquette est le
      doublon de celui du corps, et le `<h2>` du corps celui du titre de
      l'étiquette : ils sont masqués, le second pour l'œil seulement (il reste
      un titre pour les lecteurs d'écran). */
@@ -658,8 +662,11 @@
     white-space: nowrap !important;
     border: 0 !important;
   }
+  /* Le surtitre numéroté du corps (« 02 · Notre réponse », « 03 · Étape
+     par étape ») : la V3 ne numérote pas l'étude de cas et n'y pose aucun
+     surtitre, la carte s'ouvre sur son contenu. Masqué, pas retiré. */
   .racine .sectionPli [data-carte-surtitre] {
-    margin-bottom: 10px !important;
+    display: none !important;
   }
 
   /* 01 · LA SITUATION : la phrase en gras qui ouvre la section (L382,
@@ -684,65 +691,51 @@
   .racine .proseSituation > p {
     margin: 0 0 12px !important;
     max-width: none !important;
-    font: 400 15px/1.65 var(--fb) !important;
+    font: 400 15px/1.7 var(--fb) !important;
     color: var(--ink1) !important;
   }
 
-  /* LES PETITES CARTES « Libellé : texte » (L131, `isKv`) : objectifs,
-     réponse, et plus bas les tuiles du besoin. */
-  .racine .objectifs,
+  /* LES POINTS À FILET ORANGE DE LA MAQUETTE V3 (16/10, `isPts`) :
+     objectifs de « La situation », réponse de « Ce que nous avons mis en
+     place », et plus bas les engagements du panneau sombre. Un trait orange
+     de 2 px à gauche, le titre, le texte : plus de petite carte grise ni de
+     numéro (le numéro de bureau reste dans le DOM, masqué). */
+  /* `.grilleSituation` devant : les objectifs portent `mg-r2`, et la règle
+     partagée `details[data-carte-numerotee] .mg-r2 { gap: 4px !important }`
+     (app/globals.css) les serrait à 4 px. */
+  .racine .grilleSituation .objectifs,
   .racine .bento {
     display: grid !important;
     grid-template-columns: minmax(0, 1fr) !important;
-    gap: 8px !important;
-    margin-bottom: 14px;
+    gap: 16px !important;
+    margin: 6px 0 16px;
   }
   .racine .objectifs > div,
   .racine .bento > div {
+    display: block !important;
     min-height: 0 !important;
-    padding: 13px 14px !important;
-    border-radius: 16px !important;
-    background: var(--mc-fond-kv) !important;
-    border: 1px solid var(--mc-filet-kv) !important;
+    padding: 0 0 0 14px !important;
+    border: 0 !important;
+    border-left: 2px solid var(--acc) !important;
+    border-radius: 0 !important;
+    background: none !important;
     box-shadow: none !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
   }
-  .racine .objectifs > div {
-    grid-template-columns: 26px minmax(0, 1fr) !important;
-    gap: 10px !important;
-  }
-  .racine .objectifs > div > span:first-child {
-    width: auto !important;
-    height: auto !important;
-    padding-top: 3px;
-    border-radius: 0 !important;
-    background: none !important;
-    font: 600 11px ui-monospace, Menlo, monospace !important;
-    line-height: normal !important;
-    text-align: left !important;
-  }
-  .racine .bento > div > div[aria-hidden="true"] {
-    display: none;
+  .racine .objectifs > div > span:first-child,
+  .racine .bento > div > div[aria-hidden="true"],
+  .racine .bento > div > div:last-child > span:first-child {
+    display: none !important;
   }
   .racine .bento > div > div:last-child {
-    display: grid !important;
-    grid-template-columns: 26px minmax(0, 1fr);
-    column-gap: 10px;
-  }
-  .racine .bento > div > div:last-child > span:first-child {
-    grid-row: 1 / span 2;
-    margin: 0 !important;
-    padding-top: 3px;
-  }
-  .racine .bento > div > div:last-child > div {
-    grid-column: 2;
+    display: block !important;
   }
   .racine .objectifs > div > div > div:first-child,
   .racine .bento > div > div:last-child > div:first-of-type {
     margin: 0 !important;
     max-width: none !important;
-    font: 600 14.5px/1.4 var(--ft) !important;
+    font: 600 15px/1.4 var(--ft) !important;
     letter-spacing: -0.015em !important;
     color: var(--ink) !important;
   }
@@ -750,27 +743,39 @@
   .racine .bento > div > div:last-child > div + div {
     margin-top: 4px !important;
     max-width: none !important;
-    font: 400 14px/1.55 var(--fb) !important;
+    font: 400 14px/1.6 var(--fb) !important;
     color: var(--ink1) !important;
   }
 
-  /* 03 · LE DÉROULÉ en frise (L131, `isOl` : pastille de 30 px foncée,
-     12 px d'écart, 14 px sous chaque étape). */
+  /* LE DÉROULÉ EN FRISE VERTICALE DE LA MAQUETTE V3 (16/10, `isTl`) :
+     pastille de 28 px orange pâle, numéro orange foncé (les étapes restent
+     numérotées, c'est une suite et non une carte), un trait orange pâle de
+     2 px qui relie une étape à la suivante, 18 px sous chaque texte. */
   .racine .etapes {
-    margin: 6px 0 12px;
+    margin: 6px 0 10px;
   }
   .racine .etapes > * {
-    grid-template-columns: 30px minmax(0, 1fr) !important;
+    grid-template-columns: 28px minmax(0, 1fr) !important;
     column-gap: 12px !important;
-    padding: 0 0 14px !important;
+    padding: 0 !important;
+  }
+  .racine .etapes > :not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 13px;
+    top: 32px;
+    bottom: 4px;
+    width: 2px;
+    border-radius: 2px;
+    background: rgba(255, 124, 60, 0.22);
   }
   .racine .etapes > * > .pastille {
-    width: 30px !important;
-    height: 30px !important;
+    width: 28px !important;
+    height: 28px !important;
     margin: 0 !important;
-    font: 600 11.5px/30px var(--fb) !important;
-    background: var(--ink) !important;
-    color: var(--card) !important;
+    font: 600 11.5px/28px var(--fb) !important;
+    background: rgba(255, 124, 60, 0.12) !important;
+    color: var(--mm-lien) !important;
     box-shadow: none !important;
   }
   .racine .etapes > * > div {
@@ -779,12 +784,17 @@
   .racine .etapes > * > div:first-of-type {
     padding-top: 4px;
     margin: 0 !important;
-    font: 600 14.5px/1.6 var(--fb) !important;
-    letter-spacing: normal !important;
+    font: 600 15px/1.35 var(--ft) !important;
+    letter-spacing: -0.015em !important;
+    color: var(--ink) !important;
   }
   .racine .etapes > * > div + div {
-    font: 400 14.5px/1.6 var(--fb) !important;
+    margin-top: 3px !important;
+    font: 400 13.5px/1.55 var(--fb) !important;
     color: var(--ink1) !important;
+  }
+  .racine .etapes > * > div:last-child {
+    padding-bottom: 18px;
   }
 
   /* 04 · LE DISPOSITIF, une carte par rangée (L131, `isTb` : 14 px 15 px,
@@ -814,8 +824,8 @@
   }
   .racine .tableDispositif {
     display: grid;
-    gap: 8px;
-    margin: 4px 0 14px;
+    gap: 0;
+    margin: 6px 0 14px;
     padding: 0 !important;
     border: 0 !important;
     border-radius: 0 !important;
@@ -823,24 +833,6 @@
     box-shadow: none !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
-  }
-  .racine .dispositifLigne {
-    gap: 3px !important;
-    padding: 14px 15px !important;
-    border: 1px solid var(--mc-filet-kv) !important;
-    border-radius: 16px;
-    background: var(--mc-fond-kv);
-  }
-  .racine .dispositifLigne > span:first-child {
-    padding-top: 0 !important;
-    font: 600 14.5px/1.45 var(--fb) !important;
-    letter-spacing: normal !important;
-    text-transform: none !important;
-    color: var(--ink) !important;
-  }
-  .racine .dispositifLigne > span:last-child {
-    font: 400 14px/1.55 var(--fb) !important;
-    color: var(--ink1) !important;
   }
 
   /* LE COMPLÉMENT, carte blanche (L131, `isPlain`). */
@@ -893,52 +885,41 @@
   .racine .panneauBesoin > p {
     margin: 0 0 12px !important;
     max-width: none !important;
-    font: 400 15px/1.65 var(--fb) !important;
+    font: 400 15px/1.7 var(--fb) !important;
     color: rgba(255, 255, 255, 0.84) !important;
-  }
-  .racine .panneauBesoin > p:first-of-type {
-    font: 500 16px/1.6 var(--fb) !important;
-    color: #fff !important;
   }
   .racine .panneauBesoin strong {
     color: #fff !important;
   }
+  /* Les engagements du panneau : les points à filet orange de la V3
+     (`isPts`), en blanc sur le fond sombre, sans numéro. */
   .racine .besoinTuiles {
     grid-template-columns: minmax(0, 1fr) !important;
     grid-auto-rows: auto !important;
-    gap: 8px !important;
-    margin-top: 4px !important;
-    counter-reset: tuile;
+    gap: 16px !important;
+    margin: 6px 0 16px !important;
   }
   .racine .besoinTuiles > div {
-    counter-increment: tuile;
-    display: grid;
-    grid-template-columns: 26px minmax(0, 1fr);
-    column-gap: 10px;
+    display: block;
     height: auto !important;
-    padding: 13px 14px !important;
-    border-radius: 16px !important;
-    background: rgba(255, 255, 255, 0.06) !important;
-    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    padding: 0 0 0 14px !important;
+    border: 0 !important;
+    border-left: 2px solid var(--acc) !important;
+    border-radius: 0 !important;
+    background: none !important;
     box-shadow: none !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
   }
-  .racine .besoinTuiles > div::before {
-    content: counter(tuile, decimal-leading-zero);
-  }
-  .racine .besoinTuiles > div > div {
-    grid-column: 2;
-  }
   .racine .besoinTuiles > div > div:first-of-type {
     margin: 0 !important;
-    font: 600 14.5px/1.4 var(--ft) !important;
+    font: 600 15px/1.4 var(--ft) !important;
     letter-spacing: -0.015em !important;
     color: #fff !important;
   }
   .racine .besoinTuiles > div > div + div {
     margin-top: 4px;
-    font: 400 14px/1.55 var(--fb) !important;
+    font: 400 14px/1.6 var(--fb) !important;
     color: rgba(255, 255, 255, 0.84) !important;
   }
   .racine .carteFormulaire {
@@ -1009,6 +990,14 @@
   --mc-filet-kv: rgba(255, 255, 255, 0.12);
 }
 
+/* Le numéro de la frise en thème sombre : l'orange foncé de la V3 (#b4490f)
+   ne se lit pas sur une carte sombre, l'accent si. */
+@media (max-width: 880px) {
+  :global(:root[data-theme="sombre"]) .racine .etapes > * > .pastille {
+    color: var(--acc) !important;
+  }
+}
+
 /* LE BADGE DE LECTURE DU HÉROS MOBILE (dc.html L492), peint par la feuille
    depuis `data-lecture` : voir le composant pour la raison. Il ne vit que
    sous 881 px, comme son élément (`data-mobile-seulement`). */
@@ -1042,9 +1031,9 @@
   .racine .libelleBureau {
     display: none !important;
   }
-  /* Le nom du client entre dans le H1 (« Étude de cas AUTOLIV : … ») : la
-     pastille garde « Étude de cas · N min de lecture », comme la maquette. */
-  .racine .grilleHeros:has([data-prefixe-h1]) .clientHeros {
+  /* Le nom du client ouvre le H1 du téléphone (« Autoliv : … », maquette
+     V3) : la pastille garde « Étude de cas · N min de lecture ». */
+  .racine .grilleHeros:has([data-titre-mobile]) .clientHeros {
     display: none !important;
   }
   /* Le texte qui suit les puces de « Ce que nous avons mis en place » et le
@@ -1082,16 +1071,18 @@
     color: #fff;
     white-space: nowrap;
   }
+  /* Les paragraphes du résultat : 400 15px/1.7 dans l'encre 1 du panneau
+     sombre, comme tout paragraphe d'une étude dans la maquette V3
+     (`caseBlk`). */
   .racine .suiteResultat {
     margin: 14px 0 0 !important;
-    font: 400 15px/1.65 var(--fb) !important;
-    color: #fff !important;
+    font: 400 15px/1.7 var(--fb) !important;
+    color: rgba(255, 255, 255, 0.84) !important;
   }
   .racine .chapeauDeplace {
     margin: 0 0 14px !important;
-    /* Le premier paragraphe d'un panneau sombre de la maquette : 500 16px/1.6. */
-    font: 500 16px/1.6 var(--fb) !important;
-    color: #fff !important;
+    font: 400 15px/1.7 var(--fb) !important;
+    color: rgba(255, 255, 255, 0.84) !important;
   }
 
   /* PASSE DU 15/10, relecture adverse du gabarit 02. */
@@ -1147,18 +1138,18 @@
   }
 
   /* LE CHAPÔ DE « LA SITUATION » ET DE « PASSER À L'ACTION » : un seul
-     paragraphe (mesuré sur la maquette : 500 16px/1.6 Poppins, la phrase en
-     gras à 600), le `<h2>` puis la suite en romain sur la même ligne (le
-     premier `<p>`). Les colonnes de bureau s'effacent pour que les deux
-     coulent ensemble. */
+     paragraphe, le `<h2>` puis la suite sur la même ligne (le premier
+     `<p>`). Valeurs de la maquette V3 (16/10, `caseBlk` : 400 15px/1.7, la
+     phrase en gras à 600 dans l'encre pleine, la suite dans l'encre 1).
+     Les colonnes de bureau s'effacent pour que les deux coulent ensemble. */
   .racine section .grilleSituation {
     display: block !important;
-    font-size: 16px;
-    line-height: 1.6;
+    font-size: 15px;
+    line-height: 1.7;
   }
   .racine .panneauBesoin {
-    font-size: 16px;
-    line-height: 1.6;
+    font-size: 15px;
+    line-height: 1.7;
   }
   .racine .grilleSituation > .collante,
   .racine .proseSituation {
@@ -1167,7 +1158,7 @@
   .racine section .titreSituation,
   .racine section .titreBesoin {
     display: inline;
-    font: 600 16px/1.6 var(--fb) !important;
+    font: 600 15px/1.7 var(--fb) !important;
     letter-spacing: normal !important;
   }
   .racine section .titreSituation::after,
@@ -1177,14 +1168,14 @@
   .racine .proseSituation > p:first-of-type,
   .racine .panneauBesoin > h2 + p:first-of-type {
     display: inline;
-    font: 500 16px/1.6 var(--fb) !important;
+    font: 400 15px/1.7 var(--fb) !important;
     letter-spacing: normal;
   }
   .racine .proseSituation > p:first-of-type {
-    color: var(--ink) !important;
+    color: var(--ink1) !important;
   }
   .racine .panneauBesoin > h2 + p:first-of-type {
-    color: #fff !important;
+    color: rgba(255, 255, 255, 0.84) !important;
   }
   .racine .proseSituation > p:nth-of-type(2),
   .racine .panneauBesoin > h2 + p + p {
@@ -1194,7 +1185,7 @@
   /* « Ce que la mission illustre : », au-dessus des cartes du résultat. */
   .racine .introResultat {
     margin: 0 0 12px !important;
-    font: 400 15px/1.65 var(--fb);
+    font: 400 15px/1.7 var(--fb);
     color: rgba(255, 255, 255, 0.84);
   }
 
