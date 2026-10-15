@@ -93,7 +93,7 @@ export function CarteGrille({
   return (
     <a
       href={x.url}
-      className={`${s.card} ${s.lift} ${s.fade}`}
+      className={`${s.card} ${s.lift} ${s.fade} ${s.rang}`}
       style={{
         gridColumn: large ? "1 / -1" : "auto",
         flexDirection: large ? "row" : "column",
@@ -107,6 +107,7 @@ export function CarteGrille({
       }}
     >
       <div
+        className={s.vignette}
         style={{
           position: "relative",
           flex: "none",
@@ -117,8 +118,11 @@ export function CarteGrille({
           background: "var(--bg2)",
         }}
       >
-        <Photo src={x.photo} sizes="(max-width: 760px) 100vw, 360px" />
+        {/* « 84px » au téléphone : la vignette de la rangée. « 100vw » reste
+            pour que la liste `srcset` ne change pas : le bureau garde son image. */}
+        <Photo src={x.photo} sizes="(max-width: 640px) 84px, (max-width: 760px) 100vw, 360px" />
         <span
+          className={s.badge}
           style={{
             position: "absolute",
             top: 12,
@@ -134,8 +138,14 @@ export function CarteGrille({
           {x.format}
         </span>
       </div>
-      <div style={{ padding: "16px 18px 18px", display: "flex", flexDirection: "column", gap: 8, flex: 1 }}>
-        <span style={{ font: `500 11px ${MONO}`, letterSpacing: ".03em", color: "var(--ink3)" }}>{minutes(x)}</span>
+      <div className={s.texte} style={{ padding: "16px 18px 18px", display: "flex", flexDirection: "column", gap: 8, flex: 1 }}>
+        <span
+          className={s.meta}
+          data-format={x.format}
+          style={{ font: `500 11px ${MONO}`, letterSpacing: ".03em", color: "var(--ink3)" }}
+        >
+          {minutes(x)}
+        </span>
         <h3
           style={{
             font: "600 17px/1.25 var(--ft)",
@@ -161,6 +171,7 @@ export function CarteGrille({
           {x.resume}
         </p>
         <span
+          className={s.etiq}
           style={{
             marginTop: "auto",
             paddingTop: 8,
@@ -183,7 +194,7 @@ export function CarteListe({ x, style }: { x: ContenuRessource; style: CSSProper
   return (
     <a
       href={x.url}
-      className={`${s.card} ${s.ring} ${s.fade}`}
+      className={`${s.card} ${s.ring} ${s.fade} ${s.rangListe}`}
       style={{
         gridTemplateColumns: "120px minmax(0,1fr) 36px",
         gap: 18,
@@ -212,7 +223,7 @@ export function CarteListe({ x, style }: { x: ContenuRessource; style: CSSProper
         <span style={{ font: `500 11px ${MONO}`, color: "var(--ink3)" }}>
           {x.format} · {minutes(x)}
         </span>
-        <span style={{ font: "600 16.5px/1.3 var(--ft)", letterSpacing: "-.02em", color: "var(--ink)" }}>
+        <span className={s.titreListe} style={{ font: "600 16.5px/1.3 var(--ft)", letterSpacing: "-.02em", color: "var(--ink)" }}>
           {x.titre}
         </span>
         <span
@@ -269,7 +280,9 @@ function PetiteUne({ x }: { x: ContenuRessource }) {
         <Photo src={x.photo} sizes="(max-width: 640px) 100vw, 190px" />
       </div>
       <div style={{ padding: 20, display: "flex", flexDirection: "column", gap: 8 }}>
-        <span style={{ font: `500 11px ${MONO}`, color: "var(--ink3)" }}>{minutes(x)}</span>
+        <span className={s.meta} data-format={x.format} style={{ font: `500 11px ${MONO}`, color: "var(--ink3)" }}>
+          {minutes(x)}
+        </span>
         <h3
           style={{
             font: "600 18px/1.22 var(--ft)",
@@ -281,7 +294,7 @@ function PetiteUne({ x }: { x: ContenuRessource }) {
         >
           {x.titre}
         </h3>
-        <span style={{ marginTop: "auto", font: `500 11.5px ${MONO}`, color: "#ff7c3c" }}>
+        <span className={s.etiq} style={{ marginTop: "auto", font: `500 11.5px ${MONO}`, color: "#ff7c3c" }}>
           {etiquettesCarte(x)}
         </span>
       </div>
@@ -316,7 +329,7 @@ export function ALaUne({ une, hidden }: { une: readonly ContenuRessource[]; hidd
         <span style={SURTITRE}>À la une</span>
       </div>
       <div className={s.bento} style={BENTO}>
-        <a href={e1.url} className={`${s.card} ${s.big}`} style={GRANDE}>
+        <a href={e1.url} className={`${s.card} ${s.big} ${s.une}`} style={GRANDE}>
           <Photo src={e1.photo} sizes="(max-width: 1000px) 100vw, 620px" prioritaire />
           <div style={VOILE} />
           <div
@@ -334,7 +347,7 @@ export function ALaUne({ une, hidden }: { une: readonly ContenuRessource[]; hidd
             <span style={{ ...PASTILLE_VERRE, font: "600 12px var(--fb)" }}>{e1.sujet}</span>
             <span style={{ ...PASTILLE_VERRE, font: `600 11px ${MONO}` }}>{minutes(e1)}</span>
           </div>
-          <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: 30 }}>
+          <div className={s.uneBas} style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: 30 }}>
             <h3
               style={{
                 font: "600 clamp(26px,2.6vw,38px)/1.04 var(--ft)",

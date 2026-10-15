@@ -517,7 +517,7 @@ export default function HubRessources() {
               </div>
             ) : null}
             <div
-              className={vue === "grid" && !grille ? s.grilleRepli : undefined}
+              className={vue === "grid" && !grille ? `${s.grille} ${s.grilleRepli}` : s.grille}
               style={{
                 display: "grid",
                 gap: vue === "grid" ? 12 : 8,

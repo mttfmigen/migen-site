@@ -247,3 +247,125 @@
     min-height: 460px !important;
   }
 }
+
+/* LE TÉLÉPHONE, maquette mobile V3 (bloc `isResTop`) : la bibliothèque en
+   liste compacte. Une rangée par contenu (`res.items` : vignette de 84 px,
+   « Article · 10 min de lecture », titre, extrait sur deux lignes), « À la
+   une » en photo de 280 px, les deux suivantes en demi-cartes (`res.feat2`).
+   Les 27 contenus, leurs liens et le lecteur ne changent pas ; les mots-clés
+   et le badge de format, que la V3 n'affiche pas ici, sont masqués à l'écran
+   et restent dans le document. Le format repasse en tête de la méta par
+   `data-format`. Au-dessus de 640 px, aucune de ces règles ne joue. Les
+   `!important` battent les styles en ligne ; les sélecteurs à trois classes
+   battent ceux de `.grilleRepli > :nth-child(15)` avant l'hydratation. */
+@media (max-width: 640px) {
+  .grille {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 8px !important;
+  }
+  .rang {
+    grid-column: auto !important;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px 8px 8px;
+    border-radius: 18px !important;
+    box-shadow: none !important;
+  }
+  .grille .rang > .vignette {
+    width: 84px !important;
+    height: 84px;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+    border-radius: 12px;
+  }
+  .rang .badge,
+  .rang .etiq,
+  .hcard .etiq {
+    display: none !important;
+  }
+  .grille .rang > .texte {
+    min-width: 0;
+    padding: 0 !important;
+    gap: 4px !important;
+  }
+  .rang .meta {
+    font: 500 11px var(--fb) !important;
+    letter-spacing: normal !important;
+  }
+  .rang .meta::before,
+  .hcard .meta::before {
+    content: attr(data-format) " · ";
+  }
+  .rang h3 {
+    font: 600 14px/1.3 var(--ft) !important;
+    letter-spacing: -0.015em !important;
+  }
+  .rang p {
+    font: 400 12.5px/1.45 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+
+  /* « À la une », `res.feat` : 280 px au lieu de 460, texte à 18 px du bord. */
+  .big.une {
+    min-height: 280px !important;
+    border-radius: 24px !important;
+  }
+  .uneBas {
+    padding: 18px !important;
+  }
+  .uneBas h3 {
+    font: 600 21px/1.15 var(--ft) !important;
+    letter-spacing: -0.03em !important;
+    margin-bottom: 8px !important;
+  }
+  .uneBas p {
+    font: 400 13.5px/1.5 var(--fb) !important;
+    margin-bottom: 14px !important;
+  }
+
+  /* Les deux demi-cartes, `res.feat2` : côte à côte, photo de 104 px. */
+  .bento > .hcard {
+    grid-column: span 1 !important;
+    grid-template-rows: 104px auto;
+    min-height: 0 !important;
+    border-radius: 18px !important;
+    box-shadow: none !important;
+  }
+  .hcard > :first-child {
+    min-height: 0 !important;
+  }
+  .hcard > :last-child {
+    padding: 10px 11px 12px !important;
+    gap: 4px !important;
+  }
+  .hcard .meta {
+    font: 500 10.5px var(--fb) !important;
+  }
+  .hcard h3 {
+    font: 600 13px/1.3 var(--ft) !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  /* La vue « Liste » suit la même rangée : sans cela, sa vignette de 120 px
+     et sa flèche laissaient 136 px au texte, plus haut que la grille. */
+  .rangListe {
+    grid-template-columns: 84px minmax(0, 1fr) !important;
+    gap: 12px !important;
+    padding: 8px 12px 8px 8px !important;
+    border-radius: 18px !important;
+  }
+  .rangListe > :first-child {
+    width: 84px;
+    height: 84px;
+    aspect-ratio: auto !important;
+    border-radius: 12px !important;
+  }
+  .rangListe > :last-child {
+    display: none !important;
+  }
+  .titreListe {
+    font: 600 14px/1.3 var(--ft) !important;
+    letter-spacing: -0.015em !important;
+  }
+}
