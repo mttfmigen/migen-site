@@ -9,6 +9,7 @@ import { realisationsLiees } from "@/components/site/preuve/donnees-mobiles";
 import RappelFinalMobile from "@/components/site/mobile/RappelFinalMobile";
 import { varianteDe } from "@/components/site/mobile/conversion-donnees";
 import type { ContenuRessource, LectureRessource } from "@/types/ressource";
+import { chapoAffiche } from "./chapo";
 import type { Question } from "@/types/contenu";
 
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
@@ -396,7 +397,8 @@ export default function PageRessource({ titre, contenu, chemin }: ProprietesPage
      Sans lui la colonne devient la plus courte et le centrage de la grille
      ferait descendre le titre (29 px sur indicateurs-maintenance) : elle
      s'ancre alors en haut, la photo reste centrée sur la rangée. */
-  const paragraphes = chapo.filter(Boolean);
+  // Sans la ligne « *10 min de lecture* » de cinq fiches (`chapo.ts`).
+  const paragraphes = chapoAffiche(chapo);
   const colonneTexte = paragraphes.length < chapo.length ? H.COLONNE_ANCREE : undefined;
 
   /* Le rayon reste écrit dans le fil, mais sa page de rubrique redirige vers

@@ -1,5 +1,6 @@
 import type { ContenuRessource as CarteHub } from "@/components/site/ressources-hub/v2/donnees";
 import { appliqueDecisions } from "@/lib/decisions-copie";
+import { chapoAffiche } from "@/components/site/ressource/chapo";
 import { altPhoto } from "@/lib/descriptions-photos";
 import { entreeMaquette, familleMaquette, type BlocMaquette } from "@/lib/ressources-maquette";
 import type { BlocRessource, ContenuRessource } from "@/types/ressource";
@@ -114,7 +115,7 @@ export function lectureDePage(url: string, titre: string, contenu: ContenuRessou
     kind: carte?.format,
     theme: carte?.sujet,
     h1: titre,
-    lead: contenu.chapo ?? [],
+    lead: chapoAffiche(contenu.chapo ?? []),
     min: contenu.minutes,
     photo: contenu.image ? { src: contenu.image, alt: contenu.imageAlt ?? altPhoto(contenu.image) } : undefined,
     secs: (contenu.parties ?? []).map((p) => ({ t: p.titre, b: p.blocs.map(bloc) })),

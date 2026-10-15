@@ -1,6 +1,8 @@
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 
+import { CHAPO_PARASITE } from "@/components/site/ressource/chapo";
+
 import {
   etiquettesDe,
   minutesDeLecture,
@@ -205,7 +207,6 @@ const RAYONS: readonly { rayon: string; format: string; libelle: string }[] = [
  * rendent exactement les étiquettes que la maquette leur calcule. Le jour où
  * les fiches sont corrigées, ce saut ne trouvera plus rien à sauter.
  */
-const CHAPO_PARASITE = /^\*\s*\d+\s*min de lecture\s*\*$/;
 
 /**
  * LE TEXTE NU : les mots du corpus, sans sa syntaxe.
