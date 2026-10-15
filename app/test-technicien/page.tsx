@@ -19,7 +19,7 @@ import { vignetteDeLaPage } from "@/lib/seo/vignette";
 const CHEMIN = "/test-technicien/";
 const TITRE = "Test technique de maintenance en 8 questions | Migen";
 const DESCRIPTION =
-  "Huit questions de l’entretien technique Migen : consignation, roulements, vibratoire, variateurs, capteurs, hydraulique, lecture de schéma. Score et corrigé détaillé.";
+  "Huit questions de l’entretien technique Migen : consignation, vibratoire, variateurs, hydraulique, schémas. Obtenez votre score et le corrigé, puis postulez.";
 
 export const metadata: Metadata = {
   title: TITRE,

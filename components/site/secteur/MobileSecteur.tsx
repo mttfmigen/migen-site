@@ -329,12 +329,8 @@ export default function SectionsMobilesSecteur({ contenu, chemin, photoHeros, bo
     offre ? (
       <Carte key="offre" titre="L’offre" resume={prose[0] ?? resumeDe(points.map((p) => p.titre))}>
         <p className={s.phraseCle}>Ce que nous faisons, et ce que ça change pour vous</p>
+        {/* Sans compteur « N points » : retiré à la demande de Mehdi le 15/10. */}
         <ListeKv
-          entete={
-            <>
-              <span>{points.length}</span> points
-            </>
-          }
           lignes={points.map((p) => ({
             cle: p.titre,
             h: <TexteRiche texte={p.titre} />,

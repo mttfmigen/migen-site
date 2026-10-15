@@ -223,7 +223,7 @@ for (const texte of [
   // 6 · Offre.
   "L'offre",
   "Ce que nous faisons, et ce que ça change pour vous",
-  "7 points",
+  // « 7 points » n'est plus attendu : compteur retiré à la demande de Mehdi le 15/10.
   // 8 · Déroulé.
   "Notre méthode",
   "Un appel. Un plan. Une ligne qui repart.",

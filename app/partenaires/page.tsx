@@ -48,7 +48,7 @@ const CHEMIN = "/partenaires/";
  * parce qu'il tient dans la longueur utile. Rien n'a été reformulé.
  */
 const DESCRIPTION_PAR_DEFAUT =
-  "Nous ne savons pas tout faire. Pour la GMAO, l’intralogistique ou les prestations connexes, nous travaillons avec des acteurs français que nous connaissons sur le terrain.";
+  "GMAO, intralogistique, prestations connexes : Migen travaille avec des acteurs français qu’il connaît sur le terrain. Proposez votre partenariat.";
 
 export async function generateMetadata(): Promise<Metadata> {
   const complete = await pageParChemin(CHEMIN);

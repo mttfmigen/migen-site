@@ -112,10 +112,11 @@ const INTRO_FORMULAIRE =
  * industriels, dernier nommé, n'auraient jamais été visibles. Ce fragment fait
  * 167 caractères et nomme les trois dès le premier mot.
  */
+// 15/10 : raccourcie sous 160 caractères et tournée vers l'appel, à la
+// demande de Mehdi (« tu réduis et tu les orientes conversion »).
 const DESCRIPTION_PAR_DEFAUT =
-  "La maintenance de vos machines, le bureau d’études qui les conçoit et les " +
-  "met en conformité, et les travaux industriels qui les déplacent, les " +
-  "montent et les démarrent.";
+  "Maintenance de vos machines, bureau d’études et travaux industriels, de la " +
+  "conception au démarrage. Un chargé d’affaires vous rappelle dans l’heure.";
 
 export async function generateMetadata(): Promise<Metadata> {
   const complete = await pageParChemin(CHEMIN);

@@ -68,15 +68,6 @@ const ENTETE: CSSProperties = {
   marginBottom: 30,
 };
 
-const COMPTEUR: CSSProperties = {
-  display: "flex",
-  justifyContent: "flex-end",
-  alignItems: "center",
-  gap: 10,
-  margin: "-8px 0 14px",
-  font: "500 13px var(--fb)",
-  color: "var(--ink3)",
-};
 
 const RAIL: CSSProperties = {
   display: "grid",
@@ -241,12 +232,9 @@ export default function PointsOffre({
               Ce que nous faisons, et ce que ça change pour vous
             </h2>
           </div>
-          <div style={COMPTEUR}>
-            {/* Comme la maquette : le nombre interpolé dans sa propre balise. */}
-            <span>
-              <span>{points.length}</span> points
-            </span>
-          </div>
+          {/* PLUS DE COMPTEUR « N points » à droite du titre : retiré à la
+              demande de Mehdi le 15/10 (« retire les petits commentaires du
+              genre 6 points, 2 points »), au téléphone comme sur bureau. */}
         </div>
         {/* La classe `g3-offrail` branche le rail sur le moteur d'auto-
             défilement de `Moteurs.tsx` (0,45 px par image), comme dans la
