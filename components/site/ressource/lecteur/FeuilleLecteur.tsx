@@ -143,6 +143,11 @@ export default function FeuilleLecteur({
         aria-label="Lecture de la ressource"
         data-lecteur-ressource=""
         className={s.feuille}
+        // « À lire ensuite » d'une fiche : la suivante s'ouvre aussi dans le lecteur, comme dans la maquette.
+        onClick={(e) => {
+          const href = (e.target as Element).closest("a")?.getAttribute("href");
+          if (href) OUVERTS_PAR_LE_HUB.add(href);
+        }}
         onScroll={(e) => {
           const el = e.currentTarget;
           setProgression(el.scrollTop / Math.max(1, el.scrollHeight - el.clientHeight));
@@ -162,9 +167,7 @@ export default function FeuilleLecteur({
           outline: "none",
         }}
       >
-        {/* `data-libelle-lecteur` : les mots de la barre sont au lecteur, pas à la page. */}
         <div
-          data-libelle-lecteur=""
           style={{
             position: "sticky",
             top: 0,

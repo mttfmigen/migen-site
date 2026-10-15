@@ -1,153 +1,206 @@
-#!/usr/bin/env node
+#!/usr/bin/env bun
 /**
- * Porte du lecteur latéral, côté Articles : le lecteur dit TOUT le texte de la
- * page, sans mot perdu, et n'ajoute que ses libellés propres (listés ici).
+ * Porte du lecteur latéral, sur son RENDU : ouvert depuis une carte du hub,
+ * le panneau du site affiche ce que le panneau de la maquette « Ressources v2 »
+ * affiche pour la même adresse, au téléphone (390 px) et au bureau (1280 px).
  *
- *   node components/site/ressource/lecteur/verification-lecteur-articles.mjs http://localhost:5603
+ *   bun components/site/ressource/lecteur/verification-lecteur-articles.mjs \
+ *     http://localhost:4496 "http://localhost:4481/Migen%20Ressources%20v2%20-%20Redesign.html" [filtre]
  *
- * Pour chaque article du plan du site, à 1280 px :
- *   page    : le <main> de l'URL chargée en entier ;
- *   lecteur : la feuille ouverte au-dessus du hub, par navigation douce
- *             (`window.next.router.push`, le chemin d'une carte du hub).
- * Les deux côtés ouvrent d'abord TOUTES leurs questions (`<details>`) : une
- * réponse repliée est du texte de la page, `innerText` ne la lirait pas.
- * Ce qui est masqué au bureau (couche de conversion du téléphone) n'est pas
- * lu : c'est la lecture de bureau que le lecteur remplace.
+ * (bun, pas node : la porte lit `lib/decisions-copie.ts`.)
  *
- * Un mot = un jeton qui porte une lettre ou un chiffre, en minuscules
- * (`text-transform` change la casse d'`innerText`), ponctuation de bord ôtée.
- * Comparaison en multi-ensemble : un mot présent deux fois dans la page doit
- * l'être deux fois dans le lecteur.
+ * Pour chaque adresse du hub que la maquette porte (15 articles, 7 métiers,
+ * 6 guides), aux deux largeurs :
+ *   maquette : clic sur la carte du hub (onglet Techniciens pour les fiches),
+ *              panneau `aside[role=dialog]` ;
+ *   site     : clic sur la carte visible `a[href=URL]`, panneau
+ *              `aside[aria-label="Lecture de la ressource"]` ; l'adresse
+ *              devient celle de la ressource.
+ * Les deux textes (`innerText`, ligne par ligne, dans l'ordre) doivent être
+ * égaux, après les seules décisions de copie de Mehdi appliquées à la
+ * maquette (`appliqueDecisions`, comme pour toute capture). Puis chaque
+ * question de la FAQ est ouverte à son tour des deux côtés (une seule ouverte
+ * à la fois) et le texte comparé de nouveau. La mise en page est comparée
+ * sur quelques mesures : largeur du panneau, tailles du H1, du chapeau et du
+ * premier H2, cadre de la photo, colonnes de la première grille de cartes,
+ * aucun débordement horizontal du panneau.
  *
- * Les textes de remplacement des photos affichées (`alt` non vide) sont du
- * texte de la page : chacun doit se retrouver dans le lecteur (14/10, les
- * 12 billets repris perdaient le leur, et les 15 articles Migen montraient la
- * photo de la carte du hub, sans alt, au lieu de celle de la page).
+ * Les 12 billets repris, que la maquette n'a pas : le panneau doit suivre le
+ * même gabarit (fil « Ressources / Article / … », pastilles, parties
+ * numérotées 01…, appels de la maquette, « À lire ensuite »). Leur texte est
+ * tenu par `verification-lecteur.ts`.
+ *
+ * Sortie 0 = « LECTEUR_CONFORME_MAQUETTE », 1 = écarts.
  */
 import { chromium } from "playwright";
 
-import { locsDuPlan } from "../../../../scripts/plan-xml.mjs";
+import { appliqueDecisions } from "../../../../lib/decisions-copie.ts";
+import M from "../../../../lib/ressources-maquette.json";
 
-const base = process.argv[2] ?? "http://localhost:5603";
+const site = process.argv[2] ?? "http://localhost:4496";
+const maquette = process.argv[3] ?? "http://localhost:4481/Migen%20Ressources%20v2%20-%20Redesign.html";
+/** Facultatif : ne mesurer que les adresses qui contiennent ce texte. */
+const filtre = process.argv[4] ?? "";
+const PANNEAU_SITE = 'aside[aria-label="Lecture de la ressource"]';
+const PANNEAU_MAQUETTE = 'aside[role="dialog"]';
+const LARGEURS = [
+  [1280, 900],
+  [390, 844],
+];
+const TECH = new Set([...M.metiers, ...M.guides].map((x) => x.url));
+const COMMUNES = [...M.articles, ...M.metiers, ...M.guides].map((x) => x.url);
 
-const mots = (t) =>
-  (t ?? "")
-    .replace(/[   ]/g, " ")
-    .replace(/[’‘ʼ]/g, "'")
-    .split(/\s+/)
-    .map((m) => m.replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, "").toLowerCase())
+/** Le panneau, ligne par ligne, et ses mesures. Exécuté dans la page. */
+function releve(sel) {
+  const el = document.querySelector(sel);
+  if (!el) return null;
+  const lignes = el.innerText
+    .split("\n")
+    .map((l) => l.replace(/[  ]/g, " ").replace(/\s+/g, " ").trim())
     .filter(Boolean);
+  const px = (e, p) => (e ? getComputedStyle(e)[p] : null);
+  const photo = [...el.querySelectorAll("div")].find((d) => getComputedStyle(d).aspectRatio === "16 / 8");
+  const grille = [...el.querySelectorAll("article div")].find(
+    (d) => /^repeat\(\d+, ?minmax\(0/.test(d.style.gridTemplateColumns),
+  );
+  const r = photo?.getBoundingClientRect();
+  return {
+    lignes,
+    mesures: {
+      panneau: Math.round(el.getBoundingClientRect().width),
+      deborde: el.scrollWidth - el.clientWidth,
+      h1: px(el.querySelector("h1"), "fontSize"),
+      chapeau: px(el.querySelector("header p"), "fontSize"),
+      h2: px(el.querySelector("h2"), "fontSize"),
+      photo: r ? `${Math.round(r.width)}x${Math.round(r.height)}` : null,
+      colonnes: grille ? getComputedStyle(grille).gridTemplateColumns.split(" ").length : null,
+    },
+  };
+}
 
-/**
- * LES LIBELLÉS PROPRES DU LECTEUR, seuls mots qu'il a de plus que la page.
- * Chacun est un élément `[data-libelle-lecteur]` ; son texte doit être l'un
- * de ceux-ci, sinon c'est un mot ajouté qu'on ne déclare pas.
- *   « À retenir »                       surtitre de l'encadré (maquette)
- *   « migen.fr<url> Copier Fermer »     barre collante de la feuille
- *   « 01 », « 02 »…                     numéro d'une carte de puces (la page dit ✓)
- */
-const LIBELLES_PROPRES = (url) => ["À retenir", `migen.fr${url} Copier Fermer`].map((t) => mots(t).join(" "));
-const declare = (url, texte) => LIBELLES_PROPRES(url).includes(texte) || /^\d{2}$/.test(texte);
+/** Ouvre la i-ème question de la FAQ (bouton « + » dans la maquette, `<summary>` sur le site). */
+function ouvreQuestion([sel, i]) {
+  const el = document.querySelector(sel);
+  const qs = [...el.querySelectorAll("summary")].length
+    ? [...el.querySelectorAll("summary")]
+    : [...el.querySelectorAll("button")].filter((b) => b.lastElementChild?.textContent.trim() === "+");
+  qs[i]?.click();
+  return qs.length;
+}
 
-const compte = (liste) => {
-  const m = new Map();
-  for (const x of liste) m.set(x, (m.get(x) ?? 0) + 1);
-  return m;
-};
-const manque = (a, b) => {
-  const out = [];
-  for (const [mot, n] of a) for (let i = 0; i < n - (b.get(mot) ?? 0); i++) out.push(mot);
-  return out;
-};
+async function ouvreMaquette(p, url) {
+  await p.goto(maquette, { waitUntil: "load" });
+  await p.waitForSelector(`a[href="/ressources/articles/cout-arret-de-production/"]`, { timeout: 60000 });
+  if (TECH.has(url)) await p.locator('button[role="tab"]', { hasText: "Techniciens" }).first().click();
+  const carte = p.locator(`a[href="${url}"]:visible`, { hasText: "min de lecture" }).first();
+  await carte.scrollIntoViewIfNeeded();
+  await carte.click();
+  await p.waitForSelector(`${PANNEAU_MAQUETTE} h1`, { timeout: 30000 });
+  await p.waitForTimeout(500);
+}
 
-const OUVRE_TOUT = () => {
-  for (const d of document.querySelectorAll("details")) {
-    d.removeAttribute("name");
-    d.open = true;
+async function ouvreSite(p, url) {
+  await p.goto(`${site}/ressources/`, { waitUntil: "load" });
+  await p.waitForFunction(() => !!window.next?.router, null, { timeout: 60000 });
+  // Le bandeau de consentement couvre le bas de l'écran : fermé dans la page,
+  // sans choix enregistré (un clic écrirait une preuve en base).
+  await p.evaluate(() => document.getElementById("bandeau-consentement")?.close());
+  if (TECH.has(url)) await p.locator("button[aria-pressed]", { hasText: "Techniciens" }).first().click();
+  const carte = p.locator(`a[href="${url}"]:visible`, { hasText: "min de lecture" }).first();
+  await carte.scrollIntoViewIfNeeded();
+  await carte.click();
+  await p.waitForSelector(`${PANNEAU_SITE} h1`, { timeout: 60000 });
+  await p.waitForTimeout(500);
+  if (new URL(p.url()).pathname !== url) throw new Error(`adresse ${p.url()} au lieu de ${url}`);
+}
+
+/** Première ligne qui diffère, avec son voisinage. */
+function difference(a, b) {
+  const n = Math.max(a.length, b.length);
+  for (let i = 0; i < n; i++) {
+    if (a[i] !== b[i]) {
+      return `ligne ${i + 1} (maquette ${a.length} lignes, site ${b.length})\n      maquette : ${JSON.stringify(a.slice(Math.max(0, i - 1), i + 2))}\n      site     : ${JSON.stringify(b.slice(Math.max(0, i - 1), i + 2))}`;
+    }
   }
-};
-
-/** Les textes de remplacement non vides des photos affichées : du texte de la page aussi. */
-const ALTS = (sel) =>
-  [...(document.querySelector(sel)?.querySelectorAll("img") ?? [])]
-    .filter((i) => i.offsetParent !== null && i.alt.trim())
-    .map((i) => i.alt.trim());
-
-// Index et sous-plans, au format de l'ancien site (`scripts/plan-xml.mjs`).
-const urls = (await locsDuPlan(base))
-  .map((loc) => new URL(loc).pathname)
-  .filter((p) => /^\/ressources\/articles\/[^/]+\/$/.test(p));
-if (urls.length < 20) {
-  console.error(`MESURE NON CONCLUANTE : ${urls.length} articles au plan de ${base}`);
-  process.exit(2);
+  return null;
 }
 
 const nav = await chromium.launch({ channel: "chrome" });
-const ctx = await nav.newContext({ viewport: { width: 1280, height: 900 } });
 const ecarts = [];
-let total = { page: 0, lecteur: 0 };
+const conformes = [];
 
-const file = [...urls];
-const ouvrier = async () => {
-  const p = await ctx.newPage();
-  while (file.length) {
-    const url = file.shift();
+for (const [w, h] of LARGEURS) {
+  const ctxM = await nav.newContext({ viewport: { width: w, height: h } });
+  const ctxS = await nav.newContext({ viewport: { width: w, height: h } });
+  const pm = await ctxM.newPage();
+  const ps = await ctxS.newPage();
+  for (const url of COMMUNES.filter((u) => u.includes(filtre))) {
+    const ou = `${url} à ${w} px`;
     try {
-      await p.goto(base + url, { waitUntil: "load", timeout: 60000 });
-      await p.waitForTimeout(800);
-      await p.evaluate(OUVRE_TOUT);
-      const textePage = await p.evaluate(() => document.querySelector("main")?.innerText ?? "");
-      const altsPage = await p.evaluate(ALTS, "main");
-
-      await p.goto(`${base}/ressources/`, { waitUntil: "load", timeout: 60000 });
-      await p.waitForFunction(() => !!window.next?.router, null, { timeout: 30000 });
-      await p.evaluate((u) => window.next.router.push(u, { scroll: false }), url);
-      await p.waitForSelector("[data-lecteur-ressource] h1", { timeout: 30000 });
-      await p.waitForTimeout(500);
-      if (new URL(p.url()).pathname !== url) throw new Error(`adresse ${p.url()}`);
-      await p.evaluate(OUVRE_TOUT);
-      const { texteLecteur, libelles } = await p.evaluate(() => {
-        const feuille = document.querySelector("[data-lecteur-ressource]");
-        return {
-          texteLecteur: feuille?.innerText ?? "",
-          libelles: [...(feuille?.querySelectorAll("[data-libelle-lecteur]") ?? [])].map((e) => e.innerText),
-        };
-      });
-
-      const altsLecteur = await p.evaluate(ALTS, "[data-lecteur-ressource]");
-      const altsPerdus = manque(compte(altsPage), compte(altsLecteur));
-      if (altsPerdus.length) ecarts.push(`${url} : texte de photo perdu (${altsPerdus.length}) : ${altsPerdus.join(" | ").slice(0, 300)}`);
-
-      const a = mots(textePage);
-      const b = mots(texteLecteur);
-      total = { page: total.page + a.length, lecteur: total.lecteur + b.length };
-      // Les libellés propres sont retirés du lecteur AVANT de comparer, dans
-      // les deux sens : un « 01 » ou un « à » de libellé ne peut plus masquer
-      // un mot de la page perdu ailleurs. Lecteur = page + libellés, exactement.
-      for (const l of libelles) {
-        if (!declare(url, mots(l).join(" "))) ecarts.push(`${url} : libellé non déclaré « ${l.slice(0, 60)} »`);
+      await ouvreMaquette(pm, url);
+      await ouvreSite(ps, url);
+      const compare = async (etape) => {
+        const m = await pm.evaluate(releve, PANNEAU_MAQUETTE);
+        const s = await ps.evaluate(releve, PANNEAU_SITE);
+        const attendu = m.lignes.map((l) => appliqueDecisions(l, url));
+        const d = difference(attendu, s.lignes);
+        if (d) ecarts.push(`${ou}, ${etape} : texte, ${d}`);
+        const md = JSON.stringify(m.mesures);
+        const sd = JSON.stringify(s.mesures);
+        if (md !== sd) ecarts.push(`${ou}, ${etape} : mesures maquette ${md}\n      site ${sd}`);
+        return !d && md === sd;
+      };
+      let ok = await compare("fermé");
+      const nq = await pm.evaluate(ouvreQuestion, [PANNEAU_MAQUETTE, -1]);
+      const nqs = await ps.evaluate(ouvreQuestion, [PANNEAU_SITE, -1]);
+      if (nq !== nqs) {
+        ecarts.push(`${ou} : ${nq} questions dans la maquette, ${nqs} sur le site`);
+        ok = false;
       }
-      const sansLibelles = compte(manque(compte(b), compte(libelles.flatMap(mots))));
-      const perdus = manque(compte(a), sansLibelles);
-      const ajoutes = manque(sansLibelles, compte(a));
-      const ligne = `${url}  page ${a.length} mots, lecteur ${b.length} (dont ${libelles.length} libellé(s) propre(s))`;
-      if (perdus.length || ajoutes.length) {
-        ecarts.push(
-          `${ligne}\n    PERDUS (${perdus.length}) : ${perdus.join(" ")}\n    AJOUTÉS hors libellés (${ajoutes.length}) : ${ajoutes.join(" ")}`,
-        );
-      } else console.log(`ok  ${ligne}`);
+      for (let i = 0; i < Math.min(nq, nqs); i++) {
+        await pm.evaluate(ouvreQuestion, [PANNEAU_MAQUETTE, i]);
+        await ps.evaluate(ouvreQuestion, [PANNEAU_SITE, i]);
+        await pm.waitForTimeout(80);
+        ok = (await compare(`question ${i + 1} ouverte`)) && ok;
+      }
+      if (ok) conformes.push(ou);
     } catch (e) {
-      ecarts.push(`${url} : mesure impossible (${String(e).slice(0, 140)})`);
+      ecarts.push(`${ou} : mesure impossible (${String(e).slice(0, 200)})`);
     }
   }
-  await p.close();
-};
-await Promise.all(Array.from({ length: 4 }, ouvrier));
+
+  // Les billets repris : même gabarit, sans maquette en face.
+  await ps.goto(`${site}/ressources/`, { waitUntil: "load" });
+  const hrefs = await ps.$$eval('a[href^="/ressources/articles/"]', (as) => [...new Set(as.map((a) => a.getAttribute("href")))]);
+  const billets = hrefs.filter((u) => /^\/ressources\/articles\/[^/]+\/$/.test(u) && !COMMUNES.includes(u) && u.includes(filtre));
+  for (const url of billets) {
+    const ou = `${url} à ${w} px (billet repris)`;
+    try {
+      await ouvreSite(ps, url);
+      const { lignes, mesures } = await ps.evaluate(releve, PANNEAU_SITE);
+      const manque = [];
+      if (lignes[3] !== "Ressources" || lignes[4] !== "/" || lignes[5] !== "Article") manque.push(`fil ${JSON.stringify(lignes.slice(3, 8))}`);
+      if (!lignes.some((l) => / min de lecture$/.test(l)) || !lignes.some((l) => /^\d+ parties$/.test(l))) manque.push("pastilles");
+      if (!lignes.includes("Écrit par nos équipes terrain")) manque.push("signature des équipes");
+      if (!lignes.includes("01")) manque.push("parties numérotées");
+      if (!lignes.includes("Un chargé d’affaires vous rappelle dans l’heure.")) manque.push("appel de fin");
+      if (lignes.at(-2) !== "À LIRE ENSUITE") manque.push(`fin ${JSON.stringify(lignes.slice(-2))}`);
+      if (lignes.includes("Accueil") || lignes.includes("SOMMAIRE")) manque.push("ancien gabarit (Accueil, Sommaire)");
+      if (mesures.deborde > 0) manque.push(`débordement ${mesures.deborde} px`);
+      if (manque.length) ecarts.push(`${ou} : ${manque.join(", ")}`);
+      else conformes.push(ou);
+    } catch (e) {
+      ecarts.push(`${ou} : mesure impossible (${String(e).slice(0, 200)})`);
+    }
+  }
+  await ctxM.close();
+  await ctxS.close();
+}
 await nav.close();
 
-console.log(`\n${urls.length} articles, ${total.page} mots de page, ${total.lecteur} mots de lecteur.`);
+console.log(`${conformes.length} conformes :\n  ${conformes.join("\n  ")}`);
 if (ecarts.length) {
   console.error(`\n${ecarts.length} écart(s) :\n${ecarts.join("\n")}`);
   process.exit(1);
 }
-console.log("LECTEUR_TEXTE_COMPLET : chaque article dit dans le lecteur tous les mots de sa page.");
+console.log("LECTEUR_CONFORME_MAQUETTE : chaque panneau ouvert depuis le hub dit et dessine ce que la maquette dit et dessine.");

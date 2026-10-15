@@ -44,8 +44,15 @@
   color: inherit;
 }
 
-.voile {
+.voile,
+.faq[open] > div {
   animation: rsFade 0.3s ease both;
+}
+
+/* `bar` : chaque barre se déroule depuis la gauche (`.rs-bar` de la maquette). */
+.barre {
+  transform-origin: left center;
+  animation: rsBar 1.1s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
 .defile {
@@ -72,6 +79,14 @@
     transform: none;
   }
 }
+@keyframes rsBar {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: none;
+  }
+}
 @keyframes rsFade {
   from {
     opacity: 0;
@@ -82,7 +97,9 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .feuille,
-  .voile {
+  .voile,
+  .barre,
+  .faq[open] > div {
     animation: none;
   }
 }
