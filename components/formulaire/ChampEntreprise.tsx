@@ -91,16 +91,20 @@ export default function ChampEntreprise({
   const listeId = useId();
   const optionId = (i: number) => `${listeId}-${i}`;
 
+  /* UN TERME TROP COURT VIDE LA LISTE PENDANT LE RENDU, pas dans l'effet :
+     même résultat, un rendu en cascade de moins (`react-hooks/set-state-in-effect`).
+     Conditionnel, donc il ne boucle pas : au second passage la liste est vide. */
+  if (valeur.trim().length < LONGUEUR_MINIMALE && propositions.length > 0) {
+    setPropositions([]);
+  }
+
   /* LA RECHERCHE EST DIFFÉRÉE DE 250 ms et chaque réponse en retard est
      jetée : sans cela, taper « danone » lance six requêtes et c'est la plus
      lente qui gagne, donc parfois celle de « dan ». */
   useEffect(() => {
     if (elu && elu.nom === valeur) return;
     const terme = valeur.trim();
-    if (terme.length < LONGUEUR_MINIMALE) {
-      setPropositions([]);
-      return;
-    }
+    if (terme.length < LONGUEUR_MINIMALE) return;
     let abandonne = false;
     const minuteur = setTimeout(() => {
       void chercheEntreprises(terme).then((r) => {

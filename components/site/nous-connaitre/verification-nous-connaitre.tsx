@@ -365,10 +365,15 @@ const SOURCE_PIED = readFileSync(
   "utf8",
 );
 
+/* SEULS LES LIBELLÉS « migen© » ENTRENT DANS LA CARTE (15/10). La carte mobile
+   du pied (`LIENS_CARTE_MOBILE`, c0f9fbf) repasse par `/offres/bureau-etudes/`
+   et `/travaux-industriels/` sous « Bureau d’études » et « Travaux
+   industriels » : la clé étant l'adresse, ces doublons écrasaient le libellé
+   de marque, et la porte croyait le pied amputé de deux offres. */
 const LIBELLES_PIED = new Map(
-  [...SOURCE_PIED.matchAll(/\{ libelle: "([^"]+)", href: "([^"]+)" \}/g)].map(
-    (m) => [m[2], m[1]] as const,
-  ),
+  [...SOURCE_PIED.matchAll(/\{ libelle: "([^"]+)", href: "([^"]+)" \}/g)]
+    .filter((m) => m[1].startsWith("migen©"))
+    .map((m) => [m[2], m[1]] as const),
 );
 
 const OFFRES_ATTENDUES = [
@@ -557,10 +562,14 @@ const ORDRE = [...DOSSIERS, "FormulaireBasDePage"];
 /* `AvecConversionMobile` (14/10, maquette mobile v2) n'est pas une section :
    il enveloppe les sections de contenu, dans leur ordre, et n'ajoute que la
    cadence de conversion du téléphone, masquée au-dessus de 880 px. Il est
-   écarté du relevé, l'ordre des sections reste contrôlé tel quel. */
+   écarté du relevé, l'ordre des sections reste contrôlé tel quel.
+   `FinDePageMobile` (af93a50) non plus : il enveloppe `FormulaireBasDePage`
+   et n'ajoute que « Nos réalisations » et le rappel sombre du téléphone,
+   absents au-dessus de 880 px. */
+const ENVELOPPES_MOBILES = new Set(["AvecConversionMobile", "FinDePageMobile"]);
 const montes = [...SOURCE_PAGE.matchAll(/(?<![A-Za-z>])<([A-Z][A-Za-z]*)\b/g)]
   .map((m) => m[1])
-  .filter((nom) => nom !== "AvecConversionMobile");
+  .filter((nom) => !ENVELOPPES_MOBILES.has(nom));
 assert.deepEqual(
   montes,
   ORDRE,

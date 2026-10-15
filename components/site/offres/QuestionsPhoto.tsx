@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { useId, type CSSProperties } from "react";
 
 import styles from "./QuestionsPhoto.module.css";
@@ -256,13 +257,13 @@ function CarteFinale({ q }: { q: QuestionFinale }) {
       <p style={QUESTION_FINALE}>{q.question}</p>
       {q.bouton ? (
         <div style={RANGEE_FINALE}>
-          <a href="/contact/" style={BOUTON_FINAL}>{q.bouton}</a>
+          <Link href="/contact/" style={BOUTON_FINAL}>{q.bouton}</Link>
           <a href={`tel:${TELEPHONE.replace(/\s/g, "")}`} style={TELEPHONE_FINAL}>{TELEPHONE}</a>
         </div>
       ) : null}
       {q.rappel ? <p style={RAPPEL_FINAL}>{q.rappel}</p> : null}
       {q.bouton ? (
-        <a href="/contact/" style={GRAND_BOUTON_FINAL}>{q.bouton}</a>
+        <Link href="/contact/" style={GRAND_BOUTON_FINAL}>{q.bouton}</Link>
       ) : null}
     </section>
   );
@@ -366,7 +367,7 @@ export default function QuestionsPhoto({
                   <div className={styles.texteAvecLiens} style={REPONSE}>
                     {questionFinale.bouton ? (
                       <p>
-                        <a href="/contact/">{questionFinale.bouton}</a> · {TELEPHONE}
+                        <Link href="/contact/">{questionFinale.bouton}</Link> · {TELEPHONE}
                       </p>
                     ) : null}
                     {questionFinale.rappel ? <p>{questionFinale.rappel}</p> : null}

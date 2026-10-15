@@ -1646,9 +1646,9 @@ export default function PagePreuve({
                     étapes reste au bureau, le rappel final le relaie en bas
                     de page. */}
                 <div data-mobile-seulement="" className={styles.boutonsBesoin}>
-                  <a href="/contact/" className={styles.boutonPrincipal} style={BOUTON_ORANGE}>
+                  <Link href="/contact/" prefetch={false} className={styles.boutonPrincipal} style={BOUTON_ORANGE}>
                     {contenu.bouton}
-                  </a>{" "}
+                  </Link>{" "}
                   <a href={TELEPHONE_HREF} className={styles.telephoneBesoin}>
                     {TELEPHONE}
                   </a>
@@ -1675,9 +1675,9 @@ export default function PagePreuve({
                       </Link>
                     </div>
                   ))}
-                <a data-mobile-seulement="" href="/contact/" className={styles.boutonPlein}>
+                <Link data-mobile-seulement="" href="/contact/" prefetch={false} className={styles.boutonPlein}>
                   Décrire mon besoin
-                </a>
+                </Link>
               </div>
               <div className={styles.carteFormulaire} style={FORMULAIRE_CARTE}>
                 <div style={FORMULAIRE_TITRE}>{contenu.bouton}</div>

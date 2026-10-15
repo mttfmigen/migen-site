@@ -336,6 +336,7 @@ export default function PostulerMetier() {
   const [ouvert, setOuvert] = useState(false);
   const idFormulaire = useId();
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- l'adresse n'existe qu'au navigateur : la lire au rendu ferait diverger serveur et client (erreur #418), et un `useSyncExternalStore` refermerait le formulaire dès que l'ancre change
     if (window.location.hash === "#postuler") setOuvert(true);
     const surLien = (evenement: MouseEvent) => {
       const cible = evenement.target;

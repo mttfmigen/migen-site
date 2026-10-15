@@ -89,6 +89,37 @@ const AJOUTS_PAR_PAGE = {};
 const SECTIONS_AJOUTEES = [...(AJOUTS_PAR_PAGE[CHEMIN_PAGE] ?? [])];
 
 /**
+ * TITRES DE REPLI : un titre servi là où la capture n'en a pas, accepté
+ * seulement s'il est déclaré ici ET posé dans la bascule d'un repli du
+ * téléphone (`<summary>` de `blocs/SectionPliableMobile`).
+ *
+ * Décision de Mehdi du 14/10 (5c7e765, docs/NOUS-CONNAITRE-ARBITRAGES.md,
+ * « Décisions du 14/10 ») : les blocs sans titre de section se replient sous
+ * 880 px, et il leur a donné un `<h2>` qui sert de bascule. La note disait
+ * déjà que cette porte « doit accepter ces trois titres » ; elle ne le faisait
+ * pas, et tombait depuis le 14/10 sur /offres/residence/. Le troisième,
+ * « Votre technicien intégré à votre site », vit sur le hub /offres/, hors de
+ * ce gabarit : il n'est pas déclaré tant que la porte ne le rencontre pas.
+ *
+ * Comparés sans la casse : la capture et le site peignent « Ils nous font
+ * confiance » en capitales (`text-transform`), `innerText` les rend telles.
+ */
+const TITRES_DE_REPLI = [
+  {
+    titre: "Ils nous font confiance",
+    pourquoi:
+      "la mention du bandeau de logos, passée de <span> à <h2> sans changer " +
+      "de dessin (`offre/LogosClients.tsx`) : même texte, même place à 1 280 px.",
+  },
+  {
+    titre: "Certifications et équipe",
+    pourquoi:
+      "titre ajouté pour replier la réassurance (`offre/Reassurance.tsx`), " +
+      "masqué à l'œil au-dessus de 880 px (`offre/PliSansTitre.module.css`).",
+  },
+];
+
+/**
  * Tirets cadratins de la référence remplacés dans le rendu, phrase par
  * phrase : { maquette, rendu, pourquoi }. La forme `maquette` doit exister
  * dans la référence et la forme `rendu` sur le site, sinon la porte échoue.
@@ -680,9 +711,16 @@ const EXTRAIT = (imbriquees) => {
     ? principal.querySelectorAll("section:not([data-mobile-seulement])")
     : principal.querySelectorAll(":scope > section:not([data-mobile-seulement])");
   const sections2 = [...sections].map((section) => {
-    const titre = section.querySelector("h1, h2, h3");
+    /* UN TITRE DU TÉLÉPHONE N'EST PAS LE TITRE DE LA SECTION (15/10), même
+       règle que pour les sections : « Chiffres clés », posé au-dessus des
+       tuiles 2 x 2 (af93a50), est `data-mobile-seulement`, donc masqué à
+       1 280 px. Le premier titre peint au bureau fait foi. */
+    const titre = [...section.querySelectorAll("h1, h2, h3")].find(
+      (h) => !h.closest("[data-mobile-seulement]"),
+    );
     return {
       titre: titre ? titre.innerText : null,
+      titreDeRepli: Boolean(titre?.closest("[data-pliable-mobile] > summary")),
       lignes: (section.innerText || "").split("\n"),
     };
   });
@@ -704,6 +742,7 @@ async function lisSections(navigateur, ouvre, imbriquees) {
   if (!brut) throw new Error("aucun <main> dans la page, rien à mesurer");
   const lues = brut.sections.map((s) => ({
     titre: s.titre === null ? null : normalise(s.titre),
+    titreDeRepli: s.titreDeRepli,
     lignes: s.lignes.map(normalise).filter(Boolean),
     texte: normalise(s.lignes.join(" ")),
   }));
@@ -798,8 +837,10 @@ function retireAjoutsDeclares(site, texteReference, fautes) {
   return site.filter((_, rang) => !rangsRetires.has(rang));
 }
 
-/** 3. Même nombre de sections, mêmes titres, même ordre. */
+/** 3. Même nombre de sections, mêmes titres, même ordre.
+ *  Retourne le nombre de titres de repli acceptés. */
 function controleStructure(reference, site, fautes) {
+  let titresDeRepli = 0;
   if (site.length !== reference.length) {
     const titres = (liste) => liste.map((s) => s.titre ?? "(sans titre)").join(" · ");
     fautes.push(
@@ -807,17 +848,30 @@ function controleStructure(reference, site, fautes) {
         `    Référence : ${titres(reference)}\n` +
         `    Site      : ${titres(site)}`,
     );
-    return;
+    return titresDeRepli;
   }
   reference.forEach((section, rang) => {
     const attendu = titreAttenduAuRendu(rang, section.titre);
-    if (site[rang].titre !== attendu) {
-      fautes.push(
-        `section ${rang} : titre « ${site[rang].titre ?? "(aucun)"} » au lieu de ` +
-          `« ${attendu ?? "(aucun)"} »`,
-      );
+    if (site[rang].titre === attendu) return;
+    if (attendu === null && estUnTitreDeRepli(site[rang])) {
+      titresDeRepli += 1;
+      return;
     }
+    fautes.push(
+      `section ${rang} : titre « ${site[rang].titre ?? "(aucun)"} » au lieu de ` +
+        `« ${attendu ?? "(aucun)"} »`,
+    );
   });
+  return titresDeRepli;
+}
+
+/** Le titre servi est-il un titre de repli déclaré, posé dans sa bascule ? */
+function estUnTitreDeRepli(section) {
+  const titre = section.titre?.toLowerCase();
+  return (
+    section.titreDeRepli &&
+    TITRES_DE_REPLI.some((t) => normalise(t.titre).toLowerCase() === titre)
+  );
 }
 
 /**
@@ -977,7 +1031,7 @@ try {
   controleReference(reference, mesure, fautes);
   const texteReference = reference.map((s) => s.texte).join("\n");
   const siteAligne = retireAjoutsDeclares(site, texteReference, fautes);
-  controleStructure(reference, siteAligne, fautes);
+  const titresDeRepli = controleStructure(reference, siteAligne, fautes);
   controleTitresVides(reference, fautes);
   controleTexte(reference, siteAligne, fautes);
   controleTirets(reference, site, fautes);
@@ -988,6 +1042,7 @@ try {
     `${CHEMIN_PAGE} contre ${REFERENCE_HTML.replace(RACINE, "")} : ` +
       `${reference.length} sections de référence, ${site.length} servies ` +
       `(${SECTIONS_AJOUTEES.length} ajout(s) déclaré(s)), ${lignes} lignes de texte comparées, ` +
+      `${titresDeRepli} titre(s) de repli accepté(s), ` +
       `${TIRETS_REMPLACES.length} cadratin(s) arbitré(s), ${TROUS_ASSUMES.length} trou(s) assumé(s) ` +
       `dont ${trousServis} vérifié(s) présent(s) dans le HTML servi.`,
   );

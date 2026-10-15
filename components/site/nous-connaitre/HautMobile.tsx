@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import TelephoneHeros from "@/components/site/offre/TelephoneHeros";
 
 import s from "./mobile-apropos.module.css";
@@ -28,7 +30,7 @@ import s from "./mobile-apropos.module.css";
 export function FilMobile({ page }: { page: string }) {
   return (
     <nav aria-label="Fil d’Ariane" data-mobile-seulement="" className={s.filMobile}>
-      <a href="/">Accueil</a>
+      <Link href="/">Accueil</Link>
       <span aria-hidden="true">›</span>
       <span aria-current="page">{page}</span>
     </nav>
@@ -52,7 +54,7 @@ export function SurtitreMobile({ minutes }: { minutes: number }) {
 export function ActionsMobile() {
   return (
     <div data-mobile-seulement="" className={s.actionsMobile}>
-      <a href="/contact/">Décrire mon besoin</a>
+      <Link href="/contact/">Décrire mon besoin</Link>
       <TelephoneHeros />
     </div>
   );
