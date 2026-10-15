@@ -320,6 +320,44 @@
     background: rgba(28, 27, 25, 0.055);
     font-size: 17px;
   }
+
+  /* LA CARTE OUVERTE (signalé par Mehdi le 15/10, captures « 03 Notre
+     sélection » et « 04 On dépanne ? »). La bascule gardait ses quatre coins
+     et son filet bas une fois ouverte : la règle ci-dessus battait celle de la
+     carte numérotée partagée (`app/globals.css`, `[open] > summary`). Elle se
+     raccorde maintenant au corps, qui porte déjà fond et filets latéraux. */
+  .repli :global(details[data-pliable-mobile][open] > summary) {
+    border-bottom: 0;
+    border-radius: 20px 20px 0 0;
+  }
+
+  /* LE CONTENU OUVERT PERD L'HABILLAGE DE BUREAU. C'est la section de bureau
+     telle quelle : panneaux « verre » à ombre, rayons de 28 à 40 px, marges de
+     28 à 56 px, soit des cartes dans la carte et une colonne de texte étroite.
+     Dans une carte ouverte : plus d'ombre, `--rad` à 16 px, et le panneau verre
+     devient la petite carte de la maquette mobile v2 (dc.html, `isKv` : fond
+     #f6f6f7, filet, rayon 16, 13 à 15 px de marge). Le texte ne bouge pas. */
+  .repli :global(details[data-pliable-mobile] > summary ~ div) {
+    --rad: 16px;
+  }
+
+  .repli :global(details[data-pliable-mobile] > summary ~ div *) {
+    box-shadow: none !important;
+  }
+
+  .repli :global(details[data-pliable-mobile] > summary ~ div [style*="var(--gl-a)"]) {
+    background: var(--mm-fond-doux, #f6f6f7) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    border: 1px solid var(--mm-filet, rgba(28, 27, 25, 0.08)) !important;
+    border-radius: 16px !important;
+    padding: 14px 15px !important;
+    gap: 14px !important;
+  }
+
+  .repli :global(details[data-pliable-mobile] > summary ~ div [style*="background:var(--panel)"]) {
+    padding: 18px !important;
+  }
 }
 
 /*
