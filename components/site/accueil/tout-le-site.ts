@@ -18,7 +18,12 @@
  *    cinq rubriques de ressources passées en 301 le 14/10) : un lien du
  *    répertoire répond 200 ;
  *  - « Nos offres » suit la grille de l'accueil (`OFFRES_ACCUEIL`, sans
- *    « migen© » devant, comme la V3), puis « Toutes les offres » ;
+ *    « migen© » devant, comme la V3), puis le dépannage industriel, puis
+ *    « Toutes les offres ». Le dépannage est ajouté le 16/10 : la V3 a
+ *    remplacé la carte « Il me faut un dépannage, vite » par Full service, et
+ *    l'accueil ne faisait plus AUCUN lien vers /offres/depannage-industriel/,
+ *    page commerciale qui répond 200 avec deux sous-pages. Son libellé est
+ *    celui de l'index (`courtLibelle`), rien n'est rédigé ;
  *  - « Migen » ajoute, comme la V3, les trois pages qui ne sont pas dans
  *    l'index, à leur adresse sur le site (/nous-connaitre/, /valeurs/, /rse/).
  *
@@ -42,6 +47,8 @@ export interface FamilleRepertoire {
 }
 
 const INDEX = indexBrut as readonly EntreeIndex[];
+
+const DEPANNAGE = "/offres/depannage-industriel/";
 
 /** dc.html `DIR` : la famille et les premiers segments qu'elle regroupe. */
 const FAMILLES: readonly (readonly [string, readonly string[]])[] = [
@@ -75,6 +82,7 @@ export function familles(): FamilleRepertoire[] {
     libelle: "Nos offres",
     liens: [
       ...OFFRES_ACCUEIL.map((o) => ({ libelle: o.titre.replace(/^migen© /, ""), href: LIENS[o.cle] })),
+      ...INDEX.filter((x) => x.url === DEPANNAGE).map((x) => ({ libelle: courtLibelle(x), href: x.url })),
       { libelle: "Toutes les offres", href: "/offres/" },
     ],
   };

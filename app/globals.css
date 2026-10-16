@@ -538,6 +538,13 @@ details[open] .g3-plus {
     font: 600 17px var(--ft) !important;
     letter-spacing: -0.025em !important;
   }
+  /* La barre a pris 6 px avec le rond téléphone de 44 px (V3, 16/10) : le
+     contenu de chaque page descend d'autant, pour garder sous la barre l'écart
+     mesuré avant le changement (12 px jusqu'au fil d'Ariane des pages
+     intérieures, mesuré sur 18 gabarits). */
+  main {
+    margin-top: 6px;
+  }
   .mg-copyright {
     display: none;
   }
