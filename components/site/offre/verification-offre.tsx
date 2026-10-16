@@ -474,11 +474,14 @@ const LIBELLES_PARTAGES = [
   "Rappel dans l\u2019heure aux horaires ouvrés. Un chargé d\u2019affaires qualifie votre besoin et vous présente les techniciens adaptés.",
   /* `MarquesOffre` */
   "Vos machines sont dans la liste\u00a0? Le technicien qui les connaît fait déjà partie de nos équipes.",
-  /* `generique/PageVente`, bande d'appel des sections numérotées */
-  "Jours ouvrés · technicien depuis le hub le plus proche · partout en France",
-  /* `generique/maquette.js`, le `STATS` recopié de la maquette */
-  "des techniciens réussissent notre double évaluation",
-  /* `generique/PageVente`, repère du héros, et le défaut de `Reassurance` */
+  /* Le défaut de `Reassurance`.
+     DEUX LIBELLÉS SONT SORTIS DE CETTE LISTE LE 16/10, « Jours ouvrés ·
+     technicien depuis le hub le plus proche · partout en France » et « des
+     techniciens réussissent notre double évaluation » : seul
+     `generique/PageVente` les rendait, et plus aucune page ne passe par lui
+     depuis que les huit sous-pages ont la page d'offre complète (décision de
+     Mehdi du 16/10, V3 `sec: true`). Une fiche qui reprendrait `generique` les
+     ferait rendre sans contrôle : il faudrait alors les remettre ici. */
   "des techniciens retenus",
 ] as const;
 
@@ -607,8 +610,6 @@ function verifieBascule(quoi: string, libelle: string, noeud: (chemin?: string) 
   assert.equal(sans, dehors, `${quoi} : sans chemin, le rendu doit être celui d'une page hors portée`);
 }
 
-const ELECTRIQUE = litPage("bureau-etudes-bureau-etude-electrique.json");
-
 function basculesDesComposants(): void {
   verifieBascule("Reassurance, repère par défaut", "des techniciens retenus", (chemin) => (
     <Reassurance chemin={chemin} />
@@ -623,22 +624,9 @@ function basculesDesComposants(): void {
     "Vos machines sont dans la liste\u00a0? Le technicien qui les connaît fait déjà partie de nos équipes.",
     (chemin) => <MarquesOffre famille="auto" chemin={chemin} />,
   );
-  /* `PageVente` ne se monte pas seul : il se rend par `PageOffre`, depuis la
-     fiche GÉNÉRIQUE d'une vraie page. La même fiche sert les deux chemins, si
-     bien que seule la portée les sépare. */
-  for (const libelle of [
-    "Jours ouvrés · technicien depuis le hub le plus proche · partout en France",
-    "des techniciens réussissent notre double évaluation",
-    "des techniciens retenus",
-  ])
-    verifieBascule(`PageVente, « ${libelle.slice(0, 48)} »`, libelle, (chemin) => (
-      <PageOffre
-        titre={ELECTRIQUE.titre_h1 ?? ELECTRIQUE.url}
-        contenu={ELECTRIQUE.contenu}
-        formulaire="controle"
-        chemin={chemin}
-      />
-    ));
+  /* La bascule de `generique/PageVente` se contrôlait ici sur la fiche
+     générique de /bureau-etudes/bureau-etude-electrique/. Depuis le 16/10, plus
+     aucune fiche n'est générique : voir la liste `LIBELLES_PARTAGES`. */
 }
 
 basculesDesComposants();
@@ -872,7 +860,7 @@ if (process.argv.includes("--controle")) {
   doitPasser("un composant qui demande la décision à sa page", () =>
     verifieBascule("témoin juste", PHRASE_TEMOIN, (chemin) => <Juste chemin={chemin} />),
   );
-  doitPasser("les quatre composants réels de la famille offre", () => basculesDesComposants());
+  doitPasser("les trois composants réels de la famille offre", () => basculesDesComposants());
   doitPasser("une page hors portée qui garde le libellé brut", () =>
     verifieLibellesPartages("témoin.json", HORS_PORTEE, `<p>${PHRASE_TEMOIN}</p>`),
   );

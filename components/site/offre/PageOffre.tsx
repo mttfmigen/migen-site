@@ -118,10 +118,10 @@ import { etapesFilAriane } from "@/components/site/expertises/mobile";
  * Composant SERVEUR. Le fil d'Ariane et le maillage du cocon restent en props,
  * exigés par CLAUDE.md §4 bien qu'absents de la capture.
  *
- * HUIT PAGES DU GABARIT 03 NE PASSENT PAS PAR CE MONTAGE (08/10) : l'index de
- * la maquette les marque `sec: false` et son application les sert par son
- * gabarit GÉNÉRIQUE (« vente » pour six sous-pages, « édito » pour les deux de
- * /offres/residence/). Leur fiche porte `generique` ; voir `generique/`.
+ * HUIT SOUS-PAGES DU GABARIT 03 SONT PASSÉES PAR `generique/` DU 08/10 AU
+ * 16/10 (index de la maquette `sec: false`). Depuis la décision de Mehdi du
+ * 16/10 (V3 `sec: true`), elles ont ce montage complet ; plus aucune fiche ne
+ * porte `generique`, et la branche ci-dessous ne sert plus aucune page.
  */
 
 /** La photo de la FAQ sombre du gabarit, reprise en tête de page au téléphone. */
@@ -215,11 +215,10 @@ export default function PageOffre({
   maillage,
   chemin,
 }: ProprietesPageOffre) {
-  /* Huit sous-pages du gabarit 03 ne sont PAS servies par ce gabarit dans la
-     maquette : son index les marque `sec: false`, et son application les rend
-     avec son gabarit générique, « vente » (6) ou « édito » (2). Leur fiche
-     porte alors `generique` (le markdown découpé par la maquette), et la page
-     est celle de `generique/`, calculée par le code même de la maquette. */
+  /* Une fiche qui porte `generique` (le markdown découpé par la maquette) est
+     rendue par `generique/`, calculée par le code même de la maquette. Plus
+     aucune fiche ne le porte depuis le 16/10 : les huit sous-pages qui
+     passaient par là ont la page d'offre complète, comme la V3. */
   const generique = ficheGenerique(contenu);
   if (generique) {
     const vue = vueDe(titre, generique);
