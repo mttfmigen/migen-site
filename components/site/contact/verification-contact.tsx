@@ -653,6 +653,23 @@ function verifieCarte(renduAgences: string): void {
 }
 verifieCarte(normalise(RENDU_AGENCES));
 
+// Au téléphone, le SVG de 420 unités tient dans environ 318 px : sans
+// agrandissement, les étiquettes tombent à 9 px et « Siège, Écully » à 8 px.
+const cssContact = readFileSync(
+  new URL("./Contact.module.css", import.meta.url),
+  "utf8",
+);
+const blocMobile = cssContact.slice(cssContact.indexOf("@media (max-width: 880px)"));
+for (const [balise, minimum] of [["text", 15], ["tspan", 13]] as const) {
+  const taille = blocMobile.match(
+    new RegExp(`\\.carteAgences ${balise} \\{\\s*font-size: (\\d+)px`),
+  );
+  assert.ok(
+    taille && Number(taille[1]) >= minimum,
+    `au téléphone, les étiquettes <${balise}> de la carte doivent passer à ${minimum} px au moins`,
+  );
+}
+
 // ═════════════════════════════════════════════════════ 5. DOCUMENT ET LIENS
 
 const h1 = [...html.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/g)];

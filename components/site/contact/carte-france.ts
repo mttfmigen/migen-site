@@ -15,8 +15,8 @@ export interface HubCarte {
   readonly x: number;
   readonly y: number;
   readonly siege: boolean;
-  /** Côté de l'étiquette : « d » à droite du point, « g » à gauche. */
-  readonly cote: "d" | "g";
+  /** Place de l'étiquette : « d » à droite, « g » à gauche, « h » au-dessus, « b » en dessous. */
+  readonly cote: "d" | "g" | "h" | "b";
 }
 
 export const HUBS_CARTE: readonly HubCarte[] = [
@@ -25,28 +25,28 @@ export const HUBS_CARTE: readonly HubCarte[] = [
     "x": 270.8,
     "y": 259.4,
     "siege": true,
-    "cote": "d"
+    "cote": "g"
   },
   {
     "nom": "Paris",
     "x": 212.5,
     "y": 150,
     "siege": false,
-    "cote": "d"
+    "cote": "g"
   },
   {
     "nom": "Lille",
     "x": 229.4,
     "y": 84.1,
     "siege": false,
-    "cote": "d"
+    "cote": "b"
   },
   {
     "nom": "Marseille",
     "x": 285,
     "y": 343.1,
     "siege": false,
-    "cote": "d"
+    "cote": "h"
   },
   {
     "nom": "Strasbourg",
@@ -67,7 +67,7 @@ export const HUBS_CARTE: readonly HubCarte[] = [
     "x": 190.6,
     "y": 332.9,
     "siege": false,
-    "cote": "d"
+    "cote": "h"
   },
   {
     "nom": "Bordeaux",

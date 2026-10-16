@@ -34,16 +34,22 @@ const DEBORD = 12;
 /**
  * Coordonnées des communes (latitude, longitude). Le point du siège est celui
  * d'Écully, à 5 km du centre de Lyon : un pixel d'écart à cette échelle.
- * `cote` place l'étiquette, à gauche quand la droite est prise.
+ * `cote` place l'étiquette : « d » à droite du point, « g » à gauche, « h »
+ * au-dessus, « b » en dessous. Chaque côté est choisi pour que l'étiquette
+ * reste dans la France sans couper un trait ni une autre étiquette, aussi
+ * dans la taille agrandie du téléphone : Lyon et son « Siège, Écully » à
+ * gauche (à droite, la frontière italienne les coupait), Marseille et Toulouse
+ * au-dessus (la côte), Lille en dessous (la Belgique), Paris à gauche
+ * (Strasbourg).
  */
 const HUBS = [
-  { nom: "Lyon", lat: 45.7742, lon: 4.7778, siege: true, cote: "d" },
-  { nom: "Paris", lat: 48.8566, lon: 2.3522, cote: "d" },
-  { nom: "Lille", lat: 50.6292, lon: 3.0573, cote: "d" },
-  { nom: "Marseille", lat: 43.2965, lon: 5.3698, cote: "d" },
+  { nom: "Lyon", lat: 45.7742, lon: 4.7778, siege: true, cote: "g" },
+  { nom: "Paris", lat: 48.8566, lon: 2.3522, cote: "g" },
+  { nom: "Lille", lat: 50.6292, lon: 3.0573, cote: "b" },
+  { nom: "Marseille", lat: 43.2965, lon: 5.3698, cote: "h" },
   { nom: "Strasbourg", lat: 48.5734, lon: 7.7521, cote: "g" },
   { nom: "Nantes", lat: 47.2184, lon: -1.5536, cote: "d" },
-  { nom: "Toulouse", lat: 43.6047, lon: 1.4442, cote: "d" },
+  { nom: "Toulouse", lat: 43.6047, lon: 1.4442, cote: "h" },
   { nom: "Bordeaux", lat: 44.8378, lon: -0.5792, cote: "d" },
   { nom: "Metz", lat: 49.1193, lon: 6.1757, cote: "g" },
   { nom: "Dijon", lat: 47.322, lon: 5.0415, cote: "g" },
@@ -212,8 +218,8 @@ export interface HubCarte {
   readonly x: number;
   readonly y: number;
   readonly siege: boolean;
-  /** Côté de l'étiquette : « d » à droite du point, « g » à gauche. */
-  readonly cote: "d" | "g";
+  /** Place de l'étiquette : « d » à droite, « g » à gauche, « h » au-dessus, « b » en dessous. */
+  readonly cote: "d" | "g" | "h" | "b";
 }
 
 export const HUBS_CARTE: readonly HubCarte[] = ${JSON.stringify(hubs, null, 2)};

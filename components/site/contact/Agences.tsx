@@ -84,6 +84,14 @@ const DESCRIPTION_CARTE = `Carte de France des hubs de techniciens : ${HUBS_CART
 ).join(", ")}.`;
 
 /** Le dessin de `MigenAgences` (maquette V3), sur un tracé figé. */
+/** Décalage de l'étiquette par rapport au point, et son ancrage, selon `cote`. */
+const PLACE_ETIQUETTE = {
+  d: [13, 4, "start"],
+  g: [-12, 4, "end"],
+  h: [0, -12, "middle"],
+  b: [0, 20, "middle"],
+} as const;
+
 function CarteFrance() {
   return (
     <svg
@@ -117,8 +125,8 @@ function CarteFrance() {
         />
       </g>
       {HUBS_CARTE.map((hub) => {
-        const aGauche = hub.cote === "g";
-        const xTexte = hub.x + (aGauche ? -12 : 13);
+        const [dx, dy, ancre] = PLACE_ETIQUETTE[hub.cote];
+        const xTexte = hub.x + dx;
         return (
           <g key={hub.nom}>
             <circle
@@ -138,8 +146,8 @@ function CarteFrance() {
             />
             <text
               x={xTexte}
-              y={hub.y + 4}
-              textAnchor={aGauche ? "end" : "start"}
+              y={hub.y + dy}
+              textAnchor={ancre}
               style={{
                 font: "600 12px var(--ft)",
                 fill: hub.siege ? "var(--ink)" : "var(--ink2)",
