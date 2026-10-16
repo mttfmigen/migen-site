@@ -6,6 +6,7 @@ import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import TexteRiche, { enTexteNu, estCheminInterne } from "@/components/site/blocs/TexteRiche";
 import { continueLeTitre } from "@/components/site/blocs/TitreEtSuite";
 import { logoClient } from "@/components/site/casclients/vues-preuves";
+import { nomClient } from "@/components/site/preuve/noms-clients";
 import PastillesCocon from "@/components/site/cocon/PastillesCocon";
 import { TELEPHONE_SITE } from "@/components/site/entete-donnees";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
@@ -71,13 +72,16 @@ function sectionDeType<T extends TypeSection>(
 }
 
 /**
- * La photo de tête de la maquette V3, là où c'est une photo autorisée
- * (`lib/photos-autorisees.ts`, photos de l'équipe Migen). Relevé le 16/10 par
- * empreinte sur la V3 : les dix autres pages secteur y portent une photo hors
- * de la répartition (`mq-*`, `x-robotique`), elles gardent celle du site.
+ * La photo de tête de la maquette V3, là où c'est une photo de la répartition
+ * (`lib/photos-autorisees.ts`, photos de l'équipe Migen). Relevé le 16/10 sur
+ * les octets du fond de la V3 (égalité sha256, sinon empreinte 32x32) : les
+ * neuf autres pages y portent `x-robotique` ou une `mq-*` (logistique et ses
+ * deux filles : `mq-29ebb1b81ced`, la même image que `x-logistique-entrepot`),
+ * toutes hors de la répartition ; elles gardent la photo du site.
  */
 const PHOTO_TETE_V3: Readonly<Record<string, string>> = {
   "/secteurs/agroalimentaire/": "/assets/web/sv-convoyeur.jpg",
+  "/secteurs/industrie-metallique/": "/assets/web/team-grind-sparks.jpg",
   "/secteurs/pharmaceutique/": "/assets/web/sv-armoire.jpg",
 };
 
@@ -149,6 +153,18 @@ function ListeKv({ lignes }: { lignes: readonly Ligne[] }) {
   );
 }
 
+/** Le bouton plein de la V3 (`isBtnQ`) : pilule orange, pastille flèche à droite. */
+function BoutonFleche({ href, libelle }: { href: string; libelle: string }) {
+  return (
+    <a href={href} className={s.boutonFleche}>
+      <span>{libelle}</span>
+      <span className={s.pastilleFleche}>
+        <IconeFleche />
+      </span>
+    </a>
+  );
+}
+
 /** Une carte blanche numérotée, son titre DANS la carte (dc.html, `isH`). */
 function Carte({
   titre,
@@ -203,9 +219,16 @@ interface TableauRendu {
   lignes: LigneTableau[];
 }
 
-/** Le texte nu, sans casse ni ponctuation : ce qui compare le corpus à la fiche. */
+/**
+ * Le texte nu, sans casse ni ponctuation : ce qui compare le corpus à la fiche.
+ * « Astreinte la nuit, le week-end et les jours fériés » vaut « Astreinte » :
+ * la fiche porte le renommage global que `lib/decisions-copie.ts` (12/10)
+ * décrit, le corpus V3 la forme d'avant. Sans cela, deux lignes (logistique,
+ * peak-season) gardaient le texte de la fiche, tout en gras et sans virgule.
+ */
 const cle = (texte: string) =>
   enTexteNu(texte)
+    .replace(/(astreinte)\s+la nuit,\s*le week-end et les jours f[eé]ri[eé]s/giu, "$1")
     .toLowerCase()
     .replace(/[^\p{L}\p{N}]/gu, "");
 
@@ -287,6 +310,7 @@ function RailReferences({ preuves }: { preuves: readonly Preuve[] }) {
       {cartes.map((preuve) => {
         const client = etiquetteEtude(preuve);
         const logo = client ? logoClient(client) : "";
+        const nom = client ? nomClient(client) : undefined;
         // La suite du corpus, sans sa ponctuation d'attache, point final
         // compris comme dans la maquette (« site de Steenvoorde. »).
         const nue = preuve.texte?.replace(/^\s*[:.,–—-]\s*/u, "").trim();
@@ -308,7 +332,7 @@ function RailReferences({ preuves }: { preuves: readonly Preuve[] }) {
                   {logo ? (
                     <Image
                       src={logo}
-                      alt={client}
+                      alt={nom ?? ""}
                       width={64}
                       height={16}
                       unoptimized
@@ -329,7 +353,9 @@ function RailReferences({ preuves }: { preuves: readonly Preuve[] }) {
                   <TexteRiche texte={suite} />
                 </div>
               ) : null}
-              <a href={preuve.lienHref} className={s.carteRefLien}>
+              {/* Huit liens « Lire le cas » vers huit études : le nom lu
+                  nomme le client, et commence par le texte vu. */}
+              <a href={preuve.lienHref} className={s.carteRefLien} aria-label={nom ? `Lire le cas ${nom}` : undefined}>
                 Lire le cas <span aria-hidden="true">→</span>
               </a>
             </div>
@@ -487,12 +513,7 @@ export default function SectionsMobilesSecteur({ contenu, chemin, photoHeros, bo
               <TexteRiche texte={bref} />
             </p>
             {contenu.brefBouton?.libelle ? (
-              <a href={CIBLE_CONTACT} className={s.boutonFleche}>
-                <span>{contenu.brefBouton.libelle}</span>
-                <span className={s.pastilleFleche}>
-                  <IconeFleche />
-                </span>
-              </a>
+              <BoutonFleche href={CIBLE_CONTACT} libelle={contenu.brefBouton.libelle} />
             ) : null}
             <p className={s.texte}>{APPEL_TELEPHONE}</p>
           </>
@@ -536,8 +557,9 @@ export default function SectionsMobilesSecteur({ contenu, chemin, photoHeros, bo
               </details>
             ))}
             {/* La 7e question de la maquette : la question de clôture du
-                corpus, sa réponse est l'appel et le téléphone du corpus
-                (dc.html, `x.faq`, dernier élément). */}
+                corpus, sa réponse est le bouton à flèche de la V3 (`isBtnQ`),
+                puis la ligne d'appel du corpus (dc.html, `x.faq`, dernier
+                élément). */}
             {ctaFinal?.question ? (
               <details name="faq-secteur">
                 <summary>
@@ -547,11 +569,8 @@ export default function SectionsMobilesSecteur({ contenu, chemin, photoHeros, bo
                   <span aria-hidden="true">+</span>
                 </summary>
                 <div>
-                  <p>
-                    <a href={ctaFinal.href ?? CIBLE_CONTACT}>{ctaFinal.bouton}</a> ·{" "}
-                    <a href={TELEPHONE_SITE.href}>{TELEPHONE_SITE.affichage}</a>
-                  </p>
-                  {ctaFinal.rappel ? <p>{ctaFinal.rappel}</p> : null}
+                  <BoutonFleche href={ctaFinal.href ?? CIBLE_CONTACT} libelle={ctaFinal.bouton} />
+                  <p>{ctaFinal.rappel ?? APPEL_TELEPHONE}</p>
                 </div>
               </details>
             ) : null}

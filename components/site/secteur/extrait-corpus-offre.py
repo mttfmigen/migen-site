@@ -17,7 +17,8 @@ SOURCE = os.path.join(RACINE, "maquette", "contenu", "site", "Secteurs")
 CIBLE = os.path.join(os.path.dirname(__file__), "corpus-offre.ts")
 INTERDIT = re.compile(
     r"int[ée]rim|notamment|sur[\s-]mesure|cl[ée]\s+en\s+main|\br[ée]gie\b|\blevier|mise?\s+[àa]\s+disposition"
-    r"|mettre\s+[àa]\s+disposition|sans\s+engagement|concr[èe]tement|incontournable|d[ée]couvrez|en\s+savoir\s+plus|—",
+    r"|mettre\s+[àa]\s+disposition|sans\s+engagement|concr[èe]tement|incontournable|d[ée]couvrez|en\s+savoir\s+plus|—"
+    r"|prix\s+mensuel\s+fixe",
     re.I,
 )
 

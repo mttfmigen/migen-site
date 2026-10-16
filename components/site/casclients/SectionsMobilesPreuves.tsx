@@ -68,7 +68,9 @@ function CarteRail({ carte }: { carte: CartePreuve }) {
           <span className={styles.logoRail}>
             <span role="img" aria-label={carte.client} style={logoEnFond(carte.logo, carte.logoInverse, 72, 18)} />
           </span>
-        ) : null}
+        ) : (
+          <span className={styles.nomCache}>{carte.client}</span>
+        )}
       </span>
       <span className={styles.resumeRail}>{carte.resume}</span>{" "}
       <span className={styles.lienRail}>

@@ -661,14 +661,17 @@ const PAGES: PageRelais[] = ATTENDUES.map((url) => {
     if (ecartsBandeUnique(html, logos).length === 0) throw new Error(`la bande unique laisse passer : ${nom}`);
   }
 
-  /* « L'offre » au téléphone, au dessin de la V3 (16/10) : chaque page lit
-     les tableaux du corpus (`corpus-offre.ts`) sans retomber sur la fiche, la
-     virgule perdue à l'import revient, et une fiche dont le décompte change
-     retombe sur la fiche entière plutôt que de décaler les lignes. */
+  /* « L'offre » au téléphone, au dessin de la V3 (16/10) : chaque LIGNE de
+     chaque page est la cellule du corpus (`corpus-offre.ts`), décisions de
+     copie appliquées, et non le texte de la fiche ; la virgule perdue à
+     l'import revient, et une fiche dont le décompte change retombe sur la
+     fiche entière plutôt que de décaler les lignes. Comparer le seul nombre
+     de tableaux laissait passer un repli complet sur les pages à un tableau. */
   for (const page of PAGES) {
     const lignes = section(page, "offre")?.lignes ?? [];
-    const t = tableauxDeLOffre(lignes, page.url);
-    if (t.length !== CORPUS_OFFRE[page.url]?.tableaux.length) throw new Error(`${page.url} : L'offre ne lit plus le corpus V3`);
+    const rendu = tableauxDeLOffre(lignes, page.url).map((t) => t.lignes.map((l) => l.faisons));
+    const attendu = (CORPUS_OFFRE[page.url]?.tableaux ?? []).map((t) => t.faisons.map((f) => appliqueDecisions(f, page.url)));
+    if (JSON.stringify(rendu) !== JSON.stringify(attendu)) throw new Error(`${page.url} : L'offre ne lit plus le corpus V3`);
   }
   const agro = PAGES.find((p) => p.url === "/secteurs/agroalimentaire/")!;
   const lignesAgro = section(agro, "offre")!.lignes;

@@ -428,10 +428,29 @@
   }
 }
 
-/* Le gris des petites cartes n'a pas de jeton : sa valeur sombre. */
+/* Le gris des petites cartes n'a pas de jeton : sa valeur sombre. « Lire le
+   cas » passe de l'orange foncé de la V3 (2,9:1 sur carte sombre) à
+   l'accent, et le filet du lien, figé en encre claire, au blanc. */
 @media (max-width: 880px) {
   :global(:root[data-theme="sombre"]) .ligneRecente,
   :global(:root[data-theme="sombre"]) .pastilleLire {
     background: var(--chip);
   }
+  :global(:root[data-theme="sombre"]) .lienRail {
+    color: var(--acc);
+  }
+  :global(:root[data-theme="sombre"]) .lienRecent {
+    text-decoration-color: rgba(255, 255, 255, 0.28);
+  }
+}
+
+/* Le nom du client d'une carte du rail sans logo : lu, jamais vu (la V3 n'en
+   montre aucun), pour que le lien ne se réduise pas à « … Lire le cas ». */
+.nomCache {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }

@@ -409,10 +409,22 @@
 
 }
 
-/* Le gris des petites cartes n'a pas de jeton : sa valeur sombre. */
+/* Le gris des petites cartes n'a pas de jeton : sa valeur sombre. L'orange
+   foncé de la V3 (#b4490f) ne se lit pas sur une carte sombre (2,4:1 et
+   2,9:1) : l'accent le remplace, comme la frise de l'étude de cas
+   (`PagePreuve.module.css`). Le filet des liens, figé en encre claire,
+   passe au blanc. */
 @media (max-width: 880px) {
   :root[data-theme="sombre"] .kvCarte,
   :root[data-theme="sombre"] .ligneTableau {
     background: var(--chip);
+  }
+  :root[data-theme="sombre"] .friseNumero,
+  :root[data-theme="sombre"] .carteRefLien {
+    color: var(--acc);
+  }
+  :root[data-theme="sombre"] .texte a,
+  :root[data-theme="sombre"] .faisons a {
+    text-decoration-color: rgba(255, 255, 255, 0.28);
   }
 }
