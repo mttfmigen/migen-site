@@ -23,6 +23,7 @@ import {
   SurtitreHerosMobile,
   TitreChiffresMobile,
   TUILES_CHIFFRES,
+  ValeurChiffre,
 } from "@/components/site/expertises/mobile";
 import TelephoneHeros from "@/components/site/offre/TelephoneHeros";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
@@ -70,8 +71,8 @@ import {
 } from "@/types/expertises";
 
 import Domaines from "./Domaines";
+import { APPELS_GARANTIES } from "./corpus-mobile";
 import {
-  APPEL_GARANTIES_HUB,
   CONTENU_HUB_EXPERTISES,
   PROBLEME_MOBILE_HUB,
   TITRE_HUB_EXPERTISES,
@@ -325,7 +326,9 @@ export default function PageExpertises({
                       : CARTE_CHIFFRE
                   }
                 >
-                  <div style={CHIFFRE_VALEUR}>{chiffre.valeur}</div>
+                  <div style={CHIFFRE_VALEUR}>
+                    <ValeurChiffre valeur={chiffre.valeur} />
+                  </div>
                   <div style={CHIFFRE_LIBELLE}>{chiffre.libelle}</div>
                 </div>
               ))}
@@ -421,7 +424,7 @@ export default function PageExpertises({
         {/* L'appel du corpus sous les garanties, dans la carte au téléphone
             (`AppelCarteMobile`, V3). */}
         {garanties ? (
-          <GarantiesOffre section={garanties} apres={<AppelCarteMobile cta={APPEL_GARANTIES_HUB} />} />
+          <GarantiesOffre section={garanties} apres={<AppelCarteMobile cta={APPELS_GARANTIES["/expertises/"]} />} />
         ) : null}
         {hub.marquesFamille || preuves ? (
           <>

@@ -4,7 +4,6 @@ import type {
 } from "@/types/expertises";
 
 import type { ProblemeMobile } from "@/components/site/offre/ProblemeOffre";
-import type { SectionCta } from "@/types/contenu";
 import { photosDesCibles } from "@/lib/photo-de-la-cible";
 
 /**
@@ -459,20 +458,6 @@ export const PROBLEME_MOBILE_HUB: ProblemeMobile = {
   apres: [
     "Le problème n'est pas de trouver un prestataire. C'est de trouver la compétence au bon moment, et de savoir qui vient.",
   ],
-};
-
-/**
- * L'appel que le corpus écrit sous les garanties (`expertises.md`, L88 à
- * L92), MOT POUR MOT. La capture de bureau ne le rend pas : il vit donc hors
- * de `CONTENU_HUB_EXPERTISES`, dont chaque chaîne doit être dans la capture,
- * et le gabarit ne le rend qu'au téléphone, dans la carte « Ce que nous
- * garantissons » (`AppelCarteMobile`, maquette V3).
- */
-export const APPEL_GARANTIES_HUB: SectionCta = {
-  type: "cta",
-  question: "Besoin d'un technicien qualifié sur une machine qui vous bloque aujourd'hui ?",
-  bouton: "Demander une intervention",
-  rappel: "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure, astreinte.",
 };
 
 /**

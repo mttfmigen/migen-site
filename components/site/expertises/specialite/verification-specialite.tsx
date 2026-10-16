@@ -51,7 +51,7 @@ import type { SectionProbleme } from "@/types/contenu";
 import type { BlocComplementDomaine } from "@/types/domaine";
 import { estSpecialite, type ContenuSpecialite } from "@/types/specialite";
 
-import ComplementSpecialite from "./ComplementSpecialite";
+import ComplementsDomaine from "../domaine/ComplementsDomaine";
 import DomainesSpecialite from "./DomainesSpecialite";
 import PageSpecialite from "./PageSpecialite";
 import {
@@ -449,7 +449,8 @@ function verifieDomaines(nom: string, capture: string, titre: string, cartes: Co
 }
 
 function verifieComplement(nom: string, capture: string, blocs: BlocComplementDomaine[]): void {
-  const rendu = renderToStaticMarkup(<ComplementSpecialite blocs={blocs} />);
+  // Le bureau seul : la légende des colonnes est un ajout du téléphone.
+  const rendu = retireOrnementsMobiles(renderToStaticMarkup(<ComplementsDomaine blocs={blocs} />));
   // Un nœud de la capture qui porte un interdit ne se rend pas (en tout ou
   // partie) : il sort de la complétude, l'ordre reste vérifié.
   verifieEcran(`${nom} · Complément 2`, capture, rendu, { texte: porteInterdit });
@@ -723,7 +724,7 @@ for (const url of URLS_GABARIT) {
   const repere: Readonly<Record<string, string>> = {
     "Réassurance": "Qui intervient chez vous",
     "02 Domaines": "Nos domaines",
-    "Complément 2": blocs ? noeudsDe(renderToStaticMarkup(<ComplementSpecialite blocs={blocs} />))[0] : "",
+    "Complément 2": blocs ? noeudsDe(renderToStaticMarkup(<ComplementsDomaine blocs={blocs} />))[0] : "",
     "03 Problème": "Votre problématique",
     "Secteurs de l’expertise": "Même expertise, contraintes différentes",
   };

@@ -1,0 +1,245 @@
+/*
+ * LES DESSINS DE LA MAQUETTE V3 « SITE MOBILE » PROPRES À LA RUBRIQUE
+ * EXPERTISES (05, 09, 10), sous 881 px seulement : l'appel qui clôt « Ce que
+ * nous garantissons », le déroulé et les puces en frise, la carte « 01 La
+ * réponse directe ». Sortis de `mobile.module.css` (800 lignes au plus).
+ * `.racine` est posée avec celle de `mobile.module.css` (`RACINE_MOBILE`).
+ * Bureau inchangé.
+ */
+
+/* ================== l'appel qui clôt « Ce que nous garantissons » (V3)
+
+   `AppelCarteMobile` : la question du bloc d'appel du corpus, le bouton
+   orange à pastille flèche, la phrase de rappel. Le bouton est celui de
+   `mobile/PhotoCtaMobile` (`PRINCIPAL`, `PASTILLE_FLECHE`), qui ne l'exporte
+   pas : ses valeurs sont reprises telles quelles. */
+@media (max-width: 880px) {
+  .appelCarte [data-appel-question] {
+    margin: 6px 0 14px;
+    font: 600 17px/1.45 var(--ft);
+    color: var(--ink);
+    text-wrap: pretty;
+  }
+  .appelCarte [data-appel-bouton] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 8px 0 14px;
+    min-height: 50px;
+    padding: 0 6px 0 20px;
+    border-radius: 999px;
+    background: var(--acc);
+    color: #fff;
+    font: 600 14.5px/1.25 var(--fb);
+    text-decoration: none;
+    box-shadow: 0 12px 26px -14px rgba(255, 124, 60, 0.9);
+  }
+  .appelCarte [data-appel-fleche] {
+    flex: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.2);
+    display: grid;
+    place-items: center;
+  }
+  .appelCarte [data-appel-rappel] {
+    margin: 0 0 12px;
+    font: 400 15px/1.65 var(--fb);
+    color: var(--ink1);
+    text-wrap: pretty;
+  }
+}
+
+/* ======================= la frise (V3) : le déroulé, et les puces de la
+   carte « 01 La réponse directe »
+
+   Numéro dans une pastille orange pâle, filet vertical orange qui relie les
+   étapes, titre 15 px, texte 13,5 px. UN SEUL DESSIN pour les deux : le
+   déroulé (`offre/DerouleOffre`, `data-mm-etape`, numéro et filet dans le
+   DOM) et les puces du complément (`data-puces-frise`, numéro et filet
+   dessinés par `::before` et `::after`, le corpus numérote 1. à 4.).
+   L'en-tête de bureau de la frise (« Notre méthode », son titre, le
+   compteur « N étapes ») n'est pas dans la carte de la V3 : il sort de
+   l'écran, son texte reste dans le DOM. `:root .racine` bat le socle partagé
+   (`:root [data-mm-etape] …`, `app/globals.css` § 7). */
+@media (max-width: 880px) {
+  :root .racine [data-mm-frise] > [data-mm-entete-carte] {
+    display: none !important;
+  }
+  :root .racine [data-mm-frise] {
+    margin: 6px 0 10px !important;
+  }
+  :root .racine [data-mm-frise] > [data-mm-etape] {
+    grid-template-columns: 28px minmax(0, 1fr) !important;
+    row-gap: 0 !important;
+    padding: 0 !important;
+  }
+  :root .racine [data-mm-etape] > :first-child {
+    flex-direction: column;
+    gap: 0 !important;
+    align-self: stretch;
+  }
+
+  /* la pastille du numéro */
+  :root .racine [data-mm-etape] [data-mm-num],
+  .racine [data-puces-frise] > div::before {
+    flex: none;
+    display: grid !important;
+    place-items: center;
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 999px;
+    background: rgba(255, 124, 60, 0.12) !important;
+    color: var(--mm-lien) !important;
+    font: 600 11.5px var(--fb) !important;
+  }
+  /* le filet qui relie les étapes */
+  :root .racine [data-mm-etape] [data-mm-filet],
+  .racine [data-puces-frise] > div:not(:last-child)::after {
+    width: 2px;
+    border-radius: 2px;
+    background: rgba(255, 124, 60, 0.22) !important;
+  }
+  /* le titre de l'étape */
+  :root .racine [data-mm-etape-titre],
+  .racine [data-puces-frise] strong {
+    font: 600 15px/1.35 var(--ft) !important;
+    letter-spacing: -0.015em !important;
+    color: var(--ink) !important;
+  }
+
+  :root .racine [data-mm-etape] [data-mm-filet] {
+    display: block !important;
+    flex: 1 1 0% !important;
+    height: auto !important;
+    min-height: 12px;
+    margin: 4px 0;
+  }
+  :root .racine [data-mm-etape]:last-child [data-mm-filet] {
+    display: none !important;
+  }
+  :root .racine [data-mm-etape] > :nth-child(2) {
+    padding-top: 4px;
+  }
+  :root .racine [data-mm-etape] > :last-child {
+    padding-bottom: 18px;
+  }
+  :root .racine [data-mm-etape-texte] {
+    font: 400 13.5px/1.55 var(--fb) !important;
+  }
+  :root .racine [data-mm-etape-titre] + [data-mm-etape-texte] {
+    margin-top: 3px !important;
+  }
+
+  .racine [data-puces-frise] {
+    display: grid !important;
+    gap: 0 !important;
+    margin: 6px 0 10px;
+    counter-reset: frise;
+  }
+  .racine [data-puces-frise] > div {
+    position: relative;
+    display: grid !important;
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: 0 12px !important;
+    padding: 0 0 18px;
+    font: 400 13.5px/1.55 var(--fb) !important;
+    color: var(--ink1) !important;
+    counter-increment: frise;
+  }
+  .racine [data-puces-frise] > div::before {
+    content: counter(frise, decimal-leading-zero);
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .racine [data-puces-frise] > div:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 13px;
+    top: 32px;
+    bottom: 4px;
+  }
+  .racine [data-puces-frise] > div > [aria-hidden="true"] {
+    display: none !important;
+  }
+  .racine [data-puces-frise] > div > span:last-child {
+    grid-column: 2;
+    grid-row: 1;
+    padding-top: 4px;
+  }
+  .racine [data-puces-frise] strong {
+    display: block;
+    margin-bottom: 3px;
+  }
+}
+
+/* ============ « 01 La réponse directe » (V3, écran « Complément 2 »)
+
+   `/expertises/types-de-maintenance/` et six de ses spécialités : la carte
+   en verre du bureau (`domaine/ComplementsDomaine`, `data-complement-domaine`)
+   s'efface dans la carte « 01 La réponse directe » qui l'enveloppe ; la
+   première phrase passe en chapeau, la phrase qui annonce une liste en titre
+   de liste, les cartes du tableau sur fond doux, les listes numérotées de
+   la fiche en frise (ci-dessus), ses listes à puces en cartes. */
+@media (max-width: 880px) {
+  .racine [data-complement-domaine] {
+    display: block !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+  .racine [data-complement-domaine] > div {
+    padding-bottom: 0 !important;
+  }
+  .racine [data-complement-domaine] p {
+    margin: 0 0 12px !important;
+    font: 400 15px/1.65 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+  .racine [data-complement-domaine] p[data-complement-texte="chapeau"] {
+    font: 500 16px/1.6 var(--fb) !important;
+    color: var(--ink) !important;
+  }
+  .racine [data-complement-domaine] p[data-complement-texte="titre"] {
+    margin: 6px 0 14px !important;
+    font: 600 17px/1.45 var(--ft) !important;
+    color: var(--ink) !important;
+  }
+  /* le gras de la fiche (« La définition. ») */
+  .racine [data-complement-domaine] p strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .racine [data-complement-domaine] [data-tableau-en-cartes] {
+    margin-bottom: 14px;
+  }
+  .racine [data-complement-domaine] [data-tableau-en-cartes] tbody tr {
+    background: var(--mm-fond-doux) !important;
+    border-color: var(--mm-bord-doux) !important;
+  }
+
+  /* Une liste à puces de la fiche, en cartes numérotées : la carte et son
+     numéro sont ceux du socle (`data-mm-kv`, `app/globals.css` § 6) ; ici,
+     la coche s'efface, l'accroche prend le titre de carte, la suite son
+     texte. */
+  .racine [data-puces-cartes] > div > [aria-hidden="true"] {
+    display: none !important;
+  }
+  .racine [data-puces-cartes] > div > span:last-child {
+    font: 400 14px/1.55 var(--fb);
+    color: var(--ink1);
+  }
+  .racine [data-puces-cartes] strong {
+    display: block;
+    margin-bottom: 4px;
+    font: 600 14.5px/1.4 var(--ft) !important;
+    letter-spacing: -0.015em;
+    color: var(--ink) !important;
+  }
+}

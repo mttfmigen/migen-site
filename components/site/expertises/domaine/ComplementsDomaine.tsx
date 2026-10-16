@@ -1,15 +1,22 @@
 import type { CSSProperties } from "react";
 
 import { LARGEUR, VERRE } from "@/components/site/blocs/habillage";
+import TexteRiche from "@/components/site/blocs/TexteRiche";
 import { TABLEAU_EN_CARTES } from "@/components/site/expertises/mobile";
 import m from "@/components/site/expertises/mobile.module.css";
 import type { BlocComplementDomaine } from "@/types/domaine";
+
+import type { ReponseDirecteCorpus } from "../corpus-mobile";
 
 /**
  * Écran « Complément 2 » de l'accueil de rubrique `/expertises/types-de-maintenance/`,
  * relevé le 08/10 sur `maquette/rendu/expertises--types-de-maintenance.html`
  * (`data-screen-label="Complément 2"`, entre la réassurance et le problème) et
  * sur sa source, `MigenExpertise.dc.html` lignes 232 à 239 (`rest2`).
+ * Le même écran des six types de maintenance du gabarit 05 Spécialité
+ * (conditionnelle, corrective, curative, prédictive, préventive,
+ * prévisionnelle) est rendu par ce composant : leur copie de la carte,
+ * `specialite/ComplementSpecialite.tsx`, rendait le même bureau au pixel.
  *
  * C'EST LA CARTE EN VERRE DE « Complément 4 », AVEC LE TABLEAU EN PLUS : la
  * capture y pose deux paragraphes, la typologie « Type / Ce qui déclenche
@@ -24,6 +31,38 @@ import type { BlocComplementDomaine } from "@/types/domaine";
 
 export interface ProprietesComplementsDomaine {
   blocs: readonly BlocComplementDomaine[];
+  /**
+   * Ce que la fiche écrit et que le relais a perdu (`../corpus-mobile`,
+   * `REPONSE_DIRECTE`) : le gras, et quelles listes elle numérote. Rendu au
+   * téléphone seulement ; le bureau garde le texte du relais.
+   */
+  corpus?: ReponseDirecteCorpus;
+}
+
+/** Un paragraphe de la fiche tout en gras : la V3 en fait un titre de liste. */
+const TOUT_GRAS = /^\*\*[^*]+\*\*$/;
+
+/**
+ * Le rôle d'un paragraphe au téléphone (V3) : titre de liste (tout en gras
+ * dans la fiche, ou qui annonce une liste par « : »), chapeau (le premier),
+ * sinon paragraphe.
+ */
+function roleDuTexte(texte: string, rang: number, fiche: string | undefined): string {
+  if ((fiche && TOUT_GRAS.test(fiche)) || texte.trimEnd().endsWith(":")) return "titre";
+  return rang === 0 ? "chapeau" : "";
+}
+
+/** Le texte du relais au bureau ; celui de la fiche, gras compris, au téléphone. */
+function TexteDuBloc({ texte, fiche }: { texte: string; fiche: string | undefined }) {
+  if (!fiche || TOUT_GRAS.test(fiche)) return texte;
+  return (
+    <>
+      <span data-doublon-mobile="">{texte}</span>
+      <span data-mobile-seulement="">
+        <TexteRiche texte={fiche} />
+      </span>
+    </>
+  );
 }
 
 const CARTE: CSSProperties = {
@@ -107,6 +146,7 @@ const CELLULE: CSSProperties = {
 
 export default function ComplementsDomaine({
   blocs,
+  corpus,
 }: ProprietesComplementsDomaine) {
   const retenus = blocs.filter(
     (bloc) =>
@@ -134,19 +174,27 @@ export default function ComplementsDomaine({
                 </div>
               ) : null}
               {/* Au téléphone (V3) : la première phrase en chapeau, une phrase
-                  qui annonce une liste (« … : ») en titre de liste. */}
+                  qui annonce une liste en titre de liste (`roleDuTexte`). */}
               {bloc.texte ? (
                 <p
-                  data-complement-texte={
-                    rang === 0 ? "chapeau" : bloc.texte.trimEnd().endsWith(":") ? "titre" : ""
-                  }
+                  data-complement-texte={roleDuTexte(bloc.texte, rang, corpus?.textes[bloc.texte])}
                   style={TEXTE}
                 >
-                  {bloc.texte}
+                  <TexteDuBloc texte={bloc.texte} fiche={corpus?.textes[bloc.texte]} />
                 </p>
               ) : null}
+              {/* Au téléphone (V3) : une liste que la fiche numérote passe en
+                  frise, une liste à puces en cartes numérotées (socle
+                  `data-mm-kv`, comme « Ce que nous garantissons »). Sans
+                  fiche, la frise. */}
               {bloc.puces?.length ? (
-                <div data-puces-frise="" style={LISTE}>
+                <div
+                  {...(!corpus ||
+                  corpus.numerotees.includes((bloc.puces[0].accroche ?? bloc.puces[0].texte).trim())
+                    ? { "data-puces-frise": "" }
+                    : { "data-puces-cartes": "", "data-mm-kv": "", "data-mm-compteur": "" })}
+                  style={LISTE}
+                >
                   {bloc.puces.map((puce) => (
                     <div key={puce.accroche ?? puce.texte} style={PUCE}>
                       <span aria-hidden="true" style={COCHE}>
@@ -166,13 +214,13 @@ export default function ComplementsDomaine({
                 </div>
               ) : null}
               {bloc.tableau?.lignes.length ? (
-                /* Sous 881 px, une carte par ligne : voir
-                   `specialite/ComplementSpecialite.tsx`, même motif. La
-                   légende des colonnes de la V3 au-dessus des cartes (les
+                /* Sous 881 px, une carte par ligne (`../mobile.module.css`),
+                   chaque cellule portant l'intitulé de sa colonne en
+                   `data-colonne`, lu par un `::before`. La légende des colonnes de la V3 au-dessus des cartes (les
                    en-têtes du tableau, que le lecteur d'écran lit déjà). */
                 <>
                 <div data-mobile-seulement="" aria-hidden="true" className={m.legendeMobile}>
-                  {bloc.tableau.entetes.join(" · ")}
+                  {bloc.tableau.entetes.filter(Boolean).join(" · ")}
                 </div>
                 <div
                   className={TABLEAU_EN_CARTES}

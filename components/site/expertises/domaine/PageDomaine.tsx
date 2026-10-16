@@ -21,6 +21,7 @@ import {
   SurtitreHerosMobile,
   TitreChiffresMobile,
   TUILES_CHIFFRES,
+  ValeurChiffre,
 } from "@/components/site/expertises/mobile";
 import TelephoneHeros from "@/components/site/offre/TelephoneHeros";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
@@ -60,6 +61,8 @@ import stylesOffre from "@/components/site/offre/PageOffre.module.css";
 import QuestionsPhoto from "@/components/site/offres/QuestionsPhoto";
 import type { Section, TypeSection } from "@/types/contenu";
 import type { ContenuDomaine } from "@/types/domaine";
+
+import { APPELS_GARANTIES, PROSE_OFFRE_DOMAINE, REPONSE_DIRECTE } from "../corpus-mobile";
 
 import ComplementsDomaine from "./ComplementsDomaine";
 import OffresDomaine from "./OffresDomaine";
@@ -156,7 +159,10 @@ export default function PageDomaine({
   const offre = sectionDeType(sections, "offre");
   const deroule = sectionDeType(sections, "deroule");
   const garanties = sectionDeType(sections, "garanties");
-  const appel = sectionDeType(sections, "cta");
+  /* L'appel et la prose de l'offre que la V3 lit dans la fiche et que le
+     relais n'a pas : `../corpus-mobile`, au téléphone seulement. */
+  const appel = chemin ? APPELS_GARANTIES[chemin] : undefined;
+  const proseOffre = chemin ? PROSE_OFFRE_DOMAINE[chemin] : undefined;
   const preuves = sectionDeType(sections, "preuves");
   const objections = sectionDeType(sections, "objections");
   const ctaFinal = sectionDeType(sections, "ctaFinal");
@@ -318,7 +324,9 @@ export default function PageDomaine({
                       : CARTE_CHIFFRE
                   }
                 >
-                  <div style={CHIFFRE_VALEUR}>{chiffre.valeur}</div>
+                  <div style={CHIFFRE_VALEUR}>
+                    <ValeurChiffre valeur={chiffre.valeur} />
+                  </div>
                   <div style={CHIFFRE_LIBELLE}>{chiffre.libelle}</div>
                 </div>
               ))}
@@ -358,8 +366,14 @@ export default function PageDomaine({
             qui finit sur « Les chiffres Migen » ; rien ne bouge sur bureau. */}
         {contenu.complementTypes?.length ? (
           <PliMobile pleinePage toujoursOuvert titre="La réponse directe">
-            <ComplementsDomaine blocs={contenu.complementTypes} />
-            <ChiffresCarteMobile chiffres={chiffres} />
+            <ComplementsDomaine
+              blocs={contenu.complementTypes}
+              corpus={chemin ? REPONSE_DIRECTE[chemin] : undefined}
+            />
+            <ChiffresCarteMobile
+              chiffres={chiffres}
+              valeurs={chemin ? REPONSE_DIRECTE[chemin]?.chiffres : undefined}
+            />
           </PliMobile>
         ) : null}
 
@@ -382,7 +396,9 @@ export default function PageDomaine({
 
         {/* `proseMobile` : la prose que le corpus écrit sous le tableau, DANS
             la carte au téléphone (V3 : « Un besoin durable se couvre… »). */}
-        {offre ? <PointsOffre section={offre} proseMobile /> : null}
+        {offre ? (
+          <PointsOffre section={{ ...offre, prose: offre.prose ?? proseOffre }} proseMobile />
+        ) : null}
 
         {/* ------------------------------------------- 6. Appel · offre */}
 

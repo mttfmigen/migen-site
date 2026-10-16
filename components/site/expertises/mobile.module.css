@@ -80,15 +80,17 @@
   }
 }
 
-/* Les liens de la prose de « L'offre » : soulignés, graisse 600, encre du
-   texte (dc.html L130, liens des paragraphes `isP`). */
-.prose a {
-  color: var(--ink);
-  font-weight: 600;
-  text-decoration: underline;
-  text-decoration-color: rgba(28, 27, 25, 0.28);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
+/* Les liens d'un paragraphe de carte (la prose de « L'offre ») : soulignés,
+   graisse 600, encre du texte (dc.html L130, liens des paragraphes `isP`). */
+@media (max-width: 880px) {
+  .racine [data-mm-paragraphe] a {
+    color: var(--ink);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: rgba(28, 27, 25, 0.28);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
 }
 
 /*
@@ -271,56 +273,18 @@
   }
 }
 
-/* ============================ la prose de « L'offre », dans sa carte
+/* ====================== « Complément 4 » replié avec la carte « L'offre »
 
-   La maquette range la prose de l'offre d'une spécialité DANS la carte
-   « L'offre » (`ProseOffreMobile`, juste après `offre/PointsOffre`). Carte
-   fermée, la prose est repliée avec elle ; ouverte, elle en prolonge le
-   corps : même fond, même filet, coins du bas reportés sur elle. */
-/* Même repli pour « Complément 4 » (`offre/ComplementsOffre`), la phrase
-   que la maquette met en tête de cette même carte : la section sans repli
-   qui suit la bande d'appel (masquée au téléphone), hors ajouts mobiles.
-   Carte ouverte, elle reste sa propre carte dessous (pas de `:has()`
-   imbriqué pour la souder). */
+   La phrase que la maquette met en tête de cette même carte
+   (`offre/ComplementsOffre`) : la section sans repli qui suit la bande
+   d'appel (masquée au téléphone), hors ajouts mobiles. Carte fermée, elle
+   est repliée avec elle ; ouverte, elle reste sa propre carte dessous. */
 @media (max-width: 880px) {
-  .racine section:has(> div > details[data-carte-numerotee]:not([open])) + [data-prose-offre-mobile],
   .racine
     section:has(> div > details[data-carte-numerotee]:not([open]))
-    + [data-bande-appel]
-    + section:not([data-mobile-seulement]):not(:has(details)),
-  .racine
-    section:has(> div > details[data-carte-numerotee]:not([open]))
-    + [data-prose-offre-mobile]
     + [data-bande-appel]
     + section:not([data-mobile-seulement]):not(:has(details)) {
     display: none !important;
-  }
-
-  /* Ouverte : la carte reporte ses coins du bas sur la prose qui la suit. */
-  .racine section:has(> div > details[data-carte-numerotee][open]):has(+ [data-prose-offre-mobile]) {
-    padding-bottom: 0 !important;
-  }
-  .racine
-    section:has(> div > details[data-carte-numerotee][open]):has(+ [data-prose-offre-mobile])
-    details[data-carte-numerotee]
-    > summary
-    ~ :last-child {
-    border-bottom: 0 !important;
-    border-radius: 0 !important;
-  }
-  .racine section:has(> div > details[data-carte-numerotee][open]) + [data-prose-offre-mobile] {
-    padding: 0 18px !important;
-  }
-  .racine section:has(> div > details[data-carte-numerotee][open]) + [data-prose-offre-mobile] > div {
-    /* garde la marge haute du premier paragraphe dans la carte */
-    display: flow-root;
-    max-width: none !important;
-    margin: 0 !important;
-    padding: 0 16px 14px !important;
-    border: 1px solid var(--mm-filet);
-    border-top: 0;
-    border-radius: 0 0 var(--mm-rayon-carte) var(--mm-rayon-carte);
-    background: var(--card);
   }
 }
 
@@ -557,7 +521,7 @@
     margin: 8px 18px 0;
   }
   /* Le corps de la carte de FAQ de la V3 (padding 0 16 6) ; le bouton et
-     le rappel sont ceux de `.appelCarte`. */
+     le rappel sont ceux de `.appelCarte` (`mobile-v3.module.css`). */
   .reponseFinale {
     padding: 0 16px 6px;
   }
@@ -687,216 +651,5 @@
   }
   .sansNumero details[data-carte-numerotee] > summary::before {
     content: none;
-  }
-}
-
-/* ================== l'appel qui clôt « Ce que nous garantissons » (V3)
-
-   `AppelCarteMobile` : la question du bloc d'appel du corpus, le bouton
-   orange à pastille flèche, la phrase de rappel. Dessin de la V3. */
-@media (max-width: 880px) {
-  .appelCarte [data-appel-question] {
-    margin: 6px 0 14px;
-    font: 600 17px/1.45 var(--ft);
-    color: var(--ink);
-    text-wrap: pretty;
-  }
-  .appelCarte [data-appel-bouton] {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    margin: 8px 0 14px;
-    min-height: 50px;
-    padding: 0 6px 0 20px;
-    border-radius: 999px;
-    background: var(--acc);
-    color: #fff;
-    font: 600 14.5px/1.25 var(--fb);
-    text-decoration: none;
-    box-shadow: 0 12px 26px -14px rgba(255, 124, 60, 0.9);
-  }
-  .appelCarte [data-appel-fleche] {
-    flex: none;
-    width: 38px;
-    height: 38px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.2);
-    display: grid;
-    place-items: center;
-  }
-  .appelCarte [data-appel-rappel] {
-    margin: 0 0 12px;
-    font: 400 15px/1.65 var(--fb);
-    color: var(--ink1);
-    text-wrap: pretty;
-  }
-}
-
-/* ============================== « Le déroulé » en frise (V3, 05 09 10)
-
-   La V3 dessine le déroulé en frise : numéro dans une pastille orange pâle,
-   un filet vertical orange qui relie les étapes, titre 15 px, texte 13,5 px.
-   L'en-tête de bureau de la frise (« Notre méthode », son titre, le compteur
-   « N étapes » et « Démarrer par l'audit ») n'est pas dans la carte de la
-   V3 : il sort de l'écran, son texte reste dans le DOM. Le compteur est de
-   ceux que Mehdi a fait retirer. `:root .racine` bat le socle partagé
-   (`:root [data-mm-etape] …`, `app/globals.css` § 7) sans dépendre de
-   l'ordre des feuilles. Bureau inchangé. */
-@media (max-width: 880px) {
-  :root .racine [data-mm-frise] > [data-mm-entete-carte] {
-    display: none !important;
-  }
-  :root .racine [data-mm-frise] {
-    margin: 6px 0 10px !important;
-  }
-  :root .racine [data-mm-frise] > [data-mm-etape] {
-    grid-template-columns: 28px minmax(0, 1fr) !important;
-    row-gap: 0 !important;
-    padding: 0 !important;
-  }
-  :root .racine [data-mm-etape] > :first-child {
-    flex-direction: column;
-    gap: 0 !important;
-    align-self: stretch;
-  }
-  :root .racine [data-mm-etape] [data-mm-num] {
-    flex: none;
-    display: grid !important;
-    place-items: center;
-    width: 28px !important;
-    height: 28px !important;
-    background: rgba(255, 124, 60, 0.12) !important;
-    color: var(--mm-lien) !important;
-    font: 600 11.5px var(--fb) !important;
-  }
-  :root .racine [data-mm-etape] [data-mm-filet] {
-    display: block !important;
-    flex: 1 1 0% !important;
-    width: 2px;
-    height: auto !important;
-    min-height: 12px;
-    margin: 4px 0;
-    border-radius: 2px;
-    background: rgba(255, 124, 60, 0.22) !important;
-  }
-  :root .racine [data-mm-etape]:last-child [data-mm-filet] {
-    display: none !important;
-  }
-  :root .racine [data-mm-etape] > :nth-child(2) {
-    padding-top: 4px;
-  }
-  :root .racine [data-mm-etape] > :last-child {
-    padding-bottom: 18px;
-  }
-  :root .racine [data-mm-etape-titre] {
-    font: 600 15px/1.35 var(--ft) !important;
-    letter-spacing: -0.015em !important;
-  }
-  :root .racine [data-mm-etape-texte] {
-    font: 400 13.5px/1.55 var(--fb) !important;
-  }
-  :root .racine [data-mm-etape-titre] + [data-mm-etape-texte] {
-    margin-top: 3px !important;
-  }
-}
-
-/* ============ « 01 La réponse directe » d'un domaine (V3, Complément 2)
-
-   `/expertises/types-de-maintenance/` : la carte en verre du bureau
-   (`domaine/ComplementsDomaine`, `data-complement-domaine`) s'efface dans la
-   carte « 01 La réponse directe » qui l'enveloppe ; la première phrase passe
-   en chapeau, la phrase qui annonce une liste en titre de liste, les cartes
-   du tableau sur fond doux, et les puces en frise numérotée (le corpus les
-   numérote, 1. à 4.), comme le déroulé. */
-@media (max-width: 880px) {
-  .racine [data-complement-domaine] {
-    display: block !important;
-    padding: 0 !important;
-    border: 0 !important;
-    border-radius: 0 !important;
-    background: none !important;
-    box-shadow: none !important;
-    -webkit-backdrop-filter: none !important;
-    backdrop-filter: none !important;
-  }
-  .racine [data-complement-domaine] > div {
-    padding-bottom: 0 !important;
-  }
-  .racine [data-complement-domaine] p {
-    margin: 0 0 12px !important;
-    font: 400 15px/1.65 var(--fb) !important;
-    color: var(--ink1) !important;
-  }
-  .racine [data-complement-domaine] p[data-complement-texte="chapeau"] {
-    font: 500 16px/1.6 var(--fb) !important;
-    color: var(--ink) !important;
-  }
-  .racine [data-complement-domaine] p[data-complement-texte="titre"] {
-    margin: 6px 0 14px !important;
-    font: 600 17px/1.45 var(--ft) !important;
-    color: var(--ink) !important;
-  }
-  .racine [data-complement-domaine] [data-tableau-en-cartes] {
-    margin-bottom: 14px;
-  }
-  .racine .tableauEnCartes tbody tr {
-    background: var(--mm-fond-doux) !important;
-    border-color: var(--mm-bord-doux) !important;
-  }
-
-  .racine [data-puces-frise] {
-    display: grid !important;
-    gap: 0 !important;
-    margin: 6px 0 10px;
-    counter-reset: frise;
-  }
-  .racine [data-puces-frise] > div {
-    position: relative;
-    display: grid !important;
-    grid-template-columns: 28px minmax(0, 1fr);
-    gap: 0 12px !important;
-    padding: 0 0 18px;
-    font: 400 13.5px/1.55 var(--fb) !important;
-    color: var(--ink1) !important;
-    counter-increment: frise;
-  }
-  .racine [data-puces-frise] > div::before {
-    content: counter(frise, decimal-leading-zero);
-    grid-column: 1;
-    grid-row: 1;
-    display: grid;
-    place-items: center;
-    width: 28px;
-    height: 28px;
-    border-radius: 999px;
-    background: rgba(255, 124, 60, 0.12);
-    color: var(--mm-lien);
-    font: 600 11.5px var(--fb);
-  }
-  .racine [data-puces-frise] > div:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    left: 13px;
-    top: 32px;
-    bottom: 4px;
-    width: 2px;
-    border-radius: 2px;
-    background: rgba(255, 124, 60, 0.22);
-  }
-  .racine [data-puces-frise] > div > [aria-hidden="true"] {
-    display: none !important;
-  }
-  .racine [data-puces-frise] > div > span:last-child {
-    grid-column: 2;
-    grid-row: 1;
-    padding-top: 4px;
-  }
-  .racine [data-puces-frise] strong {
-    display: block;
-    margin-bottom: 3px;
-    font: 600 15px/1.35 var(--ft) !important;
-    letter-spacing: -0.015em;
-    color: var(--ink) !important;
   }
 }
