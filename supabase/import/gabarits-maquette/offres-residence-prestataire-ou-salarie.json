@@ -45,33 +45,8 @@
     "sections": [
       {
         "type": "probleme",
-        "punchline": "Vous comparez un salaire à une facture, et le calcul est faux",
-        "puces": [
-          {
-            "accroche": "La mission est permanente, stable, au centre de votre savoir-faire.",
-            "texte": "Un site qui fait tourner une équipe complète a besoin d'un noyau salarié porteur de la mémoire technique."
-          },
-          {
-            "accroche": "La compétence est courante sur votre bassin.",
-            "texte": "Si vous recrutez sans difficulté un technicien de maintenance généraliste, l'emploi direct coûte moins cher à l'heure travaillée."
-          },
-          {
-            "accroche": "Vous avez la capacité d'encadrer et de fidéliser.",
-            "texte": "Parcours, rémunération, perspectives : sans cette politique, vous formerez des techniciens pour vos voisins."
-          },
-          {
-            "accroche": "La compétence est rare ou pointue.",
-            "texte": "Automatisme SIEMENS ou Schneider, robotique ABB ou Fanuc, habilitations spécifiques : ces profils ne se trouvent pas au pied levé."
-          },
-          {
-            "accroche": "L'activité varie.",
-            "texte": "Montée en charge, projet, arrêt technique, remplacement, congés d'été."
-          },
-          {
-            "accroche": "Le rôle d'employeur est devenu le problème.",
-            "texte": "Recrutements qui échouent, turnover, absences en cascade, encadrement débordé."
-          }
-        ],
+        "punchline": "Vous comparez un salaire à une facture, et le calcul est faux. Le salaire brut mensuel n'est pas le coût d'un salarié, et le taux horaire n'est pas le coût d'un prestataire. Tant que la comparaison se fait sur ces deux lignes, elle ne veut rien dire.",
+        "puces": [],
         "variante": "rangee"
       },
       {
@@ -331,6 +306,114 @@
       }
     ],
     "pagesLieesTitre": "Les offres et prestations voisines",
-    "appelBouton": "Faire chiffrer mon besoin"
+    "appelBouton": "Faire chiffrer mon besoin",
+    "complementProbleme": [
+      {
+        "titre": "Le comparatif à périmètre égal",
+        "tableau": {
+          "entetes": [
+            "Critère",
+            "Salarié en emploi direct",
+            "Prestataire de services"
+          ],
+          "lignes": [
+            [
+              "Cadre juridique",
+              "Contrat de travail, code du travail, convention collective",
+              "Contrat de prestation de services, code civil et code de commerce"
+            ],
+            [
+              "Recrutement",
+              "À votre charge : annonce, tri, entretiens, période d'essai, échecs compris",
+              "Porté par le prestataire, profils déjà évalués avant présentation"
+            ],
+            [
+              "Quotidien administratif",
+              "Paie, congés, discipline, formation, entretiens annuels",
+              "Une facture, un référent, des comptes rendus"
+            ],
+            [
+              "Compétence disponible",
+              "Celle d'une personne, à faire progresser",
+              "Celle d'une équipe : spécialistes mobilisables en appui"
+            ],
+            [
+              "Absence, départ",
+              "Poste vacant, recherche à relancer, mémoire technique perdue",
+              "Remplacement organisé par le prestataire, obligation contractuelle"
+            ],
+            [
+              "Variation d'activité",
+              "Rigide : embauche ou rupture",
+              "Ajustable par avenant, à la hausse comme à la baisse"
+            ],
+            [
+              "Budget",
+              "Salaire, charges, recrutement, formation, outillage, absences, risque de rupture",
+              "Taux horaire ou forfait connu à l'avance, marge du prestataire incluse"
+            ],
+            [
+              "Fonction employeur",
+              "La vôtre, en totalité",
+              "Celle du prestataire"
+            ],
+            [
+              "Attachement au site",
+              "Fort : la personne devient la mémoire de l'usine",
+              "Réel mais contractuel, à entretenir par la durée de la mission"
+            ],
+            [
+              "Coût à l'heure travaillée",
+              "Souvent plus bas, une fois la personne en place et formée",
+              "Souvent plus haut, parce qu'il inclut le remplacement et l'encadrement"
+            ]
+          ]
+        },
+        "texte": "**Aucune colonne ne gagne dans l'absolu.** Le bon choix dépend de la durée de la mission, de la rareté de la compétence et de votre capacité à assumer la fonction employeur."
+      },
+      {
+        "titre": "Embauchez, franchement",
+        "texte": "Trois situations où créer le poste est la bonne décision, et où nous le disons à nos prospects :",
+        "puces": [
+          {
+            "accroche": "La mission est permanente, stable, au centre de votre savoir-faire.",
+            "texte": "Un site qui fait tourner une équipe complète a besoin d'un noyau salarié porteur de la mémoire technique."
+          },
+          {
+            "accroche": "La compétence est courante sur votre bassin.",
+            "texte": "Si vous recrutez sans difficulté un technicien de maintenance généraliste, l'emploi direct coûte moins cher à l'heure travaillée."
+          },
+          {
+            "accroche": "Vous avez la capacité d'encadrer et de fidéliser.",
+            "texte": "Parcours, rémunération, perspectives : sans cette politique, vous formerez des techniciens pour vos voisins."
+          }
+        ]
+      },
+      {
+        "texte": "Dans ces cas, notre guide [recruter un technicien de maintenance](/offres/residence/recruter-un-technicien/) vous accompagne de l'annonce à l'intégration."
+      },
+      {
+        "titre": "Sous-traitez, sans hésiter",
+        "puces": [
+          {
+            "accroche": "La compétence est rare ou pointue.",
+            "texte": "Automatisme SIEMENS ou Schneider, robotique ABB ou Fanuc, habilitations spécifiques : ces profils ne se trouvent pas au pied levé."
+          },
+          {
+            "accroche": "L'activité varie.",
+            "texte": "Montée en charge, projet, arrêt technique, remplacement, congés d'été."
+          },
+          {
+            "accroche": "Le rôle d'employeur est devenu le problème.",
+            "texte": "Recrutements qui échouent, turnover, absences en cascade, encadrement débordé."
+          }
+        ]
+      },
+      {
+        "titre": "La vraie réponse est souvent un mélange",
+        "texte": "Un noyau salarié qui pilote, un prestataire qui complète."
+      }
+    ],
+    "derouleTitre": "Ce qui se passe après votre appel"
   }
 }

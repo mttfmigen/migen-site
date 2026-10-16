@@ -1,4 +1,4 @@
-import type { Paragraphe, Section } from "./contenu";
+import type { Paragraphe, Section, Tableau } from "./contenu";
 
 /**
  * Forme du contenu d'une page d'OFFRE, gabarit `isOfferPage` de la maquette
@@ -69,6 +69,15 @@ export interface BlocComplement {
   titre?: string;
   texte?: string;
   puces?: Paragraphe[];
+  /**
+   * UN TABLEAU DU CORPUS À PLUS DE DEUX COLONNES, que « L'offre » ne sait pas
+   * rendre (ses cartes fusionnent deux colonnes). Ajouté le 16/10 pour
+   * `/offres/residence/prestataire-ou-salarie/` (« Critère | Salarié |
+   * Prestataire », dix lignes) et `/offres/depannage-industriel/astreinte/`
+   * (« Formule | Ce qui est couvert | Pour quel site »). Rendu sur toute la
+   * largeur de la carte, en cartes sous 881 px. Sans lui, rien ne change.
+   */
+  tableau?: Tableau;
   /**
    * JAMAIS LE RÉSUMÉ DE LA CARTE REPLIÉE (`premierTexte`). Posé sur les blocs
    * que la V3 écrit APRÈS le tableau de « L'offre » (encadrés « Ce que nous ne
@@ -377,6 +386,19 @@ export interface ContenuOffre {
    * `/offres/full-service/`), et rien n'est rendu.
    */
   problemePhoto?: string | null;
+
+  /* ------------------------------------------- « Complément 3 », après le problème */
+
+  /**
+   * La même carte en verre que les autres compléments, JUSTE APRÈS « Votre
+   * problématique ». Ajouté le 16/10 pour
+   * `/offres/residence/prestataire-ou-salarie/`, dont le corpus range dans
+   * « ## Le problème » le comparatif à périmètre égal (tableau à trois
+   * colonnes), puis « Embauchez, franchement » et « Sous-traitez, sans
+   * hésiter » : deux listes de RAISONS, que les cartes numérotées du problème
+   * présentaient comme des problèmes. Sans donnée, rien n'est rendu.
+   */
+  complementProbleme?: BlocComplement[];
 
   /* ------------------------------------------------------- « Complément 4 » */
 

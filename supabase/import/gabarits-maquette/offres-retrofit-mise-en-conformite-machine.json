@@ -18,7 +18,7 @@
         "libelle": "Des techniciens retenus, après entretien technique et comportemental."
       },
       {
-        "valeur": "+ 120",
+        "valeur": "+120",
         "libelle": "Collaborateurs, techniciens et ingénieurs salariés."
       },
       {
@@ -31,7 +31,7 @@
       }
     ],
     "brefBande": "Besoin de savoir combien de machines de votre parc sont hors des clous ?",
-    "brefMention": "Un audit chiffré vaut mieux qu'une intuition. Le formulaire prend quatre champs.",
+    "brefMention": "Un audit chiffré vaut mieux qu'une intuition.",
     "brefBouton": {
       "libelle": "Faire auditer mes machines",
       "href": "/contact/"
@@ -64,42 +64,42 @@
               "accroche": "Audit de conformité sur site",
               "texte": ", machine par machine : protecteurs, commandes, partie électrique, pneumatique, hydraulique, documentation"
             },
-            "benefice": "Vous savez exactement où vous en êtes, équipement par équipement, au lieu d'apprendre les écarts pendant un contrôle"
+            "benefice": "Vous savez exactement où vous en êtes, équipement par équipement, au lieu d'apprendre les écarts pendant un contrôle."
           },
           {
             "prestation": {
               "accroche": "Analyse de risques",
               "texte": ", poste par poste, appuyée sur les normes d'appréciation du risque"
             },
-            "benefice": "Chaque mesure proposée est justifiée. L'analyse alimente aussi votre document unique"
+            "benefice": "Chaque mesure proposée est justifiée. L'analyse alimente aussi votre document unique."
           },
           {
             "prestation": {
               "accroche": "Plan d'actions chiffré",
-              "texte": "protecteurs, barrages immatériels, commandes bimanuelles, arrêts d'urgence, reprise de circuit, asservissements"
+              "texte": "protecteurs, barrages immatériels, commandes bimanuelles, arrêts d'urgence, reprise de circuit, asservissements."
             },
-            "benefice": "Vous arbitrez avec les coûts sous les yeux. Le budget s'étale par priorité au lieu de partir d'un coup"
+            "benefice": "Vous arbitrez avec les coûts sous les yeux. Le budget s'étale par priorité au lieu de partir d'un coup."
           },
           {
             "prestation": {
               "accroche": "Travaux",
               "texte": ", en mécanique, électricité et automatisme, coordonnés avec la production"
             },
-            "benefice": "Les opérations se calent sur vos arrêts. La ligne ne s'arrête pas pour nous"
+            "benefice": "Les opérations se calent sur vos arrêts. La ligne ne s'arrête pas pour nous."
           },
           {
             "prestation": {
               "accroche": "Mise à jour du dossier technique",
-              "texte": "schémas, notices, consignes, rapport de réalisation"
+              "texte": "schémas, notices, consignes, rapport de réalisation."
             },
-            "benefice": "Votre démarche est démontrable devant un contrôleur comme devant un donneur d'ordres"
+            "benefice": "Votre démarche est démontrable devant un contrôleur comme devant un donneur d'ordres."
           },
           {
             "prestation": {
               "accroche": "Préparation et assistance à la visite",
               "texte": ", de l'organisme accrédité, levée des réserves"
             },
-            "benefice": "Vous arrivez à la vérification avec un dossier propre, pas avec des questions ouvertes"
+            "benefice": "Vous arrivez à la vérification avec un dossier propre, pas avec des questions ouvertes."
           }
         ]
       },
@@ -142,15 +142,15 @@
         "puces": [
           {
             "accroche": "Un rappel dans l'heure",
-            "texte": ", du lundi au vendredi de 8h00 à 18h30, et une astreinte la nuit, le week-end et les jours fériés par téléphone quand un équipement est immobilisé."
+            "texte": "Du lundi au vendredi de 8h00 à 18h30, et une astreinte la nuit, le week-end et les jours fériés par téléphone quand un équipement est immobilisé."
           },
           {
             "accroche": "Un seul interlocuteur",
-            "texte": " de l'accueil de votre demande jusqu'à la levée des réserves. Personne ne prend votre dossier en marche."
+            "texte": "De l'accueil de votre demande jusqu'à la levée des réserves. Personne ne prend votre dossier en marche."
           },
           {
             "accroche": "Des techniciens salariés Migen, évalués",
-            "texte": " en entretien technique et comportemental : seuls 10 % des techniciens sont retenus. Sur un chantier de sécurité, ce filtre n'est pas décoratif."
+            "texte": "En entretien technique et comportemental : seuls 10 % des techniciens sont retenus. Sur un chantier de sécurité, ce filtre n'est pas décoratif."
           }
         ]
       },
@@ -168,8 +168,7 @@
             "titre": "Étude de cas SUEZ : remise en état d'un site",
             "texte": "Un technicien électromécanicien mobilisé six mois en environnement à risque chimique.",
             "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
-            "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/web/x-meulage-etincelles.jpg"
+            "lienHref": "/preuves/suez-remise-en-etat/"
           },
           {
             "titre": "Étude de cas EIFFAGE : partenariat",
@@ -183,7 +182,7 @@
             "texte": "Montage, déplacement de machines et renfort technique sur chantiers.",
             "lienLibelle": "Étude de cas SOPREMA : travaux ponctuels",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/web/x-duo-hall.jpg"
+            "photo": "/assets/photos/meca-moteur-palan-depose.jpg"
           }
         ]
       },
@@ -225,7 +224,8 @@
     ],
     "complementOffre": [
       {
-        "texte": "Ce que nous ne faisons pas, par principe. Nous ne délivrons jamais nous-mêmes l'attestation de conformité. La vérification finale revient à un organisme accrédité indépendant, que vous choisissez. Celui qui réalise les travaux ne doit pas être celui qui les juge."
+        "titre": "Ce que nous ne faisons pas, par principe",
+        "texte": "Nous ne délivrons jamais nous-mêmes l'attestation de conformité. La vérification finale revient à un organisme accrédité indépendant, que vous choisissez. Celui qui réalise les travaux ne doit pas être celui qui les juge."
       }
     ],
     "complementGaranties": [

@@ -7,7 +7,7 @@
   "titre_h1": "Mise en conformité machine : fixez le calendrier avant l'inspection",
   "contenu": {
     "gabarit": "offre",
-    "pastille": "Bureau d'études",
+    "pastille": "Bureau d’études",
     "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
     "appelBouton": "Faire auditer mes machines",
     "chapeau": "Audit du parc machine par machine, analyse de risques chiffrée, travaux exécutés par nos experts techniques, dossier technique remis à l'organisme accrédité de votre choix. L'étude est portée par notre [bureau d'étude mécanique](/bureau-etudes/), les travaux par nos équipes de terrain.",
@@ -25,7 +25,7 @@
         "libelle": "Chaque expert technique qui touche à vos protections a passé un entretien technique et comportemental."
       },
       {
-        "valeur": "Plus de 120 techniciens",
+        "valeur": "Plus de 120 collaborateurs",
         "libelle": "Experts techniques et ingénieurs salariés, l'audit et les travaux restent dans la même maison."
       },
       {
@@ -53,7 +53,7 @@
     ],
     "problemePhoto": null,
     "brefBande": "Besoin de savoir combien de machines de votre parc sont hors des clous ?",
-    "brefMention": "Un audit chiffré vaut mieux qu'une intuition. Le formulaire tient en quatre champs.",
+    "brefMention": "Un audit chiffré vaut mieux qu'une intuition.",
     "brefBouton": {
       "libelle": "Faire auditer mes machines",
       "href": "#besoin"
@@ -94,45 +94,45 @@
             "prestation": {
               "texte": "**Audit de conformité sur site machine par machine : protecteurs, commandes, partie électrique, pneumatique, hydraulique, documentation**"
             },
-            "benefice": "Vous savez exactement où vous en êtes, équipement par équipement, au lieu d'apprendre les écarts pendant un contrôle"
+            "benefice": "Vous savez exactement où vous en êtes, équipement par équipement, au lieu d'apprendre les écarts pendant un contrôle."
           },
           {
             "prestation": {
               "texte": "**Analyse de risques poste par poste, appuyée sur les méthodes d'appréciation du risque**"
             },
-            "benefice": "Chaque mesure proposée est justifiée. L'analyse alimente aussi votre document unique"
+            "benefice": "Chaque mesure proposée est justifiée. L'analyse alimente aussi votre document unique."
           },
           {
             "prestation": {
               "accroche": "Plan d'actions chiffré",
-              "texte": "protecteurs, barrages immatériels, commandes bimanuelles, arrêts d'urgence, reprise de circuit, asservissements"
+              "texte": "protecteurs, barrages immatériels, commandes bimanuelles, arrêts d'urgence, reprise de circuit, asservissements."
             },
-            "benefice": "Vous arbitrez avec les coûts sous les yeux. Le budget s'étale par priorité au lieu de tomber d'un seul coup"
+            "benefice": "Vous arbitrez avec les coûts sous les yeux. Le budget s'étale par priorité au lieu de tomber d'un seul coup."
           },
           {
             "prestation": {
               "texte": "**Études de reprise par notre bureau d'études : mécanique, électronique, pneumatique, plans et dossier de fabrication des protections à réaliser**"
             },
-            "benefice": "La solution est dessinée et calculée avant d'être posée, pas bricolée le jour du chantier"
+            "benefice": "La solution est dessinée et calculée avant d'être posée, pas bricolée le jour du chantier."
           },
           {
             "prestation": {
               "texte": "**Travaux en mécanique, électricité et automatisme par nos experts techniques, coordonnés avec la production**"
             },
-            "benefice": "Les opérations se calent sur vos arrêts. La ligne ne s'arrête pas pour nous"
+            "benefice": "Les opérations se calent sur vos arrêts. La ligne ne s'arrête pas pour nous."
           },
           {
             "prestation": {
               "accroche": "Mise à jour du dossier technique",
-              "texte": "schémas, notices, consignes, rapport de réalisation"
+              "texte": "schémas, notices, consignes, rapport de réalisation."
             },
-            "benefice": "Votre démarche est démontrable devant un contrôleur comme devant un donneur d'ordres"
+            "benefice": "Votre démarche est démontrable devant un contrôleur comme devant un donneur d'ordres."
           },
           {
             "prestation": {
               "texte": "**Préparation et assistance à la visite de l'organisme accrédité, levée des réserves**"
             },
-            "benefice": "Vous arrivez à la vérification avec un dossier propre, pas avec des questions ouvertes"
+            "benefice": "Vous arrivez à la vérification avec un dossier propre, pas avec des questions ouvertes."
           }
         ]
       },
@@ -178,18 +178,15 @@
         "puces": [
           {
             "accroche": "Un rappel dans l'heure",
-            "texte": ", du lundi au vendredi de 8h00 à 18h30, et une astreinte la nuit, le week-end et les jours fériés par téléphone quand un équipement est immobilisé.",
-            "suitAccroche": true
+            "texte": "Du lundi au vendredi de 8h00 à 18h30, et une astreinte la nuit, le week-end et les jours fériés par téléphone quand un équipement est immobilisé."
           },
           {
             "accroche": "Un seul interlocuteur",
-            "texte": "de l'accueil de votre demande jusqu'à la levée des réserves. Personne ne prend votre dossier en marche.",
-            "suitAccroche": true
+            "texte": "De l'accueil de votre demande jusqu'à la levée des réserves. Personne ne prend votre dossier en marche."
           },
           {
             "accroche": "Des experts techniques salariés Migen, évalués",
-            "texte": "en entretien technique et comportemental : seuls 10 % des experts techniques sont retenus, résultats partagés avec vous. Sur un chantier de sécurité, ce filtre n'est pas décoratif.",
-            "suitAccroche": true
+            "texte": "En entretien technique et comportemental : seuls 10 % des experts techniques sont retenus, résultats partagés avec vous. Sur un chantier de sécurité, ce filtre n'est pas décoratif."
           }
         ]
       },

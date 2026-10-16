@@ -1,6 +1,7 @@
 import { Fragment, type CSSProperties } from "react";
 
 import { LARGEUR, VERRE } from "@/components/site/blocs/habillage";
+import type { Tableau } from "@/types/contenu";
 import type { BlocComplement } from "@/types/offre";
 
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
@@ -79,7 +80,7 @@ export function ComplementsDansCarte({
   blocs?: readonly BlocComplement[];
 }) {
   const retenus = (blocs ?? []).filter(
-    (bloc) => !!bloc.titre || !!bloc.texte || !!bloc.puces?.length,
+    (bloc) => !!bloc.titre || !!bloc.texte || !!bloc.puces?.length || !!bloc.tableau,
   );
   if (retenus.length === 0) return null;
   const intitule = intituleEnTete(retenus);
@@ -90,6 +91,7 @@ export function ComplementsDansCarte({
           {bloc.titre || (rang === 0 && intitule) ? (
             <p data-mm-lead="">{bloc.titre ?? bloc.texte}</p>
           ) : null}
+          {bloc.tableau ? <TableauComplement tableau={bloc.tableau} /> : null}
           {bloc.texte && !(rang === 0 && intitule && !bloc.titre) ? (
             <p data-mm-paragraphe="">
               <TexteRiche texte={bloc.texte} />
@@ -219,7 +221,7 @@ export default function ComplementsOffre({
 }: ProprietesComplementsOffre) {
   const masque = doublonMobile ? { "data-doublon-mobile": "" } : {};
   const retenus = blocs.filter(
-    (bloc) => !!bloc.titre || !!bloc.texte || !!bloc.puces?.length,
+    (bloc) => !!bloc.titre || !!bloc.texte || !!bloc.puces?.length || !!bloc.tableau,
   );
   if (retenus.length === 0) return null;
 
@@ -298,7 +300,11 @@ export default function ComplementsOffre({
         <div
           key={bloc.titre ?? `${rang}`}
           {...(rang === 0 && etiquette && !bloc.titre ? { "data-doublon-mobile": "" } : {})}
-          style={{ minWidth: 0, paddingBottom: 18 }}
+          style={{
+            minWidth: 0,
+            paddingBottom: 18,
+            ...(bloc.tableau ? { gridColumn: "1 / -1" } : {}),
+          }}
         >
           {bloc.titre ? (
             <div
@@ -309,7 +315,18 @@ export default function ComplementsOffre({
               <h3 style={TITRE}>{bloc.titre}</h3>
             </div>
           ) : null}
-          {bloc.texte ? <p style={TEXTE}>{bloc.texte}</p> : null}
+          {/* Le tableau suit le titre : le corpus écrit sa conclusion APRÈS lui
+              (« Aucune colonne ne gagne dans l'absolu », prestataire-ou-salarie). */}
+          {bloc.tableau ? <TableauComplement tableau={bloc.tableau} /> : null}
+          {/* `TexteRiche`, comme au téléphone (`ComplementsDansCarte`) : aucun
+              texte de complément ne portait de Markdown au 16/10, le rendu des
+              pages existantes ne change donc pas ; le comparatif de
+              prestataire-ou-salarie y garde son lien vers le guide. */}
+          {bloc.texte ? (
+            <p style={TEXTE}>
+              <TexteRiche texte={bloc.texte} />
+            </p>
+          ) : null}
           {bloc.puces?.length ? (
             <div style={LISTE}>
               {bloc.puces.map((puce) => (
@@ -351,5 +368,70 @@ export default function ComplementsOffre({
         )}
       </div>
     </section>
+  );
+}
+
+const TABLE: CSSProperties = {
+  width: "100%",
+  borderCollapse: "collapse",
+  font: "400 14px/1.55 var(--fb)",
+  color: "var(--ink2)",
+};
+const TH: CSSProperties = {
+  textAlign: "left",
+  padding: "10px 14px",
+  font: "600 10.5px var(--fb)",
+  letterSpacing: ".1em",
+  textTransform: "uppercase",
+  color: "var(--ink3)",
+  borderBottom: "1px solid var(--line)",
+};
+const TD: CSSProperties = {
+  padding: "12px 14px",
+  verticalAlign: "top",
+  borderBottom: "1px solid var(--line)",
+};
+
+/**
+ * Le tableau d'un complément : les colonnes du corpus, toutes, la première en
+ * gras. Sous 881 px chaque ligne devient une carte et chaque cellule porte
+ * l'intitulé de sa colonne (`data-libelle`, feuille du module), le dessin des
+ * tableaux en cartes de la maquette mobile v2.
+ */
+function TableauComplement({ tableau }: { tableau: Tableau }) {
+  return (
+    <div
+      className={styles.tableauComplement}
+      tabIndex={0}
+      role="region"
+      aria-label="Tableau, défilement horizontal possible"
+    >
+      <table style={TABLE}>
+        <thead>
+          <tr>
+            {tableau.entetes.map((entete) => (
+              <th key={entete} scope="col" style={TH}>
+                {entete}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {tableau.lignes.map((ligne) => (
+            <tr key={ligne[0]}>
+              {ligne.map((cellule, rang) => (
+                <td
+                  key={tableau.entetes[rang] ?? rang}
+                  data-libelle={rang > 0 ? tableau.entetes[rang] : undefined}
+                  style={rang === 0 ? { ...TD, fontWeight: 600, color: "var(--ink)" } : TD}
+                >
+                  <TexteRiche texte={cellule} />
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }

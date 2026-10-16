@@ -25,7 +25,7 @@
         "libelle": "Part des techniciens retenus, après entretien technique et comportemental."
       },
       {
-        "valeur": "en continu et tous les jours",
+        "valeur": "En continu et tous les jours",
         "libelle": "Astreinte disponible, nuits, fins de semaine, jours fériés."
       },
       {
@@ -43,7 +43,32 @@
       {
         "type": "probleme",
         "punchline": "La ligne est à l'arrêt, et tout le monde attend une date",
-        "puces": []
+        "puces": [
+          {
+            "accroche": "Sécuriser la zone et les personnes.",
+            "texte": "Arrêt propre, consignation des énergies si une intervention est envisagée, périmètre dégagé."
+          },
+          {
+            "accroche": "Consigner les symptômes.",
+            "texte": "Bruit anormal avant l'arrêt, odeur, surchauffe, fuite, vibration, fumée. Notez l'heure, le produit en cours, la cadence."
+          },
+          {
+            "accroche": "Photographier les alarmes.",
+            "texte": "Code défaut de l'automate, voyants du variateur, messages de supervision, avant tout acquittement. Une alarme effacée est une donnée perdue."
+          },
+          {
+            "accroche": "Vérifier les causes simples.",
+            "texte": "Alimentation, disjoncteur, arrêt d'urgence resté enclenché, pression d'air, niveau hydraulique, capteur masqué, bourrage produit."
+          },
+          {
+            "accroche": "Ouvrir l'historique de l'équipement.",
+            "texte": "La même défaillance est-elle déjà survenue ? Quelle pièce, quelle méthode ?"
+          },
+          {
+            "accroche": "Décider.",
+            "texte": "Si la compétence et la pièce sont disponibles en interne, vous réparez. Sinon, décrivez la situation à un technicien plutôt que de démonter à l'aveugle."
+          }
+        ]
       },
       {
         "type": "offre",

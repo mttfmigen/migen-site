@@ -74,60 +74,6 @@
         "lignes": [
           {
             "prestation": {
-              "texte": "**1. Contexte et objectifs**"
-            },
-            "benefice": "Votre site, votre organisation actuelle, et ce que vous voulez obtenir : moins de pannes, renforcer une équipe, préparer une montée en charge. Évite les offres hors sujet."
-          },
-          {
-            "prestation": {
-              "texte": "**2. Périmètre et inventaire**"
-            },
-            "benefice": "La liste des équipements, machine par machine, avec criticité, âge, historique. Et surtout ce qui est exclu. Évite le litige sur l'inclus."
-          },
-          {
-            "prestation": {
-              "texte": "**3. Nature des prestations**"
-            },
-            "benefice": "Préventif, correctif, améliorations, travaux, présence permanente, astreinte. Évite qu'un candidat chiffre du dépannage quand vous attendez une présence."
-          },
-          {
-            "prestation": {
-              "texte": "**4. Niveaux de service**"
-            },
-            "benefice": "Délais de prise en compte, disponibilité attendue, indicateurs : temps moyen de réparation, temps entre défaillances, taux de disponibilité. Évite les objectifs qui ne sont que des intentions."
-          },
-          {
-            "prestation": {
-              "texte": "**5. Contraintes du site**"
-            },
-            "benefice": "Sécurité, plan de prévention, habilitations exigées, horaires de production, coactivité, exigences qualité. Chaque contrainte omise ici revient en surcoût."
-          },
-          {
-            "prestation": {
-              "texte": "**6. Données et outils**"
-            },
-            "benefice": "Votre GMAO ou son absence, qui saisit, qui accède, qui possède les données, ce qui est restitué à la fin. Évite de perdre votre historique en changeant de prestataire."
-          },
-          {
-            "prestation": {
-              "texte": "**7. Pièces et stock**"
-            },
-            "benefice": "Qui fournit quoi : consommables, pièces de rechange, gestion du stock, relation fournisseurs. Évite la machine arrêtée faute de savoir qui commande."
-          },
-          {
-            "prestation": {
-              "texte": "**8. Cadre de la consultation**"
-            },
-            "benefice": "Calendrier, format de réponse, contact, critères d'évaluation et leur pondération, conditions de visite. Évite les réponses hors format, impossibles à comparer."
-          },
-          {
-            "prestation": {
-              "texte": "Prestation"
-            },
-            "benefice": "Ce que ça change pour vous"
-          },
-          {
-            "prestation": {
               "texte": "**Relecture critique de votre document**"
             },
             "benefice": "Nous pointons les zones d'ombre qui feront monter les prix, avant l'envoi. Même si vous ne nous consultez pas ensuite."
@@ -309,7 +255,49 @@
     "complementOffre": [
       {
         "titre": "La trame, 8 sections, et ce que chacune vous évite",
-        "texte": "Un sommaire, une page par sujet, une description factuelle. Une section vide vaut mieux qu'une section recopiée."
+        "tableau": {
+          "entetes": [
+            "Section du document",
+            "Ce qu'elle vous évite"
+          ],
+          "lignes": [
+            [
+              "1. Contexte et objectifs",
+              "Votre site, votre organisation actuelle, et ce que vous voulez obtenir : moins de pannes, renforcer une équipe, préparer une montée en charge. Évite les offres hors sujet."
+            ],
+            [
+              "2. Périmètre et inventaire",
+              "La liste des équipements, machine par machine, avec criticité, âge, historique. Et surtout ce qui est exclu. Évite le litige sur l'inclus."
+            ],
+            [
+              "3. Nature des prestations",
+              "Préventif, correctif, améliorations, travaux, présence permanente, astreinte. Évite qu'un candidat chiffre du dépannage quand vous attendez une présence."
+            ],
+            [
+              "4. Niveaux de service",
+              "Délais de prise en compte, disponibilité attendue, indicateurs : temps moyen de réparation, temps entre défaillances, taux de disponibilité. Évite les objectifs qui ne sont que des intentions."
+            ],
+            [
+              "5. Contraintes du site",
+              "Sécurité, plan de prévention, habilitations exigées, horaires de production, coactivité, exigences qualité. Chaque contrainte omise ici revient en surcoût."
+            ],
+            [
+              "6. Données et outils",
+              "Votre GMAO ou son absence, qui saisit, qui accède, qui possède les données, ce qui est restitué à la fin. Évite de perdre votre historique en changeant de prestataire."
+            ],
+            [
+              "7. Pièces et stock",
+              "Qui fournit quoi : consommables, pièces de rechange, gestion du stock, relation fournisseurs. Évite la machine arrêtée faute de savoir qui commande."
+            ],
+            [
+              "8. Cadre de la consultation",
+              "Calendrier, format de réponse, contact, critères d'évaluation et leur pondération, conditions de visite. Évite les réponses hors format, impossibles à comparer."
+            ]
+          ]
+        }
+      },
+      {
+        "texte": "Sur la forme. Un sommaire, une page par sujet, une description factuelle. Une section vide vaut mieux qu'une section recopiée."
       },
       {
         "texte": "La norme NF EN 13306, publiée par AFNOR, fixe le vocabulaire de la maintenance et la définition des niveaux. L'utiliser évite les malentendus de terminologie entre client et prestataire."
@@ -377,6 +365,7 @@
       }
     ],
     "pagesLieesTitre": "Les offres et prestations voisines",
-    "appelBouton": "Faire relire mon cahier des charges"
+    "appelBouton": "Faire relire mon cahier des charges",
+    "derouleTitre": "La méthode de rédaction"
   }
 }

@@ -87,6 +87,8 @@ import { etapesFilAriane } from "@/components/site/expertises/mobile";
  *  3 bis. Domaines     « Nos domaines d’études », bureau d’études seulement (V3, 16/10)
  *  4. Appel            bande horaires + bouton            → `BandeAppel`
  *  5. 03 Problème      « Votre problématique », puces 01-04 ← corpus
+ *  5 bis. Complément 3 ce que le corpus range dans son problème sans que ce
+ *                      soit un problème (comparatif, raisons) ← `complementProbleme`
  *  6. 04 Offre         « L'offre », 7 points fusionnés      ← corpus
  *  7. Appel            même bande                          → `BandeAppel`
  *  8. 05 Déroulé       « Notre méthode », étapes 01-06      ← corpus
@@ -631,14 +633,22 @@ export default function PageOffre({
               maquette mobile (dc.html L451, `nOpen = 1`). Les 23 pages du
               gabarit ouvrent toutes sur le problème. */}
           {probleme ? (
-            <ProblemeOffre
-              key="probleme"
-              section={probleme}
-              altPhoto={titre}
-              photo={contenu.problemePhoto}
-              pli={cartesCouverture ? "replie" : "ouvert"}
-              mobile={chemin ? PROBLEME_MOBILE[chemin] : undefined}
-            />
+            <Fragment key="probleme">
+              <ProblemeOffre
+                section={probleme}
+                altPhoto={titre}
+                photo={contenu.problemePhoto}
+                pli={cartesCouverture ? "replie" : "ouvert"}
+                mobile={chemin ? PROBLEME_MOBILE[chemin] : undefined}
+              />
+              {/* « Complément 3 » : ce que le corpus range dans son problème
+                  sans que ce soit un problème (comparatif, raisons d'embaucher
+                  ou de sous-traiter). Sans donnée, rien ; un `Fragment` le
+                  rattache au problème pour la cadence mobile. */}
+              {contenu.complementProbleme?.length ? (
+                <ComplementsOffre blocs={contenu.complementProbleme} />
+              ) : null}
+            </Fragment>
           ) : null}
 
           {offre || bandeVisible || contenu.complementOffre?.length ? (

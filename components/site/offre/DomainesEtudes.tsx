@@ -5,6 +5,7 @@ import type { CSSProperties } from "react";
 import { LARGEUR, SECTION, SURTITRE } from "@/components/site/blocs/habillage";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import { appliqueDecisions } from "@/lib/decisions-copie";
 import { altPhoto } from "@/lib/descriptions-photos";
 
 import EtiquettePli from "./EtiquettePli";
@@ -164,6 +165,26 @@ const TUILE_PHRASE: CSSProperties = {
   textWrap: "pretty",
 };
 
+/** La phrase de la V3, mot pour mot, avant les décisions de copie. */
+const PHRASE_V3 =
+  "Nos ingénieurs conçoivent aux côtés de techniciens qui réparent des machines toute l’année. Le montage et la mise en service restent chez nous.";
+
+/**
+ * La phrase passée par les décisions de copie de la page : les sous-pages du
+ * bureau d’études sont dans la portée « experts techniques » du 12/10, la
+ * phrase y dit donc « aux côtés d’experts techniques », comme le reste de leur
+ * texte (relecture du lot 5, 16/10).
+ *
+ * ponytail: les deux hubs, /bureau-etudes/ et /offres/bureau-etudes/, sont
+ * dans la même portée mais gardent la phrase brute : le lot 5 ne doit changer
+ * que ses huit pages. Retirer la condition les corrige aussi, d’une phrase.
+ */
+function phraseDe(chemin: string | undefined): string {
+  const sousPage =
+    !!chemin && chemin.startsWith("/bureau-etudes/") && chemin !== "/bureau-etudes/";
+  return sousPage ? appliqueDecisions(PHRASE_V3, chemin) : PHRASE_V3;
+}
+
 export default function DomainesEtudes({ chemin }: { chemin?: string }) {
   const domaines = domainesPour(chemin);
   if (domaines.length === 0) return null;
@@ -190,10 +211,7 @@ export default function DomainesEtudes({ chemin }: { chemin?: string }) {
               <div style={{ ...SURTITRE, marginBottom: 10 }}>Bureau d’études</div>
               <h2 style={TITRE}>{titre}</h2>
             </div>
-            <p style={PHRASE}>
-              Nos ingénieurs conçoivent aux côtés de techniciens qui réparent des machines
-              toute l’année. Le montage et la mise en service restent chez nous.
-            </p>
+            <p style={PHRASE}>{phraseDe(chemin)}</p>
           </div>
 
           <div className={styles.domainesEtudes} style={GRILLE}>

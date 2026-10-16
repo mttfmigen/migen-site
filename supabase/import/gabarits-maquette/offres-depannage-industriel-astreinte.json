@@ -13,7 +13,7 @@
     "formulaireHeroMention": "Rappel dans l'heure",
     "chiffres": [
       {
-        "valeur": "en continu et tous les jours",
+        "valeur": "En continu et tous les jours",
         "libelle": "Couverture de l'astreinte, nuits, fins de semaine, jours fériés."
       },
       {
@@ -94,30 +94,6 @@
               "texte": "**Plages ajustables**"
             },
             "benefice": "Astreinte complète, astreinte saisonnière sur vos seuls pics, ou renfort des périodes que votre équipe ne peut pas tenir."
-          },
-          {
-            "prestation": {
-              "texte": "**Formule**"
-            },
-            "benefice": "Ce qui est couvert"
-          },
-          {
-            "prestation": {
-              "texte": "**Astreinte complète**"
-            },
-            "benefice": "Toutes les plages hors heures ouvrées, toute l'année"
-          },
-          {
-            "prestation": {
-              "texte": "**Astreinte saisonnière**"
-            },
-            "benefice": "Vos seules périodes critiques, forte production, fin d'année sous tension, pic logistique"
-          },
-          {
-            "prestation": {
-              "texte": "**Renfort d'astreinte**"
-            },
-            "benefice": "Second niveau technique, et les périodes que votre effectif ne tient pas, congés compris"
           }
         ]
       },
@@ -185,8 +161,7 @@
             "titre": "Maintenance en 3x8 sur lignes alimentaires, agroalimentaire",
             "texte": "2 techniciens intégrés en horaires postés sur les lignes liquides et le conditionnement poudre du site de Steenvoorde",
             "lienLibelle": "Maintenance en 3x8 sur lignes alimentaires, agroalimentaire",
-            "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/web/x-meulage-etincelles.jpg"
+            "lienHref": "/preuves/danone-lignes-de-production/"
           },
           {
             "titre": "Curatif continu sur convoyeurs et trieurs, logistique",
@@ -296,6 +271,35 @@
         "href": "#besoin"
       }
     ],
-    "appelBouton": "Demander une intervention"
+    "appelBouton": "Demander une intervention",
+    "complementOffre": [
+      {
+        "titre": "Trois formules, selon ce que votre équipe tient déjà",
+        "tableau": {
+          "entetes": [
+            "Formule",
+            "Ce qui est couvert",
+            "Pour quel site"
+          ],
+          "lignes": [
+            [
+              "Astreinte complète",
+              "Toutes les plages hors heures ouvrées, toute l'année",
+              "Aucun effectif mobilisable la nuit ni en fin de semaine"
+            ],
+            [
+              "Astreinte saisonnière",
+              "Vos seules périodes critiques, forte production, fin d'année sous tension, pic logistique",
+              "Activité à saisonnalité marquée"
+            ],
+            [
+              "Renfort d'astreinte",
+              "Second niveau technique, et les périodes que votre effectif ne tient pas, congés compris",
+              "Équipe interne en place mais trop courte sur l'année"
+            ]
+          ]
+        }
+      }
+    ]
   }
 }

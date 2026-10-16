@@ -21,7 +21,7 @@
     "formulaireHeroMention": "Rappel dans l'heure",
     "chiffres": [
       {
-        "valeur": "+ 120",
+        "valeur": "+120",
         "libelle": "Collaborateurs · experts techniques et ingénieurs salariés Migen, pas de chaîne d'intermédiaires."
       },
       {
@@ -97,7 +97,7 @@
       }
     ],
     "brefBande": "Besoin de savoir si votre carte se répare, se refait ou se remplace ?",
-    "brefMention": "Un échange technique suffit pour trancher entre les trois. Le formulaire tient en quatre champs.",
+    "brefMention": "Un échange technique suffit pour trancher entre les trois.",
     "brefBouton": {
       "libelle": "Faire chiffrer mon étude électronique",
       "href": "#besoin"
@@ -110,13 +110,11 @@
     "pagesLiees": [
       {
         "titre": "Maintenance électrique industrielle",
-        "phrase": "Interventions liées : maintenance électrique industrielle, automatisme industriel, dépannage industriel.",
         "href": "/expertises/electrique/",
         "photo": "/assets/photos/il-technicien-maintenance-air-conditionne-1600.jpg"
       },
       {
         "titre": "Automatisme industriel",
-        "phrase": "Interventions liées : maintenance électrique industrielle, automatisme industriel, dépannage industriel.",
         "href": "/expertises/automatisme/",
         "photo": "/assets/photos/il-engineer-check-and-control-automation-robot-ar.jpg"
       },
@@ -142,6 +140,12 @@
         "phrase": "Vos arrêts planifiés, tenus à la date annoncée.",
         "href": "/offres/arret-technique/",
         "photo": "/assets/photos/soudure-interieur-virole.jpg"
+      },
+      {
+        "titre": "Bureau d'études industriel",
+        "phrase": "Mécanique, électrique, électronique, automatisme, mise en conformité : nos ingénieurs conçoivent aux côtés d'experts techniques qui réparent des machines toute l'année.",
+        "href": "/bureau-etudes/",
+        "photo": "/assets/photos/il-automaticien-utilisant-un-bras-robotique-1600.jpg"
       }
     ],
     "sections": [
@@ -174,44 +178,44 @@
           {
             "prestation": {
               "accroche": "Cadrage et cahier des charges électronique",
-              "texte": "fonctions attendues, contraintes d'environnement, alimentations, interfaces avec l'existant"
+              "texte": "fonctions attendues, contraintes d'environnement, alimentations, interfaces avec l'existant."
             },
-            "benefice": "Le besoin est écrit avant d'être dessiné. Vous pouvez consulter ailleurs avec le même document"
+            "benefice": "Le besoin est écrit avant d'être dessiné. Vous pouvez consulter ailleurs avec le même document."
           },
           {
             "prestation": {
               "accroche": "Conception électronique",
-              "texte": "schéma, choix des composants, définition des entrées et sorties, implantation dans le coffret"
+              "texte": "schéma, choix des composants, définition des entrées et sorties, implantation dans le coffret."
             },
-            "benefice": "Les composants retenus sont disponibles et sourçables, pas des références rares qui vous piègent dans trois ans"
+            "benefice": "Les composants retenus sont disponibles et sourçables, pas des références rares qui vous piègent dans trois ans."
           },
           {
             "prestation": {
               "accroche": "Conception de carte électronique",
-              "texte": "dossier de fabrication, nomenclature, spécifications, documentation de test"
+              "texte": "dossier de fabrication, nomenclature, spécifications, documentation de test."
             },
-            "benefice": "Vous êtes propriétaire du dossier. Vous pouvez faire refabriquer la carte quand vous voulez, chez qui vous voulez"
+            "benefice": "Vous êtes propriétaire du dossier. Vous pouvez faire refabriquer la carte quand vous voulez, chez qui vous voulez."
           },
           {
             "prestation": {
               "accroche": "Réalisation confiée à un atelier partenaire suivi et réception des cartes",
               "texte": ""
             },
-            "benefice": "Nous ne vendons pas de cartes, donc rien ne nous pousse à en faire fabriquer plus que nécessaire. Aucune marge sur les pièces"
+            "benefice": "Nous ne vendons pas de cartes, donc rien ne nous pousse à en faire fabriquer plus que nécessaire. Aucune marge sur les pièces."
           },
           {
             "prestation": {
               "accroche": "Intégration et mise en service sur la machine par nos experts techniques",
               "texte": ""
             },
-            "benefice": "Celui qui a dessiné la carte n'est pas parti quand elle arrive sur site. Les écarts se règlent tout de suite"
+            "benefice": "Celui qui a dessiné la carte n'est pas parti quand elle arrive sur site. Les écarts se règlent tout de suite."
           },
           {
             "prestation": {
               "accroche": "Traitement de l'obsolescence",
-              "texte": "reprise d'une fonction existante quand la carte d'origine n'est plus fournie"
+              "texte": "reprise d'une fonction existante quand la carte d'origine n'est plus fournie."
             },
-            "benefice": "La machine repart sans être remplacée. L'investissement porte sur la fonction, pas sur l'équipement entier"
+            "benefice": "La machine repart sans être remplacée. L'investissement porte sur la fonction, pas sur l'équipement entier."
           }
         ]
       },
@@ -254,8 +258,7 @@
         "puces": [
           {
             "accroche": "Un rappel dans l'heure",
-            "texte": "du lundi au vendredi, 8h00 à 18h30, par téléphone, et une astreinte la nuit, le week-end et les jours fériés quand la machine est à l'arrêt.",
-            "suitAccroche": true
+            "texte": "Du lundi au vendredi, 8h00 à 18h30, par téléphone, et une astreinte la nuit, le week-end et les jours fériés quand la machine est à l'arrêt."
           },
           {
             "accroche": "Le dossier est à vous.",
