@@ -285,6 +285,25 @@ for (const cheminFiche of FICHES) {
   }
 }
 
+/* LES FICHIERS D'IMPORT SQL, POUR LE SEUL SIÈGE (16/10). Le site ne les rend
+   pas : la fiche du relais l'emporte. Rejoués, ils remettraient l'ancien siège
+   en base. Seul « Limonest » y est cherché : ces fichiers sont l'ancien
+   corpus, que ce contrôle n'a jamais lu pour les autres interdits. */
+const SIEGE_SQL = INTERDITS.filter(([motif]) => motif === "Limonest");
+const IMPORT = join(RACINE, "supabase", "import");
+const FICHIERS_SQL = readdirSync(IMPORT, { recursive: true }).filter((f) => f.endsWith(".sql"));
+for (const f of FICHIERS_SQL) {
+  readFileSync(join(IMPORT, f), "utf8")
+    .split("\n")
+    .forEach((ligne, i) => {
+      for (const [motif, remede] of SIEGE_SQL) {
+        if (ligne.includes(motif)) {
+          trouvailles.push({ ou: `supabase/import/${f}:${i + 1}`, interdit: motif, remede, ligne: ligne.trim().slice(0, 100) });
+        }
+      }
+    });
+}
+
 if (trouvailles.length > 0) {
   for (const t of trouvailles) {
     console.error(`${t.ou}\n  interdit : « ${t.interdit} »\n  à la place : ${t.remede}\n  ${t.ligne}\n`);
@@ -294,4 +313,6 @@ if (trouvailles.length > 0) {
 }
 
 const nbFiches = FICHES.length;
-console.log(`copie conforme aux interdits du contrat (code + ${nbFiches} fiches de contenu)`);
+console.log(
+  `copie conforme aux interdits du contrat (code + ${nbFiches} fiches de contenu, siège dans ${FICHIERS_SQL.length} fichiers SQL d'import)`,
+);

@@ -243,6 +243,12 @@ assert.throws(
   /interdite/,
   "verifieInterdits a laissé passer un tiret cadratin",
 );
+// Le siège est à Écully depuis le 16/10 : l'adresse de Limonest doit tomber.
+assert.throws(
+  () => verifieInterdits("<p>Siège, 1 rue des Vergers, 69760 Limonest</p>", "preuve"),
+  /limonest/,
+  "verifieInterdits a laissé passer Limonest",
+);
 {
   // Une donnée faussée d'un seul mot doit faire échouer le mot pour mot.
   const faussee: ContenuHubCarriere = {
@@ -255,7 +261,7 @@ assert.throws(
     "une donnée faussée est passée : le mot pour mot ne contrôle rien",
   );
 }
-console.log("0 · le contrôle sait échouer : copie absente, dessin absent, tiret cadratin et donnée faussée refusés.");
+console.log("0 · le contrôle sait échouer : copie absente, dessin absent, tiret cadratin, Limonest et donnée faussée refusés.");
 
 /* --------------------------------------------- la page, telle que servie */
 

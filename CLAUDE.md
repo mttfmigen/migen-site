@@ -27,8 +27,9 @@ Limonest n'apparaît plus nulle part sur le site.
 > Pied de page, contact, confidentialité, mentions légales, équipe, pages Lyon,
 > FAQ, chapôs, chiffres et JSON-LD de l'Organization (adresse complète)
 > portent Écully. Les portes exigent Écully et refusent « Limonest », témoins
-> d'échec compris, et `scripts/verifie-interdits.mjs` refuse le mot dans tout
-> le code et toutes les fiches.
+> d'échec compris, et `scripts/verifie-interdits.mjs` refuse le mot dans le
+> code (`components/`, `app/`, `lib/`, hors commentaires et motifs de règle),
+> les fiches du relais et les fichiers d'import SQL de `supabase/import/`.
 >
 > **Seule exception, les CGV** (`app/cgv/texte.ts`), copie juridique signée
 > reprise mot pour mot : non modifiées. Elles ne nomment ni Limonest ni Écully

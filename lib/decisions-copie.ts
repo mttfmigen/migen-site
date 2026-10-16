@@ -592,7 +592,12 @@ const PRIX_MENSUEL: Regle[] = [
 
 /* 16/10, LE FORMULAIRE A SIX CHAMPS, PAS QUATRE. Décision de Mehdi : il garde
    le formulaire de contact à six champs (société, nom, prénom, courriel,
-   téléphone, message), seul formulaire des pages qui l'annoncent. La maquette
+   téléphone, message). C'est le formulaire principal des pages qui
+   l'annoncent, pas leur seul : la plupart portent aussi, en tête, le panneau
+   « Être rappelé dans l'heure » à trois champs (société, téléphone, courriel),
+   qui ne part pas seul et reporte sa saisie dans le principal
+   (`components/site/offre/generique/RappelExpress.tsx`). L'annonce compte
+   donc les champs du principal. La maquette
    annonçait « 4 champs », « quatre champs », et listait parfois des champs que
    le formulaire n'a pas (« Site, équipement, symptôme, téléphone », « domaine,
    niveau d'urgence, lieu, créneau », « un choix d'intention »). Le compte est

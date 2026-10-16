@@ -335,7 +335,7 @@ for (const classe of HTML.matchAll(/class="([^"]*)"/g)) {
 }
 
 // --------------------------------------------- interdits de copie du contrat
-for (const interdit of [
+const INTERDITS_COPIE = [
   "réguliers",
   "levier",
   "clé en main",
@@ -357,11 +357,16 @@ for (const interdit of [
   "Limonest",
   "—",
   "–",
-]) {
-  assert.ok(!TEXTE.includes(interdit), `copie interdite : ${interdit}`);
-}
-// Témoin : la phrase de la capture rendue telle quelle doit tomber sur l'interdit.
-assert.ok(texte(CAPTURE).includes("Limonest") && !TEXTE.includes("Limonest"), "témoin du siège : la capture ne porte plus Limonest, ou le rendu le porte");
+];
+const interditsDe = (t: string) => INTERDITS_COPIE.filter((interdit) => t.includes(interdit));
+assert.deepEqual(interditsDe(TEXTE), [], "copie interdite dans le rendu");
+/* Témoin : le même contrôle, passé sur la capture brute (sans la décision du
+   16/10, comme si le rendu la reprenait telle quelle), doit tomber sur
+   Limonest. */
+assert.ok(
+  interditsDe(texte(CAPTURE)).includes("Limonest"),
+  "témoin du siège : un rendu qui porte Limonest passerait la porte",
+);
 assert.ok(/\+200\b/.test(TEXTE), "le compte « +200 » de la capture manque");
 
 // -------------------------------- rien d'invisible, le CSS fait l'apparition
