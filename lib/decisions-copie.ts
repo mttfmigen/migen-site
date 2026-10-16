@@ -12,10 +12,9 @@
  * là où il désigne celui qui postule (pages métier), un soumissionnaire (cahier
  * des charges) ou le marché de l'emploi.
  *
- * 16/10, « le siège est à Écully » : la maquette le place encore à Limonest.
- * Seule la mention de Limonest change ; « siège à Lyon », « siège lyonnais »
- * restent, Écully étant dans la métropole lyonnaise et Lyon l'agence du siège
- * selon le README. Voir la règle SIÈGE plus bas, et CLAUDE.md § 1.
+ * Le siège est à Limonest, l'agence à Écully : voir la règle SIÈGE plus bas,
+ * et CLAUDE.md § 1. « siège à Lyon », « siège lyonnais » restent, Limonest
+ * étant dans la métropole lyonnaise.
  */
 
 type Regle = [RegExp, (...groupes: string[]) => string];
@@ -29,42 +28,49 @@ const SELECTION: Regle[] = [
   [/\b([Cc]haque\s+)candidat\b(?=[^.;]*?(?:10\s?%|retenu|sélection|évalu|entretien|épreuve))/g, (_, debut) => `${debut}technicien`],
 ];
 
-/* 16/10, LE SIÈGE EST À ÉCULLY, ET LIMONEST DISPARAÎT DU SITE.
-   Décision de Mehdi : « Le siège est à Ecully mets le de partout ». Siège :
-   129 chemin du Moulin Carron, 69130 Écully. Elle RENVERSE celle du 09/10
-   (siège à Limonest, agence à Écully), elle-même inverse de celle du 07/10.
-   Il n'y a plus de « bureaux à Écully » distincts du siège.
+/* 09/10, LE SIÈGE REVIENT À LIMONEST, L'AGENCE RESTE À ÉCULLY.
+   Décision de Mehdi, qui RENVERSE celle du 07/10 et donne raison à l'audit de
+   Nathan du 09/10 (« le siège à Écully au lieu de Limonest »).
 
-   C'EST UN ÉCART ASSUMÉ À LA MAQUETTE : elle écrit « Siège, 1 rue des Vergers,
-   69760 Limonest » sur 96 de ses 244 captures, « Siège · Limonest et Écully »
-   sur la page Équipe, « siège à Limonest et bureaux à Écully » dans le chapô
-   de Lyon. Les règles réécrivent donc la capture avant comparaison, et les
-   producteurs (`scripts/applique-decisions-copie.ts`) la donnée, pour que la
-   décision soit vérifiée des deux côtés.
+   16/10 : renversée le matin (« le siège est à Ecully mets le de partout »),
+   puis RÉTABLIE le soir par Mehdi : « L'agence est à Ecully, siège à
+   Limonest ». Les règles du matin, qui réécrivaient Limonest en Écully, sont
+   retirées ; c'est de nouveau la règle du 09/10 qui vaut, seule.
 
-   Les formes longues passent AVANT la forme nue, sans quoi « siège à Limonest
-   et bureaux à Écully » deviendrait « siège à Écully et bureaux à Écully ».
-   La dernière règle prend tout « Limonest » qui resterait : le site ne le rend
-   plus nulle part. Seule exception, les CGV (`app/cgv/texte.ts`), copie
-   juridique signée qui ne passe pas par ici. */
+   Le 07/10, sept règles réécrivaient ici « Limonest » en « Écully » sur tout le
+   site, pied de page compris. Elles sont retirées : la maquette écrit
+   elle-même « Siège, 1 rue des Vergers, 69760 Limonest » sur 96 de ses 244
+   captures, et « Lyon — Siège · Limonest et Écully » sur la page Équipe.
+   Revenir à Limonest, c'est donc revenir à la maquette, pas s'en écarter, et
+   c'est pour cela qu'il n'y a plus aucune règle à appliquer : le texte de la
+   capture passe tel quel.
+
+   Ce qui reste à la main, parce que la maquette ne le dit nulle part : Écully
+   n'est plus « le siège » mais « l'agence ». Les trois endroits concernés sont
+   le pied de page, la liste des agences de la page Contact et la politique de
+   confidentialité, tous trois sans capture de maquette pour cette partie. */
 const SIEGE: Regle[] = [
-  [/1 rue des Vergers,(?: Bât(?:iment|\.) 3)?[ ,—]*69760 Limonest/g, () => "129 chemin du Moulin Carron, 69130 Écully"],
-  /* /carriere/, « Nos informations pratiques » : la seule capture qui plaçait
-     déjà le siège à Écully, sans numéro de voie. L'adresse est rendue entière. */
+  /* LA SEULE RÈGLE QUI RESTE, et c'est que LA MAQUETTE SE CONTREDIT. Son pied
+     de page écrit « Siège, 1 rue des Vergers, 69760 Limonest » sur 96 captures,
+     mais le bloc « Nos informations pratiques » de /carriere/ écrit « Siège,
+     Chemin du Moulin Carron, bâtiment principal, 69130 Écully ». Les deux ne
+     peuvent pas être vrais. La décision du 09/10 tranche pour Limonest, donc
+     cette seule phrase est réécrite avant comparaison. */
   [
     /Chemin du Moulin Carron, bâtiment principal, 69130 Écully, près de Lyon\./g,
-    () => "129 chemin du Moulin Carron, 69130 Écully, près de Lyon.",
+    () => "1 rue des Vergers, 69760 Limonest, près de Lyon.",
   ],
-  [/siège à Limonest et bureaux à Écully/g, () => "siège à Écully"],
-  [/\(siège, (?:à )?Limonest et Écully\)/g, () => "(siège à Écully)"],
-  [/(siège est à Lyon), sur Limonest et Écully,/g, (_, debut) => `${debut}, à Écully,`],
-  [/(siège est à Lyon) \(Limonest, bureaux à Écully\)/g, (_, debut) => `${debut} (Écully)`],
-  [/(siège est à Lyon), avec deux implantations à Limonest et Écully, et (trois autres agences)/g, (_, debut, fin) => `${debut}, à Écully, avec ${fin}`],
-  [/depuis Limonest, avec des bureaux à Écully/g, () => "depuis son siège d\u2019Écully"],
-  [/Limonest (?:et|\/) Écully/g, () => "Écully"],
-  [/\b([Dd])e Limonest\b/g, (_, d) => `${d}\u2019Écully`],
-  [/Limonest/g, () => "Écully"],
 ];
+
+/**
+ * Une phrase qui PLACE LE SIÈGE À ÉCULLY : « siège à Écully », « Siège,
+ * Écully », « Siège · Écully », « siège d'Écully », « Siège 129 chemin du
+ * Moulin Carron »… C'est l'agence qui est à Écully (décision de Mehdi du 09/10,
+ * rétablie le 16/10 au soir). Le motif laisse passer « siège à Limonest et
+ * bureaux à Écully » : dès que Limonest suit « siège » dans la phrase, la
+ * phrase est juste. Partagé par les portes, qui le refusent au rendu.
+ */
+export const SIEGE_A_ECULLY = /si[èe]ge(?:(?!Limonest)[^.;!?<>]){0,60}?(?:[ÉE]cully|Moulin Carron)/iu;
 
 /* 08/10, LES PHOTOS DE VILLE SOUS LICENCE. Décision de Mehdi, portée au relais :
    « Photos de ville : versions sous licence Envato » et « vider hubLocal.credit,

@@ -93,9 +93,12 @@ const INTERDITS = [
   ["Découvrez", "un verbe qui dit ce que la page fait"],
   // Mehdi, 16/10, question 5 : « prix mensuel fixe », « Tu ne mets pas ».
   ["prix mensuel fixe", "ne rien annoncer du prix : le chiffrage se remet avec le devis"],
-  // Mehdi, 16/10 : « Le siège est à Ecully mets le de partout ». Les CGV, copie
-  // juridique signée, n'y sont pas soumises (voir COPIE_JURIDIQUE).
-  ["Limonest", "le siège est à Écully, 129 chemin du Moulin Carron, 69130 Écully"],
+  /* Mehdi, 16/10 au soir : « L'agence est à Ecully, siège à Limonest » (la
+     décision du 09/10, rétablie après celle du matin). Une phrase qui place le
+     siège à Écully est fausse ; « siège à Limonest et bureaux à Écully » passe.
+     Même motif que SIEGE_A_ECULLY de lib/decisions-copie.ts, recopié parce que
+     ce contrôle tourne sous node, qui ne lit pas le TypeScript. */
+  [/[Ss]i[èe]ge(?:(?!Limonest)[^.;!?<>]){0,60}?(?:[ÉE]cully|Moulin Carron)/u, "le siège est à Limonest, 1 rue des Vergers, 69760 Limonest ; Écully est l'agence"],
   // Typographie.
   ["—", "virgule, parenthèses ou deux-points, jamais de tiret cadratin"],
 ];
@@ -186,9 +189,10 @@ const attendus = [
   [`<p>Tarif : / sur mesure / jour</p>`, ["sur mesure"]],
   [`const t = "Accès (/ sur mesure /)";`, ["sur mesure"]],
   [`<p>Options : /sur mesure/ ou standard</p>`, ["sur mesure"]],
-  // Le siège : Limonest dans une chaîne tombe, dans le seul motif d'une règle non.
-  [`const SIEGE = "1 rue des Vergers, 69760 Limonest";`, ["Limonest"]],
-  [`const R = [[/siège à Limonest et bureaux à Écully/g, () => "siège à Écully"]];`, []],
+  // Le siège : à Écully dans une chaîne, il tombe ; la phrase de la maquette passe.
+  [`const SIEGE = "Siège, Écully";`, ["Siège, Écully"]],
+  [`<p>Notre siège est à Lyon (Écully), et nos hubs</p>`, ["siège est à Lyon (Écully"]],
+  [`<p>Lyon, siège à Limonest et bureaux à Écully</p>`, []],
 ];
 for (const [ligne, attendu] of attendus) {
   const lu = temoin(ligne);
@@ -285,11 +289,19 @@ for (const cheminFiche of FICHES) {
   }
 }
 
+if (trouvailles.length > 0) {
+  for (const t of trouvailles) {
+    console.error(`${t.ou}\n  interdit : « ${t.interdit} »\n  à la place : ${t.remede}\n  ${t.ligne}\n`);
+  }
+  console.error(`${trouvailles.length} formulation(s) interdite(s) dans la copie.`);
+  process.exit(1);
+}
+
 /* LES FICHIERS D'IMPORT SQL, POUR LE SEUL SIÈGE (16/10). Le site ne les rend
-   pas : la fiche du relais l'emporte. Rejoués, ils remettraient l'ancien siège
-   en base. Seul « Limonest » y est cherché : ces fichiers sont l'ancien
+   pas : la fiche du relais l'emporte. Rejoués, ils remettraient en base un
+   siège à Écully. Seul le siège y est cherché : ces fichiers sont l'ancien
    corpus, que ce contrôle n'a jamais lu pour les autres interdits. */
-const SIEGE_SQL = INTERDITS.filter(([motif]) => motif === "Limonest");
+const SIEGE_SQL = INTERDITS.filter(([motif]) => motif instanceof RegExp && motif.source.includes("Limonest"));
 const IMPORT = join(RACINE, "supabase", "import");
 const FICHIERS_SQL = readdirSync(IMPORT, { recursive: true }).filter((f) => f.endsWith(".sql"));
 for (const f of FICHIERS_SQL) {
@@ -297,8 +309,9 @@ for (const f of FICHIERS_SQL) {
     .split("\n")
     .forEach((ligne, i) => {
       for (const [motif, remede] of SIEGE_SQL) {
-        if (ligne.includes(motif)) {
-          trouvailles.push({ ou: `supabase/import/${f}:${i + 1}`, interdit: motif, remede, ligne: ligne.trim().slice(0, 100) });
+        const interdit = ligne.match(motif)?.[0];
+        if (interdit) {
+          trouvailles.push({ ou: `supabase/import/${f}:${i + 1}`, interdit, remede, ligne: interdit.slice(0, 100) });
         }
       }
     });

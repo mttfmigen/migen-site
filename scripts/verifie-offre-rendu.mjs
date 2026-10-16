@@ -489,10 +489,9 @@ const TROUS_DECLARES = [
      `docs/PASSATION.md`) : /offres/audit-conseil-maintenance/, « Intervenez-
      vous partout en France ? » : « Notre siège est à Lyon, avec deux
      implantations à Limonest et Écully, et trois autres agences à Montréal,
-     Dubaï et Madrid. » Depuis le 16/10 (siège à Écully), `appliqueDecisions`
-     connaît cette forme et en fait « Notre siège est à Lyon, à Écully, avec
-     trois autres agences à Montréal, Dubaï et Madrid. » La réponse rédigée de
-     la fiche ne la portait déjà plus : rien n'est remis, rien n'est inventé. */
+     Dubaï et Madrid. » `appliqueDecisions` ne connaît pas cette forme, elle
+     garde Limonest : la phrase ne se reformule pas, elle reste retirée, à
+     faire trancher par Mehdi (ajouter sa forme à lib/decisions-copie.ts). */
   ["/offres/audit-conseil-maintenance/", []],
   /* « réponse de la FAQ » n'est plus un trou depuis le 16/10 : la première
      question est ouverte au bureau, comme la capture et la maquette V3. */

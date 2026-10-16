@@ -51,7 +51,7 @@ import { fileURLToPath } from "node:url";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import { ID_BANDEAU, ID_PHOTO_CTA } from "@/components/site/mobile/conversion-donnees";
-import { appliqueDecisions } from "@/lib/decisions-copie";
+import { SIEGE_A_ECULLY, appliqueDecisions } from "@/lib/decisions-copie";
 import type { ContenuSecteurOffre } from "@/types/secteur";
 
 import { CORPUS_OFFRE } from "./corpus-offre";
@@ -165,7 +165,7 @@ const INTERDITS: readonly [RegExp, string][] = [
   [/incontournable/iu, "« incontournable »"],
   [/découvrez/iu, "« découvrez »"],
   [/clients?[^.]{0,40}r[ée]guliers|r[ée]guliers[^.]{0,20}clients?/iu, "« réguliers » à côté de clients"],
-  [/Limonest/u, "le siège est à Écully"],
+  [SIEGE_A_ECULLY, "le siège est à Limonest, Écully est l'agence"],
   [/\b(?:5|cinq) agences/iu, "quatre agences"],
   [/agences? en France/iu, "en France, des hubs"],
   [/\b\d+\s?%\s+des\s+candidats|candidats\s+retenus/iu, "« 10 % des techniciens »"],

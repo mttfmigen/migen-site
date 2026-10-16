@@ -125,7 +125,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl()),
   title: "Migen, maintenance industrielle et techniciens sur site",
   description:
-    "Migen déploie des techniciens électromécaniciens, automaticiens et roboticiens sur les sites industriels de ses clients. Siège à Écully et Lyon.",
+    "Migen déploie des techniciens électromécaniciens, automaticiens et roboticiens sur les sites industriels de ses clients. Siège à Limonest, agence à Écully, près de Lyon.",
   openGraph: {
     type: "website",
     locale: "fr_FR",

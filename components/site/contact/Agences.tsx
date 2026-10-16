@@ -22,19 +22,21 @@ import styles from "./Contact.module.css";
  *
  * 1. La maquette annonçait « Cinq agences en France, deux à l'international »
  *    et listait Écully, Paris, Strasbourg, Nantes, Toulouse. Le contrat de
- *    projet tient quatre agences, Lyon (siège à Écully), Montréal, Dubaï et
- *    Madrid, plus dix hubs de techniciens. Les villes françaises listées sont
- *    des hubs, pas des agences.
- *    16/10 : LE SIÈGE EST À ÉCULLY, décision de Mehdi (« Le siège est à
- *    Ecully mets le de partout ») qui renverse celle du 09/10. Il n'y a plus
- *    d'agence d'Écully distincte du siège, ni de ligne Limonest.
+ *    projet tient quatre agences, Lyon (siège à Limonest, agence à Écully),
+ *    Montréal, Dubaï et Madrid, plus dix hubs de techniciens. Les villes
+ *    françaises listées sont des hubs, pas des agences.
+ *    09/10 : le siège est revenu à Limonest, décision de Mehdi qui renverse
+ *    celle du 07/10. Écully reste, mais comme AGENCE, ce que la maquette ne
+ *    dit nulle part : cette ligne-là est donc à nous, pas à elle. Renversée le
+ *    matin du 16/10, la décision a été rétablie le soir (« L'agence est à
+ *    Ecully, siège à Limonest »).
  * 2. LA CARTE DE FRANCE EST REVENUE LE 16/10, sans d3 ni CDN. La maquette
  *    dispose la section sur deux colonnes, `1.15fr .85fr` : la carte à
  *    gauche, la liste à droite. Son composant (`MigenAgences`) téléchargeait un
  *    atlas mondial à chaque affichage ; le tracé est désormais figé une fois
  *    par `scripts/genere-carte-france.mjs` dans `carte-france.ts`, la page ne
- *    charge rien. La carte porte les dix hubs du site, le siège d'Écully mis en
- *    avant au nom de Lyon, et non les cinq villes de la maquette.
+ *    charge rien. La carte porte les dix hubs du site, Lyon mis en avant avec
+ *    la mention du siège à Limonest, et non les cinq villes de la maquette.
  *    Ses étiquettes sont lues par le lecteur d'écran via `aria-label`, car la
  *    liste à droite ne nomme pas les hubs.
  *
@@ -54,7 +56,9 @@ import styles from "./Contact.module.css";
  *    agences non plus : la carte reste dans le repli, au-dessus de la liste.
  */
 
-const LIBELLE_SIEGE = "Siège, Écully";
+/** Au-dessus de « Lyon », sur la carte : le siège est à Limonest. Dessous, la
+ *  mention touchait « Bordeaux » au téléphone (étiquettes agrandies). */
+const MENTION_SIEGE_CARTE = "Siège à Limonest";
 
 interface Agence {
   readonly nom: string;
@@ -63,7 +67,8 @@ interface Agence {
 }
 
 const AGENCES: readonly Agence[] = [
-  { nom: LIBELLE_SIEGE, adresse: "129 chemin du Moulin Carron, 69130 Écully" },
+  { nom: "Siège, Limonest", adresse: "1 rue des Vergers, 69760 Limonest" },
+  { nom: "Agence, Écully", adresse: "129 chemin du Moulin Carron, 69130 Écully" },
   { nom: "Dubaï", adresse: "Level 20, 48 Burj Tower, Downtown" },
   { nom: "Montréal", adresse: "2020 route Transcanadienne, Dorval, Québec" },
   { nom: "Madrid", adresse: "" },
@@ -80,7 +85,7 @@ const VERRE: CSSProperties = {
 };
 
 const DESCRIPTION_CARTE = `Carte de France des hubs de techniciens : ${HUBS_CARTE.map(
-  (hub) => (hub.siege ? `${hub.nom}, siège à Écully` : hub.nom),
+  (hub) => (hub.siege ? `${hub.nom}, siège à Limonest` : hub.nom),
 ).join(", ")}.`;
 
 /** Le dessin de `MigenAgences` (maquette V3), sur un tracé figé. */
@@ -158,10 +163,10 @@ function CarteFrance() {
               {hub.siege ? (
                 <tspan
                   x={xTexte}
-                  dy="14"
+                  dy="-16"
                   style={{ font: "500 10.5px var(--fb)", fill: "var(--ink3)" }}
                 >
-                  {LIBELLE_SIEGE}
+                  {MENTION_SIEGE_CARTE}
                 </tspan>
               ) : null}
             </text>

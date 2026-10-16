@@ -48,7 +48,7 @@ import { renderToStaticMarkup } from "react-dom/server";
    `verification-editorial.tsx` et `verification-ressource.tsx`. */
 import { sansOrnementsMobiles } from "@/components/site/editorial/ornements-mobiles";
 import PageOffre from "@/components/site/offre/PageOffre";
-import { appliqueDecisions } from "@/lib/decisions-copie";
+import { SIEGE_A_ECULLY, appliqueDecisions } from "@/lib/decisions-copie";
 import { deLaRepartition } from "@/lib/photos-autorisees";
 import type { ContenuOffre } from "@/types/offre";
 
@@ -145,7 +145,7 @@ const INTERDITS: readonly [RegExp, string][] = [
   [/incontournable/iu, "« incontournable »"],
   [/découvrez/iu, "« découvrez »"],
   [/r[ée]guliers/iu, "« réguliers » à côté de clients"],
-  [/Limonest/u, "le siège est à Écully"],
+  [SIEGE_A_ECULLY, "le siège est à Limonest, Écully est l'agence"],
   [/postuler sur Teamtailor/iu, "« postuler sur Teamtailor »"],
   [/\b(?:5|cinq) agences/iu, "quatre agences"],
 ];

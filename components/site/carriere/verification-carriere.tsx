@@ -25,10 +25,10 @@
  *     entrée du registre des 109 photos sous licence. Deux témoins prouvent
  *     qu'une photo venue d'ailleurs tombe encore.
  *  6. LES INTERDITS du contrat et des règles client sont absents du rendu.
- *     Les décisions de copie (« 10 % des techniciens », siège à Écully depuis
- *     le 16/10, qui renverse le 09/10) sont
- *     appliquées à la capture avant toute comparaison, et « Limonest » est
- *     refusé au rendu.
+ *     Les décisions de copie (« 10 % des techniciens », siège à Limonest depuis
+ *     le 09/10, rétabli le 16/10 au soir) sont
+ *     appliquées à la capture avant toute comparaison, et une phrase qui place
+ *     le siège à Écully est refusée au rendu.
  *  7. UN SEUL H1, aucun `href="#"`.
  */
 
@@ -41,7 +41,7 @@ import { gunzipSync } from "node:zlib";
 
 import { renderToStaticMarkup } from "react-dom/server";
 
-import { appliqueDecisions } from "@/lib/decisions-copie";
+import { SIEGE_A_ECULLY, appliqueDecisions } from "@/lib/decisions-copie";
 import { REGISTRE, cheminRegistre, deLaRepartition } from "@/lib/photos-autorisees";
 
 import { HUB_CARRIERE, type ContenuHubCarriere } from "./donnees-hub";
@@ -166,16 +166,18 @@ const INTERDITS = [
   "découvrez",
   "réguliers",
   "teamtailor",
-  "limonest",
   "cinq agences",
   "5 agences",
 ] as const;
 
 function verifieInterdits(html: string, nom: string): void {
-  const visible = texteLisible(html).toLowerCase();
+  const lisible = texteLisible(html);
+  const visible = lisible.toLowerCase();
   for (const mot of INTERDITS) {
     assert.ok(!visible.includes(mot), `${nom} : formulation interdite dans le rendu, « ${mot} »`);
   }
+  // Le siège est à Limonest, l'agence à Écully (09/10, rétabli le 16/10 au soir).
+  assert.ok(!SIEGE_A_ECULLY.test(lisible), `${nom} : formulation interdite dans le rendu, « siège à Écully »`);
 }
 
 /* ------------------------------- toutes les chaînes d'une donnée de page */
@@ -258,11 +260,11 @@ assert.throws(
   /interdite/,
   "verifieInterdits a laissé passer un tiret cadratin",
 );
-// Le siège est à Écully depuis le 16/10 : l'adresse de Limonest doit tomber.
+// Le siège est à Limonest : l'adresse d'Écully donnée comme le siège doit tomber.
 assert.throws(
-  () => verifieInterdits("<p>Siège, 1 rue des Vergers, 69760 Limonest</p>", "preuve"),
-  /limonest/,
-  "verifieInterdits a laissé passer Limonest",
+  () => verifieInterdits("<p>Siège, 129 chemin du Moulin Carron, 69130 Écully</p>", "preuve"),
+  /siège à Écully/,
+  "verifieInterdits a laissé passer le siège à Écully",
 );
 {
   // Une donnée faussée d'un seul mot doit faire échouer le mot pour mot.
@@ -276,7 +278,7 @@ assert.throws(
     "une donnée faussée est passée : le mot pour mot ne contrôle rien",
   );
 }
-console.log("0 · le contrôle sait échouer : copie absente, dessin absent, tiret cadratin, Limonest et donnée faussée refusés.");
+console.log("0 · le contrôle sait échouer : copie absente, dessin absent, tiret cadratin, siège à Écully et donnée faussée refusés.");
 
 /* --------------------------------------------- la page, telle que servie */
 

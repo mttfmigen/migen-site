@@ -44,7 +44,7 @@ import { metadonneesSeo } from "@/lib/seo/metadonnees";
  *   · « 5 / agences en France » devient « 4 / agences », et
  *     « Cinq agences en France, deux à l'international » devient « Quatre
  *     agences, dix hubs de techniciens ». Le compte tenu est quatre agences,
- *     Lyon (siège à Écully), Montréal, Dubaï, Madrid.
+ *     Lyon (siège à Limonest, agence à Écully), Montréal, Dubaï, Madrid.
  *   · les repères « 48 h » et « 3 sem. » des trois étapes tombent : seul le
  *     rappel dans l'heure est un délai chiffré autorisé. Voir
  *     `components/site/contact/ApresDemande.tsx`.

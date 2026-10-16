@@ -44,7 +44,7 @@ import { fileURLToPath } from "node:url";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import { TELEPHONE_LP, TELEPHONE_SITE } from "@/components/site/entete-donnees";
-import { appliqueDecisions } from "@/lib/decisions-copie";
+import { SIEGE_A_ECULLY, appliqueDecisions } from "@/lib/decisions-copie";
 import { FINALITES, LIBELLES, LIEN_CONFIDENTIALITE } from "@/lib/consentement";
 import { numeroLpPermis } from "@/lib/lp/adresses";
 import PolitiqueConfidentialite, {
@@ -129,24 +129,28 @@ function styleMaquette(cle: string): string {
 
 // ------------------------------------------------- le texte porté mot pour mot
 
-/* L'adresse du siège. LA MAQUETTE ET LE RENDU DIVERGENT VOLONTAIREMENT DEPUIS
-   LE 16/10 : Mehdi a décidé « Le siège est à Ecully mets le de partout », qui
-   renverse le 09/10 (Limonest). La maquette écrit encore Limonest ; la règle
-   SIÈGE de lib/decisions-copie.ts la réécrit, et c'est la phrase DÉCIDÉE qui
-   est exigée au rendu. Les deux côtés sont vérifiés : le jour où la maquette
-   est corrigée, l'exception le dit. */
-const ADRESSE_MAQUETTE_BRUTE = "migen©, 1 rue des Vergers, Bâtiment 3, 69760 Limonest.";
+/* L'adresse du siège. AUCUNE DIVERGENCE : Mehdi a tranché le 09/10 que le
+   siège est à Limonest, ce que la maquette écrivait déjà, et l'a RÉTABLI le
+   16/10 au soir après l'avoir renversé le matin (« L'agence est à Ecully,
+   siège à Limonest »). Les deux côtés portent donc le même texte, que la règle
+   SIÈGE ne touche pas ; une phrase qui place le siège à Écully tombe. */
+const ADRESSE_MAQUETTE = "migen©, 1 rue des Vergers, Bâtiment 3, 69760 Limonest.";
 assert.equal(
   phraseMaquette("rue des Vergers"),
-  ADRESSE_MAQUETTE_BRUTE,
-  "la maquette n'écrit plus cette adresse : l'écart du 16/10 n'a plus d'objet, le relire",
+  ADRESSE_MAQUETTE,
+  "la maquette n'écrit plus cette adresse : la relire avant de changer le rendu",
 );
-const ADRESSE_MAQUETTE = appliqueDecisions(ADRESSE_MAQUETTE_BRUTE);
-assert.equal(ADRESSE_MAQUETTE, "migen©, 129 chemin du Moulin Carron, 69130 Écully.", "la règle SIÈGE ne réécrit plus l'adresse");
+assert.equal(appliqueDecisions(ADRESSE_MAQUETTE), ADRESSE_MAQUETTE, "une règle de copie réécrit le siège de Limonest");
 const controleSiege = (t: string) =>
-  assert.ok(!/Limonest|rue des Vergers/.test(t), "Limonest rendu : le siège est à Écully depuis le 16/10");
+  assert.ok(
+    !t.includes("Moulin Carron") && !SIEGE_A_ECULLY.test(t),
+    "le siège est placé à Écully : c'est l'agence, le siège est à Limonest",
+  );
 controleSiege(texteRendu);
-assert.throws(() => controleSiege(`${texteRendu} ${ADRESSE_MAQUETTE_BRUTE}`), "le témoin de Limonest ne tombe pas");
+assert.throws(
+  () => controleSiege(texteRendu.replace("1 rue des Vergers, Bâtiment 3, 69760 Limonest", "129 chemin du Moulin Carron, 69130 Écully")),
+  "le témoin du siège remis à Écully ne tombe pas",
+);
 /* 09/10 : LE RESPONSABLE DU TRAITEMENT EST NOMMÉ PAR SA DÉNOMINATION SOCIALE.
    La maquette écrit « migen© », une marque ; l'article 13 du RGPD demande
    l'identité du responsable, et une marque n'est pas une personne morale.
