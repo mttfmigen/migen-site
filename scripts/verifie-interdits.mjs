@@ -91,6 +91,8 @@ const INTERDITS = [
   ["incontournable", "à supprimer"],
   ["découvrez", "un verbe qui dit ce que la page fait"],
   ["Découvrez", "un verbe qui dit ce que la page fait"],
+  // Mehdi, 16/10, question 5 : « prix mensuel fixe », « Tu ne mets pas ».
+  ["prix mensuel fixe", "ne rien annoncer du prix : le chiffrage se remet avec le devis"],
   // Typographie.
   ["—", "virgule, parenthèses ou deux-points, jamais de tiret cadratin"],
 ];

@@ -570,7 +570,19 @@ const MONTANTS: Regle[] = [
   [/De production perdue par heure d['’]arrêt, le coût que Zéro arrêt évite/g, () => ""],
 ];
 
-const REGLES = [...SELECTION, ...SIEGE, ...PHOTOS_VILLE, ...TELEPHONE, ...ORTHUS, ...META_REDACTION, ...NOTAMMENT, ...ASTREINTE, ...NOUS_REJOINDRE, ...TOURNAIRE, ...LEVIER, ...MONTANTS];
+/* 16/10, « PRIX MENSUEL FIXE » RETIRÉ PARTOUT. Mehdi, réponse à la question 5
+   du 16/10 : « Tu ne mets pas ». Le dépôt hésitait (règle du 09/10 qui la
+   disait permise, mais `GrilleOffres.tsx` et `lib/parcours-mobile.ts` qui
+   l'avaient déjà retirée) : c'est tranché. Chaque phrase garde le reste de
+   ses mots, rien n'est rédigé ; la réponse de FAQ « Combien coûte
+   l'abonnement ? » perd sa première phrase et garde les deux suivantes. */
+const PRIX_MENSUEL: Regle[] = [
+  [/Un prix mensuel fixe, sur 12 mois, selon la formule retenue\.\s*/g, () => ""],
+  [/,? pour un prix mensuel fixe et sans embauche/g, () => ", sans embauche"],
+  [/,? pour un prix mensuel fixe/g, () => ""],
+];
+
+const REGLES = [...SELECTION, ...SIEGE, ...PHOTOS_VILLE, ...TELEPHONE, ...ORTHUS, ...META_REDACTION, ...NOTAMMENT, ...ASTREINTE, ...NOUS_REJOINDRE, ...TOURNAIRE, ...LEVIER, ...MONTANTS, ...PRIX_MENSUEL];
 
 /** Les règles qui s'appliquent à cette page : les globales, plus les siennes. */
 function reglesDe(page?: string): Regle[] {
