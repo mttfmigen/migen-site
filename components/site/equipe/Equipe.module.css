@@ -76,3 +76,63 @@
     padding: 28px 20px !important;
   }
 }
+
+/*
+ * « QUESTIONS FRÉQUENTES » AU TÉLÉPHONE, maquette V3 du 16/10 : dans la carte
+ * 07, le panneau sombre et sa photo laissent la place au fond de la carte,
+ * le titre passe à l'encre de la page et chaque question devient une petite
+ * carte à fond doux (`--mm-fond-doux`), 16 px d'arrondi. Le panneau
+ * redéfinit les jetons de couleur en ligne (texte blanc) : `inherit` les
+ * rend à la page. L'accordéon reste celui du site. Rien au-dessus de 880 px.
+ */
+@media (max-width: 880px) {
+  .panneauQuestions {
+    --ink: inherit !important;
+    --ink1: inherit !important;
+    --ink2: inherit !important;
+    --ink3: inherit !important;
+    --ink4: inherit !important;
+    --line: inherit !important;
+    --chip: inherit !important;
+    --gl-a: inherit !important;
+    --gbd: inherit !important;
+    --card: inherit !important;
+    --acc-ink: inherit !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 12px !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    overflow: visible !important;
+  }
+
+  .panneauQuestions > img,
+  .panneauQuestions > [aria-hidden="true"] {
+    display: none !important;
+  }
+
+  .panneauQuestions details {
+    border: 1px solid var(--mm-bord-doux) !important;
+    border-radius: 16px !important;
+    background: var(--mm-fond-doux) !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .panneauQuestions .questionEquipe {
+    gap: 12px !important;
+    padding: 13px 14px !important;
+  }
+
+  .panneauQuestions .questionEquipe > :first-child {
+    font: 600 14.5px/1.4 var(--ft) !important;
+    letter-spacing: -0.015em !important;
+  }
+
+  .panneauQuestions details > div {
+    padding: 0 14px 13px !important;
+    font: 400 14px/1.55 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+}

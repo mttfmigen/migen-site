@@ -701,17 +701,15 @@ export default function Guide({
               </div>
               {compact ? (
                 /* LE SOMMAIRE REPLIÉ DU TÉLÉPHONE (dc.html, `hasToc`) : une
-                   carte sans numéro, fermée, le nombre de parties à côté du
-                   libellé. Le libellé de bureau, juste au-dessus, ne se peint
-                   pas au téléphone : c'est le même mot, dans la bascule. */
+                   carte sans numéro, fermée, sans compteur (le « N parties »
+                   est retiré le 16/10, Mehdi : plus aucun compteur). Le
+                   libellé de bureau, juste au-dessus, ne se peint pas au
+                   téléphone : c'est le même mot, dans la bascule. */
                 <SectionPliableMobile
                   numero={false}
                   enTete={
                     <span data-mobile-seulement="" className={styles.etiquettePli}>
-                      <span className={styles.sommaireTitre}>
-                        Sommaire
-                        <span className={styles.sommaireCompte}>{`${vue.sections.length} parties`}</span>
-                      </span>
+                      <span className={styles.sommaireTitre}>Sommaire</span>
                     </span>
                   }
                 >

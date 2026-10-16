@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { ANCRE_FORMULAIRE } from "@/components/site/blocs/habillage";
-import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import { accrocheDe } from "@/components/site/blocs/resume-de-section";
 import SectionRepliee from "@/components/site/nous-connaitre/SectionRepliee";
 
 import styles from "./Equipe.module.css";
@@ -19,6 +19,11 @@ import { LARGEUR, SURTITRE, TEXTE_CARTE, VERRE_COURT } from "./habillage-equipe"
 /* Écrits une fois : l'en-tête de bureau et la bascule du téléphone. */
 const SURTITRE_TEXTE = "Qui vous répond";
 const TITRE_TEXTE = "De votre appel au technicien, trois personnes. Pas plus.";
+/* Le chapô, écrit une fois : le paragraphe de bureau et l'accroche de la
+   carte fermée du téléphone (maquette V3 du 16/10 : une carte fermée montre
+   le début de son texte, `accrocheDe`). */
+const CHAPO =
+  "Chaque intermédiaire ajoute un délai. Nous en avons retiré le plus possible.";
 
 export default function QuiVousRepond() {
   return (
@@ -27,7 +32,7 @@ export default function QuiVousRepond() {
       numero={false}
       kicker={SURTITRE_TEXTE}
       titre={TITRE_TEXTE}
-      resume={resumeDe(RELAIS.map((r) => r.titre))}
+      resume={accrocheDe([{ paragraphe: CHAPO }])}
     >
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={LARGEUR}>
@@ -118,8 +123,7 @@ export default function QuiVousRepond() {
                 maxWidth: "48ch",
               }}
             >
-              Chaque intermédiaire ajoute un délai. Nous en avons retiré le plus
-              possible.
+              {CHAPO}
             </p>
             <ol
               style={{

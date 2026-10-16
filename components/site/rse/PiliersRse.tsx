@@ -153,7 +153,10 @@ export default function PiliersRse() {
                 {TITRE_TEXTE}
               </h2>
             </div>
+            {/* Au téléphone, la phrase d'ouverture de la carte (maquette V3,
+                `.leadV3`) : 500 16px à l'encre de la page. */}
             <p
+              className={mobile.leadV3}
               style={{
                 font: "400 15.5px/1.7 var(--fb)",
                 color: "var(--ink2)",

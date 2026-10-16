@@ -1,5 +1,6 @@
-import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import { accrocheDe } from "@/components/site/blocs/resume-de-section";
 import type { EntreeSommaire } from "@/components/site/nous-connaitre/HautMobile";
+import mobile from "@/components/site/nous-connaitre/mobile-apropos.module.css";
 import SectionRepliee from "@/components/site/nous-connaitre/SectionRepliee";
 
 import { ENGAGEMENTS } from "./equipe-donnees";
@@ -18,9 +19,11 @@ export default function EngagementsEquipe() {
     <SectionRepliee
       id={SOMMAIRE_ENGAGEMENTS.id}
       rang={6}
-      kicker={SURTITRE_TEXTE}
-      titre={TITRE_TEXTE}
-      resume={resumeDe(ENGAGEMENTS.map((e) => e.titre))}
+      /* MAQUETTE V3 DU 16/10 : la carte du téléphone porte le nom de la
+         section seul (« Nos engagements »), sa phrase clé passe en accroche, carte
+         fermée, et en tête du corps, carte ouverte (`.phraseCleV3`). */
+      titre={SURTITRE_TEXTE}
+      resume={accrocheDe([{ paragraphe: TITRE_TEXTE }])}
     >
     <section style={SECTION}>
       <div style={LARGEUR}>
@@ -28,10 +31,14 @@ export default function EngagementsEquipe() {
           <div data-titre-bureau="" style={SURTITRE}>
             {SURTITRE_TEXTE}
           </div>
-          <h2 data-titre-bureau="" style={{ ...TITRE2, maxWidth: "26ch" }}>
+          <h2 className={mobile.phraseCleV3} style={{ ...TITRE2, maxWidth: "26ch" }}>
             {TITRE_TEXTE}
           </h2>
+          {/* Au téléphone, les petites cartes « Libellé : texte » de la
+              maquette V3 (`data-mm-kv`, app/globals.css) : fond doux, numéro
+              à gauche ; le filet de bureau s'efface (`.decor`). */}
           <ol
+            data-mm-kv=""
             className="mg-rmulti"
             style={{
               display: "grid",
@@ -49,6 +56,7 @@ export default function EngagementsEquipe() {
                 style={{ ...VERRE, padding: "26px 26px 28px" }}
               >
                 <div
+                  data-mm-num=""
                   style={{
                     display: "flex",
                     alignItems: "center",
@@ -67,10 +75,12 @@ export default function EngagementsEquipe() {
                   </span>
                   <span
                     aria-hidden="true"
+                    className={mobile.decor}
                     style={{ flex: 1, height: 1, background: "var(--line)" }}
                   />
                 </div>
                 <h3
+                  data-mm-kv-titre=""
                   style={{
                     font: "600 18px/1.3 var(--ft)",
                     letterSpacing: "-.022em",
@@ -79,7 +89,9 @@ export default function EngagementsEquipe() {
                 >
                   {engagement.titre}
                 </h3>
-                <div style={TEXTE_CARTE}>{engagement.texte}</div>
+                <div data-mm-kv-texte="" style={TEXTE_CARTE}>
+                  {engagement.texte}
+                </div>
               </li>
             ))}
           </ol>

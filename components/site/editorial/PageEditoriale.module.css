@@ -838,13 +838,6 @@
     letter-spacing: -0.02em;
     color: var(--ink);
   }
-  .sommaireCompte {
-    margin-left: 6px;
-    font: 500 12px var(--fb);
-    letter-spacing: normal;
-    color: var(--mm-encre-3);
-    white-space: nowrap;
-  }
   .guideCompact :global(.cx-toc) nav {
     border-left: 0 !important;
   }

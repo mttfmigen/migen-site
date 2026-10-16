@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import { accrocheDe, ligneDuCorpus } from "@/components/site/blocs/resume-de-section";
 
 import styles from "./EquipeProche.module.css";
 import type { EntreeSommaire } from "./HautMobile";
@@ -22,6 +22,10 @@ const TITRE_TEXTE = "Trois personnes, et vous les connaissez par leur nom";
  * entendre un réseau d'agences françaises. Le contrat n'en reconnaît qu'une en
  * France (Lyon, siège) et dix hubs de techniciens, d'où « du hub le plus
  * proche ».
+ *
+ * CARTE FERMÉE DU TÉLÉPHONE : son accroche est le début de son texte, le
+ * premier rôle tel que le corpus l'écrit (« Le technicien sur votre ligne :
+ * celui que vous voyez… »), règle de la maquette V3 du 16/10 (`accrocheDe`).
  */
 
 const CARTE = {
@@ -100,7 +104,7 @@ export default function EquipeProche() {
       id={SOMMAIRE_EQUIPE_PROCHE.id}
       kicker={SURTITRE_TEXTE}
       titre={TITRE_TEXTE}
-      resume={resumeDe(ROLES.map((r) => r.titre))}
+      resume={accrocheDe([{ liste: ROLES.map((r) => ligneDuCorpus({ accroche: r.titre, texte: r.texte })) }])}
     >
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>

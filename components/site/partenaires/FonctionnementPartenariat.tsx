@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 
-import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import { accrocheDe } from "@/components/site/blocs/resume-de-section";
 import type { EntreeSommaire } from "@/components/site/nous-connaitre/HautMobile";
 import mobile from "@/components/site/nous-connaitre/mobile-apropos.module.css";
 import SectionRepliee from "@/components/site/nous-connaitre/SectionRepliee";
@@ -92,9 +92,11 @@ export default function FonctionnementPartenariat({
   return (
     <SectionRepliee
       id={SOMMAIRE_FONCTIONNEMENT.id}
-      kicker={SURTITRE_TEXTE}
-      titre={TITRE_TEXTE}
-      resume={resumeDe(ETAPES.map((e) => e.titre))}
+      /* MAQUETTE V3 DU 16/10 : la carte du téléphone porte le nom de la
+         section seul (« Comment ça fonctionne »), sa phrase clé passe en accroche, carte
+         fermée, et en tête du corps, carte ouverte (`.phraseCleV3`). */
+      titre={SURTITRE_TEXTE}
+      resume={accrocheDe([{ paragraphe: TITRE_TEXTE }])}
     >
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
@@ -124,7 +126,7 @@ export default function FonctionnementPartenariat({
               {SURTITRE_TEXTE}
             </div>
             <h2
-              data-titre-bureau=""
+              className={mobile.phraseCleV3}
               style={{
                 font: "600 calc(clamp(26px,3vw,42px) * var(--ts))/1.08 var(--ft)",
                 letterSpacing: "-.04em",
@@ -166,7 +168,12 @@ export default function FonctionnementPartenariat({
             </a>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 12 }}>
+          {/* Au téléphone, les trois étapes en tuiles 2 x 2 de la maquette V3
+              (`.tuilesV3`) : le numéro en grand, l'intitulé et le texte dessous. */}
+          <div
+            className={mobile.tuilesV3}
+            style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 12 }}
+          >
             {ETAPES.map((etape) => (
               <div
                 key={etape.numero}
@@ -177,7 +184,9 @@ export default function FonctionnementPartenariat({
                     : { ...CARTE, ...VERRE }
                 }
               >
-                <span style={NUMERO}>{etape.numero}</span>
+                <span className={mobile.tuileValeur} style={NUMERO}>
+                  {etape.numero}
+                </span>
                 <div>
                   <div
                     style={{

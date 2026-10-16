@@ -10,9 +10,9 @@ import mobile from "./mobile-apropos.module.css";
  * déclarés en données plutôt qu'en balises pour qu'une correction se fasse en
  * une ligne, sans toucher à la mise en page.
  *
- * SUR TÉLÉPHONE, les petites cartes numérotées de la maquette mobile v2
- * (`isKv`, dc.html L131) : le chapô de « Nous connaître » y range ces quatre
- * repères en liste « Libellé : texte ». Rien ne change au bureau.
+ * SUR TÉLÉPHONE, les tuiles 2 x 2 de la maquette V3 du 16/10 (`isStats`) :
+ * la valeur en orange, le libellé et la note dessous (`.tuilesV3`,
+ * `mobile-apropos.module.css`). Rien ne change au bureau.
  */
 
 interface Repere {
@@ -56,7 +56,7 @@ export default function Reperes() {
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <div
           data-reveal=""
-          className="mg-rmulti"
+          className={`mg-rmulti ${mobile.tuilesV3}`}
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(4,minmax(0,1fr))",
@@ -64,8 +64,9 @@ export default function Reperes() {
           }}
         >
           {REPERES.map((r) => (
-            <div key={r.valeur} className={mobile.repereCarte} style={CARTE}>
+            <div key={r.valeur} style={CARTE}>
               <div
+                className={mobile.tuileValeur}
                 style={{
                   font: "600 calc(38px * var(--ts))/1 var(--ft)",
                   letterSpacing: "-.05em",

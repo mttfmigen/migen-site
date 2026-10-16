@@ -154,6 +154,20 @@ export function GrillePartenaires({ partenaires = PARTENAIRES }: Proprietes) {
         style={{ maxWidth: 1200, margin: "0 auto", padding: "44px 40px 0" }}
       >
         <div data-reveal="" style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 16 }}>
+          {/* MAQUETTE V3 DU 16/10 : au téléphone, les logos des partenaires en
+              tuiles blanches côte à côte, avant leurs cartes (le logo de
+              chaque carte, lui, s'efface sous 881 px : `.decor`). Téléphone
+              seulement : au bureau, chaque logo reste dans sa carte. */}
+          <div data-mobile-seulement="" className={mobile.logosPartenaires}>
+            {partenaires
+              .filter((partenaire) => partenaire.logo)
+              .map((partenaire) => (
+                <span key={partenaire.nom} className={mobile.logoPartenaire}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={partenaire.logo} alt={partenaire.nom} loading="lazy" />
+                </span>
+              ))}
+          </div>
           <div
             className={`mg-r2 ${mobile.sansGouttiere} ${mobile.grillePartenaires}`}
             style={{

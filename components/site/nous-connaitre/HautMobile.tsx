@@ -20,8 +20,8 @@ import s from "./mobile-apropos.module.css";
  * CHAQUE CHAÎNE EST CELLE DE LA MAQUETTE : « Accueil » (L489, premier niveau
  * du fil), « Migen » et « min de lecture » (L485 à L487, `KICK` des pages
  * `/a-propos/` et `readMin`), « Décrire mon besoin » (L412, `cta.label`),
- * « Sommaire » et « parties » (L116, `tocN`). Le numéro de téléphone est celui
- * de l'en-tête du site, rendu par `TelephoneHeros`.
+ * « Sommaire » (L116). Le numéro de téléphone est celui de l'en-tête du site,
+ * rendu par `TelephoneHeros`.
  *
  * Composant serveur, module sans directive.
  */
@@ -69,19 +69,17 @@ export interface EntreeSommaire {
 }
 
 /**
- * dc.html L116 : « Sommaire · N parties », replié. Les entrées sont les cartes
- * numérotées, dans l'ordre où le téléphone les montre : leur numéro est donc
- * celui de la carte.
+ * dc.html L116 : « Sommaire », replié. Les entrées sont les cartes numérotées,
+ * dans l'ordre où le téléphone les montre : leur numéro est donc celui de la
+ * carte. SANS COMPTEUR depuis le 16/10 : Mehdi a fait retirer partout les
+ * « N parties », « N points » et « · 55 » (la maquette V3 n'en porte aucun).
  */
 export function SommaireMobile({ entrees }: { entrees: readonly EntreeSommaire[] }) {
   if (!entrees.length) return null;
   return (
     <details data-mobile-seulement="" className={s.sommaire}>
       <summary>
-        <span className={s.sommaireTitre}>
-          Sommaire
-          <span className={s.sommaireNombre}>{entrees.length} parties</span>
-        </span>
+        <span className={s.sommaireTitre}>Sommaire</span>
         <span aria-hidden="true" className={s.sommaireChevron}>
           ›
         </span>

@@ -187,9 +187,10 @@ export default function OuvertureRse() {
           />
         </div>
 
-        {/* Au téléphone, le panneau sombre passe en texte clair dans le flux
-            (maquette mobile v2 : phrase clé, puce « 2 : … », ligne MASE et
-            EcoVadis) : `.panneauClair`, `.puceRse`, `.ligneMase`. */}
+        {/* Au téléphone, le panneau sombre passe en clair dans le flux
+            (maquette V3 du 16/10 : phrase clé, tuile « 2 », tuiles des deux
+            logos, ligne MASE et EcoVadis) : `.panneauClair`, `.puceRse`,
+            `.logoTuile`, `.ligneMase`. */}
         <div className={mobile.panneauClair} style={{ ...PANNEAU, padding: "32px 34px 34px" }}>
           <div className={mobile.decor} style={LUEUR_HAUTE} />
           <div style={{ position: "relative" }}>
@@ -236,11 +237,11 @@ export default function OuvertureRse() {
                 flexWrap: "wrap",
               }}
             >
-              <span className={mobile.decor} style={CADRE_LOGO}>
+              <span className={mobile.logoTuile} style={CADRE_LOGO}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/assets/logos/mase.png" alt="MASE" style={IMAGE_LOGO} />
               </span>
-              <span className={mobile.decor} style={CADRE_LOGO}>
+              <span className={mobile.logoTuile} style={CADRE_LOGO}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/assets/logos/ecovadis.webp"

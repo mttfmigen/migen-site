@@ -12,10 +12,15 @@
  * UNE CORRECTION SUR LA COPIE DE LA MAQUETTE, détaillée dans le rapport de
  * portage : « le modèle en régie » (mot proscrit). « Plus de 200 clients » est
  * rendu mot pour mot, règle validée par le client.
+ *
+ * AU TÉLÉPHONE, les six jalons en tuiles 2 x 3 de la maquette V3 du 16/10
+ * (l'année en orange, le texte dessous : `.tuilesV3`), la pastille de bureau
+ * effacée (`.decor`), le chapô en phrase d'ouverture (`.leadV3`).
  */
 
 
 import type { EntreeSommaire } from "./HautMobile";
+import mobile from "./mobile-apropos.module.css";
 import SectionRepliee from "./SectionRepliee";
 
 /* Écrits une fois : l'en-tête de bureau et la bascule du téléphone. */
@@ -135,6 +140,7 @@ export default function FriseCinqAns() {
               </h2>
             </div>
             <p
+              className={mobile.leadV3}
               style={{
                 font: "400 15.5px/1.7 var(--fb)",
                 color: "var(--ink2)",
@@ -160,7 +166,7 @@ export default function FriseCinqAns() {
               }}
             />
             <ol
-              className="mg-rmulti mg-tl"
+              className={`mg-rmulti mg-tl ${mobile.tuilesV3}`}
               style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(6,minmax(0,1fr))",
@@ -175,6 +181,7 @@ export default function FriseCinqAns() {
                 <li key={j.annee}>
                   <div
                     aria-hidden="true"
+                    className={mobile.decor}
                     style={{
                       width: 11,
                       height: 11,
@@ -187,6 +194,7 @@ export default function FriseCinqAns() {
                     }}
                   />
                   <div
+                    className={mobile.tuileValeur}
                     style={{
                       font: "600 calc(20px * var(--ts)) var(--ft)",
                       letterSpacing: "-.035em",

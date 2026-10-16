@@ -384,13 +384,6 @@
     text-transform: none !important;
     color: var(--ink) !important;
   }
-  .sommaireCompte {
-    margin-left: 6px;
-    font: 500 12px var(--fb);
-    letter-spacing: normal;
-    color: var(--mm-encre-3);
-    white-space: nowrap;
-  }
   .entree {
     display: grid !important;
     grid-template-columns: 24px minmax(0, 1fr);

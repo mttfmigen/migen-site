@@ -165,9 +165,12 @@ export default function HeroValeurs() {
             <div className={mobile.panneauTitre} style={SURTITRE}>
               {HERO.panneau}
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 16 }}>
+            <div
+              className={mobile.sloganListe}
+              style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 16 }}
+            >
               {SLOGAN.map(({ mot, glose }) => (
-                <div key={mot}>
+                <div key={mot} className={mobile.sloganLigne}>
                   <div style={{ display: "flex", alignItems: "baseline", gap: 12 }}>
                     <span
                       className={mobile.panneauMot}

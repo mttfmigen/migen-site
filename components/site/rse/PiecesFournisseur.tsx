@@ -7,13 +7,17 @@ import {
   SURTITRE,
   VERRE,
 } from "@/components/site/blocs/habillage";
-import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import { accrocheDe } from "@/components/site/blocs/resume-de-section";
 import type { EntreeSommaire } from "@/components/site/nous-connaitre/HautMobile";
 import SectionRepliee from "@/components/site/nous-connaitre/SectionRepliee";
 
 /* Écrits une fois : l'en-tête de bureau et la bascule du téléphone. */
 const SURTITRE_TEXTE = "Ce que nous vous transmettons";
 const TITRE_TEXTE = "Les pièces pour votre dossier fournisseur";
+/* Le chapô, écrit une fois : le paragraphe de bureau et l'accroche de la
+   carte fermée du téléphone (maquette V3 du 16/10 : une carte fermée montre
+   le début de son texte, `accrocheDe`). */
+const CHAPO = "Sur simple demande au chargé d’affaires.";
 
 /** Carte 03 du téléphone, repliée comme dans la maquette mobile v2. */
 export const SOMMAIRE_PIECES: EntreeSommaire = { id: "pieces-fournisseur", titre: TITRE_TEXTE };
@@ -92,7 +96,7 @@ export default function PiecesFournisseur() {
       id={SOMMAIRE_PIECES.id}
       kicker={SURTITRE_TEXTE}
       titre={TITRE_TEXTE}
-      resume={resumeDe(PIECES.map((p) => p.titre))}
+      resume={accrocheDe([{ paragraphe: CHAPO }])}
     >
     <section style={{ padding: "var(--sec) 0 var(--sec)" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
@@ -130,7 +134,7 @@ export default function PiecesFournisseur() {
                   margin: 0,
                 }}
               >
-                Sur simple demande au chargé d’affaires.
+                {CHAPO}
               </p>
             </div>
             <a
