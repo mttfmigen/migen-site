@@ -13,6 +13,13 @@
  * TOUTE requête sortante passe par la doublure de `fetch`, posée avant
  * l'import de la route. Elle ne touche jamais le réseau et refuse toute
  * adresse qu'elle ne connaît pas : aucun envoi réel n'est possible ici.
+ *
+ * CE QU'ELLE TIENT : une LP envoie la charge du site (`chargeUtile`) et la
+ * route la dépose dans LE formulaire HubSpot du site (`HUBSPOT_FORM_ID`),
+ * avec les champs exacts du formulaire du site et l'attribution telle que le
+ * site la transmet, sans rien de l'ancien formulaire « variante C » ; les
+ * protections (validation, débit, taille, origine, piège) refusent avant tout
+ * envoi ; la table `leads` ne reçoit aucune donnée nominative.
  */
 import assert from "node:assert/strict";
 
@@ -21,12 +28,17 @@ import { NextRequest } from "next/server";
 import { chargeUtile, type Contact } from "@/components/formulaire/validation";
 import { VERSION_BANDEAU, choixUniforme } from "@/lib/consentement";
 
-import { DEMANDES_LP, FORMULAIRE_HUBSPOT_LP, formulaireLp, numeroE164, urlCalendly, prerempliDe } from "./lead-lp";
+import { formulaireLp, numeroE164, prerempliDe, urlCalendly } from "./lead-lp";
 
 const HUBSPOT = "https://api.hsforms.com/submissions/v3/integration/submit/148000737/";
 const SUPABASE = "https://doublure.supabase.invalid";
+const FORMULAIRE_SITE = "formulaire-du-site-doublure";
+/** L'ancien formulaire « variante C » des LP : plus rien ne doit y partir. */
+const FORMULAIRE_C = "00bc3a3e-d900-40fe-8995-1e5ff2b684eb";
 
-process.env.HUBSPOT_FORM_ID = "formulaire-du-site-doublure";
+process.env.HUBSPOT_FORM_ID = FORMULAIRE_SITE;
+// L'ancienne variable de l'aiguillage des LP, posée exprès : la route doit l'ignorer.
+process.env.HUBSPOT_FORM_ID_LP = "formulaire-c-doublure";
 process.env.NEXT_PUBLIC_SUPABASE_URL = SUPABASE;
 process.env.SUPABASE_SERVICE_ROLE_KEY = "cle-doublure";
 
@@ -68,12 +80,15 @@ const CONTACT: Contact = {
 };
 
 const PAGE = "/lp/maintenance-industrielle-lyon/";
+const FORMULAIRE = formulaireLp(PAGE, "heros");
+const URL_PAGE = `https://migen.fr${PAGE}?utm_source=google&gclid=Cj0doublure_BwE`;
 
+/** Exactement ce que FormulaireLP poste : la charge du site, rien de plus. */
 function chargeLp(modifs: Record<string, unknown> = {}): Record<string, unknown> {
   return {
     ...chargeUtile({
       contact: CONTACT,
-      formulaire: formulaireLp(PAGE, "heros"),
+      formulaire: FORMULAIRE,
       piege: "",
       etablissement: {},
       attribution: {
@@ -83,10 +98,8 @@ function chargeLp(modifs: Record<string, unknown> = {}): Record<string, unknown>
         page_entree: PAGE,
         page_conversion: PAGE,
       },
-      page: { url: `https://migen.fr${PAGE}?utm_source=google&gclid=Cj0doublure_BwE`, titre: "LP Lyon" },
+      page: { url: URL_PAGE, titre: "LP Lyon" },
     }),
-    source: "lp",
-    demande: DEMANDES_LP[0],
     ...modifs,
   };
 }
@@ -96,16 +109,15 @@ const COOKIE_PUBLICITE = `migen_consentement=${encodeURIComponent(
 )}`;
 
 let reseau = 0;
-/** Chaque envoi vient d'un /24 différent : le plafond de débit ne s'en mêle pas. */
+/** Chaque envoi vient d'un /24 différent, sauf demande : le plafond de débit ne s'en mêle pas. */
 async function poste(charge: unknown, entetes: Record<string, string> = {}) {
   reseau += 1;
   appels = [];
-  const corps = JSON.stringify(charge);
   const reponse = await POST(
     new NextRequest("http://localhost/api/lead", {
       method: "POST",
       headers: { "content-type": "application/json", "x-forwarded-for": `10.0.${reseau}.7`, ...entetes },
-      body: corps,
+      body: typeof charge === "string" ? charge : JSON.stringify(charge),
     }),
   );
   return { statut: reponse.status, json: (await reponse.json()) as { erreurs?: Record<string, string> } };
@@ -113,9 +125,28 @@ async function poste(charge: unknown, entetes: Record<string, string> = {}) {
 
 type Champ = { name: string; value: string; objectTypeId?: string };
 const envoisHubspot = () => appels.filter((a) => a.url.startsWith(HUBSPOT));
+const copiesLeads = () => appels.filter((a) => a.url.startsWith(`${SUPABASE}/rest/v1/leads`));
 const champsDe = (appel: Appel) => (appel.corps as { fields: Champ[] }).fields;
 const nomsDe = (appel: Appel) => champsDe(appel).map((c) => (c.objectTypeId ? `${c.objectTypeId}/${c.name}` : c.name)).sort();
 const valeurDe = (appel: Appel, nom: string) => champsDe(appel).find((c) => c.name === nom)?.value;
+const contexteDe = (appel: Appel) => (appel.corps as { context: { pageUri?: string; pageName?: string } }).context;
+
+/** Les champs du formulaire HubSpot du site, identité comprise, sans consentement publicitaire. */
+const CHAMPS_DU_SITE = ["0-2/name", "email", "firstname", "formulaire_migen", "lastname", "message", "phone"];
+/** Et ceux que la finalité publicitaire y ajoute : l'attribution de `lib/utm.ts`. */
+const CHAMPS_DE_CAMPAGNE = ["page_entree", "utm_campaign", "utm_medium", "utm_source"];
+
+/** Ce qui ne va pas dans l'envoi d'une LP à HubSpot ; vide quand il est celui du site. */
+function defautsEnvoi(appel: Appel | undefined, attendus: readonly string[]): string[] {
+  if (!appel) return ["aucun envoi HubSpot"];
+  const defauts: string[] = [];
+  if (appel.url !== `${HUBSPOT}${FORMULAIRE_SITE}`) defauts.push(`envoyé à ${appel.url.slice(HUBSPOT.length)}, pas au formulaire du site`);
+  const noms = nomsDe(appel);
+  const voulus = [...attendus].sort();
+  if (noms.join() !== voulus.join()) defauts.push(`champs ${noms.join(", ")} au lieu de ${voulus.join(", ")}`);
+  if (valeurDe(appel, "formulaire_migen") !== FORMULAIRE) defauts.push("formulaire_migen ne nomme pas la LP");
+  return defauts;
+}
 
 /** La ligne écrite dans `leads` ne porte aucune identité (règle du projet, lib/leads.ts). */
 function sansIdentite(ligne: unknown): void {
@@ -127,54 +158,57 @@ function sansIdentite(ligne: unknown): void {
     assert.ok(!texte.includes(valeur), `donnée nominative « ${valeur} » dans leads`);
   }
 }
-// Témoin : la vérification sait refuser une ligne nominative.
-assert.throws(() => sansIdentite({ formulaire: "x", email: CONTACT.email }));
+
+/* ------------------------------------------- témoins : la porte sait voir */
+
+assert.throws(() => sansIdentite({ formulaire: "x", email: CONTACT.email }), "témoin : ligne nominative acceptée");
+{
+  // L'envoi que faisait l'ancien chemin des LP (variante C) doit être vu, sur chacun de ses trois défauts.
+  const varianteC: Appel = {
+    url: `${HUBSPOT}${FORMULAIRE_C}`,
+    corps: {
+      fields: [
+        { objectTypeId: "0-2", name: "name", value: CONTACT.entreprise },
+        ...["email", "firstname", "lastname", "message", "phone", "hs_country_region_code", "lp_url", "votre_demande_concerne"].map((name) => ({ name, value: "x" })),
+      ],
+    },
+  };
+  assert.equal(defautsEnvoi(varianteC, CHAMPS_DU_SITE).length, 3, "témoin : l'envoi de la variante C passe pour celui du site");
+  assert.deepEqual(defautsEnvoi(undefined, CHAMPS_DU_SITE), ["aucun envoi HubSpot"]);
+}
 
 /* --------------------------------------------------------------- refus */
 
-// Champ manquant : 422, le champ nommé, et rien ne sort du serveur.
-{
-  const { statut, json } = await poste(chargeLp({ prenom: "" }));
-  assert.equal(statut, 422);
-  assert.ok(json.erreurs?.prenom, "le prénom manquant est nommé");
-  assert.equal(appels.length, 0, "aucune requête sortante sur un refus");
+// Chaque champ est obligatoire : vide, il est nommé en 422 et rien ne sort du serveur.
+for (const champ of ["entreprise", "nom", "prenom", "email", "telephone", "message"] as const) {
+  const { statut, json } = await poste(chargeLp({ [champ]: "" }));
+  assert.equal(statut, 422, `${champ} vide accepté`);
+  assert.ok(json.erreurs?.[champ], `${champ} vide non nommé`);
+  assert.equal(appels.length, 0, `${champ} vide : une requête est sortie`);
 }
 
-// « Votre demande concerne » absent, puis hors de la liste HubSpot.
-for (const demande of [undefined, "Autre chose"]) {
-  const { statut, json } = await poste(chargeLp({ demande }));
-  assert.equal(statut, 422, `demande ${demande} refusée`);
-  assert.ok(json.erreurs?.demande, "la demande est nommée");
+// Formes refusées : courriel, téléphone, indicatif hors liste, identifiant de formulaire.
+for (const [champ, valeur] of [
+  ["email", "camille@exemple"],
+  ["telephone", "0472"],
+  ["indicatif", "+999"],
+  ["formulaire", "LP Lyon !"],
+] as const) {
+  const { statut, json } = await poste(chargeLp({ [champ]: valeur }));
+  assert.equal(statut, 422, `${champ} « ${valeur} » accepté`);
+  assert.ok(json.erreurs?.[champ], `${champ} « ${valeur} » non nommé`);
   assert.equal(appels.length, 0);
 }
 
-// Courriel invalide.
-{
-  const { statut, json } = await poste(chargeLp({ email: "camille@exemple" }));
-  assert.equal(statut, 422);
-  assert.ok(json.erreurs?.email);
-  assert.equal(appels.length, 0);
-}
-
-// Téléphone trop court.
-{
-  const { statut, json } = await poste(chargeLp({ telephone: "0472" }));
-  assert.equal(statut, 422);
-  assert.ok(json.erreurs?.telephone);
-  assert.equal(appels.length, 0);
-}
-
-// Origine étrangère : un autre site poste le formulaire.
-{
-  const { statut } = await poste(chargeLp(), { "sec-fetch-site": "cross-site" });
-  assert.equal(statut, 403);
-  assert.equal(appels.length, 0);
-}
-
-// Corps d'un autre type que JSON.
-{
-  const { statut } = await poste(chargeLp(), { "content-type": "text/plain" });
-  assert.equal(statut, 415);
+// Origine étrangère, autre type que JSON, corps illisible, taille annoncée trop grande.
+for (const [entetes, corps, attendu] of [
+  [{ "sec-fetch-site": "cross-site" }, chargeLp(), 403],
+  [{ "content-type": "text/plain" }, chargeLp(), 415],
+  [{}, "{pas du json", 400],
+  [{ "content-length": "20000" }, chargeLp(), 413],
+] as const) {
+  const { statut } = await poste(corps, entetes);
+  assert.equal(statut, attendu, `attendu ${attendu}`);
   assert.equal(appels.length, 0);
 }
 
@@ -185,81 +219,13 @@ for (const demande of [undefined, "Autre chose"]) {
   assert.equal(appels.length, 0);
 }
 
-/* -------------------------------------------------------------- succès */
-
-// Sans consentement publicitaire : le formulaire C de la LP en ligne, ses
-// champs et eux seuls, aucune mesure de campagne, une copie anonyme en base.
+// Débit : cinq dépôts par quart d'heure depuis un même /24, le sixième est freiné.
 {
-  const { statut } = await poste(chargeLp());
-  assert.equal(statut, 200);
-  const [hubspot, ...autres] = envoisHubspot();
-  assert.equal(autres.length, 0, "un seul envoi HubSpot");
-  assert.equal(hubspot.url, `${HUBSPOT}${FORMULAIRE_HUBSPOT_LP}`, "le formulaire C de la LP en ligne");
-  assert.deepEqual(nomsDe(hubspot), [
-    "0-2/name",
-    "email",
-    "firstname",
-    "hs_country_region_code",
-    "lastname",
-    "lp_url",
-    "message",
-    "phone",
-    "votre_demande_concerne",
-  ]);
-  assert.equal(valeurDe(hubspot, "votre_demande_concerne"), DEMANDES_LP[0]);
-  assert.equal(valeurDe(hubspot, "lp_url"), PAGE);
-  assert.equal(valeurDe(hubspot, "phone"), "+33 04 72 00 00 00");
-  const contexte = (hubspot.corps as { context: { pageUri?: string } }).context;
-  assert.equal(contexte.pageUri, `https://migen.fr${PAGE}`, "sans consentement, l'adresse part sans sa requête");
-
-  const copies = appels.filter((a) => a.url.startsWith(`${SUPABASE}/rest/v1/leads`));
-  assert.equal(copies.length, 1, "une copie d'attribution");
-  const ligne = Array.isArray(copies[0].corps) ? copies[0].corps[0] : copies[0].corps;
-  assert.equal((ligne as { formulaire: string }).formulaire, "lp-maintenance-industrielle-lyon-heros");
-  sansIdentite(ligne);
-}
-
-// Avec la finalité publicitaire : les UTM, le gclid et l'adresse complète.
-{
-  const { statut } = await poste(chargeLp(), { cookie: COOKIE_PUBLICITE });
-  assert.equal(statut, 200);
-  const [hubspot] = envoisHubspot();
-  assert.equal(valeurDe(hubspot, "utm_source"), "google");
-  assert.equal(valeurDe(hubspot, "utm_medium"), "cpc");
-  assert.equal(valeurDe(hubspot, "utm_campaign"), "lyon");
-  assert.equal(valeurDe(hubspot, "gclid"), "Cj0doublure_BwE");
-  assert.ok(!nomsDe(hubspot).includes("formulaire_migen"), "le formulaire C ne porte pas formulaire_migen");
-  assert.match((hubspot.corps as { context: { pageUri: string } }).context.pageUri, /\?utm_source=google&gclid=/);
-}
-
-// HubSpot refuse un champ caché (400) : la demande repart sans eux, et arrive,
-// avec le code pays, que la LP en ligne envoie toujours au formulaire C.
-{
-  statutsHubspot = [400];
-  const { statut } = await poste(chargeLp(), { cookie: COOKIE_PUBLICITE });
-  assert.equal(statut, 200);
-  const [premier, second] = envoisHubspot();
-  assert.ok(premier && second, "un second envoi");
-  assert.deepEqual(nomsDe(second), [
-    "0-2/name",
-    "email",
-    "firstname",
-    "hs_country_region_code",
-    "lastname",
-    "message",
-    "phone",
-    "votre_demande_concerne",
-  ]);
-  assert.equal(valeurDe(second, "hs_country_region_code"), "FR");
-}
-
-// Un formulaire d'essai peut remplacer celui de production (préproduction, aperçu).
-{
-  process.env.HUBSPOT_FORM_ID_LP = "formulaire-essai-doublure";
-  const { statut } = await poste(chargeLp());
-  delete process.env.HUBSPOT_FORM_ID_LP;
-  assert.equal(statut, 200);
-  assert.equal(envoisHubspot()[0].url, `${HUBSPOT}formulaire-essai-doublure`);
+  const entetes = { "x-forwarded-for": "10.200.1.9" };
+  for (let i = 0; i < 5; i += 1) assert.equal((await poste(chargeLp({ prenom: "" }), entetes)).statut, 422);
+  const { statut } = await poste(chargeLp(), entetes);
+  assert.equal(statut, 429, "le sixième dépôt n'est pas freiné");
+  assert.equal(appels.length, 0);
 }
 
 // Corps découpé (chunked), sans Content-Length, au-delà du plafond : refusé à la lecture.
@@ -286,30 +252,79 @@ for (const demande of [undefined, "Autre chose"]) {
   assert.equal(appels.length, 0);
 }
 
+/* -------------------------------------------------------------- succès */
+
+// Sans consentement publicitaire : le formulaire du site, ses champs et eux
+// seuls, aucune mesure de campagne, l'adresse sans sa requête, une copie anonyme.
+{
+  const { statut } = await poste(chargeLp());
+  assert.equal(statut, 200);
+  const envois = envoisHubspot();
+  assert.equal(envois.length, 1, "un seul envoi HubSpot");
+  assert.deepEqual(defautsEnvoi(envois[0], CHAMPS_DU_SITE), []);
+  assert.equal(valeurDe(envois[0], "phone"), "+33 04 72 00 00 00");
+  assert.deepEqual(contexteDe(envois[0]), { pageUri: `https://migen.fr${PAGE}`, pageName: "LP Lyon" }, "sans consentement, l'adresse part sans sa requête");
+
+  const copies = copiesLeads();
+  assert.equal(copies.length, 1, "une copie d'attribution");
+  const ligne = (Array.isArray(copies[0].corps) ? copies[0].corps[0] : copies[0].corps) as Record<string, unknown>;
+  assert.equal(ligne.formulaire, FORMULAIRE);
+  assert.equal(ligne.page_conversion, PAGE, "la LP de la conversion est dans leads");
+  sansIdentite(ligne);
+}
+
+// Avec la finalité publicitaire : l'attribution du site, et l'adresse complète
+// de la LP, gclid compris, comme le site la transmet.
+{
+  const { statut } = await poste(chargeLp(), { cookie: COOKIE_PUBLICITE });
+  assert.equal(statut, 200);
+  const [hubspot] = envoisHubspot();
+  assert.deepEqual(defautsEnvoi(hubspot, [...CHAMPS_DU_SITE, ...CHAMPS_DE_CAMPAGNE]), []);
+  assert.equal(valeurDe(hubspot, "utm_source"), "google");
+  assert.equal(valeurDe(hubspot, "utm_medium"), "cpc");
+  assert.equal(valeurDe(hubspot, "utm_campaign"), "lyon");
+  assert.equal(valeurDe(hubspot, "page_entree"), PAGE);
+  assert.equal(contexteDe(hubspot).pageUri, URL_PAGE, "l'adresse complète de la LP, gclid compris");
+}
+
+// Le même chemin que FormulaireContact : une page du site et une LP donnent les mêmes champs.
+{
+  await poste(chargeLp(), { cookie: COOKIE_PUBLICITE });
+  const [lp] = envoisHubspot();
+  await poste(chargeLp({ formulaire: "contact" }), { cookie: COOKIE_PUBLICITE });
+  const [site] = envoisHubspot();
+  assert.equal(site.url, lp.url, "la LP et le site visent deux formulaires");
+  assert.deepEqual(nomsDe(lp), nomsDe(site), "la LP et le site n'envoient pas les mêmes champs");
+}
+
+// Une page encore ouverte avec l'ancien formulaire (variante C) poste `source`
+// et `demande` : la demande arrive quand même au formulaire du site, sans eux.
+for (const reliquat of [{ source: "lp", demande: "Une réponse à vos besoins ponctuels : arrêts techniques, shutdowns, etc." }, { source: "lp" }]) {
+  const { statut } = await poste(chargeLp(reliquat));
+  assert.equal(statut, 200, "une charge de l'ancien formulaire est refusée");
+  assert.deepEqual(defautsEnvoi(envoisHubspot()[0], CHAMPS_DU_SITE), []);
+}
+
 // HubSpot en panne : le visiteur le sait (502), la copie d'attribution reste.
 {
   statutsHubspot = [500];
   const { statut } = await poste(chargeLp());
   assert.equal(statut, 502);
-  assert.equal(appels.filter((a) => a.url.startsWith(`${SUPABASE}/rest/v1/leads`)).length, 1);
+  assert.equal(copiesLeads().length, 1);
 }
 
-/* -------------------------------------- le formulaire du site, inchangé */
-
-// Sans `source: "lp"`, même avec une « demande », c'est le formulaire du site.
+// Formulaire du site absent de l'environnement : 502, rien vers HubSpot, et
+// jamais de repli vers un autre formulaire.
 {
-  const charge = chargeLp({ formulaire: "contact" });
-  delete charge.source;
-  const { statut } = await poste(charge);
-  assert.equal(statut, 200);
-  const [hubspot] = envoisHubspot();
-  assert.equal(hubspot.url, `${HUBSPOT}formulaire-du-site-doublure`);
-  assert.equal(valeurDe(hubspot, "formulaire_migen"), "contact");
-  assert.ok(!nomsDe(hubspot).includes("votre_demande_concerne"));
-  assert.ok(!nomsDe(hubspot).includes("lp_url"));
+  delete process.env.HUBSPOT_FORM_ID;
+  const { statut } = await poste(chargeLp());
+  process.env.HUBSPOT_FORM_ID = FORMULAIRE_SITE;
+  assert.equal(statut, 502);
+  assert.equal(envoisHubspot().length, 0);
+  assert.equal(copiesLeads().length, 1);
 }
 
-/* ----------------------------------------------- slugs et agenda (purs) */
+/* ------------------------------------------- slugs, téléphone et agenda */
 
 assert.equal(numeroE164({ indicatif: "+33", telephone: "06 12 34 56 78" }), "+33612345678");
 assert.equal(numeroE164({ indicatif: "+33", telephone: "+33 6 12 34 56 78" }), "+33612345678", "indicatif saisi gardé");
@@ -326,4 +341,7 @@ assert.equal(agenda.searchParams.get("name"), "Camille Rivière");
 assert.equal(agenda.searchParams.get("email"), CONTACT.email);
 assert.equal(new URL(urlCalendly(prerempliDe("illisible"))).searchParams.get("name"), null, "rien de lisible : agenda vide");
 
-console.log("envoi des landing pages : refus, succès, repli HubSpot et formulaire du site vérifiés, sans aucun envoi réel");
+console.log(
+  "envoi des landing pages : formulaire HubSpot du site, champs et attribution du site, " +
+    "protections (validation, débit, taille, origine, piège) et leads sans identité vérifiés, sans aucun envoi réel",
+);

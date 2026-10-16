@@ -3,11 +3,7 @@
 import { useId, useRef, useState, type CSSProperties, type FormEvent } from "react";
 import { flushSync } from "react-dom";
 
-import {
-  MentionsRgpd,
-  erreursDuServeur,
-  messageDuServeur,
-} from "@/components/formulaire/FormulaireContact";
+import { MentionsRgpd, erreursDuServeur, messageDuServeur } from "@/components/formulaire/FormulaireContact";
 import {
   CHAMP_PIEGE,
   CONTACT_VIDE,
@@ -24,36 +20,34 @@ import { attributionCourante } from "@/lib/utm";
 
 import styles from "./conversion-lp.module.css";
 import {
-  CHAMP_DEMANDE,
-  CHAMP_SOURCE,
   CLE_RENDEZ_VOUS,
-  DEMANDES_LP,
-  ERREUR_DEMANDE,
-  FORMULAIRE_HUBSPOT_LP,
+  FORM_ID_CONVERSION_LP,
   PAGE_RENDEZ_VOUS_LP,
-  SOURCE_LP,
-  estDemandeLp,
   formulaireLp,
   numeroE164,
   type VarianteLP,
 } from "./lead-lp";
 
 /**
- * Le formulaire des landing pages publicitaires.
+ * Le formulaire des landing pages publicitaires : `MigenLPForm` de la V3, au
+ * héros comme au contact, sur UN SEUL ÉCRAN.
  *
- * DESSIN : `MigenLPForm` de la maquette V3 (titre, « Rappel dans l'heure »,
- * libellés au-dessus des champs, indicatif dans le cadre du numéro, bouton
- * « On me rappelle dans l'heure »). CHAMPS : ceux du formulaire HubSpot de la
- * LP en ligne, variante C, « Votre demande concerne » compris ; sans lui,
- * HubSpot refuserait chaque envoi. ENVOI : `/api/lead`, comme le site, avec
- * ses protections ; la route aiguille vers le formulaire HubSpot de la LP.
+ * DESSIN ET CHAMPS : ceux de la V3, dans son ordre (titre de la page,
+ * « Rappel dans l'heure », Nom de l'entreprise, Nom, Prénom, Courriel,
+ * Téléphone avec son indicatif, Message), tous obligatoires, libellés
+ * au-dessus, bouton « On me rappelle dans l'heure ». Sous le bouton, la
+ * mention RGPD du formulaire du site, et non celle de la V3 (« sans
+ * engagement » est interdit).
  *
- * « heros » : deux étapes comme la LP en ligne (le besoin et de quoi rappeler,
- * puis le reste). « contact », en bas de page : une seule.
+ * ENVOI : celui du site, à l'octet près. La charge est `chargeUtile`, celle de
+ * `FormulaireContact` ; la route `/api/lead` la valide, la borne, la freine,
+ * la dépose dans le formulaire HubSpot du site (`HUBSPOT_FORM_ID`) avec
+ * l'attribution de la visite (`lib/utm.ts`), et n'écrit dans `leads` que
+ * l'attribution. Seul l'identifiant d'analyse dit qu'il s'agit d'une LP.
  *
  * Après le succès : l'événement `hubspot_form_submit` (le nom que la LP en
  * ligne pousse, celui qu'écoutent les conversions Google Ads du conteneur Tag
- * Manager), puis la page de rendez-vous.
+ * Manager), puis la page de rendez-vous. En cas d'échec, la saisie reste.
  */
 
 interface Proprietes {
@@ -64,20 +58,16 @@ interface Proprietes {
 }
 
 type Etat = "repos" | "envoi" | "succes" | "erreur";
-type Nom = ChampContact | "demande";
 
 /** `__LP.form.t` de la maquette. */
 const TITRE_PAR_DEFAUT = "Décrivez votre besoin de maintenance";
-
-const ETAPE_1: readonly Nom[] = ["demande", "email", "indicatif", "telephone"];
-const ETAPE_2: readonly Nom[] = ["entreprise", "nom", "prenom", "message"];
-const TOUS: readonly Nom[] = [...ETAPE_1, ...ETAPE_2];
 
 /** Le temps laissé à Tag Manager pour envoyer ses balises avant de quitter la page,
     comme `trackAndGo` de la LP en ligne. */
 const ATTENTE_TAG_MANAGER_MS = 1200;
 
-const ECHEC_RESEAU = "L'envoi n'a pas abouti. Vérifiez votre connexion et réessayez.";
+const ECHEC_RESEAU = "L'envoi n'a pas abouti. Vérifiez votre connexion et réessayez : votre saisie est conservée.";
+const A_CORRIGER = "Quelques champs demandent une correction.";
 
 interface Champ {
   nom: Exclude<ChampContact, "indicatif">;
@@ -199,22 +189,6 @@ const SAISIE_TEL: CSSProperties = {
   color: "#1c1b19",
 };
 
-/* « Votre demande concerne » : les choix de la LP en ligne (`CfChoice`). */
-const GROUPE: CSSProperties = { gridColumn: "1 / -1", border: "none", margin: 0, padding: 0, minWidth: 0 };
-const LISTE_CHOIX: CSSProperties = { display: "grid", gap: 8 };
-const choix = (retenu: boolean, enErreur: boolean): CSSProperties => ({
-  display: "flex",
-  alignItems: "flex-start",
-  gap: 10,
-  padding: "13px 16px",
-  borderRadius: 12,
-  border: `1px solid ${retenu ? "#ff7c3c" : enErreur ? "#c2410c" : "#e5e3df"}`,
-  background: retenu ? "rgba(255,124,60,.06)" : "#fff",
-  font: "400 14px/1.35 var(--fb)",
-  color: "#1c1b19",
-  cursor: "pointer",
-});
-
 const ERREUR: CSSProperties = {
   display: "block",
   margin: "5px 0 0",
@@ -233,16 +207,6 @@ const BOUTON: CSSProperties = {
   boxShadow: "0 12px 30px -12px rgba(255,124,60,.9)",
 };
 
-const RETOUR: CSSProperties = {
-  minHeight: 44,
-  marginTop: -8,
-  border: "none",
-  background: "none",
-  font: "600 13px var(--fb)",
-  color: "#6a6764",
-  cursor: "pointer",
-};
-
 /* `#77736d` : la couleur de la mention dans la maquette, 4,8:1 sur blanc. */
 const MENTION: CSSProperties = {
   margin: 0,
@@ -250,17 +214,6 @@ const MENTION: CSSProperties = {
   font: "400 11.5px/1.5 var(--fb)",
   color: "#77736d",
 };
-
-const ETAPE_TEXTE: CSSProperties = {
-  margin: "0 0 8px",
-  font: "600 10.5px var(--fb)",
-  letterSpacing: ".1em",
-  textTransform: "uppercase",
-  color: "#6a6764",
-};
-
-const PISTE: CSSProperties = { height: 4, borderRadius: 999, background: "#ecebe8", overflow: "hidden" };
-const JAUGE: CSSProperties = { height: "100%", borderRadius: 999, background: "#ff7c3c", transformOrigin: "left center" };
 
 const ANNONCE: CSSProperties = { margin: 0, textAlign: "center", font: "500 12.5px/1.5 var(--fb)" };
 
@@ -279,17 +232,6 @@ const COCHE: CSSProperties = {
 };
 
 /* ---------------------------------------------------------------- logique */
-
-/** Les erreurs de la saisie, limitées aux champs nommés. */
-function erreursDe(contact: Contact, demande: string, noms: readonly Nom[]): Erreurs {
-  const toutes: Erreurs = {
-    ...valideContact(contact),
-    ...(estDemandeLp(demande) ? {} : { demande: ERREUR_DEMANDE }),
-  };
-  return Object.fromEntries(
-    Object.entries(toutes).filter(([nom]) => noms.includes(nom as Nom)),
-  ) as Erreurs;
-}
 
 /**
  * Pousse l'événement de conversion puis quitte la page, en laissant à Tag
@@ -315,68 +257,26 @@ function pousseEtQuitte(evenement: Record<string, unknown>, adresse: string): vo
   window.setTimeout(quitte, ATTENTE_TAG_MANAGER_MS + 100);
 }
 
-/** Les erreurs par champ renvoyées en 422 : celles du contact, et « demande ». */
-function erreursRenvoyees(corps: unknown): Erreurs {
-  const demande = (corps as { erreurs?: { demande?: unknown } } | null)?.erreurs?.demande;
-  return {
-    ...(erreursDuServeur(corps) ?? {}),
-    ...(typeof demande === "string" && demande ? { demande } : {}),
-  };
-}
-
 export function FormulaireLP({ variante, page, titre = TITRE_PAR_DEFAUT }: Proprietes) {
-  const enEtapes = variante === "heros";
   const [contact, setContact] = useState<Contact>(CONTACT_VIDE);
-  const [demande, setDemande] = useState("");
   const [erreurs, setErreurs] = useState<Erreurs>({});
-  const [etape, setEtape] = useState<1 | 2>(1);
   const [etat, setEtat] = useState<Etat>("repos");
   const [annonce, setAnnonce] = useState("");
   const formulaireRef = useRef<HTMLFormElement>(null);
   const prefixe = useId();
   const formulaire = formulaireLp(page, variante);
-
-  const visibles: readonly Nom[] = !enEtapes ? TOUS : etape === 1 ? ETAPE_1 : ETAPE_2;
   const enCours = etat === "envoi";
 
-  /** Le curseur au premier de ces champs, dans l'ordre du document. */
-  function focalise(noms: readonly string[]) {
-    const champs = [...(formulaireRef.current?.elements ?? [])] as HTMLInputElement[];
-    champs.find((champ) => noms.includes(champ.name))?.focus();
-  }
-
+  /** Les erreurs à l'écran, puis le curseur au premier champ fautif, dans l'ordre du document. */
   function montreErreurs(fautives: Erreurs, message: string) {
-    const noms = Object.keys(fautives);
-    // Une erreur de la première étape ramène à la première étape.
-    const retour = enEtapes && noms.some((nom) => ETAPE_1.includes(nom as Nom));
+    // `flushSync` : les champs doivent être réactivés avant de recevoir le curseur.
     flushSync(() => {
       setErreurs(fautives);
       setEtat("erreur");
       setAnnonce(message);
-      if (retour) setEtape(1);
     });
-    // Les boutons de « Votre demande concerne » portent le nom CHAMP_DEMANDE, « demande ».
-    focalise(noms);
-  }
-
-  function suivant() {
-    const fautives = erreursDe(contact, demande, ETAPE_1);
-    if (aDesErreurs(fautives)) {
-      montreErreurs(fautives, "Quelques champs demandent une correction.");
-      return;
-    }
-    flushSync(() => {
-      setErreurs({});
-      setEtat("repos");
-      setAnnonce("");
-      setEtape(2);
-    });
-    focalise(ETAPE_2);
-  }
-
-  function precedent() {
-    flushSync(() => setEtape(1));
-    focalise([CHAMP_DEMANDE]);
+    const champs = [...(formulaireRef.current?.elements ?? [])] as HTMLInputElement[];
+    champs.find((champ) => champ.name in fautives)?.focus();
   }
 
   function saisit(nom: ChampContact, valeur: string) {
@@ -384,25 +284,14 @@ export function FormulaireLP({ variante, page, titre = TITRE_PAR_DEFAUT }: Propr
     setErreurs((precedentes) => (precedentes[nom] ? { ...precedentes, [nom]: undefined } : precedentes));
   }
 
-  function choisit(valeur: string) {
-    setDemande(valeur);
-    setErreurs((precedentes) => (precedentes.demande ? { ...precedentes, demande: undefined } : precedentes));
-  }
-
   async function envoie(evenement: FormEvent<HTMLFormElement>) {
     evenement.preventDefault();
     // Lu avant tout `await` : le champ piège n'existe pas dans l'état React.
     const piege = new FormData(evenement.currentTarget).get(CHAMP_PIEGE);
 
-    // Entrée sur la première étape : « Continuer », pas un envoi.
-    if (enEtapes && etape === 1) {
-      suivant();
-      return;
-    }
-
-    const trouvees = erreursDe(contact, demande, TOUS);
+    const trouvees = valideContact(contact);
     if (aDesErreurs(trouvees)) {
-      montreErreurs(trouvees, "Quelques champs demandent une correction.");
+      montreErreurs(trouvees, A_CORRIGER);
       return;
     }
 
@@ -414,24 +303,24 @@ export function FormulaireLP({ variante, page, titre = TITRE_PAR_DEFAUT }: Propr
       const reponse = await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...chargeUtile({
+        body: JSON.stringify(
+          chargeUtile({
             contact,
             formulaire,
             piege: typeof piege === "string" ? piege : "",
             etablissement: {},
             attribution: attributionCourante(window.location.pathname),
+            // L'adresse complète de la LP (UTM et gclid compris) : la route
+            // n'en garde la requête qu'avec la finalité publicitaire accordée.
             page: { url: window.location.href, titre: document.title },
           }),
-          [CHAMP_SOURCE]: SOURCE_LP,
-          [CHAMP_DEMANDE]: demande,
-        }),
+        ),
       });
       const corps: unknown = await reponse.json().catch(() => null);
 
       if (!reponse.ok) {
-        const refusees = erreursRenvoyees(corps);
-        montreErreurs(refusees, messageDuServeur(corps) ?? ECHEC_RESEAU);
+        // Le serveur nomme le champ qu'il refuse ; la saisie reste en place.
+        montreErreurs(erreursDuServeur(corps) ?? {}, messageDuServeur(corps) ?? ECHEC_RESEAU);
         return;
       }
 
@@ -463,7 +352,7 @@ export function FormulaireLP({ variante, page, titre = TITRE_PAR_DEFAUT }: Propr
     pousseEtQuitte(
       {
         event: "hubspot_form_submit",
-        form_id: FORMULAIRE_HUBSPOT_LP,
+        form_id: FORM_ID_CONVERSION_LP,
         page_path: window.location.pathname,
         ...(publicite
           ? { enhanced_conversion_data: { email: contact.email, phone_number: numeroE164(contact) } }
@@ -487,8 +376,6 @@ export function FormulaireLP({ variante, page, titre = TITRE_PAR_DEFAUT }: Propr
     );
   }
 
-  const idDemande = `${prefixe}-demande`;
-
   return (
     <form
       ref={formulaireRef}
@@ -511,51 +398,8 @@ export function FormulaireLP({ variante, page, titre = TITRE_PAR_DEFAUT }: Propr
         <input id={`${prefixe}-${CHAMP_PIEGE}`} name={CHAMP_PIEGE} type="text" defaultValue="" tabIndex={-1} autoComplete="off" />
       </div>
 
-      {enEtapes ? (
-        <div>
-          <p aria-live="polite" aria-atomic="true" style={ETAPE_TEXTE}>
-            Étape {etape} sur 2
-          </p>
-          <div aria-hidden="true" style={PISTE}>
-            <div className={styles.jauge} style={{ ...JAUGE, transform: `scaleX(${etape / 2})` }} />
-          </div>
-        </div>
-      ) : null}
-
       <div style={GRILLE}>
-        {visibles.includes("demande") ? (
-          <fieldset
-            style={GROUPE}
-            aria-describedby={erreurs.demande ? `${idDemande}-erreur` : undefined}
-            disabled={enCours}
-          >
-            <legend style={{ ...ETIQUETTE, padding: 0 }}>
-              Votre demande concerne<span aria-hidden="true" style={ASTERISQUE}>&nbsp;*</span>
-            </legend>
-            <div style={LISTE_CHOIX}>
-              {DEMANDES_LP.map((option) => (
-                <label key={option} className={styles.choix} style={choix(demande === option, Boolean(erreurs.demande))}>
-                  <input
-                    type="radio"
-                    name={CHAMP_DEMANDE}
-                    value={option}
-                    checked={demande === option}
-                    required
-                    onChange={() => choisit(option)}
-                  />
-                  <span>{option}</span>
-                </label>
-              ))}
-            </div>
-            {erreurs.demande ? (
-              <p id={`${idDemande}-erreur`} style={ERREUR}>
-                {erreurs.demande}
-              </p>
-            ) : null}
-          </fieldset>
-        ) : null}
-
-        {CHAMPS.filter((champ) => visibles.includes(champ.nom)).map((champ) => {
+        {CHAMPS.map((champ) => {
           const identifiant = `${prefixe}-${champ.nom}`;
           const erreur = erreurs[champ.nom] ?? (champ.nom === "telephone" ? erreurs.indicatif : undefined);
           const commun = {
@@ -610,21 +454,9 @@ export function FormulaireLP({ variante, page, titre = TITRE_PAR_DEFAUT }: Propr
         })}
       </div>
 
-      {enEtapes && etape === 1 ? (
-        <button type="submit" className={styles.envoi} style={BOUTON}>
-          Continuer
-        </button>
-      ) : (
-        <button type="submit" disabled={enCours} className={styles.envoi} style={BOUTON}>
-          {enCours ? "Envoi en cours…" : "On me rappelle dans l’heure"}
-        </button>
-      )}
-
-      {enEtapes && etape === 2 ? (
-        <button type="button" onClick={precedent} disabled={enCours} className={styles.retour} style={RETOUR}>
-          <span aria-hidden="true">← </span>Retour
-        </button>
-      ) : null}
+      <button type="submit" disabled={enCours} className={styles.envoi} style={BOUTON}>
+        {enCours ? "Envoi en cours…" : "On me rappelle dans l’heure"}
+      </button>
 
       {/* La mention du site, mot pour mot : qui traite, pour quoi, où lire le reste. */}
       <MentionsRgpd style={MENTION} />

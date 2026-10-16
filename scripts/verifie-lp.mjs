@@ -28,7 +28,17 @@
  *     (`motifsDuTexte` de verifie-lp-donnees.mjs). La donnée a sa porte ; le
  *     texte écrit dans les composants (« Choisissez votre créneau · 30 min »
  *     l'a montré) n'en avait aucune ;
- *   · zéro débordement horizontal à 390 px, page par page, au navigateur.
+ *   · zéro débordement horizontal à 390 px, page par page, au navigateur ;
+ *   · LE FORMULAIRE DE LA V3 (`MigenLPForm`), deux fois par LP (héros et
+ *     contact), sur un seul écran : titre `form.t`, « Rappel dans l'heure »,
+ *     les six champs du site dans l'ordre de la V3, tous obligatoires, les six
+ *     indicatifs, le bouton, la mention RGPD du site ; ni « Votre demande
+ *     concerne », ni étape. Au téléphone, aucun champ sous 16 px (Safari
+ *     zoomerait). Et l'ENVOI, au navigateur, `/api/lead` intercepté avant le
+ *     serveur (aucune requête ne l'atteint, donc rien vers HubSpot ni
+ *     Supabase) : saisie vide refusée sans envoi, charge du site sans rien de
+ *     l'ancien formulaire, erreur du serveur affichée avec la saisie gardée,
+ *     puis succès : `hubspot_form_submit` au dataLayer et /lp/rendez-vous/.
  *
  * ELLE PROUVE QU'ELLE SAIT ÉCHOUER : avant tout contrôle, chaque règle est
  * jouée sur un témoin abîmé et doit le refuser (y compris le débordement, sur
@@ -43,6 +53,7 @@ import { fileURLToPath } from "node:url";
 
 import { chromium } from "playwright";
 
+import { PAGE_RENDEZ_VOUS_LP, formulaireLp } from "../components/lp/lead-lp.ts";
 import { TELEPHONE_LP, TELEPHONE_SITE } from "../components/site/entete-donnees.ts";
 import { estLandingPage } from "../lib/lp/adresses.ts";
 import { motifsDuTexte } from "./verifie-lp-donnees.mjs";
@@ -170,6 +181,172 @@ function defautsCopie(html, chemin) {
   return textesDuGabarit(html).flatMap((texte) => motifsDuTexte(texte, { page: chemin }).map((motif) => `${motif} : « ${texte.slice(0, 100)} »`));
 }
 
+/* ------------------------------------------------- le formulaire de la V3 */
+
+/** Les champs de `MigenLPForm` dans l'ordre du document : le piège, puis ceux de la V3. */
+const NOMS_FORMULAIRE = ["site_web", "entreprise", "nom", "prenom", "email", "indicatif", "telephone", "message"];
+const OBLIGATOIRES = ["entreprise", "nom", "prenom", "email", "telephone", "message"];
+const LIBELLES_FORMULAIRE = ["Site web", "Nom de l’entreprise", "Nom", "Prénom", "Courriel", "Téléphone", "Message"];
+const INDICATIFS_FORMULAIRE = ["FR +33", "BE +32", "CH +41", "ES +34", "CA +1", "AE +971"];
+const ENVOI_FORMULAIRE = "On me rappelle dans l’heure";
+const MENTION_RGPD = "Données traitées par Migen pour répondre à votre demande, enregistrées dans HubSpot.";
+/** Ce que l'ancien formulaire (variante C de la LP en ligne) montrait, et que la V3 n'a pas. */
+const RELIQUATS = [/type="radio"/, /Votre demande concerne/i, /[ÉE]tape \d/i, />\s*Continuer\s*</, /sans engagement/i];
+
+const texteDe = (fragment) => unifie(decode(fragment.replace(/<[^>]*>/g, " ")));
+const formulairesDe = (html) => [...html.matchAll(/<form\b[\s\S]*?<\/form>/g)].map((trouve) => trouve[0]);
+
+/** Les défauts d'un formulaire de LP rendu, au regard de `MigenLPForm` et du titre `form.t` de la page. */
+function defautsFormulaire(form, titre) {
+  const defauts = [];
+  const balises = [...form.matchAll(/<(?:input|select|textarea)\b[^>]*>/g)].map((trouve) => trouve[0]);
+  const noms = balises.map((balise) => /\sname="([^"]*)"/.exec(balise)?.[1] ?? "?");
+  if (noms.join() !== NOMS_FORMULAIRE.join()) defauts.push(`champs ${noms.join(", ")}`);
+  for (const nom of OBLIGATOIRES) {
+    const balise = balises.find((b) => b.includes(` name="${nom}"`));
+    if (balise && !/\srequired(?:="")?[\s/>]/.test(balise)) defauts.push(`« ${nom} » non obligatoire`);
+  }
+  const libelles = [...form.matchAll(/<label\b[^>]*>([\s\S]*?)<\/label>/g)].map((t) => texteDe(t[1]).replace(/\s*\*$/, ""));
+  if (libelles.join("|") !== LIBELLES_FORMULAIRE.join("|")) defauts.push(`libellés ${libelles.join(", ")}`);
+  const indicatifs = [...form.matchAll(/<option\b[^>]*>([^<]*)<\/option>/g)].map((t) => texteDe(t[1]));
+  if (indicatifs.join() !== INDICATIFS_FORMULAIRE.join()) defauts.push(`indicatifs ${indicatifs.join(", ")}`);
+  const titreRendu = texteDe(/<h2\b[^>]*>([\s\S]*?)<\/h2>/.exec(form)?.[1] ?? "");
+  if (titreRendu !== unifie(titre ?? "")) defauts.push(`titre « ${titreRendu} » au lieu de « ${titre} »`);
+  const boutons = [...form.matchAll(/<button\b[^>]*>([\s\S]*?)<\/button>/g)];
+  if (boutons.length !== 1 || !/type="submit"/.test(boutons[0]?.[0] ?? "") || texteDe(boutons[0][1]) !== ENVOI_FORMULAIRE) {
+    defauts.push(`boutons ${boutons.map((t) => `« ${texteDe(t[1])} »`).join(", ") || "absents"}`);
+  }
+  const texte = texteDe(form);
+  if (!texte.includes("Rappel dans l’heure")) defauts.push("« Rappel dans l’heure » absent");
+  if (!texte.includes(MENTION_RGPD) || !form.includes('href="/confidentialite/"')) defauts.push("mention RGPD du site absente");
+  if (!/\smethod="post"/.test(form)) defauts.push("méthode autre que post : la saisie irait dans l'adresse sans JavaScript");
+  for (const motif of RELIQUATS) if (motif.test(form)) defauts.push(`reliquat de l'ancien formulaire : ${motif}`);
+  return defauts;
+}
+
+const titreFormulaire = (chemin) => DONNEES_LP.pages.find((page) => page.path === chemin)?.form?.t;
+
+/** Les champs d'une page sous 16 px : au téléphone, Safari zoome au focus. */
+async function champsSous16px(page) {
+  return page.evaluate(() =>
+    [...document.querySelectorAll("form input:not([name=site_web]), form select, form textarea")]
+      .map((champ) => ({ nom: champ.name, taille: parseFloat(getComputedStyle(champ).fontSize) }))
+      .filter((champ) => !(champ.taille >= 16))
+      .map((champ) => `${champ.nom} à ${champ.taille} px`),
+  );
+}
+
+/* --------------------------------------------------- l'envoi, au navigateur */
+
+/** Les clés de `chargeUtile`, la charge du formulaire du site : rien de plus, rien de moins. */
+const CLES_CHARGE = ["attribution", "email", "entreprise", "etablissement", "formulaire", "indicatif", "message", "nom", "page", "prenom", "site_web", "telephone"];
+const SAISIE = {
+  entreprise: "Fonderie de vérification",
+  nom: "Rivière",
+  prenom: "Camille",
+  email: "camille.riviere@exemple.invalid",
+  telephone: "04 72 00 00 00",
+  message: "Arrêt de ligne, besoin d'un électromécanicien.",
+};
+const CAMPAGNE = "?utm_source=google&utm_medium=cpc&utm_campaign=verification&gclid=Cj0verification_BwE";
+/** Le message de la vraie route quand HubSpot refuse (app/api/lead/route.ts, ECHEC_DEPOT). */
+const ECHEC_SERVEUR = "Nous n'avons pas pu enregistrer votre demande. Réessayez dans un instant.";
+const CLE_RELEVE = "verifie-lp.datalayer";
+
+/** Ce que la charge postée a de différent de celle du site, pour la LP France et sa campagne. */
+function defautsCharge(charge, origine) {
+  const defauts = [];
+  const cles = Object.keys(charge ?? {}).sort();
+  if (cles.join() !== CLES_CHARGE.join()) defauts.push(`charge aux clés ${cles.join(", ")}, pas celles du site`);
+  const attendue = {
+    ...SAISIE,
+    indicatif: "+33",
+    site_web: "",
+    etablissement: {},
+    formulaire: formulaireLp(ACCUEIL_LP, "heros"),
+    attribution: { utm_source: "google", utm_medium: "cpc", utm_campaign: "verification", page_entree: ACCUEIL_LP, page_conversion: ACCUEIL_LP },
+  };
+  for (const [cle, valeur] of Object.entries(attendue)) {
+    if (JSON.stringify(charge?.[cle]) !== JSON.stringify(valeur)) defauts.push(`${cle} ${JSON.stringify(charge?.[cle])} au lieu de ${JSON.stringify(valeur)}`);
+  }
+  if (charge?.page?.url !== `${origine}${ACCUEIL_LP}${CAMPAGNE}`) defauts.push(`page.url ${charge?.page?.url} : l'adresse de la LP, gclid compris, n'est pas transmise`);
+  return defauts;
+}
+
+/**
+ * Le parcours d'envoi du formulaire du héros, au téléphone. `/api/lead` est
+ * intercepté dans le navigateur AVANT d'ouvrir la page : aucune requête
+ * n'atteint le serveur (qui, lui, porterait la demande à HubSpot et à
+ * Supabase avec les clés de `.env.local`). La réponse est celle de la vraie
+ * route : 502 d'abord, puis 200.
+ */
+async function defautsEnvoi(navigateur, origine) {
+  const defauts = [];
+  const envois = [];
+  let reponse = { status: 502, body: JSON.stringify({ ok: false, message: ECHEC_SERVEUR }) };
+  const contexte = await navigateur.newContext({ viewport: { width: LARGEUR_TELEPHONE, height: 844 } });
+  await contexte.route("**/api/lead**", (route) => {
+    envois.push(route.request().postDataJSON());
+    return route.fulfill({ ...reponse, contentType: "application/json" });
+  });
+  // Le dataLayer relevé dans la session : la page de rendez-vous le relit après la redirection.
+  await contexte.addInitScript((cle) => {
+    const couche = (window.dataLayer = window.dataLayer || []);
+    const pousse = couche.push.bind(couche);
+    couche.push = (...entrees) => {
+      try {
+        const vus = JSON.parse(sessionStorage.getItem(cle) || "[]");
+        vus.push(...entrees.filter((e) => e && typeof e.event === "string").map((e) => JSON.parse(JSON.stringify(e))));
+        sessionStorage.setItem(cle, JSON.stringify(vus));
+      } catch {
+        // Stockage absent (about:blank) : rien à relever.
+      }
+      return pousse(...entrees);
+    };
+  }, CLE_RELEVE);
+  const conversions = (page) => page.evaluate((cle) => JSON.parse(sessionStorage.getItem(cle) || "[]").filter((e) => e.event === "hubspot_form_submit"), CLE_RELEVE);
+  try {
+    const page = await contexte.newPage();
+    await page.goto(`${origine}${ACCUEIL_LP}${CAMPAGNE}`, { waitUntil: "networkidle" });
+    const form = page.locator("form").first();
+    const envoyer = form.locator('button[type="submit"]');
+
+    // a. Vide : les six champs nommés, le curseur au premier, rien d'envoyé.
+    await envoyer.click();
+    await form.locator('[aria-invalid="true"]').first().waitFor({ timeout: 10_000 });
+    const fautifs = await form.locator('[aria-invalid="true"]').evaluateAll((champs) => champs.map((c) => c.name));
+    if (fautifs.join() !== OBLIGATOIRES.join()) defauts.push(`saisie vide : champs signalés ${fautifs.join(", ")}`);
+    if ((await page.evaluate(() => document.activeElement?.getAttribute("name"))) !== "entreprise") defauts.push("saisie vide : le curseur n'est pas au premier champ");
+    if (envois.length) defauts.push("saisie vide envoyée au serveur");
+
+    // b. Le serveur refuse : son message, la saisie gardée, ni conversion ni départ.
+    for (const [nom, valeur] of Object.entries(SAISIE)) await form.locator(`[name="${nom}"]`).fill(valeur);
+    await envoyer.click();
+    await form.locator('[role="status"]', { hasText: ECHEC_SERVEUR }).waitFor({ timeout: 10_000 });
+    if (envois.length !== 1) defauts.push(`${envois.length} envoi(s) au lieu d'un`);
+    else defauts.push(...defautsCharge(envois[0], origine));
+    if (new URL(page.url()).pathname !== ACCUEIL_LP) defauts.push("erreur du serveur : la page est partie");
+    for (const [nom, valeur] of Object.entries(SAISIE)) {
+      if ((await form.locator(`[name="${nom}"]`).inputValue()) !== valeur) defauts.push(`erreur du serveur : « ${nom} » perdu`);
+    }
+    if ((await conversions(page)).length) defauts.push("erreur du serveur : une conversion poussée quand même");
+
+    // c. Le serveur accepte : la conversion, puis la page de rendez-vous.
+    reponse = { status: 200, body: JSON.stringify({ ok: true, message: "Votre demande est bien arrivée." }) };
+    await envoyer.click();
+    await page.waitForURL((adresse) => adresse.pathname === PAGE_RENDEZ_VOUS_LP, { timeout: 10_000 });
+    const [conversion, ...enTrop] = await conversions(page);
+    if (!conversion || enTrop.length) defauts.push(`${enTrop.length + (conversion ? 1 : 0)} événement(s) hubspot_form_submit au lieu d'un`);
+    else if (conversion.page_path !== ACCUEIL_LP) defauts.push(`hubspot_form_submit pour ${conversion.page_path}`);
+    if (envois.length !== 2) defauts.push(`${envois.length} envois en tout au lieu de deux`);
+  } catch (erreur) {
+    defauts.push(`parcours d'envoi interrompu : ${erreur.message.split("\n")[0]}`);
+  } finally {
+    await contexte.close();
+  }
+  return defauts;
+}
+
 /* ------------------------------------------------------ le navigateur */
 
 async function debordement(page) {
@@ -272,6 +449,51 @@ function temoins() {
   assert.deepEqual(defautsLiens('<a href="/lpx/">x</a><a href="/offres/lp/">y</a>', ORIGINE_TEMOIN), [], "une page du site prise pour une LP");
 }
 
+/** Les témoins du formulaire, sur un vrai formulaire servi : il doit passer, et chaque abîme être vu. */
+function temoinsFormulaire(form, titre) {
+  assert.deepEqual(defautsFormulaire(form, titre), [], "témoin sain refusé : formulaire");
+  const doitRefuser = (nom, abime) => {
+    temoinsVus += 1;
+    if (abime === form) throw new Error(`témoin « ${nom} » : le formulaire n'a pas été abîmé`);
+    if (!defautsFormulaire(abime, titre).length) {
+      console.error(`TÉMOIN PASSÉ : ${nom}. La porte ne sait plus voir ce défaut.`);
+      process.exit(2);
+    }
+  };
+  const radio = '<fieldset><legend>Votre demande concerne</legend><input type="radio" name="demande" value="x"/></fieldset>';
+  doitRefuser("« Votre demande concerne » ajouté", form.replace(/(<div style="display:grid)/, `${radio}$1`));
+  doitRefuser("formulaire en deux étapes", form.replace(/(<h2\b)/, "<p>Étape 1 sur 2</p>$1"));
+  doitRefuser("bouton « Continuer »", form.replace(new RegExp(ENVOI_FORMULAIRE), "Continuer"));
+  doitRefuser("message facultatif", form.replace(/(<textarea\b[^>]*?)\srequired=""/, "$1"));
+  doitRefuser("champ entreprise retiré", form.replace(/<input\b[^>]*\sname="entreprise"[^>]*>/, ""));
+  doitRefuser("titre de la page perdu", form.replace(/(<h2\b[^>]*>)[^<]*/, "$1Décrire mon besoin"));
+  doitRefuser("mention de la V3 « sans engagement »", form.replace(MENTION_RGPD, "Gratuit et sans engagement."));
+  doitRefuser("indicatif CA perdu", form.replace(/<option\b[^>]*>CA \+1<\/option>/, ""));
+  doitRefuser("méthode GET", form.replace(/\smethod="post"/, ""));
+
+  // La charge : celle du site passe, celle de l'ancien formulaire non.
+  const origine = "http://localhost:1";
+  const bonne = {
+    ...SAISIE,
+    indicatif: "+33",
+    site_web: "",
+    etablissement: {},
+    formulaire: formulaireLp(ACCUEIL_LP, "heros"),
+    attribution: { utm_source: "google", utm_medium: "cpc", utm_campaign: "verification", page_entree: ACCUEIL_LP, page_conversion: ACCUEIL_LP },
+    page: { url: `${origine}${ACCUEIL_LP}${CAMPAGNE}`, titre: "LP" },
+  };
+  assert.deepEqual(defautsCharge(bonne, origine), [], "témoin sain refusé : charge du site");
+  temoinsVus += 2;
+  if (!defautsCharge({ ...bonne, source: "lp", demande: "x" }, origine).length) {
+    console.error("TÉMOIN PASSÉ : la charge de l'ancien formulaire (source, demande). La porte ne sait plus la voir.");
+    process.exit(2);
+  }
+  if (!defautsCharge({ ...bonne, page: { url: `${origine}${ACCUEIL_LP}`, titre: "LP" } }, origine).length) {
+    console.error("TÉMOIN PASSÉ : l'adresse de la LP sans son gclid. La porte ne sait plus la voir.");
+    process.exit(2);
+  }
+}
+
 /* --------------------------------------------------------------- jeu */
 
 temoins();
@@ -299,8 +521,13 @@ assert.ok(liensLus > figeesSite.length * 20, `${liensLus} liens relevés sur ${f
 // 2. Le serveur : en-têtes, redirections, plans du site, images.
 const { origine, arrete } = await demarreServeur();
 let navigateur;
+let formulairesLus = 0;
 try {
   navigateur = await chromium.launch({ channel: "chrome" });
+  // Les témoins du formulaire d'abord, sur le formulaire servi de la LP France.
+  const formAccueil = formulairesDe((await demande(origine, ACCUEIL_LP)).html)[0];
+  assert.ok(formAccueil, `aucun formulaire servi sur ${ACCUEIL_LP} : les témoins du formulaire n'ont rien à abîmer`);
+  temoinsFormulaire(formAccueil, titreFormulaire(ACCUEIL_LP));
   for (const chemin of CHEMINS) {
     const reponse = await demande(origine, chemin);
     signale(chemin, defautsIndexation(reponse));
@@ -310,7 +537,14 @@ try {
     signale(chemin, defautsCopie(reponse.html, chemin));
     // Chaque LP porte au moins « Appeler le » et le pied : un relevé vide serait aveugle.
     if (textesDuGabarit(reponse.html).length < 5) signale(chemin, ["texte du gabarit non relevé : le contrôle de la copie est aveugle"]);
+    // Le formulaire de la V3 : au héros et au contact sur une LP qui en porte un, nulle part ailleurs.
+    const titre = titreFormulaire(chemin);
+    const forms = formulairesDe(reponse.html);
+    if (forms.length !== (titre ? 2 : 0)) signale(chemin, [`${forms.length} formulaire(s) au lieu de ${titre ? 2 : 0}`]);
+    for (const form of forms) signale(chemin, defautsFormulaire(form, titre));
+    formulairesLus += forms.length;
   }
+  if (formulairesLus < CHEMINS.length) signale("/lp/", [`${formulairesLus} formulaires relevés : le contrôle du formulaire est aveugle`]);
   for (const chemin of ["/lp/", "/lp"]) {
     const { statut, lieu } = await demande(origine, chemin);
     if (![307, 308].includes(statut) || !lieu?.endsWith(ACCUEIL_LP)) signale(chemin, [`répond ${statut} vers ${lieu} au lieu de ${ACCUEIL_LP}`]);
@@ -349,11 +583,23 @@ try {
     console.error("TÉMOIN PASSÉ : une LP élargie à 2000 px. Le contrôle du débordement est aveugle.");
     process.exit(2);
   }
+  // Le témoin des 16 px : un champ ramené à la taille de la V3 doit être vu.
+  await onglet.goto(`${origine}${ACCUEIL_LP}`, { waitUntil: "load" });
+  await onglet.evaluate(() => document.querySelector("form [name=email]")?.style.setProperty("font-size", "14.5px", "important"));
+  temoinsVus += 1;
+  if (!(await champsSous16px(onglet)).length) {
+    console.error("TÉMOIN PASSÉ : un champ à 14,5 px au téléphone. Le contrôle des 16 px est aveugle.");
+    process.exit(2);
+  }
   for (const chemin of CHEMINS) {
     await onglet.goto(`${origine}${chemin}`, { waitUntil: "load" });
     const { exces, coupable } = await debordement(onglet);
     if (exces) signale(chemin, [`déborde de ${exces} px à ${LARGEUR_TELEPHONE} px (${coupable})`]);
+    signale(chemin, (await champsSous16px(onglet)).map((champ) => `champ ${champ} au téléphone : Safari zoomera`));
   }
+
+  // 4. L'envoi, au navigateur, sans rien laisser partir.
+  signale(ACCUEIL_LP, await defautsEnvoi(navigateur, origine));
 } finally {
   await navigateur?.close();
   arrete();
@@ -369,5 +615,7 @@ console.log(
     `/lp/ mène à la LP France ; aucune LP aux plans du site ni bloquée par robots.txt ; ` +
     `${figeesSite.length} pages du site sans lien vers /lp/ ni numéro des LP ; aucune image externe ; ` +
     `aucun interdit dans le texte ajouté par le gabarit ; ` +
-    `aucun débordement à ${LARGEUR_TELEPHONE} px ; ${temoinsVus} témoins rouges vus rouges.`,
+    `aucun débordement à ${LARGEUR_TELEPHONE} px ; ${formulairesLus} formulaires de la V3 sur un seul écran, ` +
+    `aucun champ sous 16 px au téléphone, envoi du site, erreur sans perte, conversion puis rendez-vous ; ` +
+    `${temoinsVus} témoins rouges vus rouges.`,
 );

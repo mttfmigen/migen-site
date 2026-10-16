@@ -20,19 +20,6 @@
   border-color: rgba(28, 27, 25, 0.32) !important;
 }
 
-/* Le bouton coche de « Votre demande concerne » prend l'orange de marque. */
-.choix input {
-  accent-color: #ff7c3c;
-  flex: none;
-  width: 16px;
-  height: 16px;
-  margin: 1px 0 0;
-}
-
-.choix:hover {
-  border-color: rgba(28, 27, 25, 0.32) !important;
-}
-
 /* Maquette : `style-hover="background:#e8692b"` sur les boutons orange. */
 .envoi:hover:not(:disabled) {
   background: #e8692b !important;
@@ -41,21 +28,6 @@
 .envoi:disabled {
   opacity: 0.6;
   cursor: default;
-}
-
-.retour:hover {
-  color: #1c1b19 !important;
-}
-
-/* Jauge de l'étape : sans animation pour qui l'a demandé. */
-.jauge {
-  transition: transform 0.25s ease;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .jauge {
-    transition: none;
-  }
 }
 
 /* ------------------------------------------- héros des pages de service */
