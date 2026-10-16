@@ -58,6 +58,16 @@
   }
 }
 
+/* ------------------------------------------- /lp/rendez-vous/ : l'agenda */
+
+/* Le héros garde 184 px sous son texte, et le cadre de l'agenda y remonte
+   d'autant (marge posée en ligne) : il commence où le texte finit. La carte
+   de Calendly, à 66 px du haut de son cadre transparent, chevauche ainsi le
+   bas du héros de 118 px. */
+.rendezVous .grilleHeros {
+  padding-bottom: 184px !important;
+}
+
 /* ------------------------------------------- héros des pages de service */
 
 /* Repli de la maquette, `@container (max-width:760px)` : une colonne, 18 px
@@ -97,5 +107,29 @@
   .enveloppeTel input,
   .enveloppeTel select {
     font-size: 16px !important;
+  }
+
+  /* L'agenda : 18 px de gouttière, comme le héros. */
+  .zoneAgenda {
+    padding: 0 18px 32px !important;
+  }
+}
+
+/* Sous 650 px de cadre (685 px de page moins deux gouttières de 18 px),
+   Calendly ne sert plus sa carte sur fond transparent mais une page blanche
+   pleine, dès le haut du cadre (seuil relevé au navigateur le 16/10). Le
+   cadre devient alors la carte : ombre et filet de la carte de la maquette
+   V3, 24 px sous le chapô, 56 px de chevauchement. Au-dessus du seuil, le
+   chevauchement du bureau tient, et une ombre dessinerait un rectangle vide
+   autour de la carte de Calendly. */
+@container (max-width: 685px) {
+  .rendezVous .grilleHeros {
+    padding-bottom: 80px !important;
+  }
+
+  .cadreAgenda {
+    margin-top: -56px !important;
+    border: 1px solid rgba(28, 27, 25, 0.06) !important;
+    box-shadow: 0 30px 80px -40px rgba(0, 0, 0, 0.45);
   }
 }

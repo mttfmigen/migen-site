@@ -154,16 +154,23 @@ interface Prerempli {
  * L'adresse de l'agenda, avec les couleurs Migen et le préremplissage, comme
  * la LP en ligne. `integre` : l'adresse du cadre de /lp/rendez-vous/
  * (demande de Mehdi le 16/10, « la LP rendez-vous doit intégrer l'iframe
- * Calendly »). `hide_gdpr_banner` n'est pas repris : le bandeau de Calendly
+ * Calendly ») ; `embed_type=Inline` fait aussi annoncer à Calendly la hauteur
+ * de sa page. `hide_gdpr_banner` n'est pas repris : le bandeau de Calendly
  * reste le leur, dans leur cadre.
+ *
+ * Couleurs du site : l'encre `#1c1b19` des LP, et pour la couleur principale
+ * l'orange des TEXTES du site (`#b4490f`, celui des surtitres), pas l'orange
+ * des boutons : Calendly l'écrit en lettres (jours libres, horaires, liens),
+ * et `#ff7c3c` sur blanc ne fait que 2,6:1. `#b4490f` passe 4,5:1 partout,
+ * y compris en fond du jour choisi, que Calendly écrit alors en blanc.
  */
 export function urlCalendly(prerempli: Prerempli | null, integre = false): string {
   const parametres = new URLSearchParams({
     ...(integre ? { embed_type: "Inline", embed_domain: "migen.fr" } : {}),
     hide_event_type_details: "1",
     background_color: "ffffff",
-    text_color: "1a1a1a",
-    primary_color: "ff7c3c",
+    text_color: "1c1b19",
+    primary_color: "b4490f",
   });
   if (prerempli?.nom) parametres.set("name", prerempli.nom);
   if (prerempli?.email) parametres.set("email", prerempli.email);
