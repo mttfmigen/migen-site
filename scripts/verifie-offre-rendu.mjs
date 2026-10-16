@@ -590,7 +590,16 @@ const TROUS_DECLARES = [
   ["/offres/audit-conseil-maintenance/", []],
   /* « réponse de la FAQ » n'est plus un trou depuis le 16/10 : la première
      question est ouverte au bureau, comme la capture et la maquette V3. */
-  ["/offres/residence/", []],
+  ["/offres/residence/", [
+    {
+      section: 6,
+      ligne: "7 points",
+      pourquoi:
+        "compteur « N points » à droite du titre de L'offre : retiré partout à la " +
+        "demande de Mehdi le 15/10 (« retire les petits commentaires du genre " +
+        "6 points, 2 points »), commit 3122307.",
+    },
+  ]],
 ];
 
 const TROUS_PAR_PAGE = {};
