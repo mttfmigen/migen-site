@@ -10,6 +10,8 @@ import {
   titreRappelFinal,
   type VarianteConversion,
 } from "./conversion-donnees";
+import styles from "./RappelFinalMobile.module.css";
+import RenvoiVersLaCarte from "./RenvoiVersLaCarte";
 
 /**
  * LA CARTE DE BAS DE PAGE `#etre-rappele`, DESSIN DE LA MAQUETTE V3 (16/10),
@@ -40,11 +42,17 @@ import {
  * `[data-champs-v3]`, et ne joue que sous 881 px : la carte entière porte
  * `data-mobile-seulement`, et le bureau ne la voit jamais.
  *
+ * UN SEUL FORMULAIRE : le formulaire complet que la page replie juste après la
+ * carte est masqué au téléphone (`RappelFinalMobile.module.css`), et les
+ * liens qui le visaient mènent ici (`RenvoiVersLaCarte`).
+ *
  * En carrière (`endBtnOnly: isCar`), pas de formulaire : un bouton seul vers
  * la candidature.
  */
 
 const SECTION: CSSProperties = {
+  /* La pastille d'en-tête flotte au-dessus : comme les autres ancres du site. */
+  scrollMarginTop: 90,
   margin: "22px 18px 0",
   padding: "22px 18px",
   borderRadius: 24,
@@ -92,15 +100,19 @@ const POSTULER: CSSProperties = {
 export interface RappelFinalMobileProps {
   variante?: VarianteConversion;
   id?: string;
+  /** L'identifiant d'analyse (`formulaire_migen`) du formulaire que la carte
+      remplace au téléphone, pour que la demande garde la clé de sa page. */
+  formulaire?: string;
 }
 
 export default function RappelFinalMobile({
   variante = "standard",
   id = ID_RAPPEL_FINAL,
+  formulaire = FORMULAIRE_RAPPEL_FINAL,
 }: RappelFinalMobileProps) {
   const carriere = variante === "carriere";
   return (
-    <section id={id} data-mobile-seulement style={SECTION}>
+    <section id={id} data-mobile-seulement className={styles.carte} style={SECTION}>
       <div style={SUR_TITRE}>{surTitreRappelFinal(variante)}</div>
       <p style={TITRE}>{titreRappelFinal(variante)}</p>
       {carriere ? (
@@ -109,7 +121,8 @@ export default function RappelFinalMobile({
         </a>
       ) : (
         <div data-champs-v3="" style={FORMULAIRE}>
-          <FormulaireContact formulaire={FORMULAIRE_RAPPEL_FINAL} />
+          <FormulaireContact formulaire={formulaire} />
+          <RenvoiVersLaCarte />
         </div>
       )}
     </section>

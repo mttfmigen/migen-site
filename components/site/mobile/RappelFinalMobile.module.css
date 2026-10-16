@@ -1,0 +1,21 @@
+/*
+ * UN SEUL FORMULAIRE EN BAS DE PAGE AU TÉLÉPHONE, COMME LA V3.
+ *
+ * La carte `#etre-rappele` porte le formulaire complet du site. Plusieurs
+ * gabarits posent JUSTE APRÈS ELLE leur propre formulaire complet, replié
+ * derrière une bascule (`RepliFormulaireMobile`) : villes et /implantations/
+ * (« 10 Appel final »), pages « à propos » (`FinDePageMobile`), offres
+ * (`AppelFinal`), guides. Mesuré le 16/10 à 390 px : la carte, puis la bascule
+ * « Faire chiffrer ma maintenance à Bordeaux › » ou « Décrire mon besoin › »,
+ * qui rouvrait les mêmes champs.
+ *
+ * Sous 881 px, ce voisin immédiat est donc masqué. Il reste dans le DOM, et
+ * entier sur bureau, où la carte n'existe pas. Les liens qui le visaient
+ * mènent à la carte (`RenvoiVersLaCarte`) ; sans JavaScript, un lien qui le
+ * vise le fait reparaître (`:target`), plutôt que de ne mener nulle part.
+ */
+@media (max-width: 880px) {
+  .carte + :has(details[data-repli-formulaire]):not(:target):not(:has(:target)) {
+    display: none;
+  }
+}

@@ -178,6 +178,12 @@ const PAIRES: readonly PaireContraste[] = [
   { nom: "orange sur encre (sur-titre du photo + CTA)", texte: ORANGE, fond: ENCRE },
   { nom: "encre sur blanc (titre de la carte #etre-rappele, V3)", texte: ENCRE, fond: BLANC },
   { nom: "gris des libellés sur blanc (champs de la carte, V3)", texte: GRIS_LIBELLE, fond: BLANC },
+  /* 2,6:1, SOUS L'AA, TRANCHÉ LE 16/10 : gardé. C'est la DA de la V3 validée
+     par Mehdi (L139), et le sur-titre de 11 px orange sur blanc est déjà
+     celui de tout le site au téléphone (« Nos autres offres », « Notre
+     méthode », étapes de l'accueil : même couleur, même fond, mesuré). Le
+     passer seul en `--acc-ink` casserait l'unité de la page ; changer TOUS
+     les sur-titres est une décision de charte, remontée à Mehdi. */
   {
     nom: "orange sur blanc (sur-titre de la carte #etre-rappele, V3 L139)",
     texte: ORANGE,
@@ -235,14 +241,17 @@ function hauteurEstimee(style: string): number {
   return corps * interligne + haut + bas;
 }
 
-/** Le formulaire réutilisé est retiré avant la mesure : ses cibles (dont le
- *  lien en ligne de la mention RGPD, que SC 2.5.8 exempte) sont tenues par
- *  sa propre porte, `components/formulaire/verification.ts`. */
-const sansFormulaire = (html: string) => html.replace(/<form\b[\s\S]*?<\/form>/g, "");
+/** SC 2.5.8 exempte la cible EN LIGNE, prise dans une phrase : c'est le lien
+ *  « politique de confidentialité » de la mention RGPD du formulaire. Les liens
+ *  d'un paragraphe sont donc retirés avant la mesure, et eux seuls : les
+ *  boutons du formulaire de la carte (« Suivant », l'envoi) sont mesurés ici,
+ *  et leur rendu au téléphone l'est par `verification-carte-navigateur.mjs`. */
+const sansLiensEnLigne = (html: string) =>
+  html.replace(/<p\b[^>]*>[\s\S]*?<\/p>/g, (p) => p.replace(/<a\b[^>]*>/g, ""));
 
 function ciblesTropPetites(html: string): string[] {
   const defauts: string[] = [];
-  const balises = sansFormulaire(html).match(/<(?:a|button)\b[^>]*>/g) ?? [];
+  const balises = sansLiensEnLigne(html).match(/<(?:a|button)\b[^>]*>/g) ?? [];
   for (const b of balises) {
     const style = (b.match(/style="([^"]*)"/) ?? [])[1] ?? "";
     const h = hauteurDeclaree(style) ?? hauteurEstimee(style);
@@ -394,33 +403,23 @@ for (const r of rendus()) {
   }
 }
 
-// 1 bis. LE DESSIN DES CHAMPS DE LA V3 : relevé dans la V3, posé sous 881 px
-//    seulement, et branché sur la carte comme sur /contact/.
-{
-  const feuille = readFileSync("components/formulaire/FormulaireContact.module.css", "utf8");
-  const bloc = feuille.slice(feuille.lastIndexOf("@media (max-width: 880px)"));
-  assert.ok(bloc.includes(":global([data-champs-v3])"), "FormulaireContact.module.css : dessin V3 hors du bloc téléphone");
-  assert.equal(
-    feuille.indexOf(":global([data-champs-v3])"),
-    feuille.indexOf(":global([data-champs-v3])", feuille.lastIndexOf("@media (max-width: 880px)")),
-    "FormulaireContact.module.css : une règle V3 vit hors du bloc téléphone, le bureau bougerait",
-  );
-  for (const releve of [
-    "font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:#6a6764",
-    "height:50px;width:100%;box-sizing:border-box;min-width:0;padding:0 14px;border-radius:14px;border:1px solid rgba(28,27,25,.12);background:#fff",
-    "grid-template-columns:auto minmax(0,1fr);gap:8px",
-    "height:54px;border:none;border-radius:999px;background:#ff7c3c",
-  ]) {
-    assert.ok(dcV3.includes(releve), `maquette V3 : relevé des champs introuvable : ${releve}`);
-  }
-  for (const valeur of ["#6a6764", "rgba(28, 27, 25, 0.12)", "border-radius: 14px", "height: 50px", "min-height: 54px", "gap: 14px 10px"]) {
-    assert.ok(bloc.includes(valeur), `FormulaireContact.module.css : valeur V3 absente : ${valeur}`);
-  }
-  assert.ok(
-    readFileSync("components/site/contact/Ouverture.tsx", "utf8").includes('data-champs-v3=""'),
-    "/contact/ : le formulaire ne prend plus le dessin des champs V3",
-  );
+// 1 bis. LE DESSIN DES CHAMPS DE LA V3 : ses valeurs sont relevées dans la V3
+//    (relue ici), et leur RENDU au téléphone est mesuré dans le navigateur par
+//    `verification-carte-navigateur.mjs` (hauteurs, couleur des libellés,
+//    indicatif dans son cadre), jamais en relisant le texte de la feuille.
+//    Le bureau, lui, est tenu par la comparaison au pixel.
+for (const releve of [
+  "font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:#6a6764",
+  "height:50px;width:100%;box-sizing:border-box;min-width:0;padding:0 14px;border-radius:14px;border:1px solid rgba(28,27,25,.12);background:#fff",
+  "grid-template-columns:auto minmax(0,1fr);gap:8px",
+  "height:54px;border:none;border-radius:999px;background:#ff7c3c",
+]) {
+  assert.ok(dcV3.includes(releve), `maquette V3 : relevé des champs introuvable : ${releve}`);
 }
+assert.ok(
+  readFileSync("components/site/contact/Ouverture.tsx", "utf8").includes('data-champs-v3=""'),
+  "/contact/ : le formulaire ne prend plus le dessin des champs V3",
+);
 
 // 1 ter. LA CARTE #etre-rappele EST CELLE DE LA V3 (L139) : le formulaire
 //    complet du site, avec les libellés, les six indicatifs et le bouton de
@@ -467,6 +466,13 @@ assert.ok(
 for (const r of rendus()) {
   assert.deepEqual(ciblesTropPetites(r.html), [], `${r.nom} : cible sous 24px`);
 }
+// Le formulaire de la carte n'est plus soustrait à la mesure : son bouton
+// d'envoi y est (« Suivant » et « Retour » n'existent qu'au navigateur, après
+// la lecture de la largeur : la porte du navigateur les mesure).
+assert.ok(
+  /<button\b[^>]*type="submit"/.test(sansLiensEnLigne(renderToStaticMarkup(<RappelFinalMobile />))),
+  "RappelFinalMobile : le bouton d'envoi échappe à la mesure des cibles",
+);
 assert.deepEqual(
   ciblesTropPetites(renderToStaticMarkup(<DemonstrationConversionMobile />)),
   [],
