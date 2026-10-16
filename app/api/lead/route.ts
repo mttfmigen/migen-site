@@ -28,8 +28,8 @@ import { attributionNettoyee, type Attribution } from "@/lib/utm";
  */
 
 /** Portail HubSpot de Migen. Le formulaire cible, lui, vient de l'environnement :
-    UN SEUL pour tout migen.fr, landing pages /lp/ comprises (leur
-    `formulaire_migen` dit de quelle page vient la demande). */
+    UN SEUL pour tout migen.fr, landing pages /lp/ comprises. Dans HubSpot, une
+    demande de LP se reconnaît à son adresse (`pageUri`). */
 const PORTAIL_HUBSPOT = "148000737";
 
 /** Au-delà, le visiteur attend devant un écran figé : mieux vaut lui répondre. */
@@ -249,6 +249,13 @@ async function deposeChezHubspot(depot: Depot): Promise<Resultat> {
     // cette finalité accordée, ils ne quittent pas notre serveur. La copie dans
     // la table `leads` reste écrite, elle est non nominative et sert
     // l'attribution interne.
+    //
+    // RELEVÉ DANS LE PORTAIL LE 16/10 : ni `formulaire_migen`, ni les `utm_*`,
+    // ni `page_entree` n'existent comme propriétés de contact. HubSpot accepte
+    // la soumission et les ignore (journal de production du 14/10). Tant
+    // qu'elles n'y sont pas créées et posées sur le formulaire, l'attribution
+    // d'une demande ne se lit que dans la table `leads`, et dans HubSpot par
+    // l'adresse de la page (`pageUri`).
     ...(depot.publicite
       ? {
           utm_source: depot.attribution.utm_source,
@@ -399,8 +406,11 @@ function etablissementNettoye(brut: unknown): Record<string, string> {
     propre[nom] = t;
   }
   /* Tout ou rien sur l'identité : un SIRET sans SIREN, ou l'inverse, est une
-     donnée à moitié vraie. Mieux vaut n'enrichir pas du tout. */
-  if (!propre.siren || !propre.siret) return {};
+     donnée à moitié vraie. Mieux vaut n'enrichir pas du tout. Le pays n'en
+     est pas : il part seul, comme le champ caché `country` des landing pages
+     (`paysDeLIndicatif`), que le formulaire du site n'envoie jamais sans la
+     fiche du registre. */
+  if (!propre.siren || !propre.siret) return propre.country ? { country: propre.country } : {};
   return propre;
 }
 

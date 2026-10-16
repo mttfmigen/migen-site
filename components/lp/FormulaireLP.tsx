@@ -25,6 +25,7 @@ import {
   PAGE_RENDEZ_VOUS_LP,
   formulaireLp,
   numeroE164,
+  paysDeLIndicatif,
   type VarianteLP,
 } from "./lead-lp";
 
@@ -39,11 +40,19 @@ import {
  * mention RGPD du formulaire du site, et non celle de la V3 (« sans
  * engagement » est interdit).
  *
- * ENVOI : celui du site, à l'octet près. La charge est `chargeUtile`, celle de
+ * ENVOI : celui du site. La charge est `chargeUtile`, celle de
  * `FormulaireContact` ; la route `/api/lead` la valide, la borne, la freine,
- * la dépose dans le formulaire HubSpot du site (`HUBSPOT_FORM_ID`) avec
- * l'attribution de la visite (`lib/utm.ts`), et n'écrit dans `leads` que
- * l'attribution. Seul l'identifiant d'analyse dit qu'il s'agit d'une LP.
+ * la dépose dans le formulaire HubSpot du site (`HUBSPOT_FORM_ID`), et écrit
+ * dans `leads` l'attribution de la visite (`lib/utm.ts`) et l'identifiant de
+ * la LP, sans rien de nominatif. Comme le champ caché `country` de la V3, le
+ * pays de l'indicatif part dans `etablissement` (`paysDeLIndicatif`).
+ *
+ * CE QUE HUBSPOT EN GARDE, relevé dans le portail le 16/10 : l'identité, le
+ * pays, et l'adresse de la LP (`pageUri`, le chemin seul sans la finalité
+ * publicitaire, l'adresse complète, UTM et gclid compris, avec elle). Les
+ * propriétés `formulaire_migen`, `utm_*` et `page_entree` que la route envoie
+ * n'existent pas dans le portail : HubSpot les ignore. L'attribution complète
+ * d'une demande de LP se lit dans la table `leads`.
  *
  * Après le succès : l'événement `hubspot_form_submit` (le nom que la LP en
  * ligne pousse, celui qu'écoutent les conversions Google Ads du conteneur Tag
@@ -207,7 +216,7 @@ const BOUTON: CSSProperties = {
   boxShadow: "0 12px 30px -12px rgba(255,124,60,.9)",
 };
 
-/* `#77736d` : la couleur de la mention dans la maquette, 4,8:1 sur blanc. */
+/* `#77736d` : la couleur de la mention dans la maquette, 4,7:1 sur blanc. */
 const MENTION: CSSProperties = {
   margin: 0,
   textAlign: "center",
@@ -216,6 +225,10 @@ const MENTION: CSSProperties = {
 };
 
 const ANNONCE: CSSProperties = { margin: 0, textAlign: "center", font: "500 12.5px/1.5 var(--fb)" };
+
+/** Le message d'erreur du site (« Entreprise : … ») sous le libellé que la
+    carte affiche (« Nom de l'entreprise : … »). */
+const sousLibelle = (erreur: string, libelle: string) => erreur.replace(/^[^:]+ : /, `${libelle} : `);
 
 /* L'écran « envoyé » de la maquette. */
 const ENVOYE: CSSProperties = { display: "grid", gap: 12, textAlign: "center", padding: "30px 4px" };
@@ -287,7 +300,7 @@ export function FormulaireLP({ variante, page, titre = TITRE_PAR_DEFAUT }: Propr
   async function envoie(evenement: FormEvent<HTMLFormElement>) {
     evenement.preventDefault();
     // Lu avant tout `await` : le champ piège n'existe pas dans l'état React.
-    const piege = new FormData(evenement.currentTarget).get(CHAMP_PIEGE);
+    const piege = String(new FormData(evenement.currentTarget).get(CHAMP_PIEGE) ?? "");
 
     const trouvees = valideContact(contact);
     if (aDesErreurs(trouvees)) {
@@ -307,8 +320,8 @@ export function FormulaireLP({ variante, page, titre = TITRE_PAR_DEFAUT }: Propr
           chargeUtile({
             contact,
             formulaire,
-            piege: typeof piege === "string" ? piege : "",
-            etablissement: {},
+            piege,
+            etablissement: { country: paysDeLIndicatif(contact.indicatif) },
             attribution: attributionCourante(window.location.pathname),
             // L'adresse complète de la LP (UTM et gclid compris) : la route
             // n'en garde la requête qu'avec la finalité publicitaire accordée.
@@ -325,7 +338,9 @@ export function FormulaireLP({ variante, page, titre = TITRE_PAR_DEFAUT }: Propr
       }
 
       setEtat("succes");
-      convertit();
+      // Piège rempli : la route a jeté la demande en répondant comme pour une
+      // vraie. Aucune conversion ne part, elle fausserait les enchères Google Ads.
+      if (!piege.trim()) convertit();
     } catch (erreur) {
       // La demande n'est jamais partie : le visiteur doit le savoir pour réessayer.
       console.error("Envoi du formulaire de la landing page :", erreur);
@@ -384,6 +399,7 @@ export function FormulaireLP({ variante, page, titre = TITRE_PAR_DEFAUT }: Propr
          dans l'adresse (voir FormulaireContact). */
       method="post"
       noValidate
+      className={styles.carte}
       style={CARTE}
     >
       <div style={ENTETE}>
@@ -446,7 +462,7 @@ export function FormulaireLP({ variante, page, titre = TITRE_PAR_DEFAUT }: Propr
               )}
               {erreur ? (
                 <p id={`${identifiant}-erreur`} style={ERREUR}>
-                  {erreur}
+                  {sousLibelle(erreur, champ.libelle)}
                 </p>
               ) : null}
             </div>
@@ -462,8 +478,13 @@ export function FormulaireLP({ variante, page, titre = TITRE_PAR_DEFAUT }: Propr
       <MentionsRgpd style={MENTION} />
 
       {/* Une seule zone d'annonce, toujours présente : un lecteur d'écran
-          n'annonce pas un élément qui vient d'apparaître. */}
-      <p role="status" aria-live="polite" style={{ ...ANNONCE, color: etat === "erreur" ? "#c2410c" : "#1b5e20" }}>
+          n'annonce pas un élément qui vient d'apparaître. Vide, elle sort du
+          flux, sinon l'écart de la carte s'y ajoute sous la mention. */}
+      <p
+        role="status"
+        aria-live="polite"
+        style={{ ...ANNONCE, position: annonce ? "static" : "absolute", color: etat === "erreur" ? "#c2410c" : "#1b5e20" }}
+      >
         {annonce}
       </p>
     </form>

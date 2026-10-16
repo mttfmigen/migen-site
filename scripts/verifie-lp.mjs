@@ -33,12 +33,16 @@
  *     contact), sur un seul écran : titre `form.t`, « Rappel dans l'heure »,
  *     les six champs du site dans l'ordre de la V3, tous obligatoires, les six
  *     indicatifs, le bouton, la mention RGPD du site ; ni « Votre demande
- *     concerne », ni étape. Au téléphone, aucun champ sous 16 px (Safari
- *     zoomerait). Et l'ENVOI, au navigateur, `/api/lead` intercepté avant le
- *     serveur (aucune requête ne l'atteint, donc rien vers HubSpot ni
- *     Supabase) : saisie vide refusée sans envoi, charge du site sans rien de
- *     l'ancien formulaire, erreur du serveur affichée avec la saisie gardée,
- *     puis succès : `hubspot_form_submit` au dataLayer et /lp/rendez-vous/.
+ *     concerne », ni étape. Au téléphone (390 px) et sur écran tactile en
+ *     paysage (932 px), aucun champ sous 16 px (Safari zoomerait) ni
+ *     indicatif tronqué ; au clavier, le focus de l'indicatif et du numéro
+ *     se voit, à l'intérieur de leur enveloppe. Et l'ENVOI, au navigateur,
+ *     `/api/lead` intercepté avant le serveur (aucune requête ne l'atteint,
+ *     donc rien vers HubSpot ni Supabase) : saisie vide refusée sans envoi,
+ *     messages sous le libellé affiché, charge du site (pays de l'indicatif
+ *     compris) sans rien de l'ancien formulaire, erreur du serveur affichée
+ *     avec la saisie gardée, puis succès : `hubspot_form_submit` au dataLayer
+ *     et /lp/rendez-vous/ ; piège rempli : aucune conversion.
  *
  * ELLE PROUVE QU'ELLE SAIT ÉCHOUER : avant tout contrôle, chaque règle est
  * jouée sur un témoin abîmé et doit le refuser (y compris le débordement, sur
@@ -62,6 +66,10 @@ const RACINE = fileURLToPath(new URL("..", import.meta.url));
 const BUILD = join(RACINE, ".next", "server", "app");
 const ACCUEIL_LP = "/lp/maintenance-industrielle-france/";
 const LARGEUR_TELEPHONE = 390;
+/** Un iPhone en paysage : plus large que le repli en une colonne, tactile quand même. */
+const PAYSAGE_TACTILE = { viewport: { width: 932, height: 430 }, hasTouch: true, isMobile: true };
+/** La place que prend la flèche d'une liste déroulante, au plus large des navigateurs. */
+const LARGEUR_FLECHE = 20;
 /** En dessous, le build est incomplet ou mal lu : la porte refuserait de conclure sur du vide. */
 const PAGES_SITE_MINIMUM = 200;
 
@@ -226,20 +234,44 @@ function defautsFormulaire(form, titre) {
 
 const titreFormulaire = (chemin) => DONNEES_LP.pages.find((page) => page.path === chemin)?.form?.t;
 
-/** Les champs d'une page sous 16 px : au téléphone, Safari zoome au focus. */
-async function champsSous16px(page) {
-  return page.evaluate(() =>
-    [...document.querySelectorAll("form input:not([name=site_web]), form select, form textarea")]
-      .map((champ) => ({ nom: champ.name, taille: parseFloat(getComputedStyle(champ).fontSize) }))
-      .filter((champ) => !(champ.taille >= 16))
-      .map((champ) => `${champ.nom} à ${champ.taille} px`),
-  );
+/** Sur écran tactile : un champ sous 16 px (Safari zoome au focus), un indicatif qui ne tient pas dans sa liste. */
+async function defautsSaisieTactile(page) {
+  return page.evaluate((fleche) => {
+    const defauts = [];
+    const mesure = document.createElement("canvas").getContext("2d");
+    for (const champ of document.querySelectorAll("form input:not([name=site_web]), form select, form textarea")) {
+      const style = getComputedStyle(champ);
+      const taille = parseFloat(style.fontSize);
+      if (!(taille >= 16)) defauts.push(`champ ${champ.name} à ${taille} px : Safari zoomera`);
+      if (champ.tagName !== "SELECT") continue;
+      mesure.font = style.font;
+      const place = champ.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight) - fleche;
+      const tronques = [...champ.options].filter((option) => mesure.measureText(option.text).width > place).map((option) => option.text);
+      if (tronques.length) defauts.push(`indicatif tronqué dans ${champ.clientWidth} px : ${tronques.join(", ")}`);
+    }
+    return defauts;
+  }, LARGEUR_FLECHE);
+}
+
+/** Au clavier, de l'adresse au numéro : le contour de l'indicatif puis du numéro, tracé dedans et lisible sur la carte. */
+async function defautsFocusTelephone(page) {
+  const defauts = [];
+  await page.locator('form [name="email"]').first().focus();
+  for (const nom of ["indicatif", "telephone"]) {
+    await page.keyboard.press("Tab");
+    const contour = await page.evaluate(() => {
+      const style = getComputedStyle(document.activeElement);
+      return { nom: document.activeElement.name, style: style.outlineStyle, largeur: parseFloat(style.outlineWidth), decalage: parseFloat(style.outlineOffset), couleur: style.outlineColor };
+    });
+    if (contour.nom !== nom) return [...defauts, `Tab mène à « ${contour.nom} » au lieu de « ${nom} »`];
+    if (contour.style === "none" || contour.decalage + contour.largeur > 0) defauts.push(`focus de « ${nom} » rogné par son enveloppe (${contour.style} ${contour.largeur} px décalé de ${contour.decalage} px)`);
+    if (contour.couleur !== "rgb(180, 73, 15)") defauts.push(`focus de « ${nom} » en ${contour.couleur} au lieu de l'orange foncé #b4490f`);
+  }
+  return defauts;
 }
 
 /* --------------------------------------------------- l'envoi, au navigateur */
 
-/** Les clés de `chargeUtile`, la charge du formulaire du site : rien de plus, rien de moins. */
-const CLES_CHARGE = ["attribution", "email", "entreprise", "etablissement", "formulaire", "indicatif", "message", "nom", "page", "prenom", "site_web", "telephone"];
 const SAISIE = {
   entreprise: "Fonderie de vérification",
   nom: "Rivière",
@@ -253,23 +285,33 @@ const CAMPAGNE = "?utm_source=google&utm_medium=cpc&utm_campaign=verification&gc
 const ECHEC_SERVEUR = "Nous n'avons pas pu enregistrer votre demande. Réessayez dans un instant.";
 const CLE_RELEVE = "verifie-lp.datalayer";
 
-/** Ce que la charge postée a de différent de celle du site, pour la LP France et sa campagne. */
+/**
+ * La charge que le formulaire du héros de la LP France doit poster, avec sa
+ * campagne : les clés de `chargeUtile` (celle du site), rien de plus, rien de
+ * moins, le pays de l'indicatif dans `etablissement` (champ caché `country`
+ * de la V3), et l'adresse de la LP, gclid compris. Le titre de la page n'est
+ * pas comparé.
+ */
+const chargeAttendue = (origine) => ({
+  ...SAISIE,
+  indicatif: "+33",
+  site_web: "",
+  etablissement: { country: "FR" },
+  formulaire: formulaireLp(ACCUEIL_LP, "heros"),
+  attribution: { utm_source: "google", utm_medium: "cpc", utm_campaign: "verification", page_entree: ACCUEIL_LP, page_conversion: ACCUEIL_LP },
+  page: { url: `${origine}${ACCUEIL_LP}${CAMPAGNE}` },
+});
+
+/** Ce que la charge postée a de différent de celle attendue. */
 function defautsCharge(charge, origine) {
   const defauts = [];
+  const attendue = chargeAttendue(origine);
   const cles = Object.keys(charge ?? {}).sort();
-  if (cles.join() !== CLES_CHARGE.join()) defauts.push(`charge aux clés ${cles.join(", ")}, pas celles du site`);
-  const attendue = {
-    ...SAISIE,
-    indicatif: "+33",
-    site_web: "",
-    etablissement: {},
-    formulaire: formulaireLp(ACCUEIL_LP, "heros"),
-    attribution: { utm_source: "google", utm_medium: "cpc", utm_campaign: "verification", page_entree: ACCUEIL_LP, page_conversion: ACCUEIL_LP },
-  };
+  if (cles.join() !== Object.keys(attendue).sort().join()) defauts.push(`charge aux clés ${cles.join(", ")}, pas celles du site`);
   for (const [cle, valeur] of Object.entries(attendue)) {
-    if (JSON.stringify(charge?.[cle]) !== JSON.stringify(valeur)) defauts.push(`${cle} ${JSON.stringify(charge?.[cle])} au lieu de ${JSON.stringify(valeur)}`);
+    if (cle !== "page" && JSON.stringify(charge?.[cle]) !== JSON.stringify(valeur)) defauts.push(`${cle} ${JSON.stringify(charge?.[cle])} au lieu de ${JSON.stringify(valeur)}`);
   }
-  if (charge?.page?.url !== `${origine}${ACCUEIL_LP}${CAMPAGNE}`) defauts.push(`page.url ${charge?.page?.url} : l'adresse de la LP, gclid compris, n'est pas transmise`);
+  if (charge?.page?.url !== attendue.page.url) defauts.push(`page.url ${charge?.page?.url} : l'adresse de la LP, gclid compris, n'est pas transmise`);
   return defauts;
 }
 
@@ -317,6 +359,10 @@ async function defautsEnvoi(navigateur, origine) {
     const fautifs = await form.locator('[aria-invalid="true"]').evaluateAll((champs) => champs.map((c) => c.name));
     if (fautifs.join() !== OBLIGATOIRES.join()) defauts.push(`saisie vide : champs signalés ${fautifs.join(", ")}`);
     if ((await page.evaluate(() => document.activeElement?.getAttribute("name"))) !== "entreprise") defauts.push("saisie vide : le curseur n'est pas au premier champ");
+    // Chaque message reprend le libellé affiché au-dessus du champ, pas celui du site.
+    const messages = await form.locator('[aria-invalid="true"]').evaluateAll((champs) => champs.map((c) => document.getElementById(c.getAttribute("aria-describedby"))?.textContent ?? ""));
+    const sansLibelle = messages.filter((message, i) => !message.startsWith(`${LIBELLES_FORMULAIRE[i + 1]} : `));
+    if (sansLibelle.length) defauts.push(`messages d'erreur sans le libellé affiché : ${sansLibelle.join(" | ")}`);
     if (envois.length) defauts.push("saisie vide envoyée au serveur");
 
     // b. Le serveur refuse : son message, la saisie gardée, ni conversion ni départ.
@@ -339,6 +385,21 @@ async function defautsEnvoi(navigateur, origine) {
     if (!conversion || enTrop.length) defauts.push(`${enTrop.length + (conversion ? 1 : 0)} événement(s) hubspot_form_submit au lieu d'un`);
     else if (conversion.page_path !== ACCUEIL_LP) defauts.push(`hubspot_form_submit pour ${conversion.page_path}`);
     if (envois.length !== 2) defauts.push(`${envois.length} envois en tout au lieu de deux`);
+
+    // d. Piège rempli : la route répond comme pour une vraie demande (200), la
+    //    carte dit « envoyée », mais aucune conversion ne part ni la page.
+    const robot = await contexte.newPage();
+    await robot.goto(`${origine}${ACCUEIL_LP}`, { waitUntil: "networkidle" });
+    const formRobot = robot.locator("form").first();
+    for (const [nom, valeur] of Object.entries(SAISIE)) await formRobot.locator(`[name="${nom}"]`).fill(valeur);
+    await formRobot.locator('[name="site_web"]').evaluate((champ) => {
+      champ.value = "https://robot.invalid";
+    });
+    await formRobot.locator('button[type="submit"]').click();
+    await robot.getByText("Demande envoyée.").waitFor({ timeout: 10_000 });
+    if (envois.length !== 3 || !envois[2]?.site_web) defauts.push("piège rempli : la demande n'est pas partie avec son piège");
+    if ((await conversions(robot)).length) defauts.push("piège rempli : une conversion hubspot_form_submit poussée");
+    if (new URL(robot.url()).pathname !== ACCUEIL_LP) defauts.push("piège rempli : la page est partie au rendez-vous");
   } catch (erreur) {
     defauts.push(`parcours d'envoi interrompu : ${erreur.message.split("\n")[0]}`);
   } finally {
@@ -473,17 +534,14 @@ function temoinsFormulaire(form, titre) {
 
   // La charge : celle du site passe, celle de l'ancien formulaire non.
   const origine = "http://localhost:1";
-  const bonne = {
-    ...SAISIE,
-    indicatif: "+33",
-    site_web: "",
-    etablissement: {},
-    formulaire: formulaireLp(ACCUEIL_LP, "heros"),
-    attribution: { utm_source: "google", utm_medium: "cpc", utm_campaign: "verification", page_entree: ACCUEIL_LP, page_conversion: ACCUEIL_LP },
-    page: { url: `${origine}${ACCUEIL_LP}${CAMPAGNE}`, titre: "LP" },
-  };
+  const attendue = chargeAttendue(origine);
+  const bonne = { ...attendue, page: { ...attendue.page, titre: "LP" } };
   assert.deepEqual(defautsCharge(bonne, origine), [], "témoin sain refusé : charge du site");
-  temoinsVus += 2;
+  temoinsVus += 3;
+  if (!defautsCharge({ ...bonne, etablissement: {} }, origine).length) {
+    console.error("TÉMOIN PASSÉ : la charge sans le pays de l'indicatif. La porte ne sait plus la voir.");
+    process.exit(2);
+  }
   if (!defautsCharge({ ...bonne, source: "lp", demande: "x" }, origine).length) {
     console.error("TÉMOIN PASSÉ : la charge de l'ancien formulaire (source, demande). La porte ne sait plus la voir.");
     process.exit(2);
@@ -583,20 +641,37 @@ try {
     console.error("TÉMOIN PASSÉ : une LP élargie à 2000 px. Le contrôle du débordement est aveugle.");
     process.exit(2);
   }
-  // Le témoin des 16 px : un champ ramené à la taille de la V3 doit être vu.
-  await onglet.goto(`${origine}${ACCUEIL_LP}`, { waitUntil: "load" });
-  await onglet.evaluate(() => document.querySelector("form [name=email]")?.style.setProperty("font-size", "14.5px", "important"));
-  temoinsVus += 1;
-  if (!(await champsSous16px(onglet)).length) {
-    console.error("TÉMOIN PASSÉ : un champ à 14,5 px au téléphone. Le contrôle des 16 px est aveugle.");
-    process.exit(2);
+  // Les témoins de la saisie tactile et du focus, sur la LP France : un champ
+  // ramené à la taille de la V3, un indicatif à ses 86 px, un contour de focus
+  // repoussé hors de l'enveloppe qui le rogne.
+  const temoinsSaisie = [
+    ["un champ à 14,5 px au téléphone", "[name=email]", "font-size", "14.5px", defautsSaisieTactile],
+    ["l'indicatif à 86 px, « AE +971 » tronqué", "[name=indicatif]", "width", "86px", defautsSaisieTactile],
+    ["le focus du numéro rogné par l'enveloppe", "[name=telephone]", "outline-offset", "3px", defautsFocusTelephone],
+  ];
+  for (const [nom, champ, propriete, valeur, controle] of temoinsSaisie) {
+    await onglet.goto(`${origine}${ACCUEIL_LP}`, { waitUntil: "load" });
+    await onglet.evaluate(([selecteur, p, v]) => document.querySelector(`form ${selecteur}`)?.style.setProperty(p, v, "important"), [champ, propriete, valeur]);
+    temoinsVus += 1;
+    if (!(await controle(onglet)).length) {
+      console.error(`TÉMOIN PASSÉ : ${nom}. Le contrôle est aveugle.`);
+      process.exit(2);
+    }
   }
+  await onglet.goto(`${origine}${ACCUEIL_LP}`, { waitUntil: "load" });
+  signale(ACCUEIL_LP, await defautsFocusTelephone(onglet));
   for (const chemin of CHEMINS) {
     await onglet.goto(`${origine}${chemin}`, { waitUntil: "load" });
     const { exces, coupable } = await debordement(onglet);
     if (exces) signale(chemin, [`déborde de ${exces} px à ${LARGEUR_TELEPHONE} px (${coupable})`]);
-    signale(chemin, (await champsSous16px(onglet)).map((champ) => `champ ${champ} au téléphone : Safari zoomera`));
+    signale(chemin, (await defautsSaisieTactile(onglet)).map((defaut) => `${defaut} (${LARGEUR_TELEPHONE} px)`));
   }
+  // Un iPhone en paysage : le formulaire n'est plus en une colonne, l'écran reste tactile.
+  const paysage = await navigateur.newContext(PAYSAGE_TACTILE);
+  const ongletPaysage = await paysage.newPage();
+  await ongletPaysage.goto(`${origine}${ACCUEIL_LP}`, { waitUntil: "load" });
+  signale(ACCUEIL_LP, (await defautsSaisieTactile(ongletPaysage)).map((defaut) => `${defaut} (tactile, ${PAYSAGE_TACTILE.viewport.width} px)`));
+  await paysage.close();
 
   // 4. L'envoi, au navigateur, sans rien laisser partir.
   signale(ACCUEIL_LP, await defautsEnvoi(navigateur, origine));
@@ -616,6 +691,7 @@ console.log(
     `${figeesSite.length} pages du site sans lien vers /lp/ ni numéro des LP ; aucune image externe ; ` +
     `aucun interdit dans le texte ajouté par le gabarit ; ` +
     `aucun débordement à ${LARGEUR_TELEPHONE} px ; ${formulairesLus} formulaires de la V3 sur un seul écran, ` +
-    `aucun champ sous 16 px au téléphone, envoi du site, erreur sans perte, conversion puis rendez-vous ; ` +
+    `aucun champ sous 16 px ni indicatif tronqué au téléphone et en paysage tactile, focus visible du téléphone, ` +
+    `envoi du site avec le pays, erreur sans perte sous le libellé affiché, conversion puis rendez-vous, aucune sur le piège ; ` +
     `${temoinsVus} témoins rouges vus rouges.`,
 );

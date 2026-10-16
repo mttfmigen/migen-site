@@ -6,14 +6,17 @@
  * `FormulaireContact` (`chargeUtile`), avec ses protections, et la route la
  * dépose dans le formulaire HubSpot du site (`HUBSPOT_FORM_ID`), dont les
  * champs sont ceux de `MigenLPForm` de la V3. Rien ici ne parle à HubSpot :
- * la LP n'a ni formulaire HubSpot ni champ à elle, seulement son identifiant
- * d'analyse (`formulaireLp`), qui part dans `formulaire_migen`.
+ * la LP n'a ni formulaire HubSpot ni champ à elle. Dans HubSpot, une demande
+ * de LP se reconnaît à son adresse (`pageUri`) ; son identifiant d'analyse
+ * (`formulaireLp`) et l'attribution sont dans la table `leads`.
  *
  * Ce qui touche à la LP en ligne (l'événement de conversion, l'agenda) est
  * RELEVÉ sur go.migengroup.com, jamais supposé :
  * `migen-forge-nucleus/src/components/form-slot.tsx`, `lib/lead-redirect.ts`
  * et `routes/fr.rendez-vous.tsx`, lus le 16/10.
  */
+
+import { INDICATIFS } from "@/components/formulaire/validation";
 
 /**
  * Le `form_id` de l'événement `hubspot_form_submit`, TEL QUE LA LP EN LIGNE
@@ -27,8 +30,9 @@ export const FORM_ID_CONVERSION_LP = "00bc3a3e-d900-40fe-8995-1e5ff2b684eb";
 export type VarianteLP = "heros" | "contact";
 
 /** L'identifiant d'analyse du formulaire, en slug : `lp-maintenance-ind-electrique-heros`.
-    Il part dans `formulaire_migen` chez HubSpot, et c'est lui, avec
-    l'attribution, que reçoit la table `leads`. */
+    C'est lui, avec l'attribution, que reçoit la table `leads`. La route
+    l'envoie aussi à HubSpot dans `formulaire_migen`, propriété absente du
+    portail au 16/10 : HubSpot l'ignore tant qu'elle n'y est pas créée. */
 export function formulaireLp(page: string, variante: VarianteLP): string {
   const chemin = page
     .toLowerCase()
@@ -36,6 +40,15 @@ export function formulaireLp(page: string, variante: VarianteLP): string {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
   return ["lp", chemin, variante].filter(Boolean).join("-");
+}
+
+/**
+ * Le pays de l'indicatif choisi, en code à deux lettres : le champ caché
+ * `country` de `MigenLPForm` (« +33 » donne « FR »). Le code est le début du
+ * libellé de la liste fermée des indicatifs (« FR +33 »).
+ */
+export function paysDeLIndicatif(indicatif: string): string {
+  return INDICATIFS.find((i) => i.code === indicatif)?.libelle.split(" ")[0] ?? "";
 }
 
 /**

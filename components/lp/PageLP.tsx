@@ -129,7 +129,7 @@ function BarreCollanteLP({ libelle }: { libelle: string }) {
   );
 }
 
-/** Le héros d'une page à formulaire : texte à gauche, formulaire en deux étapes à droite. */
+/** Le héros d'une page à formulaire : texte à gauche, formulaire sur un seul écran à droite. */
 function HerosLP({ page }: { page: DonneesPageLP }) {
   return (
     <HerosServiceLP

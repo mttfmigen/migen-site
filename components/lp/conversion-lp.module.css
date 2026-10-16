@@ -1,23 +1,25 @@
 /* Formulaire et pages de service des landing pages (/lp/).
-   Valeurs relevées dans MigenLPForm et MigenLP de la maquette V3 ; seuls les
-   états (survol, focus, désactivé) et le repli au téléphone vivent ici, le
-   reste est posé en ligne comme dans la maquette. */
+   Valeurs relevées dans MigenLPForm et MigenLP de la maquette V3 ; seuls le
+   focus, l'état désactivé et les replis (téléphone, écran tactile) vivent
+   ici, le reste est posé en ligne comme dans la maquette. */
 
 /* La maquette pose `outline:none` sur ses champs : non repris, le focus
    visible global de `globals.css` reste la marque du champ actif au clavier.
-   Seule la bordure se renforce, pour désigner la cible. */
-.champ:hover:not(:disabled),
-.champ:focus {
-  border-color: rgba(28, 27, 25, 0.32);
+   Sur la carte, il prend l'orange foncé de la maquette (#b4490f, 5,4:1 sur
+   blanc ; l'orange de marque n'y fait que 2,6:1). */
+.carte :focus-visible {
+  outline-color: #b4490f;
+}
+
+/* L'enveloppe du téléphone rogne ce qui dépasse (`overflow:hidden`, pour ses
+   coins arrondis) : le contour est donc tracé à l'intérieur du champ, et l'on
+   voit lequel, de l'indicatif ou du numéro, a le focus. */
+.enveloppeTel :focus-visible {
+  outline-offset: -2px;
 }
 
 .champ:disabled {
   opacity: 0.6;
-}
-
-.enveloppeTel:hover,
-.enveloppeTel:focus-within {
-  border-color: rgba(28, 27, 25, 0.32) !important;
 }
 
 /* Maquette : `style-hover="background:#e8692b"` sur les boutons orange. */
@@ -28,6 +30,23 @@
 .envoi:disabled {
   opacity: 0.6;
   cursor: default;
+}
+
+/* 16 px au moins dans les champs : en dessous, Safari zoome sur iPhone à
+   chaque focus et décale la carte. Sur tout écran tactile (un iPhone en
+   paysage fait 844 ou 932 px, un iPad 768 px), et sur la carte en une
+   colonne. À 16 px, « AE +971 » ne tient plus dans les 86 px de la
+   maquette : l'indicatif s'élargit. */
+@media (any-pointer: coarse), (max-width: 760px) {
+  .champ,
+  .enveloppeTel input,
+  .enveloppeTel select {
+    font-size: 16px !important;
+  }
+
+  .enveloppeTel select {
+    width: 100px !important;
+  }
 }
 
 /* ------------------------------------------- héros des pages de service */
@@ -61,13 +80,5 @@
      3,9:1. Le voile devient uniforme, au niveau de son milieu. */
   .voile {
     background: rgba(18, 17, 16, 0.8) !important;
-  }
-
-  /* 16 px au moins dans les champs : en dessous, Safari zoome sur iPhone à
-     chaque focus et décale la carte. */
-  .champ,
-  .enveloppeTel input,
-  .enveloppeTel select {
-    font-size: 16px !important;
   }
 }

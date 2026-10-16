@@ -16,10 +16,16 @@
  *
  * CE QU'ELLE TIENT : une LP envoie la charge du site (`chargeUtile`) et la
  * route la dépose dans LE formulaire HubSpot du site (`HUBSPOT_FORM_ID`),
- * avec les champs exacts du formulaire du site et l'attribution telle que le
- * site la transmet, sans rien de l'ancien formulaire « variante C » ; les
- * protections (validation, débit, taille, origine, piège) refusent avant tout
- * envoi ; la table `leads` ne reçoit aucune donnée nominative.
+ * avec les champs du formulaire du site, le pays de l'indicatif (`country`,
+ * le champ caché de la V3) et l'attribution telle que le site la transmet,
+ * sans rien de l'ancien formulaire « variante C » ; les protections
+ * (validation, débit, taille, origine, piège) refusent avant tout envoi ; la
+ * table `leads` ne reçoit aucune donnée nominative.
+ *
+ * CE QU'ELLE NE TIENT PAS : ce que HubSpot GARDE de l'envoi. Relevé dans le
+ * portail le 16/10, `formulaire_migen`, `utm_*` et `page_entree` n'y existent
+ * pas comme propriétés : HubSpot les reçoit et les ignore. Seuls l'identité,
+ * le pays et l'adresse de la page (`pageUri`) y arrivent.
  */
 import assert from "node:assert/strict";
 
@@ -28,7 +34,7 @@ import { NextRequest } from "next/server";
 import { chargeUtile, type Contact } from "@/components/formulaire/validation";
 import { VERSION_BANDEAU, choixUniforme } from "@/lib/consentement";
 
-import { formulaireLp, numeroE164, prerempliDe, urlCalendly } from "./lead-lp";
+import { formulaireLp, numeroE164, paysDeLIndicatif, prerempliDe, urlCalendly } from "./lead-lp";
 
 const HUBSPOT = "https://api.hsforms.com/submissions/v3/integration/submit/148000737/";
 const SUPABASE = "https://doublure.supabase.invalid";
@@ -90,7 +96,7 @@ function chargeLp(modifs: Record<string, unknown> = {}): Record<string, unknown>
       contact: CONTACT,
       formulaire: FORMULAIRE,
       piege: "",
-      etablissement: {},
+      etablissement: { country: paysDeLIndicatif(CONTACT.indicatif) },
       attribution: {
         utm_source: "google",
         utm_medium: "cpc",
@@ -133,6 +139,8 @@ const contexteDe = (appel: Appel) => (appel.corps as { context: { pageUri?: stri
 
 /** Les champs du formulaire HubSpot du site, identité comprise, sans consentement publicitaire. */
 const CHAMPS_DU_SITE = ["0-2/name", "email", "firstname", "formulaire_migen", "lastname", "message", "phone"];
+/** Et ceux d'une LP : le pays de l'indicatif en plus, comme le champ caché `country` de la V3. */
+const CHAMPS_LP = [...CHAMPS_DU_SITE, "country"];
 /** Et ceux que la finalité publicitaire y ajoute : l'attribution de `lib/utm.ts`. */
 const CHAMPS_DE_CAMPAGNE = ["page_entree", "utm_campaign", "utm_medium", "utm_source"];
 
@@ -173,8 +181,8 @@ assert.throws(() => sansIdentite({ formulaire: "x", email: CONTACT.email }), "t�
       ],
     },
   };
-  assert.equal(defautsEnvoi(varianteC, CHAMPS_DU_SITE).length, 3, "témoin : l'envoi de la variante C passe pour celui du site");
-  assert.deepEqual(defautsEnvoi(undefined, CHAMPS_DU_SITE), ["aucun envoi HubSpot"]);
+  assert.equal(defautsEnvoi(varianteC, CHAMPS_LP).length, 3, "témoin : l'envoi de la variante C passe pour celui du site");
+  assert.deepEqual(defautsEnvoi(undefined, CHAMPS_LP), ["aucun envoi HubSpot"]);
 }
 
 /* --------------------------------------------------------------- refus */
@@ -261,8 +269,9 @@ for (const [entetes, corps, attendu] of [
   assert.equal(statut, 200);
   const envois = envoisHubspot();
   assert.equal(envois.length, 1, "un seul envoi HubSpot");
-  assert.deepEqual(defautsEnvoi(envois[0], CHAMPS_DU_SITE), []);
+  assert.deepEqual(defautsEnvoi(envois[0], CHAMPS_LP), []);
   assert.equal(valeurDe(envois[0], "phone"), "+33 04 72 00 00 00");
+  assert.equal(valeurDe(envois[0], "country"), "FR", "le pays de l'indicatif n'arrive pas");
   assert.deepEqual(contexteDe(envois[0]), { pageUri: `https://migen.fr${PAGE}`, pageName: "LP Lyon" }, "sans consentement, l'adresse part sans sa requête");
 
   const copies = copiesLeads();
@@ -279,7 +288,7 @@ for (const [entetes, corps, attendu] of [
   const { statut } = await poste(chargeLp(), { cookie: COOKIE_PUBLICITE });
   assert.equal(statut, 200);
   const [hubspot] = envoisHubspot();
-  assert.deepEqual(defautsEnvoi(hubspot, [...CHAMPS_DU_SITE, ...CHAMPS_DE_CAMPAGNE]), []);
+  assert.deepEqual(defautsEnvoi(hubspot, [...CHAMPS_LP, ...CHAMPS_DE_CAMPAGNE]), []);
   assert.equal(valeurDe(hubspot, "utm_source"), "google");
   assert.equal(valeurDe(hubspot, "utm_medium"), "cpc");
   assert.equal(valeurDe(hubspot, "utm_campaign"), "lyon");
@@ -287,14 +296,38 @@ for (const [entetes, corps, attendu] of [
   assert.equal(contexteDe(hubspot).pageUri, URL_PAGE, "l'adresse complète de la LP, gclid compris");
 }
 
-// Le même chemin que FormulaireContact : une page du site et une LP donnent les mêmes champs.
+// Le même chemin que FormulaireContact : une page du site (sans fiche du
+// registre) et une LP donnent les mêmes champs, le pays de la LP en plus.
 {
   await poste(chargeLp(), { cookie: COOKIE_PUBLICITE });
   const [lp] = envoisHubspot();
-  await poste(chargeLp({ formulaire: "contact" }), { cookie: COOKIE_PUBLICITE });
+  await poste(chargeLp({ formulaire: "contact", etablissement: {} }), { cookie: COOKIE_PUBLICITE });
   const [site] = envoisHubspot();
   assert.equal(site.url, lp.url, "la LP et le site visent deux formulaires");
-  assert.deepEqual(nomsDe(lp), nomsDe(site), "la LP et le site n'envoient pas les mêmes champs");
+  assert.deepEqual(nomsDe(lp), [...nomsDe(site), "country"].sort(), "la LP et le site n'envoient pas les mêmes champs");
+}
+
+// Le pays : celui de l'indicatif choisi ; avec la fiche du registre, le site
+// envoie ses cinq champs comme avant ; une fiche bancale ne laisse que le pays.
+{
+  await poste(chargeLp({ indicatif: "+971", telephone: "50 123 4567", etablissement: { country: paysDeLIndicatif("+971") } }));
+  assert.equal(valeurDe(envoisHubspot()[0], "country"), "AE");
+  const fiche = { country: "France", siren: "123456789", siret: "12345678900012", address: "1 rue de l'Usine", zip: "69130" };
+  await poste(chargeLp({ formulaire: "contact", etablissement: fiche }));
+  for (const [nom, valeur] of Object.entries(fiche)) assert.equal(valeurDe(envoisHubspot()[0], nom), valeur, `fiche du registre : ${nom}`);
+  await poste(chargeLp({ etablissement: { ...fiche, country: "FR", siret: "123" } }));
+  assert.deepEqual(nomsDe(envoisHubspot()[0]), [...CHAMPS_LP].sort(), "fiche bancale : seul le pays doit partir");
+  assert.equal(valeurDe(envoisHubspot()[0], "country"), "FR");
+}
+
+// Le pays refusé par le formulaire HubSpot (400) : la demande repart sans lui
+// et arrive, comme l'enrichissement du site.
+{
+  statutsHubspot = [400];
+  const { statut } = await poste(chargeLp());
+  assert.equal(statut, 200, "un pays refusé coûte la demande");
+  const [premier, second] = envoisHubspot();
+  assert.ok(nomsDe(premier).includes("country") && second && !nomsDe(second).includes("country"), "second essai sans le pays absent");
 }
 
 // Une page encore ouverte avec l'ancien formulaire (variante C) poste `source`
@@ -302,7 +335,7 @@ for (const [entetes, corps, attendu] of [
 for (const reliquat of [{ source: "lp", demande: "Une réponse à vos besoins ponctuels : arrêts techniques, shutdowns, etc." }, { source: "lp" }]) {
   const { statut } = await poste(chargeLp(reliquat));
   assert.equal(statut, 200, "une charge de l'ancien formulaire est refusée");
-  assert.deepEqual(defautsEnvoi(envoisHubspot()[0], CHAMPS_DU_SITE), []);
+  assert.deepEqual(defautsEnvoi(envoisHubspot()[0], CHAMPS_LP), []);
 }
 
 // HubSpot en panne : le visiteur le sait (502), la copie d'attribution reste.
@@ -326,6 +359,8 @@ for (const reliquat of [{ source: "lp", demande: "Une réponse à vos besoins po
 
 /* ------------------------------------------- slugs, téléphone et agenda */
 
+assert.deepEqual(["+33", "+32", "+41", "+34", "+1", "+971", "+999"].map(paysDeLIndicatif), ["FR", "BE", "CH", "ES", "CA", "AE", ""]);
+
 assert.equal(numeroE164({ indicatif: "+33", telephone: "06 12 34 56 78" }), "+33612345678");
 assert.equal(numeroE164({ indicatif: "+33", telephone: "+33 6 12 34 56 78" }), "+33612345678", "indicatif saisi gardé");
 assert.equal(numeroE164({ indicatif: "+33", telephone: "0033 6 12 34 56 78" }), "+33612345678", "00 lu comme +");
@@ -342,6 +377,6 @@ assert.equal(agenda.searchParams.get("email"), CONTACT.email);
 assert.equal(new URL(urlCalendly(prerempliDe("illisible"))).searchParams.get("name"), null, "rien de lisible : agenda vide");
 
 console.log(
-  "envoi des landing pages : formulaire HubSpot du site, champs et attribution du site, " +
+  "envoi des landing pages : formulaire HubSpot du site, champs et attribution du site, pays de l'indicatif, " +
     "protections (validation, débit, taille, origine, piège) et leads sans identité vérifiés, sans aucun envoi réel",
 );
