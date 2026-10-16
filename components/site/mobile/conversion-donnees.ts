@@ -172,9 +172,10 @@ export function boutonBandeau(variante: VarianteConversion): LibelleCible {
 
 /* ------------------------------------ le rappel de bas de page (#etre-rappele) */
 
-/** dc.html L579 : `endK: isCar ? "Rejoindre migen" : "Être rappelé"`. */
+/** MAQUETTE V3 (16/10), `endK: isCar ? "Rejoindre migen" : "Décrire mon besoin"`
+    (la v2 écrivait « Être rappelé », dc.html L579). */
 export function surTitreRappelFinal(variante: VarianteConversion): string {
-  return variante === "carriere" ? "Rejoindre migen" : "Être rappelé";
+  return variante === "carriere" ? "Rejoindre migen" : "Décrire mon besoin";
 }
 
 /** dc.html L579 : `endT: isCar ? "Rejoignez les 120 collaborateurs de migen." : "Un chargé d’affaires vous rappelle dans l’heure, aux horaires ouvrés."`. */
@@ -184,11 +185,10 @@ export function titreRappelFinal(variante: VarianteConversion): string {
     : "Un chargé d’affaires vous rappelle dans l’heure, aux horaires ouvrés.";
 }
 
-/** dc.html L138 : le lien sous le formulaire, `<a href="/contact/" …>Décrire mon besoin en détail →</a>`. */
-export const LIEN_DETAIL = {
-  libelle: "Décrire mon besoin en détail →",
-  href: CIBLE_CONTACT,
-} as const satisfies LibelleCible;
+/** L'identifiant du formulaire de la carte `#etre-rappele`, clé d'analyse des
+    conversions (`FormulaireContact`, slug exigé par la validation). La page
+    d'origine part déjà avec la demande (`page.url`) : inutile de la répéter ici. */
+export const FORMULAIRE_RAPPEL_FINAL = "rappel-final-mobile";
 
 /** dc.html L579 : en carrière, pas de formulaire (`endBtnOnly: isCar`, L576), un bouton seul. */
 export const BOUTON_POSTULER_FINAL = {

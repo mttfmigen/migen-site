@@ -255,8 +255,12 @@ export default function Ouverture() {
         </div>
 
         <div style={{ position: "relative" }}>
+          {/* `data-champs-v3` : au téléphone, les champs prennent le dessin de
+              la maquette mobile V3 (`FormulaireContact.module.css`). Sans
+              effet au-dessus de 880 px. */}
           <div
             id="besoin"
+            data-champs-v3=""
             className={styles.carteFormulaireMobile}
             style={{
               position: "relative",
