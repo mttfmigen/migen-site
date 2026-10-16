@@ -5,9 +5,9 @@ import TexteRiche from "@/components/site/blocs/TexteRiche";
 import PastillesCocon from "@/components/site/cocon/PastillesCocon";
 import {
   APPEL_FINAL,
+  AppelCarteMobile,
   FilArianeMobile,
   HERO_COMPACT,
-  MarquesRepliees,
   PANNEAU_HEROS,
   photoDeTete,
   PhotoTeteMobile,
@@ -32,6 +32,7 @@ import DerouleOffre from "@/components/site/offre/DerouleOffre";
 import GarantiesOffre from "@/components/site/offre/GarantiesOffre";
 import { liensSurs } from "@/components/site/offre/LiensOffre";
 import LogosClients from "@/components/site/offre/LogosClients";
+import MarquesOffre from "@/components/site/offre/MarquesOffre";
 import OuvreLaCible from "@/components/site/implantation/OuvreLaCible";
 import PanneauHerosRepliable from "@/components/site/implantation/PanneauHerosRepliable";
 import PointsOffre from "@/components/site/offre/PointsOffre";
@@ -161,6 +162,7 @@ export default function PageSpecialite({
   const offre = sectionDeType(sections, "offre");
   const deroule = sectionDeType(sections, "deroule");
   const garanties = sectionDeType(sections, "garanties");
+  const appel = sectionDeType(sections, "cta");
   const preuves = sectionDeType(sections, "preuves");
   const objections = sectionDeType(sections, "objections");
   const ctaFinal = sectionDeType(sections, "ctaFinal");
@@ -512,7 +514,11 @@ export default function PageSpecialite({
 
         {/* ----------------------------------------- 8. « 06 Garanties » */}
 
-        {garanties ? <GarantiesOffre section={garanties} /> : null}
+        {/* L'appel du corpus sous les garanties, dans la carte au téléphone
+            (`AppelCarteMobile`, V3). */}
+        {garanties ? (
+          <GarantiesOffre section={garanties} apres={<AppelCarteMobile cta={appel} />} />
+        ) : null}
 
         {/* Secteurs, offres, marques et références : une section pour la
             cadence, celle des références (voir plus haut). */}
@@ -532,7 +538,7 @@ export default function PageSpecialite({
             monte, et sans lui la section est celle de fanuc, une famille
             seule. Les comptes viennent de `marques-donnees.ts`, pas d'ici. */}
         {contenu.marquesFamille ? (
-          <MarquesRepliees
+          <MarquesOffre
             famille={contenu.marquesFamille}
             familles={contenu.marquesFamilles}
           />

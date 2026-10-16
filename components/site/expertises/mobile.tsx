@@ -13,14 +13,11 @@ import {
   parentDe,
   REMAP,
 } from "@/components/site/cocon/maillage-mobile";
-import MarquesOffre, {
-  type ProprietesMarquesOffre,
-} from "@/components/site/offre/MarquesOffre";
-import { TELEPHONE_SITE } from "@/components/site/entete-donnees";
 import { accrocheDeLOffre } from "@/components/site/offre/PointsOffre";
 import { CIBLE_CONTACT } from "@/components/site/mobile/conversion-donnees";
+import { IconeFleche } from "@/components/site/mobile/BarreCollanteMobile";
 import { altPhoto } from "@/lib/descriptions-photos";
-import type { Paragraphe, SectionOffre } from "@/types/contenu";
+import type { Paragraphe, SectionCta, SectionOffre } from "@/types/contenu";
 import type { BlocComplement } from "@/types/offre";
 
 import s from "./mobile.module.css";
@@ -288,10 +285,9 @@ export const APPEL_FINAL = s.appelFinal;
  * LA QUESTION DE L'APPEL FINAL, 7E CARTE DE LA FAQ AU TÉLÉPHONE (maquette
  * mobile v2 : « Besoin d'un seul interlocuteur… ? » sous les questions). Le
  * H2 de « 10 Appel final » qui la porte sur bureau n'est plus à l'écran sous
- * 881 px (`APPEL_FINAL`). Réponse : le bouton et le téléphone de la page,
- * puis la phrase de rappel du corpus quand il en a une ; même montage que
- * `secteur/MobileSecteur.tsx`. Dessin des cartes de FAQ du socle
- * (`data-faq-liste`, `app/globals.css`).
+ * 881 px (`APPEL_FINAL`). Réponse : le bouton orange à pastille flèche de la
+ * V3, puis la phrase de rappel du corpus quand il en a une (`BoutonEtRappel`).
+ * Dessin des cartes de FAQ du socle (`data-faq-liste`, `app/globals.css`).
  */
 export function QuestionFinaleMobile({
   cta,
@@ -310,14 +306,8 @@ export function QuestionFinaleMobile({
             +
           </span>
         </summary>
-        <div className={s.reponseFinale}>
-          <p>
-            <a href={cta.href && !cta.href.startsWith("#") ? cta.href : CIBLE_CONTACT}>
-              {cta.bouton}
-            </a>{" "}
-            · <a href={TELEPHONE_SITE.href}>{TELEPHONE_SITE.affichage}</a>
-          </p>
-          {cta.rappel ? <p>{cta.rappel}</p> : null}
+        <div className={`${s.reponseFinale} ${s.appelCarte}`}>
+          <BoutonEtRappel cta={cta} />
         </div>
       </details>
     </div>
@@ -337,8 +327,8 @@ export const QUEUE_MAILLAGE = s.queueMaillage;
 export const SANS_NUMERO = s.sansNumero;
 /** Une liste mobile de la carte 01 (domaines, types, chiffres). */
 export const LISTE_MOBILE = s.listeMobile;
-/** La phrase qui ouvre une liste de la carte 01 (dc.html `isP`, liens soulignés). */
-export const INTRO_MOBILE = s.introMobile;
+/** Le titre en gras d'une liste de la carte 01 (V3 : « Les huit domaines… : »). */
+export const TITRE_LISTE = s.titreListe;
 /** Première lettre en minuscule (« roulements, réducteurs… » de la maquette). */
 export const MINUSCULE = s.minuscule;
 
@@ -363,10 +353,10 @@ export function phraseAvecLien(texte: string, nom: string, href: string): ReactN
 }
 
 /**
- * « Les chiffres Migen », EN FIN DE CARTE 01 au téléphone (maquette mobile
- * v2) : une sous-carte numérotée par chiffre, la valeur en gras puis son
- * libellé. Mêmes mots que la section des chiffres du bureau, qui, elle, sort
- * de l'écran sous 881 px (`CACHE_MOBILE`).
+ * « Les chiffres Migen », EN FIN DE CARTE 01 au téléphone : les tuiles 2 x 2
+ * de la maquette V3 (valeur orange, libellé dessous), et non plus les
+ * sous-cartes numérotées de la v2. Mêmes mots que la section des chiffres du
+ * bureau, qui, elle, sort de l'écran sous 881 px (`CACHE_MOBILE`).
  */
 export function ChiffresCarteMobile({
   chiffres,
@@ -377,17 +367,55 @@ export function ChiffresCarteMobile({
   return (
     <div data-mobile-seulement="" className={s.listeMobile}>
       <p className={s.titreListe}>Les chiffres Migen</p>
-      <div data-mm-kv="" data-mm-compteur="">
+      <div className={s.tuilesCarte}>
         {chiffres.map((chiffre) => (
           <div key={`${chiffre.valeur}-${chiffre.libelle}`}>
-            <div data-mm-kv-titre="">{chiffre.valeur}</div>
-            <p data-mm-kv-texte="" className={s.minuscule}>
+            {/* « + 120 » du relevé de bureau, « +120 » comme partout ailleurs
+                au téléphone (V3) : la même valeur, sans l'espace. */}
+            <div data-tuile-valeur="">{chiffre.valeur.replace(/^\+\s+/, "+")}</div>
+            <p data-tuile-libelle="" className={s.minuscule}>
               {chiffre.libelle}
             </p>
           </div>
         ))}
       </div>
     </div>
+  );
+}
+
+/**
+ * L'APPEL QUI CLÔT « Ce que nous garantissons » AU TÉLÉPHONE (maquette V3) :
+ * la question du bloc d'appel que le corpus écrit sous les garanties
+ * (section `cta`), le bouton à pastille flèche vers `/contact/`, puis la
+ * phrase de rappel. Le bureau ne rend pas ce bloc (capture), d'où
+ * `data-mobile-seulement` ; posé par `GarantiesOffre.apres`, dans la carte.
+ */
+export function AppelCarteMobile({ cta }: { cta?: SectionCta }) {
+  if (!cta?.question) return null;
+  return (
+    <div data-mobile-seulement="" className={s.appelCarte}>
+      <p data-appel-question="">
+        <TexteRiche texte={cta.question} />
+      </p>
+      <BoutonEtRappel cta={cta} />
+    </div>
+  );
+}
+
+/** Le bouton orange à pastille flèche de la V3 (`/contact/` par défaut), puis
+    la phrase de rappel du corpus quand il y en a une. */
+function BoutonEtRappel({ cta }: { cta: Omit<SectionCta, "type"> }) {
+  const href = cta.href && !cta.href.startsWith("#") ? cta.href : CIBLE_CONTACT;
+  return (
+    <>
+      <Link href={href} prefetch={false} data-appel-bouton="">
+        <span>{cta.bouton}</span>
+        <span data-appel-fleche="">
+          <IconeFleche />
+        </span>
+      </Link>
+      {cta.rappel ? <p data-appel-rappel="">{cta.rappel}</p> : null}
+    </>
   );
 }
 
@@ -564,28 +592,6 @@ export function PliMobile({
         {children}
       </SectionPliableMobile>
     </div>
-  );
-}
-
-/**
- * G3, « MARQUES ET CONSTRUCTEURS » REPLIÉ AU TÉLÉPHONE. Section de bureau du
- * gabarit 03 (`offre/MarquesOffre`), absente de la maquette mobile : 1 150 px
- * de cartes de logos à 390 px. Le bloc partagé n'a pas de repli sur demande ;
- * il est donc enveloppé ICI, pour nos trois gabarits seulement. L'étiquette
- * reprend son surtitre et son H2 mot pour mot : c'est un doublon du titre de
- * la section, et la bascule est retirée du bureau.
- */
-export function MarquesRepliees(props: ProprietesMarquesOffre) {
-  return (
-    <PliMobile
-      pleinePage
-      numero={false}
-      apresSections
-      surtitre="Marques et constructeurs"
-      titre="Les équipements que nous maintenons déjà"
-    >
-      <MarquesOffre {...props} />
-    </PliMobile>
   );
 }
 

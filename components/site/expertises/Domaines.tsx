@@ -7,11 +7,11 @@ import { resumeDe } from "@/components/site/blocs/resume-de-section";
 import { estCheminInterne } from "@/components/site/blocs/TexteRiche";
 import {
   CACHE_MOBILE,
-  INTRO_MOBILE,
   LISTE_MOBILE,
   MINUSCULE,
   phraseAvecLien,
   PliMobile,
+  TITRE_LISTE,
 } from "@/components/site/expertises/mobile";
 import { numerote } from "@/components/site/offre/texte-offre";
 import type { CarteDomaineHub } from "@/types/expertises";
@@ -130,7 +130,7 @@ export default function Domaines({ titre, cartes }: ProprietesDomaines) {
           du domaine en lien. Mêmes mots que le bento, tirés de la même donnée ;
           `data-mobile-seulement`, absente au-dessus de 880 px. */}
       <div data-mobile-seulement="" className={LISTE_MOBILE}>
-        <p className={INTRO_MOBILE}>{titre} :</p>
+        <p className={TITRE_LISTE}>{titre} :</p>
         <div data-mm-kv="" data-mm-compteur="">
           {retenues.map((carte) => (
             <div key={carte.href}>

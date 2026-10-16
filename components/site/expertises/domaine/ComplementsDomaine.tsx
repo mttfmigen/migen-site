@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 
 import { LARGEUR, VERRE } from "@/components/site/blocs/habillage";
 import { TABLEAU_EN_CARTES } from "@/components/site/expertises/mobile";
+import m from "@/components/site/expertises/mobile.module.css";
 import type { BlocComplementDomaine } from "@/types/domaine";
 
 /**
@@ -119,7 +120,11 @@ export default function ComplementsDomaine({
   return (
     <section style={{ padding: "48px 0 0" }}>
       <div style={LARGEUR}>
-        <div style={CARTE}>
+        {/* `data-complement-domaine` : au téléphone, la carte en verre
+            s'efface dans la carte « 01 La réponse directe » de la V3, qui
+            l'enveloppe (`domaine/PageDomaine`), et ses blocs prennent les
+            dessins de la V3 (voir `../mobile.module.css`). */}
+        <div data-complement-domaine="" style={CARTE}>
           {retenus.map((bloc, rang) => (
             <div key={rang} style={{ minWidth: 0, paddingBottom: 18 }}>
               {bloc.titre ? (
@@ -128,9 +133,20 @@ export default function ComplementsDomaine({
                   <h3 style={TITRE}>{bloc.titre}</h3>
                 </div>
               ) : null}
-              {bloc.texte ? <p style={TEXTE}>{bloc.texte}</p> : null}
+              {/* Au téléphone (V3) : la première phrase en chapeau, une phrase
+                  qui annonce une liste (« … : ») en titre de liste. */}
+              {bloc.texte ? (
+                <p
+                  data-complement-texte={
+                    rang === 0 ? "chapeau" : bloc.texte.trimEnd().endsWith(":") ? "titre" : ""
+                  }
+                  style={TEXTE}
+                >
+                  {bloc.texte}
+                </p>
+              ) : null}
               {bloc.puces?.length ? (
-                <div style={LISTE}>
+                <div data-puces-frise="" style={LISTE}>
                   {bloc.puces.map((puce) => (
                     <div key={puce.accroche ?? puce.texte} style={PUCE}>
                       <span aria-hidden="true" style={COCHE}>
@@ -151,7 +167,13 @@ export default function ComplementsDomaine({
               ) : null}
               {bloc.tableau?.lignes.length ? (
                 /* Sous 881 px, une carte par ligne : voir
-                   `specialite/ComplementSpecialite.tsx`, même motif. */
+                   `specialite/ComplementSpecialite.tsx`, même motif. La
+                   légende des colonnes de la V3 au-dessus des cartes (les
+                   en-têtes du tableau, que le lecteur d'écran lit déjà). */
+                <>
+                <div data-mobile-seulement="" aria-hidden="true" className={m.legendeMobile}>
+                  {bloc.tableau.entetes.join(" · ")}
+                </div>
                 <div
                   className={TABLEAU_EN_CARTES}
                   data-tableau-en-cartes=""
@@ -195,6 +217,7 @@ export default function ComplementsDomaine({
                     </tbody>
                   </table>
                 </div>
+                </>
               ) : null}
             </div>
           ))}
