@@ -4,8 +4,8 @@ import mobile from "@/components/site/nous-connaitre/mobile-apropos.module.css";
 
 /**
  * « NOS RÉALISATIONS », le bloc que la maquette mobile v2 pose en fin de page
- * à propos, juste avant le mini-formulaire (dc.html L469 et L482, `refsSec`
- * hors gabarit 02).
+ * à propos, juste avant la carte `#etre-rappele` (dc.html L469 et L482,
+ * `refsSec` hors gabarit 02).
  *
  * Les cartes sont celles de dc.html L425-426 : `cas-lies.json` n'a aucune clé
  * pour /nous-connaitre/, /valeurs/, /rse/, /partenaires/ ni /a-propos/equipe/

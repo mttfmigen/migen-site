@@ -7,14 +7,14 @@
  * LA RÉFÉRENCE est la maquette mobile v2,
  * `maquette/mobile-v2/maquette/Migen - Mobile v2.dc.html`, et depuis le 16/10
  * la V3 (`maquette/mobile-v3/Migen - Mobile V3.dc.html`) pour la barre
- * collante et le photo + CTA : un libellé vaut s'il est écrit dans l'une des
- * deux. Les deux sont RELUES à chaque exécution, jamais recopiées : si la
+ * collante, le photo + CTA et la carte `#etre-rappele` : un libellé vaut s'il
+ * est écrit dans l'une des deux. Les deux sont RELUES à chaque exécution, jamais recopiées : si la
  * maquette change, la porte le voit.
  *
  * CE QU'ELLE TIENT :
  * 1. ZÉRO TEXTE INVENTÉ : chaque libellé rendu par les composants existe
  *    verbatim dans la maquette (ou vient d'un composant existant réutilisé,
- *    `RappelExpress`), et le texte rendu ne contient RIEN d'autre.
+ *    `FormulaireContact`), et le texte rendu ne contient RIEN d'autre.
  * 2. CIBLES TACTILES : tout `<a>` et `<button>` rendu mesure au moins 24 px
  *    de haut (WCAG 2.2, SC 2.5.8 ; les nôtres font 44 à 52 px).
  * 3. CONTRASTE : chaque paire texte/fond atteint 4,5:1, ou est héritée
@@ -37,7 +37,8 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { renderToStaticMarkup } from "react-dom/server";
 
-import RappelExpress from "@/components/site/offre/generique/RappelExpress";
+import { FormulaireContact } from "@/components/formulaire/FormulaireContact";
+import { INDICATIFS } from "@/components/formulaire/validation";
 import { TELEPHONE_SITE } from "@/components/site/entete-donnees";
 
 import BandeauRappelMobile from "./BandeauRappelMobile";
@@ -56,12 +57,12 @@ import {
   CIBLE_CONTACT,
   CIBLE_POSTULER,
   CIBLE_POSTULER_MAQUETTE,
+  FORMULAIRE_RAPPEL_FINAL,
   ID_BANDEAU,
   ID_PHOTO_CTA,
   ID_RAPPEL_FINAL,
   insertionApresSection,
   LIBELLE_ROND_TELEPHONE,
-  LIEN_DETAIL,
   sousLigneBarreCollante,
   surTitrePhotoCta,
   surTitreRappelFinal,
@@ -144,7 +145,7 @@ const compose = (dessus: Rgb, alpha: number, dessous: Rgb): Rgb =>
 const BLANC: Rgb = [255, 255, 255];
 const ENCRE = hex("#1c1b19"); // dc.html, couleur d'encre partout
 const ORANGE = hex("#ff7c3c");
-const ORANGE_CLAIR = hex("#ffb08a");
+const GRIS_LIBELLE = hex("#6a6764"); // V3 L139, libellés des champs
 const FOND_PAGE = hex("#f1f2f4"); // dc.html L111 : rgba(241,242,244,.94)
 
 interface PaireContraste {
@@ -173,18 +174,26 @@ const PAIRES: readonly PaireContraste[] = [
     texte: ENCRE,
     fond: BLANC,
   },
-  { nom: "blanc sur encre (section finale, bouton du bandeau)", texte: BLANC, fond: ENCRE },
-  { nom: "orange clair sur encre (lien détail, dc.html L138)", texte: ORANGE_CLAIR, fond: ENCRE },
-  { nom: "orange sur encre (sur-titres)", texte: ORANGE, fond: ENCRE },
+  { nom: "blanc sur encre (bouton du bandeau)", texte: BLANC, fond: ENCRE },
+  { nom: "orange sur encre (sur-titre du photo + CTA)", texte: ORANGE, fond: ENCRE },
+  { nom: "encre sur blanc (titre de la carte #etre-rappele, V3)", texte: ENCRE, fond: BLANC },
+  { nom: "gris des libellés sur blanc (champs de la carte, V3)", texte: GRIS_LIBELLE, fond: BLANC },
+  /* 2,6:1, SOUS L'AA, TRANCHÉ LE 16/10 : gardé. C'est la DA de la V3 validée
+     par Mehdi (L139), et le sur-titre de 11 px orange sur blanc est déjà
+     celui de tout le site au téléphone (« Nos autres offres », « Notre
+     méthode », étapes de l'accueil : même couleur, même fond, mesuré). Le
+     passer seul en `--acc-ink` casserait l'unité de la page ; changer TOUS
+     les sur-titres est une décision de charte, remontée à Mehdi. */
+  {
+    nom: "orange sur blanc (sur-titre de la carte #etre-rappele, V3 L139)",
+    texte: ORANGE,
+    fond: BLANC,
+    heriteeDe: "color:#ff7c3c;margin-bottom:8px\">{{ endK }}",
+  },
   {
     nom: "encre sur bandeau orangé à 10 % (dc.html L127)",
     texte: ENCRE,
     fond: compose(ORANGE, 0.1, FOND_PAGE),
-  },
-  {
-    nom: "texte indicatif des champs sombres (globals.css, blanc à 80 %)",
-    texte: compose(BLANC, 0.8, compose(BLANC, 0.08, ENCRE)),
-    fond: compose(BLANC, 0.08, ENCRE),
   },
 ];
 
@@ -232,9 +241,17 @@ function hauteurEstimee(style: string): number {
   return corps * interligne + haut + bas;
 }
 
+/** SC 2.5.8 exempte la cible EN LIGNE, prise dans une phrase : c'est le lien
+ *  « politique de confidentialité » de la mention RGPD du formulaire. Les liens
+ *  d'un paragraphe sont donc retirés avant la mesure, et eux seuls : les
+ *  boutons du formulaire de la carte (« Suivant », l'envoi) sont mesurés ici,
+ *  et leur rendu au téléphone l'est par `verification-carte-navigateur.mjs`. */
+const sansLiensEnLigne = (html: string) =>
+  html.replace(/<p\b[^>]*>[\s\S]*?<\/p>/g, (p) => p.replace(/<a\b[^>]*>/g, ""));
+
 function ciblesTropPetites(html: string): string[] {
   const defauts: string[] = [];
-  const balises = html.match(/<(?:a|button)\b[^>]*>/g) ?? [];
+  const balises = sansLiensEnLigne(html).match(/<(?:a|button)\b[^>]*>/g) ?? [];
   for (const b of balises) {
     const style = (b.match(/style="([^"]*)"/) ?? [])[1] ?? "";
     const h = hauteurDeclaree(style) ?? hauteurEstimee(style);
@@ -289,8 +306,10 @@ interface Rendu {
 }
 
 const PHOTO = PHOTO_DEMONSTRATION;
-/** Le texte du panneau réutilisé, relevé sur son propre rendu : il fait foi. */
-const texteRappelExpress = texteDe(renderToStaticMarkup(<RappelExpress />));
+/** Le texte du formulaire réutilisé, relevé sur son propre rendu : il fait foi. */
+const texteFormulaire = texteDe(
+  renderToStaticMarkup(<FormulaireContact formulaire={FORMULAIRE_RAPPEL_FINAL} />),
+);
 
 function rendus(): Rendu[] {
   const liste: Rendu[] = [];
@@ -320,12 +339,7 @@ function rendus(): Rendu[] {
       libelles:
         v === "carriere"
           ? [surTitreRappelFinal(v), titreRappelFinal(v), BOUTON_POSTULER_FINAL.libelle]
-          : [
-              surTitreRappelFinal(v),
-              titreRappelFinal(v),
-              texteRappelExpress,
-              LIEN_DETAIL.libelle,
-            ],
+          : [surTitreRappelFinal(v), titreRappelFinal(v), texteFormulaire],
     });
   }
   return liste;
@@ -384,12 +398,59 @@ if (process.argv.includes("--controle")) {
 // 1. CHAQUE LIBELLÉ VIENT DE LA MAQUETTE, relue maintenant.
 for (const r of rendus()) {
   for (const l of r.libelles) {
-    if (l === texteRappelExpress) continue; // composant existant réutilisé
+    if (l === texteFormulaire) continue; // composant existant réutilisé
     assert.ok(dansUneMaquette(l), `${r.nom} : « ${l} » est ABSENT de la maquette`);
   }
 }
-assert.ok(dansUneMaquette(texteRappelExpress), // « Être rappelé dans l'heure »
-  "le bouton du panneau réutilisé ne correspond plus à la maquette");
+
+// 1 bis. LE DESSIN DES CHAMPS DE LA V3 : ses valeurs sont relevées dans la V3
+//    (relue ici), et leur RENDU au téléphone est mesuré dans le navigateur par
+//    `verification-carte-navigateur.mjs` (hauteurs, couleur des libellés,
+//    indicatif dans son cadre), jamais en relisant le texte de la feuille.
+//    Le bureau, lui, est tenu par la comparaison au pixel.
+for (const releve of [
+  "font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:#6a6764",
+  "height:50px;width:100%;box-sizing:border-box;min-width:0;padding:0 14px;border-radius:14px;border:1px solid rgba(28,27,25,.12);background:#fff",
+  "grid-template-columns:auto minmax(0,1fr);gap:8px",
+  "height:54px;border:none;border-radius:999px;background:#ff7c3c",
+]) {
+  assert.ok(dcV3.includes(releve), `maquette V3 : relevé des champs introuvable : ${releve}`);
+}
+assert.ok(
+  readFileSync("components/site/contact/Ouverture.tsx", "utf8").includes('data-champs-v3=""'),
+  "/contact/ : le formulaire ne prend plus le dessin des champs V3",
+);
+
+// 1 ter. LA CARTE #etre-rappele EST CELLE DE LA V3 (L139) : le formulaire
+//    complet du site, avec les libellés, les six indicatifs et le bouton de
+//    la V3, ses mentions RGPD, et plus aucun reste de la carte sombre de la v2.
+for (const attendu of [
+  "Nom de l’entreprise&nbsp;*",
+  "Nom&nbsp;*",
+  "Prénom&nbsp;*",
+  "Courriel&nbsp;*",
+  "Téléphone&nbsp;*",
+  "Message&nbsp;*",
+  "On me rappelle dans l’heure",
+  'background:#fff;border:1px solid rgba(28,27,25,.08);box-shadow:0 24px 50px -36px rgba(0,0,0,.35)',
+]) {
+  assert.ok(dcV3.includes(attendu), `maquette V3 : « ${attendu} » introuvable`);
+}
+for (const { libelle } of INDICATIFS) {
+  assert.ok(dcV3.includes(`>${libelle}</option>`), `maquette V3 : l'indicatif « ${libelle} » n'y est plus`);
+}
+for (const v of VARIANTES.filter((x) => x !== "carriere")) {
+  const html = renderToStaticMarkup(<RappelFinalMobile variante={v} />);
+  const texte = texteDe(html);
+  for (const champ of ["entreprise", "nom", "prenom", "email", "indicatif", "telephone", "message"]) {
+    assert.ok(html.includes(`name="${champ}"`), `RappelFinalMobile ${v} : le champ « ${champ} » manque`);
+  }
+  assert.ok(texte.includes("On me rappelle dans l’heure"), `RappelFinalMobile ${v} : bouton de la V3 absent`);
+  assert.ok(texte.includes("enregistrées dans HubSpot"), `RappelFinalMobile ${v} : mention RGPD absente`);
+  assert.ok(html.includes("data-champs-v3"), `RappelFinalMobile ${v} : dessin des champs V3 non branché`);
+  assert.ok(!html.includes("#1c1b19;color:#fff"), `RappelFinalMobile ${v} : reste de la carte sombre v2`);
+  assert.ok(!texte.includes("Décrire mon besoin en détail"), `RappelFinalMobile ${v} : lien de la v2 resté`);
+}
 
 // 2. ET RIEN D'AUTRE : le texte rendu, libellés retirés, ne porte plus une lettre.
 for (const r of rendus()) {
@@ -405,6 +466,13 @@ assert.ok(
 for (const r of rendus()) {
   assert.deepEqual(ciblesTropPetites(r.html), [], `${r.nom} : cible sous 24px`);
 }
+// Le formulaire de la carte n'est plus soustrait à la mesure : son bouton
+// d'envoi y est (« Suivant » et « Retour » n'existent qu'au navigateur, après
+// la lecture de la largeur : la porte du navigateur les mesure).
+assert.ok(
+  /<button\b[^>]*type="submit"/.test(sansLiensEnLigne(renderToStaticMarkup(<RappelFinalMobile />))),
+  "RappelFinalMobile : le bouton d'envoi échappe à la mesure des cibles",
+);
 assert.deepEqual(
   ciblesTropPetites(renderToStaticMarkup(<DemonstrationConversionMobile />)),
   [],

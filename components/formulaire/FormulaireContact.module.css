@@ -159,3 +159,100 @@
     transition: none;
   }
 }
+
+/*
+ * LE DESSIN DES CHAMPS DE LA MAQUETTE MOBILE V3 (16/10), au téléphone, pour
+ * les formulaires posés sous `[data-champs-v3]` : la carte `#etre-rappele`
+ * (`components/site/mobile/RappelFinalMobile.tsx`) et la page /contact/.
+ * Relevé dans `maquette/mobile-v3/Migen - Mobile V3.dc.html` L139 :
+ *
+ *   champs     display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px 10px
+ *   libellé    font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:#6a6764
+ *   saisie     height:50px;padding:0 14px;border-radius:14px;border:1px solid rgba(28,27,25,.12);background:#fff
+ *   indicatif  grid-template-columns:auto minmax(0,1fr);gap:8px, la liste dans son propre cadre
+ *              height:50px;padding:0 10px;border-radius:14px;font:500 14px var(--fb)
+ *   message    rows="4";padding:12px 14px;font:400 15px/1.5 var(--fb)
+ *   bouton     height:54px;font:600 15px var(--fb);box-shadow:0 14px 30px -14px rgba(255,124,60,.9)
+ *
+ * DU STYLE SEULEMENT : aucun champ, aucun nom, aucune règle de validation ni
+ * d'envoi ne change, les étapes du téléphone (14/10) restent. Deux écarts
+ * voulus : le texte des champs reste à 16 px (le zoom d'iOS, voir plus haut),
+ * et l'astérisque prend la couleur du libellé, comme dans la V3.
+ *
+ * `!important` pour la même raison que plus haut : le dessin du bureau est
+ * posé en style en ligne. Au-dessus de 880 px, rien de ceci ne joue.
+ */
+@media (max-width: 880px) {
+  :global([data-champs-v3]) .grille {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: 14px 10px !important;
+  }
+
+  /* Nom et prénom côte à côte, comme dans la V3 ; tout le reste tient la
+     ligne (règle du repli à 900 px, plus haut). */
+  :global([data-champs-v3]) .grille > :has(> input[name="nom"]),
+  :global([data-champs-v3]) .grille > :has(> input[name="prenom"]) {
+    grid-column: auto !important;
+  }
+
+  :global([data-champs-v3]) .grille label {
+    letter-spacing: 0.12em !important;
+    color: #6a6764 !important;
+  }
+
+  :global([data-champs-v3]) .grille label > span {
+    color: inherit !important;
+  }
+
+  :global([data-champs-v3]) .champ {
+    border: 1px solid rgba(28, 27, 25, 0.12) !important;
+    border-radius: 14px !important;
+    background: #fff !important;
+  }
+
+  :global([data-champs-v3]) input.champ {
+    height: 50px;
+    padding: 0 14px !important;
+  }
+
+  /* `rows="4"` de la V3 : quatre lignes à 1,5 et le rembourrage. */
+  :global([data-champs-v3]) textarea.champ {
+    min-height: 116px;
+    padding: 12px 14px !important;
+  }
+
+  /* L'indicatif sort du cadre commun : deux cadres côte à côte. */
+  :global([data-champs-v3]) .enveloppeTel {
+    display: grid !important;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 8px;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    overflow: visible !important;
+  }
+
+  /* Chaque cadre porte son propre focus visible (globals.css) : celui de
+     l'enveloppe entourerait les deux à la fois. */
+  :global([data-champs-v3]) .enveloppeTel:focus-within {
+    outline: none;
+  }
+
+  :global([data-champs-v3]) .enveloppeTel select {
+    width: auto !important;
+    height: 50px;
+    padding: 0 10px !important;
+    border: 1px solid rgba(28, 27, 25, 0.12) !important;
+    border-radius: 14px;
+    background: #fff !important;
+    font-weight: 500 !important;
+  }
+
+  /* « Suivant » aussi : il porte la même classe, et sa hauteur en ligne. */
+  :global([data-champs-v3]) .boutonEnvoi {
+    width: 100%;
+    min-height: 54px !important;
+    font-size: 15px !important;
+    box-shadow: 0 14px 30px -14px rgba(255, 124, 60, 0.9) !important;
+  }
+}
