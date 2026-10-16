@@ -60,10 +60,10 @@ const PHOTO_HEROS_MOBILE = "/assets/web/ph-hero-raffinerie.jpg";
  * d'emplacement à cet endroit (composant d'un autre lot) : la composition est
  * reprise ici avec les MÊMES écrans importés, rien n'est redessiné.
  *
- *  0 Héros · 1 Chiffres · 2 Logos · 3 Réassurance · 4 Appel · 5 Problème en
- *  rangée · 6 Offre · 7 Appel sombre · 8 Déroulé · 9 Garanties · 10 Appel ·
- *  11 Références · 12 Appel · 13 Nos villes · 14 Questions · 15 Maillage ·
- *  16 Appel final
+ *  0 Héros · 1 Chiffres · 13 Nos villes (remonté le 16/10, voir plus bas) ·
+ *  2 Logos · 3 Réassurance · 4 Appel · 5 Problème en rangée · 6 Offre ·
+ *  7 Appel sombre · 8 Déroulé · 9 Garanties · 10 Appel · 11 Références ·
+ *  12 Appel · 14 Questions · 15 Maillage · 16 Appel final
  */
 
 export interface ProprietesPageImplantations {
@@ -261,6 +261,20 @@ export default function PageImplantations({
           <ChiffresVille chiffres={chiffres} />
         </div>
 
+        {c.villes ? (
+          <div className={styles.villesMobile}>
+            {/* Au téléphone, « Nos hubs » de la maquette ; le bloc de bureau s'efface.
+                REMONTÉ SOUS LES CHIFFRES AU BUREAU AUSSI, à la demande de Mehdi
+                le 16/10 (« sur implantations, le bento avec les villes, il faut
+                le remonter ») : la maquette le posait après les références, le
+                téléphone l'avait déjà sous les chiffres (`.villesMobile`). */}
+            <NosHubsMobile villes={c.villes} />
+            <div className={styles.villesBureau}>
+              <NosVilles villes={c.villes} />
+            </div>
+          </div>
+        ) : null}
+
         <LogosClients />
         <Reassurance />
         {bande()}
@@ -274,16 +288,6 @@ export default function PageImplantations({
         ) : (
           contenus
         )}
-
-        {c.villes ? (
-          <div className={styles.villesMobile}>
-            {/* Au téléphone, « Nos hubs » de la maquette ; le bloc de bureau s'efface. */}
-            <NosHubsMobile villes={c.villes} />
-            <div className={styles.villesBureau}>
-              <NosVilles villes={c.villes} />
-            </div>
-          </div>
-        ) : null}
 
         {/* La question finale du corpus, dernière question au téléphone : voir `PageVille`. */}
         {objections ? <QuestionsVille section={objections} derniere={appelDeFin} /> : null}
