@@ -2,6 +2,7 @@ import { useId, type CSSProperties } from "react";
 
 import { LARGEUR, SECTION, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
+import { IconeFleche } from "@/components/site/mobile/BarreCollanteMobile";
 import FermeAuTelephone from "@/components/site/ressource/FermeAuTelephone";
 import stylesOffre from "@/components/site/offre/PageOffre.module.css";
 import type { SectionObjections } from "@/types/contenu";
@@ -171,11 +172,16 @@ export default function QuestionsVille({
                     +
                   </span>
                 </summary>
-                <div className={styles.texteAvecLiens} style={REPONSE}>
+                <div style={REPONSE}>
+                  {/* V3 « Site mobile » (`isBtnQ`) : le lien seul d'un
+                      paragraphe devient le bouton orange à pastille flèche. */}
                   {derniere.bouton ? (
-                    <p>
-                      <a href={derniere.href ?? "#mgx-form"}>{derniere.bouton}</a>
-                    </p>
+                    <a href={derniere.href ?? "#mgx-form"} className={styles.boutonQuestion}>
+                      <span>{derniere.bouton}</span>
+                      <span aria-hidden="true" className={styles.flecheQuestion}>
+                        <IconeFleche />
+                      </span>
+                    </a>
                   ) : null}
                   {derniere.rappel ? <p>{derniere.rappel}</p> : null}
                 </div>

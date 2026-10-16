@@ -18,10 +18,20 @@ import { useEffect } from "react";
  * Monté EN DERNIER dans la page, pour que son effet passe après celui de
  * `SectionPliableMobile`, qui referme les blocs au chargement.
  */
-function ouvreLesAncetres(id: string) {
-  for (let noeud = id ? document.getElementById(id) : null; noeud; noeud = noeud.parentElement) {
+function ouvreLesAncetres(id: string, deplieLesFormulaires: boolean) {
+  const cible = id ? document.getElementById(id) : null;
+  for (let noeud = cible; noeud; noeud = noeud.parentElement) {
     if (noeud instanceof HTMLDetailsElement) noeud.open = true;
   }
+  /* Une cible qui ENVELOPPE un formulaire replié (`#mgx-form` : l'appel
+     final et son repli « Décrire mon besoin en détail ») l'ouvre aussi : le
+     bouton qui y mène montre le formulaire, pas une seconde bascule. Sur
+     demande seulement (villes, départements, hub) : les autres pages qui
+     montent ce composant gardent leur comportement. */
+  if (!deplieLesFormulaires) return;
+  cible?.querySelectorAll<HTMLDetailsElement>("details[data-repli-formulaire]").forEach((repli) => {
+    repli.open = true;
+  });
 }
 
 function idDuFragment(fragment: string): string {
@@ -32,13 +42,18 @@ function idDuFragment(fragment: string): string {
   }
 }
 
-export default function OuvreLaCible() {
+export default function OuvreLaCible({
+  deplieLesFormulaires = false,
+}: {
+  /** Déplie aussi les formulaires repliés DANS la cible (voir plus haut). */
+  deplieLesFormulaires?: boolean;
+}) {
   useEffect(() => {
     const surClic = (evenement: MouseEvent) => {
       const lien = (evenement.target as Element | null)?.closest?.('a[href^="#"]');
-      if (lien) ouvreLesAncetres(idDuFragment(lien.getAttribute("href") ?? ""));
+      if (lien) ouvreLesAncetres(idDuFragment(lien.getAttribute("href") ?? ""), deplieLesFormulaires);
     };
-    const surFragment = () => ouvreLesAncetres(idDuFragment(window.location.hash));
+    const surFragment = () => ouvreLesAncetres(idDuFragment(window.location.hash), deplieLesFormulaires);
     surFragment();
     document.addEventListener("click", surClic, true);
     window.addEventListener("hashchange", surFragment);
@@ -46,6 +61,6 @@ export default function OuvreLaCible() {
       document.removeEventListener("click", surClic, true);
       window.removeEventListener("hashchange", surFragment);
     };
-  }, []);
+  }, [deplieLesFormulaires]);
   return null;
 }

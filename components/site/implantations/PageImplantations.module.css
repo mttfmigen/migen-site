@@ -926,8 +926,11 @@
     gap: 6px;
     padding: 12px;
   }
-  .hubsMobileRegion .hubsMobileZones {
-    padding: 0 12px 12px;
+  /* `:root` : le retrait de 26 px des questions de bureau du gabarit d'offre
+     (`.gabarit details:not([data-pliable-mobile]) > div`) décalait les
+     pastilles de la région ; la V3 les aligne sur son nom. */
+  :root .hubsMobileRegion > .hubsMobileZones {
+    padding: 0 12px 12px !important;
   }
   .hubsMobilePastille {
     display: inline-flex;
@@ -976,16 +979,8 @@
     font: 600 14px var(--ft);
     color: #1c1b19;
   }
-  .hubsMobileRegionDroite {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .hubsMobileRegionCompte {
-    font: 500 11.5px var(--fb);
-    color: #77736d;
-  }
   .hubsMobileChevron {
+    flex: none;
     width: 24px;
     height: 24px;
     border-radius: 999px;

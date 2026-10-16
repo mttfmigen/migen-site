@@ -15,7 +15,6 @@ import stylesVille from "@/components/site/implantation/PageVille.module.css";
 import ProblemeCartes from "@/components/site/implantation/ProblemeCartes";
 import MaillageVille from "@/components/site/implantation/MaillageVille";
 import QuestionsVille from "@/components/site/implantation/QuestionsVille";
-import RepliFormulaireMobile from "@/components/site/implantation/RepliFormulaireMobile";
 import RappelFinalMobile from "@/components/site/mobile/RappelFinalMobile";
 import AppelFinal from "@/components/site/offre/AppelFinal";
 import AppelOffre from "@/components/site/offre/AppelOffre";
@@ -297,13 +296,12 @@ export default function PageImplantations({
         {chemin ? <RappelFinalMobile /> : null}
 
         {/* La capture pose l'ancre `#mgx-form` sur l'appel final, cible de
-            « Poser ma question ». Replié au téléphone : voir `PageVille`. */}
+            « Poser ma question ». Masqué au téléphone à côté de la carte
+            « Être rappelé », rouvert quand on le demande : voir `PageVille`. */}
         <div id={chemin ? undefined : "etre-rappele"} className={stylesVille.appelFinal} style={{ scrollMarginTop: 90 }}>
-          <RepliFormulaireMobile etiquette={c.appelBouton ?? "Parler à un chargé d'affaires"}>
-            <div id="mgx-form" style={{ scrollMarginTop: 90 }}>
-              <AppelFinal question={ctaFinal?.question} formulaire={formulaire} bouton={c.appelBouton} />
-            </div>
-          </RepliFormulaireMobile>
+          <div id="mgx-form" style={{ scrollMarginTop: 90 }}>
+            <AppelFinal question={ctaFinal?.question} formulaire={formulaire} bouton={c.appelBouton} />
+          </div>
         </div>
 
         {maillage ? (
@@ -313,7 +311,7 @@ export default function PageImplantations({
         ) : null}
 
         {/* En dernier : son effet passe après ceux qui replient les blocs. */}
-        <OuvreLaCible />
+        <OuvreLaCible deplieLesFormulaires />
       </main>
     </div>
   );
