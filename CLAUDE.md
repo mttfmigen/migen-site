@@ -12,9 +12,38 @@ habitude de framework.
 
 Migen, maintenance industrielle B2B : déploiement de techniciens
 électromécaniciens, automaticiens et roboticiens sur sites clients.
-**Siège à Limonest**, 1 rue des Vergers, 69760 Limonest.
-**Agence à Écully**, 129 chemin du Moulin Carron, 69130 Écully.
+**Siège à Écully**, 129 chemin du Moulin Carron, 69130 Écully.
+Limonest n'apparaît plus nulle part sur le site.
 
+> **Tranché par Mehdi le 16/10 : « Le siège est à Ecully mets le de
+> partout ».** Cette décision RENVERSE celle du 09/10 (siège à Limonest, agence
+> à Écully), elle-même inverse de celle du 07/10. Il n'y a plus de « bureaux à
+> Écully » distincts du siège : « Lyon (siège à Écully) ».
+>
+> **C'est un écart assumé à la maquette**, qui écrit encore « Siège, 1 rue des
+> Vergers, 69760 Limonest » sur 96 de ses 244 captures. La règle SIÈGE de
+> `lib/decisions-copie.ts` réécrit toute mention de Limonest, au rendu, dans
+> les portes (capture décidée avant comparaison) et dans les fiches du relais.
+> Pied de page, contact, confidentialité, mentions légales, équipe, pages Lyon,
+> FAQ, chapôs, chiffres et JSON-LD de l'Organization (adresse complète)
+> portent Écully. Les portes exigent Écully et refusent « Limonest », témoins
+> d'échec compris, et `scripts/verifie-interdits.mjs` refuse le mot dans le
+> code (`components/`, `app/`, `lib/`, hors commentaires et motifs de règle),
+> les fiches du relais et les fichiers d'import SQL de `supabase/import/`.
+>
+> **Seule exception, les CGV** (`app/cgv/texte.ts`), copie juridique signée
+> reprise mot pour mot : non modifiées. Elles ne nomment ni Limonest ni Écully
+> (« tribunaux du ressort du siège social du Prestataire »).
+>
+> **À confirmer par Mehdi** : l'extrait Pappers du 09/10
+> (`docs/IDENTITE-LEGALE.md`) inscrit encore le siège social à Limonest et
+> Écully comme établissement secondaire ; le SIRET du siège publié est celui
+> de Limonest. Tant que le transfert n'est pas inscrit au RCS, les mentions
+> légales et le registre divergent.
+
+> **CADUC depuis le 16/10, gardé pour l'histoire.** Le bloc qui suit tenait le
+> siège à Limonest et l'agence à Écully.
+>
 > **Tranché par Mehdi le 09/10 : « le siège est à Limonest, l'agence est à
 > Écully ».** Cette décision RENVERSE la sienne du 07/10 et donne raison à
 > l'audit de Nathan Jorez du 09/10, qui signalait « le siège à Écully au lieu de
@@ -39,7 +68,8 @@ Migen, maintenance industrielle B2B : déploiement de techniciens
 
 > **CADUC depuis le 09/10, gardé pour l'histoire.** Les deux paragraphes qui
 > suivent ont tour à tour affirmé Écully, puis Limonest, puis Écully. La
-> décision du 09/10 ci-dessus clôt la série : siège à Limonest, agence à Écully.
+> décision du 09/10 ci-dessus fixait siège à Limonest, agence à Écully ; celle
+> du 16/10, tout en haut, la renverse.
 >
 > **CADUC depuis le 07/10, gardé pour l'histoire.** Cette ligne disait « Écully et Lyon ». Corrigée le 02/10 après vérification,
 > parce que trois sources plus récentes et concordantes disent Limonest : la
@@ -178,8 +208,8 @@ chiffré d'intervention (seul « rappel dans l'heure » est autorisé), aucun pr
 jamais « régie », « intérim », « mise à disposition », « sans engagement »,
 jamais « levier », « clé en main », « sur mesure », « concrètement »,
 « notamment », « incontournable », « découvrez ». Quatre agences (Lyon, siège à
-Limonest et agence à Écully, Montréal, Dubaï, Madrid), aucune autre en France,
-dix hubs de techniciens.
+Écully depuis le 16/10, Montréal, Dubaï, Madrid), aucune autre en France, dix
+hubs de techniciens. « Limonest » n'est plus rendu nulle part (hors CGV).
 
 > **« Aucun prix » NE VEUT PAS DIRE « aucune phrase sur le prix ».** Tranché par
 > Mehdi le 09/10 : « ne donne aucun tarif, dis juste que c'est sur devis ».

@@ -109,15 +109,22 @@ export const metadata: Metadata = {
  * visiteur de quand datent les mentions qu'il lit. À REMETTRE À JOUR À CHAQUE
  * FOIS QUE LE TEXTE CHANGE, et seulement alors.
  */
-const DATE_MISE_A_JOUR = "9 octobre 2026";
+const DATE_MISE_A_JOUR = "16 octobre 2026";
 
 /**
- * Siège social. La maquette l'écrit ainsi, et Mehdi a tranché le 09/10 que le
- * siège est bien à Limonest, l'agence étant à Écully (voir le § 1 de CLAUDE.md,
- * qui renverse sa décision du 07/10). Il n'y a donc PLUS AUCUN écart entre la
- * maquette et cette page sur ce point.
+ * Siège social : ÉCULLY, décision de Mehdi du 16/10 (« Le siège est à Ecully
+ * mets le de partout »), qui renverse celle du 09/10 (Limonest, voir le § 1 de
+ * CLAUDE.md). ÉCART ASSUMÉ À LA MAQUETTE, qui écrit encore « 1 rue des
+ * Vergers, Bâtiment 3, 69760 Limonest, France » : la règle SIÈGE de
+ * `lib/decisions-copie.ts` la réécrit avant comparaison.
+ *
+ * À CONFIRMER PAR MEHDI : l'extrait Pappers du 09/10 (`docs/IDENTITE-LEGALE.md`)
+ * inscrit encore le siège social à Limonest et Écully comme établissement
+ * secondaire. Tant que le transfert n'est pas inscrit au RCS, cette ligne et le
+ * SIRET du siège ci-dessous (celui de l'établissement de Limonest) ne disent
+ * pas la même chose que le registre.
  */
-const SIEGE = "1 rue des Vergers, Bâtiment 3, 69760 Limonest, France";
+const SIEGE = "129 chemin du Moulin Carron, 69130 Écully, France";
 
 /**
  * L'IDENTITÉ LÉGALE, RENSEIGNÉE LE 09/10 ET VÉRIFIÉE DEUX FOIS.

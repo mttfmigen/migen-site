@@ -93,6 +93,9 @@ const INTERDITS = [
   ["Découvrez", "un verbe qui dit ce que la page fait"],
   // Mehdi, 16/10, question 5 : « prix mensuel fixe », « Tu ne mets pas ».
   ["prix mensuel fixe", "ne rien annoncer du prix : le chiffrage se remet avec le devis"],
+  // Mehdi, 16/10 : « Le siège est à Ecully mets le de partout ». Les CGV, copie
+  // juridique signée, n'y sont pas soumises (voir COPIE_JURIDIQUE).
+  ["Limonest", "le siège est à Écully, 129 chemin du Moulin Carron, 69130 Écully"],
   // Typographie.
   ["—", "virgule, parenthèses ou deux-points, jamais de tiret cadratin"],
 ];
@@ -183,6 +186,9 @@ const attendus = [
   [`<p>Tarif : / sur mesure / jour</p>`, ["sur mesure"]],
   [`const t = "Accès (/ sur mesure /)";`, ["sur mesure"]],
   [`<p>Options : /sur mesure/ ou standard</p>`, ["sur mesure"]],
+  // Le siège : Limonest dans une chaîne tombe, dans le seul motif d'une règle non.
+  [`const SIEGE = "1 rue des Vergers, 69760 Limonest";`, ["Limonest"]],
+  [`const R = [[/siège à Limonest et bureaux à Écully/g, () => "siège à Écully"]];`, []],
 ];
 for (const [ligne, attendu] of attendus) {
   const lu = temoin(ligne);
@@ -279,6 +285,25 @@ for (const cheminFiche of FICHES) {
   }
 }
 
+/* LES FICHIERS D'IMPORT SQL, POUR LE SEUL SIÈGE (16/10). Le site ne les rend
+   pas : la fiche du relais l'emporte. Rejoués, ils remettraient l'ancien siège
+   en base. Seul « Limonest » y est cherché : ces fichiers sont l'ancien
+   corpus, que ce contrôle n'a jamais lu pour les autres interdits. */
+const SIEGE_SQL = INTERDITS.filter(([motif]) => motif === "Limonest");
+const IMPORT = join(RACINE, "supabase", "import");
+const FICHIERS_SQL = readdirSync(IMPORT, { recursive: true }).filter((f) => f.endsWith(".sql"));
+for (const f of FICHIERS_SQL) {
+  readFileSync(join(IMPORT, f), "utf8")
+    .split("\n")
+    .forEach((ligne, i) => {
+      for (const [motif, remede] of SIEGE_SQL) {
+        if (ligne.includes(motif)) {
+          trouvailles.push({ ou: `supabase/import/${f}:${i + 1}`, interdit: motif, remede, ligne: ligne.trim().slice(0, 100) });
+        }
+      }
+    });
+}
+
 if (trouvailles.length > 0) {
   for (const t of trouvailles) {
     console.error(`${t.ou}\n  interdit : « ${t.interdit} »\n  à la place : ${t.remede}\n  ${t.ligne}\n`);
@@ -288,4 +313,6 @@ if (trouvailles.length > 0) {
 }
 
 const nbFiches = FICHES.length;
-console.log(`copie conforme aux interdits du contrat (code + ${nbFiches} fiches de contenu)`);
+console.log(
+  `copie conforme aux interdits du contrat (code + ${nbFiches} fiches de contenu, siège dans ${FICHIERS_SQL.length} fichiers SQL d'import)`,
+);

@@ -7,7 +7,7 @@
   "contenu": {
     "gabarit": "offre",
     "mention": "Rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte prend le relais la nuit, le week-end et les jours fériés.",
-    "chapeau": "Vous décrivez la panne en 4 champs. Un technicien vous rappelle dans l'heure et lance le diagnostic à distance. Un intervenant évalué part ensuite sur votre site avec un ordre d'intervention précis.",
+    "chapeau": "Vous décrivez la panne en 6 champs. Un technicien vous rappelle dans l'heure et lance le diagnostic à distance. Un intervenant évalué part ensuite sur votre site avec un ordre d'intervention précis.",
     "actions": [
       {
         "libelle": "Demander une intervention",
@@ -119,7 +119,7 @@
         "etapes": [
           {
             "titre": "Vous décrivez la panne",
-            "texte": "domaine, niveau d'urgence, lieu, créneau. Quatre champs, pas un formulaire de treize lignes."
+            "texte": "six champs, pas un formulaire de treize lignes."
           },
           {
             "titre": "Diagnostic à distance, dans l'heure",

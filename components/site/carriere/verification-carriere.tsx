@@ -25,9 +25,10 @@
  *     entrée du registre des 109 photos sous licence. Deux témoins prouvent
  *     qu'une photo venue d'ailleurs tombe encore.
  *  6. LES INTERDITS du contrat et des règles client sont absents du rendu.
- *     Les décisions de copie (« 10 % des techniciens », siège à Limonest depuis
- *     le 09/10, qui renverse le 07/10) sont
- *     appliquées à la capture avant toute comparaison.
+ *     Les décisions de copie (« 10 % des techniciens », siège à Écully depuis
+ *     le 16/10, qui renverse le 09/10) sont
+ *     appliquées à la capture avant toute comparaison, et « Limonest » est
+ *     refusé au rendu.
  *  7. UN SEUL H1, aucun `href="#"`.
  */
 
@@ -150,6 +151,7 @@ const INTERDITS = [
   "découvrez",
   "réguliers",
   "teamtailor",
+  "limonest",
   "cinq agences",
   "5 agences",
 ] as const;
@@ -241,6 +243,12 @@ assert.throws(
   /interdite/,
   "verifieInterdits a laissé passer un tiret cadratin",
 );
+// Le siège est à Écully depuis le 16/10 : l'adresse de Limonest doit tomber.
+assert.throws(
+  () => verifieInterdits("<p>Siège, 1 rue des Vergers, 69760 Limonest</p>", "preuve"),
+  /limonest/,
+  "verifieInterdits a laissé passer Limonest",
+);
 {
   // Une donnée faussée d'un seul mot doit faire échouer le mot pour mot.
   const faussee: ContenuHubCarriere = {
@@ -253,7 +261,7 @@ assert.throws(
     "une donnée faussée est passée : le mot pour mot ne contrôle rien",
   );
 }
-console.log("0 · le contrôle sait échouer : copie absente, dessin absent, tiret cadratin et donnée faussée refusés.");
+console.log("0 · le contrôle sait échouer : copie absente, dessin absent, tiret cadratin, Limonest et donnée faussée refusés.");
 
 /* --------------------------------------------- la page, telle que servie */
 

@@ -19,9 +19,9 @@
  * TROIS ASSERTIONS ONT ÉTÉ RETOURNÉES LE 09/10, et chacune dit pourquoi à
  * l'endroit où elle se trouve. Elles encodaient des règles devenues fausses :
  *
- *   · le siège à Écully. La décision du 07/10 est renversée par celle du 09/10
- *     (§ 1 de CLAUDE.md) : le siège est à Limonest, l'agence est à Écully.
- *     L'assertion qui REFUSAIT « Limonest » refusait donc la vérité.
+ *   · le siège. Retournée une seconde fois le 16/10 : Mehdi a décidé « Le siège
+ *     est à Ecully mets le de partout » (§ 1 de CLAUDE.md), ce qui renverse le
+ *     09/10 (Limonest). La page exige Écully et refuse « Limonest ».
  *   · « au moins douze à compléter ». Elle exigeait la présence des étiquettes
  *     de gabarit que l'audit de Nathan du 09/10 demande justement de retirer.
  *     Elle est remplacée par son inverse, DOUBLÉ d'un refus de toute donnée
@@ -42,6 +42,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { TELEPHONE_SITE } from "@/components/site/entete-donnees";
 import { numeroLpPermis } from "@/lib/lp/adresses";
 import MentionsLegales, { metadata } from "@/app/mentions-legales/page";
+import { appliqueDecisions } from "@/lib/decisions-copie";
 
 const html = renderToStaticMarkup(<MentionsLegales />);
 
@@ -166,25 +167,29 @@ function paragrapheMaquette(marqueur: string): string {
   }
 }
 
-/* RETOURNÉE LE 09/10. LE SIÈGE EST À LIMONEST, L'AGENCE EST À ÉCULLY.
-   Décision de Mehdi du 09/10 (§ 1 de CLAUDE.md), qui RENVERSE la sienne du 07/10
-   et donne raison à l'audit de Nathan. Les trois assertions précédentes
-   exigeaient Écully et REFUSAIENT « Limonest » : elles refusaient donc à la fois
-   la vérité et la maquette, qui écrit Limonest depuis le début. Il n'y a plus
-   aucune divergence à gérer ici, les deux côtés portent le même texte. */
-const SIEGE = "1 rue des Vergers, Bâtiment 3, 69760 Limonest, France";
+/* RETOURNÉE LE 16/10. LE SIÈGE EST À ÉCULLY, décision de Mehdi (« Le siège est
+   à Ecully mets le de partout », § 1 de CLAUDE.md) qui renverse celle du 09/10.
+   LA MAQUETTE ET LE RENDU DIVERGENT VOLONTAIREMENT : la maquette écrit encore
+   Limonest, et la règle SIÈGE de `lib/decisions-copie.ts` la réécrit. Les deux
+   côtés sont vérifiés : le jour où la maquette est corrigée, l'exception le dit. */
+const SIEGE_MAQUETTE = "1 rue des Vergers, Bâtiment 3, 69760 Limonest, France";
+const SIEGE = "129 chemin du Moulin Carron, 69130 Écully, France";
 assert.ok(
-  texteMaquette.includes(SIEGE),
-  `la maquette n'écrit plus « ${SIEGE} » : la relire avant de changer le rendu`,
+  texteMaquette.includes(SIEGE_MAQUETTE),
+  `la maquette n'écrit plus « ${SIEGE_MAQUETTE} » : l'écart du 16/10 n'a plus d'objet, le relire`,
 );
-assert.ok(
-  texteRendu.includes(`Siège social : ${SIEGE}`),
-  "le siège de Limonest (décision de Mehdi du 09/10) n'est pas rendu",
-);
-assert.ok(
-  !texteRendu.includes("Moulin Carron") && !texteRendu.includes("Écully"),
-  "Écully est rendu sur les mentions légales : c'est l'agence, le siège est à Limonest (décision du 09/10)",
-);
+assert.equal(appliqueDecisions(SIEGE_MAQUETTE), SIEGE, "la règle SIÈGE ne réécrit plus l'adresse de la maquette");
+const controleSiege = (texte: string) => {
+  assert.ok(texte.includes(`Siège social : ${SIEGE}`), "le siège d'Écully (décision de Mehdi du 16/10) n'est pas rendu");
+  assert.ok(
+    !/Limonest|rue des Vergers/.test(texte),
+    "Limonest est rendu sur les mentions légales : le siège est à Écully (décision du 16/10)",
+  );
+};
+controleSiege(texteRendu);
+// Témoins : l'ancienne adresse remise, ou Limonest ajouté, font tomber la porte.
+assert.throws(() => controleSiege(texteRendu.replace(SIEGE, SIEGE_MAQUETTE)), "le témoin du siège de Limonest ne tombe pas");
+assert.throws(() => controleSiege(`${texteRendu} Limonest`), "le témoin de « Limonest » ajouté ne tombe pas");
 
 // Le numéro du site, jamais celui de la landing page.
 assert.ok(html.includes("04 78 33 72 05"), "numéro du site absent");
@@ -355,11 +360,13 @@ assert.equal(
   "le capital social rendu n'est pas celui de docs/IDENTITE-LEGALE.md",
 );
 
-// La source doit confirmer le siège, sinon la décision du 09/10 n'est plus
-// adossée à une pièce et l'adresse publiée redevient une affirmation.
+// La source doit porter l'adresse publiée, sinon elle redevient une simple
+// affirmation : l'extrait Pappers du 09/10 la donne comme établissement
+// (Bâtiment B, 129 chemin du Moulin Carron, 69130 Écully), et la note du 16/10
+// y consigne la décision de Mehdi d'en faire le siège sur le site.
 assert.ok(
-  IDENTITE.includes("1 rue des Vergers, 69760 Limonest"),
-  "docs/IDENTITE-LEGALE.md ne confirme plus le siège de Limonest",
+  /129 chemin du Moulin Carron,\s+69130 Écully/.test(IDENTITE) && IDENTITE.includes("16/10"),
+  "docs/IDENTITE-LEGALE.md ne porte plus l'adresse d'Écully ni la décision du 16/10",
 );
 
 /* AUCUN IDENTIFIANT HORS SOURCE. Tout groupe d'au moins neuf chiffres rendu par

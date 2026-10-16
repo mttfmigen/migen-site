@@ -147,14 +147,13 @@ const INTERDITS: [RegExp, string][] = [
   [/régie|intérim|mise à disposition|sans engagement|clé en main|sur mesure|\blevier|concrètement|notamment|incontournable|découvrez/iu, "vocabulaire proscrit"],
   [/\b(?:5|cinq) agences/iu, "quatre agences"],
   [/\b(?:clients|80)\s+r[ée]guliers\b/iu, "« +200 clients », jamais « réguliers »"],
-  /* PLUS D'INTERDIT SUR « Limonest », ET C'EST UNE CORRECTION DU 09/10.
-     Cette porte refusait le mot, au motif que le siège serait à Écully. La
-     décision de Mehdi du 09/10 dit l'inverse, « le siège est à Limonest,
-     l'agence est à Écully », et elle REVIENT à la maquette : la capture de
-     cette page écrit « Agences, Lyon (siège à Limonest et bureaux à Écully) ».
-     La règle interdisait donc le texte de la référence. C'est l'inverse qui
-     est devenu l'interdit, juste en dessous. */
-  [/si[èe]ge\s+(?:social\s+)?[àa]\s+[ÉE]cully/iu, "le siège est à Limonest, Écully est l'agence (décision du 09/10)"],
+  /* « Limonest » REDEVIENT UN INTERDIT LE 16/10. Décision de Mehdi, « Le siège
+     est à Ecully mets le de partout », qui renverse celle du 09/10 (siège à
+     Limonest, agence à Écully). La capture de cette page écrit encore
+     « Agences, Lyon (siège à Limonest et bureaux à Écully) » ; la règle SIÈGE
+     de lib/decisions-copie.ts la réécrit en « Lyon (siège à Écully) » avant
+     comparaison, et c'est ce que la fiche porte. */
+  [/Limonest/u, "le siège est à Écully (décision du 16/10)"],
   [/postuler sur Teamtailor/iu, "« postuler sur Teamtailor »"],
 ];
 
@@ -394,7 +393,7 @@ const ALTERATIONS: [string, Page, RegExp, Retouche?][] = [
   ["« Nos villes » retiré", altere((p) => delete p.contenu.villes), /absent du rendu : « Sept hubs/],
   ["une phrase inventée", altere((p) => (p.contenu.chapeau += " Nos techniciens sont les meilleurs.")), /texte rendu absent de la capture/],
   ["la bande de chiffres de l'ancien dessin", altere((p) => (p.contenu.chiffres = [{ valeur: "4", libelle: "agences" }, { valeur: "1 h", libelle: "pour un premier rappel" }])), /« \+200 » est dans la capture/],
-  ["le siège déplacé à Écully, contre la décision du 09/10", altere((p) => (p.contenu.chiffres![0].libelle = "Agences, Lyon (siège à Écully), Montréal, Dubaï, Madrid")), /interdit rendu \(le siège est à Limonest/],
+  ["le siège remis à Limonest, contre la décision du 16/10", altere((p) => (p.contenu.chiffres![0].libelle = "Agences, Lyon (siège à Limonest et bureaux à Écully), Montréal, Dubaï, Madrid")), /interdit rendu \(le siège est à Écully/],
   ["« candidats » remis là où la décision dit « techniciens »", altere((p) => (p.contenu = JSON.parse(JSON.stringify(p.contenu).replaceAll("techniciens retenus", "candidats retenus")))), /texte rendu absent de la capture/],
   ["un faux trou", altere((p) => p.trous.push({ ligne: "Hub", pourquoi: "essai" })), /trou déclaré mais rendu/],
   ["un lien inventé", altere((p) => (p.contenu.villes!.hubs[0].href = "/implantations/villeurbanne/")), /lien absent de la capture/],

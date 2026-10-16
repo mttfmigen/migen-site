@@ -44,6 +44,7 @@ import { fileURLToPath } from "node:url";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import { TELEPHONE_LP, TELEPHONE_SITE } from "@/components/site/entete-donnees";
+import { appliqueDecisions } from "@/lib/decisions-copie";
 import { FINALITES, LIBELLES, LIEN_CONFIDENTIALITE } from "@/lib/consentement";
 import { numeroLpPermis } from "@/lib/lp/adresses";
 import PolitiqueConfidentialite, {
@@ -128,17 +129,24 @@ function styleMaquette(cle: string): string {
 
 // ------------------------------------------------- le texte porté mot pour mot
 
-/* L'adresse du siège. PLUS AUCUNE DIVERGENCE DEPUIS LE 09/10 : Mehdi a tranché
-   que le siège est à Limonest, ce que la maquette écrivait déjà. Les deux
-   côtés doivent donc porter le même texte, et c'est ce que vérifient les deux
-   assertions ci-dessous. La troisième, qui refusait « Limonest » au nom de la
-   décision du 07/10, est supprimée : elle disait l'inverse de ce qui est vrai. */
-const ADRESSE_MAQUETTE = "migen©, 1 rue des Vergers, Bâtiment 3, 69760 Limonest.";
+/* L'adresse du siège. LA MAQUETTE ET LE RENDU DIVERGENT VOLONTAIREMENT DEPUIS
+   LE 16/10 : Mehdi a décidé « Le siège est à Ecully mets le de partout », qui
+   renverse le 09/10 (Limonest). La maquette écrit encore Limonest ; la règle
+   SIÈGE de lib/decisions-copie.ts la réécrit, et c'est la phrase DÉCIDÉE qui
+   est exigée au rendu. Les deux côtés sont vérifiés : le jour où la maquette
+   est corrigée, l'exception le dit. */
+const ADRESSE_MAQUETTE_BRUTE = "migen©, 1 rue des Vergers, Bâtiment 3, 69760 Limonest.";
 assert.equal(
   phraseMaquette("rue des Vergers"),
-  ADRESSE_MAQUETTE,
-  "la maquette n'écrit plus cette adresse : la relire avant de changer le rendu",
+  ADRESSE_MAQUETTE_BRUTE,
+  "la maquette n'écrit plus cette adresse : l'écart du 16/10 n'a plus d'objet, le relire",
 );
+const ADRESSE_MAQUETTE = appliqueDecisions(ADRESSE_MAQUETTE_BRUTE);
+assert.equal(ADRESSE_MAQUETTE, "migen©, 129 chemin du Moulin Carron, 69130 Écully.", "la règle SIÈGE ne réécrit plus l'adresse");
+const controleSiege = (t: string) =>
+  assert.ok(!/Limonest|rue des Vergers/.test(t), "Limonest rendu : le siège est à Écully depuis le 16/10");
+controleSiege(texteRendu);
+assert.throws(() => controleSiege(`${texteRendu} ${ADRESSE_MAQUETTE_BRUTE}`), "le témoin de Limonest ne tombe pas");
 /* 09/10 : LE RESPONSABLE DU TRAITEMENT EST NOMMÉ PAR SA DÉNOMINATION SOCIALE.
    La maquette écrit « migen© », une marque ; l'article 13 du RGPD demande
    l'identité du responsable, et une marque n'est pas une personne morale.

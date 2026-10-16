@@ -193,8 +193,15 @@ const BLOCS: readonly Bloc[] = [
 const html = BLOCS.map((b) => b.html).join("");
 const rendu = normalise(html);
 // Les décisions de copie (lib/decisions-copie.ts) sont appliquées à la
-// maquette avant toute comparaison : « 10 % des techniciens retenus ».
+// maquette avant toute comparaison : « 10 % des techniciens retenus », et
+// depuis le 16/10 le siège à Écully.
 const source = normalise(appliqueDecisions(maquette));
+/* L'écart du 16/10 est tenu des deux côtés : la maquette brute écrit encore
+   Limonest. Le jour où elle ne l'écrit plus, la règle SIÈGE n'a plus d'objet. */
+assert.ok(
+  normalise(maquette).includes("1 rue des Vergers, Bâtiment 3, 69760 Limonest"),
+  "la maquette n'écrit plus le siège de Limonest : l'écart du 16/10 n'a plus d'objet, le relire",
+);
 
 // ═══════════════════════════════════════════════ 1. RYTHME VERTICAL (mesuré)
 
@@ -498,7 +505,7 @@ const CORRIGE: readonly [string, string][] = [
   ["Cinq agences en France, deux à l'international.", "Cinq agences en France"],
   ["48 h", "48 h"],
   ["3 sem.", "3 sem."],
-  ["Siège — Limonest", "Siège — Limonest"],
+  ["Siège — Écully", "Siège — Écully"],
   ["réponse sous 48 h ouvrées", "sous 48 h"],
   /* LE MOIGNON. La maquette écrit « Quatre écrans, réponse sous 48 h
      ouvrées. » La purge du seul « 48 h » laissait « Quatre écrans. » en
@@ -513,15 +520,10 @@ const CORRIGE: readonly [string, string][] = [
  * Les écarts à la maquette qui ne sont PAS arbitrés, verrouillés pour qu'ils
  * ne dérivent pas en silence. Ils attendent Mehdi, ils ne s'effacent pas.
  *
- *   · « Bâtiment 3 » : la maquette écrit « 1 rue des Vergers, Bâtiment 3,
- *     69760 Limonest », le site et `CLAUDE.md` écrivent l'adresse sans le
- *     bâtiment. Une adresse postale est une donnée du client : on la signale,
- *     on ne la réécrit pas.
  *   · la ligne de détail des hubs français, partie avec sa rangée (Paris,
  *     Strasbourg, Nantes et Toulouse sont des hubs, pas des agences).
  */
 const NON_ARBITRE: readonly [string, string][] = [
-  ["1 rue des Vergers, Bâtiment 3, 69760 Limonest", "Bâtiment 3"],
   [
     "Essonne · Bas-Rhin · Loire-Atlantique · Haute-Garonne",
     "Essonne · Bas-Rhin",
@@ -578,18 +580,24 @@ function verifieInterdits(texteRendu: string): void {
 verifieInterdits(rendu);
 
 /* Les quatre agences du contrat, et aucune autre.
-   LE SIÈGE EST À LIMONEST, L'AGENCE EST À ÉCULLY : décision de Mehdi du 09/10,
-   qui renverse la sienne du 07/10 et donne raison à l'audit de Nathan. Cette
-   assertion a donc changé de sens deux fois en trois jours ; elle porte
-   désormais LES DEUX, parce que la page doit nommer le siège ET l'agence, et
-   que vérifier l'absence de l'un des deux était justement ce qui a laissé
-   passer l'erreur. */
-assert.ok(rendu.includes("Limonest"), "le siège de Limonest doit être nommé");
-assert.ok(rendu.includes("Écully"), "l'agence d'Écully doit être nommée");
-assert.ok(
-  rendu.includes("1 rue des Vergers, 69760 Limonest"),
-  "l'adresse du siège doit être celle du contrat",
-);
+   LE SIÈGE EST À ÉCULLY : décision de Mehdi du 16/10 (« Le siège est à Ecully
+   mets le de partout »), qui renverse celle du 09/10 (siège à Limonest, agence
+   à Écully). Cette assertion a changé de sens trois fois : elle exige le siège
+   d'Écully, UNE seule fois (il n'y a plus d'agence d'Écully distincte), et
+   refuse Limonest. */
+function verifieSiege(texteRendu: string): void {
+  assert.ok(
+    texteRendu.includes("Siège, Écully") && texteRendu.includes("129 chemin du Moulin Carron, 69130 Écully"),
+    "le siège d'Écully et son adresse doivent être nommés",
+  );
+  assert.equal(
+    texteRendu.split("129 chemin du Moulin Carron").length - 1,
+    1,
+    "l'adresse d'Écully doit être rendue une seule fois : siège et agence ne font plus qu'un",
+  );
+  assert.ok(!/Limonest|rue des Vergers/.test(texteRendu), "Limonest rendu : le siège est à Écully depuis le 16/10");
+}
+verifieSiege(rendu);
 assert.ok(
   rendu.includes("Dubaï") && rendu.includes("Montréal") && rendu.includes("Madrid"),
 );
@@ -766,7 +774,15 @@ controle("délai chiffré « 48 h » rendu", () =>
   verifieEcarts(CORRIGE, source, `${rendu} 48 h`),
 );
 controle("tiret cadratin rendu", () =>
-  verifieInterdits(`${rendu} Siège — Limonest`),
+  verifieInterdits(`${rendu} Siège — Écully`),
 );
 
-console.log("\nLa porte sait échouer : 12 contrôles négatifs tenus.");
+// 12. Le siège remis à Limonest, ou l'agence d'Écully doublée à côté du siège.
+controle("siège remis à Limonest", () =>
+  verifieSiege(rendu.replace("129 chemin du Moulin Carron, 69130 Écully", "1 rue des Vergers, 69760 Limonest")),
+);
+controle("agence d'Écully remise à côté du siège", () =>
+  verifieSiege(`${rendu} Agence, Écully 129 chemin du Moulin Carron, 69130 Écully`),
+);
+
+console.log("\nLa porte sait échouer : 14 contrôles négatifs tenus.");

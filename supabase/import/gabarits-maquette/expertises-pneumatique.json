@@ -118,7 +118,7 @@
         "etapes": [
           {
             "titre": "Vous décrivez la situation",
-            "texte": "Équipement, symptôme, réglage réseau en place, contexte d'apparition. Quatre champs, ou un appel par téléphone."
+            "texte": "Équipement, symptôme, réglage réseau en place, contexte d'apparition. Un formulaire de 6 champs, ou un appel par téléphone."
           },
           {
             "titre": "Un technicien vous rappelle dans l'heure",

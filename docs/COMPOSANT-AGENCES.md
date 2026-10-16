@@ -82,6 +82,11 @@ Texte relevé dans `maquette/rendu/a-propos--equipe.html`, section
 > Hubs de techniciens en France : Paris, Lille, Marseille, Toulouse, Lyon, Metz,
 > Strasbourg, Bordeaux, Dijon, Nantes.
 
+Depuis le 16/10, le site rend « Lyon, Siège · Écully » à la place de « Siège ·
+Limonest et Écully » : le siège est à Écully, décision de Mehdi (« Le siège est
+à Ecully mets le de partout »), règle SIÈGE de `lib/decisions-copie.ts`. C'est
+un écart assumé à la référence.
+
 Donc **la référence elle-même dit quatre agences et dix hubs**, et nomme les
 trois agences internationales. Elle ne contient aucune occurrence de
 « Moulin Carron ».
@@ -91,7 +96,7 @@ trois agences internationales. Elle ne contient aucune occurrence de
 | Donnée | Où, dans le site | État |
 |---|---|---|
 | « Quatre agences, dix hubs de techniciens. » | `components/site/contact/Agences.tsx`, `PiedDePage.tsx`, `carriere/ConditionsCarriere.tsx` | rendu |
-| Les 4 agences avec `Lyon, Siège · Limonest et Écully`, `Montréal`, `Dubaï`, `Madrid` | `components/site/equipe/equipe-donnees.ts`, constante `AGENCES` | rendu, mot pour mot |
+| Les 4 agences avec `Lyon, Siège · Écully`, `Montréal`, `Dubaï`, `Madrid` | `components/site/equipe/equipe-donnees.ts`, constante `AGENCES` | rendu, mot pour mot sauf le siège (Écully depuis le 16/10, voir plus haut) |
 | Les 10 hubs nommés | `components/site/equipe/equipe-donnees.ts`, constante `HUBS` | rendu, mot pour mot |
 | Les 10 hubs, variante offres | `components/site/offre/Reassurance.tsx` (« Les dix hubs, dans l'ordre de la capture ») | rendu |
 | Adresses postales, rayon, rôle des 4 agences, 2 bureaux internationaux, 3 chiffres | `supabase/import/gabarits/implantations.json` | servi |

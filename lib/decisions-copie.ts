@@ -12,10 +12,10 @@
  * là où il désigne celui qui postule (pages métier), un soumissionnaire (cahier
  * des charges) ou le marché de l'emploi.
  *
- * 07/10, « le siège est à Écully » : la maquette le place encore à Limonest.
+ * 16/10, « le siège est à Écully » : la maquette le place encore à Limonest.
  * Seule la mention de Limonest change ; « siège à Lyon », « siège lyonnais »
  * restent, Écully étant dans la métropole lyonnaise et Lyon l'agence du siège
- * selon le README.
+ * selon le README. Voir la règle SIÈGE plus bas, et CLAUDE.md § 1.
  */
 
 type Regle = [RegExp, (...groupes: string[]) => string];
@@ -29,33 +29,41 @@ const SELECTION: Regle[] = [
   [/\b([Cc]haque\s+)candidat\b(?=[^.;]*?(?:10\s?%|retenu|sélection|évalu|entretien|épreuve))/g, (_, debut) => `${debut}technicien`],
 ];
 
-/* 09/10, LE SIÈGE REVIENT À LIMONEST, L'AGENCE RESTE À ÉCULLY.
-   Décision de Mehdi, qui RENVERSE celle du 07/10 et donne raison à l'audit de
-   Nathan du 09/10 (« le siège à Écully au lieu de Limonest »).
+/* 16/10, LE SIÈGE EST À ÉCULLY, ET LIMONEST DISPARAÎT DU SITE.
+   Décision de Mehdi : « Le siège est à Ecully mets le de partout ». Siège :
+   129 chemin du Moulin Carron, 69130 Écully. Elle RENVERSE celle du 09/10
+   (siège à Limonest, agence à Écully), elle-même inverse de celle du 07/10.
+   Il n'y a plus de « bureaux à Écully » distincts du siège.
 
-   Le 07/10, sept règles réécrivaient ici « Limonest » en « Écully » sur tout le
-   site, pied de page compris. Elles sont retirées : la maquette écrit
-   elle-même « Siège, 1 rue des Vergers, 69760 Limonest » sur 96 de ses 244
-   captures, et « Lyon — Siège · Limonest et Écully » sur la page Équipe.
-   Revenir à Limonest, c'est donc revenir à la maquette, pas s'en écarter, et
-   c'est pour cela qu'il n'y a plus aucune règle à appliquer : le texte de la
-   capture passe tel quel.
+   C'EST UN ÉCART ASSUMÉ À LA MAQUETTE : elle écrit « Siège, 1 rue des Vergers,
+   69760 Limonest » sur 96 de ses 244 captures, « Siège · Limonest et Écully »
+   sur la page Équipe, « siège à Limonest et bureaux à Écully » dans le chapô
+   de Lyon. Les règles réécrivent donc la capture avant comparaison, et les
+   producteurs (`scripts/applique-decisions-copie.ts`) la donnée, pour que la
+   décision soit vérifiée des deux côtés.
 
-   Ce qui reste à la main, parce que la maquette ne le dit nulle part : Écully
-   n'est plus « le siège » mais « l'agence ». Les trois endroits concernés sont
-   le pied de page, la liste des agences de la page Contact et la politique de
-   confidentialité, tous trois sans capture de maquette pour cette partie. */
+   Les formes longues passent AVANT la forme nue, sans quoi « siège à Limonest
+   et bureaux à Écully » deviendrait « siège à Écully et bureaux à Écully ».
+   La dernière règle prend tout « Limonest » qui resterait : le site ne le rend
+   plus nulle part. Seule exception, les CGV (`app/cgv/texte.ts`), copie
+   juridique signée qui ne passe pas par ici. */
 const SIEGE: Regle[] = [
-  /* LA SEULE RÈGLE QUI RESTE, et c'est que LA MAQUETTE SE CONTREDIT. Son pied
-     de page écrit « Siège, 1 rue des Vergers, 69760 Limonest » sur 96 captures,
-     mais le bloc « Nos informations pratiques » de /carriere/ écrit « Siège,
-     Chemin du Moulin Carron, bâtiment principal, 69130 Écully ». Les deux ne
-     peuvent pas être vrais. La décision du 09/10 tranche pour Limonest, donc
-     cette seule phrase est réécrite avant comparaison. */
+  [/1 rue des Vergers,(?: Bât(?:iment|\.) 3)?[ ,—]*69760 Limonest/g, () => "129 chemin du Moulin Carron, 69130 Écully"],
+  /* /carriere/, « Nos informations pratiques » : la seule capture qui plaçait
+     déjà le siège à Écully, sans numéro de voie. L'adresse est rendue entière. */
   [
     /Chemin du Moulin Carron, bâtiment principal, 69130 Écully, près de Lyon\./g,
-    () => "1 rue des Vergers, 69760 Limonest, près de Lyon.",
+    () => "129 chemin du Moulin Carron, 69130 Écully, près de Lyon.",
   ],
+  [/siège à Limonest et bureaux à Écully/g, () => "siège à Écully"],
+  [/\(siège, (?:à )?Limonest et Écully\)/g, () => "(siège à Écully)"],
+  [/(siège est à Lyon), sur Limonest et Écully,/g, (_, debut) => `${debut}, à Écully,`],
+  [/(siège est à Lyon) \(Limonest, bureaux à Écully\)/g, (_, debut) => `${debut} (Écully)`],
+  [/(siège est à Lyon), avec deux implantations à Limonest et Écully, et (trois autres agences)/g, (_, debut, fin) => `${debut}, à Écully, avec ${fin}`],
+  [/depuis Limonest, avec des bureaux à Écully/g, () => "depuis son siège d\u2019Écully"],
+  [/Limonest (?:et|\/) Écully/g, () => "Écully"],
+  [/\b([Dd])e Limonest\b/g, (_, d) => `${d}\u2019Écully`],
+  [/Limonest/g, () => "Écully"],
 ];
 
 /* 08/10, LES PHOTOS DE VILLE SOUS LICENCE. Décision de Mehdi, portée au relais :
@@ -582,7 +590,30 @@ const PRIX_MENSUEL: Regle[] = [
   [/,? pour un prix mensuel fixe/g, () => ""],
 ];
 
-const REGLES = [...SELECTION, ...SIEGE, ...PHOTOS_VILLE, ...TELEPHONE, ...ORTHUS, ...META_REDACTION, ...NOTAMMENT, ...ASTREINTE, ...NOUS_REJOINDRE, ...TOURNAIRE, ...LEVIER, ...MONTANTS, ...PRIX_MENSUEL];
+/* 16/10, LE FORMULAIRE A SIX CHAMPS, PAS QUATRE. Décision de Mehdi : il garde
+   le formulaire de contact à six champs (société, nom, prénom, courriel,
+   téléphone, message). C'est le formulaire principal des pages qui
+   l'annoncent, pas leur seul : la plupart portent aussi, en tête, le panneau
+   « Être rappelé dans l'heure » à trois champs (société, téléphone, courriel),
+   qui ne part pas seul et reporte sa saisie dans le principal
+   (`components/site/offre/generique/RappelExpress.tsx`). L'annonce compte
+   donc les champs du principal. La maquette
+   annonçait « 4 champs », « quatre champs », et listait parfois des champs que
+   le formulaire n'a pas (« Site, équipement, symptôme, téléphone », « domaine,
+   niveau d'urgence, lieu, créneau », « un choix d'intention »). Le compte est
+   rendu juste, et une liste fausse est remplacée par la vraie ou retirée :
+   rien d'autre n'est rédigé. Les formes longues passent avant les nues. */
+const CHAMPS: Regle[] = [
+  [/Vous appelez ou remplissez 4 champs/g, () => "Vous appelez ou remplissez le formulaire : 6 champs"],
+  [/Site, équipement, symptôme, téléphone\. Rien de plus\./g, () => "Société, nom, prénom, courriel, téléphone, message. Rien de plus."],
+  [/([Dd])omaine, niveau d['’]urgence, lieu, créneau\. Quatre champs, pas/g, (_, d) => `${d === "D" ? "S" : "s"}ix champs, pas`],
+  [/Quatre champs( suffisent)?, ou un appel par téléphone/g, (_, s) => `Un formulaire de 6 champs${s ? " suffit" : ""}, ou un appel par téléphone`],
+  [/\b4 champs et un choix d['’]intention/g, () => "6 champs"],
+  [/\b([Qq])uatre champs\b/g, (_, q) => `${q === "Q" ? "S" : "s"}ix champs`],
+  [/\b4 champs\b/g, () => "6 champs"],
+];
+
+const REGLES = [...SELECTION, ...SIEGE, ...PHOTOS_VILLE, ...TELEPHONE, ...ORTHUS, ...META_REDACTION, ...NOTAMMENT, ...ASTREINTE, ...NOUS_REJOINDRE, ...TOURNAIRE, ...LEVIER, ...MONTANTS, ...PRIX_MENSUEL, ...CHAMPS];
 
 /** Les règles qui s'appliquent à cette page : les globales, plus les siennes. */
 function reglesDe(page?: string): Regle[] {
