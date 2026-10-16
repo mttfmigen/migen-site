@@ -14,7 +14,14 @@ import m from "./AccueilMobile.module.css";
  * largeur : les retraits de copie déjà déclarés dans `bento-besoins-donnees`
  * (« régie », « clé en main », délais chiffrés) valent ici aussi. La V3 écrit
  * « Cadre : Clé en main · Délai : Étude sous 3 semaines » : rien n'en est
- * repris, seules les lignes que le site garde sont montrées.
+ * repris.
+ *
+ * ET AUCUNE VALEUR CHIFFRÉE. Le pavage de bureau garde ses lignes « Durée »
+ * (« 2 à 8 semaines », « 3 à 18 mois », « 12 mois reconductibles »…), et ne
+ * les montre qu'au clic, hors du HTML servi. Ici les sept réponses sont dans le
+ * HTML : une valeur qui porte un chiffre n'est pas montrée (règle « aucun
+ * délai chiffré »), « Selon votre besoin » et « Durée de l'arrêt » restent.
+ * Garder ou non ces durées au bureau reste une décision de Mehdi.
  *
  * Le dessin vient du motif partagé de la maquette mobile (`data-faq-liste`,
  * `data-faq-surtitre`, `data-faq-titre`, `app/globals.css`) ; le `name` commun
@@ -36,7 +43,7 @@ export default function BesoinsMobile({ besoins }: { besoins: readonly Besoin[] 
               ["Durée", besoin.duree],
             ] as const
           )
-            .filter(([, valeur]) => valeur)
+            .filter(([, valeur]) => valeur && !/\d/.test(valeur))
             .map(([cle, valeur]) => `${cle} : ${valeur}`)
             .join(" · ");
           return (

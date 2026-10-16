@@ -73,12 +73,11 @@ const FULL_SERVICE: OffreAccueil = {
   action: "Confier ma maintenance →",
 };
 
-/* 03, Zéro arrêt. La maquette écrit « La maintenance qui ne touche jamais à
-   votre production : entretien le samedi, dépannage la nuit, prix mensuel
-   fixe. Trois formules, sur devis. » La première phrase annonce un prix :
-   interdite, elle est RETIRÉE entière (pas raccourcie), la seconde reste mot
-   pour mot. Écart déclaré, et la V3 mobile écrit la même phrase : elle n'en
-   est pas reprise non plus. */
+/* 03, Zéro arrêt. La maquette ouvre la carte sur une phrase qui annonce un
+   prix, puis « Trois formules, sur devis. ». La première est interdite : elle
+   est RETIRÉE entière (pas raccourcie, et pas recopiée ici), la seconde reste
+   mot pour mot. Écart déclaré, et la V3 mobile écrit la même phrase : elle
+   n'en est pas reprise non plus. */
 const ZERO_ARRET: OffreAccueil = {
   cle: "zeroArret",
   numero: "03",
@@ -190,8 +189,8 @@ const TEXTE_CARTE = {
  * l'encart de la photo (le dessin de bureau) et la bascule de repli (le titre
  * sur téléphone), et `replis-accueil.module.css` n'en montre jamais qu'un.
  */
-const SURTITRE_TEXTE = "Six façons de travailler ensemble";
-const TITRE_TEXTE = "De la présence continue à l’étude et aux travaux.";
+export const SURTITRE_TEXTE = "Six façons de travailler ensemble";
+export const TITRE_TEXTE = "De la présence continue à l’étude et aux travaux.";
 
 export const GARANTIES_RESIDENCE = [
   "Vous validez chaque technicien avant son arrivée",

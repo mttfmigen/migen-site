@@ -1,8 +1,14 @@
 /**
  * LA RÉPARTITION DES VILLES ENTRE HUBS ET RÉGIONS, de la maquette mobile v2
- * (dc.html L440 à 447). Module NEUTRE, sorti de `NosHubsMobile.tsx` le 16/10 :
- * l'accueil l'emploie aussi, et l'importer depuis le composant aurait chargé
- * la feuille de `/implantations/` sur l'accueil.
+ * (dc.html L440 à 447), pour « Des hubs partout en France » de l'accueil
+ * mobile (`HubsMobileAccueil`).
+ *
+ * ponytail: COPIE CONFORME de la fonction privée de
+ * `implantations/NosHubsMobile.tsx`, que ce chantier n'a pas le droit de
+ * toucher (un autre lot peut travailler sur /implantations/). Les deux pages
+ * montrent les mêmes hubs : quand les lots seront fusionnés, `NosHubsMobile`
+ * importera ce module et sa copie disparaîtra. Module neutre : l'importer
+ * depuis le composant aurait chargé la feuille de /implantations/ ici.
  */
 import type { ZoneHubLocal } from "@/types/implantation";
 import type { NosVilles as DonneesNosVilles } from "@/types/implantations";
@@ -39,10 +45,6 @@ function villeDuNom(villes: readonly ZoneHubLocal[], nom: string): ZoneHubLocal 
  * Comté : toutes leurs villes sont sous Metz et Dijon). Une zone de la donnée
  * que la maquette ne connaît pas reste en fin de rail : rien n'est retiré, une
  * ville écartée d'une liste est visible dans une autre.
- *
- * Partagée par `/implantations/` (`NosHubsMobile`) et l'accueil mobile
- * (`accueil/HubsMobileAccueil.tsx`), qui montrent les mêmes hubs et les mêmes
- * régions.
  */
 export function repartition(villes: DonneesNosVilles): Pick<DonneesNosVilles, "hubs" | "regions"> {
   const prises = new Set(villes.hubs.map((hub) => hub.href));

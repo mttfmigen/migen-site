@@ -4,18 +4,26 @@ import Link from "next/link";
 import { photoDeLaPage } from "@/lib/photo-par-page";
 
 import { BESOINS } from "./bento-besoins-donnees";
-import { GARANTIES_RESIDENCE, LIENS, OFFRES_ACCUEIL, type CleOffre } from "./GrilleOffres";
+import {
+  GARANTIES_RESIDENCE,
+  LIENS,
+  OFFRES_ACCUEIL,
+  SURTITRE_TEXTE as TITRE_SIX,
+  TITRE_TEXTE as CHAPO_SIX,
+  type CleOffre,
+} from "./GrilleOffres";
 import m from "./AccueilMobile.module.css";
 
 /**
  * « Six façons de travailler ensemble », TOUJOURS VISIBLE au téléphone : le
  * bloc sombre de la maquette V3 « Site mobile », six cartes photo (Résidence
  * en pleine largeur avec ses quatre garanties, étiquettes « Contrat unique »
- * et « Abonnement », un lien d'action par carte).
+ * et « Abonnement », un lien d'action par carte). Comme la V3 (`span` des
+ * cartes 0 et 5), la 06 prend aussi toute la largeur et ferme la grille.
  *
- * LE TEXTE EST CELUI DE LA GRILLE DE BUREAU (`OFFRES_ACCUEIL`), qui s'efface à
- * cette largeur. La V3 écrit pour Zéro arrêt une phrase de prix mensuel fixe :
- * elle n'est pas reprise (voir `GrilleOffres.tsx`).
+ * LE TEXTE EST CELUI DE LA GRILLE DE BUREAU (`OFFRES_ACCUEIL`, titre et chapô
+ * compris), qui s'efface à cette largeur. La V3 ouvre Zéro arrêt sur une
+ * phrase qui annonce un prix : elle n'est pas reprise (voir `GrilleOffres.tsx`).
  *
  * LA PHOTO D'UNE CARTE EST CELLE DE LA PAGE QU'ELLE OUVRE, la règle du pavage
  * « Partez de votre besoin » depuis le 12/10 : sa photo validée pour la même
@@ -38,24 +46,28 @@ export default function SixFaconsMobile() {
       <div className={m.sixTete}>
         <p className={m.surtitre}>Nos offres</p>
         <h2 id="six-facons-titre" className={m.sixTitre}>
-          Six façons de travailler ensemble
+          {TITRE_SIX}
         </h2>
-        <p className={m.sixChapo}>De la présence continue à l’étude et aux travaux.</p>
+        <p className={m.sixChapo}>{CHAPO_SIX}</p>
       </div>
 
       <ul className={m.sixGrille}>
-        {OFFRES_ACCUEIL.map((offre) => {
+        {OFFRES_ACCUEIL.map((offre, rang) => {
           const large = offre.cle === "residence";
+          const pleine = large || rang === OFFRES_ACCUEIL.length - 1;
           const photo = photoDe(offre.cle);
           const idTitre = `six-facons-${offre.cle}`;
           return (
-            <li key={offre.cle} className={large ? `${m.offre} ${m.offreLarge}` : m.offre}>
+            <li
+              key={offre.cle}
+              className={[m.offre, pleine ? m.offrePleine : "", large ? m.offreLarge : ""].join(" ").trim()}
+            >
               {photo ? (
                 <Image
                   src={photo}
                   alt=""
                   fill
-                  sizes={large ? "(max-width: 880px) 92vw, 1px" : "(max-width: 880px) 46vw, 1px"}
+                  sizes={pleine ? "(max-width: 880px) 92vw, 1px" : "(max-width: 359px) 92vw, (max-width: 880px) 46vw, 1px"}
                   className={m.offrePhoto}
                 />
               ) : null}

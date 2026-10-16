@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import AncreBesoinMobile from "@/components/site/accueil/AncreBesoinMobile";
 import ParcoursMobile from "@/components/site/accueil/ParcoursMobile";
 import AvantApresBascule from "@/components/site/accueil/AvantApresBascule";
 import BandeauVerbe from "@/components/site/accueil/BandeauVerbe";
@@ -148,36 +149,41 @@ export default async function Accueil() {
         <MarqueeClients compactMobile />
         <IntroAccueilMobile />
         <SixFaconsMobile />
-        {/* LES CARTES REPLIÉES ET NUMÉROTÉES, 01 à 14, avec la cadence de
+        {/* LES CARTES REPLIÉES ET NUMÉROTÉES, 01 à 15, avec la cadence de
             conversion de la maquette mobile (`AvecConversionMobile`) : photo
-            + CTA après la 2e carte, bandeau « Une question sur votre site ? »
-            toutes les trois cartes (après la 5e, la 8e, la 11e et la 14e).
+            + CTA après le 2e enfant, bandeau « Une question sur votre site ? »
+            après le 5e, le 8e et le 11e.
 
-            CHAQUE ENFANT DE `AvecConversionMobile` EST UNE CARTE NUMÉROTÉE du
-            téléphone : la cadence compte ses enfants. Ce qui n'est pas une
-            carte (« Nos réalisations », la FAQ « Partez de votre besoin »,
-            les copies de bureau) est donc rangé dans le même fragment que la
-            carte voisine.
+            LA CADENCE COMPTE LES ENFANTS, PAS LES CARTES. Les enfants sont
+            donc les treize cartes de la V3 ; ce que seul le site porte (les
+            cartes « Notre sélection » et « Technologies & partenaires »,
+            « Nos réalisations », la FAQ « Partez de votre besoin », les
+            copies de bureau) est rangé dans le même fragment que sa voisine.
+            Les bandeaux tombent ainsi où la V3 les met : après Le jour et la
+            nuit, après la croissance, après l'histoire, et aucun après la
+            dernière carte.
 
             L'ORDRE DU TÉLÉPHONE EST CELUI DE LA V3 : 01 Certifications
             (ouverte au départ), 02 Votre problématique, [photo + CTA],
             03 Notre sélection, 04 « On installe, on maintient, on répare, on
             dépanne », 05 Résidence, 06 Technologies & partenaires, « Nos
             réalisations », « Partez de votre besoin », 07 Le jour et la nuit,
-            08 Méthode, 09 Croissance, 10 Dernières réalisations, 11 Avis,
-            12 Histoire, 13 Pourquoi externaliser, 14 Secteurs. « Notre
-            sélection » et « Technologies & partenaires », que seul le site
-            a, restent repliées à leur place de bureau : la première suit la
-            problématique qu'elle résout, la seconde l'offre Résidence dont
-            elle détaille les spécialités.
+            [bandeau], 08 « Ce que les mêmes équipes en disent aujourd'hui »,
+            09 Méthode, 10 Croissance, [bandeau], 11 Dernières réalisations,
+            12 Avis, 13 Histoire, [bandeau], 14 Pourquoi externaliser,
+            15 Secteurs. « Notre sélection » et « Technologies & partenaires »,
+            que seul le site a, restent repliées à leur place de bureau : la
+            première suit la problématique qu'elle résout, la seconde l'offre
+            Résidence dont elle détaille les spécialités.
 
             Le jour et la nuit et la méthode viennent avant la croissance au
             téléphone, après « Pourquoi externaliser » au bureau : elles sont
             rendues aux deux places (`data-mobile-seulement` /
-            `data-doublon-mobile`), sans toucher à leurs composants. La FAQ et
-            les hubs ont leur version téléphone (`BesoinsMobile`,
-            `HubsMobileAccueil`) ; le pavage et le rail du bureau
-            s'effacent à cette largeur.
+            `data-doublon-mobile`), sans toucher à leurs composants. Au
+            téléphone, la bascule « Avant / Avec migen© » devient les deux
+            cartes de la V3, une vue chacune (`.vueSeule`). La FAQ et les hubs
+            ont leur version téléphone (`BesoinsMobile`, `HubsMobileAccueil`) ;
+            le pavage et le rail du bureau s'effacent à cette largeur.
 
             `photoHeros` : l'accueil n'a pas de photo de héros, et la maquette
             retombe sur `assets/web/team-duo.jpg` pour « / » (dc.html L421) ;
@@ -205,19 +211,24 @@ export default async function Accueil() {
               <CertificationsRse />
             </OuvertAuDepart>
             <ProblematiqueClient />
-            <ProcessSelection />
-            <BandeauVerbe />
-            <FocusResidence />
-            <LogosTechnologies />
             <>
+              <ProcessSelection />
+              <BandeauVerbe />
+            </>
+            <>
+              <FocusResidence />
+              <LogosTechnologies />
               <div className={mobile.realisations}>
                 <CarrouselRealisations cartes={realisationsLiees("/")} titre="Nos réalisations" />
               </div>
               <BesoinsMobile besoins={BESOINS} />
-              <div data-mobile-seulement="">
-                <AvantApresBascule avant={VUE_AVANT} avec={VUE_AVEC} />
-              </div>
             </>
+            <div data-mobile-seulement="" className={mobile.vueSeule}>
+              <AvantApresBascule avant={VUE_AVANT} />
+            </div>
+            <div data-mobile-seulement="" className={`${mobile.vueSeule} ${mobile.sansSurtitre}`}>
+              <AvantApresBascule avant={VUE_AVEC} />
+            </div>
             <div data-mobile-seulement="">
               <MethodeQuatreEtapes etapes={ETAPES_METHODE} />
             </div>
@@ -242,6 +253,9 @@ export default async function Accueil() {
         <div id={ID_RAPPEL_FINAL} className={replis.ancreRappel}>
           <FormulaireBasDePage />
         </div>
+        {/* « Décrire ma ligne » et « Décrire mon besoin » visent le panneau
+            `#besoin` du héros, effacé au téléphone : ils mènent alors ici. */}
+        <AncreBesoinMobile cible="besoin" vers={ID_RAPPEL_FINAL} />
       </main>
     </div>
   );

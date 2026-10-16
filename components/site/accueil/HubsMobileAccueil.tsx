@@ -2,10 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { ALT_DU_HUB, PHOTO_DU_HUB } from "@/components/site/implantations/photos-hubs";
-import { repartition } from "@/components/site/implantations/repartition-hubs";
 import type { NosVilles } from "@/types/implantations";
 
 import m from "./AccueilMobile.module.css";
+import { repartition } from "./repartition-hubs";
 
 /**
  * « Des hubs partout en France », VISIBLE au téléphone : la section de la
@@ -15,7 +15,8 @@ import m from "./AccueilMobile.module.css";
  * ligne, SANS compteur de villes (Mehdi a fait retirer ces compteurs).
  *
  * TOUT VIENT DE LA DONNÉE DE `/implantations/` (`contenu.villes`), répartie
- * par le même calcul que la page des implantations (`repartition-hubs.ts`) :
+ * par le même calcul que la page des implantations (`repartition-hubs.ts`,
+ * copie de celui de `NosHubsMobile`) :
  * aucun hub ni aucune ville n'est écrit ici. Les photos sont celles des hubs
  * déjà servies par le site (`photos-hubs.ts`), jamais celles de la V3.
  *
