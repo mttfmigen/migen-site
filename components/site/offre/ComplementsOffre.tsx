@@ -76,20 +76,35 @@ export interface ProprietesComplementsOffre {
  */
 export function ComplementsDansCarte({
   blocs,
+  titreCarte,
+  chapo = false,
 }: {
   blocs?: readonly BlocComplement[];
+  /** Le chapô de la carte, avant sa liste : son premier paragraphe en tête (V3 `lead`). */
+  chapo?: boolean;
+  /**
+   * Le titre de la carte propre à la page (V3, `TITRES_CARTES_MOBILE`) : le
+   * complément qui commence par lui ne le répète pas dans son corps.
+   */
+  titreCarte?: string;
 }) {
-  const retenus = (blocs ?? []).filter(
-    (bloc) => !!bloc.titre || !!bloc.texte || !!bloc.puces?.length || !!bloc.tableau,
+  const retenus = sansTitreDeCarte(
+    (blocs ?? []).filter((bloc) => !!bloc.titre || !!bloc.texte || !!bloc.puces?.length || !!bloc.tableau),
+    titreCarte,
   );
   if (retenus.length === 0) return null;
-  const intitule = intituleEnTete(retenus);
+  const intitule = !titreCarte && intituleEnTete(retenus);
   return (
-    <div data-mobile-seulement="">
+    /* V3 « Site mobile » (16/10) : un intertitre du corpus prend le filet et
+       la typographie des intertitres de carte (`intertitreMobile`), une liste
+       devient les petites cartes numérotées des points (`data-mm-kv`). */
+    <div data-mobile-seulement="" data-mm-chapo={chapo ? "" : undefined}>
       {retenus.map((bloc, rang) => (
         <Fragment key={bloc.titre ?? `${rang}`}>
-          {bloc.titre || (rang === 0 && intitule) ? (
-            <p data-mm-lead="">{bloc.titre ?? bloc.texte}</p>
+          {bloc.titre ? (
+            <p className={styles.intertitreMobile}>{bloc.titre}</p>
+          ) : rang === 0 && intitule ? (
+            <p data-mm-lead="">{bloc.texte}</p>
           ) : null}
           {bloc.tableau ? <TableauComplement tableau={bloc.tableau} /> : null}
           {bloc.texte && !(rang === 0 && intitule && !bloc.titre) ? (
@@ -97,17 +112,53 @@ export function ComplementsDansCarte({
               <TexteRiche texte={bloc.texte} />
             </p>
           ) : null}
-          {bloc.puces?.map((puce) => (
-            <p key={puce.accroche ?? puce.texte} data-mm-paragraphe="">
-              {puce.accroche ? <strong>{puce.accroche}</strong> : null}
-              {puce.accroche ? " " : null}
-              <TexteRiche texte={puce.texte} />
-            </p>
-          ))}
+          {bloc.puces?.length ? (
+            <div data-mm-kv="" data-mm-compteur="">
+              {bloc.puces.map((puce) => (
+                <div key={puce.accroche ?? puce.texte}>
+                  {puce.accroche ? <p data-mm-kv-titre="">{puce.accroche}</p> : null}
+                  <p data-mm-kv-texte="">
+                    <TexteRiche texte={puce.texte} />
+                  </p>
+                </div>
+              ))}
+            </div>
+          ) : null}
         </Fragment>
       ))}
     </div>
   );
+}
+
+/** Le complément sans son premier bloc quand celui-ci est le titre de la carte. */
+function sansTitreDeCarte(
+  blocs: readonly BlocComplement[],
+  titreCarte?: string,
+): readonly BlocComplement[] {
+  const tete = blocs[0];
+  const estLeTitre =
+    !!titreCarte && !!tete && !tete.titre && !tete.puces?.length && tete.texte?.trim() === titreCarte.trim();
+  return estLeTitre ? blocs.slice(1) : blocs;
+}
+
+/**
+ * LE COMPLÉMENT D'UNE CARTE TITRÉE PAR LA PAGE, COUPÉ EN DEUX (V3, 16/10) :
+ * quand il commence par le titre de la carte, il reprend la section du corpus
+ * depuis son titre, et les paragraphes qui suivent, jusqu'au premier
+ * intertitre ou à la première liste, sont son chapô, que la V3 rend AVANT la
+ * liste de la carte (« Six façons de nous confier vos machines »,
+ * `/entreprise-maintenance-industrielle/`). Sinon, tout suit la liste.
+ */
+export function decoupeComplement(
+  blocs: readonly BlocComplement[] | undefined,
+  titreCarte?: string,
+): { chapo: readonly BlocComplement[]; suite: readonly BlocComplement[] } {
+  const tous = blocs ?? [];
+  const reste = sansTitreDeCarte(tous, titreCarte);
+  if (reste === tous) return { chapo: [], suite: tous };
+  const coupe = reste.findIndex((bloc) => !!bloc.titre || !!bloc.puces?.length);
+  const fin = coupe === -1 ? reste.length : coupe;
+  return { chapo: reste.slice(0, fin), suite: reste.slice(fin) };
 }
 
 /**
@@ -117,13 +168,16 @@ export function ComplementsDansCarte({
  * `ComplementsOffre`, `LONGUEUR_ETIQUETTE`.
  */
 function intituleEnTete(retenus: readonly BlocComplement[]): boolean {
-  const premier = retenus[0];
+  return retenus.length > 1 && estCourt(retenus[0]);
+}
+
+/** Une phrase courte, seule dans son bloc : la forme d'un intitulé. */
+function estCourt(bloc: BlocComplement): boolean {
   return (
-    retenus.length > 1 &&
-    !premier.titre &&
-    !premier.puces?.length &&
-    !!premier.texte &&
-    premier.texte.length <= LONGUEUR_ETIQUETTE
+    !bloc.titre &&
+    !bloc.puces?.length &&
+    !!bloc.texte &&
+    bloc.texte.length <= LONGUEUR_ETIQUETTE
   );
 }
 

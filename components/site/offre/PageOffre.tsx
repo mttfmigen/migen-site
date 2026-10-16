@@ -7,7 +7,7 @@ import type { Section, TypeSection } from "@/types/contenu";
 import type { ContenuOffre } from "@/types/offre";
 
 import AppelFinal from "./AppelFinal";
-import AppelOffre from "./AppelOffre";
+import AppelOffre, { AppelDansCarte } from "./AppelOffre";
 import BandeAppel from "./BandeAppel";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import CadenceOffre, { RappelFinalOffre } from "./CadenceOffre";
@@ -18,7 +18,11 @@ import {
   Formules,
   PremierMois,
 } from "./BlocsZeroArret";
-import ComplementsOffre, { ComplementsDansCarte, premierTexte } from "./ComplementsOffre";
+import ComplementsOffre, {
+  ComplementsDansCarte,
+  decoupeComplement,
+  premierTexte,
+} from "./ComplementsOffre";
 import DerouleOffre, { accrocheDuDeroule } from "./DerouleOffre";
 import DomainesEtudes from "./DomainesEtudes";
 import GarantiesOffre from "./GarantiesOffre";
@@ -29,7 +33,7 @@ import PagesLiees from "./PagesLiees";
 import PanneauFormulaire from "./PanneauFormulaire";
 import PointsOffre, { accrocheDeLOffre } from "./PointsOffre";
 import PrestationsRegroupees from "./PrestationsRegroupees";
-import ProblemeOffre, { photoDuProbleme, type ProblemeMobile } from "./ProblemeOffre";
+import ProblemeOffre, { photoDuProbleme } from "./ProblemeOffre";
 import {
   enfantsDe,
   entreeDe,
@@ -47,7 +51,16 @@ import ReponseDirecte from "./ReponseDirecte";
 import TelephoneHeros from "./TelephoneHeros";
 import TypesMaintenance from "./TypesMaintenance";
 import { cibleSure, liensSurs } from "./LiensOffre";
-import { OFFRES_MOBILE } from "./maquette-mobile-offre";
+import {
+  CHAPOS_OFFRE_MOBILE,
+  FIN_GARANTIES_PAR_DEFAUT,
+  finFaq,
+  FINS_GARANTIES,
+  OFFRES_MOBILE,
+  PHRASES_REFERENCES_MOBILE,
+  PROBLEMES_MOBILE,
+  TITRES_CARTES_MOBILE,
+} from "./maquette-mobile-offre";
 import { appliqueDecisions } from "@/lib/decisions-copie";
 import PageEdito from "./generique/PageEdito";
 import PageVente from "./generique/PageVente";
@@ -139,24 +152,6 @@ const CARTES_COUVERTURE_MOBILE: Readonly<
   "/offres/full-service/": {
     couverture: "Ce que recouvre la maintenance externalisée",
     partage: "Ce que vous gardez, ce que vous déléguez",
-  },
-};
-
-/* LE TEXTE DU PROBLÈME QUE SEULE LA MAQUETTE MOBILE V2 REND, par page : la
-   phrase clé et les paragraphes à tête grasse du corpus qu'elle lit
-   (`maquette/contenu/site/Offres/offres--bureau-etudes.md`, « ## Le
-   problème »), absents du contenu de bureau. Rendus sous 881 px seulement ;
-   une page absente de la table ne change pas. */
-const PROBLEME_MOBILE: Readonly<Record<string, ProblemeMobile>> = {
-  "/offres/bureau-etudes/": {
-    titre: "Un plan dessiné loin de l'atelier finit toujours par se payer au montage.",
-    avant: [
-      "**Le constat.** Le projet est clair dans votre tête. Personne en interne n'a le temps de le dessiner.",
-    ],
-    apres: [
-      "**Le coût de l'inaction.** Embaucher un ingénieur ou un projeteur pour un seul projet n'a pas de sens économique. Alors le projet glisse, ou il part au montage avec des plans que personne n'a confrontés au terrain.",
-      "**La réponse.** Une équipe d'études disponible au bon moment, qui voit ensuite ses conceptions tourner, vieillir et tomber en panne.",
-    ],
   },
 };
 
@@ -274,6 +269,16 @@ export default function PageOffre({
      sous 881 px seulement ; sans entrée, la page ne change pas. */
   const mobile = chemin ? OFFRES_MOBILE[chemin] : undefined;
   const copie = (texte: string) => appliqueDecisions(texte, chemin);
+  /* V3 : les titres de carte propres à la page, et le texte du problème que
+     seule la maquette mobile rend. Sous 881 px seulement. */
+  const titres = chemin ? TITRES_CARTES_MOBILE[chemin] : undefined;
+  const problemeMobile = chemin ? PROBLEMES_MOBILE[chemin] : undefined;
+  /* V3 : le chapô de la section « L'offre » avant sa liste, le reste après ;
+     le chapô entier de la V3 quand la fiche l'a tronqué. */
+  const complementOffre = decoupeComplement(contenu.complementOffre, titres?.offre);
+  const chapoV3 = chemin ? CHAPOS_OFFRE_MOBILE[chemin] : undefined;
+  const chapoOffre = chapoV3 ? chapoV3.map((texte) => ({ texte: copie(texte) })) : complementOffre.chapo;
+  const phraseReferences = chemin ? PHRASES_REFERENCES_MOBILE[chemin] : undefined;
   /* dc.html L224 `IMG[u]` : la maquette pose sa propre photo de tête sur
      quelques offres ; sinon, celle que la page porte déjà sur bureau. */
   const photoHeros = mobile?.photoTete ?? photoProbleme ?? (faqAPhoto ? PHOTO_FAQ : null);
@@ -639,7 +644,9 @@ export default function PageOffre({
                 altPhoto={titre}
                 photo={contenu.problemePhoto}
                 pli={cartesCouverture ? "replie" : "ouvert"}
-                mobile={chemin ? PROBLEME_MOBILE[chemin] : undefined}
+                mobile={
+                  titres?.probleme ? { ...problemeMobile, titreCarte: titres.probleme } : problemeMobile
+                }
               />
               {/* « Complément 3 » : ce que le corpus range dans son problème
                   sans que ce soit un problème (comparatif, raisons d'embaucher
@@ -662,11 +669,19 @@ export default function PageOffre({
                 <PointsOffre
                   section={offre}
                   proseMobile
-                  apres={<ComplementsDansCarte blocs={contenu.complementOffre} />}
+                  titreCarte={titres?.offre}
+                  avant={
+                    <ComplementsDansCarte chapo blocs={chapoOffre} />
+                  }
+                  apres={<ComplementsDansCarte blocs={complementOffre.suite} />}
                   resume={
                     mobile?.resumes?.offre
                       ? copie(mobile.resumes.offre)
-                      : accrocheDeLOffre(offre, [premierTexte(contenu.complementOffre)])
+                      : accrocheDeLOffre(
+                          offre,
+                          [premierTexte(complementOffre.suite)],
+                          chapoOffre.map((bloc) => bloc.texte),
+                        )
                   }
                 />
               ) : null}
@@ -715,7 +730,13 @@ export default function PageOffre({
                   section={deroule}
                   titre={contenu.derouleTitre}
                   pli="replie"
-                  apres={<ComplementsDansCarte blocs={contenu.complementDeroule} />}
+                  titreCarte={titres?.deroule}
+                  apres={
+                    <ComplementsDansCarte
+                      blocs={contenu.complementDeroule}
+                      titreCarte={titres?.deroule}
+                    />
+                  }
                   resume={
                     mobile?.resumes?.deroule === null
                       ? null
@@ -747,7 +768,23 @@ export default function PageOffre({
               {garanties ? (
                 <GarantiesOffre
                   section={garanties}
-                  apres={<ComplementsDansCarte blocs={contenu.complementGaranties} />}
+                  titreCarte={titres?.garanties}
+                  apres={
+                    <>
+                      <ComplementsDansCarte
+                        blocs={contenu.complementGaranties}
+                        titreCarte={titres?.garanties}
+                      />
+                      {/* La fin de la carte dans la V3 : la question de
+                          l'appel « 07 », puis son appel. Téléphone seulement ;
+                          l'appel « 07 » de bureau y est masqué. */}
+                      <AppelDansCarte
+                        question={contenu.brefBande}
+                        bouton={contenu.brefBouton}
+                        fin={(chemin && FINS_GARANTIES[chemin]) || FIN_GARANTIES_PAR_DEFAUT}
+                      />
+                    </>
+                  }
                   resume={
                     mobile?.resumes?.garanties ? copie(mobile.resumes.garanties) : undefined
                   }
@@ -825,12 +862,14 @@ export default function PageOffre({
                   section={preuves}
                   photosPrises={photosDuMaillage(autres)}
                   toujoursOuvert
+                  titreCarte={titres?.references}
                   photosMaquette={!!mobile}
                   encartMobile={
                     mobile?.encartReferences
                       ? { ...mobile.encartReferences, texte: copie(mobile.encartReferences.texte) }
                       : undefined
                   }
+                  phraseMobile={phraseReferences ? copie(phraseReferences) : undefined}
                 />
               ) : null}
 
@@ -893,6 +932,8 @@ export default function PageOffre({
                       rappel: copie(mobile.carteFinale.rappel),
                     }
                   : ctaFinal
+                    ? { ...ctaFinal, fin: finFaq(chemin, copie) }
+                    : undefined
               }
             />
           )

@@ -59,6 +59,12 @@ export interface ProprietesDerouleOffre {
    * l'accroche de la V3 (`accrocheDuDeroule`). `null` : aucun résumé.
    */
   resume?: string | null;
+  /**
+   * LE TITRE DE LA CARTE AU TÉLÉPHONE, quand la V3 en écrit un propre à la
+   * page (`TITRES_CARTES_MOBILE`) : il devient le titre, et le nom du bloc son
+   * sur-titre. Absent, la carte garde son nom.
+   */
+  titreCarte?: string;
 }
 
 /**
@@ -150,6 +156,7 @@ export default function DerouleOffre({
   avant,
   apres,
   resume,
+  titreCarte,
 }: ProprietesDerouleOffre) {
   // La grille SE DÉDUIT DU NOMBRE D'ÉTAPES, relevé sur les 15 captures du
   // gabarit 03 (08/10) : 3 colonnes jusqu'à 6 étapes, 4 au-delà ; la carte
@@ -161,9 +168,12 @@ export default function DerouleOffre({
   const colonnes = n <= 6 ? 3 : 4;
   const tuiles = n % colonnes !== 0;
   const grille = (
+        /* `friseV3` : au téléphone, la frise simple de la maquette V3 (16/10),
+           sans la carte d'en-tête ni son compteur d'étapes. Voir
+           `PageOffre.module.css`. Au-dessus de 880 px, rien ne change. */
         <div
           data-mm-frise=""
-          className="mg-rmulti"
+          className={`mg-rmulti ${styles.friseV3}`}
           style={{
             display: "grid",
             gridTemplateColumns: `repeat(${colonnes},minmax(0,1fr))`,
@@ -276,7 +286,12 @@ export default function DerouleOffre({
         {pli ? (
           <SectionPliableMobile
             toujoursOuvert={pli === "ouvert"}
-            enTete={<EtiquettePli titre="Le déroulé" />}
+            enTete={
+              <EtiquettePli
+                surtitre={titreCarte ? "Le déroulé" : undefined}
+                titre={titreCarte ?? "Le déroulé"}
+              />
+            }
             resume={
               resume === null ? undefined : (resume ?? accrocheDuDeroule(section))
             }

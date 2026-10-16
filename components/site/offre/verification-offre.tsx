@@ -54,6 +54,7 @@ import MarquesOffre from "./MarquesOffre";
 import PageOffre from "./PageOffre";
 import Reassurance from "./Reassurance";
 import ReferencesOffre from "./ReferencesOffre";
+import QuestionsPhoto from "@/components/site/offres/QuestionsPhoto";
 import type { SectionPreuves } from "@/types/contenu";
 import { BLOCS_LECTURE } from "./generique/BlocsLecture";
 import { BLOCS_VENTE, INTERNES_VENTE } from "./generique/BlocsVente";
@@ -631,6 +632,46 @@ function basculesDesComposants(): void {
 
 basculesDesComposants();
 
+/* ---- 10. LE NUMÉRO DANS LA RÉPONSE DE LA DERNIÈRE QUESTION (relecture du 16/10)
+
+   Un lot l'avait retiré en supposant que la phrase de rappel le portait :
+   sept pages l'ont perdu au téléphone sans qu'une porte le voie. La V3 le
+   donne partout où elle rend la page, sauf sur `/offres/zero-arret/`, où elle
+   ne pose que le bouton. Le témoin, une réponse au bouton seul, doit tomber. */
+const SANS_NUMERO_FAQ = new Set(["/offres/zero-arret/"]);
+
+function verifieNumeroFaq(nom: string, url: string, html: string): void {
+  const bloc = html.match(/<div data-faq-fin=""[\s\S]*?<\/details>/)?.[0];
+  if (!bloc || SANS_NUMERO_FAQ.has(url)) return;
+  assert.ok(
+    texteLisible(bloc).includes("04 78 33 72 05"),
+    `${nom} : la dernière question de la FAQ a perdu le numéro de téléphone`,
+  );
+}
+
+assert.throws(
+  () =>
+    verifieNumeroFaq(
+      "témoin",
+      "/temoin/",
+      renderToStaticMarkup(
+        <QuestionsPhoto
+          donnees={{
+            surtitre: "Questions",
+            titre: "Questions",
+            lienTexte: "Poser ma question",
+            lienHref: "#mgx-form",
+            photo: "/assets/web/faq-offre.jpg",
+            questions: [{ question: "Q ?", reponse: "R." }],
+          }}
+          questionFinale={{ question: "Besoin ?", bouton: "Décrire mon besoin", fin: { bouton: true } }}
+        />,
+      ),
+    ),
+  /perdu le numéro/,
+  "témoin : une réponse au bouton seul passe la porte du numéro",
+);
+
 for (const nom of fichiers) {
   const page = litPage(nom);
 
@@ -660,6 +701,7 @@ for (const nom of fichiers) {
   assert.ok(!/href="#"/.test(html), `${nom} : un href="#" est rendu`);
   verifieInterdits(html, nom);
   verifieLibellesPartages(nom, page.url, html);
+  verifieNumeroFaq(nom, page.url, html);
 
   /* Pages génériques : chaque bloc que le code de la maquette produit doit
      avoir son rendu porté. Un type nouveau (une page ajoutée, un markdown

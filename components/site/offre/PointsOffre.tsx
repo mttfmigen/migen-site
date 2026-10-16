@@ -53,6 +53,12 @@ export interface ProprietesPointsOffre {
    * les gabarits qui rendent déjà cette prose ailleurs ne la doublent pas.
    */
   proseMobile?: boolean;
+  /**
+   * LE TITRE DE LA CARTE AU TÉLÉPHONE, quand la V3 en écrit un propre à la
+   * page (`TITRES_CARTES_MOBILE`) : il devient le titre, et le nom du bloc son
+   * sur-titre. Absent, la carte garde son nom.
+   */
+  titreCarte?: string;
 }
 
 /**
@@ -70,10 +76,13 @@ export interface ProprietesPointsOffre {
 export function accrocheDeLOffre(
   section: SectionOffre,
   apres: readonly (string | undefined)[] = [],
+  /** Le chapô que l'appelant rend avant la liste (`decoupeComplement`). */
+  avant: readonly (string | undefined)[] = [],
 ): string | undefined {
   const premiere = section.lignes[0]?.prestation;
   return accrocheDe([
     { paragraphe: section.intro },
+    ...avant.map((texte) => ({ paragraphe: texte })),
     { cellule: premiere ? ligneDuCorpus(premiere) : undefined },
     ...(section.prose ?? []).map((p) => ({ paragraphe: ligneDuCorpus(p) })),
     ...apres.map((texte) => ({ paragraphe: texte })),
@@ -199,6 +208,7 @@ export default function PointsOffre({
   apres,
   resume,
   proseMobile = false,
+  titreCarte,
 }: ProprietesPointsOffre) {
   const points = section.lignes.map(fusionneLigne);
   const entete = enteteDe(section.lignes);
@@ -215,7 +225,7 @@ export default function PointsOffre({
             appartient au contenu. Au-dessus de 880 px la bascule entière est
             retirée, elle ne laisse donc aucun arrêt de tabulation muet. */}
         <SectionPliableMobile
-          enTete={<EtiquettePli titre="L’offre" />}
+          enTete={<EtiquettePli surtitre={titreCarte ? "L’offre" : undefined} titre={titreCarte ?? "L’offre"} />}
           resume={resume ?? accrocheDeLOffre(section)}
         >
         {avant}
