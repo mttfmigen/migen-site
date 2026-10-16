@@ -44,6 +44,7 @@
  * aucun chemin à tracer sur Vercel, et la porte le lit de la même façon.
  */
 import { appliqueDecisions } from "@/lib/decisions-copie";
+import { libelleCas } from "@/components/site/preuve/noms-clients";
 import indexBrut from "@/maquette/contenu/site/index.json";
 
 export interface EntreeIndex {
@@ -137,9 +138,11 @@ export function courtLibelle(x: EntreeIndex): string {
     if (m) return m[1].trim();
   }
   const parts = h.split(/\s*[:\u2014\u2013]\s+/);
+  /* Étude de cas : `caseLbl` de la maquette V3, le client en casse normale
+     (« Savoye : une alliance… » et non « SAVOYE : … »). */
   const t =
     gg === "02"
-      ? h.replace(/^Étude de cas\s*/i, "")
+      ? libelleCas(h)
       : parts.length > 1 && gg === "11"
         ? parts.slice(1).join(" : ")
         : parts[0];

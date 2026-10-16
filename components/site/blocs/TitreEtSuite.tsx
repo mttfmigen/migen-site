@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 /**
  * Un titre de carte et son texte, rendus en UNE phrase quand le texte continue
@@ -46,11 +46,15 @@ export default function TitreEtSuite({
   texte,
   styleTitre,
   styleTexte,
+  rendu = (t: string): ReactNode => t,
 }: {
   titre?: string;
   texte?: string;
   styleTitre: CSSProperties;
   styleTexte: CSSProperties;
+  /** Le rendu d'un texte, par défaut tel quel (l'étude de cas y passe
+      `cleanCase` au téléphone, voir `casse` dans `PagePreuve`). */
+  rendu?: (texte: string) => ReactNode;
 }) {
   if (titre && continueLeTitre(texte)) {
     /* Les marges verticales des deux blocs n'ont plus de sens dans une phrase
@@ -61,15 +65,15 @@ export default function TitreEtSuite({
     const { marginTop: _mt2, marginBottom: _mb2, ...tete } = styleTitre;
     return (
       <div style={suite}>
-        <span style={{ ...tete, display: "inline" }}>{titre}</span>
-        {texte}
+        <span style={{ ...tete, display: "inline" }}>{rendu(titre)}</span>
+        {texte ? rendu(texte) : null}
       </div>
     );
   }
   return (
     <>
-      {titre ? <div style={styleTitre}>{titre}</div> : null}
-      {texte ? <div style={styleTexte}>{texte}</div> : null}
+      {titre ? <div style={styleTitre}>{rendu(titre)}</div> : null}
+      {texte ? <div style={styleTexte}>{rendu(texte)}</div> : null}
     </>
   );
 }

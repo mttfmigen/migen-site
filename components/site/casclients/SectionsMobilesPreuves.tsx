@@ -4,6 +4,7 @@ import Link from "next/link";
 import { appliqueDecisions } from "@/lib/decisions-copie";
 import { courtLibelle, entreeDe } from "@/components/site/cocon/maillage-mobile";
 import { logoEnFond } from "@/components/site/preuve/CarrouselRealisations";
+import { libelleCas } from "@/components/site/preuve/noms-clients";
 
 import styles from "./PreuvesHub.module.css";
 import type { CartePreuve, VuePreuves } from "./vues-preuves";
@@ -25,10 +26,11 @@ const TITRES_MAQUETTE: Readonly<Record<string, string>> = {
 };
 
 /** Le lien d'une carte : le h1 de l'étude (dc.html, `t: x.h1`), passé par
-    les décisions de copie, sinon le nom du client. */
+    les décisions de copie, sinon le nom du client. Libellé de la maquette V3
+    (`caseLbl`) : sans « Étude de cas », client en casse normale. */
 function titreEtude(carte: CartePreuve): string {
   const entree = entreeDe(carte.url);
-  return entree ? appliqueDecisions(entree.h1.replace(/\s+/g, " ").trim(), carte.url) : carte.client;
+  return entree ? libelleCas(appliqueDecisions(entree.h1.replace(/\s+/g, " ").trim(), carte.url)) : carte.client;
 }
 
 function CarteRail({ carte }: { carte: CartePreuve }) {

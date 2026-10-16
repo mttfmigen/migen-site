@@ -44,6 +44,9 @@ import {
   type EntreeIndex,
 } from "@/components/site/cocon/maillage-mobile";
 import { logoClient, photoHerosMobile } from "@/components/site/casclients/vues-preuves";
+import { appliqueDecisions } from "@/lib/decisions-copie";
+
+import { enteteCas } from "./noms-clients";
 
 const INDEX = indexBrut as readonly EntreeIndex[];
 
@@ -122,19 +125,18 @@ export function etapesFilAriane(chemin: string, titreCourant?: string): EtapeFil
 }
 
 /**
- * Le H1 de la maquette MOBILE (dc.html L492, `hero.h1 = P.h1`) est le h1 du
- * corpus, « Étude de cas AUTOLIV : un technicien… ». Le titre de la page en
- * est la fin. Renvoie ce que la maquette pose DEVANT (« Étude de cas
- * AUTOLIV : »), mot pour mot, ou rien si le h1 de l'index ne finit pas par ce
- * titre (à la casse de l'initiale près) : aucun préfixe n'est deviné.
+ * Le H1 de la maquette MOBILE V3 (16/10, `hero.h1 = caseHead(P.h1).full`) :
+ * le h1 du corpus sans « Étude de cas », le client en casse normale,
+ * « Aktid : un centre logistique monté en six semaines ». `h1Court` : la
+ * ligne « H1 : » des trois fiches du corpus qui en portent une (Savoye,
+ * Savoye Norvège, DimoMaint, voir `corpus-mobile.ts`), que la V3 affiche à
+ * la place du titre long. Les décisions de copie passent d'abord (Tournaire,
+ * Migen Travaux). `undefined` sans entrée d'index : aucun titre n'est deviné.
  */
-export function prefixeTitreMaquette(chemin: string, titre: string): string | undefined {
-  const h1 = entreeDe(chemin)?.h1.replace(/\s+/g, " ").trim();
-  const t = titre.replace(/\s+/g, " ").trim();
-  if (!h1 || t.length < 2 || h1.length <= t.length) return undefined;
-  const fin = h1.slice(h1.length - t.length);
-  if (fin.slice(1) !== t.slice(1) || fin[0].toLowerCase() !== t[0].toLowerCase()) return undefined;
-  return h1.slice(0, h1.length - t.length);
+export function titreMobile(chemin: string, h1Court?: string): string | undefined {
+  const brut = h1Court ?? entreeDe(chemin)?.h1;
+  if (!brut) return undefined;
+  return enteteCas(appliqueDecisions(brut.replace(/\s+/g, " ").trim(), chemin)).complet || undefined;
 }
 
 /**
@@ -159,9 +161,10 @@ export function texteResultatApres(chemin: string): boolean {
 /** Une carte du carrousel « D’autres réalisations » (dc.html L428, `refs`). */
 export interface CarteRealisation {
   readonly url: string;
-  /** Le libellé court de l'étude (dc.html L426, `client: short(x)`). */
+  /** Le client en casse normale, « Aktid » (V3, `caseHead(…).client`). */
   readonly client: string;
-  /** Le h1 de l'étude (dc.html L426, `t: x.h1`). */
+  /** Le titre de l'étude sans le client, « Un centre logistique monté en six
+      semaines » (V3, `caseHead(…).t`). */
   readonly titre: string;
   /** Le logo du client, chemin public, ou vide. */
   readonly logo: string;
@@ -183,13 +186,15 @@ export function realisationsLiees(chemin: string): CarteRealisation[] {
   return INDEX.filter((x) => /^\/preuves\/.+/.test(x.url) && x.url !== chemin)
     .slice(0, REPLI_INDEX)
     .map((x) => {
-      const client = courtLibelle(x);
+      const court = courtLibelle(x);
       /* dc.html L427 cherche le logo dans « slug + client » : même clé ici. */
-      const logo = logoClient(`${x.url.split("/")[2] ?? ""} ${client}`);
+      const logo = logoClient(`${x.url.split("/")[2] ?? ""} ${court}`);
+      /* V3 (`refs`, `caseHead`) : le client en sur-titre, le titre sans lui. */
+      const tete = enteteCas(appliqueDecisions(x.h1.replace(/\s+/g, " ").trim(), x.url));
       return {
         url: x.url,
-        client,
-        titre: x.h1,
+        client: tete.client || court,
+        titre: tete.titre,
         logo,
         logoInverse: /groupe-atlantic|ogf/.test(logo),
         photo: photoHerosMobile(x.url) ?? "",
