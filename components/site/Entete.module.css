@@ -166,10 +166,12 @@
 }
 
 /*
- * Sous 881px, l'îlot ne garde que le logo et le bouton de menu.
+ * Sous 881px, l'îlot ne garde que le logo, le rond téléphone (maquette V3,
+ * 16/10, sans texte : 44 px, `Entete.tsx`) et le bouton de menu. Le numéro
+ * écrit en toutes lettres et l'appel à l'action, eux, disparaissent.
  *
  * POURQUOI : à cette largeur, la barre basse (`.barreAction`, juste au-dessus)
- * porte DÉJÀ « Appeler » et « Décrire mon besoin ». Les garder aussi dans
+ * porte DÉJÀ l'appel et « Décrire mon besoin ». Les garder aussi dans
  * l'îlot les affichait deux fois, et surtout les faisait déborder : à 320px,
  * numéro + appel à l'action + bouton de menu réclament 343px dans un îlot qui
  * en mesure 292. Le texte était coupé, donc l'appel à l'action principal du

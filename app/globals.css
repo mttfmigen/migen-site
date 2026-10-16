@@ -508,7 +508,10 @@ details[open] .g3-plus {
 /* LA BARRE DU HAUT DE LA MAQUETTE MOBILE V2 (dc.html L67 à L70), sous 880 px :
    une barre blanche translucide de toute la largeur, à 12 px des bords, le
    logo « migen » à gauche et la pilule « Menu » à droite (`.mg-burger`). Elle
-   remplace la pastille centrée du bureau, qui ne bouge pas au-dessus. */
+   remplace la pastille centrée du bureau, qui ne bouge pas au-dessus.
+   Depuis le 16/10, la V3 (en-tête, T1, mv-markup.html L47 à L49) : un rond
+   téléphone de 44 px avant la pilule (style en ligne dans `Entete.tsx`),
+   pilule, marges intérieures et logo à ses mesures. */
 @media (max-width: 880px) {
   .mg-topwrap {
     padding: 12px 12px 0 !important;
@@ -516,7 +519,7 @@ details[open] .g3-plus {
   .mg-barre {
     width: auto !important;
     justify-content: space-between;
-    padding: 6px 6px 6px 14px !important;
+    padding: 5px 5px 5px 16px !important;
     background: rgba(255, 255, 255, 0.82) !important;
     backdrop-filter: blur(20px) saturate(160%) !important;
     -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
@@ -524,15 +527,16 @@ details[open] .g3-plus {
     box-shadow: 0 12px 30px -18px rgba(0, 0, 0, 0.35) !important;
   }
   .mg-barre > a:first-child {
-    gap: 8px !important;
+    gap: 9px !important;
     padding: 0 !important;
+    min-height: 44px;
   }
   .mg-barre > a:first-child img {
-    height: 20px !important;
+    height: 24px !important;
   }
   .mg-barre > a:first-child > span {
-    font: 600 15px var(--ft) !important;
-    letter-spacing: -0.02em !important;
+    font: 600 17px var(--ft) !important;
+    letter-spacing: -0.025em !important;
   }
   .mg-copyright {
     display: none;

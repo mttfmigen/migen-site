@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 
 import MegaMenu from "./MegaMenu";
 import s from "./Entete.module.css";
+import { IconeTelephone } from "./mobile/BarreCollanteMobile";
 import TiroirMobile from "./TiroirMobile";
 import {
   NAV_CARRIERE,
@@ -346,6 +347,28 @@ export default function Entete({
                 {libelleCta}
               </Link>
             )}
+            {/* Le rond téléphone de la maquette mobile V3 (en-tête, T1), validé
+                par Mehdi le 16/10, au style en ligne de la V3 comme la pilule
+                voisine. Il n'existe que sous 881 px (`data-mobile-seulement`,
+                `app/globals.css`) et reste dans la barre menu ouvert : c'est le
+                tiroir qui n'a pas de téléphone, pas la barre. Numéro et nom
+                accessible suivent la variante, la LP garde donc le sien. */}
+            <a
+              href={telephone.href}
+              data-mobile-seulement=""
+              aria-label={`Appeler migen au ${telephone.affichage}`}
+              style={{
+                flex: "none",
+                width: 44,
+                height: 44,
+                borderRadius: 999,
+                background: "rgba(28,27,25,.06)",
+                display: "grid",
+                placeItems: "center",
+              }}
+            >
+              <IconeTelephone couleur="#1c1b19" taille={20} />
+            </a>
             <button
               type="button"
               className="mg-burger"
@@ -355,19 +378,22 @@ export default function Entete({
                 setPanneau(null);
                 setTiroir((ouvert) => !ouvert);
               }}
-              // Le bouton de la maquette mobile v2 (dc.html L69) : une pilule
-              // anthracite écrite « Menu », « Fermer » quand le tiroir est ouvert.
-              // Il n'existe que sous 880 px (`.mg-burger`, `app/globals.css`).
+              // La pilule anthracite écrite « Menu », « Fermer » quand le tiroir
+              // est ouvert. Elle n'existe que sous 880 px (`.mg-burger`,
+              // `app/globals.css`). Mesures de la V3 depuis le 16/10 : 44 px de
+              // haut comme le rond voisin, 76 px de large au moins.
               style={{
                 alignItems: "center",
-                height: 36,
-                padding: "0 15px",
+                justifyContent: "center",
+                height: 44,
+                minWidth: 76,
+                padding: "0 18px",
                 borderRadius: 999,
                 background: "#1c1b19",
                 color: "#fff",
                 border: "none",
                 cursor: "pointer",
-                font: "600 13px var(--fb)",
+                font: "600 14px var(--fb)",
                 flex: "none",
               }}
             >
