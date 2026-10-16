@@ -137,10 +137,10 @@ export function IconeFleche() {
   );
 }
 
-/** V3 `.mv-ic-tel` et `.mv-ic-telw` : le combiné, 21 px, dans la couleur passée. */
-export function IconeTelephone({ couleur }: { couleur: string }) {
+/** V3 `.mv-ic-tel` et `.mv-ic-telw` : le combiné, 21 px (20 dans l'en-tête), dans la couleur passée. */
+export function IconeTelephone({ couleur, taille = 21 }: { couleur: string; taille?: number }) {
   return (
-    <svg aria-hidden="true" width="21" height="21" viewBox="0 0 24 24">
+    <svg aria-hidden="true" width={taille} height={taille} viewBox="0 0 24 24">
       <path
         fill={couleur}
         d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.25 1.01l-2.2 2.2z"

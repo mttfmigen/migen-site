@@ -348,16 +348,26 @@ export default function Entete({
               </Link>
             )}
             {/* Le rond téléphone de la maquette mobile V3 (en-tête, T1), validé
-                par Mehdi le 16/10. Il n'existe que sous 880 px (`.mg-tel-rond`,
+                par Mehdi le 16/10, au style en ligne de la V3 comme la pilule
+                voisine. Il n'existe que sous 881 px (`data-mobile-seulement`,
                 `app/globals.css`) et reste dans la barre menu ouvert : c'est le
                 tiroir qui n'a pas de téléphone, pas la barre. Numéro et nom
                 accessible suivent la variante, la LP garde donc le sien. */}
             <a
               href={telephone.href}
-              className="mg-tel-rond"
+              data-mobile-seulement=""
               aria-label={`Appeler migen au ${telephone.affichage}`}
+              style={{
+                flex: "none",
+                width: 44,
+                height: 44,
+                borderRadius: 999,
+                background: "rgba(28,27,25,.06)",
+                display: "grid",
+                placeItems: "center",
+              }}
             >
-              <IconeTelephone couleur="#1c1b19" />
+              <IconeTelephone couleur="#1c1b19" taille={20} />
             </a>
             <button
               type="button"

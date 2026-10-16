@@ -15,6 +15,8 @@
  * `components/site/blocs/resume-de-section.ts`.
  */
 
+import { TELEPHONE_SITE } from "@/components/site/entete-donnees";
+
 /**
  * Les quatre variantes que la maquette distingue, dc.html L347 à L350 :
  * - `carriere`   : `isCar = sg[0] === "carriere"` (L350) ;
@@ -108,7 +110,7 @@ export function sousLigneBarreCollante(variante: VarianteConversion): string {
  * son `aria-label`, mot pour mot celui de la V3. Le numéro est celui du site
  * (`TELEPHONE_SITE`), jamais celui des landing pages.
  */
-export const LIBELLE_ROND_TELEPHONE = "Appeler migen au 04 78 33 72 05";
+export const LIBELLE_ROND_TELEPHONE = `Appeler migen au ${TELEPHONE_SITE.affichage}`;
 
 /**
  * dc.html L580 : `stickyShow: g !== "contact" && !s.menu`. La barre ne se

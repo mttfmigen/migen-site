@@ -151,7 +151,9 @@ for (const source of [site, lp, panneaux]) {
     liens.add(trouve[1]);
   }
 }
-// Le tiroir n'est pas rendu au repos : ses cibles sont relues dans les données.
+// Le tiroir est rendu (masqué) au repos depuis le 14/10, donc ses liens sont
+// déjà dans `site` ; les données sont relues en plus, pour les entrées que
+// le rendu par défaut ne montre pas.
 const donnees = readFileSync("components/site/entete-donnees.ts", "utf8");
 const liensDonnees = [...donnees.matchAll(/href: "(\/[^"]*)"/g)].map(
   (trouve) => trouve[1],
@@ -187,38 +189,63 @@ assert.ok(lp.includes("04 11 78 95 97"), "numéro de la LP absent de la LP");
 assert.ok(!lp.includes("04 78 33 72 05"), "numéro du site présent sur la LP");
 
 // ------------------------------- le rond téléphone de la barre mobile (V3)
-// Validé par Mehdi le 16/10 : un lien `tel:` rond dans la barre sous 880 px,
-// nommé pour les lecteurs d'écran, au numéro de SA variante. Masqué au bureau
-// par une règle hors de toute requête média, montré à 44 px dans le bloc
-// mobile : le bureau ne doit pas bouger d'un pixel.
-const rond = (html: string) =>
-  /<a href="(tel:[^"]+)" class="mg-tel-rond" aria-label="([^"]+)">/.exec(html)?.slice(1);
+// Validé par Mehdi le 16/10 : un lien `tel:` rond de 44 px dans la barre sous
+// 881 px, nommé pour les lecteurs d'écran, au numéro de SA variante. Il porte
+// `data-mobile-seulement`, que `globals.css` masque dès 881 px : le bureau ne
+// doit pas bouger d'un pixel. Le contrôle lit la balise rendue, pas la mise en
+// forme d'un fichier.
+const rond = (html: string) => {
+  const balise = /<a\b[^>]*aria-label="Appeler migen au [^"]*"[^>]*>/.exec(html)?.[0] ?? "";
+  const attribut = (nom: string) => new RegExp(`\\s${nom}="([^"]*)"`).exec(balise)?.[1];
+  return {
+    href: attribut("href"),
+    nom: attribut("aria-label"),
+    mobileSeulement: attribut("data-mobile-seulement") !== undefined,
+    taille: /(?:^|;)width:44px;height:44px(?:;|$)/.test(attribut("style") ?? ""),
+  };
+};
+const ROND_SITE = {
+  href: "tel:+33478337205",
+  nom: "Appeler migen au 04 78 33 72 05",
+  mobileSeulement: true,
+  taille: true,
+};
+const ROND_LP = { ...ROND_SITE, href: "tel:+33411789597", nom: "Appeler migen au 04 11 78 95 97" };
 assert.deepEqual(
   rond(site),
-  ["tel:+33478337205", "Appeler migen au 04 78 33 72 05"],
-  "le rond téléphone de la barre mobile manque, ou ne porte pas le numéro du site",
+  ROND_SITE,
+  "le rond téléphone de la barre mobile manque, n'a plus 44 px, n'est plus masqué au bureau, ou ne porte pas le numéro du site",
 );
-const ROND_LP = ["tel:+33411789597", "Appeler migen au 04 11 78 95 97"];
-assert.deepEqual(
-  rond(lp),
-  ROND_LP,
-  "le rond téléphone de la landing page ne porte pas le numéro de la LP",
-);
-// Témoin d'échec : le rond de la LP passé au numéro du site doit être refusé.
+assert.deepEqual(rond(lp), ROND_LP, "le rond téléphone de la landing page ne porte pas le numéro de la LP");
+// Témoins d'échec : le numéro du site sur la LP, et le rond sans sa garde mobile.
 assert.throws(
-  () =>
-    assert.deepEqual(
-      rond(lp.replace('href="tel:+33411789597" class="mg-tel-rond"', 'href="tel:+33478337205" class="mg-tel-rond"')),
-      ROND_LP,
-    ),
+  () => assert.deepEqual(rond(lp.replace('href="tel:+33411789597" data-mobile-seulement', 'href="tel:+33478337205" data-mobile-seulement')), ROND_LP),
   "le contrôle du rond laisse passer le numéro du site sur la LP",
 );
-const css = readFileSync("app/globals.css", "utf8");
-assert.match(css, /^\.mg-tel-rond \{\n {2}display: none;\n\}/m, "le rond téléphone n'est plus masqué au bureau");
+assert.throws(
+  () => assert.deepEqual(rond(site.replace(' data-mobile-seulement="" aria-label="Appeler', ' aria-label="Appeler')), ROND_SITE),
+  "le contrôle du rond laisse passer un rond affiché au bureau",
+);
 assert.match(
-  css,
-  /@media \(max-width: 880px\) \{[^@]*\n {2}\.mg-tel-rond \{\n {4}display: grid;[^}]*width: 44px;\n {4}height: 44px;/,
-  "le rond téléphone n'est plus montré à 44 px sous 880 px",
+  readFileSync("app/globals.css", "utf8"),
+  /@media\s*\(min-width:\s*881px\)\s*\{\s*\[data-mobile-seulement\]\s*\{\s*display:\s*none\s*!important/,
+  "globals.css ne masque plus [data-mobile-seulement] dès 881 px : le rond téléphone apparaît au bureau",
+);
+
+// ----------------------------------------------- le tiroir reste sans téléphone
+// Décision de Mehdi : le tiroir n'a pas de téléphone, la barre en a un. Les deux
+// vivent dans le même rendu d'`Entete` ; le tiroir, monté même fermé, est tout
+// ce qui suit son `id`.
+const telDansTiroir = (html: string) => {
+  const debut = html.indexOf('id="mg-tiroir"');
+  assert.ok(debut > 0, "le tiroir n'est plus rendu dans l'en-tête");
+  return html.slice(debut).includes('href="tel:');
+};
+assert.ok(!telDansTiroir(site), "un lien tel: est entré dans le tiroir du site");
+assert.ok(!telDansTiroir(lp), "un lien tel: est entré dans le tiroir de la landing page");
+assert.ok(
+  telDansTiroir(site.replace('id="mg-tiroir"', 'id="mg-tiroir"><a href="tel:+33478337205">x</a')),
+  "le contrôle du tiroir laisse passer un lien tel:",
 );
 
 // --------------------------------------------- mega-menu atteignable au clavier
