@@ -43,6 +43,16 @@
   cursor: default;
 }
 
+/* Le bouton discret : « Retour » du formulaire, secours de l'agenda. */
+.retour {
+  min-height: 44px;
+  border: none;
+  background: none;
+  font: 600 13px var(--fb);
+  color: #6a6764;
+  cursor: pointer;
+}
+
 .retour:hover {
   color: #1c1b19 !important;
 }
@@ -60,12 +70,69 @@
 
 /* ------------------------------------------- /lp/rendez-vous/ : l'agenda */
 
-/* Le héros garde 184 px sous son texte, et le cadre de l'agenda y remonte
-   d'autant (marge posée en ligne) : il commence où le texte finit. La carte
-   de Calendly, à 66 px du haut de son cadre transparent, chevauche ainsi le
-   bas du héros de 118 px. */
+/* Héros court et centré, puis la carte de l'agenda, qui en chevauche le bas.
+   Les deux mesures ne s'écrivent qu'ici : de combien la carte remonte sur le
+   héros, et l'écart entre le chapô et la carte. */
+.rendezVous {
+  --chevauchement: 120px;
+  --ecart: 64px;
+}
+
 .rendezVous .grilleHeros {
-  padding-bottom: 184px !important;
+  padding-bottom: calc(var(--chevauchement) + var(--ecart)) !important;
+  text-align: center;
+}
+
+/* Les blocs aussi (chapô de 600 px au plus, surtitre), pas seulement les lignes. */
+.rendezVous .grilleHeros > div {
+  display: grid;
+  justify-items: center;
+}
+
+.zoneAgenda {
+  padding: 0 40px 48px;
+  text-align: center;
+}
+
+/* La carte des LP, celle du formulaire : rayon, filet, ombre. Blanche dès le
+   premier instant, sous le cadre : pendant le chargement, ou si Calendly est
+   bloqué, elle tient sa place et porte le message d'état. */
+.carteAgenda {
+  position: relative;
+  width: 680px;
+  max-width: 100%;
+  margin: calc(-1 * var(--chevauchement)) auto 0;
+  overflow: hidden;
+  border: 1px solid rgba(28, 27, 25, 0.06);
+  border-radius: 26px;
+  background: #fff;
+  box-shadow: 0 30px 80px -40px rgba(0, 0, 0, 0.45);
+}
+
+.etatAgenda {
+  position: absolute;
+  inset: 0 0 auto;
+  margin: 0;
+  padding: 96px 32px 0;
+  font: 500 15px/1.6 var(--fb);
+  color: #6a6764;
+  text-wrap: balance;
+}
+
+/* Au bureau, dans un cadre de 760 px, Calendly sert SA carte : 680 px, filet
+   bleuté de 1 px, arrondi de 8 px, à 66 px du haut et 32 px du bas d'une page
+   transparente, 711 px annoncés (relevé au navigateur le 16/10). Le cadre
+   déborde de la carte du site de ces marges, filet compris, et elle rogne le
+   reste : on voit la carte des LP et non celle de Calendly, comme au
+   téléphone. La hauteur de départ est celle qu'il annonce : rien ne saute à
+   l'annonce. Au-delà, la hauteur annoncée est posée en ligne. */
+.cadreAgenda {
+  position: relative;
+  display: block;
+  width: 760px;
+  height: 711px;
+  margin: -67px -41px -33px;
+  border: 0;
 }
 
 /* ------------------------------------------- héros des pages de service */
@@ -109,27 +176,28 @@
     font-size: 16px !important;
   }
 
-  /* L'agenda : 18 px de gouttière, comme le héros. */
-  .zoneAgenda {
-    padding: 0 18px 32px !important;
+  /* L'agenda : la carte à 18 px des bords, comme le texte du héros, 24 px
+     sous le chapô. */
+  .rendezVous {
+    --chevauchement: 56px;
+    --ecart: 24px;
   }
-}
 
-/* Sous 650 px de cadre (685 px de page moins deux gouttières de 18 px),
-   Calendly ne sert plus sa carte sur fond transparent mais une page blanche
-   pleine, dès le haut du cadre (seuil relevé au navigateur le 16/10). Le
-   cadre devient alors la carte : ombre et filet de la carte de la maquette
-   V3, 24 px sous le chapô, 56 px de chevauchement. Au-dessus du seuil, le
-   chevauchement du bureau tient, et une ombre dessinerait un rectangle vide
-   autour de la carte de Calendly. */
-@container (max-width: 685px) {
-  .rendezVous .grilleHeros {
-    padding-bottom: 80px !important;
+  .zoneAgenda {
+    padding: 0 18px 32px;
+  }
+
+  /* Sous 650 px de cadre, Calendly sert une page blanche pleine, sans bord ni
+     marge, 602 px annoncés au téléphone : le cadre remplit la carte. 640 px
+     au plus, pour rester sous ce seuil jusqu'à 760 px de page. */
+  .carteAgenda {
+    width: auto;
+    max-width: 640px;
   }
 
   .cadreAgenda {
-    margin-top: -56px !important;
-    border: 1px solid rgba(28, 27, 25, 0.06) !important;
-    box-shadow: 0 30px 80px -40px rgba(0, 0, 0, 0.45);
+    width: 100%;
+    height: 602px;
+    margin: 0;
   }
 }

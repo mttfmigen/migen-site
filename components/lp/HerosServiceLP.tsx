@@ -28,8 +28,6 @@ interface Proprietes {
   actions?: ReactNode;
   /** La colonne de droite, quand la page en a une. */
   carte?: ReactNode;
-  /** Texte centré, pour une page sans colonne de droite (/lp/rendez-vous/, l'agenda dessous). */
-  centre?: boolean;
 }
 
 const SECTION: CSSProperties = { position: "relative", overflow: "hidden", background: "#1c1b19" };
@@ -41,7 +39,7 @@ const VOILE: CSSProperties = {
     "linear-gradient(90deg,rgba(18,17,16,.92) 0%,rgba(18,17,16,.76) 50%,rgba(18,17,16,.52) 100%)",
 };
 
-const grille = (deuxColonnes: boolean, centre: boolean): CSSProperties => ({
+const grille = (deuxColonnes: boolean): CSSProperties => ({
   position: "relative",
   maxWidth: 1200,
   margin: "0 auto",
@@ -50,7 +48,6 @@ const grille = (deuxColonnes: boolean, centre: boolean): CSSProperties => ({
   gridTemplateColumns: deuxColonnes ? "minmax(0,1.08fr) minmax(0,.92fr)" : "minmax(0,1fr)",
   gap: 48,
   alignItems: "center",
-  textAlign: centre ? "center" : undefined,
 });
 
 const SURTITRE: CSSProperties = {
@@ -122,13 +119,12 @@ export function HerosServiceLP({
   chiffres = [],
   actions,
   carte,
-  centre = false,
 }: Proprietes) {
   return (
     <section id="lp-top" style={SECTION}>
       <Image src={photo} alt="" fill priority sizes="100vw" style={{ objectFit: "cover" }} />
       <div aria-hidden="true" className={styles.voile} style={VOILE} />
-      <div className={styles.grilleHeros} style={grille(Boolean(carte), centre)}>
+      <div className={styles.grilleHeros} style={grille(Boolean(carte))}>
         <div>
           <p style={SURTITRE}>
             <span aria-hidden="true" style={PASTILLE} />
@@ -137,7 +133,7 @@ export function HerosServiceLP({
           <h1 className={styles.titreHeros} style={TITRE}>
             {titre}
           </h1>
-          {chapo ? <p style={centre ? { ...CHAPO, margin: "20px auto 0" } : CHAPO}>{chapo}</p> : null}
+          {chapo ? <p style={CHAPO}>{chapo}</p> : null}
           {pastilles.length ? (
             <ul style={PASTILLES}>
               {pastilles.map((pastille) => (

@@ -29,14 +29,16 @@
  *     texte écrit dans les composants (« Choisissez votre créneau · 30 min »
  *     l'a montré) n'en avait aucune ;
  *   · zéro débordement horizontal à 390 px, page par page, au navigateur ;
- *   · L'AGENDA DE /lp/rendez-vous/, au navigateur : un cadre sur l'agenda
- *     Calendly de la LP (origine https://calendly.com, `embed_type=Inline`),
- *     titré, dont l'adresse n'est pas dans le HTML servi (elle porte le
- *     prérempli, posé après le montage) ; le cadre prend la hauteur que
- *     Calendly annonce (`calendly.page_height`), ignore la même annonce venue
- *     d'une autre origine et ne se referme pas sur les 2 px du chargement.
- *     Les annonces sont simulées et Calendly bloqué : la porte ne dépend pas
- *     du réseau ni de l'agenda de Thomas.
+ *   · L'AGENDA DE /lp/rendez-vous/, au navigateur, à 360, 390 et 1440 px : un
+ *     cadre sur l'agenda Calendly de la LP (origine https://calendly.com,
+ *     `embed_type=Inline`, sans `hide_gdpr_banner`), titré, dont l'adresse
+ *     n'est pas dans le HTML servi mais porte, une fois la page montée, le
+ *     nom et le courriel laissés par le formulaire dans `sessionStorage` ; le
+ *     cadre prend la hauteur que Calendly annonce (`calendly.page_height`),
+ *     ignore la même annonce venue d'une autre origine et ne se referme pas
+ *     sur les 2 px du chargement ; la page ne déborde pas. Les annonces sont
+ *     simulées et Calendly bloqué : la porte ne dépend pas du réseau ni de
+ *     l'agenda de Thomas.
  *
  * ELLE PROUVE QU'ELLE SAIT ÉCHOUER : avant tout contrôle, chaque règle est
  * jouée sur un témoin abîmé et doit le refuser (y compris le débordement, sur
@@ -51,7 +53,7 @@ import { fileURLToPath } from "node:url";
 
 import { chromium } from "playwright";
 
-import { urlCalendly } from "../components/lp/lead-lp.ts";
+import { CLE_RENDEZ_VOUS, urlCalendly } from "../components/lp/lead-lp.ts";
 import { TELEPHONE_LP, TELEPHONE_SITE } from "../components/site/entete-donnees.ts";
 import { estLandingPage } from "../lib/lp/adresses.ts";
 import { motifsDuTexte } from "./verifie-lp-donnees.mjs";
@@ -182,14 +184,18 @@ function defautsCopie(html, chemin) {
 /* ------------------------------------------------ l'agenda de /lp/rendez-vous/ */
 
 const PAGE_AGENDA = "/lp/rendez-vous/";
+/** Le bureau compris : au-dessus de 650 px de cadre, Calendly sert une autre mise en page. */
+const LARGEURS_AGENDA = [360, 390, 1440];
 const AGENDA = new URL(urlCalendly(null, true));
-const ADRESSE_AGENDA = `${AGENDA.origin}${AGENDA.pathname}`;
 /** La hauteur que la porte fait annoncer, au nom de Calendly puis d'un intrus. */
 const HAUTEUR_ANNONCEE = 1234;
 /** En dessous, le cadre s'est refermé sur une annonce de chargement : plus d'agenda lisible. */
 const HAUTEUR_LISIBLE = 400;
+/** Ce que le formulaire laisse dans `sessionStorage` après l'envoi : la porte le pose avant d'ouvrir la page. */
+const PREREMPLI_TEMOIN = { nom: "Camille Témoin", email: "camille@exemple.invalid" };
 
-const sansFragment = (adresse) => {
+/** L'adresse sans ses paramètres, ou `null` si ce n'en est pas une. */
+const sansParametres = (adresse) => {
   try {
     const url = new URL(adresse);
     return `${url.origin}${url.pathname}`;
@@ -197,6 +203,7 @@ const sansFragment = (adresse) => {
     return null;
   }
 };
+const ADRESSE_AGENDA = sansParametres(AGENDA.href);
 
 /** Le HTML servi : le cadre y est, sans adresse (elle porte le nom et le courriel saisis). */
 function defautsAgendaServi(html) {
@@ -207,11 +214,16 @@ function defautsAgendaServi(html) {
 
 /** Ce que le navigateur a relevé : les cadres, puis la hauteur après chaque annonce simulée. */
 function defautsAgenda({ cadres, suivie, intruse, minuscule }) {
-  const agenda = cadres.find((cadre) => sansFragment(cadre.adresse) === ADRESSE_AGENDA);
+  const agenda = cadres.find((cadre) => sansParametres(cadre.adresse) === ADRESSE_AGENDA);
   if (!agenda) return [`aucun cadre sur ${ADRESSE_AGENDA} (vu : ${cadres.map((cadre) => cadre.adresse || "sans adresse").join(", ") || "aucun cadre"})`];
   const defauts = [];
   if (!/calendly/i.test(agenda.titre ?? "")) defauts.push(`cadre titré « ${agenda.titre ?? ""} » : le titre doit nommer l'agenda Calendly`);
-  if (new URL(agenda.adresse).searchParams.get("embed_type") !== "Inline") defauts.push("adresse sans embed_type=Inline : Calendly n'annoncerait pas sa hauteur");
+  const parametres = new URL(agenda.adresse).searchParams;
+  if (parametres.get("embed_type") !== "Inline") defauts.push("adresse sans embed_type=Inline : Calendly n'annoncerait pas sa hauteur");
+  if (parametres.get("name") !== PREREMPLI_TEMOIN.nom || parametres.get("email") !== PREREMPLI_TEMOIN.email) {
+    defauts.push(`prérempli perdu : name « ${parametres.get("name") ?? ""} », email « ${parametres.get("email") ?? ""} » dans l'adresse du cadre`);
+  }
+  if (parametres.has("hide_gdpr_banner")) defauts.push("hide_gdpr_banner dans l'adresse : le bandeau de cookies de Calendly doit rester");
   if (suivie !== HAUTEUR_ANNONCEE) defauts.push(`hauteur annoncée par Calendly non suivie (${suivie} px pour ${HAUTEUR_ANNONCEE})`);
   if (intruse !== suivie) defauts.push(`hauteur annoncée par une autre origine suivie (${intruse} px)`);
   if (!(minuscule >= HAUTEUR_LISIBLE)) defauts.push(`cadre refermé à ${minuscule} px sur une annonce de 2 px`);
@@ -343,8 +355,9 @@ function temoins() {
   assert.ok(!portaLeNumeroLp(`<p>${TELEPHONE_SITE.affichage}</p>`), "le numéro du site pris pour celui des LP");
   assert.deepEqual(defautsLiens('<a href="/lpx/">x</a><a href="/offres/lp/">y</a>', ORIGINE_TEMOIN), [], "une page du site prise pour une LP");
 
+  const adresseSaine = urlCalendly(PREREMPLI_TEMOIN, true);
   const agendaSain = {
-    cadres: [{ titre: "Agenda de réservation Calendly", adresse: AGENDA.href }],
+    cadres: [{ titre: "Agenda de réservation Calendly", adresse: adresseSaine }],
     suivie: HAUTEUR_ANNONCEE,
     intruse: HAUTEUR_ANNONCEE,
     minuscule: 600,
@@ -353,9 +366,13 @@ function temoins() {
   assert.deepEqual(defautsAgendaServi('<iframe title="Agenda de réservation Calendly" style="height:600px"></iframe>'), [], "témoin sain refusé : agenda servi");
   doitRefuser("agenda absent", defautsAgenda({ ...agendaSain, cadres: [] }));
   doitRefuser("cadre sans adresse", defautsAgenda({ ...agendaSain, cadres: [{ titre: "Agenda de réservation Calendly", adresse: "" }] }));
-  doitRefuser("agenda sur une autre origine", defautsAgenda({ ...agendaSain, cadres: [{ titre: "Agenda", adresse: AGENDA.href.replace("calendly.com", "calendly.exemple.invalid") }] }));
-  doitRefuser("cadre sans titre", defautsAgenda({ ...agendaSain, cadres: [{ titre: "", adresse: AGENDA.href }] }));
-  doitRefuser("adresse sans embed_type", defautsAgenda({ ...agendaSain, cadres: [{ titre: "Calendly", adresse: AGENDA.href.replace("embed_type=Inline", "") }] }));
+  const cadreDe = (adresse) => ({ ...agendaSain, cadres: [{ titre: "Agenda Calendly", adresse }] });
+  doitRefuser("agenda sur une autre origine", defautsAgenda(cadreDe(adresseSaine.replace("calendly.com", "calendly.exemple.invalid"))));
+  doitRefuser("cadre sans titre", defautsAgenda({ ...agendaSain, cadres: [{ titre: "", adresse: adresseSaine }] }));
+  doitRefuser("adresse sans embed_type", defautsAgenda(cadreDe(adresseSaine.replace("embed_type=Inline", ""))));
+  doitRefuser("prérempli perdu", defautsAgenda(cadreDe(AGENDA.href)));
+  doitRefuser("courriel perdu", defautsAgenda(cadreDe(urlCalendly({ nom: PREREMPLI_TEMOIN.nom, email: "" }, true))));
+  doitRefuser("bandeau de cookies masqué", defautsAgenda(cadreDe(`${adresseSaine}&hide_gdpr_banner=1`)));
   doitRefuser("hauteur de Calendly ignorée", defautsAgenda({ ...agendaSain, suivie: 600, intruse: 600 }));
   doitRefuser("hauteur d'un intrus suivie", defautsAgenda({ ...agendaSain, intruse: HAUTEUR_ANNONCEE + 300 }));
   doitRefuser("cadre refermé au chargement", defautsAgenda({ ...agendaSain, minuscule: 2 }));
@@ -450,13 +467,26 @@ try {
     if (exces) signale(chemin, [`déborde de ${exces} px à ${LARGEUR_TELEPHONE} px (${coupable})`]);
   }
 
-  // 4. L'agenda de /lp/rendez-vous/, puis son témoin : la même page, cadre privé de son titre.
+  // 4. L'agenda de /lp/rendez-vous/ à chaque largeur, le prérempli posé comme après
+  // l'envoi du formulaire. Puis son témoin : la même page, cadre privé de son titre.
   if (!CHEMINS.includes(PAGE_AGENDA)) signale(PAGE_AGENDA, ["absente de lib/lp/pages.json"]);
-  await onglet.goto(`${origine}${PAGE_AGENDA}`, { waitUntil: "load" });
-  signale(PAGE_AGENDA, defautsAgenda(await mesureAgenda(onglet)));
-  await onglet.evaluate(() => document.querySelectorAll("iframe").forEach((cadre) => cadre.removeAttribute("title")));
+  let ongletAgenda;
+  for (const largeur of LARGEURS_AGENDA) {
+    const contexteAgenda = await navigateur.newContext({ viewport: { width: largeur, height: largeur < 768 ? 844 : 900 } });
+    await contexteAgenda.route(/^https:\/\/([\w-]+\.)*calendly\.com\//, (route) => route.abort());
+    await contexteAgenda.addInitScript(({ cle, valeur }) => window.sessionStorage.setItem(cle, valeur), {
+      cle: CLE_RENDEZ_VOUS,
+      valeur: JSON.stringify(PREREMPLI_TEMOIN),
+    });
+    ongletAgenda = await contexteAgenda.newPage();
+    await ongletAgenda.goto(`${origine}${PAGE_AGENDA}`, { waitUntil: "load" });
+    signale(`${PAGE_AGENDA} à ${largeur} px`, defautsAgenda(await mesureAgenda(ongletAgenda)));
+    const { exces, coupable } = await debordement(ongletAgenda);
+    if (exces) signale(PAGE_AGENDA, [`déborde de ${exces} px à ${largeur} px (${coupable})`]);
+  }
+  await ongletAgenda.evaluate(() => document.querySelectorAll("iframe").forEach((cadre) => cadre.removeAttribute("title")));
   temoinsVus += 1;
-  if (!defautsAgenda(await mesureAgenda(onglet)).length) {
+  if (!defautsAgenda(await mesureAgenda(ongletAgenda)).length) {
     console.error("TÉMOIN PASSÉ : l'agenda de /lp/rendez-vous/ privé de son titre. Le contrôle de l'agenda est aveugle.");
     process.exit(2);
   }
@@ -475,6 +505,6 @@ console.log(
     `/lp/ mène à la LP France ; aucune LP aux plans du site ni bloquée par robots.txt ; ` +
     `${figeesSite.length} pages du site sans lien vers /lp/ ni numéro des LP ; aucune image externe ; ` +
     `aucun interdit dans le texte ajouté par le gabarit ; ` +
-    `aucun débordement à ${LARGEUR_TELEPHONE} px ; agenda Calendly en cadre sur ${PAGE_AGENDA} (titre, origine, hauteur suivie) ; ` +
+    `aucun débordement à ${LARGEUR_TELEPHONE} px ; agenda Calendly en cadre sur ${PAGE_AGENDA} à ${LARGEURS_AGENDA.join(", ")} px (titre, origine, prérempli, bandeau de cookies, hauteur suivie) ; ` +
     `${temoinsVus} témoins rouges vus rouges.`,
 );
