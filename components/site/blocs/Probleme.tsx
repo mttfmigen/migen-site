@@ -2,7 +2,7 @@ import type { SectionProbleme } from "@/types/contenu";
 import styles from "./Blocs.module.css";
 import { LARGEUR, LUEUR, PANNEAU, SECTION, SURTITRE, TITRE2_CLAIR } from "./habillage";
 import SectionPliableMobile from "./SectionPliableMobile";
-import { resumeDe } from "./resume-de-section";
+import { accrocheDuProbleme } from "./resume-de-section";
 import TexteRiche from "./TexteRiche";
 
 /**
@@ -29,9 +29,7 @@ export default function Probleme({ section }: { section: SectionProbleme }) {
                   </h2>
                 </span>
               }
-              resume={resumeDe(
-                section.puces.map((puce) => puce.accroche ?? puce.texte),
-              )}
+              resume={accrocheDuProbleme(section)}
             >
             {section.puces.length > 0 ? (
               <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10, marginTop: 30 }}>

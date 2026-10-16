@@ -401,9 +401,10 @@ export default function PageExpertises({
 
         {/* ------------------------------- 12 à 15. déroulé → références */}
 
-        {/* Sans résumé, comme la maquette : la section ne porte que ses
-            étapes, et dc.html `teaseOf` n'en tire rien. */}
-        {deroule ? <DerouleOffre section={deroule} pli="replie" resume={null} /> : null}
+        {/* Replié au téléphone (« 03 Le déroulé »). L'accroche est celle de la
+            V3 : la première étape du corpus (`accrocheDuDeroule`), que la v2
+            ne lisait pas. */}
+        {deroule ? <DerouleOffre section={deroule} pli="replie" /> : null}
         {garanties ? <GarantiesOffre section={garanties} /> : null}
         {hub.marquesFamille || preuves ? (
           <>

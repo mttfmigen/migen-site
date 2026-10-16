@@ -14,7 +14,7 @@ import {
 import SectionPliableMobile, {
   ENTETE_DANS_BASCULE,
 } from "./SectionPliableMobile";
-import { resumeDe } from "./resume-de-section";
+import { accrocheDe, ligneDuCorpus } from "./resume-de-section";
 import TexteRiche from "./TexteRiche";
 
 /**
@@ -43,7 +43,10 @@ export default function Deroule({ section }: { section: SectionDeroule }) {
               ) : null}
             </div>
           }
-          resume={resumeDe(section.etapes.map((etape) => etape.titre))}
+          resume={accrocheDe([
+            { paragraphe: section.intro },
+            { liste: section.etapes.map((etape) => ligneDuCorpus({ accroche: etape.titre, texte: etape.texte })) },
+          ])}
         >
         <div
           className="mg-rmulti"

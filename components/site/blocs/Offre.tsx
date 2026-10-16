@@ -5,7 +5,7 @@ import Paragraphes from "./Paragraphes";
 import SectionPliableMobile, {
   ENTETE_DANS_BASCULE,
 } from "./SectionPliableMobile";
-import { resumeDe } from "./resume-de-section";
+import { accrocheDe, ligneDuCorpus } from "./resume-de-section";
 import TexteRiche from "./TexteRiche";
 import {
   CHAPEAU,
@@ -175,11 +175,11 @@ export default function Offre({ section }: { section: SectionOffre }) {
         <SectionPliableMobile
           enTete={enTeteOffre}
           kicker={enTeteOffre ? undefined : "Ce qui est inclus"}
-          resume={resumeDe(
-            section.lignes.map(
-              (ligne) => ligne.prestation.accroche ?? ligne.prestation.texte,
-            ),
-          )}
+          resume={accrocheDe([
+            { paragraphe: section.intro },
+            { cellule: section.lignes[0] ? ligneDuCorpus(section.lignes[0].prestation) : undefined },
+            ...(section.prose ?? []).map((p) => ({ paragraphe: ligneDuCorpus(p) })),
+          ])}
         >
         {section.lignes.length > 0 ? (
           /* Le duo prestation / bénéfice est écrit par le corpus comme un

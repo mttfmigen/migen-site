@@ -23,6 +23,8 @@ import {
   majusculeInitiale,
   numerote,
 } from "@/components/site/offre/texte-offre";
+import { accrocheDuDeroule } from "@/components/site/offre/DerouleOffre";
+import { accrocheDeLOffre } from "@/components/site/offre/PointsOffre";
 import { cadragePhoto } from "@/lib/cadrage-photos";
 import { altPhoto } from "@/lib/descriptions-photos";
 import type { Preuve, Section, TypeSection } from "@/types/contenu";
@@ -327,7 +329,9 @@ export default function SectionsMobilesSecteur({ contenu, chemin, photoHeros, bo
     ) : null,
 
     offre ? (
-      <Carte key="offre" titre="L’offre" resume={prose[0] ?? resumeDe(points.map((p) => p.titre))}>
+      /* L'accroche de la V3 (`accrocheDeLOffre`) : la première cellule du
+         tableau, puis seulement la prose qui le suit. */
+      <Carte key="offre" titre="L’offre" resume={accrocheDeLOffre(offre, [...prose, complements[0]?.texte])}>
         <p className={s.phraseCle}>Ce que nous faisons, et ce que ça change pour vous</p>
         {/* Sans compteur « N points » : retiré à la demande de Mehdi le 15/10. */}
         <ListeKv
@@ -371,7 +375,7 @@ export default function SectionsMobilesSecteur({ contenu, chemin, photoHeros, bo
     ) : null,
 
     deroule ? (
-      <Carte key="deroule" titre="Le déroulé">
+      <Carte key="deroule" titre="Le déroulé" resume={accrocheDuDeroule(deroule)}>
         <p className={s.phraseCle}>{titreDeroule}</p>
         <div className={s.enteteListe}>
           <span>{deroule.etapes.length}</span> étapes

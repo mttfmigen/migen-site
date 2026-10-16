@@ -898,9 +898,10 @@ details[open] .g3-plus {
       CNIL compris), mais porté par la présence de la barre elle-même :
       aucune page à câbler, aucun oubli possible.
 
-   3. Géométrie de la maquette mobile v2, dc.html L191 : hauteur 50 px,
-      marges latérales 12 px (la barre v1 portait 54/14, valeurs de la
-      maquette v1 : les deux jeux de variables restent distincts).
+   3. Géométrie de la maquette V3 (16/10) : une pilule de verre de 58 px
+      (5 px autour de boutons de 48 px), marges latérales 12 px. La v2
+      portait 50 px sans pilule, la barre v1 54/14 : les jeux de variables
+      restent distincts.
 
    4. `.conversion-rappel-sombre` : le panneau « Être rappelé » réutilisé tel
       quel (`RappelExpress`) rend ses champs sur fond sombre ; le navigateur
@@ -909,7 +910,7 @@ details[open] .g3-plus {
    ========================================================================= */
 
 :root {
-  --conversion-barre-hauteur: 50px; /* dc.html L191 : height:50px */
+  --conversion-barre-hauteur: 58px; /* V3 : pilule de 5 px autour de boutons de 48 px */
   --conversion-barre-marge: 12px;   /* dc.html L191 : left:12px;right:12px */
 }
 

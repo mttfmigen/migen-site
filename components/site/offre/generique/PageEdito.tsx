@@ -22,7 +22,16 @@ import h from "./Generique.module.css";
  * et styles recopiés de son gabarit ; la vue est calculée par son code.
  */
 
-function SectionLecture({ sec, ouverte }: { sec: Section; ouverte: boolean }) {
+function SectionLecture({
+  sec,
+  ouverte,
+  accroche,
+}: {
+  sec: Section;
+  ouverte: boolean;
+  /** L'accroche V3 de la carte fermée (`vue.ts`, `accrochesDe`). */
+  accroche?: string;
+}) {
   return (
     <section
       id={sec.id}
@@ -37,6 +46,7 @@ function SectionLecture({ sec, ouverte }: { sec: Section; ouverte: boolean }) {
         toujoursOuvert={ouverte}
         numero={!porteSonNumero(sec.num)}
         enTete={<EtiquettePli surtitre={sec.num} titre={sec.title} />}
+        resume={accroche}
       >
       <div style={css("display:flex;align-items:baseline;gap:14px;margin-bottom:20px")}>
         <span style={css("font:600 12px ui-monospace,Menlo,monospace;letter-spacing:.06em;color:var(--acc);flex:none")}><span>{sec.num}</span></span>
@@ -139,7 +149,12 @@ export default function PageEdito({
                 actions={[{ libelle: "Décrire mon besoin", href: "#cx-form" }]}
               >
                 {v.cSections.map((sec, rang) => (
-                  <SectionLecture key={sec.id} sec={sec} ouverte={rang === 0} />
+                  <SectionLecture
+                    key={sec.id}
+                    sec={sec}
+                    ouverte={rang === 0}
+                    accroche={v.accroches[sec.title]}
+                  />
                 ))}
               </CadenceOffre>
             </article>

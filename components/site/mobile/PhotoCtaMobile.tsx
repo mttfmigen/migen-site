@@ -2,10 +2,11 @@ import type { CSSProperties } from "react";
 
 import { TELEPHONE_SITE } from "@/components/site/entete-donnees";
 
+import { IconeFleche, IconeTelephone } from "./BarreCollanteMobile";
 import {
   boutonPhotoCta,
   ID_PHOTO_CTA,
-  LIBELLE_APPELER,
+  LIBELLE_ROND_TELEPHONE,
   surTitrePhotoCta,
   titrePhotoCta,
   type LibelleCible,
@@ -13,8 +14,11 @@ import {
 } from "./conversion-donnees";
 
 /**
- * LE PHOTO + CTA APRÈS LA 2e SECTION, motif `isPhotoCta` de la maquette
- * mobile v2, dc.html L127 :
+ * LE PHOTO + CTA APRÈS LA 2e SECTION, motif `isPhotoCta`. DEPUIS LE 16/10,
+ * LES BOUTONS SONT CEUX DE LA V3 (`maquette/mobile-v3/`) : le bouton orange
+ * porte sa pastille flèche, et la pilule « Appeler » devient un rond blanc
+ * téléphone, nommé par l'`aria-label` de la V3. Le reste est inchangé. Le
+ * dessin de la v2, dc.html L127 :
  *
  *   <section … margin:14px 18px 0;position:relative;border-radius:24px;
  *     overflow:hidden;min-height:300px;background:#2a2927 center/cover no-repeat;
@@ -73,35 +77,46 @@ const TITRE: CSSProperties = {
   color: "#fff",
 };
 
-const RANGEE: CSSProperties = { display: "flex", gap: 8 };
+const RANGEE: CSSProperties = { display: "flex", gap: 8, alignItems: "center" };
 
+/* V3 `isPhotoCta` : le bouton orange porte sa pastille flèche à droite. */
 const PRINCIPAL: CSSProperties = {
   flex: 1,
+  minWidth: 0,
   display: "flex",
   alignItems: "center",
-  justifyContent: "center",
-  minHeight: 48,
-  padding: "0 14px",
+  justifyContent: "space-between",
+  gap: 10,
+  minHeight: 50,
+  padding: "0 6px 0 20px",
   borderRadius: 999,
   background: "#ff7c3c",
   color: "#fff",
-  font: "600 14px/1.25 var(--fb)",
-  textAlign: "center",
+  font: "600 14.5px/1.25 var(--fb)",
+  boxShadow: "0 12px 26px -14px rgba(255,124,60,.9)",
   textDecoration: "none",
 };
 
-const APPELER: CSSProperties = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  minHeight: 48,
-  padding: "0 16px",
+const PASTILLE_FLECHE: CSSProperties = {
+  flex: "none",
+  width: 38,
+  height: 38,
   borderRadius: 999,
-  background: "rgba(255,255,255,.16)",
-  border: "1px solid rgba(255,255,255,.3)",
-  color: "#fff",
-  font: "600 13.5px var(--fb)",
-  textDecoration: "none",
+  background: "rgba(255,255,255,.2)",
+  display: "grid",
+  placeItems: "center",
+};
+
+/* V3 : le rond BLANC, icône téléphone en encre, à droite du bouton. */
+const ROND_TELEPHONE: CSSProperties = {
+  flex: "none",
+  width: 50,
+  height: 50,
+  borderRadius: 999,
+  background: "#ffffff",
+  boxShadow: "0 8px 20px -10px rgba(0,0,0,.5)",
+  display: "grid",
+  placeItems: "center",
 };
 
 export interface PhotoCtaMobileProps {
@@ -135,10 +150,13 @@ export default function PhotoCtaMobile({
         <p style={TITRE}>{titrePhotoCta(variante)}</p>
         <div style={RANGEE}>
           <a href={principal.href} style={PRINCIPAL}>
-            {principal.libelle}
+            <span>{principal.libelle}</span>
+            <span style={PASTILLE_FLECHE}>
+              <IconeFleche />
+            </span>
           </a>
-          <a href={TELEPHONE_SITE.href} style={APPELER}>
-            {LIBELLE_APPELER}
+          <a href={TELEPHONE_SITE.href} aria-label={LIBELLE_ROND_TELEPHONE} style={ROND_TELEPHONE}>
+            <IconeTelephone couleur="#1c1b19" />
           </a>
         </div>
       </div>

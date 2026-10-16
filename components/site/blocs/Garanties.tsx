@@ -2,7 +2,7 @@ import type { SectionGaranties } from "@/types/contenu";
 import styles from "./Blocs.module.css";
 import { LARGEUR, PROSE_FORT, SECTION, SURTITRE, TITRE2, VERRE } from "./habillage";
 import SectionPliableMobile from "./SectionPliableMobile";
-import { resumeDe } from "./resume-de-section";
+import { ligneDuCorpus } from "./resume-de-section";
 import TexteRiche from "./TexteRiche";
 
 /**
@@ -25,7 +25,7 @@ export default function Garanties({ section }: { section: SectionGaranties }) {
               <h2 style={TITRE2}>{section.titre ?? "Ce que nous garantissons."}</h2>
             </span>
           }
-          resume={resumeDe(section.puces.map((puce) => puce.accroche ?? puce.texte))}
+          resume={section.puces[0] ? ligneDuCorpus(section.puces[0]) : undefined}
         >
         <div style={{ ...VERRE, padding: "30px 32px 18px" }}>
           {section.puces.map((puce) => (

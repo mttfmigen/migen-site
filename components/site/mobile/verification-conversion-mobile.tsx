@@ -5,8 +5,11 @@
  *   bun components/site/mobile/verification-conversion-mobile.tsx --controle
  *
  * LA RÉFÉRENCE est la maquette mobile v2,
- * `maquette/mobile-v2/maquette/Migen - Mobile v2.dc.html`, RELUE à chaque
- * exécution, jamais recopiée : si la maquette change, la porte le voit.
+ * `maquette/mobile-v2/maquette/Migen - Mobile v2.dc.html`, et depuis le 16/10
+ * la V3 (`maquette/mobile-v3/Migen - Mobile V3.dc.html`) pour la barre
+ * collante et le photo + CTA : un libellé vaut s'il est écrit dans l'une des
+ * deux. Les deux sont RELUES à chaque exécution, jamais recopiées : si la
+ * maquette change, la porte le voit.
  *
  * CE QU'ELLE TIENT :
  * 1. ZÉRO TEXTE INVENTÉ : chaque libellé rendu par les composants existe
@@ -57,8 +60,9 @@ import {
   ID_PHOTO_CTA,
   ID_RAPPEL_FINAL,
   insertionApresSection,
-  LIBELLE_APPELER,
+  LIBELLE_ROND_TELEPHONE,
   LIEN_DETAIL,
+  sousLigneBarreCollante,
   surTitrePhotoCta,
   surTitreRappelFinal,
   texteBandeau,
@@ -68,10 +72,14 @@ import {
 } from "./conversion-donnees";
 
 const MAQUETTE = "maquette/mobile-v2/maquette/Migen - Mobile v2.dc.html";
+const MAQUETTE_V3 = "maquette/mobile-v3/Migen - Mobile V3.dc.html";
 const GLOBALS = "app/globals.css";
 
 const dc = readFileSync(MAQUETTE, "utf8");
+const dcV3 = readFileSync(MAQUETTE_V3, "utf8");
 const css = readFileSync(GLOBALS, "utf8");
+/** Écrit dans l'une des deux maquettes de référence. */
+const dansUneMaquette = (texte: string) => dc.includes(texte) || dcV3.includes(texte);
 
 /* ------------------------------------------------------------- outillage */
 
@@ -155,16 +163,15 @@ const PAIRES: readonly PaireContraste[] = [
     heriteeDe: "background:#ff7c3c;color:#fff",
   },
   {
-    nom: "blanc sur verre clair sur photo (« Appeler » du photo + CTA, dc.html L127)",
-    texte: BLANC,
-    fond: compose(BLANC, 0.16, hex("#2a2927")),
-    heriteeDe:
-      "background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);color:#fff",
+    nom: "blanc à 88 % sur orange (sous-ligne de la barre, V3 `stickyS`)",
+    texte: compose(BLANC, 0.88, ORANGE),
+    fond: ORANGE,
+    heriteeDe: "font:500 11px/1.2 var(--fb);color:rgba(255,255,255,.88)",
   },
   {
-    nom: "encre sur verre blanc (« Appeler » de la barre, dc.html L191)",
+    nom: "encre sur blanc (icône du rond téléphone du photo + CTA, V3)",
     texte: ENCRE,
-    fond: compose(BLANC, 0.92, FOND_PAGE),
+    fond: BLANC,
   },
   { nom: "blanc sur encre (section finale, bouton du bandeau)", texte: BLANC, fond: ENCRE },
   { nom: "orange clair sur encre (lien détail, dc.html L138)", texte: ORANGE_CLAIR, fond: ENCRE },
@@ -186,7 +193,7 @@ function controleContraste(paires: readonly PaireContraste[]): string[] {
   for (const p of paires) {
     const ratio = contraste(p.texte, p.fond);
     if (ratio >= 4.5) continue;
-    if (p.heriteeDe && dc.includes(p.heriteeDe)) continue; // DA du client, prouvée
+    if (p.heriteeDe && dansUneMaquette(p.heriteeDe)) continue; // DA du client, prouvée
     defauts.push(`${p.nom} : ${ratio.toFixed(2)}:1 sans source dans la maquette`);
   }
   return defauts;
@@ -195,7 +202,7 @@ function controleContraste(paires: readonly PaireContraste[]): string[] {
 /* ------------------------------------------- cibles tactiles (SC 2.5.8) */
 
 const VARIABLES_PX: Record<string, number> = {
-  "--conversion-barre-hauteur": 50,
+  "--conversion-barre-hauteur": 58,
 };
 
 function hauteurDeclaree(style: string): number | null {
@@ -291,7 +298,7 @@ function rendus(): Rendu[] {
     liste.push({
       nom: `BarreCollanteMobile ${v}`,
       html: renderToStaticMarkup(<BarreCollanteMobile variante={v} />),
-      libelles: [boutonBarreCollante(v).libelle, LIBELLE_APPELER],
+      libelles: [boutonBarreCollante(v).libelle, sousLigneBarreCollante(v)],
     });
     liste.push({
       nom: `PhotoCtaMobile ${v}`,
@@ -300,7 +307,6 @@ function rendus(): Rendu[] {
         surTitrePhotoCta(v),
         titrePhotoCta(v),
         boutonPhotoCta(v).libelle,
-        LIBELLE_APPELER,
       ],
     });
     liste.push({
@@ -379,10 +385,10 @@ if (process.argv.includes("--controle")) {
 for (const r of rendus()) {
   for (const l of r.libelles) {
     if (l === texteRappelExpress) continue; // composant existant réutilisé
-    assert.ok(dc.includes(l), `${r.nom} : « ${l} » est ABSENT de la maquette`);
+    assert.ok(dansUneMaquette(l), `${r.nom} : « ${l} » est ABSENT de la maquette`);
   }
 }
-assert.ok(dc.includes(texteRappelExpress), // « Être rappelé dans l'heure »
+assert.ok(dansUneMaquette(texteRappelExpress), // « Être rappelé dans l'heure »
   "le bouton du panneau réutilisé ne correspond plus à la maquette");
 
 // 2. ET RIEN D'AUTRE : le texte rendu, libellés retirés, ne porte plus une lettre.
@@ -393,8 +399,8 @@ for (const r of rendus()) {
 
 // 3. CIBLES TACTILES (SC 2.5.8) sur tous les rendus, démonstration comprise.
 assert.ok(
-  css.includes("--conversion-barre-hauteur: 50px"),
-  "globals.css : la hauteur de barre n'est plus 50px, le contrôle des cibles ment",
+  css.includes("--conversion-barre-hauteur: 58px"),
+  "globals.css : la hauteur de barre n'est plus 58px, le contrôle des cibles ment",
 );
 for (const r of rendus()) {
   assert.deepEqual(ciblesTropPetites(r.html), [], `${r.nom} : cible sous 24px`);
@@ -434,6 +440,19 @@ assert.equal(
   (dc.match(/tel:(\d+)/)?.[1] ?? "").replace(/^0/, ""),
   "le numéro de la barre n'est pas celui de la maquette",
 );
+
+// 7 bis. LE ROND TÉLÉPHONE DE LA V3 : sans texte, il est nommé par l'aria-label
+//    de la maquette, mot pour mot, dans la barre ET dans le photo + CTA.
+assert.ok(
+  dcV3.includes(`aria-label="${LIBELLE_ROND_TELEPHONE}"`),
+  "maquette V3 : le nom du rond téléphone n'y est plus",
+);
+for (const r of rendus().filter((x) => /^(BarreCollanteMobile|PhotoCtaMobile)/.test(x.nom))) {
+  assert.ok(
+    r.html.includes(`aria-label="${LIBELLE_ROND_TELEPHONE}"`) && r.html.includes(`href="${TELEPHONE_SITE.href}"`),
+    `${r.nom} : le rond téléphone manque, ou il n'appelle pas le numéro du site`,
+  );
+}
 
 // 8. LES GARDES CSS : mobile seulement, et la barre réserve sa place.
 assert.ok(css.includes("@media (min-width: 881px)"), "globals.css : seuil 881px absent");

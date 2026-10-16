@@ -39,3 +39,18 @@ cd ~/Landing\ lovable/maquette && python3 -m http.server 4350 --bind 127.0.0.1
 `style-hover` (588), `sc-if value="{{ x }}"` (1 760), `sc-camel-on-click`,
 `sc-raw-select`, `data-reveal` (159), `data-bar` (23), `{{ }}`.
 La traduction retenue est consignée dans `docs/CONTRAT-PORTAGE-MAQUETTE.md`.
+
+## `mobile-v3/` : la vue « Site mobile » de la maquette V3 (16/10)
+
+`Migen - Mobile V3.dc.html` est le composant mobile (9d8a3bdb) extrait tel quel
+de la page autonome V3 de Mehdi du 16/10. Il est versionné pour la même raison
+que `accueil-rendu.html` : des contrôles le relisent. La porte
+`components/site/mobile/verification-conversion-mobile.tsx` y exige mot pour mot
+les libellés de la barre collante et du photo + CTA (« Rappel dans l’heure,
+jours ouvrés », « Candidature en ligne », le nom du rond téléphone), et la règle
+des accroches de cartes fermées (`teaseOf`) y est relevée pour
+`components/site/blocs/resume-de-section.ts`.
+
+Sa copie N'EST PAS une référence de texte : elle porte des mots et des chiffres
+retirés du site (« candidats », délais chiffrés, « 5 agences », tirets
+cadratins). Seuls la mise en page et les libellés cités ci-dessus en sont repris.

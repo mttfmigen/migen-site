@@ -127,6 +127,8 @@ export interface Panneau {
 }
 
 export interface Vue {
+  /** L'accroche V3 de chaque section repliée, par titre (`vue.ts`, `accrochesDe`). */
+  accroches: Record<string, string>;
   cVente: boolean;
   cH1: string;
   spH1: string;

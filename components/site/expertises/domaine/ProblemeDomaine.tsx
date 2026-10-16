@@ -2,7 +2,7 @@ import Image from "next/image";
 import type { CSSProperties, ReactNode } from "react";
 
 import { LARGEUR, SECTION, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
-import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import { accrocheDuProbleme } from "@/components/site/blocs/resume-de-section";
 import { PliMobile } from "@/components/site/expertises/mobile";
 import ProblemeOffre from "@/components/site/offre/ProblemeOffre";
 import { coupePunchline, numerote } from "@/components/site/offre/texte-offre";
@@ -91,7 +91,8 @@ function Cadre({
       toujoursOuvert={pli === "ouvert"}
       style={LARGEUR}
       titre={TITRE_CARTE}
-      resume={resumeDe(section.puces.map((puce) => puce.accroche ?? puce.texte))}
+      /* L'accroche de la V3 : la phrase clé, sinon la première puce. */
+      resume={accrocheDuProbleme(section)}
     >
       {children}
     </PliMobile>

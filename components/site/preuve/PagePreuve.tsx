@@ -17,6 +17,7 @@ import TitreEtSuite, { continueLeTitre } from "../blocs/TitreEtSuite";
 import { cadragePhoto } from "@/lib/cadrage-photos";
 import { altPhoto } from "@/lib/descriptions-photos";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import { accrocheDe, ligneDuCorpus } from "@/components/site/blocs/resume-de-section";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
 import RappelFinalMobile from "@/components/site/mobile/RappelFinalMobile";
 import BandeauRappelMobile from "@/components/site/mobile/BandeauRappelMobile";
@@ -1192,6 +1193,9 @@ export default function PagePreuve({
         <div className={styles.pliClair} style={LARGEUR}>
           <SectionPliableMobile
             enTete={<EtiquettePli surtitre="03 · Étape par étape" titre="Le déroulé" />}
+            resume={accrocheDe([
+              { liste: etapes.map((etape) => ligneDuCorpus({ accroche: etape.titre, texte: etape.texte })) },
+            ])}
           >
             <div data-carte-surtitre="" style={KICKER}>
               03 · Étape par étape
@@ -1267,6 +1271,8 @@ export default function PagePreuve({
           <div className={styles.pliClair}>
             <SectionPliableMobile
               enTete={<EtiquettePli surtitre="04 · Fiche mission" titre="Le dispositif" />}
+              /* La V3 lit la première cellule du tableau (« Client »). */
+              resume={accrocheDe([{ cellule: dispositif[0]?.libelle }])}
             >
               <div data-carte-surtitre="" style={KICKER}>
                 04 · Fiche mission

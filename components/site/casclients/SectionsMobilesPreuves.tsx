@@ -90,6 +90,8 @@ export function sectionsMobilesPreuves(vues: readonly VuePreuves[], recents: rea
         <summary>
           <span data-carte-titre="">Les derniers publiés</span>
           <span aria-hidden="true">›</span>
+          {/* L'accroche de la V3 : le premier élément de la liste. */}
+          <p>{courtLibelle(publies[0])}</p>
         </summary>
         <div>
           <ul className={styles.listeRecents}>

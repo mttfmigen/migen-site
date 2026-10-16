@@ -1,6 +1,7 @@
 /**
  * LA COUCHE DE CONVERSION MOBILE : libellés, cibles et cadence, relevés
- * VERBATIM dans la maquette mobile v2
+ * VERBATIM dans la maquette mobile v2, puis dans la V3 du 16/10 pour la barre
+ * collante et le photo + CTA (`maquette/mobile-v3/`)
  * (`maquette/mobile-v2/maquette/Migen - Mobile v2.dc.html`, notée « dc.html »
  * ci-dessous). Chaque chaîne cite sa ligne source. On ne réécrit pas la copie
  * du client : la porte `verification-conversion-mobile.tsx` relit dc.html à
@@ -93,8 +94,21 @@ export function boutonBarreCollante(variante: VarianteConversion): LibelleCible 
     : { libelle: "Décrire mon besoin", href: CIBLE_CONTACT };
 }
 
-/** dc.html L191 et L127 : le second bouton de la barre et du photo + CTA. */
-export const LIBELLE_APPELER = "Appeler";
+/**
+ * MAQUETTE V3 (16/10), `stickyS` : la sous-ligne du bouton de la barre.
+ * `stickyS: isCar ? "Candidature en ligne" : "Rappel dans l’heure, jours ouvrés"`.
+ */
+export function sousLigneBarreCollante(variante: VarianteConversion): string {
+  return variante === "carriere" ? "Candidature en ligne" : "Rappel dans l’heure, jours ouvrés";
+}
+
+/**
+ * MAQUETTE V3 : le second bouton de la barre et du photo + CTA n'est plus la
+ * pilule « Appeler » de la v2 mais un ROND TÉLÉPHONE sans texte, nommé par
+ * son `aria-label`, mot pour mot celui de la V3. Le numéro est celui du site
+ * (`TELEPHONE_SITE`), jamais celui des landing pages.
+ */
+export const LIBELLE_ROND_TELEPHONE = "Appeler migen au 04 78 33 72 05";
 
 /**
  * dc.html L580 : `stickyShow: g !== "contact" && !s.menu`. La barre ne se

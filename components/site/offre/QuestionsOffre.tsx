@@ -170,14 +170,17 @@ export default function QuestionsOffre({ section }: ProprietesQuestionsOffre) {
   const groupe = useId();
 
   return (
-    <section style={SECTION}>
+    /* `data-faq-maquette` : au téléphone, le seul titre « Questions
+       fréquentes », comme la V3 et les autres gabarits ; le H2 de bureau sort
+       de l'écran sous 881 px, son texte reste dans le DOM. */
+    <section data-faq-maquette="" style={SECTION}>
       <div style={LARGEUR}>
         <div className="mg-r2" style={ENTETE}>
           <div>
-            <div style={{ ...SURTITRE, marginBottom: 16 }}>
+            <div data-faq-surtitre="" style={{ ...SURTITRE, marginBottom: 16 }}>
               Questions fréquentes
             </div>
-            <h2 style={TITRE}>Vos questions avant de nous appeler</h2>
+            <h2 data-faq-titre="" style={TITRE}>Vos questions avant de nous appeler</h2>
           </div>
           {section.chapeau ? (
             <p style={CHAPEAU}>{section.chapeau}</p>

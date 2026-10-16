@@ -4,7 +4,7 @@ import type { SectionGaranties } from "@/types/contenu";
 
 import { SURTITRE } from "@/components/site/blocs/habillage";
 import { majusculeInitiale } from "./texte-offre";
-import { continueLeTitre } from "../blocs/TitreEtSuite";
+import { ligneDuCorpus } from "../blocs/resume-de-section";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
 import styles from "./PageOffre.module.css";
@@ -34,19 +34,11 @@ export interface ProprietesGarantiesOffre {
  * continuité du poste : absence ou départ, nous organisons… », « Un rappel
  * dans l'heure du lundi au vendredi… »). Le séparateur suit celui du corpus :
  * « : » entre l'intitulé et le texte, rien quand le texte continue la phrase.
+ * La règle vit dans `blocs/resume-de-section.ts` (`ligneDuCorpus`), partagée
+ * avec le déroulé et l'offre depuis la V3.
  */
 function resumeDesGaranties(section: SectionGaranties): string | undefined {
-  const premiere = section.puces[0];
-  if (!premiere) return undefined;
-  const texte = premiere.texte.trim();
-  if (!premiere.accroche) return texte || undefined;
-  if (!texte) return premiere.accroche;
-  if (continueLeTitre(premiere.texte)) return `${premiere.accroche}${texte}`;
-  /* Une accroche qui finit sa phrase (« …de 8h00 à 18h30. ») n'appelle pas
-     de deux-points : la suite est une nouvelle phrase. */
-  const suit =
-    premiere.suitAccroche || /^\s/.test(premiere.texte) || /[.!?:]$/.test(premiere.accroche.trim());
-  return `${premiere.accroche}${suit ? " " : " : "}${texte}`;
+  return section.puces[0] ? ligneDuCorpus(section.puces[0]) : undefined;
 }
 
 const PANNEAU: CSSProperties = {

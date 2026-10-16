@@ -17,6 +17,7 @@ import BlocsGuide from "./BlocsGuide";
 import FermeAuTelephone from "@/components/site/ressource/FermeAuTelephone";
 import styles from "./PageEditoriale.module.css";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import { accrocheDe, ligneDuCorpus, type BlocAccroche } from "@/components/site/blocs/resume-de-section";
 import { CONTACT, COPIE, TELEPHONE } from "@/components/site/ressource/habillage";
 import { cadragePhoto } from "@/lib/cadrage-photos";
 import { altPhoto } from "@/lib/descriptions-photos";
@@ -132,9 +133,13 @@ function texteNu(brut: string): string {
 }
 
 function resumeDeLaSection(blocs: BlocGuide[]): string {
-  for (const b of blocs) {
-    if (b.type === "p") return texteNu(b.texte);
-    if (b.type === "ul" || b.type === "ul2") return texteNu(b.items[0] ?? "");
+  /* V3 (16/10) : les phrases de renvoi sont sautées, et les listes numérotées
+     et les tableaux comptent aussi (`blocs/resume-de-section.ts`,
+     `accrocheDe`). « Le tableau à emporter en rendez-vous » s'annonce donc
+     par sa première cellule, comme la V3. */
+  const lus = blocs.flatMap((b): BlocAccroche[] => {
+    if (b.type === "p") return [{ paragraphe: texteNu(b.texte) }];
+    if (b.type === "ul" || b.type === "ul2") return [{ liste: b.items.map(texteNu) }];
     /* Cartes, lignes et bento SONT des listes à puces du corpus (« - **Plan
        de prévention** avec chaque… ») que le dessin de bureau a titrées : la
        maquette les lit en `ul`, et sa première puce fait le résumé. La donnée
@@ -142,15 +147,24 @@ function resumeDeLaSection(blocs: BlocGuide[]): string {
        minuscule, sauf sigle (« GMAO »). Corrigé le 15/10 : la partie 12 de
        reussir-un-transfert-industriel résumait un paragraphe plus bas. */
     if (b.type === "cartes" || b.type === "lignes" || b.type === "bento") {
-      const premier = b.items[0];
-      if (!premier) continue;
-      const suite = /^\p{Lu}\p{Ll}/u.test(premier.texte)
-        ? premier.texte.charAt(0).toLowerCase() + premier.texte.slice(1)
-        : premier.texte;
-      return texteNu(`${premier.titre} ${suite}`);
+      return [
+        {
+          liste: b.items.map((premier) => {
+            const suite = /^\p{Lu}\p{Ll}/u.test(premier.texte)
+              ? premier.texte.charAt(0).toLowerCase() + premier.texte.slice(1)
+              : premier.texte;
+            return texteNu(`${premier.titre} ${suite}`);
+          }),
+        },
+      ];
     }
-  }
-  return "";
+    if (b.type === "numeros" || b.type === "etapes") {
+      return [{ liste: b.items.map((x) => ligneDuCorpus({ accroche: x.titre, texte: x.texte })) }];
+    }
+    if (b.type === "tableau") return [{ cellule: (b.lignes[0] ?? b.entetes)[0] }];
+    return [];
+  });
+  return accrocheDe(lus) ?? "";
 }
 
 /**
