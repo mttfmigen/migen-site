@@ -5,128 +5,48 @@ import { PROBLEMES } from "@/lib/parcours-mobile";
 import s from "./ParcoursMobile.module.css";
 
 /**
- * « Un parcours guidé par le problème, pas par le menu. »
+ * « Qu'est-ce qui vous bloque ? », TÉLÉPHONE SEULEMENT, juste sous le héros.
  *
- * C'est la première phrase de la maquette mobile du client
- * (`design_handoff_migen_site/maquette/MigenMobile.dc.html`), et son README la
- * reprend : « le visiteur part de son problème, les blocs se déplient pour
- * rester courts sans perdre le texte utile au référencement ». Sur un
- * téléphone, un menu à cinq groupes et quarante entrées ne se parcourt pas :
- * le visiteur sait ce qui le bloque, pas quelle offre porte ce nom.
+ * MAQUETTE V3 « SITE MOBILE » (validée par Mehdi le 16/10) : six CARTES-LIENS.
+ * Le visiteur dit ce qui le bloque, la carte ouvre directement la page de
+ * l'offre qui y répond ; le nom de l'offre et sa flèche sont lisibles avant le
+ * toucher. La phrase d'introduction est le sous-titre du héros
+ * (`Hero.tsx`) : la section n'en porte pas une seconde.
  *
- * TROIS CHOIX DE PORTAGE.
+ * LE NOM ACCESSIBLE DU LIEN est la phrase du visiteur suivie du nom de l'offre.
+ * Le numéro, la flèche et le chevron sont décoratifs (`aria-hidden`).
  *
- * 1. UN ACCORDÉON NATIF, PAS UNE MACHINE À ÉTATS. La maquette enchaîne des
- *    écrans pleins (`screen: "home" | "prob" | …`) parce qu'elle simule un
- *    téléphone dans une page de présentation. Le site, lui, EST le téléphone :
- *    six `<details name="parcours-mobile">` donnent le même « une seule
- *    réponse à la fois », avec le clavier, le rôle et l'annonce
- *    « développé / réduit » du navigateur, et sans une ligne d'état.
- *
- * 2. TOUT LE TEXTE EST DANS LE HTML SERVI, replié par le navigateur et non
- *    retiré du document. Les six réponses sont du contenu utile : les laisser
- *    sortir du DOM, comme le fait la maquette avec ses `sc-if`, contredirait
- *    son propre README.
- *
- * 3. IL NE TOUCHE PAS AU FORMULAIRE, consigne de Mehdi du 09/10. Le parcours
- *    s'arrête à un lien vers la page de l'offre qui répond vraiment ; le
- *    formulaire reste atteint par la barre basse, qui ne quitte jamais
- *    l'écran. Aucun champ, aucune étape, aucun envoi.
- *
- * La copie vient de `lib/parcours-mobile.ts`, où les retraits imposés par le
- * contrat de rédaction sont déclarés un par un.
+ * Sur bureau la section ne s'affiche pas (`.parcours`), la grille d'offres
+ * reste l'entrée en matière. Aucun formulaire ici : la barre basse le garde.
  */
 export default function ParcoursMobile() {
   return (
     <section className={s.parcours} aria-labelledby="parcours-mobile-titre">
-      <div className={s.kicker}>Par où commencer</div>
       <h2 id="parcours-mobile-titre" className={s.titre}>
         Qu&rsquo;est-ce qui vous bloque&nbsp;?
       </h2>
-      <p className={s.chapo}>
-        Dites-nous ce qui coince, nous vous montrons la réponse et la page qui
-        la détaille.
-      </p>
 
-      <div className={s.liste}>
+      <ul className={s.liste}>
         {PROBLEMES.map((probleme) => (
-          <details
-            key={probleme.numero}
-            /* `name` partagé : le navigateur referme la réponse précédente,
-               sans script. C'est le « une seule à la fois » de la maquette. */
-            name="parcours-mobile"
-            className={s.probleme}
-          >
-            {/* LE NOM DE L'OFFRE EST SUR LA CARTE, posé le 13/10.
-                La maquette mobile écrit sa carte ainsi : « 01 Je n'arrive pas à
-                recruter mon technicien de maintenance · Résidence › ». Le nom
-                de l'offre y est VISIBLE AVANT le toucher, et c'est tout le
-                propos du parcours : le visiteur sait ce qui le bloque, pas
-                quelle offre porte ce nom. Lui montrer la réponse sur la carte,
-                c'est lui dire où il va.
-
-                POURQUOI LA CARTE N'EST PAS DEVENUE UN SIMPLE LIEN, comme dans
-                la maquette, et c'est une mesure qui l'a décidé. Les six
-                réponses repliées font environ 900 mots qui N'EXISTENT NULLE
-                PART AILLEURS : comparées aux six pages d'offre le 13/10, 0 à 2
-                extraits sur 6 s'y retrouvent. Remplacer la carte par un lien
-                aurait donc retiré ce texte de l'accueil sans qu'il réapparaisse
-                ailleurs, contre le principe 1 du contrat (Google reçoit du HTML
-                complet). Le pli reste, le nom de l'offre arrive. */}
-            <summary className={s.question}>
-              <span className={s.etiquette}>
-                <span className={s.numero}>{probleme.numero}</span>
-                <span className={s.libelle}>{probleme.question}</span>
-                <span className={s.nomOffre}>{probleme.offre}</span>
+          <li key={probleme.numero}>
+            <Link href={probleme.href} prefetch={false} className={s.carte}>
+              <span aria-hidden="true" className={s.numero}>
+                {probleme.numero}
+              </span>
+              <span className={s.texte}>
+                <span className={s.question}>{probleme.question}</span>
+                <span className={s.offre}>
+                  {probleme.offre}
+                  <span aria-hidden="true"> →</span>
+                </span>
               </span>
               <span aria-hidden="true" className={s.chevron}>
                 &rsaquo;
               </span>
-            </summary>
-
-            <div className={s.reponse}>
-              <p className={s.douleur}>{probleme.douleur}</p>
-              <p className={s.phrase}>{probleme.reponse}</p>
-
-              <ul className={s.points}>
-                {probleme.points.map((point) => (
-                  <li key={point} className={s.point}>
-                    <span aria-hidden="true" className={s.coche}>
-                      ✓
-                    </span>
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {probleme.stats.length > 0 ? (
-                <div className={s.stats}>
-                  {probleme.stats.map((stat) => (
-                    <div key={stat.libelle}>
-                      <span className={s.statValeur}>{stat.valeur}</span>
-                      <span className={s.statLibelle}>{stat.libelle}</span>
-                    </div>
-                  ))}
-                </div>
-              ) : null}
-
-              {/* UN SEUL APPEL À L'ACTION ICI, et c'est une correction vue à
-                  l'écran : « Décrire mon besoin » figure DÉJÀ dans la barre
-                  basse, qui ne quitte jamais l'écran sous 881 px. Le mettre
-                  aussi dans la carte l'affichait deux fois, à dix pixels
-                  d'intervalle. `Entete.module.css` documente le même piège
-                  pour l'îlot du haut. La carte emmène donc vers la page qui
-                  détaille l'offre, la barre basse garde le formulaire. */}
-              <div className={s.actions}>
-                <Link href={probleme.href} prefetch={false} className={s.lienOffre}>
-                  Voir l&rsquo;offre {probleme.offre}
-                  <span aria-hidden="true">&rsaquo;</span>
-                </Link>
-              </div>
-            </div>
-          </details>
+            </Link>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 }

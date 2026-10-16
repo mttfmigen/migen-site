@@ -1,5 +1,5 @@
 /**
- * Le parcours par le problème tient-il ses promesses ?
+ * Les six blocages de l'accueil mobile tiennent-ils leurs promesses ?
  *
  *   bun scripts/verifie-parcours-mobile.mjs
  *
@@ -7,26 +7,23 @@
  * pour mesurer le rendu contre la SOURCE et non contre une liste recopiée qui
  * dériverait. Node ne sait pas importer un module TypeScript.
  *
- * CE QU'IL DÉFEND. `components/site/accueil/ParcoursMobile.tsx` porte le motif
- * d'ouverture de la maquette mobile du client : « Un parcours guidé par le
- * problème, pas par le menu ». Six questions, six réponses, six pages. Trois
- * choses peuvent s'y casser sans bruit, et ce sont les trois que ce contrôle
- * mesure sur le rendu réel :
+ * CE QU'IL DÉFEND. `components/site/accueil/ParcoursMobile.tsx` porte
+ * « Qu'est-ce qui vous bloque ? » de la maquette V3 « Site mobile » (validée
+ * par Mehdi le 16/10) : six CARTES-LIENS, chacune ouvre directement la page de
+ * l'offre qui répond au blocage. Trois choses peuvent s'y casser sans bruit :
  *
- *  1. UN LIEN MORT. Chaque problème renvoie vers la page qui le traite. Une
- *     adresse qui change ailleurs dans le site laisserait ici un lien vers une
- *     404, sur la page la plus visitée et au premier écran du téléphone.
- *  2. LE TEXTE HORS DU HTML. Les six réponses sont du contenu utile. S'il
- *     fallait un script pour les faire apparaître, Google ne les verrait pas.
- *     Le contrôle exige donc de les trouver dans le HTML SERVI, replié par le
- *     navigateur et non retiré du document.
- *  3. L'ACCORDÉON QUI S'OUVRE EN GRAND. Le « une seule réponse à la fois » de
- *     la maquette ne tient que si les six `<details>` partagent le même `name`.
- *     Un seul oubli, et la page s'étire sur six réponses dépliées.
+ *  1. UN LIEN MORT. Une adresse qui change ailleurs dans le site laisserait ici
+ *     un lien vers une 404, sur la page la plus visitée et au premier écran du
+ *     téléphone.
+ *  2. LE TEXTE HORS DU HTML. La phrase du visiteur et le nom de l'offre doivent
+ *     être dans le HTML SERVI.
+ *  3. LA CARTE QUI N'EST PLUS UN LIEN. Chaque carte est un `<a href>` vers son
+ *     offre, et son texte (donc son nom accessible) porte la phrase du
+ *     visiteur et le nom de l'offre.
  *
- * Il vérifie enfin que le parcours est bien RÉSERVÉ AU TÉLÉPHONE : la feuille
+ * Il vérifie enfin que le bloc est bien RÉSERVÉ AU TÉLÉPHONE : la feuille
  * doit le masquer par défaut et ne l'afficher que sous 880 px. Sur bureau, la
- * grille d'offres reste l'entrée en matière de la maquette.
+ * grille d'offres reste l'entrée en matière.
  */
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -77,13 +74,11 @@ for (const p of PROBLEMES) {
   }
 }
 
-/* 2 · tout le texte des six reponses est dans le HTML servi. */
+/* 2 · la phrase et le nom de l'offre sont dans le HTML servi. */
 for (const p of PROBLEMES) {
   for (const [quoi, valeur] of [
-    ["question", p.question],
-    ["douleur", p.douleur],
-    ["réponse", p.reponse],
-    ...p.points.map((pt, i) => [`point ${i + 1}`, pt]),
+    ["phrase", p.question],
+    ["offre", p.offre],
   ]) {
     if (!texte.includes(sansBalises(valeur).trim())) {
       fautes.push(`${p.numero} : la ${quoi} n'est pas dans le HTML servi`);
@@ -91,13 +86,20 @@ for (const p of PROBLEMES) {
   }
 }
 
-/* 3 · l'accordeon est exclusif : un seul `name`, partage par les six. */
-const noms = [...html.matchAll(/<details\b[^>]*\bname="([^"]+)"/g)].map((m) => m[1]);
-const parcours = noms.filter((n) => n === "parcours-mobile");
-if (parcours.length !== PROBLEMES.length) {
-  fautes.push(
-    `accordéon exclusif : ${parcours.length} <details name="parcours-mobile"> au lieu de ${PROBLEMES.length}`,
+/* 3 · chaque carte est un lien vers son offre, qui porte la phrase et l'offre. */
+const liens = [...html.matchAll(/<a\b[^>]*\bhref="([^"]+)"[^>]*>([\s\S]*?)<\/a>/g)].map((m) => ({
+  href: m[1],
+  texte: sansBalises(m[2]).trim(),
+}));
+for (const p of PROBLEMES) {
+  const carte = liens.find(
+    (l) => l.href === p.href && l.texte.includes(sansBalises(p.question).trim()),
   );
+  if (!carte) {
+    fautes.push(`${p.numero} : aucune carte-lien vers « ${p.href} » ne porte la phrase du visiteur`);
+  } else if (!carte.texte.includes(sansBalises(p.offre).trim())) {
+    fautes.push(`${p.numero} : la carte-lien vers « ${p.href} » ne nomme pas l'offre`);
+  }
 }
 
 /* 4 · reserve au telephone. */
@@ -110,11 +112,11 @@ if (!/@media\s*\(max-width:\s*880px\)[\s\S]{0,200}\.parcours\s*\{[^}]*display:\s
 
 if (fautes.length > 0) {
   for (const f of fautes) console.log(`  ${f}`);
-  console.log(`\n${fautes.length} defaut(s) sur le parcours mobile.`);
+  console.log(`\n${fautes.length} defaut(s) sur les blocages de l'accueil mobile.`);
   process.exit(1);
 }
 
 console.log(
-  `parcours mobile conforme (${PROBLEMES.length} problemes, ${PROBLEMES.length} pages en 200, ` +
-    `texte entier dans le HTML servi, accordeon exclusif, reserve au telephone)`,
+  `parcours mobile conforme (${PROBLEMES.length} cartes-liens, ${PROBLEMES.length} pages en 200, ` +
+    `texte dans le HTML servi, reserve au telephone)`,
 );

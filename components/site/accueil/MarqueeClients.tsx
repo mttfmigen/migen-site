@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import mobile from "./AccueilMobile.module.css";
 import replis from "./replis-accueil.module.css";
 /* Bandeau de logos clients, porté de « Migen - Site final » (lignes 600 à 608).
    Composant serveur : le défilement et la pause au survol sont entièrement en
@@ -114,7 +115,18 @@ export default function MarqueeClients({
           flexWrap: "wrap",
         }}
       >
+        {/* LE SUR-TITRE DE LA MAQUETTE V3 « SITE MOBILE » sur l'accueil
+            (`compactMobile`) : « Ils nous font confiance », en titre de
+            section. Celui du bureau s'efface à cette largeur
+            (`data-doublon-mobile`) et reste celui d'avant au-dessus de 880 px.
+            Les autres appelants ne changent pas. */}
+        {compactMobile ? (
+          <h2 data-mobile-seulement="" className={mobile.surtitre}>
+            Ils nous font confiance
+          </h2>
+        ) : null}
         <span
+          data-doublon-mobile={compactMobile ? "" : undefined}
           style={{
             font: "600 11.5px var(--fb)",
             letterSpacing: ".14em",

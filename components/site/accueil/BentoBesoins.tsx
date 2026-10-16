@@ -6,6 +6,8 @@ import replis from "./replis-accueil.module.css";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import { cadragePhoto } from "@/lib/cadrage-photos";
 
+import { SURTITRE_BESOINS, TITRE_BESOINS } from "./besoins-titres";
+
 export interface Besoin {
   /** Identifiant stable, sert de clé de liste et d'ancre du panneau déplié. */
   id: string;
@@ -142,11 +144,10 @@ function signe(ouverte: boolean): CSSProperties {
   };
 }
 
-/* Le sur-titre et le titre, écrits une seule fois : l'en-tête d'origine tient
-   le dessin de bureau, la bascule de repli porte le titre sur téléphone, et
-   `replis-accueil.module.css` n'en montre jamais qu'un des deux. */
-const SURTITRE_TEXTE = "Partez de votre besoin";
-const TITRE_TEXTE = "Dites la phrase qui ressemble le plus à votre situation.";
+/* Le sur-titre et le titre, écrits une seule fois (`besoins-titres`, module
+   neutre : la FAQ du téléphone, composant serveur, les lit aussi). */
+const SURTITRE_TEXTE = SURTITRE_BESOINS;
+const TITRE_TEXTE = TITRE_BESOINS;
 
 export default function BentoBesoins({
   besoins = [],
@@ -158,10 +159,13 @@ export default function BentoBesoins({
   const [ouvert, setOuvert] = useState<string | null>(besoins[0]?.id ?? null);
 
   return (
+    /* `data-doublon-mobile` : sous 881 px, le pavage s'efface au profit de la
+       FAQ « Partez de votre besoin » de la maquette V3 (`BesoinsMobile`, mêmes
+       données), placée plus haut dans la page. Au-dessus, rien ne change. */
     <section
+      data-doublon-mobile=""
       className={replis.repli}
       style={{ maxWidth: 1200, margin: "0 auto", padding: "56px 40px 0" }}
-     
     >
       <SectionPliableMobile kicker={SURTITRE_TEXTE} titre={TITRE_TEXTE}>
       <div data-reveal="">

@@ -8,7 +8,7 @@ import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
    serveur : aucun état, les survols sont en CSS (`style-hover` de la maquette,
    classes scp3, scp8, scp9 et scpa, recopiées dans le module). */
 
-type CleOffre =
+export type CleOffre =
   | "residence"
   | "fullService"
   | "zeroArret"
@@ -29,7 +29,7 @@ type CleOffre =
  * `travauxIndustriels` vit HORS de `/offres/`, contrairement aux quatre
  * autres : c'est l'URL de l'inventaire, elle ne se canonicalise pas ici.
  */
-const LIENS: Record<CleOffre, string> = {
+export const LIENS: Record<CleOffre, string> = {
   residence: "/offres/residence/",
   fullService: "/offres/full-service/",
   zeroArret: "/offres/zero-arret/",
@@ -38,14 +38,57 @@ const LIENS: Record<CleOffre, string> = {
   travauxIndustriels: "/travaux-industriels/",
 };
 
-/** Cartes 04 à 06 : même gabarit, seul le contenu change. */
-const CARTES_SOBRES: readonly {
+/**
+ * Une offre de la grille. LES SIX SONT ÉCRITES ICI UNE SEULE FOIS : le bureau
+ * les rend dans cette grille, le téléphone dans le bloc sombre « Six façons de
+ * travailler ensemble » de la maquette V3 (`SixFaconsMobile`). Aucune des deux
+ * copies ne peut dériver de l'autre.
+ */
+export interface OffreAccueil {
   cle: CleOffre;
   numero: string;
   titre: string;
   texte: string;
   action: string;
-}[] = [
+  /** La pastille à droite du titre, « Contrat unique », « Abonnement ». */
+  etiquette?: string;
+}
+
+const RESIDENCE: OffreAccueil = {
+  cle: "residence",
+  numero: "01",
+  titre: "migen© Résidence",
+  texte:
+    "Des techniciens en résidence sur votre site, pour la durée dont vous avez besoin. Vous constituez l'équipe, validez chaque intervenant, et la ligne ne s'arrête plus.",
+  action: "Constituer mon équipe →",
+};
+
+const FULL_SERVICE: OffreAccueil = {
+  cle: "fullService",
+  numero: "02",
+  titre: "migen© Full service",
+  etiquette: "Contrat unique",
+  texte:
+    "Toute votre maintenance dans un seul contrat\u00a0: préventif, dépannage, pièces et GMAO, avec un seul interlocuteur.",
+  action: "Confier ma maintenance →",
+};
+
+/* 03, Zéro arrêt. La maquette ouvre la carte sur une phrase qui annonce un
+   prix, puis « Trois formules, sur devis. ». La première est interdite : elle
+   est RETIRÉE entière (pas raccourcie, et pas recopiée ici), la seconde reste
+   mot pour mot. Écart déclaré, et la V3 mobile écrit la même phrase : elle
+   n'en est pas reprise non plus. */
+const ZERO_ARRET: OffreAccueil = {
+  cle: "zeroArret",
+  numero: "03",
+  titre: "migen© Zéro arrêt",
+  etiquette: "Abonnement",
+  texte: "Trois formules, sur devis.",
+  action: "Les trois formules →",
+};
+
+/** Cartes 04 à 06 : même gabarit, seul le contenu change. */
+const CARTES_SOBRES: readonly OffreAccueil[] = [
   {
     cle: "arretTechnique",
     numero: "04",
@@ -69,6 +112,13 @@ const CARTES_SOBRES: readonly {
       "Transfert, montage, démantèlement, levage : le chantier, du relevé à la remise en production.",
     action: "Préparer un chantier →",
   },
+];
+
+export const OFFRES_ACCUEIL: readonly OffreAccueil[] = [
+  RESIDENCE,
+  FULL_SERVICE,
+  ZERO_ARRET,
+  ...CARTES_SOBRES,
 ];
 
 const VERRE = {
@@ -139,10 +189,10 @@ const TEXTE_CARTE = {
  * l'encart de la photo (le dessin de bureau) et la bascule de repli (le titre
  * sur téléphone), et `replis-accueil.module.css` n'en montre jamais qu'un.
  */
-const SURTITRE_TEXTE = "Six façons de travailler ensemble";
-const TITRE_TEXTE = "De la présence continue à l’étude et aux travaux.";
+export const SURTITRE_TEXTE = "Six façons de travailler ensemble";
+export const TITRE_TEXTE = "De la présence continue à l’étude et aux travaux.";
 
-const GARANTIES_RESIDENCE = [
+export const GARANTIES_RESIDENCE = [
   "Vous validez chaque technicien avant son arrivée",
   "Remplacement garanti en cas d’absence",
   "Recrutement, habilitations et paie portés par migen",
@@ -151,7 +201,11 @@ const GARANTIES_RESIDENCE = [
 
 export default function GrilleOffres() {
   return (
+    /* `data-doublon-mobile` : sous 881 px, la grille s'efface au profit du
+       bloc sombre de la maquette V3 (`SixFaconsMobile`, mêmes données), posé
+       sous les logos et les chiffres clés. Au-dessus, rien ne change. */
     <section
+      data-doublon-mobile=""
       className={replis.repli}
       style={{ maxWidth: 1200, margin: "0 auto", padding: "44px 40px 0" }}
     >
@@ -291,7 +345,7 @@ export default function GrilleOffres() {
             }}
           >
             <div style={{ display: "flex", flexDirection: "column" }}>
-              <div style={NUMERO}>01</div>
+              <div style={NUMERO}>{RESIDENCE.numero}</div>
               <div
                 style={{
                   font: "600 calc(24px * var(--ts)) var(--ft)",
@@ -299,7 +353,7 @@ export default function GrilleOffres() {
                   color: "#fff",
                 }}
               >
-                migen© Résidence
+                {RESIDENCE.titre}
               </div>
               <p
                 style={{
@@ -309,9 +363,7 @@ export default function GrilleOffres() {
                   maxWidth: "46ch",
                 }}
               >
-                Des techniciens en résidence sur votre site, pour la durée dont
-                vous avez besoin. Vous constituez l&apos;équipe, validez chaque
-                intervenant, et la ligne ne s&apos;arrête plus.
+                {RESIDENCE.texte}
               </p>
               <a
                 href={LIENS.residence}
@@ -321,7 +373,7 @@ export default function GrilleOffres() {
                   boxShadow: "0 10px 24px -12px rgba(255,124,60,.85)",
                 }}
               >
-                Constituer mon équipe →
+                {RESIDENCE.action}
               </a>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "8px", alignContent: "center" }}>
@@ -365,28 +417,21 @@ export default function GrilleOffres() {
           }}
         >
           <div style={{ position: "relative", display: "flex", flexDirection: "column", height: "100%" }}>
-            <div style={NUMERO}>02</div>
+            <div style={NUMERO}>{FULL_SERVICE.numero}</div>
             <div style={LIGNE_TITRE}>
               <div style={{ font: "600 21px var(--ft)", letterSpacing: "-.03em" }}>
-                migen© Full service
+                {FULL_SERVICE.titre}
               </div>
-              <span style={PASTILLE}>Contrat unique</span>
+              <span style={PASTILLE}>{FULL_SERVICE.etiquette}</span>
             </div>
-            <p style={TEXTE_CARTE}>
-              Toute votre maintenance dans un seul contrat&nbsp;: préventif,
-              dépannage, pièces et GMAO, avec un seul interlocuteur.
-            </p>
+            <p style={TEXTE_CARTE}>{FULL_SERVICE.texte}</p>
             <a href={LIENS.fullService} className={styles.lienAccent} style={BOUTON_ACCENT}>
-              Confier ma maintenance →
+              {FULL_SERVICE.action}
             </a>
           </div>
         </div>
 
-        {/* 03, Zéro arrêt. La maquette écrit « La maintenance qui ne touche
-            jamais à votre production : entretien le samedi, dépannage la
-            nuit, prix mensuel fixe. Trois formules, sur devis. » La première
-            phrase annonce un prix : interdite, elle est RETIRÉE entière (pas
-            raccourcie), la seconde reste mot pour mot. Écart déclaré. */}
+        {/* 03, Zéro arrêt (voir `ZERO_ARRET` : la phrase de prix est retirée). */}
         <div
           className={styles.carteLevee}
           style={{
@@ -398,16 +443,16 @@ export default function GrilleOffres() {
           }}
         >
           <div style={{ position: "relative", display: "flex", flexDirection: "column", height: "100%" }}>
-            <div style={NUMERO}>03</div>
+            <div style={NUMERO}>{ZERO_ARRET.numero}</div>
             <div style={LIGNE_TITRE}>
               <div style={{ font: "600 21px var(--ft)", letterSpacing: "-.03em" }}>
-                migen© Zéro arrêt
+                {ZERO_ARRET.titre}
               </div>
-              <span style={PASTILLE}>Abonnement</span>
+              <span style={PASTILLE}>{ZERO_ARRET.etiquette}</span>
             </div>
-            <p style={TEXTE_CARTE}>Trois formules, sur devis.</p>
+            <p style={TEXTE_CARTE}>{ZERO_ARRET.texte}</p>
             <a href={LIENS.zeroArret} className={styles.lienAccent} style={BOUTON_ACCENT}>
-              Les trois formules →
+              {ZERO_ARRET.action}
             </a>
           </div>
         </div>

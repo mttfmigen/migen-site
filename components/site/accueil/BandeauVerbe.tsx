@@ -69,25 +69,22 @@ export default function BandeauVerbe({
   const verbe = useVerbeCourant(verbes);
 
   /*
-   * LE TITRE DE LA BASCULE EST LA PHRASE ELLE-MÊME, et elle tourne.
+   * LE TITRE DE LA BASCULE EST LA PHRASE ENTIÈRE, sans rotation.
    *
-   * CETTE SECTION N'A PAS DE `<h2>` : son titre, dans la maquette de bureau,
-   * c'est « On installe ? », dont le verbe change toutes les 2,2 secondes.
-   * C'est donc lui que porte la bascule, à l'identique, et RIEN N'EST ÉCRIT
-   * POUR L'OCCASION : inventer un titre de section serait écrire à la place de
-   * Mehdi.
-   *
-   * La phrase est construite ici UNE SEULE FOIS et sert aux deux endroits,
-   * l'en-tête d'origine et la bascule : aucune des deux ne peut dériver de
-   * l'autre. L'espace devant le point d'interrogation est celui du composant
-   * d'origine, une espace ordinaire, pas une insécable.
+   * CETTE SECTION N'A PAS DE `<h2>` : son titre de bureau, c'est « On
+   * installe ? », dont le verbe change toutes les 2,2 secondes. Dans la carte
+   * repliée du téléphone, la rotation tronquait la phrase à un seul verbe
+   * (« On maintient ? », défaut relevé le 16/10). La maquette V3 « Site
+   * mobile » y écrit la phrase entière, « On installe, on maintient, on
+   * répare, on dépanne » : c'est la même liste de verbes, jointe une fois, et
+   * RIEN N'EST ÉCRIT POUR L'OCCASION. Le bureau garde sa rotation.
    */
-  const phrase = `On ${verbe} ?`;
+  const titreMobile = `On ${verbes.join(", on ")}`;
 
   return (
     <section className={replis.repli} style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 40px" }}>
-        <SectionPliableMobile titre={phrase}>
+        <SectionPliableMobile titre={titreMobile}>
         <div
           data-reveal=""
           style={{

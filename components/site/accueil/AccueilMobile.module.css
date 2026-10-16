@@ -1,0 +1,588 @@
+/*
+ * L'ACCUEIL MOBILE DE LA MAQUETTE V3 « SITE MOBILE » (validée par Mehdi le
+ * 16/10) : les blocs qui n'existent qu'au téléphone.
+ *
+ * Chaque bloc porte `data-mobile-seulement` (masqué au-dessus de 880 px par
+ * `app/globals.css`) : le bureau ne change pas d'un pixel. Les valeurs sont
+ * celles de la V3 relevées au navigateur, sauf la gouttière : 18 px des bords
+ * partout, la règle du site depuis le 15/10 (la V3 pose son bloc sombre à
+ * 12 px). Toute cible tactile fait au moins 44 px.
+ */
+
+/* --------------------------------------------------------------- partagé */
+
+/* `:root` devant : il faut battre `.mg-site h2`, qui porte un `<h2>` à 29 px
+   sous 760 px. */
+:root .surtitre {
+  margin: 0;
+  font: 600 11px var(--fb) !important;
+  letter-spacing: 0.14em !important;
+  line-height: normal !important;
+  text-transform: uppercase;
+  color: var(--acc);
+}
+
+:root .titreSection {
+  margin: 6px 0 12px;
+  font: 600 21px/1.2 var(--ft) !important;
+  letter-spacing: -0.03em !important;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.gouttiere {
+  padding: 0 18px;
+}
+
+/* Le chevron rond des rangées repliées, comme celui des cartes numérotées. */
+.chevron {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background: var(--chip);
+  font: 500 16px/1 var(--fb);
+  color: var(--ink);
+  transition: transform 0.25s ease;
+}
+
+details[open] > summary .chevron {
+  transform: rotate(90deg);
+}
+
+/* Une pastille de lien : 44 px de cible, la pastille visible en fait 32. */
+.pastilles {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pastille {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.pastille > span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 11px;
+  border-radius: 999px;
+  background: var(--mm-fond-doux, #f6f6f7);
+  border: 1px solid var(--mm-filet, var(--line));
+  font: 500 12.5px var(--fb);
+}
+
+@media (hover: hover) {
+  .pastille:hover > span {
+    border-color: var(--acc);
+  }
+}
+
+/* ------------------------------------------------------------ le héros */
+
+.sousTitreHeros {
+  margin: 14px 0 0;
+  font: 400 16px/1.55 var(--fb);
+  color: var(--ink2);
+}
+
+/* ------------------------------------- introduction et chiffres clés */
+
+.intro {
+  padding: 18px 18px 0;
+}
+
+.introTexte {
+  margin: 0 0 22px;
+  font: 500 16px/1.6 var(--fb);
+  color: var(--ink);
+}
+
+/* ------------------------------------- « Six façons de travailler ensemble » */
+
+.six {
+  position: relative;
+  overflow: hidden;
+  margin: 22px 18px 0;
+  padding: 22px 14px 16px;
+  border-radius: 28px;
+  background: var(--panel);
+  color: #fff;
+}
+
+.halo {
+  position: absolute;
+  right: -120px;
+  top: -140px;
+  width: 320px;
+  height: 320px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 124, 60, 0.32), rgba(255, 124, 60, 0) 66%);
+  pointer-events: none;
+}
+
+.sixTete {
+  position: relative;
+  padding: 0 4px 16px;
+}
+
+:root .sixTitre {
+  margin: 8px 0 6px;
+  font: 600 23px/1.15 var(--ft) !important;
+  letter-spacing: -0.035em !important;
+  color: #fff;
+  text-wrap: balance;
+}
+
+.sixChapo {
+  margin: 0;
+  font: 400 14px/1.55 var(--fb);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.sixGrille {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* `isolation` : la photo et le voile passent SOUS le texte (`z-index: -1`)
+   sans que le texte soit positionné, si bien que le lien de la carte s'étend
+   sur la carte entière (`.offreLien::after`), et non sur son seul texte. */
+.offre {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 250px;
+  /* La rangée du numéro et de l'étiquette est posée en haut : le texte d'une
+     carte étroite ne remonte jamais dessous. */
+  padding-top: 42px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #2a2927;
+}
+
+/* Pleine largeur : Résidence et la dernière carte, qui ferme la grille (V3,
+   `span: "1 / -1"` et `mh: 230px` pour la carte 5). */
+.offrePleine {
+  grid-column: 1 / -1;
+  min-height: 230px;
+}
+
+.offreLarge {
+  min-height: 360px;
+}
+
+.offre:focus-within {
+  outline: 2px solid var(--acc);
+  outline-offset: 2px;
+}
+
+.offrePhoto {
+  z-index: -1;
+  object-fit: cover;
+}
+
+.offreVoile {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(rgba(18, 17, 16, 0.08) 0%, rgba(18, 17, 16, 0.5) 42%, rgba(18, 17, 16, 0.93) 100%);
+}
+
+.offreHaut {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+}
+
+.offreNumero {
+  font: 600 11px ui-monospace, Menlo, monospace;
+  color: #ffb08a;
+}
+
+/* L'étiquette peut passer à la ligne plutôt que de sortir de sa carte : à
+   320 px, « Contrat unique » dépassait de 6 px (porte du responsive, 16/10).
+   Sous 360 px, elle se resserre pour tenir sur une ligne. */
+.offreEtiquette {
+  min-width: 0;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  font: 600 10.5px var(--fb);
+  color: #1c1b19;
+  text-align: center;
+}
+
+@media (max-width: 359px) {
+  .offreEtiquette {
+    padding: 3px 7px;
+    font-size: 10px;
+  }
+}
+
+.offreCorps {
+  display: grid;
+  gap: 6px;
+  padding: 14px;
+}
+
+.offreTitre {
+  margin: 0;
+  font: 600 15.5px/1.2 var(--ft);
+  letter-spacing: -0.025em;
+  color: #fff;
+}
+
+.offreLarge .offreTitre {
+  font-size: 21px;
+}
+
+.offreTexte {
+  margin: 0;
+  font: 400 12.5px/1.5 var(--fb);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.offrePoints {
+  display: grid;
+  gap: 4px;
+  margin: 2px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.offrePoints > li {
+  display: flex;
+  gap: 8px;
+  font: 400 12.5px/1.45 var(--fb);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.coche {
+  flex: none;
+  color: var(--acc);
+  font-weight: 700;
+}
+
+/* LE LIEN COUVRE TOUTE LA CARTE (`::after`) : la cible tactile est la carte
+   entière, et le nom accessible reste l'action, décrite par le titre. */
+.offreLien {
+  margin-top: 2px;
+  font: 600 12.5px var(--fb);
+  color: #ffb08a;
+  text-decoration: none;
+}
+
+.offreLien::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.offreLien:hover,
+.offreLien:focus-visible {
+  color: #fff;
+  outline: none;
+}
+
+/* SOUS 360 PX, UNE CARTE PAR LIGNE. En deux colonnes, la colonne de texte
+   d'une carte étroite tombait à 96 px à 320 px (gouttière, rembourrage du
+   bloc et de la carte) : une ligne tous les douze caractères, et l'étiquette
+   « Contrat unique » sur deux lignes. */
+@media (max-width: 359px) {
+  .sixGrille {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .offre:not(.offreLarge) {
+    min-height: 210px;
+  }
+}
+
+.sixDevise {
+  position: relative;
+  margin: 16px 0 0;
+  font: 500 11px var(--fb);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ------------------------------------------------------------- les cartes */
+
+/* « Nos réalisations » (`CarrouselRealisations`) : le `<h2>` d'une section
+   claire de la V3 fait 20 px, `.mg-site h2` le portait à 29. */
+:root .realisations h2 {
+  font-size: 20px !important;
+  line-height: 1.2 !important;
+}
+
+/* LA PREMIÈRE CARTE EST OUVERTE AU DÉPART (`OuvertAuDepart`). Le contenu
+   d'une carte reste masqué jusqu'au montage (`app/globals.css`, « sans
+   décalage au chargement ») ; celle-ci reste ouverte, il est donc montré dès le
+   premier affichage, et rien ne bouge à l'hydratation. */
+@media (max-width: 880px) {
+  /* Ouverte, la section garde le rembourrage haut de bureau (64 px à cette
+     largeur) que les cartes fermées perdent (`replis-accueil`) : 76 px de vide
+     sous « Six façons », contre 12 entre deux cartes. */
+  .ouvertAuDepart > :global(section) {
+    padding-top: 0 !important;
+  }
+  :global(html[data-js]) .ouvertAuDepart :global(details[data-pliable-mobile][data-carte-numerotee]:not([data-monte]) > :not(summary)) {
+    display: block !important;
+  }
+}
+
+/* « LE JOUR ET LA NUIT » EN DEUX CARTES, comme la V3 : « Ce que nos clients
+   vivaient avant » puis « Ce que les mêmes équipes en disent aujourd'hui ».
+   Chaque carte rend UNE vue de la bascule de bureau (`AvantApresBascule`) :
+   ses onglets n'ont plus rien à basculer, et la seconde carte n'a pas de
+   sur-titre dans la V3. */
+@media (max-width: 880px) {
+  .vueSeule [role="group"] {
+    display: none;
+  }
+  /* `:root` et `!important` : il faut battre le sur-titre de carte partagé
+     (`app/globals.css`, `:root [data-carte-surtitre]`). */
+  :root .sansSurtitre :global([data-carte-surtitre]) {
+    display: none !important;
+  }
+}
+
+/* ------------------------------------------ « Partez de votre besoin » */
+
+.besoins {
+  padding: 22px 18px 0;
+}
+
+.besoinPoints {
+  display: grid;
+  gap: 6px;
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.besoinPoints > li {
+  display: flex;
+  gap: 9px;
+  font: 400 14px/1.5 var(--fb);
+  color: var(--ink1);
+}
+
+.besoinCadre {
+  font-size: 13px !important;
+  color: var(--ink2) !important;
+}
+
+.besoinLien {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin: 0 0 10px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: var(--acc);
+  font: 600 14px var(--fb);
+  color: #fff;
+  text-decoration: none;
+}
+
+.besoinLien:hover {
+  color: #fff;
+  filter: brightness(0.93);
+}
+
+/* ----------------------------------------------------------- les hubs */
+
+.hubs {
+  padding: 26px 0 0;
+}
+
+.rail {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 18px;
+  margin: 0;
+  padding: 0 18px 4px;
+  list-style: none;
+  scrollbar-width: none;
+}
+
+.rail::-webkit-scrollbar {
+  display: none;
+}
+
+.rail:focus-visible {
+  outline: 2px solid var(--acc);
+  outline-offset: -2px;
+}
+
+.hub {
+  flex: none;
+  width: 250px;
+  scroll-snap-align: start;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--mm-filet, var(--line));
+}
+
+.hubPhoto {
+  position: relative;
+  height: 150px;
+  background: #2a2927;
+}
+
+.hubVoile {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(18, 17, 16, 0.05), rgba(18, 17, 16, 0.78));
+}
+
+/* Le lien du hub couvre la photo entière, son nom en bas. */
+.hubLien {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 14px 12px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.hubLien:hover {
+  color: #fff;
+}
+
+.hubLien:focus-visible {
+  color: #fff;
+  outline: 2px solid var(--acc);
+  outline-offset: -2px;
+}
+
+.hubGenre {
+  display: block;
+  font: 600 10.5px var(--fb);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffb08a;
+}
+
+.hubNom {
+  display: block;
+  font: 600 20px/1.15 var(--ft);
+  letter-spacing: -0.03em;
+}
+
+.hubZones {
+  padding: 6px 12px 8px;
+}
+
+.itinerants {
+  padding: 14px 18px 0;
+}
+
+:root .itinerantsTitre {
+  margin: 0 0 8px;
+  font: 600 15px var(--ft) !important;
+  letter-spacing: -0.02em !important;
+  color: var(--ink);
+}
+
+/* ------------------------------- rangées repliées : régions et « Tout le site » */
+
+.rangees {
+  display: grid;
+  gap: 8px;
+}
+
+.rangee {
+  border-radius: 18px;
+  background: var(--card);
+  border: 1px solid var(--mm-filet, var(--line));
+  overflow: hidden;
+}
+
+.rangee > summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 10px 16px;
+  cursor: pointer;
+  list-style: none;
+  font: 600 15px var(--ft);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.rangee > summary::-webkit-details-marker {
+  display: none;
+}
+
+.rangee > summary:focus-visible {
+  outline: 2px solid var(--acc);
+  outline-offset: -2px;
+}
+
+/* 16 px : les pastilles et les liens s'alignent sur le titre de la rangée. */
+.rangeeCorps {
+  padding: 0 16px 8px;
+}
+
+.toutLeSite {
+  padding: 26px 18px 0;
+}
+
+.liens {
+  margin: 0;
+  padding: 0 12px 8px;
+  list-style: none;
+}
+
+.liens a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 6px 4px;
+  border-top: 1px solid var(--mm-filet, var(--line));
+  font: 500 14px/1.35 var(--fb);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.liens a:hover {
+  color: var(--acc-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chevron {
+    transition: none;
+  }
+}

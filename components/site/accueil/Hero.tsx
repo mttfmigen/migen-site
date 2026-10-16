@@ -1,20 +1,46 @@
+import { Fragment } from "react";
+
 import { FormulaireContact } from "@/components/formulaire/FormulaireContact";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
+import mobile from "./AccueilMobile.module.css";
 import replis from "./replis-accueil.module.css";
 
 /* Section d'ouverture de la page d'accueil, portée de « Migen - Site final »
    (lignes 483 à 533). Composant serveur : le seul élément interactif est le
    formulaire, qui est déjà un composant client autonome.
 
-   LE HÉROS COMPACT DU TÉLÉPHONE (G2), sous 881 px seulement. La maquette
-   mobile v2 (m-00) ouvre l'accueil sur la pastille, le titre et le parcours
-   « Qu'est-ce qui vous bloque ? » : aucun formulaire en tête. Le nôtre faisait
-   1 620 px de haut à 390 px, dont 900 de champs, et repoussait le parcours à
-   deux écrans. Le formulaire est donc REPLIÉ derrière sa propre rangée
-   « Rappel dans l'heure · Décrire mon besoin », jamais retiré : ses champs, sa
-   validation et son envoi sont ceux d'avant, au caractère près. Sur bureau la
-   bascule n'existe pas et le panneau est celui de la capture. */
+   HISTORIQUE, LE HÉROS COMPACT DU 13/10 (G2). La maquette mobile v2 ouvrait
+   déjà l'accueil sans formulaire en tête : le nôtre faisait 1 620 px de haut à
+   390 px. Il avait été REPLIÉ derrière sa propre rangée « Rappel dans
+   l'heure · Décrire mon besoin » (`SectionPliableMobile`, `.repliHeros`). Ce
+   repli est resté dans le panneau, mais il ne sert plus au téléphone depuis la
+   V3 (paragraphe suivant) : le panneau entier s'y efface. Le retirer toucherait
+   `replis-accueil.module.css`, tenu par un autre chantier ; au bureau la
+   bascule n'existe pas et le panneau est celui de la capture.
+
+   LE HÉROS COURT DE LA MAQUETTE V3 « SITE MOBILE » (validée par Mehdi le
+   16/10), sous 881 px : pastille « Partout en France · rappel dans l'heure »,
+   titre, sous-titre « Dites-nous ce qui vous bloque… », et « Qu'est-ce qui vous
+   bloque ? » enchaîne aussitôt (`ParcoursMobile`). Le chapô, les trois
+   chiffres et le panneau du formulaire s'effacent à cette largeur
+   (`data-doublon-mobile`) : le chapô et les chiffres reparaissent sous les
+   logos (`IntroAccueilMobile`, mêmes constantes), le formulaire reste celui
+   du bas de page, que la barre basse vise, et les liens de la page qui visent
+   `#besoin` y mènent (`AncreBesoinMobile`). Rien n'est retiré du HTML servi,
+   et au-dessus de 880 px le héros est celui d'avant, au pixel. */
+
+/** Le chapô du héros, écrit une fois : le bureau le montre ici, le téléphone
+    sous les logos clients (`IntroAccueilMobile`). */
+export const CHAPO_HEROS =
+  "En tant que responsable maintenance, trouver un prestataire réellement qualifié est un défi. Nous mobilisons des techniciens dont 10\u00a0% seulement réussissent notre process, sur vos sites, en continu ou en intervention ciblée.";
+
+/** Les trois chiffres du héros, servis aux mêmes deux endroits. */
+export const CHIFFRES_HEROS = [
+  { valeur: "+120", libelle: "techniciens" },
+  { valeur: "+10\u00a0M€", libelle: "de chiffre d’affaires" },
+  { valeur: "+200", libelle: "clients" },
+] as const;
 
 /* Le titre du panneau, écrit une fois et servi aux deux endroits (en-tête de
    bureau, bascule du téléphone), comme les sections repliées de l'accueil. */
@@ -93,7 +119,13 @@ export default function Hero() {
                   background: "var(--acc)",
                 }}
               />
-              Partout en France
+              {/* Une seule boîte pour le texte : la pastille est en `flex`
+                  avec 8 px d'écart, la suite du téléphone doit coller au
+                  texte et non devenir un élément de plus. */}
+              <span>
+                Partout en France
+                <span data-mobile-seulement=""> · rappel dans l’heure</span>
+              </span>
             </span>
             {/* « 4 agences · +120 techniciens » retiré le 12/10, sur demande
                 de Mehdi : « j'ai ce texte a coté de partout en france, retire
@@ -116,7 +148,13 @@ export default function Hero() {
             </span>
           </h1>
 
+          <p data-mobile-seulement="" className={mobile.sousTitreHeros}>
+            Dites-nous ce qui vous bloque&nbsp;: chaque carte ouvre la page de
+            l’offre qui y répond.
+          </p>
+
           <p
+            data-doublon-mobile=""
             className={replis.chapoHeros}
             style={{
               font: "400 17.5px/1.65 var(--fb)",
@@ -125,13 +163,11 @@ export default function Hero() {
               maxWidth: "48ch",
             }}
           >
-            En tant que responsable maintenance, trouver un prestataire
-            réellement qualifié est un défi. Nous mobilisons des techniciens dont
-            10&nbsp;% seulement réussissent notre process, sur vos sites, en
-            continu ou en intervention ciblée.
+            {CHAPO_HEROS}
           </p>
 
           <div
+            data-doublon-mobile=""
             className={replis.chiffresHeros}
             style={{
               display: "flex",
@@ -143,24 +179,19 @@ export default function Hero() {
               flexWrap: "wrap",
             }}
           >
-            <div>
-              <div style={VALEUR}>+120</div>
-              <div style={LIBELLE}>techniciens</div>
-            </div>
-            <div style={TRAIT} />
-            <div>
-              <div style={VALEUR}>+10&nbsp;M€</div>
-              <div style={LIBELLE}>de chiffre d’affaires</div>
-            </div>
-            <div style={TRAIT} />
-            <div>
-              <div style={VALEUR}>+200</div>
-              <div style={LIBELLE}>clients</div>
-            </div>
+            {CHIFFRES_HEROS.map((chiffre, rang) => (
+              <Fragment key={chiffre.valeur}>
+                {rang > 0 ? <div style={TRAIT} /> : null}
+                <div>
+                  <div style={VALEUR}>{chiffre.valeur}</div>
+                  <div style={LIBELLE}>{chiffre.libelle}</div>
+                </div>
+              </Fragment>
+            ))}
           </div>
         </div>
 
-        <div style={{ position: "relative" }}>
+        <div data-doublon-mobile="" style={{ position: "relative" }}>
           <div
             id="besoin"
             style={{
