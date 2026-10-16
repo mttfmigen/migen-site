@@ -29,6 +29,8 @@
  *     Paris, et Nice à Lyon devant Marseille) ;
  *   · un lien vers go.migengroup.com, un lien externe, une adresse `/fr/` ;
  *   · une image externe, relative, ou absente de `public/` ;
+ *   · une photo de ville (`/assets/villes/`) sur une LP ville, hors de la
+ *     grille des dix hubs (16/10 : « le fond ville fait très agence immo ») ;
  *   · un autre numéro que celui des landing pages ;
  *   · le flottant coupé « 10 h » / « ubs en France », et une espace sécable
  *     avant les deux-points d'un titre.
@@ -174,15 +176,20 @@ export function defauts(donnees) {
   const signale = (ou, motif, texte) => trouves.push({ ou, motif, texte: String(texte).slice(0, 140) });
   const chemins = new Set((donnees.pages ?? []).map((p) => p.path));
 
-  const image = (ou, valeur) => {
+  const image = (ou, valeur, ctx, cle) => {
     if (typeof valeur !== "string" || !valeur) return;
     if (!valeur.startsWith("/assets/") || /envato|https?:/i.test(valeur)) signale(ou, "image externe ou relative", valeur);
     else if (!existsSync(join(RACINE, "public", valeur))) signale(ou, "image absente de public/", valeur);
+    /* 16/10, Mehdi : « le fond ville fait très agence immo, et pas assez
+       maintenance ». Une LP ville ne montre pas sa ville en grand ; seule la
+       grille des dix hubs (`hubImg`) garde ses vignettes de ville. */
+    if (villeDe(ctx.page) && cle !== "hubImg" && valeur.startsWith("/assets/villes/"))
+      signale(ou, "photo de ville sur une LP ville (une photo de maintenance industrielle à la place)", valeur);
   };
 
   const parcours = (valeur, ou, ctx, cle) => {
     if (typeof valeur === "string") {
-      if (IMAGES.has(cle)) return image(ou, valeur);
+      if (IMAGES.has(cle)) return image(ou, valeur, ctx, cle);
       if (REFERENCES.has(cle)) {
         if (LIEN.test(valeur)) signale(ou, "lien vers go.migengroup.com ou hors du site", valeur);
         return;
@@ -263,6 +270,7 @@ function temoins(reelles) {
     ["image Envato", (d) => (page(d).img = "https://elements-resized.envatousercontent.com/x.jpg")],
     ["image relative", (d) => (page(d).img = "assets/web/team-duo.jpg")],
     ["image absente", (d) => (page(d).img = "/assets/web/absente.jpg")],
+    ["photo de ville en fond d'une LP ville", (d) => (parPage(d, "maintenance-industrielle-lyon/").img = "/assets/villes/ville-lyon.jpg")],
     ["numéro du site", (d) => (page(d).chapo = "Appelez le 04 78 33 72 05.")],
     ["flottant « 10 h » / « ubs en France »", (d) => (page(d).hs = [{ v: "10 h", l: "ubs en France" }])],
     ["montant", (d) => (page(d).chapo = "À partir de 500 € par jour.")],

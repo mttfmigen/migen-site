@@ -1,5 +1,7 @@
 # Photos des villes : versions sous licence à télécharger
 
+> **16/10 : les pages villes ne servent plus ces photos en grand.** Le panneau « Votre hub local » des pages `/implantations/` et le fond du héros des LP villes portent désormais une photo de maintenance industrielle (Mehdi : « le fond ville fait très agence immo »). Table et motifs : `docs/PHOTOS-VILLES.md`. Les `hub-*.jpg` restent servies par les vignettes des dix hubs.
+
 Toutes les photos de ville du site viennent d'Envato Elements, et la maquette
 n'en a que les **aperçus** (600 px, filigrane « envato »). Pour la mise en
 ligne, il faut la version sous licence de chacune, téléchargée depuis le compte

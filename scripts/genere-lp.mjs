@@ -10,9 +10,10 @@
  * LE SCHÉMA NE CHANGE PAS : mêmes clés, mêmes structures que `__LP`, le
  * gabarit les lit telles quelles. Seules les VALEURS changent :
  *   · les adresses passent de `/fr/x` à `/lp/x/` (chemins et `mainHref`) ;
- *   · les images deviennent absolues (`/assets/...`), les aperçus Envato et les
- *     vignettes de hub absentes du site sont remplacés par les fichiers sous
- *     licence que le site sert déjà ;
+ *   · les images deviennent absolues (`/assets/...`) ; les aperçus Envato (des
+ *     photos de ville en fond de héros) sont remplacés par la photo de
+ *     maintenance industrielle de la page ville du site, et les vignettes de
+ *     hub absentes du site par les photos de hub sous licence qu'il sert déjà ;
  *   · la copie passe par les décisions du site (`lib/decisions-copie.ts`), par
  *     les corrections nommées plus bas, puis par le filtre : toute phrase (ou
  *     tout segment « · » d'un libellé) qui porte un interdit est RETIRÉE, pas
@@ -41,19 +42,32 @@ const PAGES_RETIREES = {
     "politique de confidentialité propre à la V3 : les LP renvoient à /confidentialite/ et /mentions-legales/ du site.",
 };
 
-/* LES APERÇUS ENVATO, reconnus à leur identifiant. Ce sont exactement les
-   photos du bloc « Votre hub local » des pages /implantations/ de la maquette
-   (`maquette/contenu/site/photos-villes.json`) : leur version sous licence est
-   au dépôt, et le site la sert déjà (`docs/PHOTOS-VILLES-ENVATO.md`). */
+/* LES APERÇUS ENVATO, reconnus à leur identifiant. Ce sont les photos de VILLE
+   (monuments, panoramas) que la V3 pose en fond du héros de sept LP villes, les
+   mêmes que le bloc « Votre hub local » des pages /implantations/ de la maquette.
+   16/10, Mehdi : « sur les pages villes, le fond ville fait très agence immo, et
+   pas assez maintenance ». Chacune cède la place à la photo de maintenance
+   industrielle que la page ville du site sert dans ce bloc (`hubLocal.photo` de
+   sa fiche, lue ici) : une seule photo par ville, site et LP. La table ville,
+   photo, motif : `docs/PHOTOS-VILLES.md`. */
 const PHOTOS_ENVATO = {
-  E10QDY1: "ville-lyon.jpg",
-  E10QF8J: "ville-paris.jpg",
-  E108N92Z: "hub-marseille.jpg",
-  E10DWX6: "ville-strasbourg.jpg",
-  E10OW8U: "ville-nantes.jpg",
-  E10N758: "ville-le-havre.jpg",
-  E10OSPM: "hub-bordeaux.jpg",
+  E10QDY1: "implantations-lyon.json",
+  E10QF8J: "implantations-paris.json",
+  E108N92Z: "implantations-marseille.json",
+  E10DWX6: "implantations-strasbourg.json",
+  E10OW8U: "implantations-nantes.json",
+  E10N758: "implantations-maintenance-industrielle-le-havre.json",
+  E10OSPM: "implantations-bordeaux.json",
 };
+const FICHES = join(RACINE, "supabase", "import", "gabarits-maquette");
+
+/** La photo du hub local de la page ville du site : une photo du registre, jamais une photo de ville. */
+function photoDuHubLocal(fiche) {
+  const { url, contenu } = JSON.parse(readFileSync(join(FICHES, fiche), "utf8"));
+  const photo = contenu?.hubLocal?.photo;
+  if (!photo?.startsWith("/assets/photos/")) throw new Error(`${url} : hub local sans photo industrielle (${photo})`);
+  return { url, photo };
+}
 
 /* LES CORRECTIONS NOMMÉES, et rien d'autre ne réécrit la copie. Chacune garde
    les mots de la V3 et ne fait que retirer ce qui est interdit ou rendre une
@@ -126,11 +140,12 @@ function image(src, ctx) {
   const envato = /envato/.test(src) ? /\/(E[0-9A-Z]+)\.jpg/.exec(src)?.[1] : null;
   const vignette = /^assets\/villes\/([a-z-]+?)(?:-760)?\.jpg$/.exec(src)?.[1];
   if (envato) {
-    if (!PHOTOS_ENVATO[envato]) throw new Error(`${ctx.page} : aperçu Envato ${envato} sans version sous licence connue`);
-    chemin = `/assets/villes/${PHOTOS_ENVATO[envato]}`;
-    consigne(ctx, `aperçu Envato ${envato} (CDN d'Envato, filigrané)`, chemin,
-      "image externe : la même photo, sous licence, déjà servie par /implantations/",
-      "photo Envato remplacée par sa version sous licence");
+    if (!PHOTOS_ENVATO[envato]) throw new Error(`${ctx.page} : aperçu Envato ${envato} sans page ville connue`);
+    const { url, photo } = photoDuHubLocal(PHOTOS_ENVATO[envato]);
+    chemin = photo;
+    consigne(ctx, `photo de ville, aperçu Envato ${envato} (CDN d'Envato, filigrané)`, chemin,
+      `le fond ville fait « agence immo » (Mehdi, 16/10) : la photo de maintenance industrielle du hub local de ${url}`,
+      "photo de ville remplacée par une photo de maintenance industrielle");
   } else if (vignette) {
     chemin = `/assets/villes/hub-${vignette}.jpg`;
     ctx.compte.vignettes += 1;
