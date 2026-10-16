@@ -26,8 +26,10 @@ import { numerote } from "./texte-offre";
  * choisie, c'est son fichier. Rendue comme la capture : plein cadre, `cover`,
  * `saturate(var(--sat))`, sous le voile.
  *
- * LA BARRE BEIGE de chaque rangée porte, dans la capture, une étiquette VIDE
- * (bloc 363, `sc-interp` sans texte). Elle se rend donc vide, comme relevée.
+ * LA BARRE BEIGE de chaque rangée (blocs 362-363) n'est PAS portée : la
+ * maquette, V3 du 16/10 comprise, la rend avec une étiquette `sc-interp` vide,
+ * une donnée jamais remplie. Rendue telle quelle, Mehdi l'a signalée comme un
+ * bug le 16/10. Rien à y mettre sans inventer : elle disparaît.
  *
  * LE SURVOL DES RANGÉES n'est pas porté : la capture déclare
  * `transition: background-color` (classe `scpz`) mais la valeur survolée
@@ -135,29 +137,6 @@ const PHRASE: CSSProperties = {
   maxWidth: "56ch",
 };
 
-/* Bloc 362 : la barre beige pleine largeur sous le texte. */
-const BARRE: CSSProperties = {
-  alignSelf: "stretch",
-  display: "flex",
-  flexDirection: "column",
-  gap: 4,
-  marginTop: 6,
-  padding: "11px 14px",
-  borderRadius: 14,
-  background: "var(--acc-w)",
-  font: "500 13px/1.45 var(--fb)",
-  color: "var(--ink1)",
-};
-
-/* Bloc 363 : son étiquette, vide dans la capture. */
-const BARRE_ETIQUETTE: CSSProperties = {
-  font: "600 10px var(--fb)",
-  letterSpacing: ".12em",
-  textTransform: "uppercase",
-  whiteSpace: "nowrap",
-  color: "var(--acc-ink)",
-};
-
 /* Bloc 364 : le bouton rond à flèche. */
 const FLECHE: CSSProperties = {
   width: 36,
@@ -220,9 +199,6 @@ export default function TypesMaintenance({
                   {carte.phrase ? (
                     <span data-mm-kv-texte="" style={PHRASE}>{carte.phrase}</span>
                   ) : null}
-                  <span data-types-barre="" style={BARRE}>
-                    <span style={BARRE_ETIQUETTE} />
-                  </span>
                 </span>
                 <span data-types-fleche="" aria-hidden="true" style={FLECHE}>
                   →

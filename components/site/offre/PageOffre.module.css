@@ -411,7 +411,6 @@
   .gabaritOffre [data-couverture-photo],
   .gabaritOffre [data-types-panneau] > img,
   .gabaritOffre [data-types-voile],
-  .gabaritOffre [data-types-barre],
   .gabaritOffre [data-types-fleche] {
     display: none !important;
   }
