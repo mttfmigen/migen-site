@@ -376,7 +376,12 @@ export default function PlanDuSite({ pages }: PlanDuSiteProps) {
                     <h2 style={LIBELLE_RUBRIQUE} className={styles.libelle}>
                       {rubrique.libelle}
                     </h2>
-                    <span style={COMPTE_RUBRIQUE}>{rubrique.pages.length}</span>
+                    {/* Le compte de la rubrique s'efface au téléphone (Mehdi,
+                        16/10 : plus aucun compteur « · 55 » à cette largeur) ;
+                        le bureau le garde, tel que la maquette le dessine. */}
+                    <span style={COMPTE_RUBRIQUE} className={styles.compteRubrique}>
+                      {rubrique.pages.length}
+                    </span>
                   </div>
                   <ul style={LISTE}>
                     {rubrique.pages.map((page) => (

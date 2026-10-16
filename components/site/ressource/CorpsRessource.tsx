@@ -414,22 +414,18 @@ export default function CorpsRessource({
         <nav aria-label={H.COPIE.sommaire} className={styles.sommaire} style={H.SOMMAIRE}>
           {/* G3 : LE SOMMAIRE, BLOC DE BUREAU, SE REPLIE AU TÉLÉPHONE au lieu
               d'y disparaître. Il était `display: none` sous 980 px ; la
-              maquette mobile v2 le sert replié sous « Sommaire · N parties »
+              maquette mobile v2 le sert replié sous « Sommaire »
               (dc.html, `hasToc`, `<details data-open="0">`). Le titre
-              EXISTANT sert d'en-tête de la bascule, il n'est pas doublé ; le
-              compte des parties n'existe qu'au téléphone. Sur bureau la
-              bascule se lit comme avant (chevron et résumé masqués, arrêt de
-              tabulation retiré par le composant partagé). */}
+              EXISTANT sert d'en-tête de la bascule, il n'est pas doublé. Le
+              compte « N parties » du téléphone est retiré le 16/10 (Mehdi :
+              plus aucun compteur). Sur bureau la bascule se lit comme avant
+              (chevron et résumé masqués, arrêt de tabulation retiré par le
+              composant partagé). */}
           <SectionPliableMobile
             numero={false}
             enTete={
               <div className={styles.sommaireTitre} style={H.SOMMAIRE_TITRE}>
                 {H.COPIE.sommaire}
-                {parties.length > 0 ? (
-                  <span data-mobile-seulement="" className={styles.sommaireCompte}>
-                    {`${parties.length + (faq ? 1 : 0)} parties`}
-                  </span>
-                ) : null}
               </div>
             }
           >

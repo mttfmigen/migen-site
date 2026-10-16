@@ -334,7 +334,7 @@
 /* ------------------------------------------------------------ le sommaire */
 
 /*
- * dc.html L116 : « Sommaire · N parties », replié, sous les boutons du haut.
+ * dc.html L116 : « Sommaire », replié, sous les boutons du haut.
  * Chaque entrée mène à sa carte numérotée. Les cibles tactiles passent à
  * 44 px (la maquette s'arrête à 35).
  */
@@ -370,13 +370,6 @@
     font: 600 14.5px var(--ft);
     letter-spacing: -0.02em;
     color: var(--ink);
-  }
-
-  .sommaireNombre {
-    margin-left: 6px;
-    font: 500 12px var(--fb);
-    color: var(--mm-encre-3);
-    white-space: nowrap;
   }
 
   .sommaireChevron {
@@ -504,62 +497,211 @@
   }
 }
 
-/* ------------------------------------------- les repères en cartes « kv » */
+/* ---------------------------------------- les tuiles de la maquette V3 */
 
 /*
- * dc.html L131 (`b.isKv`) : une liste « Libellé : texte » du chapô devient des
- * petites cartes numérotées, 26 px de numéro, 8 px entre deux. C'est ainsi que
- * la maquette rend les quatre repères de « Nous connaître » (2021, +120,
- * +50 %, 1 000). Le numéro est un compteur CSS : absent du texte servi.
+ * MAQUETTE V3 « SITE MOBILE », validée par Mehdi le 16/10 (composant mobile
+ * 9d8a3bdb, `isStats` et les jalons datés) : une liste de chiffres ou
+ * d'années devient une grille de tuiles, deux colonnes, 8 px d'écart, fond
+ * doux (`--mm-fond-doux`, #f6f6f7), filet `--mm-bord-doux`, 16 px d'arrondi,
+ * 14 px 14 px 13 px. La valeur (`.tuileValeur`) en 700 24px, le texte
+ * dessous en 400 12,5px/1,45, à 7 px. LA VALEUR EST À L'ORANGE FONCÉ DES
+ * LIENS (`--mm-lien`, #b4490f), comme les tuiles de l'accueil V3 : l'orange
+ * vif de la maquette (#ff7c3c) ne fait que 2,4:1 sur le fond doux, sous le
+ * 3:1 du gros texte (WCAG 1.4.3) ; #b4490f en fait 5,3. Posée sur les quatre repères de « Nous
+ * connaître », la frise « Cinq ans, de zéro à cent » et le chiffre de /rse/.
+ * `:root` devant : la règle passe devant `.mg-rmulti` et `.mg-tl` de
+ * `app/globals.css`, qui remettent une colonne et un filet sous 1000 px.
  */
 @media (max-width: 880px) {
-  .reperes {
-    padding-top: 16px !important;
-    counter-reset: repere;
-  }
-
-  .reperes :global(.mg-rmulti) {
-    grid-template-columns: minmax(0, 1fr) !important;
-    gap: 8px !important;
-  }
-
-  .repereCarte {
-    counter-increment: repere;
+  /* La grille est parfois elle-même une carte de verre de bureau : elle
+     perd sa boîte, seules les tuiles en ont une. */
+  :root .tuilesV3 {
     display: grid !important;
-    grid-template-columns: 26px minmax(0, 1fr);
-    column-gap: 10px;
-    padding: 13px 14px !important;
-    border-radius: 16px !important;
-    background: var(--card) !important;
-    border: 1px solid var(--mm-filet) !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+    margin: 4px 0 14px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
     box-shadow: none !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
   }
 
-  .repereCarte::before {
-    content: counter(repere, decimal-leading-zero);
-    grid-row: 1 / span 3;
-    padding-top: 3px;
-    font: 600 11px ui-monospace, Menlo, monospace;
-    color: var(--acc);
+  /* La police de la tuile est celle de son texte : un libellé en ligne n'y
+     prend pas l'interligne de 16 px de la section. */
+  :root .tuilesV3 > * {
+    display: block !important;
+    min-width: 0;
+    font: 400 12.5px/1.45 var(--fb);
+    margin: 0 !important;
+    padding: 14px 14px 13px !important;
+    border: 1px solid var(--mm-bord-doux) !important;
+    border-radius: 16px !important;
+    background: var(--mm-fond-doux) !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
 
-  .repereCarte > * {
-    grid-column: 2;
+  :root .tuilesV3 > * > * {
+    margin: 0 !important;
+    max-width: none !important;
+    font: 400 12.5px/1.45 var(--fb) !important;
+    letter-spacing: normal !important;
+    color: var(--ink1) !important;
   }
 
-  .repereCarte > :first-child {
+  :root .tuilesV3 .tuileValeur {
+    display: block !important;
+    font: 700 24px/1 var(--ft) !important;
+    letter-spacing: -0.045em !important;
+    color: var(--mm-lien) !important;
+  }
+
+  :root .tuilesV3 > * > .tuileValeur + * {
+    margin-top: 7px !important;
+  }
+
+  /* Un filet de bureau rangé entre deux chiffres n'est pas une tuile. */
+  :root .tuilesV3 > .decor {
+    display: none !important;
+  }
+
+  .reperes {
+    padding-top: 12px !important;
+  }
+}
+
+/*
+ * LA FRISE DE LA MAQUETTE V3 (16/10), pour une liste d'étapes dont le numéro
+ * est écrit dans le DOM (« 01 ») : pastille ronde orange pâle de 28 px
+ * (numéro #b4490f, 600 11,5px), filet orange de 2 px jusqu'à l'étape
+ * suivante, titre 600 15px/1,35, texte 13,5 px. Les cartes de verre du
+ * bureau s'effacent. Les jalons de /a-propos/equipe/, sans numéro écrit,
+ * suivent le même dessin par `.jalon` (plus bas).
+ */
+@media (max-width: 880px) {
+  :root .friseV3 {
+    gap: 0 !important;
+    margin: 6px 0 10px !important;
+  }
+
+  :root .friseV3 > li {
+    position: relative;
+    display: grid !important;
+    grid-template-columns: 28px minmax(0, 1fr) !important;
+    column-gap: 12px !important;
+    row-gap: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  :root .friseV3 > li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 13px;
+    top: 32px;
+    bottom: 4px;
+    width: 2px;
+    border-radius: 2px;
+    background: rgba(255, 124, 60, 0.22);
+  }
+
+  :root .friseV3 > li > :first-child {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 999px !important;
+    background: rgba(255, 124, 60, 0.12) !important;
+    color: var(--mm-lien) !important;
+    font: 600 11.5px var(--fb) !important;
+  }
+
+  :root .friseV3 > li > :last-child {
+    min-width: 0;
+    padding: 4px 0 18px;
+  }
+
+  :root .friseV3 > li > :last-child > * {
+    margin: 3px 0 0 !important;
+    font: 400 13.5px/1.55 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+
+  :root .friseV3 > li > :last-child > :first-child {
+    margin: 0 !important;
+    font: 600 15px/1.35 var(--ft) !important;
+    letter-spacing: -0.015em !important;
+    color: var(--ink) !important;
+  }
+
+  /* Les agences de /a-propos/equipe/ : petites cartes à fond doux, sans
+     numéro (la maquette V3 n'en pose pas), le siège sans teinte à part. */
+  :root .agencesV3 {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 8px !important;
+    margin-bottom: 16px !important;
+  }
+
+  :root .agencesV3 > li {
+    padding: 13px 14px !important;
+    border-radius: 16px !important;
+    background: var(--mm-fond-doux) !important;
+    border: 1px solid var(--mm-bord-doux) !important;
+  }
+
+  :root .agencesV3 > li > :first-child {
     font: 600 14.5px/1.4 var(--ft) !important;
     letter-spacing: -0.015em !important;
     color: var(--ink) !important;
   }
 
-  .repereCarte > :not(:first-child) {
+  :root .agencesV3 > li > :last-child {
     margin-top: 4px !important;
     font: 400 14px/1.55 var(--fb) !important;
-    letter-spacing: normal !important;
     color: var(--ink1) !important;
+  }
+}
+
+/*
+ * LA PHRASE CLÉ D'UNE CARTE, maquette V3 (`allB`, 600 17px/1,45) : le titre de
+ * bureau d'une section dont la carte du téléphone porte le nom seul
+ * (« Comment ces personnes sont choisies », « Nos engagements »…). Il reste
+ * le `<h2>` de la section, à sa place, à l'encre de la page : la V3 n'a plus
+ * de panneau sombre dans ses cartes ouvertes.
+ */
+@media (max-width: 880px) {
+  :root .phraseCleV3 {
+    margin: 0 0 10px !important;
+    max-width: none !important;
+    font: 600 17px/1.45 var(--ft) !important;
+    letter-spacing: -0.02em !important;
+    color: var(--ink) !important;
+    text-wrap: pretty;
+  }
+}
+
+/*
+ * LA PHRASE D'OUVERTURE D'UNE CARTE OUVERTE, maquette V3 : le premier
+ * paragraphe d'une section en 500 16px/1,6, à l'encre de la page (le corps
+ * qui suit reste en 15 px gris). Le chapô de bureau garde son dessin au-dessus
+ * de 880 px.
+ */
+@media (max-width: 880px) {
+  :root .leadV3 {
+    margin: 0 0 12px !important;
+    max-width: none !important;
+    font: 500 16px/1.6 var(--fb) !important;
+    letter-spacing: normal !important;
+    color: var(--ink) !important;
+    text-wrap: pretty;
   }
 }
 
@@ -630,61 +772,23 @@
     color: var(--ink) !important;
   }
 
-  .panneauMot {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font: 600 14.5px/1.6 var(--fb) !important;
-    letter-spacing: normal !important;
-    color: var(--ink) !important;
+  /* « Le slogan, en clair » de /valeurs/, maquette V3 du 16/10 : une puce
+     orange et UNE ligne « **Innovation** : Retrofit plutôt que… », 14,5 px,
+     8 px entre deux puces. Le mot et sa glose, deux blocs au bureau, passent
+     en ligne ; le « : » est une `<span data-mobile-seulement>` du composant,
+     un vrai caractère du texte (`HeroValeurs.tsx`). */
+  :root .sloganListe {
+    gap: 8px !important;
   }
 
-  .panneauMot::before {
-    content: "";
-    flex: none;
-    width: 6px;
-    height: 6px;
-    border-radius: 999px;
-    background: var(--acc);
-  }
-
-  .panneauGlose {
-    margin-top: 2px !important;
-    padding-left: 16px;
-    font: 400 14.5px/1.6 var(--fb) !important;
-    color: var(--ink1) !important;
-  }
-}
-
-/* ---------------------------------------------- les cinq valeurs, en liste */
-
-/*
- * dc.html L131 (`isUl`) puis `isP` : la maquette rend chaque valeur comme une
- * puce orange, « 01 », la règle et son texte, puis la preuve en paragraphe.
- * Les cartes de bureau (une sombre, quatre de verre) s'effacent donc sous
- * 881 px : plus de fond, de filet ni d'ombre, le texte à l'encre de la page.
- */
-@media (max-width: 880px) {
-  .valeursListe {
-    grid-template-columns: minmax(0, 1fr) !important;
-    gap: 16px !important;
-  }
-
-  .valeurItem {
-    grid-column: auto !important;
+  .sloganLigne {
     position: relative;
-    min-height: 0 !important;
-    padding: 0 0 0 16px !important;
-    border: 0 !important;
-    border-radius: 0 !important;
-    background: none !important;
-    box-shadow: none !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    overflow: visible !important;
+    padding-left: 16px;
+    font: 400 14.5px/1.6 var(--fb);
+    color: var(--ink1);
   }
 
-  .valeurItem::before {
+  .sloganLigne::before {
     content: "";
     position: absolute;
     left: 0;
@@ -695,39 +799,102 @@
     background: var(--acc);
   }
 
-  .valeurColonne {
-    display: block !important;
+  .sloganLigne > div:first-child {
+    display: inline !important;
   }
 
-  .valeurNumero,
-  .valeurTitre {
+  .panneauMot {
     display: inline !important;
-    margin: 0 !important;
     font: 600 14.5px/1.6 var(--fb) !important;
     letter-spacing: normal !important;
     color: var(--ink) !important;
   }
 
+  .panneauGlose {
+    display: inline !important;
+    margin: 0 !important;
+    font: 400 14.5px/1.6 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+}
+
+/* ---------------------------------------------- les cinq valeurs, en tuiles */
+
+/*
+ * Maquette V3 du 16/10 : les cinq valeurs de /valeurs/ en TUILES 2 colonnes,
+ * fond doux, « 01 » en 700 24px orange, puis la règle et son texte en petit.
+ * La V3 sort la preuve de chaque valeur sous la grille, loin de son titre :
+ * elle reste ici DANS sa tuile, dans l'ordre du DOM (un lecteur d'écran lit
+ * chaque valeur d'un tenant). Les cartes de bureau (une sombre, quatre de
+ * verre) prennent toutes ce dessin, à l'encre de la page, sous 881 px.
+ */
+@media (max-width: 880px) {
+  /* Les tuiles suivent « À lire aussi » de près, comme dans la V3 : la
+     section ne garde pas son grand espacement de bureau (`--sec`). */
+  .sectionSerree {
+    padding-top: 4px !important;
+  }
+
+  /* `:root` : passe devant `.mg-valg` d'`app/globals.css`, qui remet une
+     colonne sous 640 px et étale la première carte sur toute la rangée. */
+  :root .valeursListe {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  :root .valeursListe > .valeurItem {
+    grid-column: auto !important;
+  }
+
+  .valeurItem {
+    min-height: 0 !important;
+    padding: 14px 14px 13px !important;
+    border: 1px solid var(--mm-bord-doux) !important;
+    border-radius: 16px !important;
+    background: var(--mm-fond-doux) !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    overflow: visible !important;
+  }
+
+  .valeurColonne {
+    display: block !important;
+  }
+
   .valeurNumero {
-    margin-right: 6px !important;
+    display: block !important;
+    margin: 0 0 7px !important;
+    font: 700 24px/1 var(--ft) !important;
+    letter-spacing: -0.045em !important;
+    color: var(--mm-lien) !important;
+  }
+
+  .valeurTitre {
+    margin: 0 !important;
+    max-width: none !important;
+    font: 600 13px/1.4 var(--ft) !important;
+    letter-spacing: -0.01em !important;
+    color: var(--ink) !important;
   }
 
   .valeurTexte {
-    margin: 2px 0 0 !important;
+    margin: 3px 0 0 !important;
     max-width: none !important;
-    font: 400 14.5px/1.6 var(--fb) !important;
+    font: 400 12.5px/1.45 var(--fb) !important;
     color: var(--ink1) !important;
   }
 
   .valeurPreuve {
     display: block !important;
-    margin: 10px 0 0 !important;
+    font: 400 12.5px/1.45 var(--fb);
+    margin: 8px 0 0 !important;
     padding: 0 !important;
     border: 0 !important;
   }
 
   .valeurPreuve > span {
-    font: 400 15px/1.65 var(--fb) !important;
+    font: 400 12.5px/1.45 var(--fb) !important;
     color: var(--ink1) !important;
   }
 }
@@ -810,7 +977,7 @@
   }
 }
 
-/* /rse/ : les deux chiffres du cas, en tuiles côte à côte (`data-tuiles-chiffres`) ;
+/* /rse/ : les deux chiffres du cas, en tuiles côte à côte (`.tuilesV3`) ;
    leurs deux rangées de bureau tomberaient en une rangée vide. */
 @media (max-width: 880px) {
   .casChiffres {
@@ -823,11 +990,11 @@
 /*
  * dc.html, page /a-propos/equipe/ du corpus mobile v2 (`mobile-v2-data.js`) :
  * la photo de tête (L105), le cartouche « Pour joindre directement
- * l'équipe » (bloc `isQ`, L131 : 14 px 16 px, 16 px d'arrondi, `--qbg`), les
- * trois chiffres de la carte 01 en petites cartes numérotées (`isKv`), les
- * jalons de la carte 02 en liste à pastilles noires (`isOl` : 30 px, 12 px
- * d'écart, 14 px dessous). Tout est sous 881 px ; les classes n'ont aucune
- * règle au-dessus, le bureau ne bouge pas.
+ * l'équipe » (bloc `isQ`, L131 : 14 px 16 px, 16 px d'arrondi, `--qbg`). Les
+ * trois chiffres de la carte 01 et les jalons de la carte 02 suivent la
+ * maquette V3 du 16/10 (tuiles, frise orange pâle), voir plus bas. Tout est
+ * sous 881 px ; les classes n'ont aucune règle au-dessus, le bureau ne bouge
+ * pas.
  */
 @media (max-width: 880px) {
   .photoTete {
@@ -852,80 +1019,91 @@
     color: inherit;
   }
 
-  .chiffresCompacts {
-    grid-template-columns: minmax(0, 1fr) !important;
+  /* Les trois chiffres de la carte 01, en TUILES de la maquette V3 (16/10,
+     composant mobile 9d8a3bdb, `isStats`) : deux colonnes, fond doux, valeur
+     700 24px, puis « Libellé · texte » en 12,5 px (le « · » est une span
+     `data-mobile-seulement` du composant). Plus de numéro. */
+  :root .chiffresCompacts {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 8px !important;
-    counter-reset: repere;
+    margin: 4px 0 14px !important;
   }
 
-  .chiffreCompact {
-    counter-increment: repere;
-    position: relative;
+  :root .chiffreCompact {
     display: block !important;
-    padding: 13px 14px 13px 50px !important;
+    min-width: 0;
+    /* Le libellé et le texte sont en ligne : la ligne de la tuile est la
+       leur, pas celle de 16 px de la section. */
+    font: 400 12.5px/1.45 var(--fb);
+    padding: 14px 14px 13px !important;
     border-radius: 16px !important;
-    background: var(--card) !important;
-    border: 1px solid var(--mm-filet) !important;
+    background: var(--mm-fond-doux) !important;
+    border: 1px solid var(--mm-bord-doux) !important;
     box-shadow: none !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
   }
 
-  .chiffreCompact::before {
-    content: counter(repere, decimal-leading-zero);
-    position: absolute;
-    left: 14px;
-    top: 16px;
-    font: 600 11px ui-monospace, Menlo, monospace;
-    color: var(--acc);
-  }
-
   .chiffreCompact > .chiffreValeur {
-    font: 600 14.5px/1.4 var(--ft) !important;
-    letter-spacing: -0.015em !important;
-    color: var(--ink) !important;
+    margin-bottom: 7px;
+    font: 700 24px/1 var(--ft) !important;
+    letter-spacing: -0.045em !important;
+    color: var(--mm-lien) !important;
   }
 
   .chiffreCompact > .chiffreLibelle,
   .chiffreCompact > .chiffreTexte {
     display: inline;
-    font: 400 14px/1.55 var(--fb) !important;
+    font: 400 12.5px/1.45 var(--fb) !important;
     letter-spacing: normal !important;
     color: var(--ink1) !important;
   }
 
-  .chiffreCompact > .chiffreLibelle::after {
-    content: " · ";
-  }
 
+  /* Les jalons de la carte 02, en FRISE de la maquette V3 : pastille ronde
+     orange pâle de 28 px (numéro #b4490f), filet orange de 2 px qui descend
+     jusqu'au jalon suivant, titre 600 15px, texte 13,5 px. Le repère écrit
+     (« 2021 », « Aujourd'hui ») reste en sur-titre : c'est du texte du site. */
   .jalons {
     grid-template-columns: minmax(0, 1fr) !important;
     gap: 0 !important;
+    margin: 6px 0 10px !important;
     counter-reset: jalon;
   }
 
   .jalon {
     counter-increment: jalon;
+    position: relative;
     display: grid;
-    grid-template-columns: 30px minmax(0, 1fr);
-    gap: 12px;
-    padding-bottom: 14px;
+    grid-template-columns: 28px minmax(0, 1fr);
+    column-gap: 12px;
   }
 
   .jalon::before {
     content: counter(jalon, decimal-leading-zero);
     display: grid;
     place-items: center;
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
     border-radius: 999px;
-    background: var(--ink);
-    color: #fff;
+    background: rgba(255, 124, 60, 0.12);
+    color: var(--mm-lien);
     font: 600 11.5px var(--fb);
   }
 
+  .jalon:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 13px;
+    top: 32px;
+    bottom: 4px;
+    width: 2px;
+    border-radius: 2px;
+    background: rgba(255, 124, 60, 0.22);
+  }
+
   .jalon > .jalonCarte {
-    padding: 4px 0 0 !important;
+    padding: 4px 0 18px !important;
     border: 0 !important;
     border-radius: 0 !important;
     background: none !important;
@@ -935,20 +1113,23 @@
   }
 
   .jalonCarte > * {
-    margin: 0 !important;
-    font: 400 14.5px/1.6 var(--fb) !important;
+    margin: 3px 0 0 !important;
+    font: 400 13.5px/1.55 var(--fb) !important;
     letter-spacing: normal !important;
     color: var(--ink1) !important;
   }
 
   .jalonCarte > :nth-child(2) {
-    font-weight: 600 !important;
+    margin-top: 2px !important;
+    font: 600 15px/1.35 var(--ft) !important;
+    letter-spacing: -0.015em !important;
     color: var(--ink) !important;
   }
 
   .jalonCarte > :first-child {
+    margin: 0 !important;
     font: 600 11px ui-monospace, Menlo, monospace !important;
-    color: var(--acc) !important;
+    color: var(--mm-lien) !important;
   }
 }
 
@@ -1020,10 +1201,11 @@
 /* ------------------------------------ /rse/ : le chiffre qui compte, en clair */
 
 /*
- * dc.html L131 (`isUl`) : « **2** : accidents du travail… », une puce orange,
- * la valeur en gras ; puis la ligne « MASE et EcoVadis : … » (`isP`). Le
- * panneau sombre du bureau passe par `.panneauClair` ; les logos et le filet
- * par `.decor`.
+ * Maquette V3 du 16/10 : sous « Le chiffre qui compte », le « 2 » est une
+ * TUILE (demi-largeur, fond doux, valeur 700 24px orange, texte 12,5 px),
+ * puis les deux logos MASE et EcoVadis en tuiles blanches côte à côte (66 px
+ * de haut, logo de 34 px), puis la ligne « MASE et EcoVadis : … ». Le panneau
+ * sombre du bureau passe par `.panneauClair` ; le filet par `.decor`.
  */
 @media (max-width: 880px) {
   .herosPhoto .panneauClair {
@@ -1031,46 +1213,57 @@
   }
 
   .puceRse {
-    position: relative;
-    padding-left: 16px;
-  }
-
-  .puceRse::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 10px;
-    width: 6px;
-    height: 6px;
-    border-radius: 999px;
-    background: var(--acc);
+    width: calc(50% - 4px);
+    margin: 4px 0 14px;
+    padding: 14px 14px 13px;
+    border: 1px solid var(--mm-bord-doux);
+    border-radius: 16px;
+    background: var(--mm-fond-doux);
   }
 
   .puceRse > * {
-    display: inline !important;
     margin: 0 !important;
     max-width: none !important;
-    font: 400 14.5px/1.6 var(--fb) !important;
+    font: 400 12.5px/1.45 var(--fb) !important;
     letter-spacing: normal !important;
     color: var(--ink1) !important;
   }
 
   .puceRse > :first-child {
-    font-weight: 600 !important;
-    color: var(--ink) !important;
-  }
-
-  .puceRse > :first-child::after {
-    content: " : ";
+    margin-bottom: 7px !important;
+    font: 700 24px/1 var(--ft) !important;
+    letter-spacing: -0.045em !important;
+    color: var(--mm-lien) !important;
   }
 
   .ligneMase {
-    display: block !important;
-    margin-top: 10px;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px !important;
+    margin-top: 2px;
+  }
+
+  .ligneMase > .logoTuile {
+    display: grid !important;
+    place-items: center;
+    width: auto !important;
+    height: 66px !important;
+    padding: 0 14px !important;
+    border-radius: 16px !important;
+    background: #fff !important;
+    border: 1px solid var(--mm-filet);
+  }
+
+  .ligneMase > .logoTuile > img {
+    width: 100%;
+    height: 34px !important;
+    max-height: none !important;
   }
 
   .ligneMase > span:last-child {
-    font: 400 14.5px/1.6 var(--fb) !important;
+    grid-column: 1 / -1;
+    margin-top: 4px;
+    font: 400 15px/1.65 var(--fb) !important;
     color: var(--ink1) !important;
   }
 
@@ -1102,8 +1295,9 @@
     align-items: start !important;
     padding: 13px 14px;
     border-radius: 16px;
-    background: var(--card);
-    border: 1px solid var(--mm-filet);
+    /* Le fond doux des petites cartes de la maquette V3 (`isKv`). */
+    background: var(--mm-fond-doux);
+    border: 1px solid var(--mm-bord-doux);
   }
 
   .pilierTete::before,
@@ -1190,48 +1384,58 @@
   }
 }
 
-/* ---------------------- /partenaires/ : les trois étapes en petites cartes */
+/* ------------------------ /partenaires/ : les logos en tuiles, maquette V3 */
+
+/* Deux tuiles blanches côte à côte, 66 px de haut, 16 px d'arrondi, le logo
+   contenu sur 34 px (maquette V3 du 16/10, sous le chapô). */
+@media (max-width: 880px) {
+  .logosPartenaires {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    /* La section porte déjà la gouttière de 18 px. */
+    margin: 0;
+  }
+
+  .logoPartenaire {
+    display: grid;
+    place-items: center;
+    height: 66px;
+    padding: 0 14px;
+    border-radius: 16px;
+    background: #fff;
+    border: 1px solid var(--mm-filet);
+  }
+
+  .logoPartenaire > img {
+    display: block;
+    width: 100%;
+    height: 34px;
+    object-fit: contain;
+  }
+}
+
+/* ---------------------- /partenaires/ : les trois étapes en tuiles V3 */
 
 /*
- * dc.html L131 (`isKv`) : « 01 : Un diagnostic commun. … », petites cartes
- * blanches numérotées, 8 px entre deux. Les cartes de bureau (deux de verre,
- * une anthracite) prennent ce dessin ; le numéro est celui du texte.
+ * Maquette V3 du 16/10 : les trois étapes de « Comment ça fonctionne » sont
+ * des tuiles 2 x 2 (`.tuilesV3`, plus haut) : « 01 » en 700 24px orange, puis
+ * l'intitulé et le texte en petit. Les cartes de bureau (deux de verre, une
+ * anthracite) prennent toutes ce dessin, à l'encre de la page.
  */
 @media (max-width: 880px) {
-  .etapeCompacte {
-    display: grid !important;
-    grid-template-columns: 26px minmax(0, 1fr) !important;
-    gap: 0 10px !important;
-    padding: 13px 14px !important;
-    border-radius: 16px !important;
-    background: var(--card) !important;
-    border: 1px solid var(--mm-filet) !important;
-    box-shadow: none !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-  }
-
-  .etapeCompacte > span {
-    padding-top: 3px;
-    font: 600 11px ui-monospace, Menlo, monospace !important;
-    letter-spacing: normal !important;
-    color: var(--acc) !important;
-  }
-
-  .etapeCompacte > div > :first-child {
+  :root .etapeCompacte > div > * {
     margin: 0 !important;
-    font: 600 14.5px/1.4 var(--ft) !important;
-    color: var(--ink) !important;
-  }
-
-  .etapeCompacte > div > :last-child {
-    margin-top: 4px !important;
-    font: 400 14px/1.55 var(--fb) !important;
+    font: 400 12.5px/1.45 var(--fb) !important;
+    letter-spacing: normal !important;
     color: var(--ink1) !important;
   }
 
-  .etapeCompacte + .etapeCompacte {
-    margin-top: -4px;
+  :root .etapeCompacte > div > :first-child {
+    margin-bottom: 3px !important;
+    font: 600 13px/1.35 var(--ft) !important;
+    letter-spacing: -0.01em !important;
+    color: var(--ink) !important;
   }
 }
 

@@ -1,5 +1,7 @@
-import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import { accrocheDe } from "@/components/site/blocs/resume-de-section";
 import type { EntreeSommaire } from "@/components/site/nous-connaitre/HautMobile";
+import mobile from "@/components/site/nous-connaitre/mobile-apropos.module.css";
+import ouvertes from "@/components/site/nous-connaitre/mobile-cartes-ouvertes.module.css";
 import SectionRepliee from "@/components/site/nous-connaitre/SectionRepliee";
 
 import { ETAPES_SELECTION } from "./equipe-donnees";
@@ -19,6 +21,11 @@ import {
 /* Écrits une fois : l'en-tête de bureau et la bascule du téléphone. */
 const SURTITRE_TEXTE = "Comment ces personnes sont choisies";
 const TITRE_TEXTE = "La qualité se décide au recrutement.";
+/* Le chapô, écrit une fois : le paragraphe de bureau et, derrière le titre,
+   l'accroche de la carte fermée du téléphone (maquette V3 du 16/10 : une
+   carte fermée montre le début de son texte, `accrocheDe`). */
+const CHAPO =
+  "Bien avant l’arrivée sur votre site. Notre sélection tient en trois étapes, et en un chiffre.";
 
 /** Carte 04 du téléphone : son numéro suit l'ordre de la maquette (`rang`). */
 export const SOMMAIRE_SELECTION: EntreeSommaire = { id: "selection", titre: SURTITRE_TEXTE };
@@ -28,9 +35,11 @@ export default function SelectionEquipe() {
     <SectionRepliee
       id={SOMMAIRE_SELECTION.id}
       rang={4}
-      kicker={SURTITRE_TEXTE}
-      titre={TITRE_TEXTE}
-      resume={resumeDe(ETAPES_SELECTION.map((e) => e.titre))}
+      /* MAQUETTE V3 DU 16/10 : la carte du téléphone porte le nom de la
+         section seul (« Comment ces personnes sont choisies »), sa phrase clé passe en accroche, carte
+         fermée, et en tête du corps, carte ouverte (`.phraseCleV3`). */
+      titre={SURTITRE_TEXTE}
+      resume={accrocheDe([{ paragraphe: `${TITRE_TEXTE} ${CHAPO}` }])}
     >
     <section style={SECTION}>
       <div style={LARGEUR}>
@@ -44,7 +53,13 @@ export default function SelectionEquipe() {
               alignItems: "stretch",
             }}
           >
+            {/* Au téléphone, la maquette V3 écrit ce panneau en texte clair
+                avant la frise : le panneau sombre s'efface (`.aplat`), son
+                halo aussi (`.decor`), le texte passe à l'encre de la page et
+                le « 10 % » suit le chapô en texte courant (`.pile`,
+                `.chiffreEnLigne`). */}
             <div
+              className={`${mobile.aplat} ${ouvertes.pile}`}
               style={{
                 borderRadius: "var(--rad)",
                 background: "var(--panel)",
@@ -59,6 +74,7 @@ export default function SelectionEquipe() {
             >
               <div
                 aria-hidden="true"
+                className={mobile.decor}
                 style={{
                   position: "absolute",
                   width: 380,
@@ -75,7 +91,7 @@ export default function SelectionEquipe() {
                   {SURTITRE_TEXTE}
                 </div>
                 <h2
-                  data-titre-bureau=""
+                  className={mobile.phraseCleV3}
                   style={{
                     font: "600 calc(clamp(26px,2.8vw,38px) * var(--ts))/1.1 var(--ft)",
                     letterSpacing: "-.04em",
@@ -87,17 +103,18 @@ export default function SelectionEquipe() {
                   {TITRE_TEXTE}
                 </h2>
                 <p
+                  data-mm-texte=""
                   style={{
                     font: "400 15.5px/1.65 var(--fb)",
                     color: "rgba(255,255,255,.64)",
                     margin: 0,
                   }}
                 >
-                  Bien avant l&rsquo;arrivée sur votre site. Notre sélection
-                  tient en trois étapes, et en un chiffre.
+                  {CHAPO}
                 </p>
               </div>
               <p
+                className={ouvertes.chiffreEnLigne}
                 style={{
                   position: "relative",
                   display: "flex",
@@ -114,7 +131,7 @@ export default function SelectionEquipe() {
                   }}
                 >
                   10&nbsp;%
-                </span>
+                </span>{" "}
                 <span
                   style={{
                     font: "400 14.5px/1.5 var(--fb)",
@@ -125,7 +142,10 @@ export default function SelectionEquipe() {
                 </span>
               </p>
             </div>
+            {/* Au téléphone, les trois étapes en frise de la maquette V3
+                (`.friseV3`) : pastille orange pâle, filet, titre, texte. */}
             <ol
+              className={mobile.friseV3}
               style={{
                 display: "grid", gridTemplateColumns: "minmax(0,1fr)",
                 gap: 12,

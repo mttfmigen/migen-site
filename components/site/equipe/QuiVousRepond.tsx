@@ -1,7 +1,8 @@
 import Image from "next/image";
 
 import { ANCRE_FORMULAIRE } from "@/components/site/blocs/habillage";
-import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import { accrocheDe } from "@/components/site/blocs/resume-de-section";
+import mobile from "@/components/site/nous-connaitre/mobile-apropos.module.css";
 import SectionRepliee from "@/components/site/nous-connaitre/SectionRepliee";
 
 import styles from "./Equipe.module.css";
@@ -19,15 +20,22 @@ import { LARGEUR, SURTITRE, TEXTE_CARTE, VERRE_COURT } from "./habillage-equipe"
 /* Écrits une fois : l'en-tête de bureau et la bascule du téléphone. */
 const SURTITRE_TEXTE = "Qui vous répond";
 const TITRE_TEXTE = "De votre appel au technicien, trois personnes. Pas plus.";
+/* Le chapô, écrit une fois : le paragraphe de bureau et l'accroche de la
+   carte fermée du téléphone (maquette V3 du 16/10 : une carte fermée montre
+   le début de son texte, `accrocheDe`). */
+const CHAPO =
+  "Chaque intermédiaire ajoute un délai. Nous en avons retiré le plus possible.";
 
 export default function QuiVousRepond() {
   return (
     // Hors des sept parties du sommaire de la maquette : carte sans numéro.
+    // Elle porte, comme les autres cartes de la page, le nom de la section
+    // seul ; la phrase clé passe en accroche, carte fermée, et en tête du
+    // corps, carte ouverte (`.phraseCleV3`).
     <SectionRepliee
       numero={false}
-      kicker={SURTITRE_TEXTE}
-      titre={TITRE_TEXTE}
-      resume={resumeDe(RELAIS.map((r) => r.titre))}
+      titre={SURTITRE_TEXTE}
+      resume={accrocheDe([{ paragraphe: `${TITRE_TEXTE} ${CHAPO}` }])}
     >
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={LARGEUR}>
@@ -99,7 +107,7 @@ export default function QuiVousRepond() {
               {SURTITRE_TEXTE}
             </div>
             <h2
-              data-titre-bureau=""
+              className={mobile.phraseCleV3}
               style={{
                 font: "600 calc(clamp(26px,3vw,42px) * var(--ts))/1.08 var(--ft)",
                 letterSpacing: "-.04em",
@@ -118,10 +126,12 @@ export default function QuiVousRepond() {
                 maxWidth: "48ch",
               }}
             >
-              Chaque intermédiaire ajoute un délai. Nous en avons retiré le plus
-              possible.
+              {CHAPO}
             </p>
+            {/* Au téléphone, les trois relais en petites cartes à fond doux de
+                la maquette V3 (`data-mm-kv`), le relais sombre compris. */}
             <ol
+              data-mm-kv=""
               style={{
                 display: "grid", gridTemplateColumns: "minmax(0,1fr)",
                 gap: 10,
@@ -146,6 +156,7 @@ export default function QuiVousRepond() {
                 >
                   <span
                     aria-hidden="true"
+                    data-mm-num=""
                     style={{
                       font: "600 11px ui-monospace,Menlo,monospace",
                       color: "var(--acc)",
@@ -156,6 +167,7 @@ export default function QuiVousRepond() {
                   </span>
                   <div>
                     <div
+                      data-mm-kv-titre=""
                       style={{
                         font: "600 16px var(--ft)",
                         letterSpacing: "-.02em",
@@ -166,6 +178,7 @@ export default function QuiVousRepond() {
                       {relais.titre}
                     </div>
                     <div
+                      data-mm-kv-texte=""
                       style={{
                         ...TEXTE_CARTE,
                         color: relais.sombre

@@ -4,6 +4,8 @@ import type { CSSProperties } from "react";
 import PortesOffres from "./PortesOffres";
 import styles from "./PortesValeursRse.module.css";
 import type { EntreeSommaire } from "./HautMobile";
+import mobile from "./mobile-apropos.module.css";
+import ouvertes from "./mobile-cartes-ouvertes.module.css";
 import SectionRepliee from "./SectionRepliee";
 
 /**
@@ -27,6 +29,12 @@ import SectionRepliee from "./SectionRepliee";
  * sommaire compte les neuf parties de la maquette, et rien n'est retiré. Au
  * bureau, le `<details>` est transparent : les deux sections s'enchaînent au
  * pixel près comme avant.
+ *
+ * CARTE OUVERTE DU TÉLÉPHONE (maquette V3 du 16/10) : du texte sur le blanc de
+ * la carte, sans cartes de verre (`.aplat`). La porte « Nos valeurs » ne
+ * redit pas le sur-titre et le titre que la bascule porte déjà
+ * (`data-doublon-mobile`) : son texte ouvre la carte (`.leadV3`), son lien
+ * suit. La porte RSE garde son sur-titre, son titre et son texte.
  */
 
 const CARTE: CSSProperties = {
@@ -121,19 +129,42 @@ export default function PortesValeursRse() {
               gap: 12,
             }}
           >
-            {PORTES.map((p) => (
-              <Link
-                key={p.surtitre}
-                href={p.href}
-                className={styles.carteLien}
-                style={CARTE}
-              >
-                <div style={SURTITRE}>{p.surtitre}</div>
-                <div style={TITRE}>{p.titre}</div>
-                <p style={TEXTE}>{p.texte}</p>
-                <span style={PIED}>{p.action}</span>
-              </Link>
-            ))}
+            {PORTES.map((p) => {
+              const redite = p === VALEURS;
+              return (
+                <Link
+                  key={p.surtitre}
+                  href={p.href}
+                  className={`${styles.carteLien} ${mobile.aplat} ${redite ? "" : ouvertes.blocSuivant}`}
+                  style={CARTE}
+                >
+                  <div
+                    data-doublon-mobile={redite ? "" : undefined}
+                    data-mm-surtitre={redite ? undefined : ""}
+                    style={SURTITRE}
+                  >
+                    {p.surtitre}
+                  </div>
+                  <div
+                    data-doublon-mobile={redite ? "" : undefined}
+                    data-mm-lead={redite ? undefined : ""}
+                    style={TITRE}
+                  >
+                    {p.titre}
+                  </div>
+                  <p
+                    className={redite ? mobile.leadV3 : undefined}
+                    data-mm-texte={redite ? undefined : ""}
+                    style={TEXTE}
+                  >
+                    {p.texte}
+                  </p>
+                  <span className={ouvertes.lienPorte} style={PIED}>
+                    {p.action}
+                  </span>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>

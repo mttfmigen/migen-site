@@ -111,6 +111,9 @@ export default function QuiNousSommes() {
                   >
                     {chiffre.libelle}
                   </div>
+                  {/* Le « · » de la tuile du téléphone (« Libellé · texte »),
+                      vrai caractère du document ; absent au bureau. */}
+                  <span data-mobile-seulement="">{" · "}</span>
                   <div
                     className={mobile.chiffreTexte}
                     style={{

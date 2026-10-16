@@ -165,9 +165,12 @@ export default function HeroValeurs() {
             <div className={mobile.panneauTitre} style={SURTITRE}>
               {HERO.panneau}
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 16 }}>
+            <div
+              className={mobile.sloganListe}
+              style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 16 }}
+            >
               {SLOGAN.map(({ mot, glose }) => (
-                <div key={mot}>
+                <div key={mot} className={mobile.sloganLigne}>
                   <div style={{ display: "flex", alignItems: "baseline", gap: 12 }}>
                     <span
                       className={mobile.panneauMot}
@@ -188,6 +191,10 @@ export default function HeroValeurs() {
                         background: "rgba(255,255,255,.14)",
                       }}
                     />
+                    {/* Le « : » de la puce du téléphone, vrai caractère du
+                        document (« Innovation : Retrofit… ») ; au bureau, la
+                        span n'existe pas et le filet sépare le mot. */}
+                    <span data-mobile-seulement="">{"\u00a0: "}</span>
                   </div>
                   <div
                     className={mobile.panneauGlose}

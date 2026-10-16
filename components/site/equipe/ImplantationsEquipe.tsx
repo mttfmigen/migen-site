@@ -1,7 +1,8 @@
 import Link from "next/link";
 
-import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import { accrocheDe } from "@/components/site/blocs/resume-de-section";
 import type { EntreeSommaire } from "@/components/site/nous-connaitre/HautMobile";
+import mobile from "@/components/site/nous-connaitre/mobile-apropos.module.css";
 import SectionRepliee from "@/components/site/nous-connaitre/SectionRepliee";
 
 import { AGENCES, HUBS } from "./equipe-donnees";
@@ -17,6 +18,11 @@ import { CHAPEAU, LARGEUR, SECTION, SURTITRE, TITRE2, VERRE } from "./habillage-
 /* Écrits une fois : l'en-tête de bureau et la bascule du téléphone. */
 const SURTITRE_TEXTE = "Nos implantations";
 const TITRE_TEXTE = "Quatre agences, dix hubs de techniciens.";
+/* Le chapô, écrit une fois : le paragraphe de bureau et l'accroche de la
+   carte fermée du téléphone (maquette V3 du 16/10 : une carte fermée montre
+   le début de son texte, `accrocheDe`). */
+const CHAPO =
+  "Quatre agences portent le réseau, des hubs de techniciens dans les grandes villes rapprochent les équipes des usines.";
 
 /** Carte 05 du téléphone : son numéro suit l'ordre de la maquette (`rang`). */
 export const SOMMAIRE_IMPLANTATIONS: EntreeSommaire = { id: "implantations", titre: SURTITRE_TEXTE };
@@ -26,9 +32,11 @@ export default function ImplantationsEquipe() {
     <SectionRepliee
       id={SOMMAIRE_IMPLANTATIONS.id}
       rang={5}
-      kicker={SURTITRE_TEXTE}
-      titre={TITRE_TEXTE}
-      resume={resumeDe(AGENCES.map((a) => a.ville))}
+      /* MAQUETTE V3 DU 16/10 : la carte du téléphone porte le nom de la
+         section seul (« Nos implantations »), sa phrase clé passe en accroche, carte
+         fermée, et en tête du corps, carte ouverte (`.phraseCleV3`). */
+      titre={SURTITRE_TEXTE}
+      resume={accrocheDe([{ paragraphe: CHAPO }])}
     >
     <section style={SECTION}>
       <div style={LARGEUR}>
@@ -46,12 +54,11 @@ export default function ImplantationsEquipe() {
               <div data-titre-bureau="" style={SURTITRE}>
                 {SURTITRE_TEXTE}
               </div>
-              <h2 data-titre-bureau="" style={TITRE2}>
+              <h2 className={mobile.phraseCleV3} style={TITRE2}>
                 {TITRE_TEXTE}
               </h2>
               <p style={CHAPEAU}>
-                Quatre agences portent le réseau, des hubs de techniciens dans
-                les grandes villes rapprochent les équipes des usines.
+                {CHAPO}
               </p>
               <Link
                 href="/implantations/"
@@ -65,9 +72,11 @@ export default function ImplantationsEquipe() {
                 Nos implantations en détail →
               </Link>
             </div>
-            <div style={{ ...VERRE, padding: "26px 28px" }}>
+            {/* Au téléphone (maquette V3) : le verre s'efface (`.aplat`), les
+                agences passent en petites cartes à fond doux (`.agencesV3`). */}
+            <div className={mobile.aplat} style={{ ...VERRE, padding: "26px 28px" }}>
               <ul
-                className="mg-rmulti"
+                className={`mg-rmulti ${mobile.agencesV3}`}
                 style={{
                   display: "grid",
                   gridTemplateColumns: "repeat(2,minmax(0,1fr))",

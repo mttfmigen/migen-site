@@ -52,3 +52,16 @@
     font-size: 11px !important;
   }
 }
+
+/*
+ * LE COMPTE DE CHAQUE RUBRIQUE (« Expertises 31 »), RETIRÉ AU TÉLÉPHONE.
+ * Mehdi a fait retirer les compteurs de ce genre (« · 55 », « 6 points ») ;
+ * la maquette V3 en porte encore, c'est sa consigne qui l'emporte. Le compte
+ * de la recherche, lui, reste : il dit ce que le filtre a trouvé, et il est
+ * annoncé aux lecteurs d'écran.
+ */
+@media (max-width: 880px) {
+  .compteRubrique {
+    display: none !important;
+  }
+}

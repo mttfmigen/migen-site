@@ -139,3 +139,11 @@
   color: #fff;
   transform: rotate(45deg);
 }
+
+/* Le compte « N parties » du chapeau : retiré au téléphone (Mehdi, 16/10,
+   plus aucun compteur de ce genre à cette largeur), gardé au bureau. */
+@media (max-width: 880px) {
+  .compteParties {
+    display: none !important;
+  }
+}

@@ -199,9 +199,9 @@ export default function CasRetrofit({
               </p>
             </div>
           </div>
+          {/* Au téléphone, les tuiles de la maquette V3 (`.tuilesV3`). */}
           <div
-            data-tuiles-chiffres=""
-            className={mobile.casChiffres}
+            className={`${mobile.casChiffres} ${mobile.tuilesV3}`}
             style={{
               display: "grid", gridTemplateColumns: "minmax(0,1fr)",
               gridTemplateRows: "repeat(2,minmax(0,1fr))",
@@ -210,7 +210,9 @@ export default function CasRetrofit({
           >
             {CHIFFRES.map((chiffre) => (
               <div key={chiffre.valeur} style={CARTE_CHIFFRE}>
-                <div style={CHIFFRE}>{chiffre.valeur}</div>
+                <div className={mobile.tuileValeur} style={CHIFFRE}>
+                  {chiffre.valeur}
+                </div>
                 <div style={LIBELLE_CHIFFRE}>{chiffre.libelle}</div>
               </div>
             ))}

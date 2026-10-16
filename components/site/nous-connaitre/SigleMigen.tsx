@@ -1,11 +1,19 @@
 import type { CSSProperties } from "react";
 
+import mobile from "./mobile-apropos.module.css";
+import ouvertes from "./mobile-cartes-ouvertes.module.css";
+
 /**
  * Le panneau sombre qui épelle M, I, G, EN.
  *
  * Maquette, lignes 5296 à 5310. Extrait de `OrigineDuNom` pour tenir sous les
  * 400 lignes par fichier du contrat de portage : la section de la maquette en
  * compte quatre blocs, celui-ci est le plus autonome.
+ *
+ * AU TÉLÉPHONE (maquette V3 du 16/10), le récit est en texte clair : le
+ * panneau sombre s'efface (`.aplat`, `.decor`), la question devient la phrase
+ * clé et l'épellation reste, en plus petit et à l'encre de la page
+ * (`.sigle`).
  */
 
 const LETTRE: CSSProperties = {
@@ -74,6 +82,7 @@ export default function SigleMigen() {
   return (
   <div
     data-reveal=""
+    className={mobile.aplat}
     style={{
       position: "relative",
       overflow: "hidden",
@@ -84,6 +93,7 @@ export default function SigleMigen() {
     }}
   >
     <div
+      className={mobile.decor}
       style={{
         position: "absolute",
         width: 520,
@@ -108,6 +118,7 @@ export default function SigleMigen() {
       <div>
         <div
           aria-hidden="true"
+          className={mobile.decor}
           style={{
             font: "600 64px/.6 var(--ft)",
             color: "var(--acc)",
@@ -117,6 +128,7 @@ export default function SigleMigen() {
           &ldquo;
         </div>
         <div
+          data-mm-lead=""
           style={{
             font: "600 calc(clamp(24px,2.6vw,36px) * var(--ts))/1.25 var(--ft)",
             letterSpacing: "-.035em",
@@ -128,6 +140,8 @@ export default function SigleMigen() {
           C&rsquo;est quoi le nom de la société&nbsp;?
         </div>
         <p
+          data-mm-texte=""
+          className={ouvertes.texteFort}
           style={{
             font: "400 15.5px/1.7 var(--fb)",
             color: "rgba(255,255,255,.66)",
@@ -143,7 +157,10 @@ export default function SigleMigen() {
           immédiate.
         </p>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 6 }}>
+      <div
+        className={ouvertes.sigle}
+        style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 6 }}
+      >
         {SIGLE.map(([lettre, suite]) => (
           <div key={lettre} style={RANGEE}>
             <span style={LETTRE}>{lettre}</span>

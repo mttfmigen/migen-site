@@ -2,8 +2,9 @@ import Image from "next/image";
 import { useId, type CSSProperties } from "react";
 
 import { ANCRE_FORMULAIRE } from "@/components/site/blocs/habillage";
-import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import { accrocheDe } from "@/components/site/blocs/resume-de-section";
 import type { EntreeSommaire } from "@/components/site/nous-connaitre/HautMobile";
+import mobile from "@/components/site/nous-connaitre/mobile-apropos.module.css";
 import SectionRepliee from "@/components/site/nous-connaitre/SectionRepliee";
 
 import styles from "./Equipe.module.css";
@@ -133,9 +134,11 @@ export default function QuestionsEquipe() {
     <SectionRepliee
       id={SOMMAIRE_QUESTIONS.id}
       rang={7}
-      kicker={SURTITRE_TEXTE}
-      titre={TITRE_TEXTE}
-      resume={resumeDe(QUESTIONS.map((q) => q.question))}
+      /* MAQUETTE V3 DU 16/10 : la carte du téléphone porte le nom de la
+         section seul (« Questions fréquentes »), sa phrase clé passe en accroche, carte
+         fermée, et en tête du corps, carte ouverte (`.phraseCleV3`). */
+      titre={SURTITRE_TEXTE}
+      resume={accrocheDe([{ paragraphe: TITRE_TEXTE }])}
     >
     <section style={SECTION}>
       <div style={LARGEUR}>
@@ -153,7 +156,7 @@ export default function QuestionsEquipe() {
               <div data-titre-bureau="" style={SURTITRE}>
                 {SURTITRE_TEXTE}
               </div>
-              <h2 data-titre-bureau="" style={TITRE}>
+              <h2 className={mobile.phraseCleV3} style={TITRE}>
                 {TITRE_TEXTE}
               </h2>
               <a href={ANCRE_FORMULAIRE} className={styles.boutonAction} style={BOUTON}>
