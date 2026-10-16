@@ -32,3 +32,50 @@
     grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)) !important;
   }
 }
+
+/*
+ * LE PANNEAU DES FAMILLES, AU TÉLÉPHONE : une carte blanche à 18 px des bords
+ * (sa place dans la gouttière), au rembourrage de 16 px des cartes de la
+ * maquette mobile. Les six familles repliées y deviennent des RANGÉES, filet
+ * contre filet : sans cela, chacune était une carte numérotée posée dans la
+ * carte, son texte à 51 px du bord (relecture du 16/10). Le dessin de la
+ * carte numérotée vient d'`app/globals.css` ; on ne retire ici que sa boîte.
+ */
+@media (max-width: 880px) {
+  .panneauFamilles {
+    padding: 4px 16px 6px !important;
+  }
+
+  /* La première famille, ouverte, commence en haut de la carte : son
+     intitulé n'a plus à s'aligner sur la grille de logos d'une colonne
+     voisine (22 px au bureau), la rangée garde 12 px en tête. */
+  .panneauFamilles > :first-child {
+    padding-top: 12px !important;
+  }
+
+  .panneauFamilles > :first-child > :first-child {
+    padding-top: 0 !important;
+  }
+
+  /* Le filet entre deux familles est porté par la bascule : ceux de bureau,
+     posés sur les rangées, le doubleraient. */
+  .panneauFamilles :global(.mg-r2) {
+    border-top: 0 !important;
+    border-bottom: 0 !important;
+  }
+
+  .panneauFamilles :global(details[data-carte-numerotee]) > summary {
+    padding: 15px 0;
+    border: 0;
+    border-top: 1px solid var(--mm-filet);
+    border-radius: 0;
+    background: none;
+  }
+
+  .panneauFamilles :global(details[data-carte-numerotee]) > summary ~ * {
+    padding: 0 0 6px;
+    border: 0;
+    border-radius: 0;
+    background: none;
+  }
+}

@@ -9,6 +9,8 @@ import {
 } from "@/components/site/blocs/habillage";
 import { accrocheDe } from "@/components/site/blocs/resume-de-section";
 import type { EntreeSommaire } from "@/components/site/nous-connaitre/HautMobile";
+import mobile from "@/components/site/nous-connaitre/mobile-apropos.module.css";
+import ouvertes from "@/components/site/nous-connaitre/mobile-cartes-ouvertes.module.css";
 import SectionRepliee from "@/components/site/nous-connaitre/SectionRepliee";
 
 /* Écrits une fois : l'en-tête de bureau et la bascule du téléphone. */
@@ -30,6 +32,12 @@ export const SOMMAIRE_PIECES: EntreeSommaire = { id: "pieces-fournisseur", titre
  *
  * UN ÉCART. Le chapeau promettait la transmission « sous 48 h ouvrées ». Le
  * contrat n'autorise aucun délai chiffré hors « rappel dans l'heure ».
+ *
+ * AU TÉLÉPHONE, la carte ouverte de la maquette V3 (16/10) : le panneau de
+ * verre s'efface (`.aplat`), le chapô devient la phrase d'ouverture
+ * (`.leadV3`) et les cinq pièces les petites cartes « 01 … » à fond doux de la
+ * liste « Libellé : texte » partagée (`data-mm-kv`, `app/globals.css`). Le
+ * sur-titre reste sur la bascule : la V3 le porte aussi.
  */
 
 const LIGNE: CSSProperties = {
@@ -100,8 +108,9 @@ export default function PiecesFournisseur() {
     >
     <section style={{ padding: "var(--sec) 0 var(--sec)" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
-        <div data-reveal="" style={{ ...VERRE, padding: "40px 44px 28px" }}>
+        <div data-reveal="" className={mobile.aplat} style={{ ...VERRE, padding: "40px 44px 28px" }}>
           <div
+            className={ouvertes.rangeeSerree}
             style={{
               display: "flex",
               alignItems: "flex-end",
@@ -128,6 +137,7 @@ export default function PiecesFournisseur() {
                 {TITRE_TEXTE}
               </h2>
               <p
+                className={mobile.leadV3}
                 style={{
                   font: "400 15.5px/1.65 var(--fb)",
                   color: "var(--ink2)",
@@ -145,12 +155,12 @@ export default function PiecesFournisseur() {
               Demander les pièces
             </a>
           </div>
-          <div className="mg-doclist">
+          <div data-mm-kv="" className={`mg-doclist ${ouvertes.listeKv}`}>
             {PIECES.map((piece) => (
               <div key={piece.rang} className="mg-rq2" style={LIGNE}>
-                <span style={RANG}>{piece.rang}</span>
-                <span style={TITRE_PIECE}>{piece.titre}</span>
-                <span style={TEXTE_PIECE}>{piece.texte}</span>
+                <span data-mm-num="" style={RANG}>{piece.rang}</span>
+                <span data-mm-kv-titre="" style={TITRE_PIECE}>{piece.titre}</span>
+                <span data-mm-kv-texte="" style={TEXTE_PIECE}>{piece.texte}</span>
               </div>
             ))}
           </div>

@@ -71,8 +71,9 @@ export interface EntreeSommaire {
 /**
  * dc.html L116 : « Sommaire », replié. Les entrées sont les cartes numérotées,
  * dans l'ordre où le téléphone les montre : leur numéro est donc celui de la
- * carte. SANS COMPTEUR depuis le 16/10 : Mehdi a fait retirer partout les
- * « N parties », « N points » et « · 55 » (la maquette V3 n'en porte aucun).
+ * carte. SANS COMPTEUR depuis le 16/10 : Mehdi a fait retirer les « N
+ * parties », « N points » et « · 55 ». La maquette V3 en porte encore
+ * (« · 14 », « · 15 ») : c'est la consigne de Mehdi qui l'emporte ici.
  */
 export function SommaireMobile({ entrees }: { entrees: readonly EntreeSommaire[] }) {
   if (!entrees.length) return null;

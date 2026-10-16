@@ -92,7 +92,11 @@ export default function NotreHistoire() {
                     }}
                   />
                   <div className={mobile.jalonCarte} style={{ ...VERRE, padding: "22px 24px 24px" }}>
+                    {/* « Étape 2 » redit la pastille « 02 » de la frise du
+                        téléphone : il s'y efface (`.masqueMobile`). Les
+                        repères datés (« 2021 », « Aujourd'hui ») restent. */}
                     <div
+                      className={jalon.repere.startsWith("Étape") ? mobile.masqueMobile : undefined}
                       style={{
                         font: "600 12px ui-monospace,Menlo,monospace",
                         color: "var(--acc)",

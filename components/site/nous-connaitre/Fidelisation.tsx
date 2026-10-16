@@ -4,9 +4,16 @@
  * Maquette, lignes 5398 à 5428. Les deux barres sont en CSS, comme dans la
  * maquette : aucune bibliothèque de graphiques, et les deux valeurs restent
  * lisibles en texte si le style ne charge pas.
+ *
+ * AU TÉLÉPHONE (maquette V3 du 16/10), le panneau sombre s'efface (`.aplat`,
+ * `.decor`) et les deux taux deviennent deux tuiles à fond doux, la valeur au
+ * dessus de son libellé (`.tuilesV3`, `.enteteTuile`) ; les barres, simple
+ * dessin (`aria-hidden`), s'effacent avec le panneau.
  */
 
 import type { EntreeSommaire } from "./HautMobile";
+import mobile from "./mobile-apropos.module.css";
+import ouvertes from "./mobile-cartes-ouvertes.module.css";
 import SectionRepliee from "./SectionRepliee";
 
 /* Écrits une fois : l'en-tête de bureau et la bascule du téléphone. */
@@ -70,6 +77,7 @@ export default function Fidelisation() {
               {TITRE_TEXTE}
             </h2>
             <p
+              data-mm-texte=""
               style={{
                 font: "400 16.5px/1.7 var(--fb)",
                 color: "var(--ink2)",
@@ -83,6 +91,7 @@ export default function Fidelisation() {
               avant même la fin d&rsquo;un préavis.
             </p>
             <p
+              data-mm-texte=""
               style={{
                 font: "400 16.5px/1.7 var(--fb)",
                 color: "var(--ink2)",
@@ -96,6 +105,7 @@ export default function Fidelisation() {
             </p>
           </div>
           <div
+            className={mobile.aplat}
             style={{
               borderRadius: "var(--rad)",
               background: "var(--panel)",
@@ -105,6 +115,7 @@ export default function Fidelisation() {
             }}
           >
             <div
+              className={mobile.decor}
               style={{
                 position: "absolute",
                 width: 420,
@@ -118,6 +129,7 @@ export default function Fidelisation() {
             />
             <div style={{ position: "relative" }}>
               <div
+                data-mm-surtitre=""
                 style={{
                   font: "600 11.5px var(--fb)",
                   letterSpacing: ".14em",
@@ -128,9 +140,13 @@ export default function Fidelisation() {
               >
                 Turnover annuel
               </div>
-              <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 22 }}>
+              <div
+                className={mobile.tuilesV3}
+                style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 22 }}
+              >
                 <div>
                   <div
+                    className={ouvertes.enteteTuile}
                     style={{
                       display: "flex",
                       alignItems: "baseline",
@@ -148,6 +164,7 @@ export default function Fidelisation() {
                       Le secteur
                     </span>
                     <span
+                      className={mobile.tuileValeur}
                       style={{
                         font: "600 calc(28px * var(--ts)) var(--ft)",
                         letterSpacing: "-.045em",
@@ -159,6 +176,7 @@ export default function Fidelisation() {
                   </div>
                   <div
                     aria-hidden="true"
+                    className={mobile.decor}
                     style={{
                       height: 9,
                       borderRadius: 999,
@@ -178,6 +196,7 @@ export default function Fidelisation() {
                 </div>
                 <div>
                   <div
+                    className={ouvertes.enteteTuile}
                     style={{
                       display: "flex",
                       alignItems: "baseline",
@@ -190,6 +209,7 @@ export default function Fidelisation() {
                       migen©
                     </span>
                     <span
+                      className={mobile.tuileValeur}
                       style={{
                         font: "600 calc(34px * var(--ts)) var(--ft)",
                         letterSpacing: "-.05em",
@@ -201,6 +221,7 @@ export default function Fidelisation() {
                   </div>
                   <div
                     aria-hidden="true"
+                    className={mobile.decor}
                     style={{
                       height: 9,
                       borderRadius: 999,
@@ -220,6 +241,7 @@ export default function Fidelisation() {
                 </div>
               </div>
               <div
+                className={mobile.decor}
                 style={{
                   height: 1,
                   background: "rgba(255,255,255,.12)",
@@ -227,6 +249,7 @@ export default function Fidelisation() {
                 }}
               />
               <div
+                data-mm-texte=""
                 style={{
                   font: "400 13.5px/1.6 var(--fb)",
                   color: "rgba(255,255,255,.55)",

@@ -2,6 +2,8 @@ import Image from "next/image";
 import type { CSSProperties } from "react";
 
 import type { EntreeSommaire } from "./HautMobile";
+import mobile from "./mobile-apropos.module.css";
+import ouvertes from "./mobile-cartes-ouvertes.module.css";
 import SectionRepliee from "./SectionRepliee";
 import SigleMigen from "./SigleMigen";
 
@@ -47,6 +49,13 @@ export const SOMMAIRE_ORIGINE: EntreeSommaire = {
  * Elle est en portrait, 1333 par 2000, et le cadre fait 540 par 480 au moins :
  * le recadrage garde la bande centrale, donc le visage. Une photo en paysage y
  * perdait plus.
+ *
+ * AU TÉLÉPHONE, la carte ouverte de la maquette V3 (16/10) est un récit en
+ * texte clair : la photo s'efface et sa légende devient la phrase clé
+ * (`.photoEnPhrase`), les panneaux sombres et de verre perdent leur boîte
+ * (`.aplat`), les deux chiffres passent en tuiles (`.tuilesV3`). Le texte
+ * prend le dessin partagé des cartes (`data-mm-surtitre`, `data-mm-texte`,
+ * `data-mm-lead`). Le bureau ne bouge pas.
  */
 
 const VERRE: CSSProperties = {
@@ -86,6 +95,7 @@ export default function OrigineDuNom() {
           }}
         >
           <div
+            className={ouvertes.photoEnPhrase}
             style={{
               position: "relative",
               borderRadius: 32,
@@ -171,6 +181,7 @@ export default function OrigineDuNom() {
           </div>
           <div>
             <div
+              data-mm-surtitre=""
               style={{
                 font: "600 11.5px var(--fb)",
                 letterSpacing: ".14em",
@@ -194,6 +205,7 @@ export default function OrigineDuNom() {
               {TITRE_TEXTE}
             </h2>
             <p
+              data-mm-texte=""
               style={{
                 font: "400 16.5px/1.75 var(--fb)",
                 color: "var(--ink2)",
@@ -208,6 +220,7 @@ export default function OrigineDuNom() {
               contrat. Et un contrat, ça se signe avec une société.
             </p>
             <p
+              data-mm-texte=""
               style={{
                 font: "400 16.5px/1.75 var(--fb)",
                 color: "var(--ink2)",
@@ -234,8 +247,9 @@ export default function OrigineDuNom() {
             marginBottom: 14,
           }}
         >
-          <div style={VERRE}>
+          <div className={mobile.aplat} style={VERRE}>
             <div
+              data-mm-surtitre=""
               style={{
                 font: "600 11px var(--fb)",
                 letterSpacing: ".12em",
@@ -247,6 +261,7 @@ export default function OrigineDuNom() {
               La suite
             </div>
             <p
+              data-mm-texte=""
               style={{
                 font: "400 15.5px/1.7 var(--fb)",
                 color: "var(--ink2)",
@@ -263,6 +278,7 @@ export default function OrigineDuNom() {
             </p>
           </div>
           <div
+            className={mobile.tuilesV3}
             style={{
               ...VERRE,
               display: "flex",
@@ -272,6 +288,7 @@ export default function OrigineDuNom() {
           >
             <div style={{ ...RANGEE, marginBottom: 10 }}>
               <span
+                className={mobile.tuileValeur}
                 style={{
                   font: "600 calc(clamp(34px,4vw,52px) * var(--ts))/1 var(--ft)",
                   letterSpacing: "-.055em",
@@ -285,6 +302,7 @@ export default function OrigineDuNom() {
               </span>
             </div>
             <div
+              className={mobile.decor}
               style={{
                 height: 1,
                 background: "var(--line)",
@@ -293,6 +311,7 @@ export default function OrigineDuNom() {
             />
             <div style={RANGEE}>
               <span
+                className={mobile.tuileValeur}
                 style={{
                   font: "600 calc(clamp(34px,4vw,52px) * var(--ts))/1 var(--ft)",
                   letterSpacing: "-.055em",
@@ -310,6 +329,7 @@ export default function OrigineDuNom() {
 
         <div
           data-reveal=""
+          className={mobile.aplat}
           style={{
             borderRadius: "var(--rad)",
             background: "var(--panel)",
@@ -319,6 +339,7 @@ export default function OrigineDuNom() {
           }}
         >
           <div
+            className={mobile.decor}
             style={{
               position: "absolute",
               width: 440,
@@ -342,6 +363,7 @@ export default function OrigineDuNom() {
           >
             <div>
               <div
+                data-mm-surtitre=""
                 style={{
                   font: "600 11.5px var(--fb)",
                   letterSpacing: ".14em",
@@ -352,9 +374,12 @@ export default function OrigineDuNom() {
               >
                 Le logo, lui, a été choisi
               </div>
-              {/* Hauteur fixée, largeur libre : `img` et non `next/image`. */}
+              {/* Hauteur fixée, largeur libre : `img` et non `next/image`.
+                  Logo blanc, illisible sur le blanc de la carte du téléphone :
+                  il s'y efface (`.decor`), la V3 n'en montre pas. */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
+                className={mobile.decor}
                 src="/assets/logo-migen-white.png"
                 alt="Monogramme migen"
                 style={{ height: 78, width: "auto", display: "block" }}
@@ -362,6 +387,7 @@ export default function OrigineDuNom() {
             </div>
             <div>
               <div
+                data-mm-lead=""
                 style={{
                   font: "600 calc(clamp(20px,2.2vw,28px) * var(--ts))/1.2 var(--ft)",
                   letterSpacing: "-.035em",
@@ -373,6 +399,7 @@ export default function OrigineDuNom() {
                 Deux triangles de Penrose, et l&rsquo;archétype du magicien.
               </div>
               <p
+                data-mm-texte=""
                 style={{
                   font: "400 16.5px/1.75 var(--fb)",
                   color: "rgba(255,255,255,.72)",
@@ -386,6 +413,7 @@ export default function OrigineDuNom() {
                 advenir ce qu&rsquo;on lui a dit impossible.
               </p>
               <p
+                data-mm-texte=""
                 style={{
                   font: "400 16.5px/1.75 var(--fb)",
                   color: "rgba(255,255,255,.72)",

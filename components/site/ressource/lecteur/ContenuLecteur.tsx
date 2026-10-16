@@ -323,10 +323,10 @@ export default function ContenuLecteur({ lecture }: { lecture: Lecture }) {
         ))}
         <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 20 }}>
           {lecture.min ? <span style={CHIP}>{lecture.min} min de lecture</span> : null}
-          {/* Masqué au téléphone (`data-doublon-mobile`, app/globals.css) :
-              plus aucun compteur de parties à cette largeur (Mehdi, 16/10).
-              Le lecteur de bureau garde sa rangée telle quelle. */}
-          <span data-doublon-mobile="" style={CHIP}>{secs.length} parties</span>
+          {/* Masqué au téléphone (`.compteParties`) : plus aucun compteur de
+              parties à cette largeur (Mehdi, 16/10). Le lecteur de bureau
+              garde sa rangée telle quelle. */}
+          <span className={s.compteParties} style={CHIP}>{secs.length} parties</span>
           <span style={CHIP}>Écrit par nos équipes terrain</span>
         </div>
       </header>

@@ -1,6 +1,7 @@
 import { accrocheDe } from "@/components/site/blocs/resume-de-section";
 import type { EntreeSommaire } from "@/components/site/nous-connaitre/HautMobile";
 import mobile from "@/components/site/nous-connaitre/mobile-apropos.module.css";
+import ouvertes from "@/components/site/nous-connaitre/mobile-cartes-ouvertes.module.css";
 import SectionRepliee from "@/components/site/nous-connaitre/SectionRepliee";
 
 import { ETAPES_SELECTION } from "./equipe-donnees";
@@ -52,7 +53,13 @@ export default function SelectionEquipe() {
               alignItems: "stretch",
             }}
           >
+            {/* Au téléphone, la maquette V3 écrit ce panneau en texte clair
+                avant la frise : le panneau sombre s'efface (`.aplat`), son
+                halo aussi (`.decor`), le texte passe à l'encre de la page et
+                le « 10 % » suit le chapô en texte courant (`.pile`,
+                `.chiffreEnLigne`). */}
             <div
+              className={`${mobile.aplat} ${ouvertes.pile}`}
               style={{
                 borderRadius: "var(--rad)",
                 background: "var(--panel)",
@@ -67,6 +74,7 @@ export default function SelectionEquipe() {
             >
               <div
                 aria-hidden="true"
+                className={mobile.decor}
                 style={{
                   position: "absolute",
                   width: 380,
@@ -95,6 +103,7 @@ export default function SelectionEquipe() {
                   {TITRE_TEXTE}
                 </h2>
                 <p
+                  data-mm-texte=""
                   style={{
                     font: "400 15.5px/1.65 var(--fb)",
                     color: "rgba(255,255,255,.64)",
@@ -105,6 +114,7 @@ export default function SelectionEquipe() {
                 </p>
               </div>
               <p
+                className={ouvertes.chiffreEnLigne}
                 style={{
                   position: "relative",
                   display: "flex",
@@ -121,7 +131,7 @@ export default function SelectionEquipe() {
                   }}
                 >
                   10&nbsp;%
-                </span>
+                </span>{" "}
                 <span
                   style={{
                     font: "400 14.5px/1.5 var(--fb)",

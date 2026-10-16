@@ -847,6 +847,9 @@
     gap: 8px !important;
     margin: 0 !important;
     padding: 8px 0 !important;
+    /* 44 px de cible tactile, comme le sommaire des pages « à propos ». */
+    min-height: 44px;
+    align-content: center;
     border-left: 0 !important;
     font: 500 13.5px/1.4 var(--fb) !important;
     color: var(--ink1) !important;

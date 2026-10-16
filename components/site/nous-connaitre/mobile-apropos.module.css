@@ -504,24 +504,38 @@
  * 9d8a3bdb, `isStats` et les jalons datés) : une liste de chiffres ou
  * d'années devient une grille de tuiles, deux colonnes, 8 px d'écart, fond
  * doux (`--mm-fond-doux`, #f6f6f7), filet `--mm-bord-doux`, 16 px d'arrondi,
- * 14 px 14 px 13 px. La valeur (`.tuileValeur`) en 700 24px orange, le texte
- * dessous en 400 12,5px/1,45, à 7 px. Posée sur les quatre repères de « Nous
+ * 14 px 14 px 13 px. La valeur (`.tuileValeur`) en 700 24px, le texte
+ * dessous en 400 12,5px/1,45, à 7 px. LA VALEUR EST À L'ORANGE FONCÉ DES
+ * LIENS (`--mm-lien`, #b4490f), comme les tuiles de l'accueil V3 : l'orange
+ * vif de la maquette (#ff7c3c) ne fait que 2,4:1 sur le fond doux, sous le
+ * 3:1 du gros texte (WCAG 1.4.3) ; #b4490f en fait 5,3. Posée sur les quatre repères de « Nous
  * connaître », la frise « Cinq ans, de zéro à cent » et le chiffre de /rse/.
  * `:root` devant : la règle passe devant `.mg-rmulti` et `.mg-tl` de
  * `app/globals.css`, qui remettent une colonne et un filet sous 1000 px.
  */
 @media (max-width: 880px) {
+  /* La grille est parfois elle-même une carte de verre de bureau : elle
+     perd sa boîte, seules les tuiles en ont une. */
   :root .tuilesV3 {
     display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 8px !important;
     margin: 4px 0 14px !important;
     padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
 
+  /* La police de la tuile est celle de son texte : un libellé en ligne n'y
+     prend pas l'interligne de 16 px de la section. */
   :root .tuilesV3 > * {
     display: block !important;
     min-width: 0;
+    font: 400 12.5px/1.45 var(--fb);
     margin: 0 !important;
     padding: 14px 14px 13px !important;
     border: 1px solid var(--mm-bord-doux) !important;
@@ -540,15 +554,20 @@
     color: var(--ink1) !important;
   }
 
-  :root .tuilesV3 > * > .tuileValeur {
+  :root .tuilesV3 .tuileValeur {
     display: block !important;
     font: 700 24px/1 var(--ft) !important;
     letter-spacing: -0.045em !important;
-    color: var(--acc) !important;
+    color: var(--mm-lien) !important;
   }
 
   :root .tuilesV3 > * > .tuileValeur + * {
     margin-top: 7px !important;
+  }
+
+  /* Un filet de bureau rangé entre deux chiffres n'est pas une tuile. */
+  :root .tuilesV3 > .decor {
+    display: none !important;
   }
 
   .reperes {
@@ -655,8 +674,8 @@
  * LA PHRASE CLÉ D'UNE CARTE, maquette V3 (`allB`, 600 17px/1,45) : le titre de
  * bureau d'une section dont la carte du téléphone porte le nom seul
  * (« Comment ces personnes sont choisies », « Nos engagements »…). Il reste
- * le `<h2>` de la section, à sa place ; sa couleur reste la sienne (blanche
- * sur un panneau sombre).
+ * le `<h2>` de la section, à sa place, à l'encre de la page : la V3 n'a plus
+ * de panneau sombre dans ses cartes ouvertes.
  */
 @media (max-width: 880px) {
   :root .phraseCleV3 {
@@ -664,6 +683,7 @@
     max-width: none !important;
     font: 600 17px/1.45 var(--ft) !important;
     letter-spacing: -0.02em !important;
+    color: var(--ink) !important;
     text-wrap: pretty;
   }
 }
@@ -755,7 +775,8 @@
   /* « Le slogan, en clair » de /valeurs/, maquette V3 du 16/10 : une puce
      orange et UNE ligne « **Innovation** : Retrofit plutôt que… », 14,5 px,
      8 px entre deux puces. Le mot et sa glose, deux blocs au bureau, passent
-     en ligne ; « : » est posé par la feuille, comme `.puceRse`. */
+     en ligne ; le « : » est une `<span data-mobile-seulement>` du composant,
+     un vrai caractère du texte (`HeroValeurs.tsx`). */
   :root .sloganListe {
     gap: 8px !important;
   }
@@ -787,12 +808,6 @@
     font: 600 14.5px/1.6 var(--fb) !important;
     letter-spacing: normal !important;
     color: var(--ink) !important;
-  }
-
-  .panneauMot::after {
-    content: " : ";
-    font-weight: 400;
-    color: var(--ink1);
   }
 
   .panneauGlose {
@@ -852,7 +867,7 @@
     margin: 0 0 7px !important;
     font: 700 24px/1 var(--ft) !important;
     letter-spacing: -0.045em !important;
-    color: var(--acc) !important;
+    color: var(--mm-lien) !important;
   }
 
   .valeurTitre {
@@ -1006,7 +1021,8 @@
 
   /* Les trois chiffres de la carte 01, en TUILES de la maquette V3 (16/10,
      composant mobile 9d8a3bdb, `isStats`) : deux colonnes, fond doux, valeur
-     700 24px orange, puis « Libellé · texte » en 12,5 px. Plus de numéro. */
+     700 24px, puis « Libellé · texte » en 12,5 px (le « · » est une span
+     `data-mobile-seulement` du composant). Plus de numéro. */
   :root .chiffresCompacts {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 8px !important;
@@ -1032,7 +1048,7 @@
     margin-bottom: 7px;
     font: 700 24px/1 var(--ft) !important;
     letter-spacing: -0.045em !important;
-    color: var(--acc) !important;
+    color: var(--mm-lien) !important;
   }
 
   .chiffreCompact > .chiffreLibelle,
@@ -1043,9 +1059,6 @@
     color: var(--ink1) !important;
   }
 
-  .chiffreCompact > .chiffreLibelle::after {
-    content: " · ";
-  }
 
   /* Les jalons de la carte 02, en FRISE de la maquette V3 : pastille ronde
      orange pâle de 28 px (numéro #b4490f), filet orange de 2 px qui descend
@@ -1116,7 +1129,7 @@
   .jalonCarte > :first-child {
     margin: 0 !important;
     font: 600 11px ui-monospace, Menlo, monospace !important;
-    color: var(--acc) !important;
+    color: var(--mm-lien) !important;
   }
 }
 
@@ -1220,7 +1233,7 @@
     margin-bottom: 7px !important;
     font: 700 24px/1 var(--ft) !important;
     letter-spacing: -0.045em !important;
-    color: var(--acc) !important;
+    color: var(--mm-lien) !important;
   }
 
   .ligneMase {

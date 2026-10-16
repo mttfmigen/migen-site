@@ -1,0 +1,237 @@
+/*
+ * LES CARTES OUVERTES DE LA MAQUETTE V3 « SITE MOBILE » (validée le 16/10),
+ * pour les pages natives (« à propos »). Complète
+ * `mobile-apropos.module.css` (`.aplat`, `.panneauClair`, `.decor`,
+ * `.leadV3`, `.tuilesV3`) sans le rallonger, et s'appuie sur les motifs
+ * partagés d'`app/globals.css` (`data-mm-kv`, `data-mm-texte`…).
+ *
+ * Toute règle vit sous 881 px : au-dessus, ces classes n'ont aucun effet et le
+ * bureau reste celui de la capture, au pixel.
+ */
+
+@media (max-width: 880px) {
+  /* Une colonne flexible de bureau qui redevient un empilement : ses blocs
+     s'enchaînent à l'écart de leurs propres marges, comme des paragraphes. */
+  .pile {
+    display: block !important;
+  }
+
+  /* La rangée « texte … bouton » d'un en-tête de bureau, serrée dans la
+     carte : le bouton suit le texte au lieu de flotter 50 px plus bas. */
+  .rangeeSerree {
+    gap: 4px 12px !important;
+    margin-bottom: 14px !important;
+  }
+
+  /* Une liste « Libellé : texte » de bureau portée par `.mg-doclist`, que la
+     carte V3 dessine en petites cartes (`data-mm-kv`) : `.mg-doclist > div`
+     (`app/globals.css`, sous 1000 px) imposerait une colonne de numéro de
+     36 px, la maquette en a 26. */
+  :root .listeKv > * {
+    grid-template-columns: 26px minmax(0, 1fr) !important;
+  }
+
+  /* Un chiffre que le bureau pose en grand (« 10 % » puis son libellé) : la
+     maquette V3 l'écrit dans la phrase, en texte courant. */
+  .chiffreEnLigne {
+    display: block !important;
+    font: 400 15px/1.65 var(--fb);
+    color: var(--ink1);
+  }
+
+  .chiffreEnLigne > * {
+    font: inherit !important;
+    letter-spacing: normal !important;
+    color: inherit !important;
+  }
+
+  .chiffreEnLigne > :first-child {
+    font-weight: 600 !important;
+    color: var(--ink) !important;
+  }
+}
+
+/* ---------------------------------- /nous-connaitre/, carte 03 « Avril 2021 » */
+
+@media (max-width: 880px) {
+  /* La photo légendée du bureau : la carte V3 n'a pas de photo, sa légende
+     (« 23 ans, un cursus d'automatisme… ») ouvre le récit en phrase clé. La
+     photo, son voile et ses deux étiquettes s'effacent ; la légende reste. */
+  .photoEnPhrase {
+    min-height: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    overflow: visible !important;
+  }
+
+  .photoEnPhrase > :not(:last-child) {
+    display: none !important;
+  }
+
+  .photoEnPhrase > :last-child {
+    position: static !important;
+  }
+
+  .photoEnPhrase > :last-child > * {
+    max-width: none !important;
+    margin: 0 0 6px;
+    font: 600 17px/1.45 var(--ft) !important;
+    letter-spacing: -0.02em !important;
+    color: var(--ink) !important;
+  }
+
+  /* Le mot en relief d'un paragraphe écrit en blanc au bureau. */
+  .texteFort em {
+    font-weight: 600;
+    color: var(--ink) !important;
+  }
+
+  /* L'épellation M, I, GEN, migen : gardée (Mehdi, 13 et 14/10), en petit
+     et à l'encre de la page, sous le paragraphe qui l'annonce. */
+  .sigle {
+    gap: 2px !important;
+    margin: 4px 0 14px;
+  }
+
+  .sigle > div > :first-child {
+    font-size: 34px !important;
+  }
+
+  .sigle > div > :last-child {
+    font-size: 16px !important;
+    color: var(--ink2) !important;
+  }
+
+  .sigle > div:last-child {
+    margin-top: 8px !important;
+    padding-top: 10px !important;
+    border-top-color: var(--line) !important;
+  }
+
+  .sigle > div:last-child > :first-child {
+    font-size: 28px !important;
+    color: var(--ink) !important;
+  }
+
+  .sigle > div:last-child > :last-child {
+    font-size: 13.5px !important;
+    color: var(--ink3) !important;
+  }
+}
+
+/* ------------------------- /nous-connaitre/, carte 06 « Turnover annuel » */
+
+@media (max-width: 880px) {
+  /* La rangée « libellé … valeur » d'un taux, posée dans une tuile
+     (`.tuilesV3`) : la valeur au-dessus, son libellé dessous, comme une
+     tuile V3. La valeur prend `.tuileValeur`. */
+  .enteteTuile {
+    flex-direction: column-reverse !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    gap: 7px !important;
+    margin: 0 !important;
+  }
+
+  .enteteTuile > * {
+    font: 400 12.5px/1.45 var(--fb) !important;
+    letter-spacing: normal !important;
+    color: var(--ink1) !important;
+  }
+}
+
+/* ----------------------- /nous-connaitre/, carte 07 « Ce que nous faisons » */
+
+@media (max-width: 880px) {
+  /* Une liste écrite en blanc sur le panneau sombre du bureau, posée sur le
+     blanc de la carte : ses lignes passent à l'encre de la page. */
+  .listeClaire {
+    gap: 8px !important;
+  }
+
+  .listeClaire > li {
+    color: var(--ink1) !important;
+  }
+
+  /* Le second bloc d'une carte, séparé du premier comme deux paragraphes. */
+  .blocSuivant {
+    margin-top: 14px !important;
+  }
+}
+
+/* ------------------------------- la puce « Libellé : texte » de la V3 */
+
+/*
+ * Une carte de bureau (titre, texte, lien) que la maquette V3 écrit en puce :
+ * une pastille orange, le libellé en gras, « : », le texte dans la même
+ * phrase, puis le lien dessous. Le « : » est une `<span
+ * data-mobile-seulement>` du composant : un vrai caractère du document.
+ * Sert à « L'équipe proche de vous » (/nous-connaitre/, carte 08).
+ */
+@media (max-width: 880px) {
+  .puceLibelle {
+    display: block !important;
+    position: relative;
+    margin: 0 !important;
+    padding: 0 0 0 16px !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    font: 400 15px/1.6 var(--fb);
+    color: var(--ink1);
+  }
+
+  .puceLibelle::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--acc);
+  }
+
+  .puceLibelle > :not(a) {
+    display: inline !important;
+    margin: 0 !important;
+    font: inherit !important;
+    letter-spacing: normal !important;
+    color: inherit !important;
+  }
+
+  .puceLibelle > :first-child {
+    font-weight: 600 !important;
+    color: var(--ink) !important;
+  }
+
+  /* Le lien sous la phrase : 44 px de cible tactile, l'orange des liens. */
+  .puceLibelle > a {
+    display: flex !important;
+    align-items: center;
+    width: fit-content;
+    min-height: 44px;
+    margin: 0 !important;
+    padding: 0 !important;
+    font: 600 14px/1.4 var(--fb) !important;
+    color: var(--mm-lien) !important;
+  }
+}
+
+/* ----------------------------- /nous-connaitre/, carte 09 « Nos valeurs » */
+
+@media (max-width: 880px) {
+  /* Le pied d'une porte (« Les lire → », « Voir l'offre → ») : l'orange des
+     liens de la V3. Les six offres prennent les petites cartes à fond doux
+     partagées (`data-mm-kv`). */
+  .lienPorte {
+    display: block;
+    margin-top: 6px;
+    font: 600 14px/1.4 var(--fb) !important;
+    letter-spacing: normal !important;
+    color: var(--mm-lien) !important;
+  }
+}

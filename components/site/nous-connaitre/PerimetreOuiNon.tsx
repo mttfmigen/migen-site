@@ -22,9 +22,18 @@
  * des machines. C'est son positionnement, pas notre portage : la phrase reste
  * telle quelle et le constat est porté en B7 de
  * `docs/NOUS-CONNAITRE-ARBITRAGES.md`. Ne pas la réécrire sans son arbitrage.
+ *
+ * AU TÉLÉPHONE (maquette V3 du 16/10), les deux listes s'écrivent l'une sous
+ * l'autre sur le blanc de la carte : la carte de verre et le panneau sombre
+ * s'effacent (`.aplat`, `.decor`), « Ce que nous ne faisons pas » devient la
+ * phrase clé qui ouvre la seconde liste (`.panneauTitre`), ses lignes passent
+ * à l'encre de la page (`.listeClaire`). Les coches et les croix restent : elles disent oui
+ * et non.
  */
 
 import type { EntreeSommaire } from "./HautMobile";
+import mobile from "./mobile-apropos.module.css";
+import ouvertes from "./mobile-cartes-ouvertes.module.css";
 import SectionRepliee from "./SectionRepliee";
 
 /* Les deux étiquettes, écrites une fois : chaque carte porte la sienne. La
@@ -77,6 +86,7 @@ export default function PerimetreOuiNon() {
           }}
         >
           <div
+            className={mobile.aplat}
             style={{
               background: "rgba(255,255,255,var(--gl-a))",
               backdropFilter: "blur(var(--gl-b)) saturate(150%)",
@@ -128,6 +138,7 @@ export default function PerimetreOuiNon() {
             </ul>
           </div>
           <div
+            className={`${mobile.aplat} ${ouvertes.blocSuivant}`}
             style={{
               borderRadius: "var(--rad)",
               background: "var(--panel)",
@@ -137,6 +148,7 @@ export default function PerimetreOuiNon() {
             }}
           >
             <div
+              className={mobile.decor}
               style={{
                 position: "absolute",
                 width: 420,
@@ -150,6 +162,7 @@ export default function PerimetreOuiNon() {
             />
             <div style={{ position: "relative" }}>
               <div
+                className={mobile.panneauTitre}
                 style={{
                   font: "600 11.5px var(--fb)",
                   letterSpacing: ".14em",
@@ -161,6 +174,7 @@ export default function PerimetreOuiNon() {
                 {PAS_FAIT_TITRE}
               </div>
               <ul
+                className={ouvertes.listeClaire}
                 style={{
                   display: "grid", gridTemplateColumns: "minmax(0,1fr)",
                   gap: 9,

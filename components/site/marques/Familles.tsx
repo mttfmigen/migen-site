@@ -91,9 +91,12 @@ export default function Familles({ familles = FAMILLES }: ProprietesFamilles) {
             pages natives (sections repliées, la première ouverte). Le résumé
             nomme les constructeurs de la famille : rien n'est retiré, les
             logos restent dans le HTML. Le panneau porte déjà son
-            rembourrage, d'où `sansGouttiere`. */}
+            rembourrage, d'où `sansGouttiere`. Au téléphone, le panneau est
+            UNE carte à 18 px des bords, au rembourrage d'une carte (16 px),
+            et les familles repliées y sont des rangées séparées d'un filet,
+            pas des cartes dans la carte (`.panneauFamilles`). */}
         <div
-          className={mobile.sansGouttiere}
+          className={`${mobile.sansGouttiere} ${styles.panneauFamilles}`}
           style={{
             background: "rgba(255,255,255,var(--gl-a))",
             backdropFilter: "blur(var(--gl-b)) saturate(150%)",

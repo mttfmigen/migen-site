@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 
+import ouvertes from "./mobile-cartes-ouvertes.module.css";
 import styles from "./PortesOffres.module.css";
 
 /**
@@ -190,7 +191,10 @@ export default function PortesOffres() {
           {INTITULE}
         </h2>
         {/* `mg-rmulti` : trois colonnes, deux sous 1000px, une sous 620px. */}
+        {/* Au téléphone, les petites cartes à fond doux de la V3
+            (`data-mm-kv`) : numéro, offre, phrase, lien. */}
         <div
+          data-mm-kv=""
           className="mg-rmulti"
           style={{
             display: "grid",
@@ -205,10 +209,10 @@ export default function PortesOffres() {
               className={styles.carte}
               style={CARTE}
             >
-              <div style={NUMERO}>{offre.numero}</div>
-              <div style={TITRE_CARTE}>{offre.titre}</div>
-              <p style={PHRASE}>{offre.phrase}</p>
-              <span style={ACTION}>Voir l’offre →</span>
+              <div data-mm-num="" style={NUMERO}>{offre.numero}</div>
+              <div data-mm-kv-titre="" style={TITRE_CARTE}>{offre.titre}</div>
+              <p data-mm-kv-texte="" style={PHRASE}>{offre.phrase}</p>
+              <span className={ouvertes.lienPorte} style={ACTION}>Voir l’offre →</span>
             </a>
           ))}
         </div>

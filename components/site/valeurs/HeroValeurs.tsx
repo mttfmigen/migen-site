@@ -191,6 +191,10 @@ export default function HeroValeurs() {
                         background: "rgba(255,255,255,.14)",
                       }}
                     />
+                    {/* Le « : » de la puce du téléphone, vrai caractère du
+                        document (« Innovation : Retrofit… ») ; au bureau, la
+                        span n'existe pas et le filet sépare le mot. */}
+                    <span data-mobile-seulement="">{"\u00a0: "}</span>
                   </div>
                   <div
                     className={mobile.panneauGlose}
