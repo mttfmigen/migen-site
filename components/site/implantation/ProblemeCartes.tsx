@@ -306,45 +306,63 @@ export function ProblemePanneau({
   toujoursOuvert?: boolean;
 }) {
   const { titre, suite } = decoupe(section, sansTitre);
-  /* Le contenu replié, écrit une seule fois : il est rendu tel quel quand le
-     panneau n'a pas de H2, et dans le bloc repliable quand il en a un. */
-  const corps = (
-    <>
-      {suite ? <p style={SUITE_SOMBRE}>{suite}</p> : null}
-      <div className="mg-rmulti" style={{ display: "grid", gridTemplateColumns: "repeat(2,minmax(0,1fr))", gap: 12 }}>
-        {section.puces.map((puce, rang) => (
-          <div key={puce.accroche ?? puce.texte} style={CARTE_SOMBRE}>
-            <span style={NUMERO_SOMBRE}>{numerote(rang)}</span>
-            {/* `minWidth: 0` ET `overflowWrap` : un élément de flexbox ne
-                descend pas sous la largeur de son mot le plus long tant qu'il
-                garde `min-width: auto`. Mesuré le 13/10 à 320 px sur
-                `/implantations/maintenance-industrielle-albi/` :
-                « pharmaceutiques » réclamait 131 px dans une colonne qui en
-                offrait 116, la carte sortait du panneau et le panneau rognait
-                la fin du constat. Invisible dès qu'il y a la place. */}
-            <div style={{ minWidth: 0, overflowWrap: "break-word" }}>
-              {puce.accroche ? <div style={ACCROCHE_SOMBRE}>{puce.accroche}</div> : null}
-              <div style={TEXTE_SOMBRE}>{puce.texte}</div>
+  /* Suite et constats, écrits une seule fois : rendus tels quels quand le
+     panneau n'a pas de H2, dans le bloc repliable quand il en a un.
+     `data-mm-*` : au téléphone, les constats prennent le dessin des petites
+     cartes numérotées du socle (`app/globals.css`), comme le dessin en
+     rangée. Au-dessus de 880 px, ces attributs ne portent aucune règle. */
+  const cartes = (
+    <div className="mg-rmulti" data-mm-kv="" style={{ display: "grid", gridTemplateColumns: "repeat(2,minmax(0,1fr))", gap: 12 }}>
+      {section.puces.map((puce, rang) => (
+        <div key={puce.accroche ?? puce.texte} style={CARTE_SOMBRE}>
+          <span data-mm-num="" style={NUMERO_SOMBRE}>{numerote(rang)}</span>
+          {/* `minWidth: 0` ET `overflowWrap` : un élément de flexbox ne
+              descend pas sous la largeur de son mot le plus long tant qu'il
+              garde `min-width: auto`. Mesuré le 13/10 à 320 px sur
+              `/implantations/maintenance-industrielle-albi/` :
+              « pharmaceutiques » réclamait 131 px dans une colonne qui en
+              offrait 116, la carte sortait du panneau et le panneau rognait
+              la fin du constat. Invisible dès qu'il y a la place. */}
+          <div style={{ minWidth: 0, overflowWrap: "break-word" }}>
+            {puce.accroche ? (
+              <div data-mm-kv-titre="" style={ACCROCHE_SOMBRE}>
+                {puce.accroche}
+              </div>
+            ) : null}
+            <div data-mm-kv-texte="" style={TEXTE_SOMBRE}>
+              {puce.texte}
             </div>
           </div>
-        ))}
-      </div>
-    </>
+        </div>
+      ))}
+    </div>
   );
+  const suiteSombre = suite ? (
+    <p data-mm-texte="" style={SUITE_SOMBRE}>
+      {suite}
+    </p>
+  ) : null;
   return (
     /* `data-screen-label` : la règle mobile du gabarit garde les puces sur
        deux colonnes sous 900 px (`PageOffre.module.css`, `.gabarit`). */
-    <section data-screen-label="03 Problème" style={SECTION}>
+    /* AU TÉLÉPHONE, LA CARTE BLANCHE « 01 LE PROBLÈME » DE LA V3, comme le
+       dessin en rangée : le panneau s'efface (`data-panneau-mobile-clair`,
+       jetons de texte rendus à la page par `.panneauProbleme`), la bascule
+       porte l'étiquette « Le problème », et sur-titre, H2 et suite passent
+       dans la carte en un paragraphe gras (`data-mm-entete-probleme`). Au
+       bureau, la bascule est retirée (`blocPliablePartage`) : sur-titre et H2
+       restent empilés en tête du panneau, au même pixel. */
+    <section data-screen-label="03 Problème" className={stylesVille.sectionCarte} style={SECTION}>
       <div style={LARGEUR}>
-        <div className="mg-pad" style={PANNEAU}>
+        <div className={`mg-pad ${stylesVille.panneauProbleme}`} data-panneau-mobile-clair="" style={PANNEAU}>
           <div aria-hidden="true" style={LUEUR} />
-          <div style={{ position: "relative" }}>
+          <div className={titre ? stylesOffre.blocPliablePartage : undefined} style={{ position: "relative" }}>
             {/* SE REPLIE AU TÉLÉPHONE, motif « Blocs communs (pliables) » de
                 `MigenMobile.dc.html`, sur les dix pages qui portent ce
-                dessin. LE SUR-TITRE ET LE H2 DÉJÀ LÀ servent d'en-tête : ils
-                sont EMPILÉS ici, pas posés dans une grille (à la différence
-                du dessin en rangée juste au-dessus, qui pour cette raison
-                n'est pas replié), donc les envelopper ne déplace rien.
+                dessin. La bascule porte l'étiquette de la carte de la V3
+                (« Le problème »), le sur-titre et le H2 restent dans le corps
+                (16/10, auparavant dans la bascule : au téléphone le panneau
+                sombre de bureau tenait lieu de carte).
 
                 PAS DE H2, PAS DE REPLI, et ce n'est pas une précaution de
                 style. `problemeSansTitre` fait tomber le H2 (la punchline
@@ -360,20 +378,27 @@ export function ProblemePanneau({
             {titre ? (
               <SectionPliableMobile
                 toujoursOuvert={toujoursOuvert}
-                enTete={
-                  <span>
-                    <span style={{ ...SURTITRE, display: "block" }}>Votre problématique</span>
-                    <h2 style={TITRE_SOMBRE}>{titre}</h2>
-                  </span>
-                }
+                enTete={<EtiquettePli titre={TITRE_CARTE} />}
                 resume={resumePuces(section, titre)}
               >
-                {corps}
+                <div data-mm-entete-probleme="">
+                  <div>
+                    <span data-mm-surtitre="" style={{ ...SURTITRE, display: "block" }}>
+                      Votre problématique
+                    </span>
+                    <h2 data-mm-lead="" style={TITRE_SOMBRE}>
+                      {titre}
+                    </h2>
+                  </div>
+                  {suiteSombre}
+                </div>
+                {cartes}
               </SectionPliableMobile>
             ) : (
               <>
                 <div style={SURTITRE}>Votre problématique</div>
-                {corps}
+                {suiteSombre}
+                {cartes}
               </>
             )}
           </div>

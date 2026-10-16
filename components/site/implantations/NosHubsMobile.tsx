@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { courtLibelle, entreeDe } from "@/components/site/cocon/maillage-mobile";
 import type { ZoneHubLocal } from "@/types/implantation";
 import type { NosVilles as DonneesNosVilles } from "@/types/implantations";
 
@@ -29,6 +30,16 @@ function villeDuNom(villes: readonly ZoneHubLocal[], nom: string): ZoneHubLocal 
     const s = q[1].replace(/^maintenance-industrielle-/, "");
     return s === nom || s.startsWith(`${nom}-`);
   });
+}
+
+/**
+ * Le libellé d'une pastille, celui de la V3 (`zc` : `short(x)`, le libellé
+ * court de l'index, « Dunkerque et le port », « Nice et Alpes-Maritimes ») ;
+ * hors index, le libellé de la donnée. Le même que « Dans la même rubrique ».
+ */
+function libelleDe(zone: ZoneHubLocal): string {
+  const entree = entreeDe(zone.href);
+  return entree ? courtLibelle(entree) : zone.libelle;
 }
 
 /**
@@ -68,7 +79,7 @@ function repartition(villes: DonneesNosVilles): Pick<DonneesNosVilles, "hubs" | 
  * (`data-mobile-seulement`), dc.html L127 `isHubs` : hors carte, sur-titre et
  * titre, rail de cartes (photo de 150 px avec bandeau « Hub · Siège » et nom,
  * bassins en pastilles sous la photo), puis « Villes couvertes par nos
- * techniciens itinérants », une ligne repliée par région avec son compteur.
+ * techniciens itinérants », une ligne repliée par région.
  *
  * Tout vient de la donnée de la page (`villes`) ; les quatre libellés fixes
  * sont ceux de la maquette. Le bloc de bureau (`NosVilles`), même donnée,
@@ -103,7 +114,7 @@ export default function NosHubsMobile({ villes: donnees }: { villes: DonneesNosV
                 <div className={styles.hubsMobileZones}>
                   {hub.zones.map((zone) => (
                     <Link key={zone.href} href={zone.href} prefetch={false} className={styles.hubsMobilePastille}>
-                      {zone.libelle}
+                      {libelleDe(zone)}
                     </Link>
                   ))}
                 </div>
@@ -120,17 +131,16 @@ export default function NosHubsMobile({ villes: donnees }: { villes: DonneesNosV
               <details key={region.region} className={styles.hubsMobileRegion}>
                 <summary>
                   <span className={styles.hubsMobileRegionNom}>{region.region}</span>
-                  <span className={styles.hubsMobileRegionDroite}>
-                    <span className={styles.hubsMobileRegionCompte}>{region.villes.length}</span>
-                    <span aria-hidden="true" className={styles.hubsMobileChevron}>
-                      ›
-                    </span>
+                  {/* Sans le compteur de villes de la V3 : aucun compteur
+                      au téléphone (décision de Mehdi). */}
+                  <span aria-hidden="true" className={styles.hubsMobileChevron}>
+                    ›
                   </span>
                 </summary>
                 <div className={styles.hubsMobileZones}>
                   {region.villes.map((ville) => (
                     <Link key={ville.href} href={ville.href} prefetch={false} className={styles.hubsMobilePastille}>
-                      {ville.libelle}
+                      {libelleDe(ville)}
                     </Link>
                   ))}
                 </div>

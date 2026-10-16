@@ -31,7 +31,6 @@ import PanneauHerosRepliable from "./PanneauHerosRepliable";
 import stylesVille from "./PageVille.module.css";
 import ProblemeCartes, { ProblemePanneau } from "./ProblemeCartes";
 import QuestionsVille from "./QuestionsVille";
-import RepliFormulaireMobile from "./RepliFormulaireMobile";
 import { DerouleRepliable, resumeOffre } from "./SectionsRepliables";
 
 /**
@@ -410,16 +409,17 @@ export default function PageVille({
         {chemin ? <RappelFinalMobile /> : null}
 
         {/* 16 · 10 Appel final : la capture pose l'ancre `#mgx-form` sur la
-            section. Au téléphone, le grand bloc se REPLIE derrière le libellé
-            de son panneau (`RepliFormulaireMobile`) : la carte « Être rappelé »
-            ci-dessus le remplace, et l'ouvre en lui passant sa saisie. Sur
-            bureau, la bascule n'existe pas et le bloc est rendu tel quel. */}
+            section. Au téléphone, le formulaire complet se REPLIE derrière
+            « Décrire mon besoin en détail », le repli que porte `AppelFinal`
+            lui-même : la carte « Être rappelé » ci-dessus le remplace, et
+            l'ouvre en lui passant sa saisie. Plus de second repli autour
+            (16/10) : il ne laissait, ouvert, qu'un chevron seul au-dessus du
+            premier, et le formulaire demandait deux touches. Sur bureau, la
+            bascule n'existe pas et le bloc est rendu tel quel. */}
         <div id={chemin ? undefined : "etre-rappele"} className={stylesVille.appelFinal} style={{ scrollMarginTop: 90 }}>
-          <RepliFormulaireMobile etiquette={contenu.appelBouton ?? "Parler à un chargé d'affaires"}>
-            <div id="mgx-form" style={{ scrollMarginTop: 90 }}>
-              <AppelFinal question={ctaFinal?.question} formulaire={formulaire} bouton={contenu.appelBouton} />
-            </div>
-          </RepliFormulaireMobile>
+          <div id="mgx-form" style={{ scrollMarginTop: 90 }}>
+            <AppelFinal question={ctaFinal?.question} formulaire={formulaire} bouton={contenu.appelBouton} />
+          </div>
         </div>
 
         {maillage ? (

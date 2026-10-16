@@ -19,9 +19,16 @@ import { useEffect } from "react";
  * `SectionPliableMobile`, qui referme les blocs au chargement.
  */
 function ouvreLesAncetres(id: string) {
-  for (let noeud = id ? document.getElementById(id) : null; noeud; noeud = noeud.parentElement) {
+  const cible = id ? document.getElementById(id) : null;
+  for (let noeud = cible; noeud; noeud = noeud.parentElement) {
     if (noeud instanceof HTMLDetailsElement) noeud.open = true;
   }
+  /* Une cible qui ENVELOPPE un formulaire replié (`#mgx-form` : l'appel
+     final et son repli « Décrire mon besoin en détail ») l'ouvre aussi : le
+     bouton qui y mène montre le formulaire, pas une seconde bascule. */
+  cible?.querySelectorAll<HTMLDetailsElement>("details[data-repli-formulaire]").forEach((repli) => {
+    repli.open = true;
+  });
 }
 
 function idDuFragment(fragment: string): string {
