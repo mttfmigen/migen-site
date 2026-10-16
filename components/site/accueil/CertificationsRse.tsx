@@ -1,3 +1,4 @@
+import v3 from "./mobile-v3/accueil-v3.module.css";
 import replis from "./replis-accueil.module.css";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
@@ -55,11 +56,11 @@ const IMAGE_LOGO = {
 
 export default function CertificationsRse() {
   return (
-    <section className={replis.repli} style={{ padding: "var(--sec) 0 0" }}>
+    <section className={replis.repli} data-accueil-v3="" style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <SectionPliableMobile kicker={SURTITRE_TEXTE} titre={TITRE_TEXTE}>
         <div
-          className="mg-r2" data-reveal=""
+          className={`mg-r2 ${v3.pile}`} data-reveal=""
           style={{
             display: "grid",
             gridTemplateColumns: ".9fr 1.1fr",
@@ -68,6 +69,7 @@ export default function CertificationsRse() {
           }}
         >
           <div
+            className={v3.aplat}
             style={{
               background: "rgba(255,255,255,var(--gl-a))",
               backdropFilter: "blur(var(--gl-b)) saturate(150%)",
@@ -86,6 +88,7 @@ export default function CertificationsRse() {
               {TITRE_TEXTE}
             </div>
             <div
+              className={v3.logos}
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -93,11 +96,11 @@ export default function CertificationsRse() {
                 marginBottom: "22px",
               }}
             >
-              <span style={{ ...CADRE_LOGO, width: "132px" }}>
+              <span className={v3.logo} style={{ ...CADRE_LOGO, width: "132px" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/assets/logos/mase.png" alt="MASE" style={IMAGE_LOGO} />
               </span>
-              <span style={{ ...CADRE_LOGO, width: "72px" }}>
+              <span className={v3.logo} style={{ ...CADRE_LOGO, width: "72px" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/assets/logos/ecovadis.webp"
@@ -107,6 +110,7 @@ export default function CertificationsRse() {
               </span>
             </div>
             <p
+              className={v3.lead}
               style={{
                 font: "400 15px/1.65 var(--fb)",
                 color: "var(--ink2)",
@@ -127,6 +131,7 @@ export default function CertificationsRse() {
           </div>
 
           <div
+            className={`${v3.aplat} ${v3.filetHaut}`}
             style={{
               background: "var(--panel)",
               borderRadius: "var(--rad)",
@@ -136,6 +141,7 @@ export default function CertificationsRse() {
             }}
           >
             <div
+              className={v3.masque}
               style={{
                 position: "absolute",
                 width: "400px",
@@ -155,7 +161,7 @@ export default function CertificationsRse() {
                 {SURTITRE_TEXTE}
               </div>
               <div
-                className="mg-rmulti"
+                className={`mg-rmulti ${v3.tuiles}`}
                 style={{
                   display: "grid",
                   gridTemplateColumns: "repeat(4,minmax(0,1fr))",
@@ -163,8 +169,9 @@ export default function CertificationsRse() {
                 }}
               >
                 {CHIFFRES.map((chiffre) => (
-                  <div key={chiffre.libelle}>
+                  <div key={chiffre.libelle} className={v3.tuile}>
                     <div
+                      className={v3.tuileValeur}
                       style={{
                         font: "600 30px var(--ft)",
                         letterSpacing: "-.045em",
@@ -174,6 +181,7 @@ export default function CertificationsRse() {
                       {chiffre.valeur}
                     </div>
                     <div
+                      className={v3.tuileTexte}
                       style={{
                         font: "400 12.5px/1.45 var(--fb)",
                         color: "rgba(255,255,255,.5)",

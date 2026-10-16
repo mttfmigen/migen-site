@@ -1,4 +1,5 @@
 import styles from "./FriseHistoire.module.css";
+import v3 from "./mobile-v3/accueil-v3.module.css";
 import replis from "./replis-accueil.module.css";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
@@ -52,7 +53,7 @@ export default function FriseHistoire({
   hrefDecrire = "#besoin",
 }: Proprietes) {
   return (
-    <section className={replis.repli} style={{ padding: "var(--sec) 0 0" }}>
+    <section className={replis.repli} data-accueil-v3="" style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <SectionPliableMobile kicker={SURTITRE_TEXTE} titre={TITRE_TEXTE}>
         <div data-reveal="">
@@ -99,7 +100,7 @@ export default function FriseHistoire({
               }}
             />
             <ol
-              className="mg-rmulti"
+              className={`mg-rmulti ${v3.jalons}`}
               style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(6,minmax(0,1fr))",
@@ -111,9 +112,10 @@ export default function FriseHistoire({
               }}
             >
               {jalons.map((j) => (
-                <li key={j.annee}>
+                <li key={j.annee} className={v3.jalon}>
                   <div
                     aria-hidden="true"
+                    className={v3.masque}
                     style={{
                       width: 11,
                       height: 11,
@@ -123,6 +125,7 @@ export default function FriseHistoire({
                     }}
                   />
                   <div
+                    className={v3.jalonAnnee}
                     style={{
                       font: "600 20px var(--ft)",
                       letterSpacing: "-.035em",
@@ -131,6 +134,7 @@ export default function FriseHistoire({
                     {j.annee}
                   </div>
                   <div
+                    className={v3.jalonTexte}
                     style={{
                       font: "400 14px/1.55 var(--fb)",
                       color: "var(--ink2)",
@@ -154,6 +158,7 @@ export default function FriseHistoire({
         </div>
 
         <div data-reveal=""
+          className={v3.aplat}
           style={{
             marginTop: 59,
             padding: "30px 34px",
@@ -169,6 +174,7 @@ export default function FriseHistoire({
         >
           <div>
             <div
+              className={v3.enLigne}
               style={{
                 font: "600 calc(21px * var(--ts))/1.25 var(--ft)",
                 letterSpacing: "-.03em",
@@ -192,7 +198,7 @@ export default function FriseHistoire({
           </div>
           <a
             href={hrefDecrire}
-            className={styles.boutonLigne}
+            className={`${styles.boutonLigne} ${v3.bouton}`}
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -209,6 +215,10 @@ export default function FriseHistoire({
             }}
           >
             Décrire ma ligne
+            {/* La pastille flèche de la V3, au téléphone seulement. */}
+            <span aria-hidden="true" data-mobile-seulement="" className={v3.boutonFleche}>
+              &rarr;
+            </span>
           </a>
         </div>
         </SectionPliableMobile>

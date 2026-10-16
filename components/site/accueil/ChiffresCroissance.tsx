@@ -22,6 +22,7 @@
  */
 
 import styles from "./ChiffresCroissance.module.css";
+import v3 from "./mobile-v3/accueil-v3.module.css";
 import replis from "./replis-accueil.module.css";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
@@ -107,11 +108,11 @@ export default function ChiffresCroissance({
   bas = BAS,
 }: ProprietesChiffresCroissance) {
   return (
-    <section className={replis.repli} style={{ padding: "var(--sec) 0 0" }}>
+    <section className={replis.repli} data-accueil-v3="" style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 40px" }}>
         <SectionPliableMobile titre={TITRE_TEXTE}>
         <div
-          className="mg-r2" data-reveal=""
+          className={`mg-r2 ${v3.tuiles}`} data-reveal=""
           style={{
             display: "grid",
             gridTemplateColumns: "1.6fr 1fr 1fr",
@@ -120,7 +121,7 @@ export default function ChiffresCroissance({
           }}
         >
           <div
-            className={styles.panneau}
+            className={`${styles.panneau} ${v3.tuile}`}
             style={{
               gridRow: "span 2",
               background: "var(--panel)",
@@ -134,6 +135,7 @@ export default function ChiffresCroissance({
             }}
           >
             <div
+              className={v3.masque}
               style={{
                 position: "absolute",
                 width: "420px",
@@ -159,6 +161,7 @@ export default function ChiffresCroissance({
             </div>
             <div style={{ position: "relative" }}>
               <div
+                className={v3.tuileValeur}
                 style={{
                   font: "600 calc(clamp(56px,7vw,104px) * var(--ts))/.9 var(--ft)",
                   letterSpacing: "-.055em",
@@ -168,6 +171,7 @@ export default function ChiffresCroissance({
                 <span>{principal.valeur}</span>
               </div>
               <div
+                className={v3.tuileTexte}
                 style={{
                   font: "400 16px/1.6 var(--fb)",
                   color: "rgba(255,255,255,.6)",
@@ -180,11 +184,11 @@ export default function ChiffresCroissance({
             </div>
           </div>
 
-          <div style={CARTE}>
-            <div style={NOMBRE}>
+          <div className={v3.tuile} style={CARTE}>
+            <div className={v3.tuileValeur} style={NOMBRE}>
               <span>{secondaire.valeur}</span>
             </div>
-            <div style={LEGENDE}>{secondaire.libelle}</div>
+            <div className={v3.tuileTexte} style={LEGENDE}>{secondaire.libelle}</div>
           </div>
 
           <div className={styles.doublonMobile} style={CARTE}>
@@ -195,7 +199,7 @@ export default function ChiffresCroissance({
           </div>
 
           <div
-            className={styles.basLarge}
+            className={`${styles.basLarge} ${v3.fondu}`}
             style={{
               ...CARTE,
               gridColumn: "span 2",
@@ -204,20 +208,21 @@ export default function ChiffresCroissance({
               gap: "46px",
             }}
           >
-            <div>
-              <div style={NOMBRE}>
+            <div className={v3.tuile}>
+              <div className={v3.tuileValeur} style={NOMBRE}>
                 <span>{bas[0].valeur}</span>
               </div>
-              <div style={LEGENDE}>{bas[0].libelle}</div>
+              <div className={v3.tuileTexte} style={LEGENDE}>{bas[0].libelle}</div>
             </div>
             <div
+              className={v3.masque}
               style={{ width: "1px", height: "56px", background: "var(--line)" }}
             />
-            <div>
-              <div style={NOMBRE}>
+            <div className={v3.tuile}>
+              <div className={v3.tuileValeur} style={NOMBRE}>
                 <span>{bas[1].valeur}</span>
               </div>
-              <div style={LEGENDE}>{bas[1].libelle}</div>
+              <div className={v3.tuileTexte} style={LEGENDE}>{bas[1].libelle}</div>
             </div>
           </div>
         </div>
