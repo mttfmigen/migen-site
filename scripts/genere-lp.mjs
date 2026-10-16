@@ -10,9 +10,10 @@
  * LE SCHÉMA NE CHANGE PAS : mêmes clés, mêmes structures que `__LP`, le
  * gabarit les lit telles quelles. Seules les VALEURS changent :
  *   · les adresses passent de `/fr/x` à `/lp/x/` (chemins et `mainHref`) ;
- *   · les images deviennent absolues (`/assets/...`), les aperçus Envato et les
- *     vignettes de hub absentes du site sont remplacés par les fichiers sous
- *     licence que le site sert déjà ;
+ *   · les images deviennent absolues (`/assets/...`) ; les aperçus Envato (des
+ *     photos de ville en fond de héros) sont remplacés par une photo de
+ *     maintenance industrielle du registre (`PHOTOS_ENVATO`), et les vignettes
+ *     de hub absentes du site par les photos de hub sous licence qu'il sert déjà ;
  *   · la copie passe par les décisions du site (`lib/decisions-copie.ts`), par
  *     les corrections nommées plus bas, puis par le filtre : toute phrase (ou
  *     tout segment « · » d'un libellé) qui porte un interdit est RETIRÉE, pas
@@ -41,18 +42,27 @@ const PAGES_RETIREES = {
     "politique de confidentialité propre à la V3 : les LP renvoient à /confidentialite/ et /mentions-legales/ du site.",
 };
 
-/* LES APERÇUS ENVATO, reconnus à leur identifiant. Ce sont exactement les
-   photos du bloc « Votre hub local » des pages /implantations/ de la maquette
-   (`maquette/contenu/site/photos-villes.json`) : leur version sous licence est
-   au dépôt, et le site la sert déjà (`docs/PHOTOS-VILLES-ENVATO.md`). */
+/* LES APERÇUS ENVATO, reconnus à leur identifiant. Ce sont les photos de VILLE
+   (monuments, panoramas) que la V3 pose en fond du héros de sept LP villes.
+   16/10, Mehdi : « sur les pages villes, le fond ville fait très agence immo, et
+   pas assez maintenance ». Chacune cède la place à une photo de maintenance
+   industrielle du registre, choisie sur le secteur que la LP écrit elle-même.
+
+   UNE PHOTO PROPRE AU HÉROS, PAS CELLE DU HUB LOCAL DU SITE. Le héros fait
+   1440 x 873 au bureau, le texte de 160 à 739 px, le formulaire de 820 à
+   1280 : un visage tombe sous l'un ou sous l'autre. Au téléphone il ne montre
+   qu'une bande centrale, un sixième de la largeur. La photo du panneau « Votre
+   hub local » (498 x 420, sujet en haut) y mettait le visage sous le
+   formulaire (relecture du 16/10). Ici : une machine, une ligne, un process,
+   sans personne au centre. La table ville, photo, motif : `docs/PHOTOS-VILLES.md`. */
 const PHOTOS_ENVATO = {
-  E10QDY1: "ville-lyon.jpg",
-  E10QF8J: "ville-paris.jpg",
-  E108N92Z: "hub-marseille.jpg",
-  E10DWX6: "ville-strasbourg.jpg",
-  E10OW8U: "ville-nantes.jpg",
-  E10N758: "ville-le-havre.jpg",
-  E10OSPM: "hub-bordeaux.jpg",
+  E10QDY1: { photo: "chimie-reacteurs-agites-passerelle.jpg", motif: "Lyon : chimie et pharmaceutique de la Vallée de la chimie" },
+  E10N758: { photo: "env-photo-industrie.jpg", motif: "Le Havre : pétrochimie et raffinerie" },
+  E10QF8J: { photo: "robot-cellules-grillagees.jpg", motif: "Paris : automobile, logistique, agroalimentaire, ferroviaire" },
+  E10OSPM: { photo: "env-photos-industrie-agro-alimentaire.jpg", motif: "Bordeaux : viticole et agroalimentaire" },
+  E108N92Z: { photo: "env-usine-metallique.jpg", motif: "Marseille : sidérurgie et pétrochimie de Fos" },
+  E10OW8U: { photo: "tuyau-vanne-volant-conserverie.jpg", motif: "Nantes : agroalimentaire (les photos d'aéronautique sont hors industrie)" },
+  E10DWX6: { photo: "pharma-blistereuse-mecanisme.jpg", motif: "Strasbourg : pharmaceutique, automobile, agroalimentaire" },
 };
 
 /* LES CORRECTIONS NOMMÉES, et rien d'autre ne réécrit la copie. Chacune garde
@@ -122,11 +132,12 @@ function image(src, ctx) {
   const envato = /envato/.test(src) ? /\/(E[0-9A-Z]+)\.jpg/.exec(src)?.[1] : null;
   const vignette = /^assets\/villes\/([a-z-]+?)(?:-760)?\.jpg$/.exec(src)?.[1];
   if (envato) {
-    if (!PHOTOS_ENVATO[envato]) throw new Error(`${ctx.page} : aperçu Envato ${envato} sans version sous licence connue`);
-    chemin = `/assets/villes/${PHOTOS_ENVATO[envato]}`;
-    consigne(ctx, `aperçu Envato ${envato} (CDN d'Envato, filigrané)`, chemin,
-      "image externe : la même photo, sous licence, déjà servie par /implantations/",
-      "photo Envato remplacée par sa version sous licence");
+    if (!PHOTOS_ENVATO[envato]) throw new Error(`${ctx.page} : aperçu Envato ${envato} sans photo de remplacement`);
+    const { photo, motif } = PHOTOS_ENVATO[envato];
+    chemin = `/assets/photos/${photo}`;
+    consigne(ctx, `photo de ville, aperçu Envato ${envato} (CDN d'Envato, filigrané)`, chemin,
+      `le fond ville fait « agence immo » (Mehdi, 16/10) : une machine sans personne au centre, ${motif}`,
+      "photo de ville remplacée par une photo de maintenance industrielle");
   } else if (vignette) {
     chemin = `/assets/villes/hub-${vignette}.jpg`;
     ctx.compte.vignettes += 1;

@@ -47,8 +47,12 @@
  * CE QUI N'EST PAS TOUCHÉ, et pourquoi :
  *  - les LOGOS clients (`/assets/clients/`, clés `logo`/`logoInverse`) : un logo
  *    n'est pas une photo, il est servi autant de fois que le client est cité ;
- *  - les 12 PHOTOS DE VILLE (`/assets/villes/`) : elles montrent LA ville de la
- *    page, aucune photo de banque ne peut les remplacer ;
+ *  - les PHOTOS DE VILLE (`/assets/villes/`) : les vignettes des dix hubs ;
+ *  - les 14 PHOTOS DE HUB LOCAL CHOISIES À LA MAIN le 16/10 (`HUB_LOCAL_A_LA_MAIN`,
+ *    `docs/PHOTOS-VILLES.md`) : elles remplacent la photo de ville que la
+ *    maquette posait là (« le fond ville fait très agence immo »), d'après
+ *    l'industrie que la page écrit et la place du sujet dans le panneau. Elles
+ *    sont comptées (usage, « jamais deux fois dans la page »), pas remplacées ;
  *  - les pages de gabarit `secteur` (12) et `ressource` (35) : leurs portes
  *    `components/site/secteur/verification-secteur.tsx` et
  *    `components/site/ressource/verification-ressource.tsx` épinglent les
@@ -109,6 +113,25 @@ const GABARITS_GELES = new Set<string>([]);
 
 /** Un chemin de photo qu'on ne remplace jamais : il montre un sujet unique. */
 const CHEMINS_GELES = [/^\/assets\/villes\//, /^\/assets\/clients\//];
+
+/** Les pages dont la photo de hub local est choisie à la main (voir l'en-tête). */
+const HUB_LOCAL_A_LA_MAIN = new Set([
+  "/implantations/bordeaux/",
+  "/implantations/lyon/",
+  "/implantations/maintenance-industrielle-dijon/",
+  "/implantations/maintenance-industrielle-dunkerque/",
+  "/implantations/maintenance-industrielle-le-havre/",
+  "/implantations/maintenance-industrielle-lorient/",
+  "/implantations/maintenance-industrielle-metz/",
+  "/implantations/maintenance-industrielle-orleans/",
+  "/implantations/maintenance-industrielle-quimper/",
+  "/implantations/marseille/",
+  "/implantations/nantes/",
+  "/implantations/paris/",
+  "/implantations/paris/rouen/",
+  "/implantations/strasbourg/",
+]);
+const epinglee = (url: string, e: Emplacement) => HUB_LOCAL_A_LA_MAIN.has(url) && e.cle === "hubLocal.photo";
 
 /** Clés qui portent un logo, jamais une photo. */
 const CLES_LOGO = new Set(["logo", "logoInverse"]);
@@ -496,12 +519,21 @@ function repartit(): Plan {
     emplacement: Emplacement;
   }[] = [];
 
+  // Une photo épinglée est aussi interdite en tête aux sœurs de sa page, même traitées avant elle.
+  for (const fiche of fiches) {
+    for (const e of fiche.emplacements.filter((x) => epinglee(fiche.url, x))) {
+      const cle = parent(fiche.url);
+      premieresDesSoeurs.set(cle, (premieresDesSoeurs.get(cle) ?? new Set<string>()).add(e.valeur));
+    }
+  }
+
   for (const fiche of fiches) {
     if (GABARITS_GELES.has(fiche.gabarit)) continue;
     const besoin = fiche.emplacements.length;
     if (besoin === 0) continue;
 
-    const deja = new Set<string>();
+    // La photo épinglée occupe sa page avant tout choix : aucun autre emplacement ne la reprend.
+    const deja = new Set<string>(fiche.emplacements.filter((e) => epinglee(fiche.url, e)).map((e) => e.valeur));
     const serie: string[] = [];
     const cleParent = parent(fiche.url);
     const interditesEnTete = premieresDesSoeurs.get(cleParent) ?? new Set<string>();
@@ -516,6 +548,11 @@ function repartit(): Plan {
     );
 
     fiche.emplacements.forEach((emplacement, rang) => {
+      if (epinglee(fiche.url, emplacement)) {
+        serie.push(emplacement.valeur);
+        usage.set(emplacement.valeur, (usage.get(emplacement.valeur) ?? 0) + 1);
+        return;
+      }
       const paliers = paliersDeLEmplacement(fiche, emplacement, THEMES_PAR_URL);
       const choix = vivier(paliers, besoin);
       // Règle 1 : jamais deux fois la même photo dans la page.

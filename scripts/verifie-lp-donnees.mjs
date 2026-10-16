@@ -31,6 +31,11 @@
  *     Paris, et Nice à Lyon devant Marseille) ;
  *   · un lien vers go.migengroup.com, un lien externe, une adresse `/fr/` ;
  *   · une image externe, relative, ou absente de `public/` ;
+ *   · une photo de ville (`/assets/villes/`) sur une LP ville, hors de la
+ *     grille des dix hubs (16/10 : « le fond ville fait très agence immo ») ;
+ *     et, même règle côté site, dans le panneau « Votre hub local » des pages
+ *     /implantations/ (`hubLocal.photo` des fiches, aussi photo de tête au
+ *     téléphone), que la porte des pages villes accepte encore ;
  *   · un autre numéro que celui des landing pages ;
  *   · le flottant coupé « 10 h » / « ubs en France », et une espace sécable
  *     avant les deux-points d'un titre.
@@ -42,7 +47,7 @@
  * Le générateur importe `motifsDuTexte` : la règle qui retire une phrase et
  * celle qui la refuse sont la même, elles ne peuvent pas diverger.
  */
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
@@ -180,15 +185,20 @@ export function defauts(donnees) {
   const signale = (ou, motif, texte) => trouves.push({ ou, motif, texte: String(texte).slice(0, 140) });
   const chemins = new Set((donnees.pages ?? []).map((p) => p.path));
 
-  const image = (ou, valeur) => {
+  const image = (ou, valeur, ctx, cle) => {
     if (typeof valeur !== "string" || !valeur) return;
     if (!valeur.startsWith("/assets/") || /envato|https?:/i.test(valeur)) signale(ou, "image externe ou relative", valeur);
     else if (!existsSync(join(RACINE, "public", valeur))) signale(ou, "image absente de public/", valeur);
+    /* 16/10, Mehdi : « le fond ville fait très agence immo, et pas assez
+       maintenance ». Une LP ville ne montre pas sa ville en grand ; seule la
+       grille des dix hubs (`hubImg`) garde ses vignettes de ville. */
+    if (villeDe(ctx.page) && cle !== "hubImg" && valeur.startsWith("/assets/villes/"))
+      signale(ou, "photo de ville sur une LP ville (une photo de maintenance industrielle à la place)", valeur);
   };
 
   const parcours = (valeur, ou, ctx, cle) => {
     if (typeof valeur === "string") {
-      if (IMAGES.has(cle)) return image(ou, valeur);
+      if (IMAGES.has(cle)) return image(ou, valeur, ctx, cle);
       if (REFERENCES.has(cle)) {
         if (LIEN.test(valeur)) signale(ou, "lien vers go.migengroup.com ou hors du site", valeur);
         return;
@@ -225,6 +235,20 @@ export function defauts(donnees) {
   }
   return trouves;
 }
+
+/** Les fiches des pages /implantations/ du site : { url, photo du hub local }. */
+const FICHES = join(RACINE, "supabase", "import", "gabarits-maquette");
+export const hubsLocauxDuSite = () =>
+  readdirSync(FICHES)
+    .filter((f) => /^implantations-.+\.json$/.test(f))
+    .map((f) => JSON.parse(readFileSync(join(FICHES, f), "utf8")))
+    .map(({ url, contenu }) => ({ url, photo: contenu?.hubLocal?.photo }));
+
+/** Une photo de ville dans le panneau « Votre hub local » d'une page du site. */
+export const photosDeVilleDuSite = (hubs) =>
+  hubs
+    .filter((h) => h.photo?.startsWith("/assets/villes/"))
+    .map((h) => ({ ou: `${h.url} hubLocal.photo`, motif: "photo de ville dans le hub local (une photo de maintenance industrielle à la place)", texte: h.photo }));
 
 /* ------------------------------------------------------------- témoins */
 
@@ -271,6 +295,7 @@ function temoins(reelles) {
     ["image Envato", (d) => (page(d).img = "https://elements-resized.envatousercontent.com/x.jpg")],
     ["image relative", (d) => (page(d).img = "assets/web/team-duo.jpg")],
     ["image absente", (d) => (page(d).img = "/assets/web/absente.jpg")],
+    ["photo de ville en fond d'une LP ville", (d) => (parPage(d, "maintenance-industrielle-lyon/").img = "/assets/villes/ville-lyon.jpg")],
     ["numéro du site", (d) => (page(d).chapo = "Appelez le 04 78 33 72 05.")],
     ["flottant « 10 h » / « ubs en France »", (d) => (page(d).hs = [{ v: "10 h", l: "ubs en France" }])],
     ["montant", (d) => (page(d).chapo = "À partir de 500 € par jour.")],
@@ -283,6 +308,12 @@ function temoins(reelles) {
       s.cards = s.cards.slice(0, 5);
     }],
   ];
+  const hubs = hubsLocauxDuSite();
+  const lyon = hubs.map((h) => (h.url === "/implantations/lyon/" ? { ...h, photo: "/assets/villes/ville-lyon.jpg" } : h));
+  if (photosDeVilleDuSite(lyon).length === 0) {
+    console.error("TÉMOIN ROUGE : la porte n'a pas vu « photo de ville dans le hub local de /implantations/lyon/ ».");
+    process.exit(2);
+  }
   for (const [nom, casse] of CAS) {
     const d = copie();
     casse(d);
@@ -298,7 +329,7 @@ function temoins(reelles) {
     console.error("TÉMOIN ROUGE : la porte refuse « 1 h pour être rappelé » ou « 4,6 / 5 ».");
     process.exit(2);
   }
-  return CAS.length;
+  return CAS.length + 1;
 }
 
 function principal() {
@@ -308,7 +339,7 @@ function principal() {
   }
   const donnees = JSON.parse(readFileSync(FICHIER_LP, "utf8"));
   const nbTemoins = temoins(donnees);
-  const trouves = defauts(donnees);
+  const trouves = [...defauts(donnees), ...photosDeVilleDuSite(hubsLocauxDuSite())];
   if (trouves.length > 0) {
     for (const t of trouves) console.error(`${t.ou}\n  ${t.motif}\n  « ${t.texte} »\n`);
     console.error(`${trouves.length} défaut(s) dans lib/lp/pages.json.`);
