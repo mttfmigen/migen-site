@@ -61,19 +61,23 @@
     "reponseCartes": [
       {
         "titre": "Vous couvrez toute la période, pas les semaines les plus dures",
-        "texte": "Un technicien de maintenance assure la continuité des opérations pendant l'absence des équipes internes."
+        "texte": "Un technicien de maintenance assure la continuité des opérations pendant l'absence des équipes internes.",
+        "point": true
       },
       {
         "titre": "Vous accueillez quelqu'un qui prend vos méthodes",
-        "texte": "L'intégration se fait dans l'équipe restante, sans changer les habitudes du site."
+        "texte": "L'intégration se fait dans l'équipe restante, sans changer les habitudes du site.",
+        "point": true
       },
       {
         "titre": "Vous couvrez l'essentiel du parc avec un seul profil",
-        "texte": "Mécanique, électrotechnique et pneumatique sur le même intervenant."
+        "texte": "Mécanique, électrotechnique et pneumatique sur le même intervenant.",
+        "point": true
       },
       {
         "titre": "Vous ne managez pas le renfort",
-        "texte": "Le suivi de mission est assuré par les coordinateurs Migen."
+        "texte": "Le suivi de mission est assuré par les coordinateurs Migen.",
+        "point": true
       },
       {
         "titre": "Vous ne gérez ni recrutement ni formation d'un remplaçant",
@@ -83,27 +87,33 @@
     "etapes": [
       {
         "titre": "Anticipation",
-        "texte": "Le besoin est posé avant le départ des équipes, pas pendant."
+        "texte": "Le besoin est posé avant le départ des équipes, pas pendant.",
+        "point": true
       },
       {
         "titre": "Choix du profil",
-        "texte": "Un technicien polyvalent est retenu sur les compétences utiles au parc d'OGF."
+        "texte": "Un technicien polyvalent est retenu sur les compétences utiles au parc d'OGF.",
+        "point": true
       },
       {
         "titre": "Arrivée sur site",
-        "texte": "Intégration dans l'équipe maintenance restante, prise des consignes."
+        "texte": "Intégration dans l'équipe maintenance restante, prise des consignes.",
+        "point": true
       },
       {
         "titre": "Conduite de l'été",
-        "texte": "Interventions préventives et curatives, selon les priorités de production."
+        "texte": "Interventions préventives et curatives, selon les priorités de production.",
+        "point": true
       },
       {
         "titre": "Suivi de mission",
-        "texte": "Les coordinateurs Migen tiennent le point pendant toute la période."
+        "texte": "Les coordinateurs Migen tiennent le point pendant toute la période.",
+        "point": true
       },
       {
         "titre": "Sortie propre",
-        "texte": "Les équipes internes reviennent sans phase de rattrapage."
+        "texte": "Les équipes internes reviennent sans phase de rattrapage.",
+        "point": true
       }
     ],
     "dispositif": [

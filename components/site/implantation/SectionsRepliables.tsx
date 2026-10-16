@@ -1,8 +1,9 @@
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import { premierTexte } from "@/components/site/offre/ComplementsOffre";
-import DerouleOffre from "@/components/site/offre/DerouleOffre";
+import DerouleOffre, { accrocheDuDeroule } from "@/components/site/offre/DerouleOffre";
 import EtiquettePli from "@/components/site/offre/EtiquettePli";
 import stylesOffre from "@/components/site/offre/PageOffre.module.css";
+import { accrocheDeLOffre } from "@/components/site/offre/PointsOffre";
 import type { SectionDeroule, SectionOffre } from "@/types/contenu";
 import type { BlocComplement } from "@/types/offre";
 
@@ -21,12 +22,11 @@ import stylesVille from "./PageVille.module.css";
  * d'en-tête ; au-dessus de 880 px la bascule entière disparaît
  * (`blocPliablePartage`) et le rendu de bureau ne bouge pas d'un pixel.
  *
- * PAS DE RÉSUMÉ SOUS LE TITRE, comme la maquette (relecture du 15/10 sur Lyon,
- * Bordeaux, Rhône, Essonne et le hub) : son résumé est le premier paragraphe
- * ou la première puce du corps (dc.html L438, `teaseOf`), et le déroulé du
- * corpus est une liste NUMÉROTÉE, que `teaseOf` ne lit pas. Les intitulés des
- * étapes joints par « · » n'y apparaissent nulle part ; ils restent dans le
- * bloc déplié.
+ * L'ACCROCHE DE LA V3 SOUS LE TITRE (16/10) : la première étape du corpus,
+ * « Le premier contact : vous décrivez la panne ou le besoin… »
+ * (`accrocheDuDeroule`). La v2 ne lisait pas les listes numérotées et la
+ * carte restait muette (relecture du 15/10 sur Lyon, Bordeaux, Rhône, Essonne
+ * et le hub) ; la V3 les lit.
  *
  * LE TITRE EST PASSÉ EXPLICITEMENT, et c'est le défaut de `DerouleOffre`
  * lui-même (capture des villes) : l'étiquette et le H2 ne peuvent pas diverger.
@@ -44,6 +44,7 @@ export function DerouleRepliable({ section }: { section: SectionDeroule }) {
       <SectionPliableMobile
         /* « 03 Le déroulé » : le titre de la carte de la maquette mobile. */
         enTete={<EtiquettePli titre="Le déroulé" />}
+        resume={accrocheDuDeroule(section)}
       >
         <DerouleOffre section={section} titre={TITRE_DEROULE} />
       </SectionPliableMobile>
@@ -53,17 +54,12 @@ export function DerouleRepliable({ section }: { section: SectionDeroule }) {
 
 /**
  * LE RÉSUMÉ DE « 02 L'offre » REPLIÉE, pour `PointsOffre.resume`, selon la règle
- * de la maquette (dc.html `teaseOf`) : le premier paragraphe de la section.
- *
- * - Une introduction ou une prose : `undefined`, `PointsOffre` la lit lui-même.
- * - Sinon le paragraphe que le corpus écrit APRÈS le tableau, rangé chez nous
- *   dans `complementOffre` (« Un déménagement de ligne… se prépare à J-90. »
- *   sur `/implantations/paris/essonne/`).
- * - Sinon RIEN (chaîne vide) : le tableau seul ne donne pas de résumé à la
- *   maquette (« L'offre » sans ligne sur Lyon et le Rhône), et les intitulés
- *   joints par « · », le repli de `PointsOffre`, n'y figurent nulle part.
+ * de la V3 (`accrocheDeLOffre`) : l'introduction, sinon la première cellule
+ * du tableau, sinon ce que le corpus écrit APRÈS le tableau, rangé chez nous
+ * dans `complementOffre`. La v2 ne lisait pas les tableaux : « L'offre »
+ * restait sans accroche sur Lyon et le Rhône, et Essonne annonçait le
+ * paragraphe d'après tableau (« Un déménagement de ligne… »).
  */
 export function resumeOffre(offre: SectionOffre, complements?: readonly BlocComplement[]): string | undefined {
-  if (offre.intro?.trim() || offre.prose?.length) return undefined;
-  return premierTexte(complements) ?? "";
+  return accrocheDeLOffre(offre, [premierTexte(complements)]);
 }

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 
-import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import { ligneDuCorpus, resumeDe } from "@/components/site/blocs/resume-de-section";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import TexteRiche, { estCheminInterne } from "@/components/site/blocs/TexteRiche";
 import { continueLeTitre } from "@/components/site/blocs/TitreEtSuite";
@@ -23,6 +23,8 @@ import {
   majusculeInitiale,
   numerote,
 } from "@/components/site/offre/texte-offre";
+import { accrocheDuDeroule } from "@/components/site/offre/DerouleOffre";
+import { accrocheDeLOffre } from "@/components/site/offre/PointsOffre";
 import { cadragePhoto } from "@/lib/cadrage-photos";
 import { altPhoto } from "@/lib/descriptions-photos";
 import type { Preuve, Section, TypeSection } from "@/types/contenu";
@@ -187,19 +189,6 @@ const PROSE_OFFRE: Readonly<Record<string, string>> = {
     "Pour les modifications, notre [bureau d'études](/offres/bureau-etudes/) prépare des dossiers techniques au niveau attendu par vos études de dangers et votre gestion des modifications.",
 };
 
-/**
- * Une puce « **accroche** : texte » telle que le corpus l'écrit, pour le résumé
- * d'une carte repliée (dc.html `teaseOf`, premier élément de liste). La fiche
- * a perdu le deux-points et mis une majuscule au texte (`suitAccroche`
- * absent) : on rend le séparateur du corpus et sa minuscule, sauf sigle.
- */
-function puceDuCorpus(p: { accroche?: string; texte: string; suitAccroche?: boolean }): string {
-  if (!p.accroche) return p.texte;
-  if (p.suitAccroche) return `${p.accroche} ${p.texte}`;
-  const texte = /^\p{Lu}\p{Ll}/u.test(p.texte) ? p.texte.charAt(0).toLowerCase() + p.texte.slice(1) : p.texte;
-  return `${p.accroche} : ${texte}`;
-}
-
 /** Les logos clairs que la maquette inverse (dc.html `logoOf`, `lg.inv`). */
 const LOGOS_INVERSES = /groupe-atlantic|ogf|orthus/;
 
@@ -327,7 +316,9 @@ export default function SectionsMobilesSecteur({ contenu, chemin, photoHeros, bo
     ) : null,
 
     offre ? (
-      <Carte key="offre" titre="L’offre" resume={prose[0] ?? resumeDe(points.map((p) => p.titre))}>
+      /* L'accroche de la V3 (`accrocheDeLOffre`) : la première cellule du
+         tableau, puis seulement la prose qui le suit. */
+      <Carte key="offre" titre="L’offre" resume={accrocheDeLOffre(offre, [...prose, complements[0]?.texte])}>
         <p className={s.phraseCle}>Ce que nous faisons, et ce que ça change pour vous</p>
         {/* Sans compteur « N points » : retiré à la demande de Mehdi le 15/10. */}
         <ListeKv
@@ -371,7 +362,7 @@ export default function SectionsMobilesSecteur({ contenu, chemin, photoHeros, bo
     ) : null,
 
     deroule ? (
-      <Carte key="deroule" titre="Le déroulé">
+      <Carte key="deroule" titre="Le déroulé" resume={accrocheDuDeroule(deroule)}>
         <p className={s.phraseCle}>{titreDeroule}</p>
         <div className={s.enteteListe}>
           <span>{deroule.etapes.length}</span> étapes
@@ -408,7 +399,7 @@ export default function SectionsMobilesSecteur({ contenu, chemin, photoHeros, bo
       <Carte
         key="garanties"
         titre="Ce que nous garantissons"
-        resume={garanties.puces[0] ? puceDuCorpus(garanties.puces[0]) : undefined}
+        resume={garanties.puces[0] ? ligneDuCorpus(garanties.puces[0]) : undefined}
       >
         <ListeKv
           lignes={garanties.puces.map((p) => ({

@@ -1,7 +1,8 @@
 import type { CSSProperties, ReactNode } from "react";
 
 import { LARGEUR, SECTION, SURTITRE, TITRE2 } from "@/components/site/blocs/habillage";
-import TexteRiche, { enTexteNu } from "@/components/site/blocs/TexteRiche";
+import TexteRiche from "@/components/site/blocs/TexteRiche";
+import { accrocheDe, ligneDuCorpus } from "@/components/site/blocs/resume-de-section";
 import type { PrestationBenefice, SectionOffre } from "@/types/contenu";
 
 import ENTETES from "@/lib/entetes-offre-maquette.json";
@@ -40,9 +41,8 @@ export interface ProprietesPointsOffre {
    */
   apres?: ReactNode;
   /**
-   * LE RÉSUMÉ DE LA CARTE REPLIÉE : la phrase que la maquette y écrit (le
-   * premier paragraphe de la section, dc.html `teaseOf`) quand la page la
-   * porte. Absent, les intitulés des points joints par « · ».
+   * LE RÉSUMÉ DE LA CARTE REPLIÉE, quand la page en impose un. Absent, c'est
+   * l'accroche de la V3 (`accrocheDeLOffre`).
    */
   resume?: string;
   /**
@@ -55,9 +55,29 @@ export interface ProprietesPointsOffre {
   proseMobile?: boolean;
 }
 
-/** Un paragraphe de prose en texte : son accroche, puis son texte. */
-function texteDe(paragraphe: { accroche?: string; texte: string }): string {
-  return [paragraphe.accroche, paragraphe.texte].filter(Boolean).join(" ").trim();
+/**
+ * L'ACCROCHE DE « L'OFFRE » REPLIÉE, règle de la V3 (`accrocheDe`), dans
+ * l'ordre du corpus : l'introduction, puis la PREMIÈRE CELLULE DU TABLEAU
+ * (« Un technicien évalué, présent au rythme convenu, temps plein ou
+ * partagé. »), puis la prose qui suit le tableau, puis les compléments que
+ * l'appelant range après elle (`complementOffre`).
+ *
+ * C'est le défaut que la V3 corrige : le site lisait la prose AVANT le
+ * tableau, et la prose d'après tableau est souvent un renvoi (« Pour trancher
+ * sans précipitation, notre comparatif… » sur `/offres/residence/`, « Un parc
+ * à tenir toute l'année se traite par… » sur les spécialités).
+ */
+export function accrocheDeLOffre(
+  section: SectionOffre,
+  apres: readonly (string | undefined)[] = [],
+): string | undefined {
+  const premiere = section.lignes[0]?.prestation;
+  return accrocheDe([
+    { paragraphe: section.intro },
+    { cellule: premiere ? ligneDuCorpus(premiere) : undefined },
+    ...(section.prose ?? []).map((p) => ({ paragraphe: ligneDuCorpus(p) })),
+    ...apres.map((texte) => ({ paragraphe: texte })),
+  ]);
 }
 
 const ENTETE: CSSProperties = {
@@ -182,10 +202,6 @@ export default function PointsOffre({
 }: ProprietesPointsOffre) {
   const points = section.lignes.map(fusionneLigne);
   const entete = enteteDe(section.lignes);
-  /* Le premier paragraphe de la section, résumé de la maquette (dc.html
-     `teaseOf`) : l'introduction, sinon la prose qui suit le tableau. */
-  const premierParagraphe =
-    section.intro?.trim() || (section.prose?.[0] ? texteDe(section.prose[0]) : "");
 
   return (
     <section style={SECTION}>
@@ -200,12 +216,7 @@ export default function PointsOffre({
             retirée, elle ne laisse donc aucun arrêt de tabulation muet. */}
         <SectionPliableMobile
           enTete={<EtiquettePli titre="L’offre" />}
-          resume={
-            resume ??
-            (premierParagraphe
-              ? enTexteNu(premierParagraphe)
-              : points.map((point) => point.titre).filter(Boolean).join(" · "))
-          }
+          resume={resume ?? accrocheDeLOffre(section)}
         >
         {avant}
         {/* LA RANGÉE D'EN-TÊTE DE LA CAPTURE, `1.1fr 0.9fr`, ET SES DEUX

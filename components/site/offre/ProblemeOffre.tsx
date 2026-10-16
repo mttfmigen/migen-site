@@ -8,7 +8,7 @@ import type { SectionProbleme } from "@/types/contenu";
 import EtiquettePli from "./EtiquettePli";
 import { coupePunchline, numerote } from "./texte-offre";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
-import { resumeDe } from "../blocs/resume-de-section";
+import { accrocheDuProbleme } from "../blocs/resume-de-section";
 import styles from "./PageOffre.module.css";
 import { cadragePhoto } from "@/lib/cadrage-photos";
 
@@ -382,13 +382,10 @@ function PliMobile({
     <SectionPliableMobile
       toujoursOuvert={pli === "ouvert"}
       enTete={<EtiquettePli titre={TITRE_CARTE} />}
-      /* LA PHRASE CLÉ D'ABORD, comme la maquette (dc.html `teaseOf` : le
-         premier paragraphe de la section, « Votre maintenance tient sur deux
-         personnes et un tableur… ») ; sans elle, les intitulés des puces. */
-      resume={
-        section.punchline.trim() ||
-        resumeDe(section.puces.map((puce) => puce.accroche ?? puce.texte))
-      }
+      /* LA PHRASE CLÉ D'ABORD, comme la maquette (V3 `teaseOf` : le premier
+         paragraphe de la section, « Votre maintenance tient sur deux
+         personnes et un tableur… ») ; sans elle, la première puce. */
+      resume={accrocheDuProbleme(section)}
     >
       {children}
     </SectionPliableMobile>

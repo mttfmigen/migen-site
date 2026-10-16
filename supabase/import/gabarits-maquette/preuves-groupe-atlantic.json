@@ -63,7 +63,8 @@
     "reponseCartes": [
       {
         "titre": "Vous ajustez l'effectif au besoin réel",
-        "texte": "Un à trois techniciens sont déployés selon la charge des sites."
+        "texte": "Un à trois techniciens sont déployés selon la charge des sites.",
+        "point": true
       },
       {
         "titre": "Vous installez une présence permanente",
@@ -71,7 +72,8 @@
       },
       {
         "titre": "Vous visez le moyen terme",
-        "texte": "La mission est cadrée dans la durée, ce qui permet aux intervenants de connaître les installations."
+        "texte": "La mission est cadrée dans la durée, ce qui permet aux intervenants de connaître les installations.",
+        "point": true
       },
       {
         "titre": "Vous gagnez en réactivité sur les équipements de production",
@@ -79,29 +81,35 @@
       },
       {
         "titre": "Vous n'ouvrez pas de postes",
-        "texte": "Migen recrute, encadre et suit les techniciens affectés."
+        "texte": "Migen recrute, encadre et suit les techniciens affectés.",
+        "point": true
       }
     ],
     "etapes": [
       {
         "titre": "Décision",
-        "texte": "Le Groupe Atlantic choisit de renforcer ses équipes de maintenance plutôt que d'étirer l'existant."
+        "texte": "Le Groupe Atlantic choisit de renforcer ses équipes de maintenance plutôt que d'étirer l'existant.",
+        "point": true
       },
       {
         "titre": "Démarrage",
-        "texte": "La collaboration s'engage sur les sites de production."
+        "texte": "La collaboration s'engage sur les sites de production.",
+        "point": true
       },
       {
         "titre": "Déploiement",
-        "texte": "Un à trois techniciens sont affectés selon les besoins des sites."
+        "texte": "Un à trois techniciens sont affectés selon les besoins des sites.",
+        "point": true
       },
       {
         "titre": "Régime permanent",
-        "texte": "La présence s'installe dans la durée, sur un horizon de moyen terme."
+        "texte": "La présence s'installe dans la durée, sur un horizon de moyen terme.",
+        "point": true
       },
       {
         "titre": "Suivi des interventions",
-        "texte": "Les opérations préventives et correctives sont tenues avec les équipes internes."
+        "texte": "Les opérations préventives et correctives sont tenues avec les équipes internes.",
+        "point": true
       }
     ],
     "dispositif": [

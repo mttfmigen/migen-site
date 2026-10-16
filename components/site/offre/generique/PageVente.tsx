@@ -218,7 +218,7 @@ function Methode({ v }: { v: Vue }) {
       <div className={offre.blocPliablePartage} style={css("max-width:1200px;margin:0 auto;padding:0 40px")}>
         <SectionPliableMobile
           enTete={<EtiquettePli surtitre="La méthode" titre={v.spMethod.title} />}
-          resume={resumeDe(v.spMethod.steps.map((x) => x.title || x.text))}
+          resume={v.accroches[v.spMethod.title] ?? resumeDe(v.spMethod.steps.map((x) => x.title || x.text))}
         >
         <div className="mg-r2" style={css("display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:end;margin-bottom:36px")}>
           <div>
@@ -318,7 +318,7 @@ function Titre({ sec }: { sec: Section }) {
   );
 }
 
-function SectionNumerotee({ sec, chemin }: { sec: Section } & AvecChemin) {
+function SectionNumerotee({ sec, chemin, accroche }: { sec: Section; accroche?: string } & AvecChemin) {
   return (
     /* REPLIÉE SUR TÉLÉPHONE, à pleine largeur : sa gouttière est portée par sa
        grille intérieure, d'où `pliPleineLargeur` (voir le module CSS). Le
@@ -329,7 +329,11 @@ function SectionNumerotee({ sec, chemin }: { sec: Section } & AvecChemin) {
       className={`${offre.blocPliablePartage} ${h.pliPleineLargeur}`}
       style={css(sec.bandCss ?? "")}
     >
-      <SectionPliableMobile numero={!porteSonNumero(sec.num)} enTete={<EtiquettePli surtitre={sec.num} titre={sec.title} />}>
+      <SectionPliableMobile
+        numero={!porteSonNumero(sec.num)}
+        enTete={<EtiquettePli surtitre={sec.num} titre={sec.title} />}
+        resume={accroche}
+      >
       <div className={`mg-r2 ${sec.faqCls ?? ""}`} style={css(sec.gridCss ?? "")}>
         <div style={css(sec.asideCss ?? "")}>
           {sec.titleAside ? <Titre sec={sec} /> : null}
@@ -390,13 +394,31 @@ function SectionNumerotee({ sec, chemin }: { sec: Section } & AvecChemin) {
 
 function Questions({ v }: { v: Vue }) {
   if (!v.spHasFaq) return null;
+  const avecQuestions = v.spFaq.items.length > 0;
   return (
-    <section id="sp-faq" style={css("padding:var(--sec) 0 0;scroll-margin-top:96px")}>
+    /* `data-faq-maquette` : au téléphone, le seul titre « Questions
+       fréquentes », comme la V3 et les autres gabarits (`app/globals.css`,
+       « l'en-tête de la FAQ à photo ») ; le H2 de bureau et « Poser ma
+       question » sortent de l'écran sous 881 px, leur texte reste dans le DOM.
+       SANS QUESTION (quatre des six pages de vente, la fiche n'en livre
+       aucune), la carte n'est qu'un appel : le H2 sort seul
+       (`faqTitreBureau`), le bouton reste, sans quoi la carte serait vide.
+       Avant le 16/10, ces quatre pages montraient deux titres au téléphone. */
+    <section
+      data-faq-maquette=""
+      id="sp-faq"
+      style={css("padding:var(--sec) 0 0;scroll-margin-top:96px")}
+    >
       <div style={css("max-width:1200px;margin:0 auto;padding:0 40px")}>
         <div className={`mg-r2 mg-faqph ${h.faqPhoto}`} style={css("display:grid;grid-template-columns:.8fr 1.2fr;gap:52px;align-items:start")}>
           <div style={css("position:sticky;top:112px")}>
-            <div style={SURTITRE}>Questions fréquentes</div>
-            <h2 style={css(`${TITRE_SECTION};max-width:14ch;margin-bottom:22px`)}>Ce qu’on nous demande avant de signer</h2>
+            <div data-faq-surtitre="" style={SURTITRE}>Questions fréquentes</div>
+            <h2
+              {...(avecQuestions ? { "data-faq-titre": "" } : { className: h.faqTitreBureau })}
+              style={css(`${TITRE_SECTION};max-width:14ch;margin-bottom:22px`)}
+            >
+              Ce qu’on nous demande avant de signer
+            </h2>
             <a className={h.bouton} href="#cx-form" style={css(BOUTON)}>Poser ma question</a>
           </div>
           {/* LA PREMIÈRE QUESTION EST OUVERTE AU BUREAU, comme la maquette V3
@@ -475,7 +497,7 @@ export default function PageVente({ v, formulaire, chemin }: { v: Vue; formulair
           {v.spHasProof ? <References key="references" v={v} /> : null}
           {v.spRest.map((sec) => (
             <Fragment key={sec.id}>
-              <SectionNumerotee sec={sec} chemin={chemin} />
+              <SectionNumerotee sec={sec} chemin={chemin} accroche={v.accroches[sec.title]} />
             </Fragment>
           ))}
         </CadenceOffre>

@@ -387,10 +387,10 @@ export default function PageDomaine({
 
         {/* ------------------------------------------- 8. « 05 Déroulé » */}
 
-        {/* Replié au téléphone, comme dans la maquette (« 03 Le déroulé »),
-            par le repli sur demande du bloc partagé. Sans résumé : la section
-            ne porte que ses étapes, et dc.html `teaseOf` n'en tire rien. */}
-        {deroule ? <DerouleOffre section={deroule} pli="replie" resume={null} /> : null}
+        {/* Replié au téléphone (« 03 Le déroulé »). L'accroche est celle de la
+            V3 : la première étape du corpus (`accrocheDuDeroule`), que la v2
+            ne lisait pas. */}
+        {deroule ? <DerouleOffre section={deroule} pli="replie" /> : null}
 
         {/* ----------------------------------------- 9. « 06 Garanties » */}
 

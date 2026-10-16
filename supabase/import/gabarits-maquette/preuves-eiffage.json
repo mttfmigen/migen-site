@@ -60,49 +60,60 @@
     "reponseCartes": [
       {
         "titre": "Vous renforcez les équipes en place, sans les remplacer",
-        "texte": "Trois techniciens spécialisés Migen viennent en appui sur le site."
+        "texte": "Trois techniciens spécialisés Migen viennent en appui sur le site.",
+        "point": true
       },
       {
         "titre": "Vous couvrez les composants essentiels du système",
-        "texte": "Panneaux solaires, onduleurs et dispositifs de suivi entrent dans le périmètre de contrôle."
+        "texte": "Panneaux solaires, onduleurs et dispositifs de suivi entrent dans le périmètre de contrôle.",
+        "point": true
       },
       {
         "titre": "Vous détectez l'usure avant la panne",
-        "texte": "Les signes de dysfonctionnement sont relevés avant qu'ils ne coupent la production."
+        "texte": "Les signes de dysfonctionnement sont relevés avant qu'ils ne coupent la production.",
+        "point": true
       },
       {
         "titre": "Vous maximisez la durée de vie des installations",
-        "texte": "Un préventif tenu repousse les remplacements d'équipements."
+        "texte": "Un préventif tenu repousse les remplacements d'équipements.",
+        "point": true
       },
       {
         "titre": "Vous partagez les bonnes pratiques",
-        "texte": "La collaboration entre les deux équipes fait circuler les méthodes de maintenance."
+        "texte": "La collaboration entre les deux équipes fait circuler les méthodes de maintenance.",
+        "point": true
       }
     ],
     "etapes": [
       {
         "titre": "Sélection",
-        "texte": "Migen est retenu pour rejoindre Eiffage sur le projet photovoltaïque."
+        "texte": "Migen est retenu pour rejoindre Eiffage sur le projet photovoltaïque.",
+        "point": true
       },
       {
         "titre": "Cadrage du renfort",
-        "texte": "Trois techniciens spécialisés sont affectés au chantier."
+        "texte": "Trois techniciens spécialisés sont affectés au chantier.",
+        "point": true
       },
       {
         "titre": "Déploiement sur site",
-        "texte": "L'équipe Migen s'intègre aux équipes Eiffage déjà présentes."
+        "texte": "L'équipe Migen s'intègre aux équipes Eiffage déjà présentes.",
+        "point": true
       },
       {
         "titre": "Contrôle des composants",
-        "texte": "Panneaux, onduleurs et dispositifs de suivi sont passés en revue."
+        "texte": "Panneaux, onduleurs et dispositifs de suivi sont passés en revue.",
+        "point": true
       },
       {
         "titre": "Maintenance préventive",
-        "texte": "Les signes d'usure et de dysfonctionnement sont traités avant interruption de service."
+        "texte": "Les signes d'usure et de dysfonctionnement sont traités avant interruption de service.",
+        "point": true
       },
       {
         "titre": "Fin de mission",
-        "texte": "Le renfort se retire à l'échéance."
+        "texte": "Le renfort se retire à l'échéance.",
+        "point": true
       }
     ],
     "dispositif": [

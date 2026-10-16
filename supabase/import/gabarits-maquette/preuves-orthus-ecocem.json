@@ -61,15 +61,18 @@
     "reponseCartes": [
       {
         "titre": "Vous avez un pilote unique du chantier",
-        "texte": "Migen Travaux assure la gestion du projet de bout en bout, de la conception à la réalisation."
+        "texte": "Migen Travaux assure la gestion du projet de bout en bout, de la conception à la réalisation.",
+        "point": true
       },
       {
         "titre": "Vous n'arbitrez pas entre les corps de métier",
-        "texte": "La coordination des intervenants est portée par Migen Travaux."
+        "texte": "La coordination des intervenants est portée par Migen Travaux.",
+        "point": true
       },
       {
         "titre": "Vous tenez un planning long",
-        "texte": "Les jalons critiques sont suivis jusqu'à la livraison prévue."
+        "texte": "Les jalons critiques sont suivis jusqu'à la livraison prévue.",
+        "point": true
       },
       {
         "titre": "Vous limitez les risques techniques et logistiques",
@@ -83,27 +86,33 @@
     "etapes": [
       {
         "titre": "Choix du partenaire",
-        "texte": "Ecocem confie à Migen Travaux la conception et la réalisation complète du site industriel."
+        "texte": "Ecocem confie à Migen Travaux la conception et la réalisation complète du site industriel.",
+        "point": true
       },
       {
         "titre": "Cadrage du projet",
-        "texte": "Le périmètre, les corps de métier et les jalons critiques sont arrêtés."
+        "texte": "Le périmètre, les corps de métier et les jalons critiques sont arrêtés.",
+        "point": true
       },
       {
         "titre": "Constitution de l'équipe",
-        "texte": "Une équipe Migen Travaux dédiée est affectée au suivi de chaque étape."
+        "texte": "Une équipe Migen Travaux dédiée est affectée au suivi de chaque étape.",
+        "point": true
       },
       {
         "titre": "Travaux structurels",
-        "texte": "Fondations, structures et bâtiments industriels sont réalisés."
+        "texte": "Fondations, structures et bâtiments industriels sont réalisés.",
+        "point": true
       },
       {
         "titre": "Équipements et raccordements",
-        "texte": "Réseaux, plateformes de tests et raccordements industriels sont intégrés."
+        "texte": "Réseaux, plateformes de tests et raccordements industriels sont intégrés.",
+        "point": true
       },
       {
         "titre": "Sécurisation et livraison",
-        "texte": "Les installations sont sécurisées, la livraison est prévue d'ici."
+        "texte": "Les installations sont sécurisées, la livraison est prévue d'ici.",
+        "point": true
       }
     ],
     "dispositif": [

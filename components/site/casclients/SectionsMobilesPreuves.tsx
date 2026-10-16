@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { appliqueDecisions } from "@/lib/decisions-copie";
-import { courtLibelle, entreeDe } from "@/components/site/cocon/maillage-mobile";
+import { courtLibelle, entreeDe, type EntreeIndex } from "@/components/site/cocon/maillage-mobile";
 import { logoEnFond } from "@/components/site/preuve/CarrouselRealisations";
 import { libelleCas } from "@/components/site/preuve/noms-clients";
 
@@ -25,12 +25,17 @@ const TITRES_MAQUETTE: Readonly<Record<string, string>> = {
   Dépannage: "Dépannage, remise en état et contrat de parc",
 };
 
-/** Le lien d'une carte : le h1 de l'étude (dc.html, `t: x.h1`), passé par
-    les décisions de copie, sinon le nom du client. Libellé de la maquette V3
-    (`caseLbl`) : sans « Étude de cas », client en casse normale. */
+/** Le h1 d'une étude de l'index, passé par les décisions de copie. */
+function h1De(entree: EntreeIndex): string {
+  return appliqueDecisions(entree.h1.replace(/\s+/g, " ").trim(), entree.url);
+}
+
+/** Le lien d'une carte : le h1 de l'étude (dc.html, `t: x.h1`), sinon le nom
+    du client. Libellé de la maquette V3 (`caseLbl`) : sans « Étude de cas »,
+    client en casse normale. */
 function titreEtude(carte: CartePreuve): string {
   const entree = entreeDe(carte.url);
-  return entree ? libelleCas(appliqueDecisions(entree.h1.replace(/\s+/g, " ").trim(), carte.url)) : carte.client;
+  return entree ? libelleCas(h1De(entree)) : carte.client;
 }
 
 function CarteRail({ carte }: { carte: CartePreuve }) {
@@ -92,6 +97,11 @@ export function sectionsMobilesPreuves(vues: readonly VuePreuves[], recents: rea
         <summary>
           <span data-carte-titre="">Les derniers publiés</span>
           <span aria-hidden="true">›</span>
+          {/* L'accroche de la V3 : le premier élément de la liste, son titre
+              ENTIER sans « Étude de cas » (dc.html `teaseOf`, `cleanCase`).
+              `courtLibelle` le coupait à 54 signes (« …qui reviennent
+              sur… ») ; la feuille partagée borne l'accroche à trois lignes. */}
+          <p>{h1De(publies[0]).replace(/^Étude de cas\s+/i, "")}</p>
         </summary>
         <div>
           <ul className={styles.listeRecents}>

@@ -13,10 +13,11 @@ import type {
 } from "@/types/preuve";
 
 import styles from "./PagePreuve.module.css";
-import TitreEtSuite, { continueLeTitre } from "../blocs/TitreEtSuite";
+import TitreEtSuite from "../blocs/TitreEtSuite";
 import { cadragePhoto } from "@/lib/cadrage-photos";
 import { altPhoto } from "@/lib/descriptions-photos";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import { accrocheDe, ligneDuCorpus } from "@/components/site/blocs/resume-de-section";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
 import RappelFinalMobile from "@/components/site/mobile/RappelFinalMobile";
 import BandeauRappelMobile from "@/components/site/mobile/BandeauRappelMobile";
@@ -953,13 +954,6 @@ function CarteReponse({ carte, rang, total }: { carte: CartePreuve; rang: number
   );
 }
 
-/** L'accroche d'une carte fermée tirée de son premier point, « Titre :
-    texte » comme la maquette la compose (dc.html L438, `teaseOf`), ou le
-    titre et sa suite d'un seul tenant quand le texte la continue. */
-function resumeDuPoint(titre: string, texte?: string): string {
-  return texte && continueLeTitre(texte) ? `${titre}${texte}` : [titre, texte].filter(Boolean).join(" : ");
-}
-
 /* Un bloc du complément que la maquette MOBILE range DANS une section
    numérotée (le corpus le pose sous `## CE QUE NOUS AVONS MIS EN PLACE` ou
    `## LE RÉSULTAT`) : un titre identique et un texte seul, sans puces. */
@@ -1194,8 +1188,15 @@ export default function PagePreuve({
   /* LE RÉSUMÉ DE LA CARTE FERMÉE (dc.html L438, `teaseOf`) : le texte de la
      première puce, « Libellé : texte », tel que la maquette le compose ; la
      feuille partagée le coupe à deux lignes. Il vit dans le `<summary>`, en
-     `data-mobile-seulement` : rien ne change à 1280 px. */
-  const resumeReponse = reponse[0] ? casseNormale(resumeDuPoint(reponse[0].titre, reponse[0].texte)) : undefined;
+     `data-mobile-seulement` : rien ne change à 1280 px. La couture est celle
+     de toutes les accroches (`ligneDuCorpus`) : virgule qui continue le titre,
+     point du corpus, sinon « : » et minuscule ; puis la casse normale des noms
+     de clients au téléphone (`casseNormale`, comme la V3). */
+  const premiereCarte = reponse[0];
+  const accrocheReponse = premiereCarte
+    ? ligneDuCorpus({ accroche: premiereCarte.titre, texte: premiereCarte.texte, point: premiereCarte.point })
+    : undefined;
+  const resumeReponse = accrocheReponse ? casseNormale(accrocheReponse) : undefined;
   const texteMisEnPlace = texteDeplace(contenu.complement, "Ce que nous avons mis en place");
   const sectionReponse =
     reponse.length > 0 ? (
@@ -1234,10 +1235,13 @@ export default function PagePreuve({
      étape, « Rapprochement : Savoye et Migen constatent… ». Et pour le
      dispositif, sa première rangée, « Client : Savoye, concepteur… » (la V3
      n'en garde que le libellé, « Client », qui n'annonce rien). */
-  const resumeDeroule = etapes[0] ? casseNormale(resumeDuPoint(etapes[0].titre, etapes[0].texte)) : undefined;
-  const resumeDispositif = dispositif[0]
-    ? casseNormale([dispositif[0].libelle, dispositif[0].valeur].filter(Boolean).join(" : "))
-    : undefined;
+  const accrocheDeroule = accrocheDe([
+    { liste: etapes.map((etape) => ligneDuCorpus({ accroche: etape.titre, texte: etape.texte, point: etape.point })) },
+  ]);
+  const resumeDeroule = accrocheDeroule ? casseNormale(accrocheDeroule) : undefined;
+  /* La V3 lit la première cellule du tableau (« Client »). */
+  const accrocheDispositif = accrocheDe([{ cellule: dispositif[0]?.libelle }]);
+  const resumeDispositif = accrocheDispositif ? casseNormale(accrocheDispositif) : undefined;
   /* Repli manquant mesuré le 14/10 (gabarit 02 de +36 à +51 % plus haut que la
      maquette à 390 px) : le déroulé était la seule section numérotée de la
      maquette sans bascule ici. */

@@ -33,7 +33,14 @@ export interface OffreMobile {
   mention?: string;
   /** Le corps de la carte « 01 » de `/offres/full-service/` (dc.html `isKv`). */
   couverture?: { tete: string; suite: string; points: PointMobile[]; cloture: string };
-  /** dc.html `teaseOf` : le résumé des cartes repliées. `null` : aucun résumé. */
+  /**
+   * dc.html `teaseOf` : le résumé des cartes repliées, quand la règle commune
+   * (`blocs/resume-de-section.ts`, `accrocheDe`) ne le trouve pas dans nos
+   * données. `null` : aucun résumé. Les entrées relevées sur la v2 que la V3
+   * contredit (« L'offre » et « Le déroulé » sans accroche, ou annoncés par
+   * une phrase d'après tableau) sont retirées le 16/10 : la règle commune
+   * donne désormais l'accroche de la V3.
+   */
   resumes?: {
     partage?: string;
     offre?: string;
@@ -54,21 +61,14 @@ export const OFFRES_MOBILE: Readonly<Record<string, OffreMobile>> = {
       "Plusieurs façons de nous confier vos machines, du dépannage d'urgence au technicien présent chaque jour dans vos murs. Les mêmes techniciens évalués dans tous les cas, et le même rapport après chaque passage.",
     mention:
       "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte en dehors.",
-    resumes: { offre: "", deroule: null },
   },
   "/secteurs/": {
     photoTete: "/assets/web/x-auto-ligne.jpg",
     mention:
       "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte en option.",
-    resumes: {
-      offre:
-        "Chaque page secteur détaille les équipements couverts et les contraintes propres au terrain :…",
-      deroule: null,
-    },
   },
   "/offres/residence/": {
     photoTete: "/assets/web/team-duo.jpg",
-    resumes: { deroule: null },
   },
   "/offres/full-service/": {
     photoTete: "/assets/web/sv-duo-impact.jpg",
@@ -103,9 +103,6 @@ export const OFFRES_MOBILE: Readonly<Record<string, OffreMobile>> = {
     resumes: {
       partage:
         "Vous gardez les décisions : criticité des lignes, priorités, investissements. Nous éclairons, vous…",
-      offre:
-        "Le Full service se combine avec un technicien en résidence au quotidien quand votre site a besoin…",
-      deroule: null,
     },
     carteFinale: {
       surtitre: "Passer à l’action",
@@ -120,8 +117,6 @@ export const OFFRES_MOBILE: Readonly<Record<string, OffreMobile>> = {
     mention:
       "**Nous vous rappelons dans l'heure**, du lundi au vendredi de 8h00 à 18h30. Astreinte pour les urgences en cours de réalisation.",
     resumes: {
-      offre:
-        "Nos domaines. Structures et châssis, mécano-soudé, transmissions, outillages, implantation sur site,…",
       garanties:
         "Un rappel dans l'heure du lundi au vendredi, 8h00 à 18h30, au 04 78 33 72 05, et une astreinte…",
     },

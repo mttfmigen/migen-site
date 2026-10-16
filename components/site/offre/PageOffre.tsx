@@ -19,7 +19,7 @@ import {
   PremierMois,
 } from "./BlocsZeroArret";
 import ComplementsOffre, { ComplementsDansCarte, premierTexte } from "./ComplementsOffre";
-import DerouleOffre from "./DerouleOffre";
+import DerouleOffre, { accrocheDuDeroule } from "./DerouleOffre";
 import DomainesEtudes from "./DomainesEtudes";
 import GarantiesOffre from "./GarantiesOffre";
 import LogosClients from "./LogosClients";
@@ -27,7 +27,7 @@ import MaillageOffres, { photosDuMaillage } from "./MaillageOffres";
 import MarquesOffre from "./MarquesOffre";
 import PagesLiees from "./PagesLiees";
 import PanneauFormulaire from "./PanneauFormulaire";
-import PointsOffre from "./PointsOffre";
+import PointsOffre, { accrocheDeLOffre } from "./PointsOffre";
 import PrestationsRegroupees from "./PrestationsRegroupees";
 import ProblemeOffre, { photoDuProbleme, type ProblemeMobile } from "./ProblemeOffre";
 import {
@@ -657,9 +657,7 @@ export default function PageOffre({
                   resume={
                     mobile?.resumes?.offre
                       ? copie(mobile.resumes.offre)
-                      : offre.intro || offre.prose?.length
-                        ? undefined
-                        : premierTexte(contenu.complementOffre)
+                      : accrocheDeLOffre(offre, [premierTexte(contenu.complementOffre)])
                   }
                 />
               ) : null}
@@ -712,7 +710,7 @@ export default function PageOffre({
                   resume={
                     mobile?.resumes?.deroule === null
                       ? null
-                      : premierTexte(contenu.complementDeroule)
+                      : (accrocheDuDeroule(deroule) ?? premierTexte(contenu.complementDeroule))
                   }
                 />
               ) : null}

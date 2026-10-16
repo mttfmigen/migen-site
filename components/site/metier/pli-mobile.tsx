@@ -1,3 +1,4 @@
+import { ligneDuCorpus } from "@/components/site/blocs/resume-de-section";
 import { enTexteNu } from "@/components/site/blocs/TexteRiche";
 
 /**
@@ -102,10 +103,22 @@ export function amorceDe(section: object): string | undefined {
   const champ = (cle: string): unknown => (section as Record<string, unknown>)[cle];
   const premier = (valeur: unknown): string | undefined =>
     Array.isArray(valeur) && typeof valeur[0] === "string" ? valeur[0] : undefined;
+  /* V3 (16/10) : une section qui n'a pas de paragraphe s'annonce par sa
+     première étape (« Comment nous rejoindre » : « Un échange : vous décrivez
+     votre parcours… »), comme toute liste numérotée. */
+  const etapes = champ("etapes");
+  const premiereEtape =
+    Array.isArray(etapes) && etapes[0] && typeof etapes[0] === "object"
+      ? ligneDuCorpus({
+          accroche: (etapes[0] as { titre?: string }).titre,
+          texte: (etapes[0] as { texte?: string }).texte,
+        })
+      : undefined;
   const brut =
     premier(champ("intros")) ??
     (typeof champ("intro") === "string" ? (champ("intro") as string) : undefined) ??
-    premier(champ("textes"));
+    premier(champ("textes")) ??
+    premiereEtape;
   const texte = enTexteNu(brut).replace(/\s+/g, " ").trim();
   if (!texte) return undefined;
   return texte.length > 104 ? `${texte.slice(0, texte.lastIndexOf(" ", 100))}…` : texte;

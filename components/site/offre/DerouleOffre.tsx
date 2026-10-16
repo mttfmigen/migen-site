@@ -7,7 +7,7 @@ import type { SectionDeroule } from "@/types/contenu";
 import { majusculeInitiale, numerote } from "./texte-offre";
 
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
-import { resumeDe } from "../blocs/resume-de-section";
+import { accrocheDe, ligneDuCorpus } from "../blocs/resume-de-section";
 
 import EtiquettePli from "./EtiquettePli";
 import styles from "./PageOffre.module.css";
@@ -55,10 +55,24 @@ export interface ProprietesDerouleOffre {
   /** En fin du corps de la carte, au téléphone : voir `PointsOffre.apres`. */
   apres?: ReactNode;
   /**
-   * Le résumé de la carte repliée, voir `PointsOffre.resume`. `null` : aucun
-   * résumé, comme la maquette quand la section ne porte que ses étapes.
+   * Le résumé de la carte repliée, voir `PointsOffre.resume`. Absent, c'est
+   * l'accroche de la V3 (`accrocheDuDeroule`). `null` : aucun résumé.
    */
   resume?: string | null;
+}
+
+/**
+ * L'ACCROCHE DE « LE DÉROULÉ » REPLIÉ, règle de la V3 (`accrocheDe`) : le
+ * chapô de la section s'il existe, sinon la PREMIÈRE ÉTAPE telle que le
+ * corpus l'écrit, « **Cadrage du besoin** : un chargé d'affaires analyse le
+ * périmètre… ». La v2 ne lisait pas les listes numérotées, d'où la carte sans
+ * accroche sur 122 pages jusqu'au 16/10.
+ */
+export function accrocheDuDeroule(section: SectionDeroule): string | undefined {
+  return accrocheDe([
+    { paragraphe: section.intro },
+    { liste: section.etapes.map((etape) => ligneDuCorpus({ accroche: etape.titre, texte: etape.texte })) },
+  ]);
 }
 
 const CARTE_ENTETE: CSSProperties = {
@@ -257,17 +271,14 @@ export default function DerouleOffre({
             d'en-tête, rendue en texte au téléphone, et les étapes y passent
             en frise (`data-mm-frise`). Au-dessus de 880 px la bascule entière est
             retirée (`.blocPliablePartage`), elle ne laisse donc aucun arrêt de
-            tabulation muet. Le résumé suit la règle de la maquette mobile :
-            les intitulés des étapes joints par « · », jamais une phrase
-            rédigée. */}
+            tabulation muet. Le résumé suit la règle de la V3 : la première
+            étape du corpus (`accrocheDuDeroule`), jamais une phrase rédigée. */}
         {pli ? (
           <SectionPliableMobile
             toujoursOuvert={pli === "ouvert"}
             enTete={<EtiquettePli titre="Le déroulé" />}
             resume={
-              resume === null
-                ? undefined
-                : (resume ?? resumeDe(section.etapes.map((etape) => etape.titre)))
+              resume === null ? undefined : (resume ?? accrocheDuDeroule(section))
             }
           >
             {avant}

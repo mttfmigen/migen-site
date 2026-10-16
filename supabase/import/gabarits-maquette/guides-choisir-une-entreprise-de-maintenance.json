@@ -475,23 +475,28 @@
               "items": [
                 {
                   "titre": "Ramenez tout au même périmètre",
-                  "texte": "Listez les équipements couverts par l'un et pas par l'autre, et faites chiffrer les manquants. Un devis moins cher couvre souvent moins de machines."
+                  "texte": "Listez les équipements couverts par l'un et pas par l'autre, et faites chiffrer les manquants. Un devis moins cher couvre souvent moins de machines.",
+                  "point": true
                 },
                 {
                   "titre": "Ramenez tout à la même durée",
-                  "texte": "Un forfait mensuel, un engagement annuel et un taux horaire ne se lisent qu'au coût sur douze mois, à volume d'activité identique."
+                  "texte": "Un forfait mensuel, un engagement annuel et un taux horaire ne se lisent qu'au coût sur douze mois, à volume d'activité identique.",
+                  "point": true
                 },
                 {
                   "titre": "Sortez les hypothèses cachées",
-                  "texte": "Nombre d'interventions prévues, heures incluses, pièces incluses ou non, consommables, déplacements. Écrivez-les à côté du prix."
+                  "texte": "Nombre d'interventions prévues, heures incluses, pièces incluses ou non, consommables, déplacements. Écrivez-les à côté du prix.",
+                  "point": true
                 },
                 {
                   "titre": "Ajoutez le coût des exclusions",
-                  "texte": "Ce qui n'est pas couvert sera fait par quelqu'un, donc payé par vous. Chiffrez-le et rajoutez-le à la ligne du devis concerné."
+                  "texte": "Ce qui n'est pas couvert sera fait par quelqu'un, donc payé par vous. Chiffrez-le et rajoutez-le à la ligne du devis concerné.",
+                  "point": true
                 },
                 {
                   "titre": "Valorisez le temps de diagnostic",
-                  "texte": "Multipliez votre coût d'arrêt horaire par l'écart de temps de diagnostic annoncé. Cette ligne dépasse souvent l'écart de prix entre les deux offres."
+                  "texte": "Multipliez votre coût d'arrêt horaire par l'écart de temps de diagnostic annoncé. Cette ligne dépasse souvent l'écart de prix entre les deux offres.",
+                  "point": true
                 },
                 {
                   "titre": "Notez les critères non financiers",
@@ -499,7 +504,8 @@
                 },
                 {
                   "titre": "Décidez sur le total, pas sur la première ligne",
-                  "texte": "Le devis le moins cher à l'heure est rarement le moins cher à l'année."
+                  "texte": "Le devis le moins cher à l'heure est rarement le moins cher à l'année.",
+                  "point": true
                 }
               ]
             }

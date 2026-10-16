@@ -60,7 +60,8 @@
     "reponseCartes": [
       {
         "titre": "Vous cadrez la prestation par un contrat de maintenance",
-        "texte": "Les techniciens Migen s'engagent à respecter les cahiers des charges établis."
+        "texte": "Les techniciens Migen s'engagent à respecter les cahiers des charges établis.",
+        "point": true
       },
       {
         "titre": "Vous traitez l'étanchéité",
@@ -82,27 +83,33 @@
     "etapes": [
       {
         "titre": "Expression du besoin",
-        "texte": "Timescope cherche un suivi de maintenance approfondi et un partenaire technique dans la durée."
+        "texte": "Timescope cherche un suivi de maintenance approfondi et un partenaire technique dans la durée.",
+        "point": true
       },
       {
         "titre": "Mise en place du contrat",
-        "texte": "La prestation est cadrée par un contrat de maintenance, avec des cahiers des charges établis."
+        "texte": "La prestation est cadrée par un contrat de maintenance, avec des cahiers des charges établis.",
+        "point": true
       },
       {
         "titre": "Prise du parc",
-        "texte": "Les techniciens Migen interviennent sur les casques déployés."
+        "texte": "Les techniciens Migen interviennent sur les casques déployés.",
+        "point": true
       },
       {
         "titre": "Traitement des points sensibles",
-        "texte": "L'étanchéité et les réglages des équipements concentrent l'effort technique."
+        "texte": "L'étanchéité et les réglages des équipements concentrent l'effort technique.",
+        "point": true
       },
       {
         "titre": "Propositions d'amélioration",
-        "texte": "Des solutions sont formulées pour la fiabilité et les performances."
+        "texte": "Des solutions sont formulées pour la fiabilité et les performances.",
+        "point": true
       },
       {
         "titre": "Reconduction",
-        "texte": "Le contrat court toujours, plus d'un an après son démarrage."
+        "texte": "Le contrat court toujours, plus d'un an après son démarrage.",
+        "point": true
       }
     ],
     "dispositif": [

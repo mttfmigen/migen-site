@@ -61,15 +61,18 @@
     "reponseCartes": [
       {
         "titre": "Vous obtenez un diagnostic rapide sur place",
-        "texte": "Les techniciens se déplacent, étudient minutieusement les aspects techniques du parc."
+        "texte": "Les techniciens se déplacent, étudient minutieusement les aspects techniques du parc.",
+        "point": true
       },
       {
         "titre": "Vous recevez plusieurs propositions, pas une seule",
-        "texte": "Chacune est adaptée aux contraintes budgétaires de l'entreprise."
+        "texte": "Chacune est adaptée aux contraintes budgétaires de l'entreprise.",
+        "point": true
       },
       {
         "titre": "Vous économisez sur l'acquisition de matériel neuf",
-        "texte": "Les solutions conçues permettent de conserver les équipements en place."
+        "texte": "Les solutions conçues permettent de conserver les équipements en place.",
+        "point": true
       },
       {
         "titre": "Vous optimisez les ressources dont vous disposez déjà",
@@ -83,27 +86,33 @@
     "etapes": [
       {
         "titre": "Appel du client",
-        "texte": "Joint Lyonnais sollicite Migen face à des défaillances qui entravent la production."
+        "texte": "Joint Lyonnais sollicite Migen face à des défaillances qui entravent la production.",
+        "point": true
       },
       {
         "titre": "Déplacement des techniciens",
-        "texte": "Une équipe est dépêchée sur place, sur le parc machines lyonnais."
+        "texte": "Une équipe est dépêchée sur place, sur le parc machines lyonnais.",
+        "point": true
       },
       {
         "titre": "Étude technique",
-        "texte": "Les aspects techniques des équipements sont examinés en détail."
+        "texte": "Les aspects techniques des équipements sont examinés en détail.",
+        "point": true
       },
       {
         "titre": "Propositions chiffrées",
-        "texte": "Plusieurs options sont présentées, calées sur le budget de la PME."
+        "texte": "Plusieurs options sont présentées, calées sur le budget de la PME.",
+        "point": true
       },
       {
         "titre": "Traitement des défaillances",
-        "texte": "Les solutions retenues sont mises en œuvre sur le parc existant."
+        "texte": "Les solutions retenues sont mises en œuvre sur le parc existant.",
+        "point": true
       },
       {
         "titre": "Suite de la collaboration",
-        "texte": "La relation se poursuit."
+        "texte": "La relation se poursuit.",
+        "point": true
       }
     ],
     "dispositif": [

@@ -5,7 +5,7 @@ import type { CSSProperties, ReactNode } from "react";
 import { FilArianeVue } from "@/components/cocon/FilAriane";
 import { LARGEUR } from "@/components/site/blocs/habillage";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
-import TexteRiche, { enTexteNu } from "@/components/site/blocs/TexteRiche";
+import TexteRiche from "@/components/site/blocs/TexteRiche";
 import {
   courtLibelle,
   entreeDe,
@@ -17,6 +17,7 @@ import MarquesOffre, {
   type ProprietesMarquesOffre,
 } from "@/components/site/offre/MarquesOffre";
 import { TELEPHONE_SITE } from "@/components/site/entete-donnees";
+import { accrocheDeLOffre } from "@/components/site/offre/PointsOffre";
 import { CIBLE_CONTACT } from "@/components/site/mobile/conversion-donnees";
 import { altPhoto } from "@/lib/descriptions-photos";
 import type { Paragraphe, SectionOffre } from "@/types/contenu";
@@ -591,19 +592,19 @@ export function MarquesRepliees(props: ProprietesMarquesOffre) {
 /* -------------------------------------------- la prose de « L'offre » */
 
 /**
- * LE RÉSUMÉ DE LA CARTE « L'offre » REPLIÉE, quand la section ne porte ni
- * introduction ni prose : le paragraphe que le corpus écrit après le tableau,
- * rangé dans `complementOffre` (« Le vérin n'est souvent que le symptôme… »).
- * C'est le premier `p` de la section, celui que dc.html `teaseOf` affiche.
- * Sinon `undefined`, et `PointsOffre` garde sa règle (intro, prose, puis les
- * intitulés joints par « · »).
+ * LE RÉSUMÉ DE LA CARTE « L'offre » REPLIÉE, règle de la V3
+ * (`offre/PointsOffre.tsx`, `accrocheDeLOffre`) : l'introduction, sinon la
+ * première cellule du tableau (« La recherche de panne par le programme :
+ * connexion en ligne… »), sinon le paragraphe que le corpus écrit APRÈS le
+ * tableau, rangé dans `complementOffre`. Avant le 16/10, ce paragraphe
+ * passait devant le tableau, et la carte annonçait un renvoi (« Un parc à
+ * tenir toute l'année se traite par le contrat… »).
  */
 export function resumeOffre(
   offre: SectionOffre,
   complements: readonly BlocComplement[] | undefined,
 ): string | undefined {
-  if (offre.intro?.trim() || offre.prose?.length) return undefined;
-  return enTexteNu(complements?.[0]?.texte) || undefined;
+  return accrocheDeLOffre(offre, [complements?.[0]?.texte]);
 }
 
 /* dc.html L130, paragraphe de section (`isP`) : 400 15px/1.6, encre seconde. */

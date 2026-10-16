@@ -60,45 +60,55 @@
     "reponseCartes": [
       {
         "titre": "Vous confiez la maintenance du site, pas une portion de périmètre",
-        "texte": "Migen prend le préventif et le curatif, sur la fonderie comme sur l'usinage."
+        "texte": "Migen prend le préventif et le curatif, sur la fonderie comme sur l'usinage.",
+        "point": true
       },
       {
         "titre": "Vous disposez d'une équipe dimensionnée pour le parc réel",
-        "texte": "Six techniciens de maintenance sont affectés au site."
+        "texte": "Six techniciens de maintenance sont affectés au site.",
+        "point": true
       },
       {
         "titre": "Vous gardez le site en marche sept jours sur sept",
-        "texte": "Les interventions se déploient sans interruption, y compris le week-end."
+        "texte": "Les interventions se déploient sans interruption, y compris le week-end.",
+        "point": true
       },
       {
         "titre": "Vous travaillez avec vos équipes, pas à côté d'elles",
-        "texte": "La prestation se mène en partenariat avec les équipes techniques de Stellantis."
+        "texte": "La prestation se mène en partenariat avec les équipes techniques de Stellantis.",
+        "point": true
       },
       {
         "titre": "Vous n'avez pas de recrutement à porter",
-        "texte": "Migen recrute, encadre et fait tourner l'équipe qui tient le parc."
+        "texte": "Migen recrute, encadre et fait tourner l'équipe qui tient le parc.",
+        "point": true
       }
     ],
     "etapes": [
       {
         "titre": "Constat partagé",
-        "texte": "Le parc est en défaillance constante, sous l'effet de l'activité de fonderie et du manque de personnel qualifié."
+        "texte": "Le parc est en défaillance constante, sous l'effet de l'activité de fonderie et du manque de personnel qualifié.",
+        "point": true
       },
       {
         "titre": "Engagement",
-        "texte": "Migen s'engage sur la gestion complète de la maintenance du site."
+        "texte": "Migen s'engage sur la gestion complète de la maintenance du site.",
+        "point": true
       },
       {
         "titre": "Reprise en 8 semaines",
-        "texte": "La transition vers la prise en charge complète tient en quelques semaines, pas en une année."
+        "texte": "La transition vers la prise en charge complète tient en quelques semaines, pas en une année.",
+        "point": true
       },
       {
         "titre": "Extension aux deux ateliers",
-        "texte": "Fonderie et usinage entrent dans le même périmètre d'intervention."
+        "texte": "Fonderie et usinage entrent dans le même périmètre d'intervention.",
+        "point": true
       },
       {
         "titre": "Régime continu",
-        "texte": "Préventif et curatif tournent sept jours sur sept, avec les équipes Stellantis."
+        "texte": "Préventif et curatif tournent sept jours sur sept, avec les équipes Stellantis.",
+        "point": true
       }
     ],
     "dispositif": [
