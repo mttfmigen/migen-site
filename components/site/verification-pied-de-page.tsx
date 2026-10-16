@@ -39,7 +39,10 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { renderToStaticMarkup } from "react-dom/server";
 
+import SansPiedDuSite from "@/app/@pied/lp/[[...slug]]/page";
 import PiedDePage from "@/components/site/PiedDePage";
+import { TELEPHONE_LP } from "@/components/site/entete-donnees";
+import { numeroLpPermis } from "@/lib/lp/adresses";
 
 const CONTROLE = process.argv.includes("--controle");
 const SITE = (process.env.SITE_URL ?? "http://localhost:4340").replace(/\/$/, "");
@@ -272,6 +275,22 @@ for (const [defaut, html] of [
   assert.notEqual(html, rendu, `témoin mal construit : ${defaut}`);
   assert.throws(() => controleRepli(html), `le contrôle du repli laisse passer ${defaut}`);
 }
+
+// ------------------------------------------- les landing pages, sans ce pied
+/* Depuis le 16/10, les LP (/lp/) ont leur propre pied. Celui du site est rendu
+   par l'emplacement `app/@pied` (route parallèle) : `default.tsx` partout,
+   `lp/[[...slug]]/page.tsx`, VIDE, sous /lp/. Le pied du site ne porte donc
+   jamais le numéro des LP, et une LP ne porte jamais le pied du site. */
+const texteSite = lisible(rendu.replace(/<[^>]*>/g, " "));
+assert.ok(!numeroLpPermis("/") && !texteSite.includes(TELEPHONE_LP.affichage), "numéro des LP dans le pied du site");
+const miseEnPage = readFileSync("app/layout.tsx", "utf8");
+assert.ok(/\{pied\}/.test(miseEnPage), "la mise en page ne rend plus l'emplacement du pied (app/@pied)");
+assert.ok(!/<PiedDePage\b/.test(miseEnPage), "le pied du site est rendu en dur par la mise en page : il reviendrait sur les LP");
+assert.ok(
+  /<PiedDePage\b[^>]*reglagesConsentement=\{<LienReglages \/>\}/.test(readFileSync("app/@pied/default.tsx", "utf8")),
+  "l'emplacement du pied ne rend plus le pied du site avec son réglage du consentement",
+);
+assert.equal(SansPiedDuSite(), null, "l'emplacement du pied rend quelque chose sous /lp/");
 
 if (CONTROLE) {
   console.log(

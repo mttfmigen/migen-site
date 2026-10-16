@@ -76,10 +76,19 @@
   .grilleHeros {
     grid-template-columns: minmax(0, 1fr) !important;
     gap: 28px !important;
-    padding: 96px 18px 56px !important;
+    padding: 96px 18px 64px !important;
   }
 
   .titreHeros {
     font-size: 34px !important;
+  }
+}
+
+/* Les quatre chiffres du héros : au téléphone, deux par ligne. La maquette
+   les laissait en `auto-fit`, ce qui donnait trois puis un, « 10 % » seul sur
+   sa ligne (défaut relevé à l'inventaire). */
+@media (max-width: 760px) {
+  .chiffresHeros {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 }

@@ -40,6 +40,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import { TELEPHONE_SITE } from "@/components/site/entete-donnees";
+import { numeroLpPermis } from "@/lib/lp/adresses";
 import MentionsLegales, { metadata } from "@/app/mentions-legales/page";
 
 const html = renderToStaticMarkup(<MentionsLegales />);
@@ -187,7 +188,8 @@ assert.ok(
 
 // Le numéro du site, jamais celui de la landing page.
 assert.ok(html.includes("04 78 33 72 05"), "numéro du site absent");
-assert.ok(!html.includes("04 11 78 95 97"), "numéro de la landing page rendu sur le site");
+// Permis sous /lp/ seulement (lib/lp/adresses.ts) : cette page n'en est pas.
+assert.equal(html.includes("04 11 78 95 97"), numeroLpPermis("/mentions-legales/"), "numéro de la landing page rendu sur le site");
 
 /* ------------------------------- l'hébergeur, nommé, et son téléphone dit absent */
 

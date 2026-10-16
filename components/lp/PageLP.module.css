@@ -1,0 +1,197 @@
+/* Le gabarit des landing pages, `MigenLP` de la maquette V3.
+   Les valeurs vivent en ligne dans les composants, comme dans la maquette ;
+   ici seulement ce que le style en ligne ne sait pas dire : les survols
+   (`style-hover` de la maquette), le défilement des logos et le repli au
+   téléphone, par requêtes de CONTENEUR comme la maquette (`.lp-root`). */
+
+.racine {
+  container-type: inline-size;
+  position: relative;
+  /* Le pied au bas de l'écran même quand la page est courte (merci,
+     rendez-vous) : le héros s'étire, rien de blanc sous le pied. */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #fff;
+  color: #1c1b19;
+  font-family: var(--fb);
+  /* La LP est claire dans les deux thèmes, comme la maquette : le choix
+     « Sombre » du site ne la repeint pas. */
+  color-scheme: light;
+}
+
+.principal {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.principal > section:only-child {
+  flex: 1;
+}
+
+.racine a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.racine a:hover {
+  color: #ff7c3c;
+}
+
+/* Ancres de la barre : le saut s'arrête sous la barre flottante (`goId` de
+   la maquette retranchait 76 px). */
+.racine [id^="lp-"] {
+  scroll-margin-top: 76px;
+}
+
+:global(html):has(.racine) {
+  scroll-behavior: smooth;
+}
+
+.racine details > summary {
+  list-style: none;
+}
+
+.racine details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.racine details[open] .plus {
+  transform: rotate(45deg);
+}
+
+/* ---------------------------------------------------------------- survols */
+
+.lienNav:hover {
+  background: rgba(28, 27, 25, 0.06);
+  color: #1c1b19 !important;
+}
+
+.orange:hover {
+  background: #e8692b !important;
+  color: #fff !important;
+}
+
+.noir:hover {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+.eclaire:hover {
+  filter: brightness(0.92);
+  color: #fff !important;
+}
+
+.hub {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hub:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 44px -26px rgba(0, 0, 0, 0.55);
+}
+
+/* --------------------------------------------------- bandeau des logos */
+
+@keyframes defile {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.piste {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+  animation: defile 48s linear infinite;
+}
+
+/* -------------------------------------------------------------- carrousel */
+
+.carrousel {
+  scrollbar-width: none;
+}
+
+.carrousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* ------------------------------------------------- barre flottante, voile */
+
+.barre {
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+/* ------------------------------------------- repli, requêtes de conteneur */
+
+@container (max-width: 1080px) {
+  .hubs {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .hubs > a {
+    height: 128px !important;
+  }
+
+  .g4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .g4 > .photo {
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
+  }
+}
+
+@container (max-width: 760px) {
+  .g4 {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .g2 {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 28px !important;
+  }
+
+  .pad {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  .sec {
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+  }
+
+  .h2 {
+    font-size: 27px !important;
+  }
+
+  .cacheM {
+    display: none !important;
+  }
+
+  .photo {
+    grid-row: auto !important;
+    min-height: 220px !important;
+  }
+
+  .m2 {
+    order: 2 !important;
+    min-height: 280px !important;
+  }
+
+  .statique {
+    position: static !important;
+  }
+}
+
+@container (min-width: 761px) {
+  .seulM {
+    display: none !important;
+  }
+}

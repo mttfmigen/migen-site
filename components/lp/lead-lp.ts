@@ -166,20 +166,3 @@ export function prerempliDe(brut: string | null): Prerempli | null {
     return null;
   }
 }
-
-/* ------------------------------------------------ les deux pages de service */
-
-/**
- * Titre et description des pages /lp/merci/ et /lp/rendez-vous/, ceux de
- * `window.__LP` filtrés. Ici et non dans MerciLP ou RendezVousLP : une
- * constante exportée par un module `"use client"` n'arrive pas en valeur dans
- * le `metadata` d'une page serveur. La description de `/fr/merci` disait
- * « met à disposition » : retirée, la page n'en a pas.
- */
-export const META_MERCI_LP = { title: "Demande reçue · Migen" } as const;
-
-export const META_RENDEZ_VOUS_LP = {
-  title: "Réservez votre échange, Migen",
-  description:
-    "Demande reçue. Choisissez un créneau de 30 minutes avec un expert Migen pour qualifier votre besoin de maintenance.",
-} as const;

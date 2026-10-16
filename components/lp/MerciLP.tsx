@@ -9,8 +9,8 @@ import { BOUTON_ORANGE, BOUTON_VERRE, HerosServiceLP } from "./HerosServiceLP";
  * /lp/merci/ : le texte de la page `/fr/merci` de `window.__LP` (maquette V3),
  * filtré par les règles de copie du site. Tout y passe tel quel : « dans
  * l'heure » est le seul délai autorisé, « Remplacement garanti » est déjà sur
- * le site (accueil, GrilleOffres). La description de la V3 disait « met à
- * disposition » : retirée (voir META_MERCI_LP dans lead-lp.ts).
+ * le site (accueil, GrilleOffres). Titre et description de la page : ceux de
+ * `lib/lp/pages.json`, comme toutes les LP (app/lp/[[...slug]]/page.tsx).
  *
  * Le bouton principal ramène à la LP France, comme `mainHref` de la maquette.
  */
