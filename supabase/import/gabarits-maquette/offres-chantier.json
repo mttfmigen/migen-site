@@ -259,7 +259,8 @@
     "pagesLieesTitre": "Les offres et prestations voisines",
     "complementOffre": [
       {
-        "texte": "Ce que nous ne faisons pas. Ni bureaux, ni archives, ni parc informatique, ni vente de machines. Quand un équipement ne mérite pas le voyage, nous le disons et nous orientons vers un retrofit de la machine."
+        "texte": "Ce que nous ne faisons pas. Ni bureaux, ni archives, ni parc informatique, ni vente de machines. Quand un équipement ne mérite pas le voyage, nous le disons et nous orientons vers un retrofit de la machine.",
+        "horsResume": true
       }
     ]
   }

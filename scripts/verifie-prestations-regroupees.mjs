@@ -4,7 +4,11 @@
  *
  *   node scripts/verifie-prestations-regroupees.mjs
  *   node scripts/verifie-prestations-regroupees.mjs --controle   (témoin)
- *   SITE_URL=http://localhost:4341 node scripts/verifie-prestations-regroupees.mjs
+ *   SITE_URL=http://localhost:4503 node scripts/verifie-prestations-regroupees.mjs
+ *
+ * PAR DÉFAUT, LE SITE DE RÉFÉRENCE LOCAL (http://localhost:4492), JAMAIS LA
+ * PRODUCTION : une porte lancée sans variable mesurait le site en ligne et
+ * non l'arbre qu'on vient de modifier (16/10).
  *
  * CE QU'ELLE DÉFEND. Mehdi a signalé ce bloc QUATRE FOIS, c'est le défaut le
  * plus rapporté du site : « pas assez complet », « ce bloc il y a pas toutes
@@ -47,10 +51,25 @@
  * relevé sur /offres/bureau-etudes/), et une carte dont le lien servi n'est pas
  * celui de la fiche.
  *
- * UN SEUL DOUBLON DE PAGE EST DÉCLARÉ, `DOUBLONS` plus bas : deux adresses qui
- * servent la même prestation (même titre, même accroche). Le groupe réclame
- * l'une OU l'autre, jamais les deux. Une adresse déclarée qui quitterait
- * l'index ferait échouer la porte : l'exception ne survit pas à sa raison.
+ * LES DOUBLONS DE PAGE SONT DÉCLARÉS, `DOUBLONS` plus bas : deux adresses qui
+ * servent la même prestation. Le groupe réclame l'une OU l'autre, jamais les
+ * deux. Une adresse déclarée qui quitterait l'index ferait échouer la porte :
+ * l'exception ne survit pas à sa raison.
+ *
+ * UNE PRESTATION, UNE CARTE, ET PAS SEULEMENT UNE ADRESSE (16/10). Deux cartes
+ * vers deux pages différentes peuvent montrer la même prestation : « Transfert
+ * industriel et déménagement de machines industrielles » et « Transfert
+ * industriel » portaient la même accroche sur /travaux-industriels/. La porte
+ * refuse donc aussi deux cartes dont l'une des accroches commence l'autre, et
+ * deux cartes au même intitulé avant « : » (« Montage industriel : … »).
+ *
+ * LES TUILES « Nos domaines d'études » COMPTENT (V3, 16/10). Sur le bureau
+ * d'études, la V3 range les domaines (électrique, électronique, mise en
+ * conformité) en tuiles, et le bloc ne garde que Retrofit et Conseil. Une
+ * prestation est couverte par sa carte OU par sa tuile, et une carte vers une
+ * page qui a déjà sa tuile est refusée : la même prestation montrée deux fois.
+ * Une page fille que la V3 ne liste pas parce que la carte de sa mère y est se
+ * déclare dans `PAR_LA_MERE`, avec sa raison.
  *
  * CE QU'ELLE NE FAIT PAS, volontairement : elle n'exige le bloc sur aucune
  * page. Les offres qui regroupent plusieurs prestations SANS porter le bloc
@@ -62,7 +81,7 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const RACINE = fileURLToPath(new URL("..", import.meta.url));
-const SITE = process.env.SITE_URL ?? "https://migen-site.vercel.app";
+const SITE = process.env.SITE_URL ?? "http://localhost:4492";
 const CONTROLE = process.argv.includes("--controle");
 const SEP = String.fromCharCode(1);
 
@@ -130,11 +149,32 @@ export function groupeOffre(url, pages, remap) {
  */
 export const DOUBLONS = {
   "/offres/retrofit/mise-en-conformite-machine/": "/bureau-etudes/mise-en-conformite-machine/",
+  /* /travaux-industriels/ (16/10) : le routeur de la V3 renvoie ces deux offres
+     sur la page même (`remapOffer`), leurs cartes y ouvraient la page qu'on lit.
+     « Transfert industriel » doublait la carte 04, même accroche ; « Montage
+     industriel : votre machine produit… » doublait la carte 03. */
+  "/offres/chantier/": "/travaux-industriels/transfert-industriel/",
+  "/offres/construction/": "/travaux-industriels/montage-industriel/",
 };
 
-/** Les cartes-liens du bloc, dans le HTML servi. */
-export function cartesServies(html) {
-  const i = html.indexOf("data-prestations-regroupees");
+/**
+ * Les pages filles que la V3 ne liste pas dans le bloc parce que la carte de
+ * leur page mère y est : la clé est la fille, la valeur la mère. Sur
+ * /offres/bureau-etudes/ et /bureau-etudes/, la V3 (16/10) montre deux cartes,
+ * Retrofit et Conseil ; « Remise en état » s'ouvre depuis la page Retrofit.
+ */
+export const PAR_LA_MERE = {
+  "/offres/retrofit/remise-en-etat/": "/offres/retrofit/",
+};
+
+/** L'intitulé d'une prestation avant son « : » d'accroche, pour comparer. */
+function souche(titre) {
+  return norme(titre).split(" : ")[0].toLowerCase();
+}
+
+/** La section qui porte `marqueur`, dans le HTML servi, ou null. */
+function sectionDe(html, marqueur) {
+  const i = html.indexOf(marqueur);
   if (i < 0) return null;
   const debut = html.lastIndexOf("<section", i);
   const re = /<section\b|<\/section>/g;
@@ -151,7 +191,20 @@ export function cartesServies(html) {
       }
     } else prof += 1;
   }
-  const bloc = html.slice(debut, fin);
+  return html.slice(debut, fin);
+}
+
+/** Les adresses des tuiles « Nos domaines d'études », dans le HTML servi. */
+export function tuilesServies(html) {
+  const bloc = sectionDe(html, "data-domaines-etudes");
+  if (bloc === null) return null;
+  return [...bloc.matchAll(/<a\b[^>]*\bhref="(\/[^"#?]*\/)"/g)].map((m) => m[1]);
+}
+
+/** Les cartes-liens du bloc, dans le HTML servi. */
+export function cartesServies(html) {
+  const bloc = sectionDe(html, "data-prestations-regroupees");
+  if (bloc === null) return null;
   const cartes = [];
   for (const m2 of bloc.matchAll(/<a\b([^>]*\bdata-carte-prestation\b[^>]*)>([\s\S]*?)<\/a>/g)) {
     /* Le deuxième segment de texte est l'intitulé : le premier est le numéro
@@ -173,15 +226,19 @@ export function cartesServies(html) {
  * Le verdict d'une page : les manques, les cartes orphelines, le pluriel.
  * `urlsConnues` est l'ensemble des adresses que l'index décrit.
  */
-export function juge({ url, attendues, cartesFiche, cartesRendu, urlsConnues }) {
+export function juge({ url, attendues, cartesFiche, cartesRendu, urlsConnues, tuiles = null }) {
   const fautes = [];
   const titresFiche = cartesFiche.map((c) => norme(c.titre));
+  const ouvertes = new Set([...cartesFiche.map((c) => c.href), ...(tuiles ?? [])]);
   for (const a of attendues) {
     const parTitre = titresFiche.includes(norme(a.h1));
-    const parLien = cartesFiche.some((c) => c.href === a.url);
+    /* Sa carte, ou sa tuile « Nos domaines d'études ». */
+    const parLien = ouvertes.has(a.url);
     /* Un doublon déclaré est couvert par la page qu'il double. */
-    const parJumelle = !!DOUBLONS[a.url] && cartesFiche.some((c) => c.href === DOUBLONS[a.url]);
-    if (!parTitre && !parLien && !parJumelle) {
+    const parJumelle = !!DOUBLONS[a.url] && ouvertes.has(DOUBLONS[a.url]);
+    /* Une fille déclarée est couverte par la carte de sa mère. */
+    const parMere = !!PAR_LA_MERE[a.url] && cartesFiche.some((c) => c.href === PAR_LA_MERE[a.url]);
+    if (!parTitre && !parLien && !parJumelle && !parMere) {
       fautes.push(`${url} : « ${a.h1} » (${a.url}, ${a.role}) n'est pas dans le bloc`);
     }
   }
@@ -216,7 +273,25 @@ export function juge({ url, attendues, cartesFiche, cartesRendu, urlsConnues }) 
       fautes.push(`${url} : « ${c.titre} » mène à une page déjà listée (${cle}). Une prestation, une carte.`);
     }
     vus.add(cle);
+    if (c.href && (tuiles ?? []).includes(DOUBLONS[c.href] ?? c.href)) {
+      fautes.push(
+        `${url} : « ${c.titre} » a déjà sa tuile dans « Nos domaines d'études ». ` +
+          `La même prestation montrée deux fois.`,
+      );
+    }
   }
+  cartesFiche.forEach((c, i) => {
+    for (const d of cartesFiche.slice(i + 1)) {
+      const [ra, rb] = [norme(c.resume).toLowerCase(), norme(d.resume).toLowerCase()];
+      const memeAccroche = !!ra && !!rb && (ra.startsWith(rb) || rb.startsWith(ra));
+      if (memeAccroche || souche(c.titre) === souche(d.titre)) {
+        fautes.push(
+          `${url} : « ${c.titre} » et « ${d.titre} » montrent la même prestation ` +
+            `(${memeAccroche ? "même accroche" : "même intitulé"}). Une prestation, une carte.`,
+        );
+      }
+    }
+  });
   if (cartesRendu !== null) {
     cartesRendu.forEach((servie, rang) => {
       const attendu = cartesFiche[rang]?.href;
@@ -280,6 +355,14 @@ if (CONTROLE) {
     '<a href="#besoin">Décrire mon besoin →</a></div></section>' +
     "<section>La suite de la page</section>";
   const doublonDeLien = [...complet, { titre: "Machin absorbé, encore", href: "/offres/machin/" }];
+  const avecAccroches = complet.map((c, k) => ({ ...c, resume: `Accroche propre numéro ${k}.` }));
+  const memeAccroche = avecAccroches.map((c, k) =>
+    k === 2 ? { ...c, resume: `${avecAccroches[1].resume} Et une suite.` } : c,
+  );
+  const memeSouche = avecAccroches.map((c, k) =>
+    k === 2 ? { ...c, titre: "La fille A : autre angle", href: "/offres/truc/fille-b/" } : c,
+  );
+  const sansFilleA = complet.filter((c) => c.titre !== "La fille A");
   const renduQuiDevie = complet.map((c, k) => ({ intitule: c.titre, liens: [k === 1 ? "/ailleurs/" : c.href] }));
 
   const servies = cartesServies(htmlBloc);
@@ -325,6 +408,32 @@ if (CONTROLE) {
       "POSITIF une carte servie qui ne mène pas au lien de la fiche est vue",
       cas(complet, renduQuiDevie).some((f) => f.includes("ne mène pas à /offres/truc/fille-a/")),
     ],
+    [
+      "POSITIF deux cartes dont une accroche commence l'autre sont vues",
+      cas(memeAccroche).some((f) => f.includes("même accroche")),
+    ],
+    [
+      "POSITIF deux cartes au même intitulé avant « : » sont vues",
+      cas(memeSouche).some((f) => f.includes("même intitulé")),
+    ],
+    [
+      "NÉGATIF des accroches distinctes passent",
+      cas(avecAccroches).every((f) => !f.includes("même prestation")),
+    ],
+    [
+      "NÉGATIF une prestation couverte par sa tuile n'est pas réclamée au bloc",
+      juge({ url: "/offres/truc/", attendues, cartesFiche: sansFilleA, cartesRendu: servi(sansFilleA), urlsConnues, tuiles: ["/offres/truc/fille-a/"] })
+        .every((f) => !f.includes("La fille A")),
+    ],
+    [
+      "POSITIF une carte vers une page qui a sa tuile est vue",
+      juge({ url: "/offres/truc/", attendues, cartesFiche: complet, cartesRendu: servi(complet), urlsConnues, tuiles: ["/offres/truc/fille-a/"] })
+        .some((f) => f.includes("a déjà sa tuile")),
+    ],
+    [
+      "les tuiles « Nos domaines d'études » sont lues dans le rendu",
+      tuilesServies('<section data-domaines-etudes=""><a href="/offres/truc/fille-a/">A</a></section>')?.[0] === "/offres/truc/fille-a/",
+    ],
     /* --- la lecture du rendu et de la table de la maquette --- */
     ["le rendu est découpé en cartes de premier niveau", servies?.length === 2],
     ["l'intitulé de la première carte est lu", norme(servies?.[0]?.intitule) === "Machin absorbé"],
@@ -344,7 +453,7 @@ const index = JSON.parse(readFileSync(join(RACINE, "maquette/contenu/site/index.
 const pages = (Array.isArray(index) ? index : (index.pages ?? index)).filter((p) => p?.url);
 const urlsConnues = new Map(pages.map((p) => [p.url, p.h1 ?? ""]));
 
-for (const [doublon, gardee] of Object.entries(DOUBLONS)) {
+for (const [doublon, gardee] of [...Object.entries(DOUBLONS), ...Object.entries(PAR_LA_MERE)]) {
   if (!urlsConnues.has(doublon) || !urlsConnues.has(gardee)) {
     console.log(`DOUBLON DÉCLARÉ CADUC : ${doublon} ou ${gardee} n'est plus dans l'index. Retirer l'exception.`);
     process.exit(1);
@@ -378,13 +487,16 @@ let prestationsVues = 0;
 await Promise.all(
   fiches.map(async (fiche) => {
     let cartesRendu = null;
+    let tuiles = null;
     try {
       const r = await fetch(SITE + fiche.url, { signal: AbortSignal.timeout(30000) });
       if (!r.ok) {
         injoignables.push(`${fiche.url} : HTTP ${r.status}`);
         return;
       }
-      const servies = cartesServies(await r.text());
+      const html = await r.text();
+      tuiles = tuilesServies(html);
+      const servies = cartesServies(html);
       if (servies === null) {
         fautes.push(`${fiche.url} : la fiche déclare le bloc, le rendu servi ne le porte pas du tout`);
         return;
@@ -402,6 +514,7 @@ await Promise.all(
         cartesFiche: fiche.prestations,
         cartesRendu,
         urlsConnues,
+        tuiles,
       }),
     );
   }),

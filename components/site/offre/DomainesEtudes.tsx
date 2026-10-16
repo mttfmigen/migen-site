@@ -174,6 +174,7 @@ export default function DomainesEtudes({ chemin }: { chemin?: string }) {
 
   return (
     <section
+      data-domaines-etudes=""
       data-mobile-apres-sections=""
       className={styles.apresSectionsMobile}
       style={SECTION}

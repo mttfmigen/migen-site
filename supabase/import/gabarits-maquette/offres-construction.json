@@ -277,10 +277,12 @@
     "pagesLieesTitre": "Les offres et prestations voisines",
     "complementOffre": [
       {
-        "texte": "Ce que nous ne faisons pas. Nous ne vendons ni machine ni équipement. Le gros œuvre et la construction de bâtiments restent l'affaire des entreprises générales. Notre seul intérêt est que votre installation fonctionne."
+        "texte": "Ce que nous ne faisons pas. Nous ne vendons ni machine ni équipement. Le gros œuvre et la construction de bâtiments restent l'affaire des entreprises générales. Notre seul intérêt est que votre installation fonctionne.",
+        "horsResume": true
       },
       {
-        "texte": "Deux postures possibles. Assistance technique au metteur en route du fabricant, ou responsabilité complète de l'opération. Le partage des rôles est écrit dans le devis, ligne par ligne."
+        "texte": "Deux postures possibles. Assistance technique au metteur en route du fabricant, ou responsabilité complète de l'opération. Le partage des rôles est écrit dans le devis, ligne par ligne.",
+        "horsResume": true
       }
     ]
   }

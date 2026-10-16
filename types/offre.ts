@@ -69,6 +69,14 @@ export interface BlocComplement {
   titre?: string;
   texte?: string;
   puces?: Paragraphe[];
+  /**
+   * JAMAIS LE RÉSUMÉ DE LA CARTE REPLIÉE (`premierTexte`). Posé sur les blocs
+   * que la V3 écrit APRÈS le tableau de « L'offre » (encadrés « Ce que nous ne
+   * faisons pas »…, 16/10) : son `teaseOf` prend alors le premier point du
+   * tableau, pas ce qui le suit. Sans lui, la carte « L'offre » de
+   * `/offres/chantier/` annonçait au téléphone ce que l'offre ne couvre pas.
+   */
+  horsResume?: boolean;
 }
 
 /**

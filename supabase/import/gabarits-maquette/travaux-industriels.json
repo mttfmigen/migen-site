@@ -54,7 +54,8 @@
     ],
     "complementOffre": [
       {
-        "texte": "Ce que nous ne faisons pas. Ni bureaux, ni archives, ni parc informatique. Nous ne concevons pas de machines et nous n'en vendons pas. Quand un équipement ne mérite pas le voyage, nous vous orientons vers le retrofit machine industrielle."
+        "texte": "Ce que nous ne faisons pas. Ni bureaux, ni archives, ni parc informatique. Nous ne concevons pas de machines et nous n'en vendons pas. Quand un équipement ne mérite pas le voyage, nous vous orientons vers le retrofit machine industrielle.",
+        "horsResume": true
       }
     ],
     "brefBande": "Besoin de savoir ce que coûteraient vos travaux industriels ?",
@@ -92,11 +93,6 @@
           "href": "/travaux-industriels/transfert-industriel/"
         },
         {
-          "titre": "Transfert industriel",
-          "resume": "Votre outil de production redémarre à la date prévue. Pas des semaines après, pas en mode dégradé.",
-          "href": "/offres/chantier/"
-        },
-        {
           "titre": "Déménagement de machines industrielles",
           "resume": "À l'arrivée, votre machine ne fait pas que voyager : elle produit. Remise en service comprise.",
           "href": "/offres/chantier/demenagement-machines/"
@@ -105,11 +101,6 @@
           "titre": "Transfert de production",
           "resume": "Vos clients ne doivent rien voir. Une ligne, un atelier ou une usine entière qui change d'adresse, sans rupture de livraison.",
           "href": "/offres/chantier/transfert-de-production/"
-        },
-        {
-          "titre": "Montage industriel : votre machine produit à la date prévue",
-          "resume": "Une ingénierie de montage qui prépare, des équipes complètes de techniciens salariés qui exécutent, un ingénieur chargé de projet responsable du planning et du résultat.",
-          "href": "/offres/construction/"
         }
       ]
     },

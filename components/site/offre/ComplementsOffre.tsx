@@ -99,7 +99,7 @@ export function ComplementsDansCarte({
             <p key={puce.accroche ?? puce.texte} data-mm-paragraphe="">
               {puce.accroche ? <strong>{puce.accroche}</strong> : null}
               {puce.accroche ? " " : null}
-              {puce.texte}
+              <TexteRiche texte={puce.texte} />
             </p>
           ))}
         </Fragment>
@@ -133,7 +133,7 @@ function intituleEnTete(retenus: readonly BlocComplement[]): boolean {
 export function premierTexte(
   blocs?: readonly BlocComplement[],
 ): string | undefined {
-  const retenus = (blocs ?? []).filter((bloc) => bloc.titre || bloc.texte);
+  const retenus = (blocs ?? []).filter((bloc) => !bloc.horsResume && (bloc.titre || bloc.texte));
   const reste = intituleEnTete(retenus) ? retenus.slice(1) : retenus;
   return reste.map((bloc) => bloc.texte?.trim()).find(Boolean) || undefined;
 }
@@ -324,7 +324,7 @@ export default function ComplementsOffre({
                       <strong style={ACCROCHE}>{puce.accroche}</strong>
                     ) : null}
                     {puce.accroche ? " " : null}
-                    {puce.texte}
+                    <TexteRiche texte={puce.texte} />
                   </span>
                 </div>
               ))}

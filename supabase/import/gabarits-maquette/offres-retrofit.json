@@ -244,7 +244,8 @@
     "pagesLieesTitre": "Les offres et prestations voisines",
     "complementOffre": [
       {
-        "texte": "Ce que nous ne vendons pas. Ni machines neuves, ni matériel d'occasion. Si l'achat d'une machine neuve est réellement plus économique pour votre cas, nous vous le disons, calcul à l'appui."
+        "texte": "Ce que nous ne vendons pas. Ni machines neuves, ni matériel d'occasion. Si l'achat d'une machine neuve est réellement plus économique pour votre cas, nous vous le disons, calcul à l'appui.",
+        "horsResume": true
       }
     ]
   }

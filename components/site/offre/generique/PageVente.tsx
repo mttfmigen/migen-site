@@ -7,7 +7,7 @@ import PastillesCocon from "@/components/site/cocon/PastillesCocon";
 import { appliqueDecisions } from "@/lib/decisions-copie";
 
 import CadenceOffre, { AncreRappel } from "../CadenceOffre";
-import DomainesEtudes from "../DomainesEtudes";
+import DomainesEtudes, { domainesPour } from "../DomainesEtudes";
 import EtiquettePli from "../EtiquettePli";
 import offre from "../PageOffre.module.css";
 import TelephoneHeros from "../TelephoneHeros";
@@ -445,7 +445,16 @@ function Appel({ v }: { v: Vue }) {
 export default function PageVente({ v, formulaire, chemin }: { v: Vue; formulaire: string } & AvecChemin) {
   return (
     <div className={`mg-site ${h.racineMobile}`}>
-      <main style={css("padding-top:96px")}>
+      {/* `data-ordre-mobile` (socle de `app/globals.css`, § 12) SUR LES SEULES
+          PAGES QUI PORTENT « Nos autres domaines d’études » : au téléphone, ce
+          bloc absent de la maquette mobile passe replié après ses sections,
+          comme sur `PageOffre`, au lieu de s’intercaler sous le héros. L’ordre
+          du DOM, celui du bureau et de Google, ne change pas ; les autres pages
+          de vente gardent leur `main` tel quel. */}
+      <main
+        data-ordre-mobile={domainesPour(chemin).length > 0 ? "" : undefined}
+        style={css("padding-top:96px")}
+      >
         <Heros v={v} chemin={chemin} />
         <Bandeau v={v} />
         {/* « Nos autres domaines d’études » de la V3 (16/10), sur les pages

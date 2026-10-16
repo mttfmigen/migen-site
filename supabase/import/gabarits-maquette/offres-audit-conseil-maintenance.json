@@ -274,10 +274,12 @@
     "pagesLieesTitre": "Les offres et prestations voisines",
     "complementOffre": [
       {
-        "texte": "Ce qui n'est pas dans notre offre. Nous ne vendons ni logiciel, ni équipement, et nous ne touchons aucune commission d'aucun fournisseur. Quand l'audit recommande un outil ou un investissement, c'est votre intérêt qui le justifie, pas le nôtre."
+        "texte": "Ce qui n'est pas dans notre offre. Nous ne vendons ni logiciel, ni équipement, et nous ne touchons aucune commission d'aucun fournisseur. Quand l'audit recommande un outil ou un investissement, c'est votre intérêt qui le justifie, pas le nôtre.",
+        "horsResume": true
       },
       {
-        "texte": "Une précision de périmètre. Cette page traite des sites industriels : machines de production, lignes, installations techniques d'usine. Le CVC des bâtiments et l'informatique ne sont pas notre domaine."
+        "texte": "Une précision de périmètre. Cette page traite des sites industriels : machines de production, lignes, installations techniques d'usine. Le CVC des bâtiments et l'informatique ne sont pas notre domaine.",
+        "horsResume": true
       }
     ]
   }
