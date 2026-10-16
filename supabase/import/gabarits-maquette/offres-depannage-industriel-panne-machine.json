@@ -99,7 +99,7 @@
           },
           {
             "prestation": {
-              "texte": "**Astreinte la nuit, le week-end et les jours fériés en option**"
+              "texte": "**Astreinte en option**"
             },
             "benefice": "La panne de 3 heures du matin trouve un interlocuteur, pas un répondeur."
           }
@@ -139,7 +139,7 @@
         "puces": [
           {
             "accroche": "Rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
-            "texte": "Et un interlocuteur technique joignable la nuit, le week-end et les jours fériés pour les clients sous astreinte. Pas de formulaire qui tombe dans le vide."
+            "texte": "Et un interlocuteur technique joignable pour les clients sous astreinte. Pas de formulaire qui tombe dans le vide."
           },
           {
             "accroche": "Un technicien évalué, pas un intervenant de passage.",
