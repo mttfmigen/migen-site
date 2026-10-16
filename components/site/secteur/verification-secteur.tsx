@@ -54,6 +54,8 @@ import { ID_BANDEAU, ID_PHOTO_CTA } from "@/components/site/mobile/conversion-do
 import { appliqueDecisions } from "@/lib/decisions-copie";
 import type { ContenuSecteurOffre } from "@/types/secteur";
 
+import { CORPUS_OFFRE } from "./corpus-offre";
+import { tableauxDeLOffre } from "./MobileSecteur";
 import PageSecteur from "./PageSecteur";
 
 const RACINE = fileURLToPath(new URL("../../..", import.meta.url));
@@ -657,6 +659,27 @@ const PAGES: PageRelais[] = ATTENDUES.map((url) => {
   ];
   for (const [nom, html, logos] of EPREUVES) {
     if (ecartsBandeUnique(html, logos).length === 0) throw new Error(`la bande unique laisse passer : ${nom}`);
+  }
+
+  /* « L'offre » au téléphone, au dessin de la V3 (16/10) : chaque LIGNE de
+     chaque page est la cellule du corpus (`corpus-offre.ts`), décisions de
+     copie appliquées, et non le texte de la fiche ; la virgule perdue à
+     l'import revient, et une fiche dont le décompte change retombe sur la
+     fiche entière plutôt que de décaler les lignes. Comparer le seul nombre
+     de tableaux laissait passer un repli complet sur les pages à un tableau. */
+  for (const page of PAGES) {
+    const lignes = section(page, "offre")?.lignes ?? [];
+    const rendu = tableauxDeLOffre(lignes, page.url).map((t) => t.lignes.map((l) => l.faisons));
+    const attendu = (CORPUS_OFFRE[page.url]?.tableaux ?? []).map((t) => t.faisons.map((f) => appliqueDecisions(f, page.url)));
+    if (JSON.stringify(rendu) !== JSON.stringify(attendu)) throw new Error(`${page.url} : L'offre ne lit plus le corpus V3`);
+  }
+  const agro = PAGES.find((p) => p.url === "/secteurs/agroalimentaire/")!;
+  const lignesAgro = section(agro, "offre")!.lignes;
+  if (!tableauxDeLOffre(lignesAgro, agro.url)[0].lignes[0].faisons.includes("marche en avant**, tenues")) {
+    throw new Error("L'offre : la virgule du corpus ne revient pas");
+  }
+  if (tableauxDeLOffre(lignesAgro.slice(1), agro.url)[0].lignes.length !== lignesAgro.length - 1) {
+    throw new Error("L'offre : une fiche amputée d'une ligne ne retombe pas sur la fiche");
   }
 
   /* La couche mobile, éprouvée sur le brut vrai puis altéré : le contrôle doit

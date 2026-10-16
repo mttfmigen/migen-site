@@ -3,12 +3,14 @@ import type { ReactNode } from "react";
 
 import { ligneDuCorpus, resumeDe } from "@/components/site/blocs/resume-de-section";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
-import TexteRiche, { estCheminInterne } from "@/components/site/blocs/TexteRiche";
+import TexteRiche, { enTexteNu, estCheminInterne } from "@/components/site/blocs/TexteRiche";
 import { continueLeTitre } from "@/components/site/blocs/TitreEtSuite";
 import { logoClient } from "@/components/site/casclients/vues-preuves";
+import { nomClient } from "@/components/site/preuve/noms-clients";
 import PastillesCocon from "@/components/site/cocon/PastillesCocon";
 import { TELEPHONE_SITE } from "@/components/site/entete-donnees";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
+import { IconeFleche } from "@/components/site/mobile/BarreCollanteMobile";
 import {
   CIBLE_CONTACT,
   rappelFinalVisible,
@@ -19,17 +21,17 @@ import RappelFinalMobile from "@/components/site/mobile/RappelFinalMobile";
 import {
   coupePunchline,
   etiquetteEtude,
-  fusionneLigne,
   majusculeInitiale,
   numerote,
 } from "@/components/site/offre/texte-offre";
 import { accrocheDuDeroule } from "@/components/site/offre/DerouleOffre";
-import { accrocheDeLOffre } from "@/components/site/offre/PointsOffre";
 import { cadragePhoto } from "@/lib/cadrage-photos";
+import { appliqueDecisions } from "@/lib/decisions-copie";
 import { altPhoto } from "@/lib/descriptions-photos";
-import type { Preuve, Section, TypeSection } from "@/types/contenu";
+import type { Preuve, PrestationBenefice, Section, TypeSection } from "@/types/contenu";
 import type { ContenuSecteurOffre } from "@/types/secteur";
 
+import { CORPUS_OFFRE } from "./corpus-offre";
 import s from "./MobileSecteur.module.css";
 
 /**
@@ -44,14 +46,15 @@ import s from "./MobileSecteur.module.css";
  * ligne un par un, et casser à leur prochaine retouche. Ici, la même donnée
  * (`contenu.sections`) est rendue une seconde fois, au dessin de la maquette,
  * sous `data-mobile-seulement` ; les écrans de bureau quittent l'écran sous
- * 881 px (`PageSecteur.module.css`, `.bureauSeulement`). CHAQUE TEXTE QU'ILS
- * PORTENT EST RENDU ICI, mot pour mot : sur-titres en sur-titre de carte,
- * titres de bureau en phrase clé, compteurs (« 7 points », « 6 étapes ») en
- * étiquette de liste, bouton « Démarrer par l'audit », lien « Poser ma
- * question ». Au-dessus de 880 px, rien de ce fichier n'existe à l'écran.
- * Les sur-titres de bureau (« Votre problématique », « Notre méthode »,
- * « Notre parti pris ») et la bande « 07 Appel » ne sont PAS repris : la
- * maquette n'en dessine aucun, et leur texte reste servi par l'écran de bureau.
+ * 881 px (`PageSecteur.module.css`, `.bureauSeulement`). Au-dessus de 880 px,
+ * rien de ce fichier n'existe à l'écran.
+ *
+ * MAQUETTE V3 (16/10) : ce que la V3 ne dessine pas n'est plus repris ici,
+ * et reste servi par l'écran de bureau : sur-titres (« Votre problématique »,
+ * « Notre méthode », « Notre parti pris »), phrases clés de « L'offre » et du
+ * « Déroulé », compteurs (« 7 points », « 6 étapes », retirés à la demande de
+ * Mehdi), bouton « Démarrer par l'audit ». La question de la bande « 07
+ * Appel » passe dans « Ce que nous garantissons », comme dans la V3.
  *
  * Les références ont leur rail à elles (`RailReferences`, dc.html
  * `isRefList`) ; `ReferencesOffre` reste servi par l'écran de bureau.
@@ -68,10 +71,25 @@ function sectionDeType<T extends TypeSection>(
   return sections.find((x) => x.type === type) as Extract<Section, { type: T }> | undefined;
 }
 
-/** La photo du haut de page : une photo que la page porte déjà sur bureau. */
-export function photoDeTete(contenu: ContenuSecteurOffre): string | undefined {
+/**
+ * La photo de tête de la maquette V3, là où c'est une photo de la répartition
+ * (`lib/photos-autorisees.ts`, photos de l'équipe Migen). Relevé le 16/10 sur
+ * les octets du fond de la V3 (égalité sha256, sinon empreinte 32x32) : les
+ * neuf autres pages y portent `x-robotique` ou une `mq-*` (logistique et ses
+ * deux filles : `mq-29ebb1b81ced`, la même image que `x-logistique-entrepot`),
+ * toutes hors de la répartition ; elles gardent la photo du site.
+ */
+const PHOTO_TETE_V3: Readonly<Record<string, string>> = {
+  "/secteurs/agroalimentaire/": "/assets/web/sv-convoyeur.jpg",
+  "/secteurs/industrie-metallique/": "/assets/web/team-grind-sparks.jpg",
+  "/secteurs/pharmaceutique/": "/assets/web/sv-armoire.jpg",
+};
+
+/** La photo du haut de page : celle de la V3, sinon une photo que la page porte déjà sur bureau. */
+export function photoDeTete(contenu: ContenuSecteurOffre, chemin?: string): string | undefined {
   const preuves = sectionDeType(contenu.sections, "preuves");
   return (
+    (chemin ? PHOTO_TETE_V3[chemin] : undefined) ??
     contenu.problemePhoto ??
     contenu.expertises?.[0]?.photo ??
     preuves?.preuves.find((p) => p.photo)?.photo ??
@@ -119,10 +137,9 @@ interface Ligne {
 }
 
 /** « Libellé : texte » en petites cartes numérotées (dc.html, `isKv`). */
-function ListeKv({ lignes, entete }: { lignes: readonly Ligne[]; entete?: ReactNode }) {
+function ListeKv({ lignes }: { lignes: readonly Ligne[] }) {
   return (
     <div className={s.kv}>
-      {entete ? <div className={s.enteteListe}>{entete}</div> : null}
       {lignes.map((ligne, rang) => (
         <div key={ligne.cle} className={s.kvCarte}>
           <span className={s.kvNumero}>{numerote(rang)}</span>
@@ -133,6 +150,18 @@ function ListeKv({ lignes, entete }: { lignes: readonly Ligne[]; entete?: ReactN
         </div>
       ))}
     </div>
+  );
+}
+
+/** Le bouton plein de la V3 (`isBtnQ`) : pilule orange, pastille flèche à droite. */
+function BoutonFleche({ href, libelle }: { href: string; libelle: string }) {
+  return (
+    <a href={href} className={s.boutonFleche}>
+      <span>{libelle}</span>
+      <span className={s.pastilleFleche}>
+        <IconeFleche />
+      </span>
+    </a>
   );
 }
 
@@ -172,31 +201,105 @@ const INTRO_REFERENCES: Readonly<Record<string, string>> = {
     "Nous ne publions pas de cas client pharmaceutique : nos clients du secteur ne nous y autorisent pas. Voici des environnements qui partagent vos exigences, hygiène, traçabilité et discipline documentaire, sur des cas réellement documentés.",
 };
 
+/* ------------------------------------------------------------ L'offre */
+
+/** Les en-têtes du tableau de la V3, quand le corpus n'en porte pas. */
+const ENTETES_OFFRE = ["Ce que nous faisons", "Ce que ça change pour vous"];
+
+/** Le phrasé de la carte « Ce que nous garantissons » de la V3 sous son bouton (corpus, 12 pages sur 12). */
+const APPEL_TELEPHONE = `Ou appelez le ${TELEPHONE_SITE.affichage}, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.`;
+
+interface LigneTableau {
+  faisons: string;
+  change: string;
+}
+
+interface TableauRendu {
+  entetes: readonly string[];
+  lignes: LigneTableau[];
+}
+
 /**
- * Le paragraphe qui suit le tableau de « L'offre » dans le corpus de la
- * maquette (`secteurs--<secteur>.md`, mot pour mot). La fiche l'a perdu à
- * l'import (`offre.prose` absent) et le bureau ne le rend pas (sa capture non
- * plus, voir `PointsOffre`) ; la maquette mobile le rend sous les points et en
- * fait le résumé de la carte repliée (dc.html `teaseOf`, premier paragraphe).
- * ponytail: table par chemin, à retirer quand la fiche portera `offre.prose`.
+ * Le texte nu, sans casse ni ponctuation : ce qui compare le corpus à la fiche.
+ * « Astreinte la nuit, le week-end et les jours fériés » vaut « Astreinte » :
+ * la fiche porte le renommage global que `lib/decisions-copie.ts` (12/10)
+ * décrit, le corpus V3 la forme d'avant. Sans cela, deux lignes (logistique,
+ * peak-season) gardaient le texte de la fiche, tout en gras et sans virgule.
  */
-const PROSE_OFFRE: Readonly<Record<string, string>> = {
-  "/secteurs/agroalimentaire/":
-    "En appui, notre [bureau d'études](/offres/bureau-etudes/) chiffre les améliorations : mise en conformité d'une machine, reprise d'un poste goulot, automatisation d'une opération manuelle arrivée à sa limite.",
-  "/secteurs/automobile/":
-    "En appui, l'ingénierie de notre [bureau d'études](/offres/bureau-etudes/) chiffre les améliorations : reprise d'un poste goulot, mise en conformité d'une machine, adaptation d'une installation à un nouveau modèle.",
-  "/secteurs/chimie/":
-    "Pour les modifications, notre [bureau d'études](/offres/bureau-etudes/) prépare des dossiers techniques au niveau attendu par vos études de dangers et votre gestion des modifications.",
-};
+const cle = (texte: string) =>
+  enTexteNu(texte)
+    .replace(/(astreinte)\s+la nuit,\s*le week-end et les jours f[eé]ri[eé]s/giu, "$1")
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}]/gu, "");
+
+/** Une ligne telle que la fiche la porte, l'accroche en gras. */
+function faisonsDeLaFiche(ligne: PrestationBenefice): string {
+  const { accroche, texte } = ligne.prestation;
+  return [accroche ? `**${accroche}**` : "", texte ?? ""].filter(Boolean).join(" : ");
+}
+
+/**
+ * LES TABLEAUX DE « L'OFFRE » AU DESSIN DE LA V3 (`isTb`) : en-têtes, puis
+ * une petite carte par ligne. La fiche a perdu à l'import la virgule et le
+ * gras de la première cellule (« … marche en avant tenues dédiées… ») et a
+ * pris l'en-tête du second tableau pour une ligne : le corpus V3
+ * (`corpus-offre.ts`) les rend, MAIS SEULEMENT là où son texte nu est celui de
+ * la fiche, décisions de copie appliquées. Une ligne qui diffère garde le
+ * texte de la fiche ; une page dont le décompte diffère, la fiche entière.
+ * « Ce que ça change pour vous » vient toujours de la fiche.
+ */
+export function tableauxDeLOffre(lignes: readonly PrestationBenefice[], chemin: string): TableauRendu[] {
+  const site = lignes.map((l) => ({ faisons: faisonsDeLaFiche(l), change: l.benefice }));
+  const repli = [{ entetes: ENTETES_OFFRE, lignes: site }];
+  const corpus = CORPUS_OFFRE[chemin];
+  if (!corpus) return repli;
+  let i = 0;
+  const tableaux = corpus.tableaux.map((tableau, rang) => {
+    if (rang > 0 && site[i] && cle(site[i].faisons) === cle(tableau.entetes[0] ?? "")) i += 1;
+    return {
+      entetes: tableau.entetes,
+      lignes: tableau.faisons.map((brut) => {
+        const ligne = site[i++];
+        const v3 = appliqueDecisions(brut, chemin);
+        return ligne && brut && cle(v3) === cle(ligne.faisons) ? { ...ligne, faisons: v3 } : ligne;
+      }),
+    };
+  });
+  const complet = i === site.length && tableaux.every((t) => t.lignes.every(Boolean));
+  return complet ? tableaux : repli;
+}
+
+function TableauxOffre({ tableaux }: { tableaux: readonly TableauRendu[] }) {
+  return tableaux.map((tableau, rang) => (
+    <div key={tableau.entetes.join() || rang} className={s.tableau}>
+      <div className={s.enteteListe}>{tableau.entetes.join(" · ")}</div>
+      {tableau.lignes.map((ligne) => (
+        <div key={ligne.faisons} className={s.ligneTableau}>
+          <div className={s.faisons}>
+            <TexteRiche texte={ligne.faisons} />
+          </div>
+          {ligne.change ? (
+            <div>
+              {tableau.entetes[1] ? <div className={s.enteteCellule}>{tableau.entetes[1]}</div> : null}
+              <div className={s.change}>
+                <TexteRiche texte={ligne.change} />
+              </div>
+            </div>
+          ) : null}
+        </div>
+      ))}
+    </div>
+  ));
+}
 
 /** Les logos clairs que la maquette inverse (dc.html `logoOf`, `lg.inv`). */
 const LOGOS_INVERSES = /groupe-atlantic|ogf|orthus/;
 
 /**
  * Le rail des références tel que la maquette le dessine (dc.html `isRefList`) :
- * photo et pastille du logo, titre, suite en minuscule, puis le libellé long
- * du corpus en lien (« Étude de cas DANONE : lignes de production → »). Aucun
- * texte neuf : titre, suite et libellé sont les champs de la fiche. La photo
+ * photo et pastille du logo, titre, suite en minuscule, puis le lien « Lire le
+ * cas → » de la V3 (`linkT`), le client étant nommé par sa pastille. Aucun
+ * texte neuf : titre et suite sont les champs de la fiche. La photo
  * est celle de la fiche ; sans elle, le fond gris de la maquette, jamais une
  * photo d'un autre chantier.
  */
@@ -207,6 +310,7 @@ function RailReferences({ preuves }: { preuves: readonly Preuve[] }) {
       {cartes.map((preuve) => {
         const client = etiquetteEtude(preuve);
         const logo = client ? logoClient(client) : "";
+        const nom = client ? nomClient(client) : undefined;
         // La suite du corpus, sans sa ponctuation d'attache, point final
         // compris comme dans la maquette (« site de Steenvoorde. »).
         const nue = preuve.texte?.replace(/^\s*[:.,–—-]\s*/u, "").trim();
@@ -228,7 +332,7 @@ function RailReferences({ preuves }: { preuves: readonly Preuve[] }) {
                   {logo ? (
                     <Image
                       src={logo}
-                      alt={client}
+                      alt={nom ?? ""}
                       width={64}
                       height={16}
                       unoptimized
@@ -249,8 +353,10 @@ function RailReferences({ preuves }: { preuves: readonly Preuve[] }) {
                   <TexteRiche texte={suite} />
                 </div>
               ) : null}
-              <a href={preuve.lienHref} className={s.carteRefLien}>
-                {preuve.lienLibelle ?? "Toutes nos réalisations"} <span aria-hidden="true">→</span>
+              {/* Huit liens « Lire le cas » vers huit études : le nom lu
+                  nomme le client, et commence par le texte vu. */}
+              <a href={preuve.lienHref} className={s.carteRefLien} aria-label={nom ? `Lire le cas ${nom}` : undefined}>
+                Lire le cas <span aria-hidden="true">→</span>
               </a>
             </div>
           </div>
@@ -285,14 +391,17 @@ export default function SectionsMobilesSecteur({ contenu, chemin, photoHeros, bo
   const preuves = sectionDeType(sections, "preuves");
   const objections = sectionDeType(sections, "objections");
   const ctaFinal = sectionDeType(sections, "ctaFinal");
-  const points = offre?.lignes.map(fusionneLigne) ?? [];
-  const prose = offre?.prose?.length
-    ? offre.prose.map((p) => [p.accroche && `**${p.accroche}**`, p.texte].filter(Boolean).join(" "))
-    : PROSE_OFFRE[chemin]
-      ? [PROSE_OFFRE[chemin]]
-      : [];
-  const complements = (contenu.complementOffre ?? []).filter((b) => b.titre || b.texte || b.puces?.length);
-  const titreDeroule = contenu.derouleTitre ?? "Un appel. Un plan. Une ligne qui repart.";
+  const tableaux = offre ? tableauxDeLOffre(offre.lignes, chemin) : [];
+  /* La prose sous le tableau : celle du corpus V3 (liens compris), sinon celle de la fiche. */
+  const proseCorpus = (CORPUS_OFFRE[chemin]?.prose ?? []).map((p) => appliqueDecisions(p, chemin));
+  const prose = proseCorpus.length
+    ? proseCorpus
+    : (offre?.prose ?? []).map((p) => [p.accroche && `**${p.accroche}**`, p.texte].filter(Boolean).join(" "));
+  /* Un complément de la fiche que la prose du corpus contient déjà n'est pas répété. */
+  const complements = (contenu.complementOffre ?? [])
+    .filter((b) => b.titre || b.texte || b.puces?.length)
+    .filter((b) => b.titre || b.puces?.length || !prose.some((p) => cle(p).includes(cle(b.texte ?? ""))));
+  const bref = contenu.brefBande;
 
   const cartes: ReactNode[] = [
     probleme ? (
@@ -316,27 +425,15 @@ export default function SectionsMobilesSecteur({ contenu, chemin, photoHeros, bo
     ) : null,
 
     offre ? (
-      /* L'accroche de la V3 (`accrocheDeLOffre`) : la première cellule du
-         tableau, puis seulement la prose qui le suit. */
-      <Carte key="offre" titre="L’offre" resume={accrocheDeLOffre(offre, [...prose, complements[0]?.texte])}>
-        <p className={s.phraseCle}>Ce que nous faisons, et ce que ça change pour vous</p>
+      /* L'accroche de la V3 (`teaseOf`) : la première cellule du premier
+         tableau, en texte nu. */
+      <Carte
+        key="offre"
+        titre="L’offre"
+        resume={enTexteNu(tableaux[0]?.lignes[0]?.faisons ?? prose[0] ?? "") || undefined}
+      >
         {/* Sans compteur « N points » : retiré à la demande de Mehdi le 15/10. */}
-        <ListeKv
-          lignes={points.map((p) => ({
-            cle: p.titre,
-            h: <TexteRiche texte={p.titre} />,
-            d: (
-              <>
-                {p.complement ? (
-                  <>
-                    <TexteRiche texte={p.complement} />{" "}
-                  </>
-                ) : null}
-                <TexteRiche texte={p.benefice} />
-              </>
-            ),
-          }))}
-        />
+        <TableauxOffre tableaux={tableaux} />
         {prose.map((texte) => (
           <p key={texte} className={s.texte}>
             <TexteRiche texte={texte} />
@@ -363,35 +460,34 @@ export default function SectionsMobilesSecteur({ contenu, chemin, photoHeros, bo
 
     deroule ? (
       <Carte key="deroule" titre="Le déroulé" resume={accrocheDuDeroule(deroule)}>
-        <p className={s.phraseCle}>{titreDeroule}</p>
-        <div className={s.enteteListe}>
-          <span>{deroule.etapes.length}</span> étapes
-        </div>
+        {/* La frise de la V3 (`isTl`) : pastilles orangées reliées d'un filet,
+            ni phrase clé, ni compteur « N étapes » (retiré à la demande de
+            Mehdi), ni bouton : la V3 n'en dessine aucun, et la phrase comme
+            le bouton restent servis par l'écran de bureau. */}
         <ol className={s.frise}>
           {deroule.etapes.map((etape, rang) => (
             <li key={etape.titre}>
               <span className={s.friseNumero}>{numerote(rang)}</span>
               <span className={s.friseTexte}>
                 {etape.texte && continueLeTitre(etape.texte) ? (
-                  <>
+                  <span className={s.friseSuite}>
                     <strong>{etape.titre}</strong>
                     <TexteRiche texte={etape.texte} />
-                  </>
+                  </span>
                 ) : (
                   <>
                     <strong className={s.friseTitre}>{etape.titre}</strong>
-                    {etape.texte ? <TexteRiche texte={majusculeInitiale(etape.texte)} /> : null}
+                    {etape.texte ? (
+                      <span className={s.friseSuite}>
+                        <TexteRiche texte={majusculeInitiale(etape.texte)} />
+                      </span>
+                    ) : null}
                   </>
                 )}
               </span>
             </li>
           ))}
         </ol>
-        <div className={s.rangeeBouton}>
-          <a href="#besoin" className={s.bouton}>
-            Démarrer par l’audit
-          </a>
-        </div>
       </Carte>
     ) : null,
 
@@ -408,6 +504,20 @@ export default function SectionsMobilesSecteur({ contenu, chemin, photoHeros, bo
             d: p.suitAccroche ? p.texte : majusculeInitiale(p.texte),
           }))}
         />
+        {/* La V3 ferme la carte sur l'appel du corpus (`isBtnQ`) : la question
+            de la bande « 07 Appel » du bureau, son bouton vers /contact/,
+            puis la ligne du téléphone. */}
+        {bref ? (
+          <>
+            <p className={s.phraseCle}>
+              <TexteRiche texte={bref} />
+            </p>
+            {contenu.brefBouton?.libelle ? (
+              <BoutonFleche href={CIBLE_CONTACT} libelle={contenu.brefBouton.libelle} />
+            ) : null}
+            <p className={s.texte}>{APPEL_TELEPHONE}</p>
+          </>
+        ) : null}
       </Carte>
     ) : null,
 
@@ -447,8 +557,9 @@ export default function SectionsMobilesSecteur({ contenu, chemin, photoHeros, bo
               </details>
             ))}
             {/* La 7e question de la maquette : la question de clôture du
-                corpus, sa réponse est l'appel et le téléphone du corpus
-                (dc.html, `x.faq`, dernier élément). */}
+                corpus, sa réponse est le bouton à flèche de la V3 (`isBtnQ`),
+                puis la ligne d'appel du corpus (dc.html, `x.faq`, dernier
+                élément). */}
             {ctaFinal?.question ? (
               <details name="faq-secteur">
                 <summary>
@@ -458,11 +569,8 @@ export default function SectionsMobilesSecteur({ contenu, chemin, photoHeros, bo
                   <span aria-hidden="true">+</span>
                 </summary>
                 <div>
-                  <p>
-                    <a href={ctaFinal.href ?? CIBLE_CONTACT}>{ctaFinal.bouton}</a> ·{" "}
-                    <a href={TELEPHONE_SITE.href}>{TELEPHONE_SITE.affichage}</a>
-                  </p>
-                  {ctaFinal.rappel ? <p>{ctaFinal.rappel}</p> : null}
+                  <BoutonFleche href={ctaFinal.href ?? CIBLE_CONTACT} libelle={ctaFinal.bouton} />
+                  <p>{ctaFinal.rappel ?? APPEL_TELEPHONE}</p>
                 </div>
               </details>
             ) : null}

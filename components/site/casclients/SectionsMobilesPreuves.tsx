@@ -2,7 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { appliqueDecisions } from "@/lib/decisions-copie";
-import { courtLibelle, entreeDe, type EntreeIndex } from "@/components/site/cocon/maillage-mobile";
+import { entreeDe, type EntreeIndex } from "@/components/site/cocon/maillage-mobile";
+import { IconeFleche } from "@/components/site/mobile/BarreCollanteMobile";
+import { CIBLE_CONTACT } from "@/components/site/mobile/conversion-donnees";
 import { logoEnFond } from "@/components/site/preuve/CarrouselRealisations";
 import { libelleCas } from "@/components/site/preuve/noms-clients";
 
@@ -30,14 +32,31 @@ function h1De(entree: EntreeIndex): string {
   return appliqueDecisions(entree.h1.replace(/\s+/g, " ").trim(), entree.url);
 }
 
-/** Le lien d'une carte : le h1 de l'étude (dc.html, `t: x.h1`), sinon le nom
-    du client. Libellé de la maquette V3 (`caseLbl`) : sans « Étude de cas »,
-    client en casse normale. */
-function titreEtude(carte: CartePreuve): string {
-  const entree = entreeDe(carte.url);
-  return entree ? libelleCas(h1De(entree)) : carte.client;
-}
+/**
+ * « Les derniers publiés » de la V3 : la colonne « Ce qui a été fait » du
+ * tableau du corpus (`Preuves/preuves.md`, mot pour mot), par étude. Une
+ * étude récente sans ligne ici passe en « À lire aussi », comme Amazon dans
+ * le corpus.
+ */
+const FAIT: Readonly<Record<string, string>> = {
+  "/preuves/atena-port-la-rochelle/": "2 techniciens sur site, dont 1 en long terme, en cours",
+  "/preuves/vignal-systems/": "1 technicien de nuit + 1 technicien en 2x8, en cours",
+  "/preuves/jacquet-brossard/": "3x8 (2 techniciens) + 2x8 (1 technicien), en cours",
+  "/preuves/motherson/": "2x8",
+  "/preuves/savoye-migration-automates-norvege/": "2 machines migrées en 2 week-ends",
+  "/preuves/dimomaint/": "Alliance terrain et GMAO",
+  "/preuves/savoye/": "Techniciens formés aux équipements Savoye",
+  "/preuves/suez-remise-en-etat/": "Renfort électromécanique 6 mois, environnement à risque chimique",
+  "/preuves/danone-lignes-de-production/": "Deux techniciens en 3x8, lignes liquides et poudre",
+  "/preuves/gls-maintenance-curative/": "Curatif et surveillance continue des équipements logistiques",
+  "/preuves/vpk/": "Technicien polyvalent, préventif et curatif",
+  "/preuves/eriks/": "Responsable maintenance en renfort pendant une transition",
+};
 
+/** Le bouton qui ferme « Les derniers publiés » dans le corpus. */
+const BOUTON_DERNIERS = "Parler à un chargé d'affaires";
+
+/** Une carte du rail : toute la carte est le lien, « Lire le cas → » de la V3 (`linkT`). */
 function CarteRail({ carte }: { carte: CartePreuve }) {
   return (
     <Link href={carte.url} prefetch={false} className={styles.carteRail}>
@@ -49,11 +68,13 @@ function CarteRail({ carte }: { carte: CartePreuve }) {
           <span className={styles.logoRail}>
             <span role="img" aria-label={carte.client} style={logoEnFond(carte.logo, carte.logoInverse, 72, 18)} />
           </span>
-        ) : null}
+        ) : (
+          <span className={styles.nomCache}>{carte.client}</span>
+        )}
       </span>
       <span className={styles.resumeRail}>{carte.resume}</span>{" "}
       <span className={styles.lienRail}>
-        {titreEtude(carte)} <span aria-hidden="true">→</span>
+        Lire le cas <span aria-hidden="true">→</span>
       </span>
     </Link>
   );
@@ -98,21 +119,46 @@ export function sectionsMobilesPreuves(vues: readonly VuePreuves[], recents: rea
           <span data-carte-titre="">Les derniers publiés</span>
           <span aria-hidden="true">›</span>
           {/* L'accroche de la V3 : le premier élément de la liste, son titre
-              ENTIER sans « Étude de cas » (dc.html `teaseOf`, `cleanCase`).
-              `courtLibelle` le coupait à 54 signes (« …qui reviennent
-              sur… ») ; la feuille partagée borne l'accroche à trois lignes. */}
-          <p>{h1De(publies[0]).replace(/^Étude de cas\s+/i, "")}</p>
+              ENTIER sans « Étude de cas », client en casse normale (dc.html
+              `teaseOf`, `cleanCase`) ; la feuille partagée borne l'accroche à
+              trois lignes. */}
+          <p>{libelleCas(h1De(publies[0]))}</p>
         </summary>
         <div>
-          <ul className={styles.listeRecents}>
-            {publies.map((x) => (
-              <li key={x.url}>
-                <Link href={x.url} prefetch={false}>
-                  {courtLibelle(x)} <span aria-hidden="true">›</span>
+          {/* Le tableau du corpus au dessin de la V3 (`isTb`), le lien du cas
+              en première cellule ; puis « À lire aussi » et le bouton. */}
+          <div className={styles.tableauRecents}>
+            <div className={styles.enteteRecents}>Cas · Ce qui a été fait</div>
+            {publies
+              .filter((x) => FAIT[x.url])
+              .map((x) => (
+                <div key={x.url} className={styles.ligneRecente}>
+                  <Link href={x.url} prefetch={false} className={styles.lienRecent}>
+                    {libelleCas(h1De(x))}
+                  </Link>
+                  <div>
+                    <div className={styles.enteteCellule}>Ce qui a été fait</div>
+                    <div className={styles.faitRecent}>{FAIT[x.url]}</div>
+                  </div>
+                </div>
+              ))}
+          </div>
+          {publies
+            .filter((x) => !FAIT[x.url])
+            .map((x) => (
+              <div key={x.url} className={styles.lireAussi}>
+                <div className={styles.enteteCellule}>À lire aussi</div>
+                <Link href={x.url} prefetch={false} className={styles.pastilleLire}>
+                  {libelleCas(h1De(x))} <span aria-hidden="true">›</span>
                 </Link>
-              </li>
+              </div>
             ))}
-          </ul>
+          <Link href={CIBLE_CONTACT} prefetch={false} className={styles.boutonFleche}>
+            <span>{BOUTON_DERNIERS}</span>
+            <span className={styles.pastilleFleche}>
+              <IconeFleche />
+            </span>
+          </Link>
         </div>
       </details>
     ) : null;
