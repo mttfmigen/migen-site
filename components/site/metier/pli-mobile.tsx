@@ -1,3 +1,6 @@
+import { Fragment, type ReactNode } from "react";
+
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import { ligneDuCorpus } from "@/components/site/blocs/resume-de-section";
 import { enTexteNu } from "@/components/site/blocs/TexteRiche";
 
@@ -122,4 +125,159 @@ export function amorceDe(section: object): string | undefined {
   const texte = enTexteNu(brut).replace(/\s+/g, " ").trim();
   if (!texte) return undefined;
   return texte.length > 104 ? `${texte.slice(0, texte.lastIndexOf(" ", 100))}…` : texte;
+}
+
+/**
+ * LES SECTIONS DONT LE COMMENTAIRE SUIT LA LISTE. Le corpus
+ * (`maquette/contenu/site/Metiers-Carriere/*.md`), et la maquette V3 « Site
+ * mobile » qui le suit (16/10), écrivent ces sections chapô, liste, PUIS le
+ * paragraphe qui la commente ; la donnée de bureau range tous les paragraphes
+ * avant la liste. Relevé section par section le 16/10, chaque titre cherché
+ * sous son `##` dans le corpus : sur les 40 sections à deux paragraphes ou
+ * plus des 13 fiches, 27 placent leur suite après la liste, toujours à partir
+ * du deuxième paragraphe, et un même titre ne change jamais de règle d'une
+ * fiche à l'autre. S'y ajoute une section du hub (`carriere.md`).
+ */
+export const APRES_LISTE: ReadonlySet<string> = new Set([
+  "Automaticien chez Migen : le cadre et les moyens",
+  "Bien mener sa recherche d'emploi",
+  "Ce que fait un agent de maintenance industrielle au quotidien",
+  "Ce que fait un alternant au quotidien",
+  "Ce que fait un responsable maintenance au quotidien",
+  "Ce que fait un roboticien au quotidien",
+  "Comment rejoindre nos équipes",
+  "Comment évolue un roboticien",
+  "Devenir agent de maintenance industrielle : formation et parcours",
+  "Devenir automaticien : formation et parcours",
+  "Devenir roboticien : formation et parcours",
+  "Devenir technicien de maintenance itinérant : formation et parcours",
+  "Devenir électromécanicien : formation et parcours",
+  "Du bac pro à l'expertise : le parcours et la paie",
+  "Du stage à l'alternance : les voies d'accès",
+  "Du terrain vers l'ingénieur",
+  "Emploi et recrutement : qui cherche un agent de maintenance",
+  "Emploi et recrutement : qui recrute un technicien itinérant",
+  "Formation et parcours pour devenir responsable maintenance",
+  "La vie chez Migen au quotidien",
+  "Le process de recrutement en 4 étapes",
+  "Les compétences et qualités qui font la différence",
+  "Les compétences qui font la différence",
+  "Responsable maintenance chez Migen : le cadre et les moyens",
+  "Salaire et évolution du responsable maintenance",
+  "Salaire, formation et contrat",
+  "Technicien de maintenance chez Migen : le cadre et les moyens",
+  "Évolution de carrière du technicien itinérant",
+]);
+
+/**
+ * LES TABLEAUX DONT TOUT LE TEXTE PRÉCÈDE. Au téléphone, les paragraphes qui
+ * suivent le chapô d'un tableau passent après lui (`data-mc-tableau-corps`,
+ * `MobileV2.module.css`), l'ordre du corpus. Une seule section des 13 fiches
+ * écrit au contraire son deuxième paragraphe AVANT le tableau
+ * (`carriere--technicien-de-maintenance.md` : chapô, liste, « Avant de
+ * postuler… », tableau, citation), et la V3 la rend ainsi.
+ */
+export const TEXTE_AVANT_TABLEAU: ReadonlySet<string> = new Set([
+  "Conditions, outils et technologies",
+]);
+
+/**
+ * Au téléphone seulement, l'ordre VISUEL de ces sections suit la V3 : chapô,
+ * liste, puis les paragraphes suivants (`data-mc-apres-liste`,
+ * `MobileV2.module.css`, comme l'ordre déjà rendu au tableau). Le DOM et le
+ * bureau ne changent pas.
+ */
+export function OrdreMobile({ section, children }: { section: object; children: ReactNode }) {
+  const titre = (section as { titre?: unknown }).titre;
+  return typeof titre === "string" && APRES_LISTE.has(titre) ? (
+    <div data-mc-apres-liste="">{children}</div>
+  ) : (
+    children
+  );
+}
+
+/**
+ * LES SOUS-PARTIES DE LA MAQUETTE MOBILE. Le corpus (`carriere.md` pour le
+ * hub, `Metiers-Carriere/*.md` pour les fiches), et la maquette V3 « Site
+ * mobile » qui le suit, écrivent ces blocs en `###` sous la section qui les
+ * précède, là où la maquette de bureau en fait des sections à part entière :
+ * au téléphone ils s'ouvrent DANS la carte d'avant, en intertitre, au lieu de
+ * compter comme cartes numérotées (hub : 13 cartes au lieu de 9, signalé par
+ * Mehdi le 15/10 ; fiche Formation : 17 au lieu de 10, relevé le 16/10 sur
+ * cinq fiches). Aucun de ces titres n'est un `##` ailleurs dans le corpus.
+ * Le bureau ne change pas : la bascule y est transparente.
+ */
+export const SOUS_PARTIES: ReadonlySet<string> = new Set([
+  /* le hub /carriere/ */
+  "Des techniciens confirmés, prêts pour le terrain",
+  "Des avis qui parlent du terrain",
+  "Postes ouverts et candidature spontanée",
+  "Nos informations pratiques",
+  /* les fiches */
+  "Bien mener sa recherche d'emploi",
+  "Comment nous rejoindre",
+  "Comment évolue un roboticien",
+  "Du bac pro à la licence pro",
+  "Du terrain vers l'ingénieur",
+  "L'apprentissage par blocs",
+  "Le poids de l'expérience",
+  "Le titre professionnel, voie rapide",
+  "Les travaux pratiques comptent double",
+  "Lire un schéma avant d'agir",
+  "Se former tout au long de la carrière",
+  "Une technicienne ou un technicien",
+  "Vérifier avant de s'inscrire",
+]);
+
+/**
+ * UNE SECTION ET SES SOUS-PARTIES, au hub comme aux fiches. Avec `pli`, la
+ * section se replie au téléphone dans sa carte numérotée, sous-parties
+ * comprises ; sans, elle reste nue, enveloppée d'un `<div>` seulement quand
+ * elle porte des sous-parties. `rend` dessine une section (`Section` du hub,
+ * `SectionFicheMetier` des fiches).
+ */
+export function rendAvecSuite<S extends object>(
+  cle: string,
+  section: S,
+  sous: S[],
+  rend: (s: S) => ReactNode,
+  pli: { etiquette: { surtitre: string; titre: string }; ouverte: boolean } | null,
+): ReactNode {
+  const suite = sous.map((sp, k) => (
+    <div key={`${cle}-sous-${k}`} data-sous-partie="">
+      <OrdreMobile section={sp}>{rend(sp)}</OrdreMobile>
+    </div>
+  ));
+  if (!pli)
+    return suite.length ? (
+      <div key={cle}>
+        {rend(section)}
+        {suite}
+      </div>
+    ) : (
+      <Fragment key={cle}>{rend(section)}</Fragment>
+    );
+  return (
+    <SectionPliableMobile
+      key={cle}
+      toujoursOuvert={pli.ouverte}
+      resume={amorceDe(section)}
+      enTete={<EtiquettePli surtitre={pli.etiquette.surtitre} titre={pli.etiquette.titre} />}
+    >
+      <OrdreMobile section={section}>{rend(section)}</OrdreMobile>
+      {suite}
+    </SectionPliableMobile>
+  );
+}
+
+/** Les sections de contenu, chacune avec ses sous-parties (`SOUS_PARTIES`). */
+export function regroupe<S extends object>(contenus: S[], premier: number) {
+  const groupes: { section: S; rang: number; sous: S[] }[] = [];
+  contenus.forEach((s, j) => {
+    const dernier = groupes.at(-1);
+    const titre = (s as { titre?: unknown }).titre;
+    if (dernier && typeof titre === "string" && SOUS_PARTIES.has(titre)) dernier.sous.push(s);
+    else groupes.push({ section: s, rang: premier + j, sous: [] });
+  });
+  return groupes;
 }

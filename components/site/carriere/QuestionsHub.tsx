@@ -199,7 +199,10 @@ export default function QuestionsHub({
                     maxWidth: "68ch",
                   }}
                 >
-                  {q.reponse}
+                  {/* Un `<p>` sans style : le préflight le rend neutre sur
+                      bureau, et au téléphone la réponse prend le chapô de la
+                      V3 (500 16px/1.6, motif partagé `data-faq-liste`). */}
+                  <p>{q.reponse}</p>
                 </div>
               </details>
             ))}

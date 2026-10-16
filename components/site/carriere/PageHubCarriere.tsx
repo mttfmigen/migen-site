@@ -19,9 +19,8 @@ import {
   Refus,
 } from "./SectionsHub";
 import { altPhoto } from "@/lib/descriptions-photos";
-import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import mv from "@/components/site/metier/MobileV2.module.css";
-import { EncartAppel, EtiquettePli, amorceDe } from "@/components/site/metier/pli-mobile";
+import { EncartAppel, regroupe, rendAvecSuite } from "@/components/site/metier/pli-mobile";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
 import PastillesCocon from "@/components/site/cocon/PastillesCocon";
 import CarrouselRealisations from "@/components/site/preuve/CarrouselRealisations";
@@ -120,25 +119,6 @@ const REPLIABLES: ReadonlySet<SectionHub["type"]> = new Set([
   "avis",
 ]);
 
-/**
- * LES SOUS-PARTIES DE LA MAQUETTE MOBILE. Le corpus de la maquette mobile v2
- * (`maquette/mobile-v2/maquette/mobile-v2-data.js`, `carriere.md`) écrit ces
- * quatre blocs en `###` sous la section qui les précède, là où la maquette de
- * bureau en fait des sections à part entière : au téléphone ils s'ouvrent DANS
- * la carte d'avant, en sous-titre, au lieu de compter comme cartes numérotées
- * (13 au lieu de 9, bandeaux d'appel décalés : signalé par Mehdi le 15/10).
- * Le bureau ne change pas : la bascule y est transparente.
- */
-const SOUS_PARTIES: ReadonlySet<string> = new Set([
-  "Des techniciens confirmés, prêts pour le terrain",
-  "Des avis qui parlent du terrain",
-  "Postes ouverts et candidature spontanée",
-  "Nos informations pratiques",
-]);
-
-const estSousPartie = (section: SectionHub): boolean =>
-  "titre" in section && typeof section.titre === "string" && SOUS_PARTIES.has(section.titre);
-
 /** Le titre de bascule d'une section, ou rien si elle ne sait pas se nommer. */
 function etiquetteDe(section: SectionHub): { surtitre: string; titre: string } | null {
   if (!REPLIABLES.has(section.type)) return null;
@@ -158,45 +138,15 @@ function etiquetteDe(section: SectionHub): { surtitre: string; titre: string } |
  * (dc.html L451, `nOpen = 1` sur le gabarit 10).
  */
 function rendSection(section: SectionHub, i: number, ouverte = false, sousParties: SectionHub[] = []) {
-  // L'index suffit comme clé : l'ordre du tableau EST celui de la capture.
-  const cle = `${section.type}-${i}`;
   const etiquette = i === 0 ? null : etiquetteDe(section);
-  const suite = sousParties.map((sp, k) => (
-    <div key={`${cle}-sous-${k}`} data-sous-partie="">
-      <Section section={sp} />
-    </div>
-  ));
-  if (!etiquette)
-    return suite.length ? (
-      <div key={cle}>
-        <Section section={section} />
-        {suite}
-      </div>
-    ) : (
-      <Section key={cle} section={section} />
-    );
-  return (
-    <SectionPliableMobile
-      key={cle}
-      toujoursOuvert={ouverte}
-      resume={amorceDe(section)}
-      enTete={<EtiquettePli surtitre={etiquette.surtitre} titre={etiquette.titre} />}
-    >
-      <Section section={section} />
-      {suite}
-    </SectionPliableMobile>
+  // L'index suffit comme clé : l'ordre du tableau EST celui de la capture.
+  return rendAvecSuite(
+    `${section.type}-${i}`,
+    section,
+    sousParties,
+    (s) => <Section section={s} />,
+    etiquette && { etiquette, ouverte },
   );
-}
-
-/** Les sections de contenu, chacune avec ses sous-parties (`SOUS_PARTIES`). */
-function regroupe(contenus: SectionHub[], premier: number) {
-  const groupes: { section: SectionHub; rang: number; sous: SectionHub[] }[] = [];
-  contenus.forEach((s, j) => {
-    const dernier = groupes.at(-1);
-    if (dernier && estSousPartie(s)) dernier.sous.push(s);
-    else groupes.push({ section: s, rang: premier + j, sous: [] });
-  });
-  return groupes;
 }
 
 export default function PageHubCarriere({ contenu }: { contenu: ContenuHubCarriere }) {

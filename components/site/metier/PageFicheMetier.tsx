@@ -9,9 +9,8 @@ import styles from "./FicheMetier.module.css";
 import PostulerMetier from "./PostulerMetier";
 import SectionFicheMetier, { BoutonPostuler } from "./SectionsFicheMetier";
 import { altPhoto } from "@/lib/descriptions-photos";
-import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import mv from "./MobileV2.module.css";
-import { EncartAppel, EtiquettePli, amorceDe } from "./pli-mobile";
+import { EncartAppel, regroupe, rendAvecSuite } from "./pli-mobile";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
 import PastillesCocon from "@/components/site/cocon/PastillesCocon";
 import { courtLibelle, enfantsDe } from "@/components/site/cocon/maillage-mobile";
@@ -184,21 +183,23 @@ function etiquetteDe(section: SectionFiche): { surtitre: string; titre: string }
  */
 const HORS_PLI: ReadonlySet<SectionFiche["type"]> = new Set(["faq"]);
 
-function rendSection(section: SectionFiche, i: number, ouverte = false): ReactNode {
+function rendSection(
+  section: SectionFiche,
+  i: number,
+  ouverte = false,
+  sousParties: SectionFiche[] = [],
+): ReactNode {
   if (section.type === "postuler") return <PostulerMetier key={`postuler-${i}`} />;
-  // L'index suffit comme clé : l'ordre du tableau EST le gabarit.
-  const cle = `${section.type}-${i}`;
   const etiquette = i === 0 || HORS_PLI.has(section.type) ? null : etiquetteDe(section);
-  if (!etiquette) return <SectionFicheMetier key={cle} section={section} />;
-  return (
-    <SectionPliableMobile
-      key={cle}
-      toujoursOuvert={ouverte}
-      resume={amorceDe(section)}
-      enTete={<EtiquettePli surtitre={etiquette.surtitre} titre={etiquette.titre} />}
-    >
-      <SectionFicheMetier section={section} />
-    </SectionPliableMobile>
+  /* Les sous-parties (`SOUS_PARTIES` de `pli-mobile.tsx`) s'ouvrent dans la
+     carte d'avant, comme sur le hub. L'index suffit comme clé : l'ordre du
+     tableau EST le gabarit. */
+  return rendAvecSuite(
+    `${section.type}-${i}`,
+    section,
+    sousParties,
+    (s) => <SectionFicheMetier section={s} />,
+    etiquette && { etiquette, ouverte },
   );
 }
 
@@ -234,7 +235,9 @@ export default function PageFicheMetier({
   const rangOuvert = contenus.findIndex(
     (s, j) => premier + j > 0 && !HORS_PLI.has(s.type) && etiquetteDe(s) !== null,
   );
-  const rendContenus = contenus.map((s, j) => rendSection(s, premier + j, j === rangOuvert));
+  const rendContenus = regroupe(contenus, premier).map((g) =>
+    rendSection(g.section, g.rang, g.rang === premier + rangOuvert, g.sous),
+  );
   const rendApres = apres.map((s, j) => rendSection(s, dernier + 1 + j));
 
   return (

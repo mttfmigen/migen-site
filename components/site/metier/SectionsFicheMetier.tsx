@@ -7,6 +7,7 @@ import { LiensPhoto } from "@/components/site/carriere/SectionsHub";
 import type { BandeFiche, CarteFiche, SectionFiche } from "@/types/metier";
 
 import styles from "./FicheMetier.module.css";
+import { TEXTE_AVANT_TABLEAU } from "./pli-mobile";
 
 /**
  * Les sections du gabarit 07 « Métier et carrière », hors héros et formulaire.
@@ -721,7 +722,7 @@ function Tableau({
           largeur="26ch"
         />
       </div>
-      <div data-mc-tableau-corps="">
+      <div data-mc-tableau-corps={TEXTE_AVANT_TABLEAU.has(titre) ? "texte-avant" : ""}>
         {intros?.map((t) => (
           <Intro key={t} texte={t} police="16px/1.7" largeur="70ch" />
         ))}

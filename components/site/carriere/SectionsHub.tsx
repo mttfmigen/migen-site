@@ -575,7 +575,10 @@ export function Hubs({
                 >
                   {hub.nom}
                 </div>
+                {/* `data-mc-libelle` : l'étiquette « Zone couverte » de la V3,
+                    dessinée au téléphone seulement (`MobileV2.module.css`). */}
                 <div
+                  data-mc-libelle="Zone couverte"
                   style={{
                     font: "400 13.5px/1.5 var(--fb)",
                     color: "rgba(255,255,255,.78)",

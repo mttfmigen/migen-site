@@ -43,7 +43,10 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { appliqueDecisions } from "@/lib/decisions-copie";
 import { estMetier, type ContenuFicheMetier } from "@/types/metier";
 
+import { HUB_CARRIERE } from "@/components/site/carriere/donnees-hub";
+
 import PageFicheMetier from "./PageFicheMetier";
+import { APRES_LISTE, SOUS_PARTIES, TEXTE_AVANT_TABLEAU } from "./pli-mobile";
 
 const RACINE = fileURLToPath(new URL("../../..", import.meta.url));
 const RENDU_MAQUETTE = join(RACINE, "maquette", "rendu");
@@ -510,6 +513,31 @@ assert.throws(() => verifieFormulaire("<form></form>"), /absent|manque|cases/, "
 verifieFormulaire(rendu);
 
 /* ------------------- 9. les survols de la maquette, posés avec :focus-visible */
+
+/* LES ENSEMBLES DE LA COUCHE MOBILE (`pli-mobile.tsx`) nomment des sections
+   par leur titre : un titre renommé dans la donnée les désarmerait sans bruit
+   (la sous-partie redeviendrait une carte, le commentaire repasserait avant
+   la liste). Chaque titre doit exister dans une fiche ou dans le hub. */
+const TITRES_SERVIS = new Set<string>(
+  [...URLS_GABARIT_07.flatMap((url) => litPage(fichierDe(url)).contenu.sections), ...HUB_CARRIERE.sections]
+    .map((section) => ("titre" in section && typeof section.titre === "string" ? section.titre : ""))
+    .filter(Boolean),
+);
+const orphelinsDe = (ensemble: Iterable<string>) => [...ensemble].filter((titre) => !TITRES_SERVIS.has(titre));
+// Le contrôle sait échouer : un titre inventé est rendu orphelin, un titre servi ne l'est pas.
+assert.deepEqual(
+  orphelinsDe(["Titre que nulle page ne sert", "Nos informations pratiques", "Conditions, outils et technologies"]),
+  ["Titre que nulle page ne sert"],
+  "le relevé des titres servis ne distingue plus un titre servi d'un titre inventé",
+);
+for (const [nom, ensemble] of [
+  ["SOUS_PARTIES", SOUS_PARTIES],
+  ["APRES_LISTE", APRES_LISTE],
+  ["TEXTE_AVANT_TABLEAU", TEXTE_AVANT_TABLEAU],
+] as const) {
+  const orphelins = orphelinsDe(ensemble);
+  assert.deepEqual(orphelins, [], `${nom} nomme des sections qu'aucune page ne sert : ${orphelins.join(" | ")}`);
+}
 
 /* Les cartes de fin et la FAQ-photo sont celles du hub (`LiensPhoto`,
    `QuestionsHub`) : leurs survols vivent dans son module. */

@@ -53,11 +53,26 @@ const CAPTURE_ENTIERE = readFileSync(join(RACINE, "maquette", "rendu", "carriere
  *  la page (de la première à la dernière section) sert de référence. Les
  *  décisions de copie (lib/decisions-copie.ts) y sont appliquées : la donnée
  *  les porte déjà, la capture non. */
+/* 13/10, LE NUMÉRO RETIRÉ DE « CONTACT DIRECT » (67f5a3e). Décision de
+   Mehdi sur cette page seule : « tu affiches le numéro de téléphone. C'est
+   dégueulasse. » La carte garde ses horaires et le rappel dans l'heure ; le
+   numéro reste dans l'en-tête. La porte était rouge depuis : la capture
+   porte encore le numéro. Sa place est `lib/decisions-copie.ts`, hors du
+   périmètre de la famille au 16/10 : en attendant, la décision est posée ici,
+   sur cette seule phrase, après les décisions communes. */
+const SANS_NUMERO: [string, string] = [
+  "04 78 33 72 05, du lundi au vendredi, 8h00 à 18h30.",
+  "Du lundi au vendredi, 8h00 à 18h30. Votre demande est rappelée dans l'heure.",
+];
 const CAPTURE = appliqueDecisions(
   CAPTURE_ENTIERE.slice(
     CAPTURE_ENTIERE.indexOf("<section"),
     CAPTURE_ENTIERE.lastIndexOf("</section>") + "</section>".length,
   ),
+).replace(...SANS_NUMERO);
+assert.ok(
+  CAPTURE.includes(SANS_NUMERO[1]),
+  "la phrase « Contact direct » de la capture a changé : la décision du 13/10 ne s'applique plus",
 );
 const MODULE_CSS = readFileSync(new URL("./HubCarriere.module.css", import.meta.url), "utf8");
 
