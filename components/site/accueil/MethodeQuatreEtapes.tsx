@@ -279,7 +279,7 @@ export default function MethodeQuatreEtapes({
               }}
             />
             <span
-              className={v3.surtitre}
+              data-doublon-mobile=""
               style={{
                 font: "600 10.5px var(--fb)",
                 letterSpacing: ".12em",
@@ -292,7 +292,7 @@ export default function MethodeQuatreEtapes({
               Si ça ne va pas
             </span>
             <span
-              className={v3.texte}
+              data-doublon-mobile=""
               style={{
                 font: "400 14.5px/1.6 var(--fb)",
                 color: "rgba(255,255,255,.72)",
@@ -311,6 +311,13 @@ export default function MethodeQuatreEtapes({
               sans frais. C’est la contrepartie du fait que vous l’avez validé à
               l’étape 02.
             </span>
+            {/* Au téléphone, la phrase de la V3 : « Si ça ne va pas » en amorce
+                grasse, et non en sur-titre au-dessus du paragraphe. */}
+            <p data-mobile-seulement="" className={v3.texte}>
+              <strong>Si ça ne va pas</strong>&nbsp;: un technicien qui ne
+              convient pas est remplacé, sans discussion et sans frais. C’est la
+              contrepartie du fait que vous l’avez validé à l’étape 02.
+            </p>
             <a
               href={lienQualification}
               className={`${styles.lienQualification} ${v3.bouton}`}

@@ -4,14 +4,17 @@
  * Source : maquette V3, vue « Site mobile », gabarit des blocs de section
  * (`isKvStat` pour les tuiles, `isTl` pour les frises, `isRating` et `isRevs`
  * pour la note et le carrousel d'avis, `isBtnQ` pour le bouton). Les valeurs
- * ci-dessous en sont reprises, sauf les encres, passées au contraste AA
- * (voir les jetons `--v3-*` de `replis-accueil.module.css`).
+ * ci-dessous en sont reprises, sauf les encres, passées au contraste AA :
+ * l'orange de la V3 (`--acc`) tombe à 2,4:1 sur une tuile claire, d'où
+ * l'orange foncé de ses liens (`--mm-lien`, 5,0:1) pour les chiffres, les
+ * repères et les points, et l'encre (`--ink`) sur les boutons orange.
  *
  * TOUT EST SOUS 881 PX. Au-dessus, aucune règle n'existe : le bureau est celui
  * de la capture de référence, au pixel. Les éléments de bureau gardent leur
  * balisage et leurs styles en ligne, d'où `!important` ; le texte ne change
- * pas. Seuls la frise de la méthode, la note Google, les tuiles et le
- * carrousel du « jour et la nuit » sont du balisage propre au téléphone
+ * pas. Seuls la frise de la méthode, sa phrase « Si ça ne va pas », la note
+ * Google, les tuiles et le carrousel du « jour et la nuit » sont du balisage
+ * propre au téléphone
  * (`data-mobile-seulement`), là où le dessin de bureau ne peut pas devenir
  * celui de la V3.
  *
@@ -78,13 +81,10 @@
     color: var(--ink1) !important;
   }
 
-  :global([data-accueil-v3]) .surtitre {
-    display: block !important;
-    margin: 0 0 6px !important;
-    font: 600 10.5px var(--fb) !important;
-    letter-spacing: 0.12em !important;
-    text-transform: uppercase !important;
-    color: var(--v3-acc-ink) !important;
+  /* L'amorce grasse de la V3 (« Si ça ne va pas : … »). */
+  :global([data-accueil-v3]) .texte strong {
+    font-weight: 600;
+    color: var(--ink);
   }
 
   /* ------------------------------------------- tuiles en 2 x 2 (isKvStat) */
@@ -121,12 +121,18 @@
     transform: none !important;
   }
 
+  /* Une tuile seule (« Avec migen© » n'a qu'un chiffre) prend toute la
+     rangée, plutôt qu'une demi-largeur à côté d'un vide. */
+  :global([data-accueil-v3]) .tuile:only-child {
+    grid-column: 1 / -1 !important;
+  }
+
   :global([data-accueil-v3]) .tuileValeur {
     display: block !important;
     margin: 0 !important;
     font: 700 24px/1 var(--ft) !important;
     letter-spacing: -0.045em !important;
-    color: var(--v3-acc-ink) !important;
+    color: var(--mm-lien) !important;
   }
 
   :global([data-accueil-v3]) .tuileTitre {
@@ -180,15 +186,15 @@
     margin: 8px 0 14px !important;
     padding: 0 6px 0 20px !important;
     border-radius: 999px !important;
-    background: #ff7c3c !important;
-    color: #1c1b19 !important;
+    background: var(--acc) !important;
+    color: var(--ink) !important;
     font: 600 14.5px/1.25 var(--fb) !important;
     white-space: normal !important;
     text-decoration: none !important;
   }
 
   :global([data-accueil-v3]) .bouton:hover {
-    color: #1c1b19 !important;
+    color: var(--ink) !important;
     filter: none !important;
     transform: none !important;
   }
@@ -213,7 +219,7 @@
 
   .etape {
     display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-columns: 28px minmax(0, 1fr);
     column-gap: 12px;
   }
 
@@ -227,12 +233,11 @@
     flex: none;
     display: grid;
     place-items: center;
-    min-width: 28px;
+    width: 28px;
     height: 28px;
-    padding: 0 8px;
     border-radius: 999px;
-    background: var(--v3-acc-fond-fort);
-    color: var(--v3-acc-ink);
+    background: var(--acc-w);
+    color: var(--mm-lien);
     font: 600 11.5px var(--fb);
     font-variant-numeric: tabular-nums;
   }
@@ -243,7 +248,7 @@
     min-height: 12px;
     margin: 4px 0;
     border-radius: 2px;
-    background: var(--v3-acc-fil);
+    background: rgba(255, 124, 60, 0.22);
   }
 
   .etapeCorps {
@@ -256,7 +261,7 @@
     margin-bottom: 5px;
     padding: 3px 9px;
     border-radius: 999px;
-    background: var(--v3-acc-fond);
+    background: var(--acc-w);
     font: 600 10.5px var(--fb);
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -284,7 +289,7 @@
     margin: 9px 0 0;
     padding: 10px 12px;
     border-radius: 12px;
-    background: var(--v3-acc-fond);
+    background: var(--acc-w);
   }
 
   .encart > div {
@@ -303,7 +308,7 @@
   }
 
   .encart dt[data-resultat] {
-    color: var(--v3-acc-ink);
+    color: var(--mm-lien);
   }
 
   .encart dd {
@@ -334,14 +339,14 @@
     bottom: 4px;
     width: 2px;
     border-radius: 2px;
-    background: var(--v3-acc-fil);
+    background: rgba(255, 124, 60, 0.22);
   }
 
   :global([data-accueil-v3]) .jalonAnnee {
     height: 28px;
     border-radius: 999px;
-    background: var(--v3-acc-fond-fort);
-    color: var(--v3-acc-ink) !important;
+    background: var(--acc-w);
+    color: var(--mm-lien) !important;
     font: 600 11.5px/28px var(--fb) !important;
     letter-spacing: normal !important;
     text-align: center;
@@ -442,7 +447,7 @@
     height: 22px;
     margin: 0 !important;
     font: 700 44px/0.9 Georgia, serif !important;
-    color: #ff7c3c !important;
+    color: var(--acc) !important;
   }
 
   :global([data-accueil-v3]) .citation {
@@ -473,8 +478,8 @@
     width: 34px;
     height: 34px;
     border-radius: 999px;
-    background: #ff7c3c;
-    color: #1c1b19;
+    background: var(--acc);
+    color: var(--ink);
     font: 600 13px var(--fb);
   }
 
@@ -519,14 +524,15 @@
   .points {
     display: flex;
     justify-content: center;
-    margin: 4px 0 14px;
+    margin: 0 0 4px;
   }
 
+  /* Cible tactile de 32 x 44 px ; le point dessiné reste de 6 px. */
   .points > button {
     display: grid;
     place-items: center;
-    min-width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 44px;
     padding: 0;
     border: 0;
     background: none;
@@ -546,7 +552,7 @@
 
   .points > button[aria-current="true"] > span {
     width: 18px;
-    background: var(--v3-acc-ink);
+    background: var(--mm-lien);
   }
 
   /* --------------------------------- le jour et la nuit : les onglets clairs */
@@ -558,21 +564,28 @@
   }
 
   :global([data-accueil-v3]) .onglet {
+    min-height: 44px;
     padding: 11px 8px !important;
     font: 600 14px/1.25 var(--fb) !important;
   }
 
   :global([data-accueil-v3]) .onglet[aria-pressed="true"] {
-    color: #1c1b19 !important;
+    color: var(--ink) !important;
   }
 }
 
-/* Une tuile ne garde que 120 px de texte à 320 px : « comportementaux » y
-   débordait. La césure (langue de la page) ne joue que sur ces écrans étroits ;
-   à 390 px, la V3 n'en a pas besoin. */
+/* Sous 361 px, une demi-tuile ne garde que 94 px de texte. Aucun mot n'y est
+   coupé (la césure tranchait aussi les noms propres, « Mont-réal ») : les
+   tuiles à texte long (titre et paragraphe) passent sur une colonne, et les
+   autres prennent 4 px de plus, la place de « collaborateurs » à 320 px. */
 @media (max-width: 360px) {
-  :global([data-accueil-v3]) .tuiles {
-    hyphens: auto;
+  :global([data-accueil-v3]) .tuilesLongues {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  :global([data-accueil-v3]) .tuile {
+    padding-right: 12px !important;
+    padding-left: 12px !important;
   }
 }
 

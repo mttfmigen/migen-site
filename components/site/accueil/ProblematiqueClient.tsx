@@ -107,7 +107,7 @@ export default function ProblematiqueClient() {
             </p>
           </div>
 
-          <div className={v3.tuiles} style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "12px" }}>
+          <div className={`${v3.tuiles} ${v3.tuilesLongues}`} style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "12px" }}>
             {PREUVES.map((preuve) => (
               <div
                 key={preuve.titre}

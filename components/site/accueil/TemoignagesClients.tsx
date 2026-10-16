@@ -143,7 +143,7 @@ export default function TemoignagesClients({
           </div>
           {/* Au téléphone, la note de la V3 (chiffre et étoiles) remplace la
               pastille ci-dessus, et seulement si une note est portée. */}
-          {noteGoogle ? <NoteGoogle note={noteGoogle} /> : null}
+          <NoteGoogle note={noteGoogle} />
         </div>
 
         <Carrousel

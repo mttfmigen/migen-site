@@ -6,6 +6,17 @@ type Chiffre = Extract<TuileBascule, { forme: "chiffre" }>;
 type Temoin = Exclude<TuileBascule, Chiffre>;
 
 /**
+ * Le nom, puis son contexte en gris, sur toutes les cartes comme dans la V3.
+ * Une tuile photo porte les deux dans `qui` : « Responsable maintenance ·
+ * Agroalimentaire, Rhône » se coupe au premier « · ».
+ */
+function signature(t: Temoin): [string, string | undefined] {
+  if (t.forme === "citation") return [t.qui, t.role];
+  const coupe = t.qui.indexOf(" · ");
+  return coupe < 0 ? [t.qui, undefined] : [t.qui.slice(0, coupe), t.qui.slice(coupe + 3)];
+}
+
+/**
  * « LE JOUR ET LA NUIT » AU TÉLÉPHONE, comme la V3 : les chiffres de la vue en
  * tuiles, puis ses citations en carrousel à points. Les mêmes tuiles que la
  * mosaïque de bureau, rangées autrement : rien n'est ajouté ni retiré, et le
@@ -38,22 +49,27 @@ export default function BasculeMobile({
         </div>
       ) : null}
       {temoins.length > 0 ? (
-        <Carrousel etiquette={etiquette}>
-          {temoins.map((t) => (
-            <figure key={t.cle} className={v3.avis}>
-              <span aria-hidden="true" className={v3.guillemet}>
-                &ldquo;
-              </span>
-              <blockquote className={v3.citation}>{t.citation}</blockquote>
-              <figcaption className={v3.signature}>
-                <span aria-hidden="true" className={v3.initiale}>
-                  {t.forme === "citation" ? t.initiales : t.qui.charAt(0)}
+        // Une clé par vue : « Avant » puis « Avec » remonte le carrousel, qui
+        // repart de sa première citation au lieu de garder sa position.
+        <Carrousel key={vue.titre} etiquette={etiquette}>
+          {temoins.map((t) => {
+            const [qui, contexte] = signature(t);
+            return (
+              <figure key={t.cle} className={v3.avis}>
+                <span aria-hidden="true" className={v3.guillemet}>
+                  &ldquo;
                 </span>
-                <p className={v3.qui}>{t.qui}</p>
-                {t.forme === "citation" ? <p className={v3.contexte}>{t.role}</p> : null}
-              </figcaption>
-            </figure>
-          ))}
+                <blockquote className={v3.citation}>{t.citation}</blockquote>
+                <figcaption className={v3.signature}>
+                  <span aria-hidden="true" className={v3.initiale}>
+                    {t.forme === "citation" ? t.initiales : qui.charAt(0)}
+                  </span>
+                  <p className={v3.qui}>{qui}</p>
+                  {contexte ? <p className={v3.contexte}>{contexte}</p> : null}
+                </figcaption>
+              </figure>
+            );
+          })}
         </Carrousel>
       ) : null}
     </div>

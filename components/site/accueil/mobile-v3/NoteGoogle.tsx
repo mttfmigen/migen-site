@@ -1,6 +1,6 @@
 import v3 from "./accueil-v3.module.css";
 
-const ORANGE = "#ff7c3c";
+const ORANGE = "var(--acc)";
 const VIDE = "rgba(127,127,127,.28)";
 
 /** Le fond d'une étoile de rang `k` (1 à 5) pour la note `note` (V3 `isRating`). */

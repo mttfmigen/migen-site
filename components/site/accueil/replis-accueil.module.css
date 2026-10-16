@@ -364,21 +364,6 @@
   .repli:not([data-accueil-v3]) :global(details[data-pliable-mobile] > summary ~ div [style*="background:var(--panel)"]) {
     padding: 18px !important;
   }
-
-  /* LES ENCRES DES CARTES V3. L'orange de la V3 (#ff7c3c) ne tient pas le
-     contraste AA sur une tuile claire (2,4:1) : chiffres, repères et points
-     prennent l'orange foncé que la V3 réserve à ses liens (#b4490f, 5,0:1 sur
-     #f6f6f7), le thème sombre son `--acc-ink`. */
-  .repli[data-accueil-v3] {
-    --v3-acc-ink: #b4490f;
-    --v3-acc-fond: rgba(255, 124, 60, 0.09);
-    --v3-acc-fond-fort: rgba(255, 124, 60, 0.12);
-    --v3-acc-fil: rgba(255, 124, 60, 0.22);
-  }
-
-  :global(:root[data-theme="sombre"]) .repli[data-accueil-v3] {
-    --v3-acc-ink: var(--acc-ink);
-  }
 }
 
 /*
