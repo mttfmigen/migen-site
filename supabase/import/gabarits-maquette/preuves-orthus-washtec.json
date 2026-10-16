@@ -62,49 +62,60 @@
     "reponseCartes": [
       {
         "titre": "Vous avez un interlocuteur unique pour l'installation complète",
-        "texte": "Réception, assemblage, levage et raccordements mécaniques et électriques sont pris en charge."
+        "texte": "Réception, assemblage, levage et raccordements mécaniques et électriques sont pris en charge.",
+        "point": true
       },
       {
         "titre": "Vous travaillez avec des techniciens formés à vos équipements",
-        "texte": "Les intervenants sont formés aux matériels spécifiques WashTec."
+        "texte": "Les intervenants sont formés aux matériels spécifiques WashTec.",
+        "point": true
       },
       {
         "titre": "Vous montez selon les standards constructeur",
-        "texte": "Chaque portique est validé pour une mise en service immédiate."
+        "texte": "Chaque portique est validé pour une mise en service immédiate.",
+        "point": true
       },
       {
         "titre": "Vous couvrez tout le territoire",
-        "texte": "Un réseau d'équipes mobiles intervient partout, avec une coordination centralisée."
+        "texte": "Un réseau d'équipes mobiles intervient partout, avec une coordination centralisée.",
+        "point": true
       },
       {
         "titre": "Vous gardez la maîtrise de la chaîne",
-        "texte": "L'engagement est porté sur le terrain, sans sous-traitance en cascade."
+        "texte": "L'engagement est porté sur le terrain, sans sous-traitance en cascade.",
+        "point": true
       }
     ],
     "etapes": [
       {
         "titre": "Planification de l'installation",
-        "texte": "Le chantier est cadré avec WashTec, sur un site client identifié."
+        "texte": "Le chantier est cadré avec WashTec, sur un site client identifié.",
+        "point": true
       },
       {
         "titre": "Logistique",
-        "texte": "Les livraisons et les interventions techniques sont coordonnées en amont."
+        "texte": "Les livraisons et les interventions techniques sont coordonnées en amont.",
+        "point": true
       },
       {
         "titre": "Réception du matériel",
-        "texte": "L'équipe Migen Travaux réceptionne le portique sur site."
+        "texte": "L'équipe Migen Travaux réceptionne le portique sur site.",
+        "point": true
       },
       {
         "titre": "Assemblage et levage",
-        "texte": "Le montage est réalisé selon les standards constructeur."
+        "texte": "Le montage est réalisé selon les standards constructeur.",
+        "point": true
       },
       {
         "titre": "Raccordements",
-        "texte": "Les raccordements mécaniques et électriques sont exécutés et contrôlés."
+        "texte": "Les raccordements mécaniques et électriques sont exécutés et contrôlés.",
+        "point": true
       },
       {
         "titre": "Validation",
-        "texte": "L'installation est validée pour une mise en service immédiate."
+        "texte": "L'installation est validée pour une mise en service immédiate.",
+        "point": true
       }
     ],
     "dispositif": [

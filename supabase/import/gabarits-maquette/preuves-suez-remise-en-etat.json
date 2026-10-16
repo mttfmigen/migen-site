@@ -61,45 +61,55 @@
     "reponseCartes": [
       {
         "titre": "Vous obtenez un profil qui couvre tout le parc",
-        "texte": "Le technicien combine compétences mécaniques, électriques et notions d'automatisme, ce qui évite d'empiler les intervenants."
+        "texte": "Le technicien combine compétences mécaniques, électriques et notions d'automatisme, ce qui évite d'empiler les intervenants.",
+        "point": true
       },
       {
         "titre": "Vous accueillez quelqu'un déjà habilité",
-        "texte": "Le technicien a été formé et habilité RC1, habilitation risque chimique niveau 1, avant la première journée sur site."
+        "texte": "Le technicien a été formé et habilité RC1, habilitation risque chimique niveau 1, avant la première journée sur site.",
+        "point": true
       },
       {
         "titre": "Vous calez la durée sur la charge réelle",
-        "texte": "La mission est définie pour 6 mois, pas pour un horizon indéterminé."
+        "texte": "La mission est définie pour 6 mois, pas pour un horizon indéterminé.",
+        "point": true
       },
       {
         "titre": "Vous démarrez conforme",
-        "texte": "L'intervention est cadrée sur les standards de sécurité du client dès la mise en opération."
+        "texte": "L'intervention est cadrée sur les standards de sécurité du client dès la mise en opération.",
+        "point": true
       },
       {
         "titre": "Vous n'ouvrez pas de poste",
-        "texte": "Migen recrute, forme et encadre l'intervenant pendant toute la mission."
+        "texte": "Migen recrute, forme et encadre l'intervenant pendant toute la mission.",
+        "point": true
       }
     ],
     "etapes": [
       {
         "titre": "Qualification du besoin",
-        "texte": "SUEZ IWT exprime un besoin de renfort pour des travaux de remise en état, sur fond de surcroît d'activité."
+        "texte": "SUEZ IWT exprime un besoin de renfort pour des travaux de remise en état, sur fond de surcroît d'activité.",
+        "point": true
       },
       {
         "titre": "Définition du profil",
-        "texte": "Le contexte chimique et la diversité des équipements orientent vers un profil polyvalent."
+        "texte": "Le contexte chimique et la diversité des équipements orientent vers un profil polyvalent.",
+        "point": true
       },
       {
         "titre": "Formation et habilitation",
-        "texte": "Le technicien suit la formation habilitation risque chimique niveau 1."
+        "texte": "Le technicien suit la formation habilitation risque chimique niveau 1.",
+        "point": true
       },
       {
         "titre": "Démarrage sur site",
-        "texte": "La mission commence, pour une durée de 6 mois."
+        "texte": "La mission commence, pour une durée de 6 mois.",
+        "point": true
       },
       {
         "titre": "Travaux de remise en état",
-        "texte": "Le technicien avance sur les équipements tout en absorbant la charge supplémentaire."
+        "texte": "Le technicien avance sur les équipements tout en absorbant la charge supplémentaire.",
+        "point": true
       }
     ],
     "dispositif": [

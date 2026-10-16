@@ -53,6 +53,12 @@ export interface ObjectifPreuve {
 export interface CartePreuve {
   titre: string;
   texte: string;
+  /**
+   * Le corpus clôt le titre par un point (« **Sélection.** Migen est
+   * retenu… ») : l'accroche mobile le rend (`ligneDuCorpus`). Le bureau ne le
+   * lit pas.
+   */
+  point?: boolean;
 }
 
 /** Une coche d'un bloc « Complément » : l'accroche en gras, puis le texte. */

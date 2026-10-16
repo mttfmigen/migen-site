@@ -69,7 +69,8 @@ export type BlocGuide =
   /** Cartes de verre (`isCards`) ou lignes titrées (`isRows`). */
   | { type: "cartes" | "lignes"; items: { titre: string; texte: string }[] }
   /** Gros numéros en cartes (`isOl`) ou étapes reliées par un rail (`isOlRows`). */
-  | { type: "numeros" | "etapes"; items: { titre?: string; texte: string }[] }
+  /** `point` : le corpus clôt le titre par un point, voir `CartePreuve`. */
+  | { type: "numeros" | "etapes"; items: { titre?: string; texte: string; point?: boolean }[] }
   | {
       type: "bento";
       colonnes: number;

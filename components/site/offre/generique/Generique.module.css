@@ -115,6 +115,13 @@
    cadence de conversion. Toutes les règles sont SOUS 881 PX : au-dessus,
    rien ne change, et la référence reste la capture de bureau. */
 @media (max-width: 880px) {
+  /* FAQ SANS QUESTION (`PageVente`, `Questions`) : « Questions fréquentes »
+     devient le titre (`data-faq-maquette`), le H2 de bureau sort seul ; le
+     bouton « Poser ma question » reste, c'est tout le contenu de la carte. */
+  .faqTitreBureau {
+    display: none;
+  }
+
   /* L'écart entre sections suit la maquette mobile (12 à 14 px entre ses
      cartes) plutôt que les 64 px de `.mg-site` : des sections repliées
      séparées par plus de vide qu'elles n'occupent se lisent mal. */

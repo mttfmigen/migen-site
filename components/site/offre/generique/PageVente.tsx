@@ -398,19 +398,25 @@ function Questions({ v }: { v: Vue }) {
        fréquentes », comme la V3 et les autres gabarits (`app/globals.css`,
        « l'en-tête de la FAQ à photo ») ; le H2 de bureau et « Poser ma
        question » sortent de l'écran sous 881 px, leur texte reste dans le DOM.
-       SEULEMENT QUAND LA CARTE PORTE DES QUESTIONS : sur quatre des six pages
-       de vente, la fiche n'en livre aucune (16/10), et la carte n'est alors
-       qu'un appel ; lui retirer son bouton la laisserait vide. */
+       SANS QUESTION (quatre des six pages de vente, la fiche n'en livre
+       aucune), la carte n'est qu'un appel : le H2 sort seul
+       (`faqTitreBureau`), le bouton reste, sans quoi la carte serait vide.
+       Avant le 16/10, ces quatre pages montraient deux titres au téléphone. */
     <section
-      {...(avecQuestions ? { "data-faq-maquette": "" } : {})}
+      data-faq-maquette=""
       id="sp-faq"
       style={css("padding:var(--sec) 0 0;scroll-margin-top:96px")}
     >
       <div style={css("max-width:1200px;margin:0 auto;padding:0 40px")}>
         <div className={`mg-r2 mg-faqph ${h.faqPhoto}`} style={css("display:grid;grid-template-columns:.8fr 1.2fr;gap:52px;align-items:start")}>
           <div style={css("position:sticky;top:112px")}>
-            <div {...(avecQuestions ? { "data-faq-surtitre": "" } : {})} style={SURTITRE}>Questions fréquentes</div>
-            <h2 {...(avecQuestions ? { "data-faq-titre": "" } : {})} style={css(`${TITRE_SECTION};max-width:14ch;margin-bottom:22px`)}>Ce qu’on nous demande avant de signer</h2>
+            <div data-faq-surtitre="" style={SURTITRE}>Questions fréquentes</div>
+            <h2
+              {...(avecQuestions ? { "data-faq-titre": "" } : { className: h.faqTitreBureau })}
+              style={css(`${TITRE_SECTION};max-width:14ch;margin-bottom:22px`)}
+            >
+              Ce qu’on nous demande avant de signer
+            </h2>
             <a className={h.bouton} href="#cx-form" style={css(BOUTON)}>Poser ma question</a>
           </div>
           <div style={css("display:grid;gap:10px")}>

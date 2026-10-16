@@ -61,49 +61,60 @@
     "reponseCartes": [
       {
         "titre": "Vous avez un responsable nommé, pas une ressource anonyme",
-        "texte": "Il prend l'exploitation, l'organisation des interventions et le reporting."
+        "texte": "Il prend l'exploitation, l'organisation des interventions et le reporting.",
+        "point": true
       },
       {
         "titre": "Vous démarrez sans rupture d'activité",
-        "texte": "Les ressources sont engagées dès la validation du besoin, la production ne s'arrête pas pour accueillir le renfort."
+        "texte": "Les ressources sont engagées dès la validation du besoin, la production ne s'arrête pas pour accueillir le renfort.",
+        "point": true
       },
       {
         "titre": "Vous gardez votre organisation",
-        "texte": "Le responsable travaille dans les équipes ERIKS, l'encadrement technique reste porté par Migen."
+        "texte": "Le responsable travaille dans les équipes ERIKS, l'encadrement technique reste porté par Migen.",
+        "point": true
       },
       {
         "titre": "Vous avez un seul interlocuteur maintenance",
-        "texte": "Production, achats et services HSE parlent à la même personne."
+        "texte": "Production, achats et services HSE parlent à la même personne.",
+        "point": true
       },
       {
         "titre": "Vous recevez un reporting technique et stratégique",
-        "texte": "Il remonte à la direction industrielle pendant toute la prestation."
+        "texte": "Il remonte à la direction industrielle pendant toute la prestation.",
+        "point": true
       }
     ],
     "etapes": [
       {
         "titre": "Cadrage du besoin",
-        "texte": "ERIKS pose son problème, montée de cadence et transition d'équipe. Le profil attendu est arrêté avec lui."
+        "texte": "ERIKS pose son problème, montée de cadence et transition d'équipe. Le profil attendu est arrêté avec lui.",
+        "point": true
       },
       {
         "titre": "Engagement des ressources",
-        "texte": "Validation du besoin, puis mobilisation du responsable maintenance."
+        "texte": "Validation du besoin, puis mobilisation du responsable maintenance.",
+        "point": true
       },
       {
         "titre": "Prise de poste sur site",
-        "texte": "Intégration dans les équipes en place, reprise de la planification et de l'ordonnancement."
+        "texte": "Intégration dans les équipes en place, reprise de la planification et de l'ordonnancement.",
+        "point": true
       },
       {
         "titre": "Conduite de la mission",
-        "texte": "Préventif et curatif ordonnancés, techniciens ERIKS et Migen managés au quotidien."
+        "texte": "Préventif et curatif ordonnancés, techniciens ERIKS et Migen managés au quotidien.",
+        "point": true
       },
       {
         "titre": "Coordination transverse",
-        "texte": "Production, achats et HSE travaillent avec un interlocuteur maintenance identifié."
+        "texte": "Production, achats et HSE travaillent avec un interlocuteur maintenance identifié.",
+        "point": true
       },
       {
         "titre": "Reporting",
-        "texte": "Point technique et stratégique remonté à la direction industrielle."
+        "texte": "Point technique et stratégique remonté à la direction industrielle.",
+        "point": true
       }
     ],
     "dispositif": [

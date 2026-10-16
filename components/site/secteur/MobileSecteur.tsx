@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 
-import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import { ligneDuCorpus, resumeDe } from "@/components/site/blocs/resume-de-section";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import TexteRiche, { estCheminInterne } from "@/components/site/blocs/TexteRiche";
 import { continueLeTitre } from "@/components/site/blocs/TitreEtSuite";
@@ -188,19 +188,6 @@ const PROSE_OFFRE: Readonly<Record<string, string>> = {
   "/secteurs/chimie/":
     "Pour les modifications, notre [bureau d'études](/offres/bureau-etudes/) prépare des dossiers techniques au niveau attendu par vos études de dangers et votre gestion des modifications.",
 };
-
-/**
- * Une puce « **accroche** : texte » telle que le corpus l'écrit, pour le résumé
- * d'une carte repliée (dc.html `teaseOf`, premier élément de liste). La fiche
- * a perdu le deux-points et mis une majuscule au texte (`suitAccroche`
- * absent) : on rend le séparateur du corpus et sa minuscule, sauf sigle.
- */
-function puceDuCorpus(p: { accroche?: string; texte: string; suitAccroche?: boolean }): string {
-  if (!p.accroche) return p.texte;
-  if (p.suitAccroche) return `${p.accroche} ${p.texte}`;
-  const texte = /^\p{Lu}\p{Ll}/u.test(p.texte) ? p.texte.charAt(0).toLowerCase() + p.texte.slice(1) : p.texte;
-  return `${p.accroche} : ${texte}`;
-}
 
 /** Les logos clairs que la maquette inverse (dc.html `logoOf`, `lg.inv`). */
 const LOGOS_INVERSES = /groupe-atlantic|ogf|orthus/;
@@ -412,7 +399,7 @@ export default function SectionsMobilesSecteur({ contenu, chemin, photoHeros, bo
       <Carte
         key="garanties"
         titre="Ce que nous garantissons"
-        resume={garanties.puces[0] ? puceDuCorpus(garanties.puces[0]) : undefined}
+        resume={garanties.puces[0] ? ligneDuCorpus(garanties.puces[0]) : undefined}
       >
         <ListeKv
           lignes={garanties.puces.map((p) => ({

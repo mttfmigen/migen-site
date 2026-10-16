@@ -60,45 +60,55 @@
     "reponseCartes": [
       {
         "titre": "Vous obtenez la compétence exacte, pas un renfort généraliste",
-        "texte": "L'automaticien travaille sur les systèmes SIEMENS de l'installation."
+        "texte": "L'automaticien travaille sur les systèmes SIEMENS de l'installation.",
+        "point": true
       },
       {
         "titre": "Vous traitez les défauts au fil de l'eau",
-        "texte": "L'accompagnement en fiabilisation se fait sur place, pendant la mise en route."
+        "texte": "L'accompagnement en fiabilisation se fait sur place, pendant la mise en route.",
+        "point": true
       },
       {
         "titre": "Vous couvrez aussi l'exploitation courante",
-        "texte": "La mission porte sur la fiabilisation, l'amélioration et la maintenance de la ligne."
+        "texte": "La mission porte sur la fiabilisation, l'amélioration et la maintenance de la ligne.",
+        "point": true
       },
       {
         "titre": "Vous gardez le même intervenant du début à la fin",
-        "texte": "La présence est continue sur plusieurs semaines, sans rupture de suivi."
+        "texte": "La présence est continue sur plusieurs semaines, sans rupture de suivi.",
+        "point": true
       },
       {
         "titre": "Vous n'avez rien à former",
-        "texte": "La compétence est immédiatement exploitable sur le terrain."
+        "texte": "La compétence est immédiatement exploitable sur le terrain.",
+        "point": true
       }
     ],
     "etapes": [
       {
         "titre": "Montée en charge",
-        "texte": "MERSEN engage le démarrage d'une nouvelle ligne de production."
+        "texte": "MERSEN engage le démarrage d'une nouvelle ligne de production.",
+        "point": true
       },
       {
         "titre": "Besoin exprimé",
-        "texte": "Le site cherche un automaticien qualifié, capable d'intervenir sur les systèmes SIEMENS."
+        "texte": "Le site cherche un automaticien qualifié, capable d'intervenir sur les systèmes SIEMENS.",
+        "point": true
       },
       {
         "titre": "Affectation",
-        "texte": "Migen affecte un automaticien dédié à temps plein, intégré sur site."
+        "texte": "Migen affecte un automaticien dédié à temps plein, intégré sur site.",
+        "point": true
       },
       {
         "titre": "Mise en route",
-        "texte": "L'intervenant fiabilise les installations neuves et accompagne la prise en main."
+        "texte": "L'intervenant fiabilise les installations neuves et accompagne la prise en main.",
+        "point": true
       },
       {
         "titre": "Suivi de la phase sensible",
-        "texte": "La présence reste continue sur plusieurs semaines, jusqu'à stabilisation de la ligne."
+        "texte": "La présence reste continue sur plusieurs semaines, jusqu'à stabilisation de la ligne.",
+        "point": true
       }
     ],
     "dispositif": [

@@ -64,15 +64,18 @@
       },
       {
         "titre": "Vous définissez le périmètre technique à l'avance",
-        "texte": "Montage, démontage, transfert de machines, assistance à la production : ce qui est couvert est écrit."
+        "texte": "Montage, démontage, transfert de machines, assistance à la production : ce qui est couvert est écrit.",
+        "point": true
       },
       {
         "titre": "Vous gardez l'encadrement chez nous",
-        "texte": "Migen assure l'encadrement opérationnel des interventions, pour l'efficacité comme pour la sécurité."
+        "texte": "Migen assure l'encadrement opérationnel des interventions, pour l'efficacité comme pour la sécurité.",
+        "point": true
       },
       {
         "titre": "Vous savez ce que vous payez",
-        "texte": "La facturation se fait à la journée ou au forfait, avec une logistique allégée."
+        "texte": "La facturation se fait à la journée ou au forfait, avec une logistique allégée.",
+        "point": true
       },
       {
         "titre": "Vous mobilisez partout en France",
@@ -82,27 +85,33 @@
     "etapes": [
       {
         "titre": "Expression du besoin",
-        "texte": "SOPREMA identifie un chantier de montage, un transfert ou une surcharge à absorber."
+        "texte": "SOPREMA identifie un chantier de montage, un transfert ou une surcharge à absorber.",
+        "point": true
       },
       {
         "titre": "Cadrage du périmètre",
-        "texte": "Le contenu technique de la mission est arrêté avant le déplacement."
+        "texte": "Le contenu technique de la mission est arrêté avant le déplacement.",
+        "point": true
       },
       {
         "titre": "Mobilisation des profils",
-        "texte": "Monteurs, électriciens ou techniciens de maintenance sont engagés selon le chantier."
+        "texte": "Monteurs, électriciens ou techniciens de maintenance sont engagés selon le chantier.",
+        "point": true
       },
       {
         "titre": "Intervention sur site",
-        "texte": "L'équipe réalise le montage, le déplacement ou le renfort convenu."
+        "texte": "L'équipe réalise le montage, le déplacement ou le renfort convenu.",
+        "point": true
       },
       {
         "titre": "Encadrement opérationnel",
-        "texte": "Migen pilote l'exécution et les conditions de sécurité pendant la mission."
+        "texte": "Migen pilote l'exécution et les conditions de sécurité pendant la mission.",
+        "point": true
       },
       {
         "titre": "Clôture",
-        "texte": "La mission se termine à la livraison du chantier, sans prolongation par défaut."
+        "texte": "La mission se termine à la livraison du chantier, sans prolongation par défaut.",
+        "point": true
       }
     ],
     "dispositif": [

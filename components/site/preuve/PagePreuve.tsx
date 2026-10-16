@@ -13,7 +13,7 @@ import type {
 } from "@/types/preuve";
 
 import styles from "./PagePreuve.module.css";
-import TitreEtSuite, { continueLeTitre } from "../blocs/TitreEtSuite";
+import TitreEtSuite from "../blocs/TitreEtSuite";
 import { cadragePhoto } from "@/lib/cadrage-photos";
 import { altPhoto } from "@/lib/descriptions-photos";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
@@ -1144,12 +1144,14 @@ export default function PagePreuve({
   /* LE RÉSUMÉ DE LA CARTE FERMÉE (dc.html L438, `teaseOf`) : le texte de la
      première puce, « Libellé : texte », tel que la maquette le compose ; la
      feuille partagée le coupe à deux lignes. Il vit dans le `<summary>`, en
-     `data-mobile-seulement` : rien ne change à 1280 px. */
+     `data-mobile-seulement` : rien ne change à 1280 px. La couture est celle
+     de toutes les accroches (`ligneDuCorpus`) : virgule qui continue le titre,
+     point du corpus (« Vous renforcez les équipes en place, sans les
+     remplacer. Trois techniciens… », V3 /preuves/eiffage/), sinon « : » et
+     minuscule. */
   const premiereCarte = reponse[0];
   const resumeReponse = premiereCarte
-    ? continueLeTitre(premiereCarte.texte)
-      ? `${premiereCarte.titre}${premiereCarte.texte}`
-      : [premiereCarte.titre, premiereCarte.texte].filter(Boolean).join(" : ")
+    ? ligneDuCorpus({ accroche: premiereCarte.titre, texte: premiereCarte.texte, point: premiereCarte.point })
     : undefined;
   const texteMisEnPlace = texteDeplace(contenu.complement, "Ce que nous avons mis en place");
   const sectionReponse =
@@ -1194,7 +1196,7 @@ export default function PagePreuve({
           <SectionPliableMobile
             enTete={<EtiquettePli surtitre="03 · Étape par étape" titre="Le déroulé" />}
             resume={accrocheDe([
-              { liste: etapes.map((etape) => ligneDuCorpus({ accroche: etape.titre, texte: etape.texte })) },
+              { liste: etapes.map((etape) => ligneDuCorpus({ accroche: etape.titre, texte: etape.texte, point: etape.point })) },
             ])}
           >
             <div data-carte-surtitre="" style={KICKER}>

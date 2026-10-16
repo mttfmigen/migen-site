@@ -134,7 +134,8 @@
               "items": [
                 {
                   "titre": "Mesurez, ne reprenez pas la documentation constructeur",
-                  "texte": "Les machines évoluent, les rehausses et les capotages s'ajoutent, les plans ne suivent pas."
+                  "texte": "Les machines évoluent, les rehausses et les capotages s'ajoutent, les plans ne suivent pas.",
+                  "point": true
                 },
                 {
                   "titre": "Cotez la machine telle qu'elle sortira",
@@ -269,15 +270,18 @@
               "items": [
                 {
                   "titre": "Les utilités partent après les machines qu'elles alimentent",
-                  "texte": "Débrancher un réseau avant d'avoir déposé ce qu'il dessert immobilise tout l'atelier."
+                  "texte": "Débrancher un réseau avant d'avoir déposé ce qu'il dessert immobilise tout l'atelier.",
+                  "point": true
                 },
                 {
                   "titre": "Les gros porteurs sortent quand le chemin est encore dégagé",
-                  "texte": "Une machine lourde se déplace mal dans un atelier à moitié démonté."
+                  "texte": "Une machine lourde se déplace mal dans un atelier à moitié démonté.",
+                  "point": true
                 },
                 {
                   "titre": "Les équipements longs à remonter partent en tête de convoi",
-                  "texte": "Le temps de remontage pilote l'ordre, pas le temps de dépose."
+                  "texte": "Le temps de remontage pilote l'ordre, pas le temps de dépose.",
+                  "point": true
                 }
               ]
             },
@@ -704,35 +708,43 @@
               "items": [
                 {
                   "titre": "Le site d'arrivée n'est pas prêt",
-                  "texte": "Le chantier attend le gros œuvre, et l'arrêt de production s'allonge sans que personne l'ait décidé."
+                  "texte": "Le chantier attend le gros œuvre, et l'arrêt de production s'allonge sans que personne l'ait décidé.",
+                  "point": true
                 },
                 {
                   "titre": "Une cote fausse",
-                  "texte": "La machine ne passe pas la porte, et le démontage supplémentaire n'était ni prévu ni chiffré."
+                  "texte": "La machine ne passe pas la porte, et le démontage supplémentaire n'était ni prévu ni chiffré.",
+                  "point": true
                 },
                 {
                   "titre": "Le repérage bâclé",
-                  "texte": "Des heures perdues à retrouver quel câble va où, avec une ligne à l'arrêt en face."
+                  "texte": "Des heures perdues à retrouver quel câble va où, avec une ligne à l'arrêt en face.",
+                  "point": true
                 },
                 {
                   "titre": "Les programmes non sauvegardés",
-                  "texte": "Une version manquante, un automate à reprogrammer, une semaine perdue."
+                  "texte": "Une version manquante, un automate à reprogrammer, une semaine perdue.",
+                  "point": true
                 },
                 {
                   "titre": "La connaissance partie avec les équipes",
-                  "texte": "Plus personne ne sait pourquoi ce réglage avait été fixé ainsi."
+                  "texte": "Plus personne ne sait pourquoi ce réglage avait été fixé ainsi.",
+                  "point": true
                 },
                 {
                   "titre": "Le stock tampon sous-dimensionné",
-                  "texte": "Le moindre aléa se transforme en rupture de livraison."
+                  "texte": "Le moindre aléa se transforme en rupture de livraison.",
+                  "point": true
                 },
                 {
                   "titre": "L'alignement négligé",
-                  "texte": "La ligne redémarre, puis casse quelques mois plus tard, et personne ne fait le lien."
+                  "texte": "La ligne redémarre, puis casse quelques mois plus tard, et personne ne fait le lien.",
+                  "point": true
                 },
                 {
                   "titre": "La réception prononcée trop tôt",
-                  "texte": "Le prestataire part, la cadence n'est pas là, et les réserves se négocient en position faible."
+                  "texte": "Le prestataire part, la cadence n'est pas là, et les réserves se négocient en position faible.",
+                  "point": true
                 }
               ]
             }

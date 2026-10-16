@@ -159,7 +159,7 @@ function resumeDeLaSection(blocs: BlocGuide[]): string {
       ];
     }
     if (b.type === "numeros" || b.type === "etapes") {
-      return [{ liste: b.items.map((x) => ligneDuCorpus({ accroche: x.titre, texte: x.texte })) }];
+      return [{ liste: b.items.map((x) => ligneDuCorpus({ accroche: x.titre, texte: x.texte, point: x.point })) }];
     }
     if (b.type === "tableau") return [{ cellule: (b.lignes[0] ?? b.entetes)[0] }];
     return [];

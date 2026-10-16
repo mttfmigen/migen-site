@@ -109,35 +109,66 @@ export function accrocheDe(blocs: readonly BlocAccroche[]): string | undefined {
 }
 
 /**
+ * LA CAPITALE QUE GARDE UN TEXTE APRÈS « : ». La V3 écrit le texte en
+ * minuscule derrière son intitulé (« Qualification : un chargé d'affaires
+ * étudie votre parc… », /secteurs/agroalimentaire/), nos fiches lui ont remis
+ * une capitale (3 002 coutures sur 3 395 mesurées le 16/10). Elle ne reste
+ * que devant :
+ * - un sigle, chiffres compris : « ALSTEF Group cherche… », « M221 » ;
+ * - une capitale intérieure : « DimoMaint », « EcoStruxure », « WashTec » ;
+ * - un nom composé de capitales : « Loire-Atlantique », « Dompierre-sur-Besbre » ;
+ * - un nom propre que les fiches posent en tête de texte (relevé exhaustif
+ *   du 16/10 sur les 603 premiers mots en capitale) : « Savoye et Migen
+ *   constatent… » (/preuves/savoye/).
+ */
+const GARDE_SA_CAPITALE =
+  /^(?:[\p{Lu}\d]{2,}(?!\p{Ll})|\p{Lu}\p{Ll}+\p{Lu}|\p{Lu}\p{L}*(?:-\p{L}+)*-\p{Lu}|(?:Migen|Lyon|Paris|Strasbourg|Rhône|Essonne|Alsace|Savoye|Timescope|Ecocem|Modbus|Modicon|Profinet|Robodrill)(?!\p{L}))/u;
+
+/** Le texte en minuscule initiale, sauf sigle ou nom propre (voir plus haut). */
+export function minusculeSaufNomPropre(texte: string): string {
+  const debut = texte.search(/[\p{L}\p{N}]/u);
+  if (debut < 0 || GARDE_SA_CAPITALE.test(texte.slice(debut))) return texte;
+  return texte.slice(0, debut) + texte.charAt(debut).toLowerCase() + texte.slice(debut + 1);
+}
+
+/**
  * UNE LIGNE DE LISTE TELLE QUE LE CORPUS L'ÉCRIT : « **Intitulé** : texte ».
  * Nos données ont séparé l'intitulé du texte et perdu le séparateur ; il est
  * rétabli selon la phrase :
  * - le texte ouvre par une virgule ou un point-virgule, il continue
  *   l'intitulé (« …au rythme convenu, temps plein ou partagé. ») ;
+ * - `point` : le corpus clôt l'intitulé par un point, « **Sélection.** Migen
+ *   est retenu… » (études de cas, guides). Le titre de bureau s'affiche sans
+ *   ce point, la fiche le porte donc en drapeau (posé le 16/10 d'après la
+ *   V3) et le texte garde sa capitale ;
  * - `suitAccroche`, ou un intitulé qui finit déjà sa phrase (« Visite et
  *   audit. »), appelle une simple espace ;
  * - sinon « : », le cas courant (« Cadrage du besoin : un chargé
- *   d'affaires… »).
+ *   d'affaires… »), suivi d'une minuscule sauf sigle ou nom propre
+ *   (`minusculeSaufNomPropre`).
  * Reprise de `offre/GarantiesOffre.tsx` (résumé des garanties, 14/10), qui la
- * portait seul.
+ * portait seul. Ne sert qu'aux accroches : le texte des cartes ouvertes garde
+ * sa casse.
  */
 export function ligneDuCorpus(ligne: {
   accroche?: string;
   texte?: string;
   suitAccroche?: boolean;
+  point?: boolean;
 }): string | undefined {
   const texte = (ligne.texte ?? "").trim();
   const accroche = (ligne.accroche ?? "").trim();
   if (!accroche) return texte || undefined;
   if (!texte) return accroche;
   if (/^[,;]/.test(texte)) return `${accroche}${texte}`;
+  if (ligne.point && !/[.!?:]$/.test(accroche)) return `${accroche}. ${texte}`;
   /* Un texte qui pose LUI-MÊME ses deux-points tout de suite continuait
      l'intitulé : « **Vous décrivez le besoin** par téléphone : panne… ».
      Deux « : » dans la même phrase trahiraient la couture. */
   const poseSesDeuxPoints = /^\p{Ll}[^.:!?]{0,30} : /u.test(texte);
   const suit =
     ligne.suitAccroche || poseSesDeuxPoints || /^\s/.test(ligne.texte ?? "") || /[.!?:]$/.test(accroche);
-  return `${accroche}${suit ? " " : " : "}${texte}`;
+  return suit ? `${accroche} ${texte}` : `${accroche} : ${minusculeSaufNomPropre(texte)}`;
 }
 
 /**
