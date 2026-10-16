@@ -1,6 +1,6 @@
 import { Fragment, type CSSProperties } from "react";
 
-import { LARGEUR, VERRE } from "@/components/site/blocs/habillage";
+import { LARGEUR } from "@/components/site/blocs/habillage";
 import type { Tableau } from "@/types/contenu";
 import type { BlocComplement } from "@/types/offre";
 
@@ -194,8 +194,6 @@ export function premierTexte(
   return reste.map((bloc) => bloc.texte?.trim()).find(Boolean) || undefined;
 }
 
-const SECTION_COMPLEMENT: CSSProperties = { padding: "48px 0 0" };
-
 /** La bande d'une ligne de clôture : elle ferme, elle n'ouvre pas. */
 const SECTION_CLOTURE: CSSProperties = { padding: "18px 0 0" };
 
@@ -208,23 +206,6 @@ const TEXTE_CLOTURE: CSSProperties = {
   textWrap: "pretty",
 };
 
-/** Bloc 542 : la carte en verre, en colonnes qui se replient à 420 px. */
-const CARTE: CSSProperties = {
-  ...VERRE,
-  padding: "30px 34px 14px",
-  display: "grid",
-  gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,420px),1fr))",
-  gap: "4px 44px",
-};
-
-/** Bloc 546 : le filet orange et le titre, alignés sur la ligne de base. */
-const RANGEE_TITRE: CSSProperties = {
-  display: "flex",
-  gap: 10,
-  alignItems: "baseline",
-  marginBottom: 10,
-};
-
 const FILET: CSSProperties = {
   width: 16,
   height: 3,
@@ -232,32 +213,6 @@ const FILET: CSSProperties = {
   background: "var(--acc)",
   flex: "0 0 auto",
   transform: "translateY(-4px)",
-};
-
-const TITRE: CSSProperties = {
-  font: "600 17px/1.35 var(--ft)",
-  letterSpacing: "-.02em",
-  margin: 0,
-};
-
-const TEXTE: CSSProperties = {
-  font: "400 15.5px/1.7 var(--fb)",
-  color: "var(--ink1)",
-  margin: 0,
-  maxWidth: "66ch",
-  textWrap: "pretty",
-};
-
-/* Blocs 628 à 639 : la variante À COCHES du même bloc, relevée le 07/10 sur
-   `maquette/rendu/offres--residence--cahier-des-charges.html` (« Complément 5 »,
-   « Les 4 erreurs qui coûtent cher »). Même carte, même titre, corps en liste. */
-const LISTE: CSSProperties = { display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10 };
-
-const PUCE: CSSProperties = {
-  display: "flex",
-  gap: 11,
-  font: "400 15px/1.6 var(--fb)",
-  color: "var(--ink1)",
 };
 
 const COCHE: CSSProperties = {
@@ -376,26 +331,25 @@ export default function ComplementsOffre({
      (`PageOffre.module.css`, `.complementV3`). La ligne de clôture, plus
      haut, garde sa forme. Sous 881 px, rien ne change. */
   const carte = (
-    <div style={CARTE} className={styles.complementV3}>
+    /* La carte en verre (bloc 542), le bloc, la liste à coches (blocs 628 à
+       639) et la puce sont dessinés par le module (`.complementCarte`…), pas
+       en ligne : le dessin V3 de bureau les remplace sans `!important`. */
+    <div className={`${styles.complementCarte} ${styles.complementV3}`}>
       {retenus.map((bloc, rang) => (
         <div
           key={bloc.titre ?? `${rang}`}
           {...(rang === 0 && etiquette && !bloc.titre ? { "data-doublon-mobile": "" } : {})}
           {...(estTeteV3(bloc, retenus[rang + 1]) ? { "data-v3-tete": "" } : {})}
-          style={{
-            minWidth: 0,
-            paddingBottom: 18,
-            ...(bloc.tableau ? { gridColumn: "1 / -1" } : {}),
-          }}
+          className={styles.complementBloc}
+          style={bloc.tableau ? { gridColumn: "1 / -1" } : undefined}
         >
           {bloc.titre ? (
             <div
               {...(rang === 0 && etiquette ? { "data-doublon-mobile": "" } : {})}
               className={styles.titreV3}
-              style={RANGEE_TITRE}
             >
               <span aria-hidden="true" style={FILET} />
-              <h3 style={TITRE}>{bloc.titre}</h3>
+              <h3>{bloc.titre}</h3>
             </div>
           ) : null}
           {/* Le tableau suit le titre : le corpus écrit sa conclusion APRÈS lui
@@ -406,18 +360,17 @@ export default function ComplementsOffre({
               pages existantes ne change donc pas ; le comparatif de
               prestataire-ou-salarie y garde son lien vers le guide. */}
           {bloc.texte ? (
-            <p style={TEXTE}>
+            <p className={styles.complementTexte}>
               <TexteRiche texte={bloc.texte} />
             </p>
           ) : null}
           {bloc.puces?.length ? (
             <div
-              style={LISTE}
-              className={styles.cartesV3}
+              className={`${styles.complementListe} ${styles.cartesV3}`}
               data-colonnes={colonnesV3(bloc.puces.length)}
             >
               {bloc.puces.map((puce, numero) => (
-                <div key={puce.accroche ?? puce.texte} style={PUCE}>
+                <div key={puce.accroche ?? puce.texte} className={styles.complementPuce}>
                   <span aria-hidden="true" className={styles.numeroV3}>
                     {String(numero + 1).padStart(2, "0")}
                   </span>
@@ -426,12 +379,25 @@ export default function ComplementsOffre({
                   <span aria-hidden="true" className={styles.cocheV3} style={COCHE}>
                     ✓
                   </span>
+                  {/* Au bureau, l'accroche devient le titre de la carte et le
+                      texte son corps, capitale initiale comprise (V3 `cap`).
+                      Sauf quand le texte CONTINUE la phrase de l'accroche
+                      (`suitAccroche`, « **Transfert industriel** est le mot
+                      que… ») : la couper en deux la viderait de son sens, la
+                      carte garde la phrase entière. */}
                   <span>
                     {puce.accroche ? (
-                      <strong style={ACCROCHE}>{puce.accroche}</strong>
+                      <strong
+                        style={ACCROCHE}
+                        className={puce.suitAccroche ? undefined : styles.titreCarteV3}
+                      >
+                        {puce.accroche}
+                      </strong>
                     ) : null}
                     {puce.accroche ? " " : null}
-                    <TexteRiche texte={puce.texte} />
+                    <span className={puce.suitAccroche ? undefined : styles.corpsCarteV3}>
+                      <TexteRiche texte={puce.texte} />
+                    </span>
                   </span>
                 </div>
               ))}
@@ -446,7 +412,6 @@ export default function ComplementsOffre({
     <section
       {...masque}
       className={`${styles.complementMobile} ${styles.sectionV3}`}
-      style={SECTION_COMPLEMENT}
     >
       <div style={LARGEUR}>
         {etiquette ? (

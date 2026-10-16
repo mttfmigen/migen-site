@@ -63,11 +63,13 @@
         "puces": [
           {
             "accroche": "Déménagement industriel",
-            "texte": "est le mot que l'on emploie quand on regarde le camion."
+            "texte": "est le mot que l'on emploie quand on regarde le camion.",
+            "suitAccroche": true
           },
           {
             "accroche": "Transfert industriel",
-            "texte": "est le mot que l'on emploie quand on regarde la production."
+            "texte": "est le mot que l'on emploie quand on regarde la production.",
+            "suitAccroche": true
           }
         ]
       },
