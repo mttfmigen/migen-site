@@ -1,6 +1,6 @@
 "use client";
 
-import type { CSSProperties } from "react";
+import { useEffect, useRef, type CSSProperties } from "react";
 
 import styles from "./conversion-lp.module.css";
 import { HerosServiceLP } from "./HerosServiceLP";
@@ -14,14 +14,14 @@ import { CLE_RENDEZ_VOUS, prerempliDe, urlCalendly } from "./lead-lp";
  * migen-forge-nucleus. Jamais le faux agenda de la maquette V3 (cinq jours
  * écrits en dur, « Confirmer le rendez-vous » qui ne réservait rien).
  *
- * UN BOUTON ET NON UN LIEN, NI UN CADRE INTÉGRÉ :
- *   · pas de cadre : la LP en ligne charge le script de Calendly dans la page,
- *     donc un tiers et ses traceurs avant tout accord ; ici rien de Calendly
- *     ne se charge tant que le visiteur ne clique pas ;
- *   · pas de `<a href>` : l'adresse de l'agenda porte le nom et le courriel, et
- *     la mesure améliorée de GA4 (Tag Manager chargé) relève l'adresse de
- *     chaque lien sortant cliqué. L'agenda s'ouvre donc par `window.open`, au
- *     clic, et l'adresse n'existe dans la page qu'à ce moment-là.
+ * L'AGENDA EST INTÉGRÉ DANS LA PAGE, en cadre (demande de Mehdi le 16/10 :
+ * « la LP rendez-vous doit intégrer l'iframe Calendly »), comme la LP en
+ * ligne. Un simple `<iframe>`, sans le script de Calendly : le visiteur vient
+ * d'envoyer sa demande pour réserver ce créneau, et c'est Calendly qui le
+ * sert. Son adresse porte le nom et le courriel du préremplissage : elle n'est
+ * posée qu'après le montage (lecture de `sessionStorage`), jamais dans le
+ * HTML servi. Le bouton qui ouvre l'agenda dans un onglet reste dessous, si
+ * le cadre ne se charge pas (bloqueur, réseau).
  *
  * Texte de `/fr/rendez-vous` de `window.__LP`, lu dans `lib/lp/pages.json`
  * (surtitre, titre, chapô). Le titre de la carte est celui du gabarit V3,
@@ -43,7 +43,7 @@ const ouvreAgenda = () => window.open(urlCalendly(prerempli()), "_blank", "noope
 
 /* La carte du créneau, à la place de l'agenda de la maquette. */
 const CARTE: CSSProperties = {
-  maxWidth: 460,
+  maxWidth: 520,
   marginLeft: "auto",
   width: "100%",
   boxSizing: "border-box",
@@ -63,6 +63,14 @@ const TITRE_CARTE: CSSProperties = {
   color: "#1c1b19",
 };
 
+const CADRE: CSSProperties = {
+  width: "100%",
+  height: 700,
+  border: 0,
+  borderRadius: 16,
+  background: "#fff",
+};
+
 const BOUTON: CSSProperties = {
   height: 52,
   display: "flex",
@@ -78,6 +86,12 @@ const BOUTON: CSSProperties = {
 };
 
 export function RendezVousLP({ photo, surtitre, titre, chapo }: { photo: string; surtitre: string; titre: string; chapo: string }) {
+  const cadre = useRef<HTMLIFrameElement>(null);
+  /* L'adresse est posée sur le cadre après le montage : elle porte le nom et
+     le courriel lus dans `sessionStorage`, absents du HTML servi. */
+  useEffect(() => {
+    if (cadre.current) cadre.current.src = urlCalendly(prerempli(), true);
+  }, []);
   return (
     <HerosServiceLP
       photo={photo}
@@ -87,8 +101,9 @@ export function RendezVousLP({ photo, surtitre, titre, chapo }: { photo: string;
       carte={
         <div style={CARTE}>
           <h2 style={TITRE_CARTE}>Choisissez votre créneau</h2>
+          <iframe ref={cadre} title="Agenda de réservation Calendly" style={CADRE} />
           <button type="button" onClick={ouvreAgenda} className={styles.envoi} style={BOUTON}>
-            Réservez votre échange <span aria-hidden="true">→</span>
+            Ouvrir l’agenda dans un onglet <span aria-hidden="true">→</span>
             <span className="sr-only"> (nouvel onglet)</span>
           </button>
         </div>

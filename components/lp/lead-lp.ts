@@ -152,12 +152,14 @@ interface Prerempli {
 
 /**
  * L'adresse de l'agenda, avec les couleurs Migen et le préremplissage, comme
- * la LP en ligne. `hide_gdpr_banner` n'est pas repris : il masquait le bandeau
- * de Calendly dans un cadre intégré ; ici le visiteur ouvre Calendly chez
- * Calendly, et ce bandeau-là est le leur.
+ * la LP en ligne. `integre` : l'adresse du cadre de /lp/rendez-vous/
+ * (demande de Mehdi le 16/10, « la LP rendez-vous doit intégrer l'iframe
+ * Calendly »). `hide_gdpr_banner` n'est pas repris : le bandeau de Calendly
+ * reste le leur, dans leur cadre.
  */
-export function urlCalendly(prerempli: Prerempli | null): string {
+export function urlCalendly(prerempli: Prerempli | null, integre = false): string {
   const parametres = new URLSearchParams({
+    ...(integre ? { embed_type: "Inline", embed_domain: "migen.fr" } : {}),
     hide_event_type_details: "1",
     background_color: "ffffff",
     text_color: "1a1a1a",
