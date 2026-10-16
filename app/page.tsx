@@ -4,6 +4,7 @@ import ParcoursMobile from "@/components/site/accueil/ParcoursMobile";
 import AvantApresBascule from "@/components/site/accueil/AvantApresBascule";
 import BandeauVerbe from "@/components/site/accueil/BandeauVerbe";
 import BentoBesoins from "@/components/site/accueil/BentoBesoins";
+import BesoinsMobile from "@/components/site/accueil/BesoinsMobile";
 import CertificationsRse from "@/components/site/accueil/CertificationsRse";
 import ChiffresCroissance from "@/components/site/accueil/ChiffresCroissance";
 import DernieresRealisations from "@/components/site/accueil/DernieresRealisations";
@@ -13,22 +14,31 @@ import FriseHistoire from "@/components/site/accueil/FriseHistoire";
 import GrilleOffres from "@/components/site/accueil/GrilleOffres";
 import Hero from "@/components/site/accueil/Hero";
 import HubsAccueil from "@/components/site/accueil/HubsAccueil";
+import HubsMobileAccueil from "@/components/site/accueil/HubsMobileAccueil";
+import IntroAccueilMobile from "@/components/site/accueil/IntroAccueilMobile";
 import LogosTechnologies from "@/components/site/accueil/LogosTechnologies";
 import MarqueeClients from "@/components/site/accueil/MarqueeClients";
 import MethodeQuatreEtapes from "@/components/site/accueil/MethodeQuatreEtapes";
+import OuvertAuDepart from "@/components/site/accueil/OuvertAuDepart";
 import PourquoiExternaliser from "@/components/site/accueil/PourquoiExternaliser";
 import ProblematiqueClient from "@/components/site/accueil/ProblematiqueClient";
 import ProcessSelection from "@/components/site/accueil/ProcessSelection";
 import SecteursAccueil from "@/components/site/accueil/SecteursAccueil";
+import SixFaconsMobile from "@/components/site/accueil/SixFaconsMobile";
 import TemoignagesClients from "@/components/site/accueil/TemoignagesClients";
+import ToutLeSite from "@/components/site/accueil/ToutLeSite";
+import mobile from "@/components/site/accueil/AccueilMobile.module.css";
 import { VUE_AVANT, VUE_AVEC } from "@/components/site/accueil/avant-apres-donnees";
 import { BESOINS } from "@/components/site/accueil/bento-besoins-donnees";
 import { ETAPES_METHODE } from "@/components/site/accueil/methode-etapes-donnees";
 import replis from "@/components/site/accueil/replis-accueil.module.css";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
 import { ID_RAPPEL_FINAL } from "@/components/site/mobile/conversion-donnees";
+import CarrouselRealisations from "@/components/site/preuve/CarrouselRealisations";
+import { realisationsLiees } from "@/components/site/preuve/donnees-mobiles";
 import { pageParChemin } from "@/lib/contenu";
 import { metadonneesSeo } from "@/lib/seo/metadonnees";
+import { estImplantations, type NosVilles } from "@/types/implantations";
 
 /**
  * Page d'accueil.
@@ -88,7 +98,25 @@ export async function generateMetadata(): Promise<Metadata> {
   return { ...base, description: base.description ?? DESCRIPTION_PAR_DEFAUT };
 }
 
-export default function Accueil() {
+/**
+ * Les hubs et les régions de `/implantations/`, que l'accueil mobile montre
+ * aussi (`HubsMobileAccueil`). Une base injoignable ne casse pas l'accueil :
+ * la section ne s'affiche pas, rien n'est inventé à sa place, et l'erreur est
+ * journalisée côté serveur.
+ */
+async function villesDesImplantations(): Promise<NosVilles | null> {
+  try {
+    const complete = await pageParChemin("/implantations/");
+    const contenu = complete?.page.contenu;
+    return estImplantations(contenu) ? (contenu.villes ?? null) : null;
+  } catch (erreur) {
+    console.error("Accueil : lecture des hubs de /implantations/ impossible.", erreur);
+    return null;
+  }
+}
+
+export default async function Accueil() {
+  const villes = await villesDesImplantations();
   return (
     // `mg-site` n'est pas décoratif : les règles de `app/globals.css` qui
     // rattrapent les marges, l'échelle des titres et les arrondis sous 760px
@@ -96,42 +124,76 @@ export default function Accueil() {
     // gabarit desktop.
     <div className="mg-site">
       <main style={{ paddingTop: "96px" }}>
+        {/* L'ACCUEIL MOBILE DE LA MAQUETTE V3 « SITE MOBILE », validé par
+            Mehdi le 16/10, SOUS 881 PX SEULEMENT. Au-dessus, l'ordre et le
+            rendu sont ceux de la capture de bureau, au pixel.
+
+            UN SEUL MÉCANISME, DEUX ATTRIBUTS DE `app/globals.css` :
+            `data-mobile-seulement` (n'existe que sous 881 px) et
+            `data-doublon-mobile` (s'efface sous 881 px). Là où le téléphone
+            veut un bloc AILLEURS que le bureau, il est rendu aux deux places
+            et une seule se voit ; jamais de réordonnancement en CSS, qui
+            ferait lire et tabuler la page dans un autre ordre que celui
+            qu'on voit, et fausserait la numérotation des cartes (compteur
+            CSS, ordre du document).
+
+            Le haut, au téléphone : héros court, « Qu'est-ce qui vous
+            bloque ? » en cartes-liens, « Ils nous font confiance », le
+            paragraphe et les chiffres clés, puis « Six façons » en bloc
+            sombre toujours visible. Au bureau : héros, grille d'offres,
+            logos. */}
         <Hero />
-        {/* LE PARCOURS PAR LE PROBLÈME, juste sous le héros et SUR TÉLÉPHONE
-            SEULEMENT. C'est l'ordre de la maquette mobile du colis de
-            passation : le visiteur dit ce qui bloque avant qu'on lui nomme une
-            offre. Sur bureau le composant ne s'affiche pas, la grille d'offres
-            reste l'entrée en matière. */}
         <ParcoursMobile />
         <GrilleOffres />
         <MarqueeClients compactMobile />
-        {/* LA CADENCE DE CONVERSION DE LA MAQUETTE MOBILE V2 (m-00, dc.html
-            L452 à L456), posée entre les sections repliées et NUMÉROTÉES.
-            Ce qui n'y entre pas, comme dans la maquette, où `nD` ne compte
-            que les sections numérotées : le haut de page propre à l'accueil
-            (héros, parcours, offres, logos) et les hubs (`isHubs`, jamais comptés).
-            Photo + CTA après la 2e (« Votre problématique », comme m-00),
-            bandeau « Une question sur votre site ? » après la 5e, 8e, 11e et
-            14e : l'accueil porte quinze sections là où la maquette en
-            numérote treize, la règle « toutes les trois » en donne une de plus.
+        <IntroAccueilMobile />
+        <SixFaconsMobile />
+        {/* LES CARTES REPLIÉES ET NUMÉROTÉES, 01 à 14, avec la cadence de
+            conversion de la maquette mobile (`AvecConversionMobile`) : photo
+            + CTA après la 2e carte, bandeau « Une question sur votre site ? »
+            toutes les trois cartes (après la 5e, la 8e, la 11e et la 14e).
+
+            CHAQUE ENFANT DE `AvecConversionMobile` EST UNE CARTE NUMÉROTÉE du
+            téléphone : la cadence compte ses enfants. Ce qui n'est pas une
+            carte (« Nos réalisations », la FAQ « Partez de votre besoin »,
+            les copies de bureau) est donc rangé dans le même fragment que la
+            carte voisine.
+
+            L'ORDRE DU TÉLÉPHONE EST CELUI DE LA V3 : 01 Certifications
+            (ouverte au départ), 02 Votre problématique, [photo + CTA],
+            03 Notre sélection, 04 « On installe, on maintient, on répare, on
+            dépanne », 05 Résidence, 06 Technologies & partenaires, « Nos
+            réalisations », « Partez de votre besoin », 07 Le jour et la nuit,
+            08 Méthode, 09 Croissance, 10 Dernières réalisations, 11 Avis,
+            12 Histoire, 13 Pourquoi externaliser, 14 Secteurs. « Notre
+            sélection » et « Technologies & partenaires », que seul le site
+            a, restent repliées à leur place de bureau : la première suit la
+            problématique qu'elle résout, la seconde l'offre Résidence dont
+            elle détaille les spécialités.
+
+            Le jour et la nuit et la méthode viennent avant la croissance au
+            téléphone, après « Pourquoi externaliser » au bureau : elles sont
+            rendues aux deux places (`data-mobile-seulement` /
+            `data-doublon-mobile`), sans toucher à leurs composants. La FAQ et
+            les hubs ont leur version téléphone (`BesoinsMobile`,
+            `HubsMobileAccueil`) ; le pavage et le rail du bureau
+            s'effacent à cette largeur.
+
             `photoHeros` : l'accueil n'a pas de photo de héros, et la maquette
             retombe sur `assets/web/team-duo.jpg` pour « / » (dc.html L421) ;
             l'écarter du tirage redonne exactement la photo de m-00.
-            `rappelFinal={false}` : la maquette finit sur le mini-formulaire
-            « Être rappelé », l'accueil finit DÉJÀ sur son formulaire complet,
-            juste dessous. Poser `RappelExpress` au-dessus empilerait deux
-            formulaires dont le premier ne fait que préremplir le second. Le
-            formulaire de bas de page porte donc l'ancre `#etre-rappele` que
-            visent les bandeaux.
+            `rappelFinal={false}` : l'accueil finit DÉJÀ sur son formulaire
+            complet, qui porte l'ancre `#etre-rappele` que visent les
+            bandeaux.
             `numerotees` : le numéro 01, 02… des rangées repliées, en compteur
-            CSS (rien dans le texte du document), voir replis-accueil.
+            CSS (rien dans le texte du document), voir replis-accueil. Un bloc
+            masqué (`display: none`) ne compte pas : les copies de l'autre
+            largeur ne décalent aucun numéro.
             CE QUE LA PORTE « AUCUN MOT PERDU » SIGNALE ICI, ET CE QUE C'EST.
             Elle lit le `textContent` du `<main>` d'un bloc : deux sections
             voisines y collent leurs mots (« accès Z.A.C.Notre sélection »).
             Chaque insertion casse un de ces collages, et la porte compte le
-            faux mot « Z.A.C.Notre » comme perdu : cinq ici, un par insertion.
-            Mesuré le 14/10 : retirer du texte d'après les seules chaînes
-            insérées redonne celui d'avant, caractère pour caractère. */}
+            faux mot « Z.A.C.Notre » comme perdu : un par insertion. */}
         <div className={replis.numerotees}>
           <AvecConversionMobile
             chemin="/"
@@ -139,24 +201,44 @@ export default function Accueil() {
             photoHeros="/assets/web/team-duo.jpg"
             rappelFinal={false}
           >
-            <CertificationsRse />
+            <OuvertAuDepart>
+              <CertificationsRse />
+            </OuvertAuDepart>
             <ProblematiqueClient />
             <ProcessSelection />
             <BandeauVerbe />
             <FocusResidence />
             <LogosTechnologies />
+            <>
+              <div className={mobile.realisations}>
+                <CarrouselRealisations cartes={realisationsLiees("/")} titre="Nos réalisations" />
+              </div>
+              <BesoinsMobile besoins={BESOINS} />
+              <div data-mobile-seulement="">
+                <AvantApresBascule avant={VUE_AVANT} avec={VUE_AVEC} />
+              </div>
+            </>
+            <div data-mobile-seulement="">
+              <MethodeQuatreEtapes etapes={ETAPES_METHODE} />
+            </div>
             <ChiffresCroissance />
             <DernieresRealisations />
             <TemoignagesClients />
             <FriseHistoire />
-            <PourquoiExternaliser />
-            <BentoBesoins besoins={BESOINS} />
-            <AvantApresBascule avant={VUE_AVANT} avec={VUE_AVEC} />
-            <MethodeQuatreEtapes etapes={ETAPES_METHODE} />
+            <>
+              <PourquoiExternaliser />
+              <BentoBesoins besoins={BESOINS} />
+              <div data-doublon-mobile="">
+                <AvantApresBascule avant={VUE_AVANT} avec={VUE_AVEC} />
+                <MethodeQuatreEtapes etapes={ETAPES_METHODE} />
+              </div>
+            </>
             <SecteursAccueil />
           </AvecConversionMobile>
         </div>
         <HubsAccueil />
+        {villes ? <HubsMobileAccueil villes={villes} /> : null}
+        <ToutLeSite />
         <div id={ID_RAPPEL_FINAL} className={replis.ancreRappel}>
           <FormulaireBasDePage />
         </div>

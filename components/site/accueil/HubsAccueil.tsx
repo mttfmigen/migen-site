@@ -204,8 +204,12 @@ export default function HubsAccueil({ hubs = HUBS }: Proprietes) {
     /* `repliPleineLargeur` : le rail de cartes est en pleine largeur et frère
        de l'en-tête, le dépliant doit donc envelopper les DEUX, au niveau de la
        `<section>`, qui n'a aucune gouttière. La classe la rend à la bascule, et
-       à elle seule. Voir `replis-accueil.module.css`. */
+       à elle seule. Voir `replis-accueil.module.css`.
+       `data-doublon-mobile` : sous 881 px, le rail s'efface au profit de la
+       section visible de la maquette V3 (`HubsMobileAccueil`, même donnée que
+       /implantations/). Au-dessus, rien ne change. */
     <section
+      data-doublon-mobile=""
       className={`${replis.repli} ${replis.repliPleineLargeur}`}
       style={{ padding: "var(--sec) 0 0" }}
     >
