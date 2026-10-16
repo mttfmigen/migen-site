@@ -68,7 +68,7 @@
     display: none !important;
   }
 
-  /* UNE SOUS-PARTIE (`SOUS_PARTIES` de `carriere/PageHubCarriere.tsx`) garde
+  /* UNE SOUS-PARTIE (`SOUS_PARTIES` de `metier/pli-mobile.tsx`) garde
      son titre, en intertitre de carte comme le `###` de la maquette mobile v2
      (dc.html, `isH3` : filet haut, 600 16px/1.35) ; son surtitre reste masqué. */
   .mobileV2 details[data-carte-numerotee] [data-sous-partie] h2[data-mc-titre-section] {
@@ -80,6 +80,15 @@
     font: 600 16px/1.35 var(--ft) !important;
     letter-spacing: -0.02em !important;
     color: var(--ink) !important;
+  }
+
+  /* LE FILET D'UNE SOUS-PARTIE À 18 PX DU BLOC D'AVANT, comme la V3. Les
+     colonnes flexibles de l'ordre du corpus (`data-mc-apres-liste`, grille)
+     ne fusionnent pas les marges : la marge basse de leur dernier bloc (12 à
+     14 px) s'ajoutait aux 18 px du filet, soit 30 à 35 px au lieu de 18 à 22. */
+  .mobileV2 details[data-carte-numerotee] :is([data-mc-apres-liste], section:has([data-mc-grille])) + [data-sous-partie] h2[data-mc-titre-section],
+  .mobileV2 details[data-carte-numerotee] [data-sous-partie] [data-mc-apres-liste] h2[data-mc-titre-section] {
+    margin-top: 5px !important;
   }
 
   /* Un seul chapô par carte : le premier paragraphe d'une sous-partie est du
@@ -342,6 +351,18 @@
   }
 
   .mobileV2 [data-mc-tableau-corps] > [data-mc-intro] ~ [data-mc-intro] {
+    order: 2;
+  }
+
+  /* Même ordre pour la grille (vrai tableau HTML) : relevé le 16/10, les deux
+     grilles des fiches (Alternance, Formation) écrivent leur commentaire
+     après le tableau dans le corpus, comme la V3 le rend. */
+  .mobileV2 details[data-carte-numerotee] div:has(> [data-mc-grille]) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobileV2 details[data-carte-numerotee] div:has(> [data-mc-grille]) > [data-mc-intro] ~ [data-mc-intro] {
     order: 2;
   }
 

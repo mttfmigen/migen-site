@@ -137,7 +137,7 @@ export function amorceDe(section: object): string | undefined {
  * du deuxième paragraphe, et un même titre ne change jamais de règle d'une
  * fiche à l'autre. S'y ajoute une section du hub (`carriere.md`).
  */
-const APRES_LISTE: ReadonlySet<string> = new Set([
+export const APRES_LISTE: ReadonlySet<string> = new Set([
   "Automaticien chez Migen : le cadre et les moyens",
   "Bien mener sa recherche d'emploi",
   "Ce que fait un agent de maintenance industrielle au quotidien",
@@ -181,4 +181,49 @@ export function OrdreMobile({ section, children }: { section: object; children: 
   ) : (
     children
   );
+}
+
+/**
+ * LES SOUS-PARTIES DE LA MAQUETTE MOBILE. Le corpus (`carriere.md` pour le
+ * hub, `Metiers-Carriere/*.md` pour les fiches), et la maquette V3 « Site
+ * mobile » qui le suit, écrivent ces blocs en `###` sous la section qui les
+ * précède, là où la maquette de bureau en fait des sections à part entière :
+ * au téléphone ils s'ouvrent DANS la carte d'avant, en intertitre, au lieu de
+ * compter comme cartes numérotées (hub : 13 cartes au lieu de 9, signalé par
+ * Mehdi le 15/10 ; fiche Formation : 17 au lieu de 10, relevé le 16/10 sur
+ * cinq fiches). Aucun de ces titres n'est un `##` ailleurs dans le corpus.
+ * Le bureau ne change pas : la bascule y est transparente.
+ */
+export const SOUS_PARTIES: ReadonlySet<string> = new Set([
+  /* le hub /carriere/ */
+  "Des techniciens confirmés, prêts pour le terrain",
+  "Des avis qui parlent du terrain",
+  "Postes ouverts et candidature spontanée",
+  "Nos informations pratiques",
+  /* les fiches */
+  "Bien mener sa recherche d'emploi",
+  "Comment nous rejoindre",
+  "Comment évolue un roboticien",
+  "Du bac pro à la licence pro",
+  "Du terrain vers l'ingénieur",
+  "L'apprentissage par blocs",
+  "Le poids de l'expérience",
+  "Le titre professionnel, voie rapide",
+  "Les travaux pratiques comptent double",
+  "Lire un schéma avant d'agir",
+  "Se former tout au long de la carrière",
+  "Une technicienne ou un technicien",
+  "Vérifier avant de s'inscrire",
+]);
+
+/** Les sections de contenu, chacune avec ses sous-parties (`SOUS_PARTIES`). */
+export function regroupe<S extends object>(contenus: S[], premier: number) {
+  const groupes: { section: S; rang: number; sous: S[] }[] = [];
+  contenus.forEach((s, j) => {
+    const dernier = groupes.at(-1);
+    const titre = (s as { titre?: unknown }).titre;
+    if (dernier && typeof titre === "string" && SOUS_PARTIES.has(titre)) dernier.sous.push(s);
+    else groupes.push({ section: s, rang: premier + j, sous: [] });
+  });
+  return groupes;
 }
