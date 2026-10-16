@@ -32,7 +32,7 @@ import {
   titreMobile,
 } from "./donnees-mobiles";
 import { CORPUS_MOBILE, type SegmentCorpus } from "./corpus-mobile";
-import { libelleCas } from "./noms-clients";
+import { casseNormale, libelleCas } from "./noms-clients";
 import PhotoMobile from "./PhotoMobile";
 import { appliqueDecisions, copieConforme } from "@/lib/decisions-copie";
 import { photoHerosMobile } from "../casclients/vues-preuves";
@@ -764,15 +764,37 @@ function TexteTuile({ bureau, mobile }: { bureau: string; mobile?: string }) {
   );
 }
 
+/* LES NOMS DE CLIENTS EN CASSE NORMALE AU TÉLÉPHONE : la V3 mobile passe
+   chaque segment du corps par `cleanCase` (`segV`, voir `casseNormale`),
+   « AKTID a confié » devient « Aktid a confié » ; le bureau garde les
+   capitales de la capture. Le segment qui change est rendu deux fois, comme
+   `TexteTuile` : celui du bureau en `libelleBureau`, celui du téléphone en
+   `data-mobile-seulement`. Le segment ENTIER, pas le seul mot : un nom isolé
+   dans sa balise ouvre un nouveau fragment de texte, dont le tracé décale
+   l'anticrénelage du nom au bureau (mesuré le 16/10 : 56 à 104 pixels par
+   page à 1280 px). Le segment entier part du début de sa ligne, comme avant :
+   le bureau reste identique au pixel. Sans espace entre les deux : une seule
+   se peint à chaque largeur. */
+function casse(texte: string): ReactNode {
+  const mobile = casseNormale(texte, true);
+  if (mobile === texte) return texte;
+  return (
+    <>
+      <span className={styles.libelleBureau}>{texte}</span>
+      <span data-mobile-seulement="">{mobile}</span>
+    </>
+  );
+}
+
 function ProseBesoin({ texte }: { texte: string }) {
-  if (!texte.includes(TELEPHONE)) return <>{texte}</>;
+  if (!texte.includes(TELEPHONE)) return <>{casse(texte)}</>;
   const morceaux = texte.split(TELEPHONE);
   return (
     <>
       {morceaux.map((morceau, rang) => (
         <span key={rang}>
           {rang > 0 ? <strong style={TELEPHONE_FORT}>{TELEPHONE}</strong> : null}
-          {morceau}
+          {casse(morceau)}
         </span>
       ))}
     </>
@@ -858,8 +880,8 @@ function FicheLigne({ ligne, premiere }: { ligne: LignePreuve; premiere: boolean
         premiere ? { ...HERO_FICHE_LIGNE, borderTop: "none" } : HERO_FICHE_LIGNE
       }
     >
-      <span style={HERO_FICHE_LIBELLE}>{ligne.libelle}</span>
-      <span style={HERO_FICHE_VALEUR}>{ligne.valeur}</span>
+      <span style={HERO_FICHE_LIBELLE}>{casse(ligne.libelle)}</span>
+      <span style={HERO_FICHE_VALEUR}>{casse(ligne.valeur)}</span>
     </div>
   );
 }
@@ -872,6 +894,7 @@ function Objectif({ objectif, rang }: { objectif: ObjectifPreuve; rang: number }
       </span>
       <div>
         <TitreEtSuite
+          rendu={casse}
           titre={objectif.titre}
           texte={objectif.texte}
           styleTitre={OBJECTIF_TITRE}
@@ -907,6 +930,7 @@ function CarteReponse({ carte, rang, total }: { carte: CartePreuve; rang: number
       <div style={REPONSE_CORPS}>
         <span style={REPONSE_NUMERO}>{String(rang + 1).padStart(2, "0")}</span>
         <TitreEtSuite
+          rendu={casse}
           titre={carte.titre}
           texte={carte.texte}
           styleTitre={{
@@ -966,10 +990,10 @@ function Complement({ blocs }: { blocs: BlocComplementPreuve[] }) {
               {bloc.titre ? (
                 <div style={COMPLEMENT_TITRE_RANGEE}>
                   <span aria-hidden="true" style={COMPLEMENT_TIRET} />
-                  <h3 style={COMPLEMENT_TITRE}>{bloc.titre}</h3>
+                  <h3 style={COMPLEMENT_TITRE}>{casse(bloc.titre)}</h3>
                 </div>
               ) : null}
-              {bloc.texte ? <p style={COMPLEMENT_TEXTE}>{bloc.texte}</p> : null}
+              {bloc.texte ? <p style={COMPLEMENT_TEXTE}>{casse(bloc.texte)}</p> : null}
               {bloc.puces?.length ? (
                 <div style={COMPLEMENT_PUCES}>
                   {bloc.puces.map((puce) => (
@@ -979,9 +1003,9 @@ function Complement({ blocs }: { blocs: BlocComplementPreuve[] }) {
                       </span>
                       <span>
                         <strong style={COMPLEMENT_ACCROCHE}>
-                          {puce.accroche}
+                          {casse(puce.accroche)}
                         </strong>{" "}
-                        {puce.texte}
+                        {casse(puce.texte)}
                       </span>
                     </div>
                   ))}
@@ -1003,10 +1027,10 @@ function SegmentsCorpus({ segments }: { segments: readonly SegmentCorpus[] }) {
       {segments.map((g, i) =>
         g.href && cibleSure(g.href) ? (
           <Link key={i} href={g.href} prefetch={false}>
-            {g.t}
+            {casse(g.t)}
           </Link>
         ) : (
-          <Fragment key={i}>{g.t}</Fragment>
+          <Fragment key={i}>{casse(g.t)}</Fragment>
         ),
       )}
     </>
@@ -1088,9 +1112,11 @@ export default function PagePreuve({
      maquette (`allB`, 600 17px). Sur bureau, la bascule n'existe pas
      (`.racine details > summary { display: none }`) : la grille est rendue
      telle quelle, avec son style de capture. */
-  const resumeSituation = [contenu.situationTitre, contenu.situationProse?.[0]]
-    .filter(Boolean)
-    .join(" ");
+  /* Chaque accroche passe par `cleanCase` comme dans la V3 (`teaseOf`,
+     non strict) : « Prise en charge du montage : Aktid fait appel… ». */
+  const resumeSituation = casseNormale(
+    [contenu.situationTitre, contenu.situationProse?.[0]].filter(Boolean).join(" "),
+  );
   const sectionSituation = contenu.situationTitre ? (
     <section key="situation" className={styles.sectionPli} style={SECTION}>
       <SectionPliableMobile
@@ -1105,21 +1131,21 @@ export default function PagePreuve({
               01 · La situation
             </div>
             <h2 className={styles.titreSituation} style={SITUATION_TITRE}>
-              {contenu.situationTitre}
+              {casse(contenu.situationTitre)}
             </h2>
           </div>
           <div className={styles.proseSituation}>
             {(contenu.situationProse ?? []).map((paragraphe, rang) => (
               <p key={paragraphe} style={SITUATION_PROSE}>
-                {paragraphe}
+                {casse(paragraphe)}
                 {introSituation?.rang === rang ? (
-                  <span data-mobile-seulement=""> {introSituation.suite}</span>
+                  <span data-mobile-seulement=""> {casse(introSituation.suite)}</span>
                 ) : null}
               </p>
             ))}
             {introSituation?.rang === -1 ? (
               <p data-mobile-seulement="" style={SITUATION_PROSE}>
-                {introSituation.suite}
+                {casse(introSituation.suite)}
               </p>
             ) : null}
             {objectifs.length > 0 ? (
@@ -1154,7 +1180,7 @@ export default function PagePreuve({
      première puce, « Libellé : texte », tel que la maquette le compose ; la
      feuille partagée le coupe à deux lignes. Il vit dans le `<summary>`, en
      `data-mobile-seulement` : rien ne change à 1280 px. */
-  const resumeReponse = reponse[0] ? resumeDuPoint(reponse[0].titre, reponse[0].texte) : undefined;
+  const resumeReponse = reponse[0] ? casseNormale(resumeDuPoint(reponse[0].titre, reponse[0].texte)) : undefined;
   const texteMisEnPlace = texteDeplace(contenu.complement, "Ce que nous avons mis en place");
   const sectionReponse =
     reponse.length > 0 ? (
@@ -1180,7 +1206,7 @@ export default function PagePreuve({
             </div>
             {texteMisEnPlace ? (
               <p data-mobile-seulement="" className={styles.suiteDeplacee}>
-                {texteMisEnPlace}
+                {casse(texteMisEnPlace)}
               </p>
             ) : null}
           </SectionPliableMobile>
@@ -1193,9 +1219,9 @@ export default function PagePreuve({
      étape, « Rapprochement : Savoye et Migen constatent… ». Et pour le
      dispositif, sa première rangée, « Client : Savoye, concepteur… » (la V3
      n'en garde que le libellé, « Client », qui n'annonce rien). */
-  const resumeDeroule = etapes[0] ? resumeDuPoint(etapes[0].titre, etapes[0].texte) : undefined;
+  const resumeDeroule = etapes[0] ? casseNormale(resumeDuPoint(etapes[0].titre, etapes[0].texte)) : undefined;
   const resumeDispositif = dispositif[0]
-    ? [dispositif[0].libelle, dispositif[0].valeur].filter(Boolean).join(" : ")
+    ? casseNormale([dispositif[0].libelle, dispositif[0].valeur].filter(Boolean).join(" : "))
     : undefined;
   /* Repli manquant mesuré le 14/10 (gabarit 02 de +36 à +51 % plus haut que la
      maquette à 390 px) : le déroulé était la seule section numérotée de la
@@ -1235,6 +1261,7 @@ export default function PagePreuve({
                       {String(rang + 1).padStart(2, "0")}
                     </span>
                     <TitreEtSuite
+                      rendu={casse}
                       titre={etape.titre}
                       texte={etape.texte}
                       styleTitre={ETAPE_TITRE}
@@ -1299,8 +1326,8 @@ export default function PagePreuve({
                     key={ligne.libelle}
                     style={rang === 0 ? { ...DISPOSITIF_LIGNE, borderTop: "none" } : DISPOSITIF_LIGNE}
                   >
-                    <span style={DISPOSITIF_LIBELLE}>{ligne.libelle}</span>
-                    <span style={DISPOSITIF_VALEUR}>{ligne.valeur}</span>
+                    <span style={DISPOSITIF_LIBELLE}>{casse(ligne.libelle)}</span>
+                    <span style={DISPOSITIF_VALEUR}>{casse(ligne.valeur)}</span>
                   </div>
                 ))}
               </div>
@@ -1327,7 +1354,7 @@ export default function PagePreuve({
       data-mobile-seulement=""
       className={resultatApres ? styles.suiteResultat : styles.chapeauDeplace}
     >
-      {texteResultat}
+      {casse(texteResultat)}
     </p>
   ) : null;
   const sectionResultat =
@@ -1351,7 +1378,7 @@ export default function PagePreuve({
               {/* corpus, `## LE RÉSULTAT` : « Ce que la mission illustre : ». */}
               {corpus?.introResultat ? (
                 <p data-mobile-seulement="" className={styles.introResultat}>
-                  {corpus.introResultat}
+                  {casse(corpus.introResultat)}
                 </p>
               ) : null}
               <div
@@ -1367,6 +1394,7 @@ export default function PagePreuve({
                       ✓
                     </span>
                     <TitreEtSuite
+                      rendu={casse}
                       titre={resultat.titre}
                       texte={resultat.texte}
                       styleTitre={RESULTAT_ITEM_TITRE}
@@ -1464,31 +1492,40 @@ export default function PagePreuve({
                 </span>
               </div>
 
-              {/* Le H1 de la maquette MOBILE V3 (16/10) : « Aktid : un centre
-                  logistique… », « Savoye : alliance intralogistique », le
-                  client en casse normale et sans « Étude de cas ». Il n'existe
-                  que sous 880 px, le titre de la capture de bureau au-dessus :
-                  un seul H1, dont chaque largeur ne peint qu'une moitié. Le
-                  nom du client quitte alors la pastille (il ouvre le titre). */}
-              <h1 className={styles.titreHeros} style={TITRE1}>
-                {titreTelephone ? (
-                  <>
-                    {/* L'espace FINIT le titre du téléphone, dans son bloc :
-                        retiré avec lui, le texte de bureau reste celui d'un
-                        rendu sans couche mobile, au caractère près. */}
-                    <span data-mobile-seulement="" data-titre-mobile="">
-                      {`${titreTelephone} `}
-                    </span>
-                    <span className={styles.libelleBureau}>{titre}</span>
-                  </>
-                ) : (
-                  titre
-                )}
+              {/* Le titre de la maquette MOBILE V3 (16/10) : « Aktid : un
+                  centre logistique… », « Savoye : alliance intralogistique »,
+                  le client en casse normale et sans « Étude de cas ». Il ne se
+                  peint que sous 880 px, et HORS DU H1 : le H1 servi ne porte
+                  qu'un titre, celui de la capture de bureau (défaut du 16/10,
+                  « Aktid : un centre… semaines Un centre… semaines » dans un
+                  seul H1). Doublon pour l'œil, il est `aria-hidden` ; sous
+                  880 px le H1 reste lu, masqué pour l'œil seulement
+                  (`titreDoublon`, comme les `<h2>` des cartes). Le nom du
+                  client quitte alors la pastille (il ouvre le titre).
+                  L'espace FINIT le titre du téléphone, dans son bloc : retiré
+                  avec lui, le texte de bureau reste celui d'un rendu sans
+                  couche mobile, au caractère près. Un `<div>`, pas un `<p>` :
+                  le premier `<p>` de la colonne doit rester le chapô, que
+                  `.chapeauHeros:first-of-type` coiffe du titre « Le client et
+                  le site ». */}
+              {titreTelephone ? (
+                <div
+                  aria-hidden="true"
+                  data-mobile-seulement=""
+                  data-titre-mobile=""
+                  className={styles.titreHeros}
+                  style={TITRE1}
+                >
+                  {`${titreTelephone} `}
+                </div>
+              ) : null}
+              <h1 className={titreTelephone ? styles.titreDoublon : styles.titreHeros} style={TITRE1}>
+                {titre}
               </h1>
 
               {(contenu.chapeau ?? []).map((paragraphe) => (
                 <p key={paragraphe} className={styles.chapeauHeros} style={CHAPEAU}>
-                  {paragraphe}
+                  {casse(paragraphe)}
                 </p>
               ))}
 
@@ -1570,8 +1607,8 @@ export default function PagePreuve({
             >
               {chiffres.map((chiffre) => (
                 <div key={chiffre.libelle} style={CARTE_CHIFFRE}>
-                  <div style={CHIFFRE_LIBELLE}>{chiffre.libelle}</div>
-                  <div style={CHIFFRE_VALEUR}>{chiffre.valeur}</div>
+                  <div style={CHIFFRE_LIBELLE}>{casse(chiffre.libelle)}</div>
+                  <div style={CHIFFRE_VALEUR}>{casse(chiffre.valeur)}</div>
                 </div>
               ))}
             </div>
@@ -1639,7 +1676,7 @@ export default function PagePreuve({
                   <span data-mobile-seulement="">Passer à l’action</span>
                 </div>
                 <h2 className={styles.titreBesoin} style={BESOIN_TITRE}>
-                  {contenu.besoinTitre}
+                  {casse(contenu.besoinTitre)}
                 </h2>
                 {(contenu.besoinProse ?? []).map((paragraphe) => (
                   <p key={paragraphe} style={BESOIN_PROSE}>

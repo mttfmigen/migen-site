@@ -93,6 +93,26 @@ export function nomClient(brut: string): string {
   );
 }
 
+/**
+ * `cleanCase` de la V3, mot pour mot : la V3 mobile y passe chaque segment du
+ * corps (`segV`, `strict`) et chaque accroche de carte fermée (`teaseOf`).
+ * « AKTID a confié » → « Aktid a confié », « celles d'AKTID, » → « celles
+ * d'Aktid, ». En `strict`, seul un nom de la table change ; sans, une tête
+ * « MOT : » de plus de quatre capitales passe aussi par `nomClient`. Les
+ * sigles absents de la table (SNCF, SIEMENS) ne bougent pas.
+ */
+export function casseNormale(texte: string, strict = false): string {
+  let x = texte.replace(/^(\s*)Étude de cas\s+/i, "$1");
+  const tr = x.trim();
+  if (tr && tr === tr.toUpperCase() && NOMS[cle(tr)]) return x.replace(tr, NOMS[cle(tr)]);
+  x = x.replace(/(^|[^A-Za-zÀ-ÿ])([A-ZÀ-Ý]{5,})(?=$|[^A-Za-zÀ-ÿ])/g, (m, p, w) => p + (NOMS[cle(w)] ?? w));
+  return x.replace(/^(\s*)([A-ZÀ-Ý0-9&'’(). -]{2,40}?)(\s:\s)/, (m, sp, a, b) => {
+    const v = NOMS[cle(a)];
+    if (v) return sp + v + b;
+    return !strict && a.trim().length > 4 && a === a.toUpperCase() ? sp + nomClient(a.trim()) + b : m;
+  });
+}
+
 /** Le h1 d'une étude découpé comme `caseHead` de la V3. */
 export interface EnteteCas {
   /** « Savoye », vide si le h1 n'a pas la forme « CLIENT : titre ». */
