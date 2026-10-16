@@ -12,6 +12,15 @@ import {
 import { empreinteIp, tropDeDepots } from "@/components/formulaire/debit";
 import { enregistreCopieLead } from "@/lib/leads";
 import { attributionNettoyee, type Attribution } from "@/lib/utm";
+import {
+  CHAMP_DEMANDE,
+  CHAMP_SOURCE,
+  ERREUR_DEMANDE,
+  FORMULAIRE_HUBSPOT_LP,
+  SOURCE_LP,
+  champsHubspotLp,
+  estDemandeLp,
+} from "@/components/lp/lead-lp";
 
 /**
  * Dépôt d'un lead : HubSpot reçoit l'identité, Supabase reçoit l'attribution.
@@ -95,7 +104,15 @@ export async function POST(requete: NextRequest): Promise<Response> {
     return reponse(200, CONFIRMATION);
   }
 
-  const { contact, formulaire, erreurs } = valideCharge(brut);
+  const { contact, formulaire, erreurs: erreursContact } = valideCharge(brut);
+
+  // UNE LANDING PAGE (/lp/) exige en plus « Votre demande concerne », dans la
+  // liste fermée du formulaire HubSpot qu'elle alimente (components/lp/lead-lp.ts).
+  const lp = source[CHAMP_SOURCE] === SOURCE_LP;
+  const reponseDemande = source[CHAMP_DEMANDE];
+  const demande = lp && estDemandeLp(reponseDemande) ? reponseDemande : null;
+  const erreurs =
+    lp && !demande ? { ...erreursContact, demande: ERREUR_DEMANDE } : erreursContact;
   if (Object.keys(erreurs).length > 0) {
     return reponse(422, "Quelques champs demandent une correction.", erreurs);
   }
@@ -125,16 +142,22 @@ export async function POST(requete: NextRequest): Promise<Response> {
      sinon la valeur est jetée. Rien n'entre ici qu'un navigateur pourrait
      inventer à la place du registre. */
   const entreprise = etablissementNettoye(source[CHAMP_ETABLISSEMENT]);
+  const publicite = choix?.publicite === true;
 
-  const depot = await deposeChezHubspot({
-    contact,
-    formulaire,
-    attribution,
-    page,
-    entreprise,
-    hutk,
-    publicite: choix?.publicite === true,
-  });
+  /* LE FORMULAIRE HUBSPOT CIBLE. Une LP alimente celui de la LP en ligne
+     (variante C), avec ses champs à elle ; toute autre page, celui du site. */
+  const cible = demande
+    ? {
+        formulaireHubspot: FORMULAIRE_HUBSPOT_LP,
+        ...champsHubspotLp({ demande, attribution, urlPage: page.url, publicite }),
+      }
+    : {
+        formulaireHubspot: process.env.HUBSPOT_FORM_ID,
+        requis: champsDuSite(formulaire, attribution, publicite),
+        facultatifs: entreprise,
+      };
+
+  const depot = await deposeChezHubspot({ ...cible, contact, page, hutk, publicite });
 
   // La copie d'attribution est écrite dans les deux cas : un échec HubSpot ne
   // doit pas faire disparaître aussi la trace de la campagne qui a converti.
@@ -161,35 +184,66 @@ export async function POST(requete: NextRequest): Promise<Response> {
 }
 
 interface Depot {
+  /** Le formulaire HubSpot visé : celui du site, lu dans l'environnement, ou celui des LP. */
+  formulaireHubspot: string | undefined;
   contact: Contact;
-  formulaire: string;
-  attribution: Attribution;
+  /** Les champs que ce formulaire attend en plus de l'identité du contact. */
+  requis: Record<string, string | undefined>;
+  /**
+   * Les champs dont l'absence du formulaire HubSpot ne doit pas coûter le
+   * lead : refusés en 400, la demande repart sans eux.
+   *
+   * Pour le site, l'établissement que le visiteur a DÉSIGNÉ dans la recherche
+   * d'entreprise, renseigné depuis l'annuaire public
+   * (`lib/annuaire-entreprises.ts`), vide quand il a tapé un nom libre : on
+   * n'invente pas un SIREN. Ce sont les cinq champs cachés que la maquette
+   * pose sur ce formulaire : `country`, `siren`, `siret`, `address`, `zip`.
+   * Pour une LP, ses champs cachés (voir `champsHubspotLp`).
+   */
+  facultatifs: Record<string, string>;
   page: Page;
   hutk: string | undefined;
   /** Finalité publicitaire accordée : conditionne tout ce qui mesure la campagne. */
   publicite: boolean;
-  /**
-   * L'établissement que le visiteur a DÉSIGNÉ dans la recherche d'entreprise,
-   * renseigné depuis l'annuaire public (`lib/annuaire-entreprises.ts`). Vide
-   * quand il a tapé un nom libre : on n'invente pas un SIREN.
-   *
-   * Ce sont les cinq champs cachés que la maquette pose sur ce formulaire et
-   * qui restaient vides : `country`, `siren`, `siret`, `address`, `zip`.
-   */
-  entreprise: Record<string, string>;
 }
 
 type Resultat = { ok: true } | { ok: false; detail: string };
 
 /**
- * Soumission au formulaire HubSpot cible.
+ * Les champs du formulaire du site, en plus de l'identité.
  *
- * L'identifiant du formulaire vient de l'environnement : la page de contact et
- * une page de campagne n'alimentent pas le même formulaire, et une constante en
- * dur obligerait à redéployer pour en changer.
+ * L'identifiant du formulaire, lui, vient de l'environnement (`HUBSPOT_FORM_ID`) :
+ * une constante en dur obligerait à redéployer pour en changer.
  */
+function champsDuSite(
+  formulaire: string,
+  attribution: Attribution,
+  publicite: boolean,
+): Record<string, string | undefined> {
+  return {
+    formulaire_migen: formulaire,
+
+    // Les UTM et la page d'entrée ne décrivent pas la demande, ils décrivent la
+    // campagne qui a amené la personne : c'est de la mesure publicitaire. Sans
+    // cette finalité accordée, ils ne quittent pas notre serveur. La copie dans
+    // la table `leads` reste écrite, elle est non nominative et sert
+    // l'attribution interne.
+    ...(publicite
+      ? {
+          utm_source: attribution.utm_source,
+          utm_medium: attribution.utm_medium,
+          utm_campaign: attribution.utm_campaign,
+          utm_term: attribution.utm_term,
+          utm_content: attribution.utm_content,
+          page_entree: attribution.page_entree,
+        }
+      : {}),
+  };
+}
+
+/** Soumission au formulaire HubSpot cible. */
 async function deposeChezHubspot(depot: Depot): Promise<Resultat> {
-  const formulaireHubspot = process.env.HUBSPOT_FORM_ID;
+  const formulaireHubspot = depot.formulaireHubspot;
   if (!formulaireHubspot) {
     return { ok: false, detail: "HUBSPOT_FORM_ID absent de l'environnement" };
   }
@@ -201,30 +255,15 @@ async function deposeChezHubspot(depot: Depot): Promise<Resultat> {
     email: depot.contact.email,
     phone: numeroComplet(depot.contact),
     message: depot.contact.message,
-    formulaire_migen: depot.formulaire,
+    ...depot.requis,
 
-    /* L'ENTREPRISE IDENTIFIÉE AU REGISTRE, quand le visiteur l'a désignée.
-       Ces propriétés existent dans le portail : `siren`, `siret` et `code_naf`
-       sur l'objet entreprise, `address`, `zip`, `city` et `country` sur le
-       contact. Si le FORMULAIRE HubSpot ne les porte pas, la soumission
-       entière serait refusée : d'où le second essai sans elles, plus bas. */
-    ...depot.entreprise,
-
-    // Les UTM et la page d'entrée ne décrivent pas la demande, ils décrivent la
-    // campagne qui a amené la personne : c'est de la mesure publicitaire. Sans
-    // cette finalité accordée, ils ne quittent pas notre serveur. La copie dans
-    // la table `leads` reste écrite, elle est non nominative et sert
-    // l'attribution interne.
-    ...(depot.publicite
-      ? {
-          utm_source: depot.attribution.utm_source,
-          utm_medium: depot.attribution.utm_medium,
-          utm_campaign: depot.attribution.utm_campaign,
-          utm_term: depot.attribution.utm_term,
-          utm_content: depot.attribution.utm_content,
-          page_entree: depot.attribution.page_entree,
-        }
-      : {}),
+    /* Les champs facultatifs, dont L'ENTREPRISE IDENTIFIÉE AU REGISTRE quand
+       le visiteur l'a désignée. Ces propriétés existent dans le portail :
+       `siren`, `siret` et `code_naf` sur l'objet entreprise, `address`, `zip`,
+       `city` et `country` sur le contact. Si le FORMULAIRE HubSpot ne les
+       porte pas, la soumission entière serait refusée : d'où le second essai
+       sans eux, plus bas. */
+    ...depot.facultatifs,
   };
 
   // L'URL de la page porte souvent les UTM dans sa chaîne de requête : la
@@ -290,20 +329,19 @@ async function deposeChezHubspot(depot: Depot): Promise<Resultat> {
       // façon de diagnostiquer une propriété absente du portail.
       const detail = await reponseHubspot.text().catch(() => "");
 
-      /* SECOND ESSAI SANS L'ENRICHISSEMENT, et c'est une sécurité et non une
-         rustine. HubSpot refuse la soumission ENTIÈRE dès qu'un champ n'est
-         pas sur le formulaire ciblé. Les sept champs d'entreprise viennent
-         d'être ajoutés ; si le formulaire ne les porte pas encore, un lead
-         serait perdu pour un enrichissement facultatif. On renvoie donc la
-         demande sans eux : le contact arrive, l'enrichissement manque, et le
-         journal dit exactement ce qui a été refusé pour que Mehdi ajoute les
-         champs au formulaire. */
-      const enrichi = Object.keys(depot.entreprise).length > 0;
+      /* SECOND ESSAI SANS LES CHAMPS FACULTATIFS, et c'est une sécurité et
+         non une rustine. HubSpot refuse la soumission ENTIÈRE dès qu'un champ
+         n'est pas sur le formulaire ciblé. Les champs d'entreprise du site, les
+         champs cachés des LP n'y sont peut-être pas ; un lead serait perdu pour
+         un enrichissement facultatif. On renvoie donc la demande sans eux : le
+         contact arrive, l'enrichissement manque, et le journal dit exactement
+         ce qui a été refusé pour que Mehdi ajoute les champs au formulaire. */
+      const enrichi = Object.keys(depot.facultatifs).length > 0;
       if (enrichi && reponseHubspot.status === 400) {
-        console.error(`[lead] HubSpot refuse l'enrichissement entreprise : ${detail.slice(0, 300)}`);
+        console.error(`[lead] HubSpot refuse les champs facultatifs : ${detail.slice(0, 300)}`);
         const sansEnrichissement = {
           ...corps,
-          fields: corps.fields.filter((c) => !(c.name in depot.entreprise)),
+          fields: corps.fields.filter((c) => !(c.name in depot.facultatifs)),
         };
         const second = await fetch(
           `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAIL_HUBSPOT}/${formulaireHubspot}`,

@@ -1,0 +1,85 @@
+/* Formulaire et pages de service des landing pages (/lp/).
+   Valeurs relevées dans MigenLPForm et MigenLP de la maquette V3 ; seuls les
+   états (survol, focus, désactivé) et le repli au téléphone vivent ici, le
+   reste est posé en ligne comme dans la maquette. */
+
+/* La maquette pose `outline:none` sur ses champs : non repris, le focus
+   visible global de `globals.css` reste la marque du champ actif au clavier.
+   Seule la bordure se renforce, pour désigner la cible. */
+.champ:hover:not(:disabled),
+.champ:focus {
+  border-color: rgba(28, 27, 25, 0.32);
+}
+
+.champ:disabled {
+  opacity: 0.6;
+}
+
+.enveloppeTel:hover,
+.enveloppeTel:focus-within {
+  border-color: rgba(28, 27, 25, 0.32) !important;
+}
+
+/* Le bouton coche de « Votre demande concerne » prend l'orange de marque. */
+.choix input {
+  accent-color: #ff7c3c;
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin: 1px 0 0;
+}
+
+.choix:hover {
+  border-color: rgba(28, 27, 25, 0.32) !important;
+}
+
+/* Maquette : `style-hover="background:#e8692b"` sur les boutons orange. */
+.envoi:hover:not(:disabled) {
+  background: #e8692b !important;
+}
+
+.envoi:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.retour:hover {
+  color: #1c1b19 !important;
+}
+
+/* Jauge de l'étape : sans animation pour qui l'a demandé. */
+.jauge {
+  transition: transform 0.25s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jauge {
+    transition: none;
+  }
+}
+
+/* Lien masqué à l'écran, lu par les lecteurs d'écran. */
+.lecteur {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ------------------------------------------- héros des pages de service */
+
+/* Repli de la maquette, `@container (max-width:760px)` : une colonne, 18 px
+   de gouttière, titre à 34 px, et 96 px au-dessus pour la barre flottante. */
+@media (max-width: 760px) {
+  .grilleHeros {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 28px !important;
+    padding: 96px 18px 56px !important;
+  }
+
+  .titreHeros {
+    font-size: 34px !important;
+  }
+}
