@@ -87,6 +87,8 @@ import { etapesFilAriane } from "@/components/site/expertises/mobile";
  *  3 bis. Domaines     « Nos domaines d’études », bureau d’études seulement (V3, 16/10)
  *  4. Appel            bande horaires + bouton            → `BandeAppel`
  *  5. 03 Problème      « Votre problématique », puces 01-04 ← corpus
+ *  5 bis. Complément 3 ce que le corpus range dans son problème sans que ce
+ *                      soit un problème (comparatif, raisons) ← `complementProbleme`
  *  6. 04 Offre         « L'offre », 7 points fusionnés      ← corpus
  *  7. Appel            même bande                          → `BandeAppel`
  *  8. 05 Déroulé       « Notre méthode », étapes 01-06      ← corpus
@@ -118,10 +120,10 @@ import { etapesFilAriane } from "@/components/site/expertises/mobile";
  * Composant SERVEUR. Le fil d'Ariane et le maillage du cocon restent en props,
  * exigés par CLAUDE.md §4 bien qu'absents de la capture.
  *
- * HUIT PAGES DU GABARIT 03 NE PASSENT PAS PAR CE MONTAGE (08/10) : l'index de
- * la maquette les marque `sec: false` et son application les sert par son
- * gabarit GÉNÉRIQUE (« vente » pour six sous-pages, « édito » pour les deux de
- * /offres/residence/). Leur fiche porte `generique` ; voir `generique/`.
+ * HUIT SOUS-PAGES DU GABARIT 03 SONT PASSÉES PAR `generique/` DU 08/10 AU
+ * 16/10 (index de la maquette `sec: false`). Depuis la décision de Mehdi du
+ * 16/10 (V3 `sec: true`), elles ont ce montage complet ; plus aucune fiche ne
+ * porte `generique`, et la branche ci-dessous ne sert plus aucune page.
  */
 
 /** La photo de la FAQ sombre du gabarit, reprise en tête de page au téléphone. */
@@ -215,11 +217,10 @@ export default function PageOffre({
   maillage,
   chemin,
 }: ProprietesPageOffre) {
-  /* Huit sous-pages du gabarit 03 ne sont PAS servies par ce gabarit dans la
-     maquette : son index les marque `sec: false`, et son application les rend
-     avec son gabarit générique, « vente » (6) ou « édito » (2). Leur fiche
-     porte alors `generique` (le markdown découpé par la maquette), et la page
-     est celle de `generique/`, calculée par le code même de la maquette. */
+  /* Une fiche qui porte `generique` (le markdown découpé par la maquette) est
+     rendue par `generique/`, calculée par le code même de la maquette. Plus
+     aucune fiche ne le porte depuis le 16/10 : les huit sous-pages qui
+     passaient par là ont la page d'offre complète, comme la V3. */
   const generique = ficheGenerique(contenu);
   if (generique) {
     const vue = vueDe(titre, generique);
@@ -632,14 +633,22 @@ export default function PageOffre({
               maquette mobile (dc.html L451, `nOpen = 1`). Les 23 pages du
               gabarit ouvrent toutes sur le problème. */}
           {probleme ? (
-            <ProblemeOffre
-              key="probleme"
-              section={probleme}
-              altPhoto={titre}
-              photo={contenu.problemePhoto}
-              pli={cartesCouverture ? "replie" : "ouvert"}
-              mobile={chemin ? PROBLEME_MOBILE[chemin] : undefined}
-            />
+            <Fragment key="probleme">
+              <ProblemeOffre
+                section={probleme}
+                altPhoto={titre}
+                photo={contenu.problemePhoto}
+                pli={cartesCouverture ? "replie" : "ouvert"}
+                mobile={chemin ? PROBLEME_MOBILE[chemin] : undefined}
+              />
+              {/* « Complément 3 » : ce que le corpus range dans son problème
+                  sans que ce soit un problème (comparatif, raisons d'embaucher
+                  ou de sous-traiter). Sans donnée, rien ; un `Fragment` le
+                  rattache au problème pour la cadence mobile. */}
+              {contenu.complementProbleme?.length ? (
+                <ComplementsOffre blocs={contenu.complementProbleme} />
+              ) : null}
+            </Fragment>
           ) : null}
 
           {offre || bandeVisible || contenu.complementOffre?.length ? (

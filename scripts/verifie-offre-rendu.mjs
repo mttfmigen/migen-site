@@ -75,9 +75,7 @@ const HAUTEUR = 860;
  * rendait en rangée visible au-dessus du héros ; `components/cocon/FilAriane.tsx`
  * ne pose plus que ses données structurées (aucune des 248 captures n'en
  * dessine), et l'exception commune tombait donc en « devenue inutile » sur
- * toutes les pages. Les huit pages génériques du gabarit (voir
- * `components/site/offre/generique/`) portent, elles, le fil DANS leur héros,
- * comme leur capture : il y est comparé mot pour mot, sans exception.
+ * toutes les pages.
  */
 
 /**
@@ -135,46 +133,7 @@ const TITRES_DE_REPLI = [
  * `components/site/preuve/verification-preuve.tsx` ; la carte qui la cite
  * porte le même titre. Ce n'était plus un trou, c'est une substitution.
  */
-/* Les huit pages génériques (gabarit « vente » de la maquette, six d'entre
-   elles) : son gabarit pose « titre — texte » dans les constats de
-   « Le problème ». Le cadratin est proscrit : le site rend le point que le
-   markdown du client écrit lui-même entre les deux (« **Titre.** Texte »),
-   aucun mot ne change. */
-const TIRET_CONSTAT =
-  "cadratin posé par le gabarit générique entre le titre et le texte d'un " +
-  "constat : remplacé par le point du markdown source, mots inchangés";
-
 const TIRETS_PAR_PAGE = {
-  "/bureau-etudes/bureau-etude-electrique/": [
-    { maquette: "Les modifications ne sont pas reportées — Un départ ajouté ici, un shunt posé là, et le folio ne correspond plus à la réalité.", rendu: "Les modifications ne sont pas reportées. Un départ ajouté ici, un shunt posé là, et le folio ne correspond plus à la réalité.", pourquoi: TIRET_CONSTAT },
-    { maquette: "Une seule personne sait — Le jour où elle est absente, l'atelier est aveugle devant un bornier.", rendu: "Une seule personne sait. Le jour où elle est absente, l'atelier est aveugle devant un bornier.", pourquoi: TIRET_CONSTAT },
-    { maquette: "Les repères ont disparu — Câbles non étiquetés, borniers illisibles : chaque recherche de défaut recommence à zéro.", rendu: "Les repères ont disparu. Câbles non étiquetés, borniers illisibles : chaque recherche de défaut recommence à zéro.", pourquoi: TIRET_CONSTAT },
-    { maquette: "Le projet d'extension bloque — Impossible de chiffrer un ajout de puissance sans savoir ce que porte déjà le tableau.", rendu: "Le projet d'extension bloque. Impossible de chiffrer un ajout de puissance sans savoir ce que porte déjà le tableau.", pourquoi: TIRET_CONSTAT },
-  ],
-  "/bureau-etudes/bureau-etude-electronique/": [
-    { maquette: "Le composant n'existe plus — Le fabricant a arrêté la référence, et toute la machine dépend d'une pièce introuvable.", rendu: "Le composant n'existe plus. Le fabricant a arrêté la référence, et toute la machine dépend d'une pièce introuvable.", pourquoi: TIRET_CONSTAT },
-    { maquette: "La carte de rechange coûte le prix d'un sous-ensemble neuf — Quand elle est encore au catalogue.", rendu: "La carte de rechange coûte le prix d'un sous-ensemble neuf. Quand elle est encore au catalogue.", pourquoi: TIRET_CONSTAT },
-    { maquette: "Personne n'a le schéma — La documentation est partie avec le constructeur, ou n'a jamais été remise.", rendu: "Personne n'a le schéma. La documentation est partie avec le constructeur, ou n'a jamais été remise.", pourquoi: TIRET_CONSTAT },
-    { maquette: "Le diagnostic tourne en rond — Un défaut intermittent sur une carte non documentée immobilise la ligne plusieurs jours.", rendu: "Le diagnostic tourne en rond. Un défaut intermittent sur une carte non documentée immobilise la ligne plusieurs jours.", pourquoi: TIRET_CONSTAT },
-  ],
-  "/bureau-etudes/mise-en-conformite-machine/": [
-    { maquette: "Les protections tombent avec le temps — Un protecteur démonté pour un réglage, un arrêt d'urgence contourné, et la machine sort de son état d'origine.", rendu: "Les protections tombent avec le temps. Un protecteur démonté pour un réglage, un arrêt d'urgence contourné, et la machine sort de son état d'origine.", pourquoi: TIRET_CONSTAT },
-    { maquette: "Les anciennes machines restent concernées — Un équipement mis en service avant l'obligation de marquage doit respecter les prescriptions techniques du code du travail, CE ou pas.", rendu: "Les anciennes machines restent concernées. Un équipement mis en service avant l'obligation de marquage doit respecter les prescriptions techniques du code du travail, CE ou pas.", pourquoi: TIRET_CONSTAT },
-    { maquette: "Une modification fait de vous le responsable — Augmenter une capacité, changer un usage, ajouter une fonction : la charge de la conformité bascule sur votre entreprise.", rendu: "Une modification fait de vous le responsable. Augmenter une capacité, changer un usage, ajouter une fonction : la charge de la conformité bascule sur votre entreprise.", pourquoi: TIRET_CONSTAT },
-    { maquette: "Le dossier technique est introuvable — Schémas absents, notices perdues, analyse de risques jamais écrite : impossible de démontrer quoi que ce soit.", rendu: "Le dossier technique est introuvable. Schémas absents, notices perdues, analyse de risques jamais écrite : impossible de démontrer quoi que ce soit.", pourquoi: TIRET_CONSTAT },
-  ],
-  "/offres/depannage-industriel/astreinte/": [
-    { maquette: "L'effectif ne suit pas — Un service de deux ou trois techniciens ne tient pas un roulement sur douze mois. Congés, arrêts, formation, départs : le trou arrive toujours.", rendu: "L'effectif ne suit pas. Un service de deux ou trois techniciens ne tient pas un roulement sur douze mois. Congés, arrêts, formation, départs : le trou arrive toujours.", pourquoi: TIRET_CONSTAT },
-    { maquette: "Le profil est rare — Intervenir seul, de nuit, sur la mécanique comme sur l'automatisme demande une polyvalence que peu de techniciens ont.", rendu: "Le profil est rare. Intervenir seul, de nuit, sur la mécanique comme sur l'automatisme demande une polyvalence que peu de techniciens ont.", pourquoi: TIRET_CONSTAT },
-    { maquette: "Le coût réel dépasse la prime — Indemnité chaque semaine, heures majorées, repos compensateurs qui désorganisent le planning de journée, temps de gestion en paie.", rendu: "Le coût réel dépasse la prime. Indemnité chaque semaine, heures majorées, repos compensateurs qui désorganisent le planning de journée, temps de gestion en paie.", pourquoi: TIRET_CONSTAT },
-    { maquette: "Le cadre juridique ne pardonne rien — Délai de prévenance, repos quotidien, compensation : chaque manquement se paie, parfois des années plus tard.", rendu: "Le cadre juridique ne pardonne rien. Délai de prévenance, repos quotidien, compensation : chaque manquement se paie, parfois des années plus tard.", pourquoi: TIRET_CONSTAT },
-    { maquette: "La charge mentale use les meilleurs — Une semaine d'astreinte sur trois, et vos éléments les plus solides finissent par partir.", rendu: "La charge mentale use les meilleurs. Une semaine d'astreinte sur trois, et vos éléments les plus solides finissent par partir.", pourquoi: TIRET_CONSTAT },
-  ],
-  "/offres/retrofit/mise-en-conformite-machine/": [
-    { maquette: "Les protections tombent avec le temps — Un protecteur démonté pour un réglage, un arrêt d'urgence contourné, et la machine sort de son état d'origine.", rendu: "Les protections tombent avec le temps. Un protecteur démonté pour un réglage, un arrêt d'urgence contourné, et la machine sort de son état d'origine.", pourquoi: TIRET_CONSTAT },
-    { maquette: "Les anciennes machines restent concernées — Un équipement mis en service avant l'obligation de marquage doit respecter les prescriptions techniques du code du travail, CE ou pas.", rendu: "Les anciennes machines restent concernées. Un équipement mis en service avant l'obligation de marquage doit respecter les prescriptions techniques du code du travail, CE ou pas.", pourquoi: TIRET_CONSTAT },
-    { maquette: "Une modification vous transforme en responsable — Automatiser, augmenter une capacité, changer un usage : la charge de la conformité bascule sur votre entreprise.", rendu: "Une modification vous transforme en responsable. Automatiser, augmenter une capacité, changer un usage : la charge de la conformité bascule sur votre entreprise.", pourquoi: TIRET_CONSTAT },
-  ],
   "/offres/retrofit/remise-en-etat/": [
     {
       maquette: "Maintenir des machines conçues sur mesure",
@@ -202,17 +161,6 @@ const TIRETS_REMPLACES = TIRETS_PAR_PAGE[CHEMIN_PAGE] ?? [];
  * liste, une URL peut apparaître autant de fois qu'il y a eu de vagues : tout
  * s'additionne, rien ne s'écrase.
  */
-/* Raisons communes aux huit pages génériques (voir plus bas). */
-const AGENCES_FRANCE =
-  "repère « 5 agences en France » du héros générique : quatre agences (Lyon, " +
-  "Montréal, Madrid, Dubaï) et, en France, des hubs, pas des agences (README " +
-  "de passation, verifie-interdits « 5 agences ») ; le repère est retiré, " +
-  "jamais reformulé";
-const PLI_REDUIRE =
-  "libellé « Réduire » du pli « Lire la suite » : masqué tant que le pli est " +
-  "fermé, sur le site comme dans la maquette (feuille `.cx-more`) ; la capture, " +
-  "relue ici sans feuille de style, l'expose";
-
 const TROUS_DECLARES = [
   /* Modèle, à suivre pour déclarer un trou :
    *
@@ -516,7 +464,8 @@ const TROUS_DECLARES = [
      « offerte », ou un prix d'abonnement, « un prix mensuel fixe ») ; règle :
      on retire LA phrase, jamais le paragraphe ; celles dont aucune phrase ne
      tombait sous l'interdit sont rendues entières et ne sont plus ici. Les
-     huit pages génériques sont déclarées plus bas, en un seul bloc. */
+     huit sous-pages passées à la page d'offre complète le 16/10 sont dans
+     REFERENCES_PERIMEES, plus bas. */
   ["/offres/chantier/demenagement-machines/", [
     {
       section: 15,
@@ -543,50 +492,6 @@ const TROUS_DECLARES = [
      Dubaï et Madrid. » `appliqueDecisions` ne connaît pas cette forme, elle
      garde Limonest : la phrase ne se reformule pas, elle reste retirée, à
      faire trancher par Mehdi (ajouter sa forme à lib/decisions-copie.ts). */
-  /* ------------------------------------------------------------------
-     Les huit pages GÉNÉRIQUES, redéclarées le 08/10 : la maquette ne les sert
-     pas par son gabarit d'offre mais par son gabarit générique (« vente » pour
-     six, « édito » pour les deux pages de /offres/residence/), et le site les
-     rend désormais ainsi (`components/site/offre/generique/`, calculé par le
-     code même de la maquette). Toutes les anciennes déclarations, faites sur
-     l'ancien montage, sont retirées. Phrase retirée hors capture visible,
-     déclarée ici pour mémoire : « C'est la configuration la plus fréquente chez
-     nos clients réguliers, et celle qui vieillit le mieux. »
-     (/offres/residence/prestataire-ou-salarie/, pli « Lire la suite »,
-     « réguliers » proscrit à côté de clients). */
-  ["/bureau-etudes/bureau-etude-electrique/", [
-    { section: 0, ligne: "5", pourquoi: AGENCES_FRANCE },
-    { section: 0, ligne: "agences en France", pourquoi: AGENCES_FRANCE },
-  ]],
-  ["/bureau-etudes/bureau-etude-electronique/", [
-    { section: 0, ligne: "5", pourquoi: AGENCES_FRANCE },
-    { section: 0, ligne: "agences en France", pourquoi: AGENCES_FRANCE },
-  ]],
-  ["/bureau-etudes/mise-en-conformite-machine/", [
-    { section: 0, ligne: "5", pourquoi: AGENCES_FRANCE },
-    { section: 0, ligne: "agences en France", pourquoi: AGENCES_FRANCE },
-  ]],
-  ["/offres/depannage-industriel/astreinte/", [
-    { section: 0, ligne: "5", pourquoi: AGENCES_FRANCE },
-    { section: 0, ligne: "agences en France", pourquoi: AGENCES_FRANCE },
-  ]],
-  ["/offres/depannage-industriel/panne-machine/", [
-    { section: 0, ligne: "5", pourquoi: AGENCES_FRANCE },
-    { section: 0, ligne: "agences en France", pourquoi: AGENCES_FRANCE },
-  ]],
-  ["/offres/residence/cahier-des-charges/", [
-    { section: 1, ligne: "Réduire", pourquoi: PLI_REDUIRE },
-    { section: 8, ligne: "Réduire", pourquoi: PLI_REDUIRE },
-  ]],
-  ["/offres/residence/prestataire-ou-salarie/", [
-    { section: 1, ligne: "Réduire", pourquoi: PLI_REDUIRE },
-    { section: 3, ligne: "Réduire", pourquoi: PLI_REDUIRE },
-    { section: 8, ligne: "Réduire", pourquoi: PLI_REDUIRE },
-  ]],
-  ["/offres/retrofit/mise-en-conformite-machine/", [
-    { section: 0, ligne: "5", pourquoi: AGENCES_FRANCE },
-    { section: 0, ligne: "agences en France", pourquoi: AGENCES_FRANCE },
-  ]],
   ["/offres/audit-conseil-maintenance/", []],
   /* « réponse de la FAQ » n'est plus un trou depuis le 16/10 : la première
      question est ouverte au bureau, comme la capture et la maquette V3. */
@@ -607,6 +512,49 @@ for (const [u, items] of TROUS_DECLARES) {
   (TROUS_PAR_PAGE[u] ??= []).push(...items);
 }
 const TROUS_ASSUMES = TROUS_PAR_PAGE[CHEMIN_PAGE] ?? [];
+
+/**
+ * RÉFÉRENCES PÉRIMÉES, DÉCLARÉES LE 16/10 : la capture figée ne décrit plus la
+ * page, par DÉCISION, et ce n'est pas au site de lui ressembler.
+ *
+ * Les huit sous-pages ci-dessous étaient servies du 08/10 au 16/10 par le
+ * gabarit générique de la maquette (index `sec: false`), et leur capture de
+ * `maquette/rendu/` est ce montage : 12 sections « Le problème », « Le
+ * déroulé », « Chiffres clés »…, 4 sur cahier-des-charges. Mehdi a décidé le
+ * 16/10 qu'elles passent à la page d'offre complète, comme la maquette V3
+ * (son `index.json` leur ajoute `sec: true`) : 18 à 20 sections, d'autres
+ * titres, un autre ordre. Comparée à l'ancienne capture, chaque page tombait
+ * sur plus de 150 anomalies qui ne disent rien d'un défaut.
+ *
+ * CE QUI RESTE CONTRÔLÉ sur ces pages, et chaque point peut échouer :
+ *   · la déclaration est VRAIE : la référence est toujours la capture
+ *     générique (sans écran « 03 Problème »), et le site sert bien la page
+ *     d'offre complète (écran « 03 Problème » et panneau `#besoin`). Le jour
+ *     où la référence est recapturée sur la V3, ou si la page revient au
+ *     gabarit générique, la porte échoue et demande de retirer la ligne ;
+ *   · le h1 servi est celui de l'index du client, mot pour mot ;
+ *   · aucun tiret cadratin visible.
+ *
+ * CE QUI NE L'EST PLUS, et c'est l'écart déclaré : la structure et le texte
+ * ligne à ligne. Les recapturer sur la V3 est le travail qui reste à faire ;
+ * la copie de la V3 n'est pas portée telle quelle (« candidats », compteurs,
+ * Markdown brut, cartes de référence retirées le 12/10), chaque écart y
+ * deviendrait un trou déclaré ici.
+ */
+const MOTIF_V3 =
+  "décision de Mehdi du 16/10 : page d'offre complète comme la maquette V3 " +
+  "(index `sec: true`), la capture de maquette/rendu/ est l'ancien montage générique";
+const REFERENCES_PERIMEES = {
+  "/bureau-etudes/bureau-etude-electrique/": MOTIF_V3,
+  "/bureau-etudes/bureau-etude-electronique/": MOTIF_V3,
+  "/bureau-etudes/mise-en-conformite-machine/": MOTIF_V3,
+  "/offres/depannage-industriel/astreinte/": MOTIF_V3,
+  "/offres/depannage-industriel/panne-machine/": MOTIF_V3,
+  "/offres/residence/cahier-des-charges/": MOTIF_V3,
+  "/offres/residence/prestataire-ou-salarie/": MOTIF_V3,
+  "/offres/retrofit/mise-en-conformite-machine/": MOTIF_V3,
+};
+const PERIMEE = REFERENCES_PERIMEES[CHEMIN_PAGE];
 
 /**
  * Titres que la MAQUETTE rend VIDES, et que le site sert quand même.
@@ -985,6 +933,58 @@ function controleTirets(reference, site, fautes) {
   }
 }
 
+/**
+ * La page d'une RÉFÉRENCE PÉRIMÉE (voir REFERENCES_PERIMEES) : la déclaration
+ * est-elle toujours vraie, et ce qui reste mesurable est-il tenu ?
+ */
+async function controlePerimee() {
+  const fautes = [];
+  if (/data-screen-label="03 Probl[eè]me"/.test(htmlReference)) {
+    fautes.push(
+      "exception devenue inutile : la référence porte maintenant l'écran « 03 Problème » " +
+        "de la page d'offre. Retirez la page de REFERENCES_PERIMEES et comparez-la.",
+    );
+  }
+  const page = await navigateur.newPage({ viewport: { width: LARGEUR, height: HAUTEUR } });
+  const reponse = await page.goto(SITE + CHEMIN_PAGE, { waitUntil: "load", timeout: 60_000 });
+  if (!reponse?.ok()) throw new Error(`${SITE + CHEMIN_PAGE} répond ${reponse?.status()}`);
+  const etat = await page.evaluate(() => {
+    const principal = document.querySelector("main");
+    return {
+      h1: principal?.querySelector("h1")?.innerText ?? null,
+      probleme: !!principal?.querySelector('[data-screen-label="03 Problème"]'),
+      panneau: !!principal?.querySelector("#besoin"),
+      lignes: (principal?.innerText ?? "").split("\n"),
+    };
+  });
+  await page.close();
+  if (!etat.probleme || !etat.panneau) {
+    fautes.push(
+      "exception devenue inutile : le site ne sert plus la page d'offre complète " +
+        `(écran « 03 Problème » ${etat.probleme ? "présent" : "absent"}, panneau #besoin ` +
+        `${etat.panneau ? "présent" : "absent"}). Retirez la page de REFERENCES_PERIMEES.`,
+    );
+  }
+  if (normalise(etat.h1) !== normalise(mesure.h1Attendu)) {
+    fautes.push(`h1 « ${etat.h1} » au lieu de « ${mesure.h1Attendu} » (index du client)`);
+  }
+  const cadratin = etat.lignes.map(normalise).find((l) => l.includes("—"));
+  if (cadratin) fautes.push(`tiret cadratin visible sur le site : « ${cadratin.slice(0, 110)} »`);
+
+  console.log(
+    `${CHEMIN_PAGE} : RÉFÉRENCE PÉRIMÉE DÉCLARÉE (${PERIMEE}). ` +
+      "Contrôlés : déclaration toujours vraie, h1 de l'index, aucun cadratin. " +
+      "Non comparés : structure et texte ligne à ligne.",
+  );
+  if (fautes.length === 0) {
+    console.log("page d'offre conforme à ce qui reste mesurable");
+    return 0;
+  }
+  console.error(`\n${fautes.length} anomalie(s) :\n`);
+  for (const faute of fautes) console.error(`  · ${faute}\n`);
+  return 1;
+}
+
 /* ------------------------------------------------------------------ */
 /* Déroulé.                                                            */
 /* ------------------------------------------------------------------ */
@@ -1008,6 +1008,9 @@ const IMBRIQUEES = /<article\b[^]*?<section\b/.test(htmlReference);
 const navigateur = await chromium.launch({ channel: "chrome" });
 let code = 0;
 try {
+  if (PERIMEE) {
+    code = await controlePerimee();
+  } else {
   const [reference, site] = await Promise.all([
     lisSections(navigateur, (page) =>
       page.setContent(
@@ -1048,6 +1051,7 @@ try {
     code = 1;
   } else {
     console.log("rendu d'offre conforme à la référence");
+  }
   }
 } finally {
   await navigateur.close();

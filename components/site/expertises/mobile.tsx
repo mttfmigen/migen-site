@@ -11,7 +11,6 @@ import {
   entreeDe,
   gabaritDe,
   parentDe,
-  REMAP,
 } from "@/components/site/cocon/maillage-mobile";
 import MarquesOffre, {
   type ProprietesMarquesOffre,
@@ -83,9 +82,15 @@ export interface EtapeFil {
 /**
  * Les niveaux du fil d'Ariane, calcul de dc.html L495 à L497 :
  * un niveau par préfixe du chemin QUI EXISTE dans l'index, libellé `FAM` au
- * premier niveau et `courtLibelle` ensuite, adresse détournée par `REMAP`,
- * puis la page courante. « Accueil » est posé par `FilArianeVue`. Hors index,
- * rien (dc.html ne calcule rien pour une page qu'il ne connaît pas).
+ * premier niveau et `courtLibelle` ensuite, puis la page courante. « Accueil »
+ * est posé par `FilArianeVue`. Hors index, rien (dc.html ne calcule rien pour
+ * une page qu'il ne connaît pas).
+ *
+ * L'ADRESSE D'UN NIVEAU EST LA SIENNE, PAS CELLE DE `REMAP` (16/10). La
+ * maquette détourne six parents vers d'autres pages parce qu'elle ne les sert
+ * pas ; le site les sert tous (200), et le JSON-LD du fil les nomme. Détourné,
+ * « Dépannage industriel » menait à /offres/zero-arret/ et « Bureau d’études »
+ * à /offres/bureau-etudes/ depuis leurs sous-pages, au téléphone seulement.
  */
 export function etapesFilAriane(chemin: string): EtapeFil[] {
   const entree = entreeDe(chemin);
@@ -98,7 +103,7 @@ export function etapesFilAriane(chemin: string): EtapeFil[] {
     if (!niveau) continue;
     etapes.push({
       titre: k === 1 ? (FAM[segments[0]] ?? courtLibelle(niveau)) : courtLibelle(niveau),
-      path: REMAP[pth] ?? pth,
+      path: pth,
     });
   }
   etapes.push({

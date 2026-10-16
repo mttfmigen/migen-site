@@ -624,3 +624,46 @@
     grid-template-columns: 1fr !important;
   }
 }
+
+/* LE TABLEAU D'UN COMPLÉMENT (`ComplementsOffre`, 16/10) : défilant au bureau
+   s'il déborde, en cartes sous 881 px, chaque cellule précédée de l'intitulé
+   de sa colonne. Même dessin que les tableaux des guides au téléphone. */
+.tableauComplement {
+  overflow-x: auto;
+  margin: 6px 0 4px;
+}
+@media (max-width: 880px) {
+  .tableauComplement {
+    overflow: visible;
+  }
+  .tableauComplement table,
+  .tableauComplement tbody {
+    display: grid;
+    gap: 8px;
+  }
+  .tableauComplement thead {
+    display: none;
+  }
+  .tableauComplement tr {
+    display: grid;
+    gap: 8px;
+    padding: 14px 15px;
+    border: 1px solid var(--mm-filet, rgba(28, 27, 25, 0.08));
+    border-radius: 16px;
+    background: var(--mm-fond-doux, #f6f6f7);
+  }
+  .tableauComplement td {
+    display: block;
+    padding: 0 !important;
+    border: 0 !important;
+  }
+  .tableauComplement td[data-libelle]::before {
+    content: attr(data-libelle);
+    display: block;
+    margin-bottom: 3px;
+    font: 600 10.5px/1.4 var(--fb);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mm-encre-3, #77736d);
+  }
+}
