@@ -453,6 +453,9 @@ details[open] .g3-plus {
 .mg-burger {
   display: none;
 }
+.mg-tel-rond {
+  display: none;
+}
 
 @media (max-width: 1180px) {
   .mg-nav > * {
@@ -508,7 +511,9 @@ details[open] .g3-plus {
 /* LA BARRE DU HAUT DE LA MAQUETTE MOBILE V2 (dc.html L67 à L70), sous 880 px :
    une barre blanche translucide de toute la largeur, à 12 px des bords, le
    logo « migen » à gauche et la pilule « Menu » à droite (`.mg-burger`). Elle
-   remplace la pastille centrée du bureau, qui ne bouge pas au-dessus. */
+   remplace la pastille centrée du bureau, qui ne bouge pas au-dessus.
+   Depuis le 16/10, la V3 (en-tête, T1) : un rond téléphone de 44 px avant la
+   pilule (`.mg-tel-rond`), pilule et marges intérieures à ses mesures. */
 @media (max-width: 880px) {
   .mg-topwrap {
     padding: 12px 12px 0 !important;
@@ -516,7 +521,7 @@ details[open] .g3-plus {
   .mg-barre {
     width: auto !important;
     justify-content: space-between;
-    padding: 6px 6px 6px 14px !important;
+    padding: 5px 5px 5px 16px !important;
     background: rgba(255, 255, 255, 0.82) !important;
     backdrop-filter: blur(20px) saturate(160%) !important;
     -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
@@ -536,6 +541,19 @@ details[open] .g3-plus {
   }
   .mg-copyright {
     display: none;
+  }
+  .mg-tel-rond {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    background: rgba(28, 27, 25, 0.06);
+  }
+  .mg-tel-rond svg {
+    width: 20px;
+    height: 20px;
   }
 }
 

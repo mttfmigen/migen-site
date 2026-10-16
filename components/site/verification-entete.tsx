@@ -186,6 +186,41 @@ assert.ok(!site.includes("04 11 78 95 97"), "numéro de la LP sorti de la LP");
 assert.ok(lp.includes("04 11 78 95 97"), "numéro de la LP absent de la LP");
 assert.ok(!lp.includes("04 78 33 72 05"), "numéro du site présent sur la LP");
 
+// ------------------------------- le rond téléphone de la barre mobile (V3)
+// Validé par Mehdi le 16/10 : un lien `tel:` rond dans la barre sous 880 px,
+// nommé pour les lecteurs d'écran, au numéro de SA variante. Masqué au bureau
+// par une règle hors de toute requête média, montré à 44 px dans le bloc
+// mobile : le bureau ne doit pas bouger d'un pixel.
+const rond = (html: string) =>
+  /<a href="(tel:[^"]+)" class="mg-tel-rond" aria-label="([^"]+)">/.exec(html)?.slice(1);
+assert.deepEqual(
+  rond(site),
+  ["tel:+33478337205", "Appeler migen au 04 78 33 72 05"],
+  "le rond téléphone de la barre mobile manque, ou ne porte pas le numéro du site",
+);
+const ROND_LP = ["tel:+33411789597", "Appeler migen au 04 11 78 95 97"];
+assert.deepEqual(
+  rond(lp),
+  ROND_LP,
+  "le rond téléphone de la landing page ne porte pas le numéro de la LP",
+);
+// Témoin d'échec : le rond de la LP passé au numéro du site doit être refusé.
+assert.throws(
+  () =>
+    assert.deepEqual(
+      rond(lp.replace('href="tel:+33411789597" class="mg-tel-rond"', 'href="tel:+33478337205" class="mg-tel-rond"')),
+      ROND_LP,
+    ),
+  "le contrôle du rond laisse passer le numéro du site sur la LP",
+);
+const css = readFileSync("app/globals.css", "utf8");
+assert.match(css, /^\.mg-tel-rond \{\n {2}display: none;\n\}/m, "le rond téléphone n'est plus masqué au bureau");
+assert.match(
+  css,
+  /@media \(max-width: 880px\) \{[^@]*\n {2}\.mg-tel-rond \{\n {4}display: grid;[^}]*width: 44px;\n {4}height: 44px;/,
+  "le rond téléphone n'est plus montré à 44 px sous 880 px",
+);
+
 // --------------------------------------------- mega-menu atteignable au clavier
 // Cinq entrées à panneau, chacune un vrai bouton qui déclare son état et la
 // cible qu'il commande. Sans ces attributs, le menu redevient décoratif.
