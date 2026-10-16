@@ -21,7 +21,7 @@ Interdits : intérim, régie, mise (met, mettre) à disposition, sans engagement
 ## En chiffres
 
 - 39 pages portées sur 41 ; 2 non portées.
-- 387 retraits ou remplacements, dont :
+- 390 retraits ou remplacements, dont :
   - 49 : retiré : mise à disposition
   - 41 : question de FAQ retirée avec sa réponse : intérim
   - 40 : retiré : régie
@@ -46,6 +46,7 @@ Interdits : intérim, régie, mise (met, mettre) à disposition, sans engagement
   - 3 : retiré : sans engagement
   - 3 : retiré : ville-hub rattachée au hub de Toulouse
   - 3 : retiré : rattachement au hub de Nantes, qui n'est pas le plus proche
+  - 3 : siège à Écully
   - 3 : retiré : rattachement au hub de Lyon, qui n'est pas le plus proche
   - 2 : décision du site appliquée (lib/decisions-copie.ts)
   - 1 : retiré : clé en main
@@ -311,12 +312,15 @@ Aucune règle ne les retire, mais aucune source du site ne les atteste mot pour 
 ### `/lp/maintenance-industrielle-lyon/`
 
 - meta : « Migen met à disposition des techniciens qualifiés pour renforcer votre maintenance industrielle à Lyon : urgences, absences, arrêts techniques et besoins sur site. » retiré. Motif : phrase retirée : mise à disposition.
+- chapo : « À Lyon et dans le Rhône, vos installations doivent rester opérationnelles. Migen met à disposition des techniciens de maintenance industrielle pour intervenir sur vos sites, en renfort ponctuel ou en présence continue. Agence à Écully, 129 chemin du Moulin Carron. » devient « À Lyon et dans le Rhône, vos installations doivent rester opérationnelles. Migen met à disposition des techniciens de maintenance industrielle pour intervenir sur vos sites, en renfort ponctuel ou en présence continue. Siège à Écully, 129 chemin du Moulin Carron. ». Motif : le siège est à Écully (Mehdi, 16/10).
 - chapo : « Migen met à disposition des techniciens de maintenance industrielle pour intervenir sur vos sites, en renfort ponctuel ou en présence continue. » retiré. Motif : phrase retirée : mise à disposition.
+- badges[0] : « Agence Lyon · Écully » devient « Siège Lyon · Écully ». Motif : le siège est à Écully (Mehdi, 16/10).
 - hs[0] : « 4,9/5 · satisfaction client » devient « 4,6 / 5 · avis Google ». Motif : la note du site est 4,6 / 5 sur Google (TemoignagesClients.tsx, libellé de CHIFFRES dans entete-donnees.ts) ; 4,9/5 n'a pas de source.
 - img : « aperçu Envato E10QDY1 (CDN d'Envato, filigrané) » devient « /assets/villes/ville-lyon.jpg ». Motif : image externe : la même photo, sous licence, déjà servie par /implantations/.
 - section « Plus de 200 clients satisfaits » · t : « Plus de 200 clients satisfaits » devient « Plus de 200 clients ». Motif : « +200 clients » sans le qualificatif « satisfaits ».
 - section « Nos expertises » · items[3].h : « Renfort d'équipe en régie » retiré. Motif : phrase retirée : régie.
 - section « Nos expertises » · items[3] : « Des techniciens autonomes intégrés à vos équipes, en ponctuel ou sur la durée. » retiré. Motif : la description part avec son titre, l'élément entier est retiré.
+- section « Pourquoi notre agence locale » · h2 : « Agence Lyon · Écully » devient « Siège Lyon · Écully ». Motif : le siège est à Écully (Mehdi, 16/10).
 - section « Comment ça marche » · cards[0].d : « 2 min suffisent. » retiré. Motif : phrase retirée : délai chiffré (seul « rappel dans l'heure » est permis).
 - section « Cas client · Rhône » · checks[0] : « Reconduit 2 ans · préventif tenu » devient « Reconduit · préventif tenu ». Motif : durée chiffrée retirée de la carte « Cas client ».
 - section « Cas client · Rhône » · lead : « Équipe mobilisée sur un site lyonnais. Maintenance préventive tenue, contrat reconduit deux années consécutives. » devient « Équipe mobilisée sur un site lyonnais. Maintenance préventive tenue, contrat reconduit. ». Motif : durée retirée de la carte « Cas client ».

@@ -110,7 +110,7 @@ export function Expertises({ s, ctx }: { s: SectionLP; ctx: Contexte }) {
           <h3 style={{ margin: "2px 0 0", font: "600 17px/1.3 var(--ft)", letterSpacing: "-.02em", color: "#1c1b19" }}>
             {item.h}
           </h3>
-          <p style={{ margin: 0, font: "400 14px/1.6 var(--fb)", color: "#4a4845" }}>{item.d}</p>
+          {item.d ? <p style={{ margin: 0, font: "400 14px/1.6 var(--fb)", color: "#4a4845" }}>{item.d}</p> : null}
         </div>
       ))}
     </div>

@@ -71,6 +71,10 @@ const CORRECTIONS = [
   { kind: "case", de: /\s+deux années consécutives/g, vers: "", motif: "durée retirée de la carte « Cas client »", nom: "durée retirée d\'une carte « Cas client »" },
   { kind: "case", de: /\s+2 ans(?=\s+·)/g, vers: "", motif: "durée chiffrée retirée de la carte « Cas client »", nom: "durée retirée d\'une carte « Cas client »" },
   { kind: "case", de: /\s+·\s+(?:12|18) mois$/g, vers: "", motif: "durée chiffrée retirée de la carte « Cas client »", nom: "durée retirée d\'une carte « Cas client »" },
+  /* 16/10, Mehdi : « Le siège est à Ecully mets le de partout ». L'agence
+     lyonnaise de la V3, à Écully, est le siège. */
+  { de: /\bAgence à Écully, 129 chemin du Moulin Carron\./g, vers: "Siège à Écully, 129 chemin du Moulin Carron.", motif: "le siège est à Écully (Mehdi, 16/10)", nom: "siège à Écully" },
+  { de: /^Agence Lyon · Écully$/g, vers: "Siège Lyon · Écully", motif: "le siège est à Écully (Mehdi, 16/10)", nom: "siège à Écully" },
   // « +200 clients », sans qualificatif.
   { de: /(200 clients) satisfaits/g, vers: "$1", motif: "« +200 clients » sans le qualificatif « satisfaits »", nom: "« satisfaits » retiré de « +200 clients »" },
   /* Fautes de français de la V3 : la préposition devant un nom de ville ou de
