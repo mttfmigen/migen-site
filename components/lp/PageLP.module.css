@@ -1,8 +1,9 @@
 /* Le gabarit des landing pages, `MigenLP` de la maquette V3.
    Les valeurs vivent en ligne dans les composants, comme dans la maquette ;
    ici seulement ce que le style en ligne ne sait pas dire : les survols
-   (`style-hover` de la maquette), le défilement des logos et le repli au
-   téléphone, par requêtes de CONTENEUR comme la maquette (`.lp-root`). */
+   (`style-hover` de la maquette), les marges de défilement sous les barres
+   et le repli au téléphone, par requêtes de CONTENEUR comme la maquette
+   (`.lp-root`). */
 
 .racine {
   container-type: inline-size;
@@ -39,14 +40,20 @@
   color: #ff7c3c;
 }
 
-/* Ancres de la barre : le saut s'arrête sous la barre flottante (`goId` de
-   la maquette retranchait 76 px). */
-.racine [id^="lp-"] {
-  scroll-margin-top: 76px;
-}
-
+/* Ce que la barre flottante (en haut) et la barre collante du téléphone (en
+   bas) couvrent, retranché de tout défilement : le saut vers une ancre
+   (`goId` de la maquette retranchait 76 px) ET le défilement qui suit le
+   focus clavier, pour qu'un champ ou un bouton atteint au clavier ne passe
+   jamais sous une barre (WCAG 2.4.11). */
 :global(html):has(.racine) {
   scroll-behavior: smooth;
+  scroll-padding-top: 76px;
+}
+
+@media (max-width: 760px) {
+  :global(html):has(.collante) {
+    scroll-padding-bottom: 84px;
+  }
 }
 
 .racine details > summary {
@@ -92,24 +99,6 @@
   box-shadow: 0 22px 44px -26px rgba(0, 0, 0, 0.55);
 }
 
-/* --------------------------------------------------- bandeau des logos */
-
-@keyframes defile {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.piste {
-  display: flex;
-  gap: 12px;
-  width: max-content;
-  animation: defile 48s linear infinite;
-}
-
 /* -------------------------------------------------------------- carrousel */
 
 .carrousel {
@@ -120,6 +109,13 @@
   display: none;
 }
 
+/* Sans avance automatique (mouvement réduit), le bouton de pause n'a rien à arrêter. */
+@media (prefers-reduced-motion: reduce) {
+  .lecture {
+    display: none;
+  }
+}
+
 /* ------------------------------------------------- barre flottante, voile */
 
 .barre {
@@ -127,6 +123,21 @@
 }
 
 /* ------------------------------------------- repli, requêtes de conteneur */
+
+/* La couche mobile du site (`app/globals.css`, sous 880 px) ramène à 18 px
+   toute gouttière en ligne de 40 px d'un conteneur de 1200 px. Les LP
+   gardent la mise en page du bureau jusqu'à 760 px, comme la maquette : leur
+   gouttière reste de 40 px au-dessus. Mêmes sélecteurs que la règle du site,
+   précédés de `html .racine`, qui l'emportent. Sous 760 px, `.pad` et
+   `.grilleHeros` posent les 18 px de la maquette. */
+@container (min-width: 761px) {
+  :global(html) .racine [style*="max-width:1200px"][style*="0 40px"],
+  :global(html) .racine [style*="max-width:1200px"][style*="px 40px"],
+  :global(html) .racine [style*="max-width: 1200px"][style*="px 40px"] {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
+}
 
 @container (max-width: 1080px) {
   .hubs {

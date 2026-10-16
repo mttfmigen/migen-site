@@ -1,8 +1,5 @@
 import "server-only";
 
-import casLies from "@/maquette/contenu/site/cas-lies.json";
-import { appliqueDecisions } from "@/lib/decisions-copie";
-
 import donnees from "./pages.json";
 
 /**
@@ -22,7 +19,7 @@ export interface Paire {
   l: string;
 }
 
-export interface CarteLP {
+interface CarteLP {
   eb: string;
   h: string;
   d: string;
@@ -30,7 +27,7 @@ export interface CarteLP {
   cta: string;
 }
 
-export interface CasLP {
+interface CasLP {
   client: string;
   t: string;
   logo: string;
@@ -115,25 +112,4 @@ export function pageLp(chemin: string): PageLP | undefined {
  */
 export function descriptionLp(page: PageLP): string {
   return page.meta || page.chapo || `${page.h1a} ${page.h1b}`.trim();
-}
-
-/**
- * L'étude de cas du site qui porte ce titre de carte (`/preuves/...`).
- *
- * La table est celle du site, `cas-lies.json`, où chaque carte « Étude de cas »
- * est déjà rattachée à sa page : rien n'est deviné. Les titres y sont lus tels
- * que la maquette les écrit ET tels que le site les rend, décisions de copie
- * appliquées (« conçues sur mesure » est rendu « conçues en interne »).
- */
-const ETUDES_DE_CAS = new Map<string, string>(
-  Object.values(casLies as Record<string, { url: string; t: string }[]>)
-    .flat()
-    .flatMap(({ url, t }) => [
-      [t, url],
-      [appliqueDecisions(t, url), url],
-    ]),
-);
-
-export function etudeDeCas(titre: string): string | undefined {
-  return ETUDES_DE_CAS.get(titre);
 }

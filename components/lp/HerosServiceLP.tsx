@@ -123,7 +123,7 @@ export function HerosServiceLP({
   return (
     <section id="lp-top" style={SECTION}>
       <Image src={photo} alt="" fill priority sizes="100vw" style={{ objectFit: "cover" }} />
-      <div aria-hidden="true" style={VOILE} />
+      <div aria-hidden="true" className={styles.voile} style={VOILE} />
       <div className={styles.grilleHeros} style={grille(Boolean(carte))}>
         <div>
           <p style={SURTITRE}>
@@ -177,7 +177,7 @@ export function HerosServiceLP({
 }
 
 /* Les deux boutons de la maquette, orange plein et verre sur fond sombre. */
-export const BOUTON_ORANGE: CSSProperties = {
+export const BOUTON_HEROS: CSSProperties = {
   display: "inline-flex",
   alignItems: "center",
   gap: 8,

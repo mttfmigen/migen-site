@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { BOUTON_ORANGE, BOUTON_VERRE, HerosServiceLP } from "@/components/lp/HerosServiceLP";
+import { BOUTON_HEROS, BOUTON_VERRE, HerosServiceLP } from "@/components/lp/HerosServiceLP";
 import { CadreLP } from "@/components/lp/PageLP";
 import conversion from "@/components/lp/conversion-lp.module.css";
 import { TELEPHONE_LP } from "@/components/site/entete-donnees";
@@ -30,7 +30,7 @@ export default function LandingPageIntrouvable() {
         chapo="L’adresse demandée ne correspond à aucune page du site. Le lien suivi est peut-être incomplet, ou la page a changé d’adresse."
         actions={
           <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 28 }}>
-            <Link href={ACCUEIL_LP} className={conversion.envoi} style={BOUTON_ORANGE}>
+            <Link href={ACCUEIL_LP} className={conversion.envoi} style={BOUTON_HEROS}>
               Retour à l’accueil <span aria-hidden="true">→</span>
             </Link>
             <a href={TELEPHONE_LP.href} style={BOUTON_VERRE}>

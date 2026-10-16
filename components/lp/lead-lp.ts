@@ -18,8 +18,11 @@ import type { Attribution } from "@/lib/utm";
 
 /** Identifiant du formulaire HubSpot « variante C » de la LP en ligne
     (`FORM_IDS.C`), sur le portail 148000737. Écrit en dur là-bas aussi, et
-    public : il part dans le code servi au navigateur. Les demandes des LP de
-    migen.fr arrivent ainsi au même endroit que celles de go.migengroup.com. */
+    public : il part dans le code servi au navigateur (l'événement de
+    conversion le porte). Les demandes des LP de migen.fr arrivent ainsi au
+    même endroit que celles de go.migengroup.com. La route le remplace par
+    `HUBSPOT_FORM_ID_LP` quand cette variable est posée : une préproduction
+    ou un aperçu peut viser un formulaire d'essai sans redéploiement. */
 export const FORMULAIRE_HUBSPOT_LP = "00bc3a3e-d900-40fe-8995-1e5ff2b684eb";
 
 /** Clé et valeur qui, dans la charge envoyée à `/api/lead`, désignent une LP. */
@@ -63,13 +66,15 @@ export function formulaireLp(page: string, variante: VarianteLP): string {
  * Les champs propres à la LP, ajoutés à l'identité (entreprise, prénom, nom,
  * courriel, téléphone, message) que la route envoie pour tous les formulaires.
  *
- *   · `requis` : ce que le formulaire C exige, et rien d'autre. La LP en ligne
- *     n'envoie que lui ; HubSpot refuse la soumission ENTIÈRE dès qu'un champ
- *     n'est pas sur le formulaire, d'où l'absence de `formulaire_migen` ici.
+ *   · `requis` : ce que la LP en ligne envoie au formulaire C, donc ce qu'il
+ *     accepte à coup sûr : « Votre demande concerne » et le code pays « FR »
+ *     (`hidden = { hs_country_region_code: "FR" }` de `landing-city.tsx` et
+ *     `landing-sector.tsx`). HubSpot refuse la soumission ENTIÈRE dès qu'un
+ *     champ n'est pas sur le formulaire, d'où l'absence de `formulaire_migen`.
  *   · `facultatifs` : les champs cachés de la maquette (`lp_url`, UTM,
- *     `gclid`) et `hs_country_region_code`, que la LP en ligne pose à « FR ».
- *     Personne n'a pu vérifier que le formulaire C les porte : la route les
- *     envoie, et si HubSpot répond 400 elle renvoie la demande sans eux. Un
+ *     `gclid`), que la LP en ligne n'envoie pas. Personne n'a pu vérifier que
+ *     le formulaire C les porte : la route les envoie, et si HubSpot répond
+ *     400 elle renvoie la demande sans eux, code pays compris toujours. Un
  *     lead ne se perd pas pour un champ d'attribution.
  *
  * Les UTM et le `gclid` mesurent la campagne : ils ne partent qu'avec la
@@ -94,12 +99,11 @@ export function champsHubspotLp(entrees: {
     : {};
   const facultatifs = Object.fromEntries(
     Object.entries({
-      hs_country_region_code: "FR",
       lp_url: attribution.page_conversion,
       ...campagne,
     }).filter((paire): paire is [string, string] => Boolean(paire[1])),
   );
-  return { requis: { votre_demande_concerne: entrees.demande }, facultatifs };
+  return { requis: { votre_demande_concerne: entrees.demande, hs_country_region_code: "FR" }, facultatifs };
 }
 
 /** Le `gclid` de l'adresse de la page, borné : Google en émet d'une centaine de caractères. */
@@ -113,12 +117,25 @@ function gclidDe(url: string | null): string | undefined {
   }
 }
 
+/**
+ * Le numéro au format E.164 que demandent les conversions améliorées de Google
+ * Ads. Un numéro saisi avec son indicatif (« +33 6… », « 0033 6… ») le garde ;
+ * sinon l'indicatif choisi remplace le 0 national.
+ */
+export function numeroE164(contact: { indicatif: string; telephone: string }): string {
+  const saisi = contact.telephone.trim();
+  const chiffres = saisi.replace(/\D/g, "");
+  if (saisi.startsWith("+")) return `+${chiffres}`;
+  if (chiffres.startsWith("00")) return `+${chiffres.slice(2)}`;
+  return `${contact.indicatif}${chiffres.replace(/^0/, "")}`;
+}
+
 /* ------------------------------------------------ après l'envoi : le rendez-vous */
 
 export const PAGE_RENDEZ_VOUS_LP = "/lp/rendez-vous/";
 
 /** L'agenda de la LP en ligne (`routes/fr.rendez-vous.tsx`, CAL_BASE). */
-export const CALENDLY_LP = "https://calendly.com/thomas-puthod-migen/30min";
+const CALENDLY_LP = "https://calendly.com/thomas-puthod-migen/30min";
 
 /**
  * Où le formulaire laisse le nom et le courriel pour préremplir l'agenda.
@@ -128,7 +145,7 @@ export const CALENDLY_LP = "https://calendly.com/thomas-puthod-migen/30min";
  */
 export const CLE_RENDEZ_VOUS = "migen.lp.rendez-vous";
 
-export interface Prerempli {
+interface Prerempli {
   nom: string;
   email: string;
 }

@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { TELEPHONE_LP } from "@/components/site/entete-donnees";
 import { CHEMINS_LP, type SectionLP } from "@/lib/lp/pages";
 
 import {
@@ -12,7 +13,6 @@ import {
   Flottants,
   Photo,
   SurTitre,
-  TEL,
   Titre2,
   numero,
   sectionStyle,
@@ -356,8 +356,8 @@ export function Questions({ s, id, ctx }: { s: SectionLP; id: string; ctx: Conte
           {s.kick ? <SurTitre>{s.kick}</SurTitre> : null}
           <Titre2 style={{ textWrap: "wrap" }}>{s.h2}</Titre2>
           {s.lead ? <Chapo marge={14} style={{ font: "400 16px/1.6 var(--fb)" }}>{s.lead}</Chapo> : null}
-          <a href={TEL.href} className={styles.noir} style={{ ...BOUTON_NOIR, marginTop: 22 }}>
-            Appeler le {TEL.affichage}
+          <a href={TELEPHONE_LP.href} className={styles.noir} style={{ ...BOUTON_NOIR, marginTop: 22 }}>
+            Appeler le {TELEPHONE_LP.affichage}
           </a>
         </div>
         <div style={{ display: "grid", gap: 8 }}>
@@ -431,10 +431,10 @@ export function Contact({ s, ctx }: { s: SectionLP; ctx: Contexte }) {
           </Titre2>
           {s.lead ? <Chapo style={{ textWrap: "wrap" }}>{s.lead}</Chapo> : null}
           <a
-            href={TEL.href}
+            href={TELEPHONE_LP.href}
             style={{ display: "inline-block", marginTop: 26, font: "700 30px/1 var(--ft)", letterSpacing: "-.03em", color: "#1c1b19" }}
           >
-            {TEL.affichage}
+            {TELEPHONE_LP.affichage}
           </a>
           {s.details?.length ? (
             <ul style={{ display: "grid", gap: 10, margin: "26px 0 0", padding: 0, listStyle: "none" }}>

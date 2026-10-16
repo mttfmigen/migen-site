@@ -1,6 +1,6 @@
 "use client";
 
-import { useSyncExternalStore, type CSSProperties } from "react";
+import type { CSSProperties } from "react";
 
 import styles from "./conversion-lp.module.css";
 import { HerosServiceLP } from "./HerosServiceLP";
@@ -14,26 +14,32 @@ import { CLE_RENDEZ_VOUS, prerempliDe, urlCalendly } from "./lead-lp";
  * migen-forge-nucleus. Jamais le faux agenda de la maquette V3 (cinq jours
  * écrits en dur, « Confirmer le rendez-vous » qui ne réservait rien).
  *
- * UN LIEN ET NON UN CADRE INTÉGRÉ : la LP en ligne charge le script de
- * Calendly dans la page, donc un tiers et ses traceurs avant tout accord. Ici
- * rien de Calendly ne se charge tant que le visiteur ne clique pas ; il part
- * alors chez Calendly, qui l'informe lui-même.
+ * UN BOUTON ET NON UN LIEN, NI UN CADRE INTÉGRÉ :
+ *   · pas de cadre : la LP en ligne charge le script de Calendly dans la page,
+ *     donc un tiers et ses traceurs avant tout accord ; ici rien de Calendly
+ *     ne se charge tant que le visiteur ne clique pas ;
+ *   · pas de `<a href>` : l'adresse de l'agenda porte le nom et le courriel, et
+ *     la mesure améliorée de GA4 (Tag Manager chargé) relève l'adresse de
+ *     chaque lien sortant cliqué. L'agenda s'ouvre donc par `window.open`, au
+ *     clic, et l'adresse n'existe dans la page qu'à ce moment-là.
  *
- * Texte de `/fr/rendez-vous` de `window.__LP`, filtré : la seconde phrase du
- * chapô portait « sans engagement », elle est retirée.
+ * Texte de `/fr/rendez-vous` de `window.__LP`, lu dans `lib/lp/pages.json`
+ * (surtitre, titre, chapô). Le titre de la carte est celui du gabarit V3,
+ * « Choisissez votre créneau · 30 min », sans sa durée chiffrée, retirée comme
+ * dans le chapô et la description. Le bouton reprend les mots du titre de la
+ * page (« Réservez votre échange »).
  */
 
-/* Le stockage n'est lu qu'au navigateur : au serveur et à l'hydratation,
-   l'agenda vide ; le préremplissage arrive ensuite. */
-const sansAbonnement = () => () => {};
-function lit(): string | null {
+/* Le stockage peut lever (navigation privée, stockage bloqué) : l'agenda s'ouvre alors vide. */
+function prerempli() {
   try {
-    return window.sessionStorage.getItem(CLE_RENDEZ_VOUS);
+    return prerempliDe(window.sessionStorage.getItem(CLE_RENDEZ_VOUS));
   } catch {
     return null;
   }
 }
-const rienAuServeur = () => null;
+
+const ouvreAgenda = () => window.open(urlCalendly(prerempli()), "_blank", "noopener,noreferrer");
 
 /* La carte du créneau, à la place de l'agenda de la maquette. */
 const CARTE: CSSProperties = {
@@ -63,38 +69,28 @@ const BOUTON: CSSProperties = {
   alignItems: "center",
   justifyContent: "center",
   gap: 8,
+  border: "none",
   borderRadius: 999,
   background: "#ff7c3c",
   color: "#fff",
   font: "600 15px var(--fb)",
-  textDecoration: "none",
+  cursor: "pointer",
 };
 
-const NOTE: CSSProperties = {
-  margin: 0,
-  textAlign: "center",
-  font: "400 12px var(--fb)",
-  color: "#77736d",
-};
-
-export function RendezVousLP() {
-  const brut = useSyncExternalStore(sansAbonnement, lit, rienAuServeur);
-  const agenda = urlCalendly(prerempliDe(brut));
-
+export function RendezVousLP({ photo, surtitre, titre, chapo }: { photo: string; surtitre: string; titre: string; chapo: string }) {
   return (
     <HerosServiceLP
-      photo="/assets/web/team-grind-sparks.jpg"
-      surtitre="Demande bien reçue"
-      titre={"Dernière étape : réservez votre échange."}
-      chapo="Choisissez le créneau qui vous arrange avec un expert Migen."
+      photo={photo}
+      surtitre={surtitre}
+      titre={titre}
+      chapo={chapo}
       carte={
         <div style={CARTE}>
-          <h2 style={TITRE_CARTE}>Choisissez votre créneau · 30 min</h2>
-          <a href={agenda} target="_blank" rel="noopener noreferrer" className={styles.envoi} style={BOUTON}>
-            Réserver mon créneau <span aria-hidden="true">→</span>
-            <span className={styles.lecteur}> (nouvel onglet)</span>
-          </a>
-          <p style={NOTE}>L’agenda s’ouvre chez Calendly.</p>
+          <h2 style={TITRE_CARTE}>Choisissez votre créneau</h2>
+          <button type="button" onClick={ouvreAgenda} className={styles.envoi} style={BOUTON}>
+            Réservez votre échange <span aria-hidden="true">→</span>
+            <span className="sr-only"> (nouvel onglet)</span>
+          </button>
         </div>
       }
     />

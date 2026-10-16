@@ -21,7 +21,7 @@ import { NextRequest } from "next/server";
 import { chargeUtile, type Contact } from "@/components/formulaire/validation";
 import { VERSION_BANDEAU, choixUniforme } from "@/lib/consentement";
 
-import { DEMANDES_LP, FORMULAIRE_HUBSPOT_LP, formulaireLp, urlCalendly, prerempliDe } from "./lead-lp";
+import { DEMANDES_LP, FORMULAIRE_HUBSPOT_LP, formulaireLp, numeroE164, urlCalendly, prerempliDe } from "./lead-lp";
 
 const HUBSPOT = "https://api.hsforms.com/submissions/v3/integration/submit/148000737/";
 const SUPABASE = "https://doublure.supabase.invalid";
@@ -232,7 +232,8 @@ for (const demande of [undefined, "Autre chose"]) {
   assert.match((hubspot.corps as { context: { pageUri: string } }).context.pageUri, /\?utm_source=google&gclid=/);
 }
 
-// HubSpot refuse un champ caché (400) : la demande repart sans eux, et arrive.
+// HubSpot refuse un champ caché (400) : la demande repart sans eux, et arrive,
+// avec le code pays, que la LP en ligne envoie toujours au formulaire C.
 {
   statutsHubspot = [400];
   const { statut } = await poste(chargeLp(), { cookie: COOKIE_PUBLICITE });
@@ -243,11 +244,46 @@ for (const demande of [undefined, "Autre chose"]) {
     "0-2/name",
     "email",
     "firstname",
+    "hs_country_region_code",
     "lastname",
     "message",
     "phone",
     "votre_demande_concerne",
   ]);
+  assert.equal(valeurDe(second, "hs_country_region_code"), "FR");
+}
+
+// Un formulaire d'essai peut remplacer celui de production (préproduction, aperçu).
+{
+  process.env.HUBSPOT_FORM_ID_LP = "formulaire-essai-doublure";
+  const { statut } = await poste(chargeLp());
+  delete process.env.HUBSPOT_FORM_ID_LP;
+  assert.equal(statut, 200);
+  assert.equal(envoisHubspot()[0].url, `${HUBSPOT}formulaire-essai-doublure`);
+}
+
+// Corps découpé (chunked), sans Content-Length, au-delà du plafond : refusé à la lecture.
+{
+  reseau += 1;
+  appels = [];
+  const gros = new TextEncoder().encode(JSON.stringify({ ...chargeLp(), message: "x".repeat(40_000) }));
+  const flux = new ReadableStream<Uint8Array>({
+    start(controleur) {
+      for (let i = 0; i < gros.length; i += 4096) controleur.enqueue(gros.slice(i, i + 4096));
+      controleur.close();
+    },
+  });
+  const requete = new NextRequest("http://localhost/api/lead", {
+    method: "POST",
+    headers: { "content-type": "application/json", "x-forwarded-for": `10.0.${reseau}.7` },
+    body: flux,
+    duplex: "half",
+    // Exigé par fetch pour un corps en flux ; absent du type de Next.
+  } as ConstructorParameters<typeof NextRequest>[1]);
+  assert.equal(requete.headers.get("content-length"), null, "le témoin n'annonce pas sa taille");
+  const reponse = await POST(requete);
+  assert.equal(reponse.status, 413);
+  assert.equal(appels.length, 0);
 }
 
 // HubSpot en panne : le visiteur le sait (502), la copie d'attribution reste.
@@ -274,6 +310,11 @@ for (const demande of [undefined, "Autre chose"]) {
 }
 
 /* ----------------------------------------------- slugs et agenda (purs) */
+
+assert.equal(numeroE164({ indicatif: "+33", telephone: "06 12 34 56 78" }), "+33612345678");
+assert.equal(numeroE164({ indicatif: "+33", telephone: "+33 6 12 34 56 78" }), "+33612345678", "indicatif saisi gardé");
+assert.equal(numeroE164({ indicatif: "+33", telephone: "0033 6 12 34 56 78" }), "+33612345678", "00 lu comme +");
+assert.equal(numeroE164({ indicatif: "+32", telephone: "0470 12 34 56" }), "+32470123456");
 
 assert.equal(formulaireLp("/lp/maintenance-ind/electrique/", "contact"), "lp-maintenance-ind-electrique-contact");
 assert.equal(formulaireLp("/lp/", "heros"), "lp-heros");

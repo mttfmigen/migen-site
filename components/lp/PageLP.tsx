@@ -3,9 +3,10 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 import LienReglages from "@/components/consentement/LienReglages";
+import { TELEPHONE_LP } from "@/components/site/entete-donnees";
 import { META_LP, type PageLP as DonneesPageLP } from "@/lib/lp/pages";
 
-import { CADRE, TEL, type Contexte } from "./atomes-lp";
+import { CADRE, type Contexte } from "./atomes-lp";
 import { BarreLP, type AncreLP } from "./BarreLP";
 import { FormulaireLP } from "./FormulaireLP";
 import { HerosServiceLP } from "./HerosServiceLP";
@@ -75,16 +76,18 @@ function PiedLP() {
   );
 }
 
+/* Sans le voile blanc de la maquette (dégradé vers .96) : posé sur le héros
+   sombre au premier écran, il laissait du texte blanc à 2:1 sous les boutons.
+   Les deux boutons sont pleins, ils n'ont pas besoin de fond. */
 function BarreCollanteLP({ libelle }: { libelle: string }) {
   return (
     <div
-      className={styles.seulM}
+      className={`${styles.seulM} ${styles.collante}`}
       style={{
         position: "sticky",
         bottom: 0,
         zIndex: 40,
         padding: "12px 12px 14px",
-        background: "linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.96) 40%)",
       }}
     >
       <div style={{ display: "flex", gap: 8 }}>
@@ -105,8 +108,8 @@ function BarreCollanteLP({ libelle }: { libelle: string }) {
           {libelle}
         </a>
         <a
-          href={TEL.href}
-          aria-label={`Appeler le ${TEL.affichage}`}
+          href={TELEPHONE_LP.href}
+          aria-label={`Appeler le ${TELEPHONE_LP.affichage}`}
           style={{
             display: "flex",
             alignItems: "center",
@@ -176,8 +179,8 @@ function Sections({ page }: { page: DonneesPageLP }) {
 }
 
 function contenu(page: DonneesPageLP) {
-  if (page.isRdv) return <RendezVousLP />;
-  if (!page.hasForm) return <MerciLP />;
+  if (page.isRdv) return <RendezVousLP photo={page.img} surtitre={page.kick} titre={page.h1b} chapo={page.chapo} />;
+  if (!page.hasForm) return <MerciLP page={page} />;
   return (
     <>
       <HerosLP page={page} />

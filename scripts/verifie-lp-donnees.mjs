@@ -23,7 +23,10 @@
  *   · un montant, sauf « +10 M€ de chiffre d'affaires » que l'accueil affiche ;
  *   · « 4,9/5 » (le site affiche 4,6 / 5) et « clients satisfaits » ;
  *   · une agence locale en France (seule Lyon, à Écully, en est une) ;
- *   · un « Hub X » hors des dix hubs, ou une ville-hub rattachée à un autre hub ;
+ *   · un « Hub X » hors des dix hubs, une ville-hub rattachée à un autre hub,
+ *     ou une ville sans hub rattachée à un autre hub que le plus proche (la
+ *     V3 envoyait Le Havre à Nantes quand Rouen, même département, allait à
+ *     Paris, et Nice à Lyon devant Marseille) ;
  *   · un lien vers go.migengroup.com, un lien externe, une adresse `/fr/` ;
  *   · une image externe, relative, ou absente de `public/` ;
  *   · un autre numéro que celui des landing pages ;
@@ -52,6 +55,20 @@ export const HUBS = ["Lyon", "Paris", "Lille", "Marseille", "Strasbourg", "Nante
 export const enSlug = (texte) =>
   texte.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const SLUGS_HUBS = new Set(HUBS.map(enSlug));
+
+/* Le hub le plus proche de chaque ville à LP qui n'en a pas, par la route :
+   le seul rattachement que la page puisse annoncer. Un autre est retiré, pas
+   remplacé (la V3 ne disait pas lequel est le vrai). */
+const HUB_LE_PLUS_PROCHE = {
+  brest: "nantes",
+  grenoble: "lyon",
+  "le-havre": "paris",
+  nice: "marseille",
+  rennes: "nantes",
+  rouen: "paris",
+};
+
+export const MOTIF_AGENCE = "agence locale";
 
 /** La ville d'une page ville (`/lp/maintenance-industrielle-brest/` donne `brest`), sinon null. */
 export function villeDe(chemin) {
@@ -122,12 +139,15 @@ export function motifsDuTexte(texte, ctx = {}) {
 
   const ville = villeDe(ctx.page);
   if (/\bagences?\b/i.test(t) && !(ville === "lyon" && (/[ÉE]cully/.test(t) || t === "Pourquoi notre agence locale"))) {
-    motifs.push("agence locale (4 agences : Lyon, Montréal, Dubaï, Madrid)");
+    motifs.push(`${MOTIF_AGENCE} (4 agences : Lyon, Montréal, Dubaï, Madrid)`);
   }
   for (const [, nom] of t.matchAll(HUB_NOMME)) {
     const hub = enSlug(nom);
     if (!SLUGS_HUBS.has(hub)) motifs.push(`« Hub ${nom} » hors des dix hubs`);
     else if (ville && SLUGS_HUBS.has(ville) && hub !== ville) motifs.push(`ville-hub rattachée au hub de ${nom}`);
+    else if (ville && HUB_LE_PLUS_PROCHE[ville] && hub !== HUB_LE_PLUS_PROCHE[ville]) {
+      motifs.push(`rattachement au hub de ${nom}, qui n'est pas le plus proche`);
+    }
   }
   if (ville && !SLUGS_HUBS.has(ville) && (/\bbas[ée]e?s?\s+(?:à|au)\s/i.test(t) || /partenaire maintenance local/i.test(t))) {
     motifs.push("implantation locale qui n'existe pas (aucun hub dans cette ville)");
@@ -236,6 +256,7 @@ function temoins(reelles) {
     ["agence locale", (d) => (parPage(d, "maintenance-industrielle-paris/").badges = ["Agence Paris · La Défense"])],
     ["hub hors liste", (d) => (page(d).chapo = "Hub Migen à Grenoble.")],
     ["ville-hub rattachée ailleurs", (d) => (parPage(d, "maintenance-industrielle-bordeaux/").badges = ["Intervention Bordeaux · Hub Toulouse"])],
+    ["ville sans hub rattachée à un hub lointain", (d) => (parPage(d, "maintenance-industrielle-le-havre/").chapo = "Techniciens déployés depuis notre hub Migen de Nantes.")],
     ["« basé à » une ville sans hub", (d) => (parPage(d, "maintenance-industrielle-brest/").secs[0].h2 = "Un partenaire maintenance basé à Brest ?")],
     ["lien go.migengroup.com", (d) => (page(d).mainHref = "https://go.migengroup.com/fr/devis")],
     ["adresse /fr/", (d) => (page(d).path = "/fr/devis")],

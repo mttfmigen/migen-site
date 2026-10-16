@@ -34,6 +34,7 @@ import {
   SOURCE_LP,
   estDemandeLp,
   formulaireLp,
+  numeroE164,
   type VarianteLP,
 } from "./lead-lp";
 
@@ -288,12 +289,6 @@ function erreursDe(contact: Contact, demande: string, noms: readonly Nom[]): Err
   return Object.fromEntries(
     Object.entries(toutes).filter(([nom]) => noms.includes(nom as Nom)),
   ) as Erreurs;
-}
-
-/** Le numéro au format E.164 que demandent les conversions améliorées de Google Ads. */
-function numeroE164(contact: Contact): string {
-  const chiffres = contact.telephone.replace(/\D/g, "").replace(/^0/, "");
-  return `${contact.indicatif}${chiffres}`;
 }
 
 /**

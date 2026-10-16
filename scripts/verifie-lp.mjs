@@ -22,6 +22,12 @@
  *     et le numéro des LP (04 11 78 95 97) absent, sous toutes ses écritures ;
  *   · aucune image externe sur une LP (`next/image` compris : l'adresse
  *     d'origine est relue dans `/_next/image?url=`) ;
+ *   · LE TEXTE QUE LE GABARIT AJOUTE, sur la page rendue : chaque texte (et
+ *     chaque `aria-label`, `alt`, `title`) qui n'est pas une chaîne de
+ *     `lib/lp/pages.json` passe par les mêmes règles que la donnée
+ *     (`motifsDuTexte` de verifie-lp-donnees.mjs). La donnée a sa porte ; le
+ *     texte écrit dans les composants (« Choisissez votre créneau · 30 min »
+ *     l'a montré) n'en avait aucune ;
  *   · zéro débordement horizontal à 390 px, page par page, au navigateur.
  *
  * ELLE PROUVE QU'ELLE SAIT ÉCHOUER : avant tout contrôle, chaque règle est
@@ -39,6 +45,7 @@ import { chromium } from "playwright";
 
 import { TELEPHONE_LP, TELEPHONE_SITE } from "../components/site/entete-donnees.ts";
 import { estLandingPage } from "../lib/lp/adresses.ts";
+import { motifsDuTexte } from "./verifie-lp-donnees.mjs";
 
 const RACINE = fileURLToPath(new URL("..", import.meta.url));
 const BUILD = join(RACINE, ".next", "server", "app");
@@ -47,8 +54,8 @@ const LARGEUR_TELEPHONE = 390;
 /** En dessous, le build est incomplet ou mal lu : la porte refuserait de conclure sur du vide. */
 const PAGES_SITE_MINIMUM = 200;
 
-const { pages } = JSON.parse(readFileSync(join(RACINE, "lib", "lp", "pages.json"), "utf8"));
-const CHEMINS = pages.map((page) => page.path);
+const DONNEES_LP = JSON.parse(readFileSync(join(RACINE, "lib", "lp", "pages.json"), "utf8"));
+const CHEMINS = DONNEES_LP.pages.map((page) => page.path);
 
 /* ------------------------------------------------------------- règles */
 
@@ -127,6 +134,40 @@ function defautsImages(html, origine) {
     .filter((source) => !source.startsWith("data:"))
     .filter((source) => new URL(source, origine).origin !== new URL(origine).origin)
     .map((source) => `image externe ${source}`);
+}
+
+/* --------------------------------------------- le texte ajouté par le gabarit */
+
+const unifie = (texte) => texte.replace(/\s+/g, " ").trim();
+
+/** Toutes les chaînes de la donnée : ce texte-là est tenu par verifie-lp-donnees.mjs. */
+const TEXTES_DONNEE = new Set();
+(function collecte(valeur) {
+  if (typeof valeur === "string") TEXTES_DONNEE.add(unifie(valeur));
+  else if (Array.isArray(valeur)) valeur.forEach(collecte);
+  else if (valeur && typeof valeur === "object") Object.values(valeur).forEach(collecte);
+})(DONNEES_LP);
+
+const ENTITES = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: "\u00a0" };
+const decode = (texte) =>
+  texte.replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (brut, nom) =>
+    nom[0] !== "#" ? (ENTITES[nom.toLowerCase()] ?? brut) : String.fromCodePoint(/^#x/i.test(nom) ? parseInt(nom.slice(2), 16) : Number(nom.slice(1))),
+  );
+
+/** Le texte de la page qui ne vient pas de la donnée : nœuds de texte et attributs lus à voix haute. */
+function textesDuGabarit(html) {
+  const visible = html.replace(/<(script|style|template)\b[\s\S]*?<\/\1>/gi, " ");
+  return [
+    ...new Set(
+      [...visible.split(/<[^>]*>/), ...[...visible.matchAll(/\s(?:aria-label|alt|title|placeholder)="([^"]*)"/g)].map((t) => t[1])]
+        .map((texte) => unifie(decode(texte)))
+        .filter((texte) => texte && !TEXTES_DONNEE.has(texte)),
+    ),
+  ];
+}
+
+function defautsCopie(html, chemin) {
+  return textesDuGabarit(html).flatMap((texte) => motifsDuTexte(texte, { page: chemin }).map((motif) => `${motif} : « ${texte.slice(0, 100)} »`));
 }
 
 /* ------------------------------------------------------ le navigateur */
@@ -222,6 +263,11 @@ function temoins() {
   doitRefuser("image externe", defautsImages('<img src="https://elements-resized.envatousercontent.com/x.jpg"/>', ORIGINE_TEMOIN));
   doitRefuser("image externe passée par next/image", defautsImages('<img src="/_next/image?url=https%3A%2F%2Fexemple.invalid%2Fx.jpg&amp;w=64"/>', ORIGINE_TEMOIN));
   doitRefuser("image externe en fond", defautsImages('<div style="background-image:url(&quot;https://exemple.invalid/x.jpg&quot;)"></div>', ORIGINE_TEMOIN));
+  doitRefuser("délai chiffré écrit dans le gabarit", defautsCopie("<h2>Choisissez votre créneau · 30 min</h2>", "/lp/rendez-vous/"));
+  doitRefuser("interdit dans un aria-label du gabarit", defautsCopie('<button aria-label="Devis gratuit et sans engagement">x</button>', "/lp/devis/"));
+  doitRefuser("agence écrite dans le gabarit", defautsCopie("<p>Agence Paris &amp; La Défense</p>", "/lp/maintenance-industrielle-paris/"));
+  // « 1 h » seul est un délai pour la règle ; c'est la moitié de « 1 h pour être rappelé », chiffre de la donnée.
+  assert.deepEqual(defautsCopie("<div>1 h</div><div>pour être rappelé</div>", "/lp/devis/"), [], "une chaîne de la donnée relue comme texte du gabarit");
   assert.ok(!portaLeNumeroLp(`<p>${TELEPHONE_SITE.affichage}</p>`), "le numéro du site pris pour celui des LP");
   assert.deepEqual(defautsLiens('<a href="/lpx/">x</a><a href="/offres/lp/">y</a>', ORIGINE_TEMOIN), [], "une page du site prise pour une LP");
 }
@@ -261,6 +307,9 @@ try {
     signale(chemin, defautsHabillage(reponse.html));
     signale(chemin, defautsImages(reponse.html, origine));
     if (!sourcesImages(reponse.html).length) signale(chemin, ["aucune image relevée : le contrôle des images est aveugle"]);
+    signale(chemin, defautsCopie(reponse.html, chemin));
+    // Chaque LP porte au moins « Appeler le » et le pied : un relevé vide serait aveugle.
+    if (textesDuGabarit(reponse.html).length < 5) signale(chemin, ["texte du gabarit non relevé : le contrôle de la copie est aveugle"]);
   }
   for (const chemin of ["/lp/", "/lp"]) {
     const { statut, lieu } = await demande(origine, chemin);
@@ -319,5 +368,6 @@ console.log(
   `landing pages conformes : ${CHEMINS.length} LP en 200, noindex en meta et en X-Robots-Tag, sans habillage du site ; ` +
     `/lp/ mène à la LP France ; aucune LP aux plans du site ni bloquée par robots.txt ; ` +
     `${figeesSite.length} pages du site sans lien vers /lp/ ni numéro des LP ; aucune image externe ; ` +
+    `aucun interdit dans le texte ajouté par le gabarit ; ` +
     `aucun débordement à ${LARGEUR_TELEPHONE} px ; ${temoinsVus} témoins rouges vus rouges.`,
 );

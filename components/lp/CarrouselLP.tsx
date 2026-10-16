@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 
 import styles from "./PageLP.module.css";
 
@@ -10,8 +10,17 @@ import styles from "./PageLP.module.css";
  * retour au début en bout de piste, pause au survol, deux flèches.
  *
  * Les cartes sont rendues au serveur et passées en enfants : seul le
- * mouvement vit ici. L'avance automatique s'arrête pour qui a demandé moins
- * d'animation, et pendant que le clavier est dans la piste.
+ * mouvement vit ici.
+ *
+ * L'AVANCE AUTOMATIQUE (WCAG 2.2.2, motif « carrousel » de l'APG) :
+ *   · un bouton la met en pause et la reprend ;
+ *   · elle s'arrête pour de bon dès que le visiteur agit sur le carrousel
+ *     (doigt, molette, touche dans la piste, flèches) : on ne lui reprend
+ *     jamais la carte qu'il lit ;
+ *   · elle attend tant que la souris survole le carrousel ou que le focus
+ *     est dedans, flèches et bouton compris ;
+ *   · elle ne démarre pas pour qui a demandé moins d'animation, et le bouton
+ *     est alors masqué : il n'aurait rien à arrêter.
  */
 
 const PERIODE_MS = 5000;
@@ -26,77 +35,101 @@ const PISTE: CSSProperties = {
   paddingBottom: 4,
 };
 
-const FLECHES: CSSProperties = { display: "flex", justifyContent: "flex-end", gap: 8, marginTop: 16 };
+const COMMANDES: CSSProperties = { display: "flex", justifyContent: "flex-end", gap: 8, marginTop: 16 };
 
-const FLECHE: CSSProperties = {
+const BOUTON: CSSProperties = {
   width: 46,
   height: 46,
   borderRadius: 999,
   font: "600 18px var(--fb)",
   cursor: "pointer",
 };
+const BOUTON_CLAIR: CSSProperties = { ...BOUTON, border: "1px solid #e5e3df", background: "#fff", color: "#1c1b19" };
 
-export function CarrouselLP({ children }: { children: ReactNode }) {
+const mouvementReduit = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+export function CarrouselLP({ nom, children }: { nom?: string; children: ReactNode }) {
   const piste = useRef<HTMLDivElement>(null);
-  const enPause = useRef(false);
+  /** Survol ou focus dans le carrousel : l'avance attend, sans s'arrêter. */
+  const survol = useRef(false);
+  const focusDedans = useRef(false);
+  const [enLecture, setEnLecture] = useState(true);
 
   function avance(sens: 1 | -1) {
     const el = piste.current;
     if (!el) return;
     const carte = el.querySelector("article");
     const pas = carte ? carte.offsetWidth + ECART : el.clientWidth * 0.8;
-    el.scrollBy({ left: sens * pas, behavior: "smooth" });
+    el.scrollBy({ left: sens * pas, behavior: mouvementReduit() ? "auto" : "smooth" });
   }
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!enLecture || mouvementReduit()) return;
     const minuterie = window.setInterval(() => {
       const el = piste.current;
-      if (!el || enPause.current) return;
+      if (!el || survol.current || focusDedans.current) return;
       if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 8) el.scrollTo({ left: 0, behavior: "smooth" });
       else avance(1);
     }, PERIODE_MS);
     return () => window.clearInterval(minuterie);
-  }, []);
+  }, [enLecture]);
 
-  const pause = () => {
-    enPause.current = true;
-  };
-  const reprend = () => {
-    enPause.current = false;
-  };
+  const arrete = () => setEnLecture(false);
 
   return (
-    <>
+    <div
+      onMouseEnter={() => (survol.current = true)}
+      onMouseLeave={() => (survol.current = false)}
+      onFocus={() => (focusDedans.current = true)}
+      onBlur={(e) => (focusDedans.current = e.currentTarget.contains(e.relatedTarget))}
+    >
       <div
         ref={piste}
-        onMouseEnter={pause}
-        onMouseLeave={reprend}
-        onFocus={pause}
-        onBlur={reprend}
+        role="region"
+        aria-roledescription="carrousel"
+        aria-label={nom}
+        tabIndex={0}
+        onPointerDown={arrete}
+        onWheel={arrete}
+        onKeyDown={arrete}
         className={styles.carrousel}
         style={PISTE}
       >
         {children}
       </div>
-      <div style={FLECHES}>
+      <div style={COMMANDES}>
         <button
           type="button"
-          onClick={() => avance(-1)}
+          onClick={() => setEnLecture((lecture) => !lecture)}
+          aria-label={enLecture ? "Mettre en pause le défilement" : "Reprendre le défilement"}
+          className={styles.lecture}
+          style={BOUTON_CLAIR}
+        >
+          <span aria-hidden="true">{enLecture ? "❚❚" : "▶"}</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            arrete();
+            avance(-1);
+          }}
           aria-label="Précédent"
-          style={{ ...FLECHE, border: "1px solid #e5e3df", background: "#fff", color: "#1c1b19" }}
+          style={BOUTON_CLAIR}
         >
           ←
         </button>
         <button
           type="button"
-          onClick={() => avance(1)}
+          onClick={() => {
+            arrete();
+            avance(1);
+          }}
           aria-label="Suivant"
-          style={{ ...FLECHE, border: "none", background: "#ff7c3c", color: "#fff" }}
+          style={{ ...BOUTON, border: "none", background: "#ff7c3c", color: "#fff" }}
         >
           →
         </button>
       </div>
-    </>
+    </div>
   );
 }

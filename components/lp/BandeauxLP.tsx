@@ -1,9 +1,10 @@
 import Image from "next/image";
 
 import { LOGOS_MAQUETTE } from "@/components/site/accueil/MarqueeClients";
+import { TELEPHONE_LP } from "@/components/site/entete-donnees";
 import type { MetaLP, SectionLP } from "@/lib/lp/pages";
 
-import { BOUTON_NOIR, CADRE, type Contexte, TEL } from "./atomes-lp";
+import { BOUTON_NOIR, CADRE, type Contexte } from "./atomes-lp";
 import styles from "./PageLP.module.css";
 
 /**
@@ -42,7 +43,10 @@ export function Logos({ s, ctx }: { s: SectionLP; ctx: Contexte }) {
       >
         {s.t}
       </p>
+      {/* Le défilement du bandeau du site (`mg-marquee`, `mgMarquee` de
+          globals.css) : la pause au survol et au focus avec lui. */}
       <div
+        className="mg-marquee"
         style={{
           overflow: "hidden",
           WebkitMaskImage: "linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)",
@@ -51,7 +55,7 @@ export function Logos({ s, ctx }: { s: SectionLP; ctx: Contexte }) {
       >
         {/* La liste passe deux fois pour boucler sans saut ; la seconde est
             muette pour les lecteurs d'écran. */}
-        <div className={styles.piste}>
+        <div className="mg-track" style={{ display: "flex", gap: 12, width: "max-content", animation: "mgMarquee 48s linear infinite" }}>
           {ctx.meta.clients.map((client) => tuile(client, false))}
           {ctx.meta.clients.map((client) => tuile(client, true))}
         </div>
@@ -121,8 +125,8 @@ export function Urgence({ s }: { s: SectionLP }) {
         >
           <p style={{ margin: 0, font: "600 18px/1.35 var(--ft)", letterSpacing: "-.02em", color: "#1c1b19" }}>
             {s.t}{" "}
-            <a href={TEL.href} style={{ color: "#b4490f", whiteSpace: "nowrap" }}>
-              {TEL.affichage}
+            <a href={TELEPHONE_LP.href} style={{ color: "#b4490f", whiteSpace: "nowrap" }}>
+              {TELEPHONE_LP.affichage}
             </a>
           </p>
           <a href="#lp-contact" className={styles.noir} style={{ ...BOUTON_NOIR, padding: "12px 18px", font: "600 14px var(--fb)", whiteSpace: "nowrap" }}>
@@ -133,5 +137,3 @@ export function Urgence({ s }: { s: SectionLP }) {
     </div>
   );
 }
-
-/** La vignette d'un hub : la LP de sa ville quand elle existe, le contact sinon (Dijon). */

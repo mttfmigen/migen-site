@@ -1,7 +1,6 @@
 import Image from "next/image";
 import type { CSSProperties, ReactNode } from "react";
 
-import { TELEPHONE_LP } from "@/components/site/entete-donnees";
 import type { MetaLP, Paire } from "@/lib/lp/pages";
 
 import styles from "./PageLP.module.css";
@@ -11,8 +10,6 @@ import styles from "./PageLP.module.css";
  * de section, photo, flottants, certifications, boutons. Les valeurs sont
  * celles de la maquette, recopiées en style en ligne comme elle les écrit.
  */
-
-export const TEL = TELEPHONE_LP;
 
 /** Ce que chaque section reçoit de la page, en plus de ses données. */
 export interface Contexte {
@@ -62,7 +59,9 @@ export function SurTitre({ children, style }: { children: ReactNode; style?: CSS
   );
 }
 
+/** Rien quand le titre a été vidé par les règles de copie : jamais de `<h2>` vide. */
 export function Titre2({ children, taille = 38, style }: { children: ReactNode; taille?: number; style?: CSSProperties }) {
+  if (!children) return null;
   return (
     <h2
       className={styles.h2}

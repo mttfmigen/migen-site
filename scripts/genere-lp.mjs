@@ -28,7 +28,7 @@ import { fileURLToPath } from "node:url";
 
 import { TELEPHONE_LP } from "../components/site/entete-donnees.ts";
 import { appliqueDecisions } from "../lib/decisions-copie.ts";
-import { FICHIER_LP, defauts, motifsDuTexte, villeDe } from "./verifie-lp-donnees.mjs";
+import { FICHIER_LP, MOTIF_AGENCE, defauts, motifsDuTexte, villeDe } from "./verifie-lp-donnees.mjs";
 
 const RACINE = fileURLToPath(new URL("..", import.meta.url));
 const SOURCE = join(RACINE, "maquette", "v3-lp", "lp-data.json");
@@ -73,26 +73,18 @@ const CORRECTIONS = [
   { kind: "case", de: /\s+·\s+(?:12|18) mois$/g, vers: "", motif: "durée chiffrée retirée de la carte « Cas client »", nom: "durée retirée d\'une carte « Cas client »" },
   // « +200 clients », sans qualificatif.
   { de: /(200 clients) satisfaits/g, vers: "$1", motif: "« +200 clients » sans le qualificatif « satisfaits »", nom: "« satisfaits » retiré de « +200 clients »" },
-  /* Les hubs : Bordeaux, Lille, Marseille et Metz SONT des hubs, la V3 les
-     rattachait à un autre. La forme est celle des pages de hub de la V3
-     (Nantes, Strasbourg, Toulouse) : « Hub X · département » et « Hub Migen à X. » */
-  ...hubAuLieuDe("bordeaux", "Bordeaux", "Gironde", "Toulouse"),
-  ...hubAuLieuDe("lille", "Lille", "Nord", "Lyon"),
-  ...hubAuLieuDe("marseille", "Marseille", "Bouches-du-Rhône", "Lyon"),
-  ...hubAuLieuDe("metz", "Metz", "Moselle", "Lyon"),
-  // Paris : pas d'agence à La Défense, Paris est un hub.
-  { ville: "paris", de: /^Agence Paris · La Défense$/g, vers: "Hub Paris · Île-de-France", motif: "aucune agence à Paris (4 agences : Lyon, Montréal, Dubaï, Madrid) ; Paris est un hub, forme des pages de hub", nom: "agence de La Défense remplacée par le hub de Paris" },
-  { ville: "paris", de: /Agence à La Défense, 16 place de l'Iris à Courbevoie\./g, vers: "Hub Migen à Paris.", motif: "aucune agence à La Défense ; Paris est un hub, forme des pages de hub", nom: "agence de La Défense remplacée par le hub de Paris" },
+  /* Fautes de français de la V3 : la préposition devant un nom de ville ou de
+     département qui porte l'article. Le sens ne change pas. Les agences et
+     les hubs, eux, ne sont jamais réécrits : la règle les retire (filtre). */
+  ...[
+    [/(?<!\S)à Le Havre\b/g, "au Havre"],
+    [/\ben Finistère\b/g, "dans le Finistère"],
+    [/\ben Nord\b/g, "dans le Nord"],
+    [/\ben Bas-Rhin\b/g, "dans le Bas-Rhin"],
+    [/\ben Alpes-Maritimes\b/g, "dans les Alpes-Maritimes"],
+    [/\ben Bouches-du-Rhône\b/g, "dans les Bouches-du-Rhône"],
+  ].map(([de, vers]) => ({ de, vers, motif: `faute de français de la V3 : « ${vers} »`, nom: "faute de français de la V3 corrigée (préposition)" })),
 ];
-
-function hubAuLieuDe(ville, nom, departement, ailleurs) {
-  const motif = `${nom} est l'un des dix hubs : la V3 le rattachait au hub de ${ailleurs}`;
-  const nomCorrection = "ville-hub rattachée à son propre hub";
-  return [
-    { ville, de: new RegExp(`^Intervention ${nom} · Hub ${ailleurs}$`, "g"), vers: `Hub ${nom} · ${departement}`, motif, nom: nomCorrection },
-    { ville, de: new RegExp(`Techniciens déployés depuis notre hub Migen de ${ailleurs}\\.`, "g"), vers: `Hub Migen à ${nom}.`, motif, nom: nomCorrection },
-  ];
-}
 
 /** Les paires {v, l} corrigées entières : le texte est coupé entre les deux. */
 const PAIRES = [
@@ -160,7 +152,11 @@ function filtre(texte, ctx) {
     if (motifs.length === 0) return phrase;
     const segments = phrase.trim().split(/\s+·\s+/);
     const restants = segments.filter((s) => motifsDuTexte(s, ctx).length === 0);
-    if (segments.length > 1 && restants.length > 0) {
+    /* Un libellé qui nomme une agence part entier : « Agence Paris · La
+       Défense » est le nom de l'agence, pas deux informations (consigne du
+       16/10, qui le cite en exemple). */
+    const agence = motifs.some((m) => m.startsWith(MOTIF_AGENCE));
+    if (segments.length > 1 && restants.length > 0 && !agence) {
       for (const s of segments.filter((x) => !restants.includes(x))) {
         const m = motifsDuTexte(s, ctx);
         consigne(ctx, s, "", `segment retiré : ${m.join(", ")}`, `retiré : ${m[0]}`);
@@ -265,6 +261,11 @@ function nettoie(valeur, ctx, cle) {
       consigne({ ...ici, ou: `${ici.ou}.cards` }, `numéros ${avant}`, `numéros ${propre.cards.map((c) => c.eb).join(", ")}`, "numérotation recalée après le retrait d'une carte", "numérotation des cartes recalée");
     }
   }
+  // Un sur-titre part avec le titre qu'il annonçait : seul, il ne surmonte plus rien.
+  if (valeur.kind && valeur.h2 && !propre.h2 && propre.kick) {
+    consigne({ ...ici, ou: `${ici.ou}.kick` }, propre.kick, "", "sur-titre retiré avec son titre", "sur-titre retiré avec son titre");
+    propre.kick = "";
+  }
   return propre;
 }
 
@@ -340,11 +341,11 @@ function compteRendu(src, sortie) {
     "",
     "## La règle appliquée",
     "",
-    "Rien n'est rédigé. Une phrase qui porte un interdit est retirée entière ; dans un libellé fait de segments séparés par « · », seul le segment fautif part. Une question de FAQ qui porte un interdit part avec sa réponse. Un élément de liste dont le titre est vidé part entier. Un texte vidé reste une chaîne vide : la clé demeure, le gabarit ne rend pas de bloc vide.",
+    "Rien n'est rédigé. Une phrase qui porte un interdit est retirée entière ; dans un libellé fait de segments séparés par « · », seul le segment fautif part, sauf quand il nomme une agence (« Agence Paris · La Défense » part entier). Une question de FAQ qui porte un interdit part avec sa réponse. Un élément de liste dont le titre est vidé part entier ; un sur-titre part avec le titre de section qu'il annonçait. Un texte vidé reste une chaîne vide : la clé demeure, le gabarit ne rend pas de bloc vide (ni `<h2>` vide).",
     "",
-    "Les seules réécritures sont nommées dans `CORRECTIONS` du script : retrait d'une proposition qui porte un délai (le reste de la phrase est celui de la V3), cohérence des hubs, note client du site, « +200 clients » sans « satisfaits », et les décisions déjà actées du site (`lib/decisions-copie.ts`).",
+    "Les seules réécritures sont nommées dans `CORRECTIONS` du script : retrait d'une proposition qui porte un délai (le reste de la phrase est celui de la V3), note client du site, « +200 clients » sans « satisfaits », fautes de préposition de la V3 (« au Havre », « dans le Nord »…), et les décisions déjà actées du site (`lib/decisions-copie.ts`). Les agences et les rattachements de hub ne sont jamais réécrits : ils sont retirés.",
     "",
-    "Interdits : intérim, régie, mise (met, mettre) à disposition, sans engagement, notamment, sur mesure, clé en main, levier, concrètement, incontournable, découvrez, en savoir plus, tiret cadratin, « candidats », « prix mensuel fixe » ; tout délai chiffré sauf le rappel dans l'heure ; tout montant sauf « +10 M€ » de l'accueil ; toute agence locale en France hors Lyon (Écully) ; tout rattachement de hub incohérent avec les dix hubs ; 4,9/5. La porte `bun scripts/verifie-lp-donnees.mjs` (dans `bun run verifie`) refuse leur retour.",
+    "Interdits : intérim, régie, mise (met, mettre) à disposition, sans engagement, notamment, sur mesure, clé en main, levier, concrètement, incontournable, découvrez, en savoir plus, tiret cadratin, « candidats », « prix mensuel fixe » ; tout délai chiffré sauf le rappel dans l'heure ; tout montant sauf « +10 M€ » de l'accueil ; toute agence locale en France hors Lyon (Écully) ; tout rattachement de hub incohérent avec les dix hubs (une ville-hub rattachée à un autre, une ville sans hub rattachée à un autre que le plus proche) ; 4,9/5. La porte `bun scripts/verifie-lp-donnees.mjs` (dans `bun run verifie`) refuse leur retour dans la donnée, et `bun scripts/verifie-lp.mjs` dans le texte que le gabarit ajoute à la page rendue.",
     "",
     "## En chiffres",
     "",
@@ -356,14 +357,28 @@ function compteRendu(src, sortie) {
     "",
     ...Object.entries(PAGES_RETIREES).map(([chemin, pourquoi]) => `- \`${chemin}\` : ${pourquoi}`),
     "",
+    "## Changements de copie faits dans le gabarit, hors donnée",
+    "",
+    "Le texte que les composants de `components/lp/` écrivent eux-mêmes, et ce qui y diffère de la V3 :",
+    "",
+    "- Formulaire (`FormulaireLP.tsx`) : la mention de la V3 « Gratuit et sans engagement. Vos données servent uniquement à traiter votre demande · Confidentialité » (deux fois par page) porte « sans engagement » ; elle est remplacée par la mention RGPD du formulaire du site, mot pour mot (`MentionsRgpd`).",
+    "- Formulaire : le champ « Votre demande concerne » (ses deux réponses, au caractère près) est ajouté, sans lui le formulaire HubSpot C de la LP en ligne refuse chaque envoi. Le formulaire du héros passe en deux étapes (besoin, courriel et téléphone, puis le reste), comme la variante C de la LP en ligne ; celui du bas de page reste en une étape, comme la V3.",
+    "- Pied : « © 2026 Migen · migengroup.com » devient « © <année> Migen » ; « Mentions légales » est ajouté à côté de la politique de confidentialité, les deux vers les pages du site ; « Préférences cookies » rouvre le bandeau du site.",
+    "- /lp/rendez-vous/ : le faux agenda de la V3 (cinq jours et six créneaux écrits en dur, « Confirmer le rendez-vous », « Visio ou téléphone · sans engagement ») disparaît. À sa place, le titre de carte de la V3 sans sa durée chiffrée, « Choisissez votre créneau », et un bouton qui ouvre l'agenda Calendly de la LP en ligne, « Réservez votre échange », les mots du titre de la page. Surtitre, titre et chapô sont lus dans la donnée.",
+    "- /lp/merci/ : tout est lu dans la donnée (surtitre, titre, chapô, points, bouton `mainCta` vers `mainHref`).",
+    "- Barre collante du téléphone : absente de /lp/merci/ et /lp/rendez-vous/ (la V3 l'y montre, mais son bouton y vise `#lp-contact`, qui n'existe pas sur ces pages) ; sans le voile blanc de la V3, qui laissait du texte blanc à 2:1 sur le héros.",
+    "- Carrousel des témoignages : les cartes « Étude de cas » ne mènent nulle part, comme dans la V3 (aucune sortie vers le site) ; un bouton de pause est ajouté (WCAG 2.2.2).",
+    "",
     "## Conservé, à confirmer par Mehdi",
     "",
     "Aucune règle ne les retire, mais aucune source du site ne les atteste mot pour mot. Gardés tels quels :",
     "",
     "- « Lun. au ven., 8h à 18h » à côté du numéro des LP (bloc contact) : horaires du standard des LP, non affichés par le gabarit V3. Le site annonce d'autres horaires pour son propre numéro.",
-    "- « Remplacement garanti » (badges des villes, page merci), « Autonomes dès le 1er jour », « 100% opérationnels dès le premier jour », « 8+ équipements maîtrisés » : promesses reprises de la LP en ligne.",
+    "- « Remplacement garanti » (badges des villes, page merci), « Autonomes dès le 1er jour », « 100% opérationnels dès le premier jour », « 8+ équipements maîtrisés » : promesses reprises de la LP en ligne. « Dès le premier jour » n'est pas tenu pour un délai : le site écrit lui-même « le bon profil, opérationnel dès le premier jour » (/nous-connaitre/, `TerrainsExcellence.tsx`).",
     "- « Profils sélectionnés (1/10) » (technicien disponible) : même sens que « 10 % des techniciens retenus ».",
-    "- Rattachements « Intervention Le Havre · Hub Nantes » (quand Rouen est rattachée à Paris) et « Intervention Nice · Hub Lyon » (Marseille est un hub) : cohérents avec la liste des dix hubs, mais à confirmer.",
+    "- Durées écrites en lettres hors des cartes « Cas client » : « Un centre logistique monté en six semaines », « Un parc de fonderie repris en huit semaines », « Six mois pour remettre en état un site à risque chimique » (titres d'études de cas du site, /preuves/), et le témoignage « …pendant six semaines… » (accueil du site). Gardés parce que le site les affiche ; à arbitrer : la consigne « aucun délai chiffré » les retirerait, et avec eux trois études de cas et une phrase d'un témoignage sur 36 pages.",
+    "- Pages des villes-hubs Bordeaux, Lille, Marseille, Metz : la V3 les rattachait à un autre hub ; le rattachement est retiré (« Intervention Bordeaux » au lieu de « Intervention Bordeaux · Hub Toulouse »), pas réécrit en « Hub Bordeaux ». Paris : l'agence de La Défense est retirée entière (badge, titre de bloc, adresse du chapô). À réécrire si Mehdi le souhaite.",
+    "- Le Havre et Nice : la V3 les rattachait à Nantes et à Lyon, alors que Paris et Marseille sont plus proches (et que Rouen, même département que Le Havre, va à Paris). Le rattachement est retiré, pas remplacé.",
     "- « Un expert local qualifie, confirme profil et tarif. » et « Basés autour de <ville>, mobilisables vite. » (les quinze villes) : gardés, ils parlent des techniciens et non d'une implantation ; à confirmer pour les six villes sans hub (Brest, Grenoble, Le Havre, Nice, Rennes, Rouen), où « partenaire maintenance basé à » et « partenaire maintenance local » ont été retirés.",
     "- Les quinze cartes « Cas client · département » : anonymes, sans équivalent dans /preuves/, gardées sans leurs délais ni durées comme demandé.",
     "- Les textes vidés par la règle (chapô de la page France, méta-descriptions des villes et des expertises, chapô du devis…) : à réécrire si Mehdi le souhaite, la règle interdit de le faire ici.",

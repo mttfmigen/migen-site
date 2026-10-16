@@ -67,6 +67,27 @@ interface Page {
   titre: string | null;
 }
 
+const TROP_VOLUMINEUX = Symbol("trop volumineux");
+
+/** Le corps en texte, lu morceau par morceau et abandonné dès qu'il passe `maximum` octets. */
+async function corpsBorne(requete: Request, maximum: number): Promise<string | typeof TROP_VOLUMINEUX> {
+  const lecteur = requete.body?.getReader();
+  if (!lecteur) return "";
+  const morceaux: Uint8Array[] = [];
+  let taille = 0;
+  for (;;) {
+    const { done, value } = await lecteur.read();
+    if (done) break;
+    taille += value.byteLength;
+    if (taille > maximum) {
+      await lecteur.cancel().catch(() => undefined);
+      return TROP_VOLUMINEUX;
+    }
+    morceaux.push(value);
+  }
+  return new TextDecoder().decode(Buffer.concat(morceaux));
+}
+
 export async function POST(requete: NextRequest): Promise<Response> {
   // Le navigateur étiquette lui-même l'origine de la requête. « cross-site »
   // signifie qu'un autre domaine a posté ce formulaire : jamais le nôtre.
@@ -90,7 +111,19 @@ export async function POST(requete: NextRequest): Promise<Response> {
     return reponse(429, TROP_DE_DEPOTS);
   }
 
-  const brut: unknown = await requete.json().catch(() => null);
+  // L'en-tête ne suffit pas : un corps découpé (chunked) n'en porte aucun. Le
+  // plafond tient donc aussi pendant la lecture.
+  // Une lecture interrompue (client parti) se lit comme un corps vide : illisible.
+  const texte = await corpsBorne(requete, CHARGE_MAX_OCTETS).catch(() => "");
+  if (texte === TROP_VOLUMINEUX) {
+    return reponse(413, "Demande trop volumineuse.");
+  }
+  let brut: unknown = null;
+  try {
+    brut = JSON.parse(texte);
+  } catch {
+    brut = null;
+  }
   if (brut === null) {
     return reponse(400, "Requête illisible.");
   }
@@ -148,7 +181,7 @@ export async function POST(requete: NextRequest): Promise<Response> {
      (variante C), avec ses champs à elle ; toute autre page, celui du site. */
   const cible = demande
     ? {
-        formulaireHubspot: FORMULAIRE_HUBSPOT_LP,
+        formulaireHubspot: process.env.HUBSPOT_FORM_ID_LP || FORMULAIRE_HUBSPOT_LP,
         ...champsHubspotLp({ demande, attribution, urlPage: page.url, publicite }),
       }
     : {

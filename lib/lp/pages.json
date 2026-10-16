@@ -326,7 +326,7 @@
      "id": "lp-solutions"
     },
     {
-     "kick": "Savoir-faire",
+     "kick": "",
      "paras": [],
      "items": [],
      "cards": [
@@ -5436,9 +5436,9 @@
    "h1": "Le technicien de maintenance qu'il vous manque, opérationnel à Bordeaux.",
    "h1a": "",
    "h1b": "Le technicien de maintenance qu'il vous manque, opérationnel à Bordeaux.",
-   "chapo": "À Bordeaux et en Gironde, vos installations doivent rester opérationnelles. Hub Migen à Bordeaux.",
+   "chapo": "À Bordeaux et en Gironde, vos installations doivent rester opérationnelles.",
    "badges": [
-    "Hub Bordeaux · Gironde",
+    "Intervention Bordeaux",
     "Techniciens qualifiés",
     "Remplacement garanti"
    ],
@@ -5682,7 +5682,7 @@
      "checks": [],
      "badges": [],
      "floats": [],
-     "h2": "Hub Bordeaux · Gironde",
+     "h2": "Intervention Bordeaux",
      "kind": "features",
      "img": "/assets/web/x-cimenterie.jpg"
     },
@@ -5923,7 +5923,7 @@
    "h1": "Le technicien de maintenance qu'il vous manque, opérationnel à Brest.",
    "h1a": "",
    "h1b": "Le technicien de maintenance qu'il vous manque, opérationnel à Brest.",
-   "chapo": "À Brest et en Finistère, vos installations doivent rester opérationnelles. Techniciens déployés depuis notre hub Migen de Nantes.",
+   "chapo": "À Brest et dans le Finistère, vos installations doivent rester opérationnelles. Techniciens déployés depuis notre hub Migen de Nantes.",
    "badges": [
     "Intervention Brest · Hub Nantes",
     "Techniciens qualifiés",
@@ -6241,7 +6241,7 @@
      "badges": [],
      "floats": [],
      "lead": "Équipe mobilisée sur arrêt technique. Fenêtre planifiée respectée, redémarrage sans incident.",
-     "h2": "Chantier naval en Finistère",
+     "h2": "Chantier naval dans le Finistère",
      "kind": "case",
      "img": "/assets/web/sv-convoyeur.jpg"
     },
@@ -6304,7 +6304,7 @@
      ]
     },
     {
-     "kick": "Maintenance industrielle à Brest",
+     "kick": "",
      "paras": [
       "Nos techniciens connaissent le tissu industriel du secteur. Le bassin brestois est marqué par le naval, la défense et l'agroalimentaire : des environnements exigeants où la disponibilité des équipes compte chaque jour."
      ],
@@ -6613,7 +6613,7 @@
      "id": "lp-solutions"
     },
     {
-     "kick": "Savoir-faire",
+     "kick": "",
      "paras": [],
      "items": [],
      "cards": [
@@ -7392,7 +7392,7 @@
      ]
     },
     {
-     "kick": "Maintenance industrielle à Grenoble",
+     "kick": "",
      "paras": [
       "Nos techniciens connaissent le tissu industriel du secteur. Le bassin grenoblois concentre micro-électronique, énergie, papier et R&D : des process où la moindre dérive impacte directement la production."
      ],
@@ -7495,12 +7495,12 @@
    "short": "Maintenance industrielle au Havre",
    "grp": "Villes",
    "kick": "Un technicien vous manque au Havre ?",
-   "h1": "Le technicien de maintenance qu'il vous manque, opérationnel à Le Havre.",
+   "h1": "Le technicien de maintenance qu'il vous manque, opérationnel au Havre.",
    "h1a": "",
-   "h1b": "Le technicien de maintenance qu'il vous manque, opérationnel à Le Havre.",
-   "chapo": "Au Havre et en Seine-Maritime, vos installations doivent rester opérationnelles. Techniciens déployés depuis notre hub Migen de Nantes.",
+   "h1b": "Le technicien de maintenance qu'il vous manque, opérationnel au Havre.",
+   "chapo": "Au Havre et en Seine-Maritime, vos installations doivent rester opérationnelles.",
    "badges": [
-    "Intervention Le Havre · Hub Nantes",
+    "Intervention Le Havre",
     "Techniciens qualifiés",
     "Remplacement garanti"
    ],
@@ -7744,7 +7744,7 @@
      "checks": [],
      "badges": [],
      "floats": [],
-     "h2": "Intervention Le Havre · Hub Nantes",
+     "h2": "Intervention Le Havre",
      "kind": "features",
      "img": "/assets/web/x-cablerie.jpg"
     },
@@ -7882,7 +7882,7 @@
      ]
     },
     {
-     "kick": "Maintenance industrielle au Havre",
+     "kick": "",
      "paras": [
       "Nos techniciens connaissent le tissu industriel du secteur. Le bassin havrais est dominé par la pétrochimie, la raffinerie et la logistique portuaire : des sites à fortes exigences HSE, soumis à une disponibilité continue."
      ],
@@ -7988,9 +7988,9 @@
    "h1": "Le technicien de maintenance qu'il vous manque, opérationnel à Lille.",
    "h1a": "",
    "h1b": "Le technicien de maintenance qu'il vous manque, opérationnel à Lille.",
-   "chapo": "À Lille et en Nord, vos installations doivent rester opérationnelles. Hub Migen à Lille.",
+   "chapo": "À Lille et dans le Nord, vos installations doivent rester opérationnelles.",
    "badges": [
-    "Hub Lille · Nord",
+    "Intervention Lille",
     "Techniciens qualifiés",
     "Remplacement garanti"
    ],
@@ -8234,7 +8234,7 @@
      "checks": [],
      "badges": [],
      "floats": [],
-     "h2": "Hub Lille · Nord",
+     "h2": "Intervention Lille",
      "kind": "features",
      "img": "/assets/web/x-faisceaux.jpg"
     },
@@ -8965,9 +8965,9 @@
    "h1": "Le technicien de maintenance qu'il vous manque, opérationnel à Marseille.",
    "h1a": "",
    "h1b": "Le technicien de maintenance qu'il vous manque, opérationnel à Marseille.",
-   "chapo": "À Marseille et en Bouches-du-Rhône, vos installations doivent rester opérationnelles. Hub Migen à Marseille.",
+   "chapo": "À Marseille et dans les Bouches-du-Rhône, vos installations doivent rester opérationnelles.",
    "badges": [
-    "Hub Marseille · Bouches-du-Rhône",
+    "Intervention Marseille",
     "Techniciens qualifiés",
     "Remplacement garanti"
    ],
@@ -9211,7 +9211,7 @@
      "checks": [],
      "badges": [],
      "floats": [],
-     "h2": "Hub Marseille · Bouches-du-Rhône",
+     "h2": "Intervention Marseille",
      "kind": "features",
      "img": "/assets/web/x-elec-cablage.jpg"
     },
@@ -9452,9 +9452,9 @@
    "h1": "Le technicien de maintenance qu'il vous manque, opérationnel à Metz.",
    "h1a": "",
    "h1b": "Le technicien de maintenance qu'il vous manque, opérationnel à Metz.",
-   "chapo": "À Metz et en Moselle, vos installations doivent rester opérationnelles. Hub Migen à Metz.",
+   "chapo": "À Metz et en Moselle, vos installations doivent rester opérationnelles.",
    "badges": [
-    "Hub Metz · Moselle",
+    "Intervention Metz",
     "Techniciens qualifiés",
     "Remplacement garanti"
    ],
@@ -9698,7 +9698,7 @@
      "checks": [],
      "badges": [],
      "floats": [],
-     "h2": "Hub Metz · Moselle",
+     "h2": "Intervention Metz",
      "kind": "features",
      "img": "/assets/web/team-duo.jpg"
     },
@@ -10426,9 +10426,9 @@
    "h1": "Le technicien de maintenance qu'il vous manque, opérationnel à Nice.",
    "h1a": "",
    "h1b": "Le technicien de maintenance qu'il vous manque, opérationnel à Nice.",
-   "chapo": "À Nice et en Alpes-Maritimes, vos installations doivent rester opérationnelles. Techniciens déployés depuis notre hub Migen de Lyon.",
+   "chapo": "À Nice et dans les Alpes-Maritimes, vos installations doivent rester opérationnelles.",
    "badges": [
-    "Intervention Nice · Hub Lyon",
+    "Intervention Nice",
     "Techniciens qualifiés",
     "Remplacement garanti"
    ],
@@ -10672,7 +10672,7 @@
      "checks": [],
      "badges": [],
      "floats": [],
-     "h2": "Intervention Nice · Hub Lyon",
+     "h2": "Intervention Nice",
      "kind": "features",
      "img": "/assets/web/team-duo.jpg"
     },
@@ -10810,7 +10810,7 @@
      ]
     },
     {
-     "kick": "Maintenance industrielle à Nice",
+     "kick": "",
      "paras": [
       "Nos techniciens connaissent le tissu industriel du secteur. Le bassin azuréen concentre cosmétique, parfumerie (Grasse) et agroalimentaire : des sites où la qualité produit dépend directement de la fiabilité des équipements."
      ],
@@ -10916,9 +10916,8 @@
    "h1": "Le technicien de maintenance qu'il vous manque, opérationnel à Paris.",
    "h1a": "",
    "h1b": "Le technicien de maintenance qu'il vous manque, opérationnel à Paris.",
-   "chapo": "À Paris et en Île-de-France, vos installations doivent rester opérationnelles. Hub Migen à Paris.",
+   "chapo": "À Paris et en Île-de-France, vos installations doivent rester opérationnelles.",
    "badges": [
-    "Hub Paris · Île-de-France",
     "Techniciens qualifiés",
     "Remplacement garanti"
    ],
@@ -11162,7 +11161,7 @@
      "checks": [],
      "badges": [],
      "floats": [],
-     "h2": "Hub Paris · Île-de-France",
+     "h2": "",
      "kind": "features",
      "img": "/assets/web/ph-technicien.jpg"
     },
@@ -11784,7 +11783,7 @@
      ]
     },
     {
-     "kick": "Maintenance industrielle à Rennes",
+     "kick": "",
      "paras": [
       "Nos techniciens connaissent le tissu industriel du secteur. Le bassin rennais est porté par l'automobile, l'agroalimentaire et l'électronique : des sites où la cadence ne laisse pas de place aux ruptures."
      ],
@@ -12274,7 +12273,7 @@
      ]
     },
     {
-     "kick": "Maintenance industrielle à Rouen",
+     "kick": "",
      "paras": [
       "Nos techniciens connaissent le tissu industriel du secteur. Le bassin rouennais reste marqué par la pétrochimie, l'agroalimentaire et la papeterie : des sites à forte exigence HSE, soumis à une disponibilité continue."
      ],
@@ -12380,7 +12379,7 @@
    "h1": "Le technicien de maintenance qu'il vous manque, opérationnel à Strasbourg.",
    "h1a": "",
    "h1b": "Le technicien de maintenance qu'il vous manque, opérationnel à Strasbourg.",
-   "chapo": "À Strasbourg et en Bas-Rhin, vos installations doivent rester opérationnelles. Hub Migen à Strasbourg.",
+   "chapo": "À Strasbourg et dans le Bas-Rhin, vos installations doivent rester opérationnelles. Hub Migen à Strasbourg.",
    "badges": [
     "Hub Strasbourg · Bas-Rhin",
     "Techniciens qualifiés",
@@ -18330,7 +18329,7 @@
      "id": "lp-solutions"
     },
     {
-     "kick": "Savoir-faire",
+     "kick": "",
      "paras": [],
      "items": [],
      "cards": [
@@ -18931,7 +18930,7 @@
      "id": "lp-solutions"
     },
     {
-     "kick": "Savoir-faire",
+     "kick": "",
      "paras": [],
      "items": [],
      "cards": [

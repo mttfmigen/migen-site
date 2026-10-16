@@ -1,10 +1,10 @@
 import Image from "next/image";
-import Link from "next/link";
 import type { ReactNode } from "react";
 
-import { etudeDeCas, type SectionLP } from "@/lib/lp/pages";
+import { TELEPHONE_LP } from "@/components/site/entete-donnees";
+import type { SectionLP } from "@/lib/lp/pages";
 
-import { BOUTON_ORANGE, CADRE, Chapo, Coche, type Contexte, Photo, SurTitre, TEL, Titre2, numero, sectionStyle } from "./atomes-lp";
+import { BOUTON_ORANGE, CADRE, Chapo, Coche, type Contexte, Photo, SurTitre, Titre2, numero, sectionStyle } from "./atomes-lp";
 import { CarrouselLP } from "./CarrouselLP";
 import styles from "./PageLP.module.css";
 
@@ -30,7 +30,7 @@ function EnteteSection({ s, cta }: { s: SectionLP; cta: boolean }) {
     >
       <div style={{ maxWidth: 740 }}>
         {s.kick ? <SurTitre>{s.kick}</SurTitre> : null}
-        {s.h2 ? <Titre2 taille={40}>{s.h2}</Titre2> : null}
+        <Titre2 taille={40}>{s.h2}</Titre2>
         {s.lead ? <Chapo marge={14} style={{ fontSize: 16.5 }}>{s.lead}</Chapo> : null}
       </div>
       {cta && s.cta ? (
@@ -253,8 +253,8 @@ export function Etapes({ s, ctx }: { s: SectionLP; ctx: Contexte }) {
         <a href="#lp-contact" className={styles.orange} style={{ ...BOUTON_ORANGE, padding: "14px 22px", font: "600 15px var(--fb)" }}>
           Décrire mon besoin →
         </a>
-        <a href={TEL.href} style={{ font: "600 15px var(--fb)", color: "#1c1b19" }}>
-          ou appelez le {TEL.affichage}
+        <a href={TELEPHONE_LP.href} style={{ font: "600 15px var(--fb)", color: "#1c1b19" }}>
+          ou appelez le {TELEPHONE_LP.affichage}
         </a>
       </div>
     </>
@@ -272,7 +272,6 @@ export function Temoignages({ s, ctx }: { s: SectionLP; ctx: Contexte }) {
       qui: citation.who,
       ou: citation.org,
       logo: undefined as string | undefined,
-      lien: undefined as string | undefined,
     })),
     ...(s.cases ?? []).map((cas, j) => ({
       cle: cas.t,
@@ -282,85 +281,69 @@ export function Temoignages({ s, ctx }: { s: SectionLP; ctx: Contexte }) {
       qui: cas.client,
       ou: "Étude de cas migen",
       logo: cas.logo || undefined,
-      lien: etudeDeCas(cas.t),
     })),
   ];
 
   return (
-    <CarrouselLP>
-      {cartes.map((carte) => {
-        const contenu = (
-          <>
-            <Photo src={carte.image} tailles="360px" style={{ height: 210, flex: "none" }}>
+    <CarrouselLP nom={s.kick || s.h2}>
+      {cartes.map((carte) => (
+        <article
+          key={carte.cle}
+          style={{
+            flex: "none",
+            width: "min(360px,82%)",
+            scrollSnapAlign: "start",
+            display: "flex",
+            flexDirection: "column",
+            borderRadius: 24,
+            overflow: "hidden",
+            background: ctx.carte,
+            border: "1px solid #ecebe8",
+          }}
+        >
+          <Photo src={carte.image} tailles="360px" style={{ height: 210, flex: "none" }}>
+            <span
+              style={{
+                position: "absolute",
+                top: 14,
+                left: 14,
+                padding: "6px 11px",
+                borderRadius: 999,
+                background: "rgba(255,255,255,.92)",
+                font: "600 11.5px var(--fb)",
+                color: "#1c1b19",
+              }}
+            >
+              {carte.etiquette}
+            </span>
+            {carte.logo ? (
               <span
                 style={{
                   position: "absolute",
-                  top: 14,
                   left: 14,
-                  padding: "6px 11px",
-                  borderRadius: 999,
-                  background: "rgba(255,255,255,.92)",
-                  font: "600 11.5px var(--fb)",
-                  color: "#1c1b19",
+                  bottom: 14,
+                  width: 100,
+                  height: 46,
+                  borderRadius: 12,
+                  background: "#fff",
+                  boxShadow: "0 10px 24px -12px rgba(0,0,0,.45)",
                 }}
               >
-                {carte.etiquette}
-              </span>
-              {carte.logo ? (
-                <span
-                  style={{
-                    position: "absolute",
-                    left: 14,
-                    bottom: 14,
-                    width: 100,
-                    height: 46,
-                    borderRadius: 12,
-                    background: "#fff",
-                    boxShadow: "0 10px 24px -12px rgba(0,0,0,.45)",
-                  }}
-                >
-                  <span style={{ position: "absolute", inset: "0 14%" }}>
-                    <Image src={carte.logo} alt={carte.qui} fill sizes="72px" style={{ objectFit: "contain" }} />
-                  </span>
+                <span style={{ position: "absolute", inset: "0 14%" }}>
+                  <Image src={carte.logo} alt="" fill sizes="72px" style={{ objectFit: "contain" }} />
                 </span>
-              ) : null}
-            </Photo>
-            <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 14, padding: "22px 22px 24px" }}>
-              {carte.texte}
-              <p style={{ margin: "auto 0 0", font: "400 13px/1.5 var(--fb)", color: "#6a6764" }}>
-                <strong style={{ display: "block", fontWeight: 600, color: "#1c1b19" }}>{carte.qui}</strong>
-                {carte.ou}
-              </p>
-            </div>
-          </>
-        );
-        return (
-          <article
-            key={carte.cle}
-            style={{
-              flex: "none",
-              width: "min(360px,82%)",
-              scrollSnapAlign: "start",
-              display: "flex",
-              flexDirection: "column",
-              borderRadius: 24,
-              overflow: "hidden",
-              background: ctx.carte,
-              border: "1px solid #ecebe8",
-            }}
-          >
-            {/* L'étude de cas du site, quand elle existe : la maquette ne
-                menait nulle part. */}
-            {carte.lien ? (
-              <Link href={carte.lien} prefetch={false} style={{ flex: 1, display: "flex", flexDirection: "column" }}>
-                {contenu}
-              </Link>
-            ) : (
-              contenu
-            )}
-          </article>
-        );
-      })}
+              </span>
+            ) : null}
+          </Photo>
+          <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 14, padding: "22px 22px 24px" }}>
+            {carte.texte}
+            <p style={{ margin: "auto 0 0", font: "400 13px/1.5 var(--fb)", color: "#6a6764" }}>
+              <strong style={{ display: "block", fontWeight: 600, color: "#1c1b19" }}>{carte.qui}</strong>
+              {carte.ou}
+            </p>
+          </div>
+        </article>
+      ))}
     </CarrouselLP>
   );
 }
