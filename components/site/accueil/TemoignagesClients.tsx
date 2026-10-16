@@ -1,3 +1,6 @@
+import Carrousel from "./mobile-v3/Carrousel";
+import NoteGoogle from "./mobile-v3/NoteGoogle";
+import v3 from "./mobile-v3/accueil-v3.module.css";
 import replis from "./replis-accueil.module.css";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
@@ -51,10 +54,11 @@ export default function TemoignagesClients({
   noteGoogle = "4,6 / 5",
 }: Proprietes) {
   return (
-    <section className={replis.repli} style={{ padding: "var(--sec) 0 0" }}>
+    <section className={replis.repli} data-accueil-v3="" style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <SectionPliableMobile kicker={SURTITRE_TEXTE} titre={TITRE_TEXTE}>
         <div data-reveal=""
+          className={v3.enteteAvis}
           style={{
             display: "flex",
             alignItems: "flex-end",
@@ -93,6 +97,7 @@ export default function TemoignagesClients({
             </h2>
           </div>
           <div
+            data-doublon-mobile=""
             style={{
               display: "flex",
               alignItems: "center",
@@ -136,9 +141,13 @@ export default function TemoignagesClients({
               </div>
             </div>
           </div>
+          {/* Au téléphone, la note de la V3 (chiffre et étoiles) remplace la
+              pastille ci-dessus, et seulement si une note est portée. */}
+          {noteGoogle ? <NoteGoogle note={noteGoogle} /> : null}
         </div>
 
-        <div
+        <Carrousel
+          etiquette={SURTITRE_TEXTE}
           data-reveal="" className="mg-rmulti"
           style={{
             display: "grid",
@@ -149,6 +158,7 @@ export default function TemoignagesClients({
           {temoignages.map((t) => (
             <figure
               key={t.verbatim}
+              className={v3.avis}
               style={{
                 margin: 0,
                 background: "rgba(255,255,255,var(--gl-a))",
@@ -163,6 +173,7 @@ export default function TemoignagesClients({
             >
               <div
                 aria-hidden="true"
+                className={v3.guillemet}
                 style={{
                   font: "600 26px var(--ft)",
                   color: "var(--acc)",
@@ -174,6 +185,7 @@ export default function TemoignagesClients({
               </div>
               <blockquote style={{ margin: 0 }}>
                 <p
+                  className={v3.citation}
                   style={{
                     font: "400 16px/1.7 var(--fb)",
                     color: "var(--ink1)",
@@ -183,8 +195,13 @@ export default function TemoignagesClients({
                   {t.verbatim}
                 </p>
               </blockquote>
-              <figcaption>
+              <figcaption className={v3.signature}>
+                {/* L'initiale en pastille de la V3, décorative. */}
+                <span aria-hidden="true" data-mobile-seulement="" className={v3.initiale}>
+                  {t.fonction.charAt(0)}
+                </span>
                 <div
+                  className={v3.qui}
                   style={{
                     font: "600 14.5px var(--ft)",
                     letterSpacing: "-.02em",
@@ -193,6 +210,7 @@ export default function TemoignagesClients({
                   {t.fonction}
                 </div>
                 <div
+                  className={v3.contexte}
                   style={{
                     font: "400 13px var(--fb)",
                     color: "var(--ink4)",
@@ -204,7 +222,7 @@ export default function TemoignagesClients({
               </figcaption>
             </figure>
           ))}
-        </div>
+        </Carrousel>
 
         {/* La maquette portait ici une note de travail, rendue en texte
             visible : « Verbatims reformulés à partir de retours clients · à valider avec les… ». Elle ne

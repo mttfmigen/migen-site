@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 
 import styles from "./AvantApresBascule.module.css";
+import BasculeMobile from "./mobile-v3/BasculeMobile";
+import v3 from "./mobile-v3/accueil-v3.module.css";
 import replis from "./replis-accueil.module.css";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
@@ -131,7 +133,7 @@ export default function AvantApresBascule({
   }
 
   return (
-    <section className={replis.repli} style={{ padding: "var(--sec) 0 0" }}>
+    <section className={replis.repli} data-accueil-v3="" style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         {/* LE TITRE DE LA BASCULE SUIT L'ONGLET CHOISI, comme le `h2` qu'il
             remplace sur téléphone : `vue.titre` vaut « Ce que nos clients
@@ -141,13 +143,13 @@ export default function AvantApresBascule({
         <SectionPliableMobile kicker={SURTITRE_TEXTE} titre={vue.titre}>
         <div
           data-reveal=""
-          className={styles.canevas}
+          className={`${styles.canevas} ${v3.aplat}`}
           style={{ ...CADRE_CANEVAS, ...vue.styleCadre }}
         >
-          <div style={vue.styleHalo} />
+          <div className={v3.masque} style={vue.styleHalo} />
           <div style={{ position: "relative" }}>
             <div
-              className="mg-r2"
+              className={`mg-r2 ${v3.pile}`}
               style={{
                 display: "grid",
                 gridTemplateColumns: "1fr 1fr",
@@ -165,18 +167,18 @@ export default function AvantApresBascule({
                 <div style={SURTITRE}>{SURTITRE_TEXTE}</div>
                 <h2 style={{ margin: 0, ...vue.styleTitre }}><span>{vue.titre}</span></h2>
               </div>
-              <p style={{ margin: 0, ...vue.styleChapo }}><span>{vue.chapo}</span></p>
+              <p className={v3.lead} style={{ margin: 0, ...vue.styleChapo }}><span>{vue.chapo}</span></p>
             </div>
 
             <div
-              className={styles.onglets}
+              className={`${styles.onglets} ${v3.onglets}`}
               data-vue={mode}
               role="group"
               aria-label="Comparer avant et avec migen"
             >
               <button
                 type="button"
-                className={styles.onglet}
+                className={`${styles.onglet} ${v3.onglet}`}
                 aria-pressed={mode === "avant"}
                 onClick={() => basculer("avant")}
               >
@@ -184,7 +186,7 @@ export default function AvantApresBascule({
               </button>
               <button
                 type="button"
-                className={styles.onglet}
+                className={`${styles.onglet} ${v3.onglet}`}
                 aria-pressed={mode === "avec"}
                 onClick={() => basculer("avec")}
               >
@@ -192,8 +194,11 @@ export default function AvantApresBascule({
               </button>
             </div>
 
+            {/* La mosaïque de bureau : au téléphone, `BasculeMobile` range les
+                mêmes tuiles en chiffres puis en carrousel, comme la V3. */}
             <div
               className="mg-ba"
+              data-doublon-mobile=""
               style={{
                 display: "grid",
                 gridTemplateColumns: ".92fr 1.28fr 1fr",
@@ -333,6 +338,7 @@ export default function AvantApresBascule({
                 </div>
               ))}
             </div>
+            <BasculeMobile vue={vue} etiquette={SURTITRE_TEXTE} />
           </div>
         </div>
         </SectionPliableMobile>

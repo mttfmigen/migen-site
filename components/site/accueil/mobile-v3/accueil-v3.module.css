@@ -1,0 +1,583 @@
+/*
+ * L'ACCUEIL AU TÉLÉPHONE : LE CONTENU DES CARTES OUVERTES, À LA V3 (16/10).
+ *
+ * Source : maquette V3, vue « Site mobile », gabarit des blocs de section
+ * (`isKvStat` pour les tuiles, `isTl` pour les frises, `isRating` et `isRevs`
+ * pour la note et le carrousel d'avis, `isBtnQ` pour le bouton). Les valeurs
+ * ci-dessous en sont reprises, sauf les encres, passées au contraste AA
+ * (voir les jetons `--v3-*` de `replis-accueil.module.css`).
+ *
+ * TOUT EST SOUS 881 PX. Au-dessus, aucune règle n'existe : le bureau est celui
+ * de la capture de référence, au pixel. Les éléments de bureau gardent leur
+ * balisage et leurs styles en ligne, d'où `!important` ; le texte ne change
+ * pas. Seuls la frise de la méthode, la note Google, les tuiles et le
+ * carrousel du « jour et la nuit » sont du balisage propre au téléphone
+ * (`data-mobile-seulement`), là où le dessin de bureau ne peut pas devenir
+ * celui de la V3.
+ *
+ * `[data-accueil-v3]` est posé sur la `<section>` des sept cartes : il donne
+ * la spécificité qui bat les règles utilitaires de `app/globals.css`.
+ */
+
+@media (max-width: 880px) {
+  /* ------------------------------------------------ panneaux effacés
+     Le verre et l'anthracite de bureau n'existent pas dans la carte V3 : le
+     contenu se pose directement sur le blanc de la carte. */
+  :global([data-accueil-v3]) .aplat {
+    display: block !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    overflow: visible !important;
+  }
+
+  :global([data-accueil-v3]) .masque {
+    display: none !important;
+  }
+
+  /* Une grille ou une rangée de bureau qui redevient un simple empilement. */
+  :global([data-accueil-v3]) .pile {
+    display: block !important;
+    margin: 0 !important;
+  }
+
+  /* Une enveloppe sans boîte : ses enfants deviennent ceux de la grille. */
+  :global([data-accueil-v3]) .fondu {
+    display: contents !important;
+  }
+
+  /* Le séparateur entre deux blocs d'une même carte (V3 : filet de la
+     sous-partie « Sécurité et RSE »). */
+  :global([data-accueil-v3]) .filetHaut {
+    margin-top: 16px !important;
+    padding-top: 16px !important;
+    border-top: 1px solid var(--line) !important;
+  }
+
+  /* ----------------------------------------------------------- texte */
+  :global([data-accueil-v3]) .lead {
+    display: block !important;
+    max-width: none !important;
+    margin: 0 0 12px !important;
+    font: 500 16px/1.6 var(--fb) !important;
+    letter-spacing: normal !important;
+    color: var(--ink) !important;
+  }
+
+  :global([data-accueil-v3]) .texte {
+    display: block !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    margin: 0 0 14px !important;
+    font: 400 14.5px/1.6 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+
+  :global([data-accueil-v3]) .surtitre {
+    display: block !important;
+    margin: 0 0 6px !important;
+    font: 600 10.5px var(--fb) !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+    color: var(--v3-acc-ink) !important;
+  }
+
+  /* ------------------------------------------- tuiles en 2 x 2 (isKvStat) */
+  :global([data-accueil-v3]) .tuiles {
+    overflow-wrap: break-word;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-template-rows: none !important;
+    gap: 8px !important;
+    margin: 4px 0 14px !important;
+    padding: 0 !important;
+  }
+
+  /* La grille de Croissance est aussi une `mg-r2`, que `app/globals.css`
+     serre à 4 px dans une carte (`details[data-carte-numerotee] .mg-r2`). */
+  :global([data-accueil-v3] details[data-carte-numerotee]) .tuiles {
+    gap: 8px !important;
+  }
+
+  :global([data-accueil-v3]) .tuile {
+    display: block !important;
+    min-width: 0;
+    min-height: 0 !important;
+    grid-row: auto !important;
+    grid-column: auto !important;
+    margin: 0 !important;
+    padding: 14px 14px 13px !important;
+    border: 1px solid var(--mm-bord-doux) !important;
+    border-radius: 16px !important;
+    background: var(--mm-fond-doux) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    overflow: visible !important;
+    transform: none !important;
+  }
+
+  :global([data-accueil-v3]) .tuileValeur {
+    display: block !important;
+    margin: 0 !important;
+    font: 700 24px/1 var(--ft) !important;
+    letter-spacing: -0.045em !important;
+    color: var(--v3-acc-ink) !important;
+  }
+
+  :global([data-accueil-v3]) .tuileTitre {
+    margin: 7px 0 0 !important;
+    font: 600 14px/1.3 var(--ft) !important;
+    letter-spacing: -0.015em !important;
+    color: var(--ink) !important;
+  }
+
+  :global([data-accueil-v3]) .tuileTexte {
+    max-width: none !important;
+    margin: 7px 0 0 !important;
+    font: 400 12.5px/1.45 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+
+  :global([data-accueil-v3]) .tuileTitre + .tuileTexte {
+    margin-top: 4px !important;
+  }
+
+  :global([data-accueil-v3]) .tuileSource {
+    margin: 6px 0 0 !important;
+    font: 400 11.5px/1.4 var(--fb) !important;
+    color: var(--ink2) !important;
+  }
+
+  /* Certifications : les deux logos en tuiles égales. */
+  :global([data-accueil-v3]) .logos {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+    margin: 4px 0 14px !important;
+  }
+
+  :global([data-accueil-v3]) .logo {
+    width: auto !important;
+    height: 64px !important;
+    border-radius: 16px !important;
+    border-color: var(--mm-bord-doux) !important;
+  }
+
+  /* ------------------------------------------------- bouton (isBtnQ)
+     Libellé en encre sur l'orange : le blanc de la V3 y tombe à 2,6:1. */
+  :global([data-accueil-v3]) .bouton {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+    width: 100% !important;
+    min-height: 50px;
+    margin: 8px 0 14px !important;
+    padding: 0 6px 0 20px !important;
+    border-radius: 999px !important;
+    background: #ff7c3c !important;
+    color: #1c1b19 !important;
+    font: 600 14.5px/1.25 var(--fb) !important;
+    white-space: normal !important;
+    text-decoration: none !important;
+  }
+
+  :global([data-accueil-v3]) .bouton:hover {
+    color: #1c1b19 !important;
+    filter: none !important;
+    transform: none !important;
+  }
+
+  :global([data-accueil-v3]) .boutonFleche {
+    flex: none;
+    display: grid !important;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.35);
+    font: 600 16px/1 var(--fb);
+  }
+
+  /* --------------------------------------------- frise verticale (isTl) */
+  .frise {
+    list-style: none;
+    margin: 6px 0 10px;
+    padding: 0;
+  }
+
+  .etape {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: 12px;
+  }
+
+  .etapeRail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .etapeNumero {
+    flex: none;
+    display: grid;
+    place-items: center;
+    min-width: 28px;
+    height: 28px;
+    padding: 0 8px;
+    border-radius: 999px;
+    background: var(--v3-acc-fond-fort);
+    color: var(--v3-acc-ink);
+    font: 600 11.5px var(--fb);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .etapeFil {
+    flex: 1;
+    width: 2px;
+    min-height: 12px;
+    margin: 4px 0;
+    border-radius: 2px;
+    background: var(--v3-acc-fil);
+  }
+
+  .etapeCorps {
+    min-width: 0;
+    padding: 4px 0 18px;
+  }
+
+  .etapeQuand {
+    display: inline-flex;
+    margin-bottom: 5px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: var(--v3-acc-fond);
+    font: 600 10.5px var(--fb);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink2);
+  }
+
+  .etapeTitre {
+    margin: 0;
+    font: 600 15px/1.35 var(--ft);
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+
+  .etapeTexte {
+    margin: 3px 0 0;
+    font: 400 13.5px/1.55 var(--fb);
+    color: var(--ink1);
+    text-wrap: pretty;
+  }
+
+  .encart {
+    display: grid;
+    gap: 6px;
+    margin: 9px 0 0;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: var(--v3-acc-fond);
+  }
+
+  .encart > div {
+    display: grid;
+    grid-template-columns: 62px minmax(0, 1fr);
+    gap: 8px;
+    font: 400 12.5px/1.5 var(--fb);
+    color: var(--ink1);
+  }
+
+  .encart dt {
+    font: 600 9.5px/1.9 var(--fb);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink2);
+  }
+
+  .encart dt[data-resultat] {
+    color: var(--v3-acc-ink);
+  }
+
+  .encart dd {
+    margin: 0;
+  }
+
+  /* L'histoire : la même frise, posée sur la liste de bureau. L'année devient
+     la pastille, le fil est un trait généré sous elle. */
+  :global([data-accueil-v3]) .jalons {
+    display: block !important;
+    margin: 6px 0 10px !important;
+  }
+
+  :global([data-accueil-v3]) .jalon {
+    position: relative;
+    display: grid !important;
+    grid-template-columns: 46px minmax(0, 1fr) !important;
+    column-gap: 12px !important;
+    align-items: start !important;
+    padding: 0 0 14px !important;
+  }
+
+  :global([data-accueil-v3]) .jalon:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 22px;
+    top: 32px;
+    bottom: 4px;
+    width: 2px;
+    border-radius: 2px;
+    background: var(--v3-acc-fil);
+  }
+
+  :global([data-accueil-v3]) .jalonAnnee {
+    height: 28px;
+    border-radius: 999px;
+    background: var(--v3-acc-fond-fort);
+    color: var(--v3-acc-ink) !important;
+    font: 600 11.5px/28px var(--fb) !important;
+    letter-spacing: normal !important;
+    text-align: center;
+  }
+
+  :global([data-accueil-v3]) .jalonTexte {
+    margin: 0 !important;
+    padding-top: 4px;
+    font: 400 13.5px/1.55 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+
+  /* L'accroche de fin d'histoire : la phrase en gras ouvre le paragraphe. */
+  :global([data-accueil-v3]) .enLigne {
+    display: inline !important;
+    margin: 0 0.3em 0 0 !important;
+    font: 600 15px/1.65 var(--fb) !important;
+    letter-spacing: normal !important;
+    color: var(--ink) !important;
+  }
+
+  :global([data-accueil-v3]) .enLigne + p {
+    display: inline !important;
+    font: 400 15px/1.65 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+
+  /* ----------------------------------------------- la note (isRating) */
+  .note {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 2px 0 12px;
+    padding: 14px 16px;
+    border-radius: 18px;
+    background: var(--mm-fond-doux);
+    border: 1px solid var(--mm-bord-doux);
+  }
+
+  .noteChiffre {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+    font: 700 34px/1 var(--ft);
+    letter-spacing: -0.05em;
+    color: var(--ink);
+  }
+
+  .noteChiffre > span {
+    font: 600 14px var(--fb);
+    letter-spacing: normal;
+    color: var(--ink2);
+  }
+
+  .noteDetail {
+    display: grid;
+    gap: 5px;
+    font: 500 12.5px var(--fb);
+    color: var(--ink2);
+  }
+
+  .etoiles {
+    display: flex;
+    gap: 3px;
+  }
+
+  .etoiles > span {
+    display: block;
+    width: 15px;
+    height: 15px;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  }
+
+  /* L'en-tête de bureau des avis (titre et pastille « Avis Google ») : la
+     pastille s'efface au profit de la note, la rangée perd sa marge. */
+  :global([data-accueil-v3]) .enteteAvis {
+    display: block !important;
+    margin: 0 !important;
+  }
+
+  /* ---------------------------------------- carte d'avis (isRevs) */
+  :global([data-accueil-v3]) .avis {
+    display: flex !important;
+    flex-direction: column;
+    gap: 12px;
+    margin: 0 !important;
+    padding: 18px 18px 16px !important;
+    border: 1px solid var(--mm-bord-doux) !important;
+    border-radius: 20px !important;
+    background: var(--mm-fond-doux) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    color: var(--ink);
+  }
+
+  :global([data-accueil-v3]) .guillemet {
+    display: block !important;
+    height: 22px;
+    margin: 0 !important;
+    font: 700 44px/0.9 Georgia, serif !important;
+    color: #ff7c3c !important;
+  }
+
+  :global([data-accueil-v3]) .citation {
+    margin: 0 !important;
+    font: 500 14.5px/1.55 var(--fb) !important;
+    color: var(--ink) !important;
+    text-wrap: pretty;
+  }
+
+  :global([data-accueil-v3]) .signature {
+    display: grid !important;
+    grid-template-columns: 34px minmax(0, 1fr);
+    column-gap: 10px;
+    align-items: center;
+    margin-top: auto !important;
+    padding-top: 12px;
+    border-top: 1px solid var(--mm-bord-doux);
+  }
+
+  :global([data-accueil-v3]) .signature > :not(.initiale) {
+    grid-column: 2;
+  }
+
+  :global([data-accueil-v3]) .initiale {
+    grid-row: 1 / span 2;
+    display: grid !important;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    background: #ff7c3c;
+    color: #1c1b19;
+    font: 600 13px var(--fb);
+  }
+
+  :global([data-accueil-v3]) .qui {
+    margin: 0 !important;
+    font: 600 13px/1.3 var(--fb) !important;
+    letter-spacing: normal !important;
+    color: var(--ink) !important;
+  }
+
+  :global([data-accueil-v3]) .contexte {
+    margin: 1px 0 0 !important;
+    font: 400 12px/1.4 var(--fb) !important;
+    color: var(--ink2) !important;
+  }
+
+  /* --------------------------------------------- le carrousel à points
+     Défilement au doigt avec aimantation, au clavier par les flèches une fois
+     la piste focalisée, et par les points, qui sont des boutons. */
+  :global([data-accueil-v3]) .piste {
+    position: relative;
+    display: flex !important;
+    gap: 10px !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin: 4px -16px 0 !important;
+    padding: 2px 16px 4px !important;
+    scroll-padding: 0 16px;
+    scrollbar-width: none;
+  }
+
+  :global([data-accueil-v3]) .piste::-webkit-scrollbar {
+    display: none;
+  }
+
+  :global([data-accueil-v3]) .piste > * {
+    flex: none;
+    width: 86%;
+    scroll-snap-align: start;
+  }
+
+  .points {
+    display: flex;
+    justify-content: center;
+    margin: 4px 0 14px;
+  }
+
+  .points > button {
+    display: grid;
+    place-items: center;
+    min-width: 24px;
+    height: 24px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+  }
+
+  .points > button > span {
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: rgba(28, 27, 25, 0.5);
+    transition:
+      width 0.25s ease,
+      background-color 0.25s ease;
+  }
+
+  .points > button[aria-current="true"] > span {
+    width: 18px;
+    background: var(--v3-acc-ink);
+  }
+
+  /* --------------------------------- le jour et la nuit : les onglets clairs */
+  :global([data-accueil-v3]) .onglets {
+    margin: 2px 0 14px !important;
+    padding: 4px !important;
+    background-color: var(--mm-fond-doux) !important;
+    border: 1px solid var(--mm-bord-doux);
+  }
+
+  :global([data-accueil-v3]) .onglet {
+    padding: 11px 8px !important;
+    font: 600 14px/1.25 var(--fb) !important;
+  }
+
+  :global([data-accueil-v3]) .onglet[aria-pressed="true"] {
+    color: #1c1b19 !important;
+  }
+}
+
+/* Une tuile ne garde que 120 px de texte à 320 px : « comportementaux » y
+   débordait. La césure (langue de la page) ne joue que sur ces écrans étroits ;
+   à 390 px, la V3 n'en a pas besoin. */
+@media (max-width: 360px) {
+  :global([data-accueil-v3]) .tuiles {
+    hyphens: auto;
+  }
+}
+
+@media (max-width: 880px) and (prefers-reduced-motion: reduce) {
+  .points > button > span {
+    transition: none;
+  }
+}

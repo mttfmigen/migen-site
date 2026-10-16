@@ -336,7 +336,13 @@
      28 à 56 px, soit des cartes dans la carte et une colonne de texte étroite.
      Dans une carte ouverte : plus d'ombre, `--rad` à 16 px, et le panneau verre
      devient la petite carte de la maquette mobile v2 (dc.html, `isKv` : fond
-     #f6f6f7, filet, rayon 16, 13 à 15 px de marge). Le texte ne bouge pas. */
+     #f6f6f7, filet, rayon 16, 13 à 15 px de marge). Le texte ne bouge pas.
+
+     SAUF DANS LES SEPT CARTES REDESSINÉES À LA V3 (16/10, `data-accueil-v3`
+     sur la section) : Certifications, Votre problématique, Méthode, Avis, Le
+     jour et la nuit, Histoire, Croissance. Leur contenu ouvert a son propre
+     dessin téléphone (`mobile-v3/accueil-v3.module.css`) ; de ce qui précède,
+     elles gardent le raccord de la carte à sa bascule et l'absence d'ombre. */
   .repli :global(details[data-pliable-mobile] > summary ~ div) {
     --rad: 16px;
   }
@@ -345,7 +351,7 @@
     box-shadow: none !important;
   }
 
-  .repli :global(details[data-pliable-mobile] > summary ~ div [style*="var(--gl-a)"]) {
+  .repli:not([data-accueil-v3]) :global(details[data-pliable-mobile] > summary ~ div [style*="var(--gl-a)"]) {
     background: var(--mm-fond-doux, #f6f6f7) !important;
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
@@ -355,8 +361,23 @@
     gap: 14px !important;
   }
 
-  .repli :global(details[data-pliable-mobile] > summary ~ div [style*="background:var(--panel)"]) {
+  .repli:not([data-accueil-v3]) :global(details[data-pliable-mobile] > summary ~ div [style*="background:var(--panel)"]) {
     padding: 18px !important;
+  }
+
+  /* LES ENCRES DES CARTES V3. L'orange de la V3 (#ff7c3c) ne tient pas le
+     contraste AA sur une tuile claire (2,4:1) : chiffres, repères et points
+     prennent l'orange foncé que la V3 réserve à ses liens (#b4490f, 5,0:1 sur
+     #f6f6f7), le thème sombre son `--acc-ink`. */
+  .repli[data-accueil-v3] {
+    --v3-acc-ink: #b4490f;
+    --v3-acc-fond: rgba(255, 124, 60, 0.09);
+    --v3-acc-fond-fort: rgba(255, 124, 60, 0.12);
+    --v3-acc-fil: rgba(255, 124, 60, 0.22);
+  }
+
+  :global(:root[data-theme="sombre"]) .repli[data-accueil-v3] {
+    --v3-acc-ink: var(--acc-ink);
   }
 }
 

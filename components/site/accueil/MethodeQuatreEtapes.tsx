@@ -3,6 +3,8 @@
 import { useState, type CSSProperties } from "react";
 
 import styles from "./MethodeQuatreEtapes.module.css";
+import FriseEtapes from "./mobile-v3/FriseEtapes";
+import v3 from "./mobile-v3/accueil-v3.module.css";
 import replis from "./replis-accueil.module.css";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
@@ -69,12 +71,12 @@ export default function MethodeQuatreEtapes({
   const active = etapes[choisie];
 
   return (
-    <section className={replis.repli} style={{ padding: "var(--sec) 0 0" }}>
+    <section className={replis.repli} data-accueil-v3="" style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <SectionPliableMobile kicker={SURTITRE_TEXTE} titre={TITRE_TEXTE}>
         <div data-reveal="">
           <div
-            className="mg-r2"
+            className={`mg-r2 ${v3.pile}`}
             style={{
               display: "grid",
               gridTemplateColumns: "1fr 1fr",
@@ -103,6 +105,7 @@ export default function MethodeQuatreEtapes({
               </h2>
             </div>
             <p
+              data-doublon-mobile=""
               style={{
                 font: "400 16px/1.7 var(--fb)",
                 color: "var(--ink2)",
@@ -113,10 +116,19 @@ export default function MethodeQuatreEtapes({
               Le point commun des six offres. Cliquez une étape pour voir qui fait
               quoi.
             </p>
+            {/* Au téléphone, les quatre étapes sont déroulées en frise :
+                l'invitation à cliquer n'y a plus d'objet. La V3 garde la
+                première phrase seule. Un paragraphe à part, et non une
+                `<span>` masquée dans celui du bureau : couper la phrase en
+                deux changeait le lissage du texte de bureau. */}
+            <p data-mobile-seulement="" className={v3.lead}>
+              Le point commun des six offres.
+            </p>
           </div>
 
           <div
             className="mg-steps"
+            data-doublon-mobile=""
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(4,minmax(0,1fr))",
@@ -159,7 +171,7 @@ export default function MethodeQuatreEtapes({
           </div>
 
           {active ? (
-            <div style={VERRE}>
+            <div data-doublon-mobile="" style={VERRE}>
               <div
                 className="mg-r2"
                 style={{
@@ -236,7 +248,10 @@ export default function MethodeQuatreEtapes({
             </div>
           ) : null}
 
+          <FriseEtapes etapes={etapes} />
+
           <div
+            className={v3.aplat}
             style={{
               display: "flex",
               alignItems: "center",
@@ -251,6 +266,7 @@ export default function MethodeQuatreEtapes({
             }}
           >
             <div
+              className={v3.masque}
               style={{
                 position: "absolute",
                 width: 320,
@@ -263,6 +279,7 @@ export default function MethodeQuatreEtapes({
               }}
             />
             <span
+              className={v3.surtitre}
               style={{
                 font: "600 10.5px var(--fb)",
                 letterSpacing: ".12em",
@@ -275,6 +292,7 @@ export default function MethodeQuatreEtapes({
               Si ça ne va pas
             </span>
             <span
+              className={v3.texte}
               style={{
                 font: "400 14.5px/1.6 var(--fb)",
                 color: "rgba(255,255,255,.72)",
@@ -295,7 +313,7 @@ export default function MethodeQuatreEtapes({
             </span>
             <a
               href={lienQualification}
-              className={styles.lienQualification}
+              className={`${styles.lienQualification} ${v3.bouton}`}
               style={{
                 font: "600 13.5px var(--fb)",
                 color: "var(--acc)",
@@ -304,7 +322,8 @@ export default function MethodeQuatreEtapes({
                 position: "relative",
               }}
             >
-              Démarrer une qualification &rarr;
+              Démarrer une qualification{" "}
+              <span aria-hidden="true" className={v3.boutonFleche}>&rarr;</span>
             </a>
           </div>
         </div>

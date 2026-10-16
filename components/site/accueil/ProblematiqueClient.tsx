@@ -1,4 +1,5 @@
 import styles from "./ProblematiqueClient.module.css";
+import v3 from "./mobile-v3/accueil-v3.module.css";
 import replis from "./replis-accueil.module.css";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
@@ -41,11 +42,11 @@ const PREUVES: readonly {
 
 export default function ProblematiqueClient() {
   return (
-    <section className={replis.repli} style={{ padding: "var(--sec) 0 0" }}>
+    <section className={replis.repli} data-accueil-v3="" style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <SectionPliableMobile kicker={SURTITRE_TEXTE} titre={TITRE_TEXTE}>
         <div
-          className="mg-r2" data-reveal=""
+          className={`mg-r2 ${v3.pile}`} data-reveal=""
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
@@ -79,6 +80,7 @@ export default function ProblematiqueClient() {
               {TITRE_TEXTE}
             </h2>
             <p
+              className={v3.lead}
               style={{
                 font: "400 16.5px/1.7 var(--fb)",
                 color: "var(--ink2)",
@@ -91,6 +93,7 @@ export default function ProblematiqueClient() {
               pour les mêmes raisons.
             </p>
             <p
+              className={v3.texte}
               style={{
                 font: "400 16.5px/1.7 var(--fb)",
                 color: "var(--ink2)",
@@ -104,11 +107,11 @@ export default function ProblematiqueClient() {
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "12px" }}>
+          <div className={v3.tuiles} style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "12px" }}>
             {PREUVES.map((preuve) => (
               <div
                 key={preuve.titre}
-                className={styles.cartePreuve}
+                className={`${styles.cartePreuve} ${v3.tuile}`}
                 style={{
                   background: "rgba(255,255,255,var(--gl-a))",
                   backdropFilter: "blur(var(--gl-b)) saturate(150%)",
@@ -119,9 +122,11 @@ export default function ProblematiqueClient() {
                 }}
               >
                 <div
+                  className={v3.pile}
                   style={{ display: "flex", alignItems: "baseline", gap: "16px" }}
                 >
                   <span
+                    className={v3.tuileValeur}
                     style={{
                       font: "600 30px var(--ft)",
                       letterSpacing: "-.05em",
@@ -133,6 +138,7 @@ export default function ProblematiqueClient() {
                   </span>
                   <div>
                     <div
+                      className={v3.tuileTitre}
                       style={{
                         font: "600 16px var(--ft)",
                         letterSpacing: "-.02em",
@@ -141,6 +147,7 @@ export default function ProblematiqueClient() {
                       {preuve.titre}
                     </div>
                     <div
+                      className={v3.tuileTexte}
                       style={{
                         font: "400 14px/1.55 var(--fb)",
                         color: "var(--ink2)",
