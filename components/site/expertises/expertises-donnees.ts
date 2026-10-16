@@ -3,6 +3,7 @@ import type {
   ContenuHubExpertises,
 } from "@/types/expertises";
 
+import type { ProblemeMobile } from "@/components/site/offre/ProblemeOffre";
 import { photosDesCibles } from "@/lib/photo-de-la-cible";
 
 /**
@@ -447,6 +448,17 @@ const CONTENU_HUB_EXPERTISES_DECLARE: ContenuHubExpertises = {
    `lib/photo-de-la-cible.ts` : 46 images etaient ecrites en dur et quatre
    d'entre elles couvraient quatre des six pages de hub. */
 export const CONTENU_HUB_EXPERTISES: ContenuHubExpertises = photosDesCibles(CONTENU_HUB_EXPERTISES_DECLARE);
+
+/**
+ * La phrase qui clôt « Le problème » dans le corpus (`expertises.md`, L58),
+ * MOT POUR MOT : la maquette V3 la rend en fin de carte au téléphone, la
+ * capture de bureau non (`ProblemeOffre.mobile`, sous 881 px seulement).
+ */
+export const PROBLEME_MOBILE_HUB: ProblemeMobile = {
+  apres: [
+    "Le problème n'est pas de trouver un prestataire. C'est de trouver la compétence au bon moment, et de savoir qui vient.",
+  ],
+};
 
 /**
  * L'ANCIENNE FORME, PLUS RENDUE : c'est la ligne que la base porte encore pour

@@ -41,6 +41,8 @@ import { altPhoto } from "@/lib/descriptions-photos";
 export interface ProprietesDomainesSpecialite {
   titre: string;
   cartes: readonly CarteDomaineSpecialite[];
+  /** `CACHE_MOBILE` quand la carte « La réponse directe » reprend ces chiffres. */
+  className?: string;
 }
 
 const ENTETE: CSSProperties = { marginBottom: 30 };
@@ -115,9 +117,10 @@ const PHRASE: CSSProperties = {
 export default function DomainesSpecialite({
   titre,
   cartes,
+  className,
 }: ProprietesDomainesSpecialite) {
   return (
-    <section style={SECTION}>
+    <section className={className} style={SECTION}>
       <div style={LARGEUR}>
         <div style={ENTETE}>
           <div style={SURTITRE}>Nos domaines</div>

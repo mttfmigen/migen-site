@@ -5,12 +5,15 @@ import TexteRiche from "@/components/site/blocs/TexteRiche";
 import PastillesCocon from "@/components/site/cocon/PastillesCocon";
 import {
   APPEL_FINAL,
+  AppelCarteMobile,
+  CACHE_MOBILE,
+  ChiffresCarteMobile,
   FilArianeMobile,
   HERO_COMPACT,
-  MarquesRepliees,
   PANNEAU_HEROS,
   photoDeTete,
   PhotoTeteMobile,
+  PliMobile,
   QuestionFinaleMobile,
   QUEUE_MAILLAGE,
   RACINE_MOBILE,
@@ -18,6 +21,7 @@ import {
   SurtitreHerosMobile,
   TitreChiffresMobile,
   TUILES_CHIFFRES,
+  ValeurChiffre,
 } from "@/components/site/expertises/mobile";
 import TelephoneHeros from "@/components/site/offre/TelephoneHeros";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
@@ -30,6 +34,7 @@ import DerouleOffre from "@/components/site/offre/DerouleOffre";
 import GarantiesOffre from "@/components/site/offre/GarantiesOffre";
 import { liensSurs } from "@/components/site/offre/LiensOffre";
 import LogosClients from "@/components/site/offre/LogosClients";
+import MarquesOffre from "@/components/site/offre/MarquesOffre";
 import OuvreLaCible from "@/components/site/implantation/OuvreLaCible";
 import PanneauHerosRepliable from "@/components/site/implantation/PanneauHerosRepliable";
 import PointsOffre from "@/components/site/offre/PointsOffre";
@@ -56,6 +61,8 @@ import stylesOffre from "@/components/site/offre/PageOffre.module.css";
 import QuestionsPhoto from "@/components/site/offres/QuestionsPhoto";
 import type { Section, TypeSection } from "@/types/contenu";
 import type { ContenuDomaine } from "@/types/domaine";
+
+import { APPELS_GARANTIES, PROSE_OFFRE_DOMAINE, REPONSE_DIRECTE } from "../corpus-mobile";
 
 import ComplementsDomaine from "./ComplementsDomaine";
 import OffresDomaine from "./OffresDomaine";
@@ -152,6 +159,10 @@ export default function PageDomaine({
   const offre = sectionDeType(sections, "offre");
   const deroule = sectionDeType(sections, "deroule");
   const garanties = sectionDeType(sections, "garanties");
+  /* L'appel et la prose de l'offre que la V3 lit dans la fiche et que le
+     relais n'a pas : `../corpus-mobile`, au téléphone seulement. */
+  const appel = chemin ? APPELS_GARANTIES[chemin] : undefined;
+  const proseOffre = chemin ? PROSE_OFFRE_DOMAINE[chemin] : undefined;
   const preuves = sectionDeType(sections, "preuves");
   const objections = sectionDeType(sections, "objections");
   const ctaFinal = sectionDeType(sections, "ctaFinal");
@@ -286,8 +297,15 @@ export default function PageDomaine({
         {/* Les chiffres de la capture, « +200 / Clients industriels
             accompagnés » compris (README de passation : +200, jamais
             « réguliers »). `g3-hs`, comme la capture : une colonne sous 620 px. */}
+        {/* Avec « La réponse directe », la V3 range les chiffres en fin de
+            cette carte (`ChiffresCarteMobile`) : la section sort de l'écran
+            au téléphone (`CACHE_MOBILE`), comme sur le hub. */}
         {chiffres.length > 0 ? (
-          <section data-chiffres-mobile="" style={SECTION_CHIFFRES}>
+          <section
+            data-chiffres-mobile=""
+            className={aReponseDirecte ? CACHE_MOBILE : undefined}
+            style={SECTION_CHIFFRES}
+          >
             <TitreChiffresMobile />
             <div
               className={`g3-hs ${TUILES_CHIFFRES}`}
@@ -306,7 +324,9 @@ export default function PageDomaine({
                       : CARTE_CHIFFRE
                   }
                 >
-                  <div style={CHIFFRE_VALEUR}>{chiffre.valeur}</div>
+                  <div style={CHIFFRE_VALEUR}>
+                    <ValeurChiffre valeur={chiffre.valeur} />
+                  </div>
                   <div style={CHIFFRE_LIBELLE}>{chiffre.libelle}</div>
                 </div>
               ))}
@@ -342,8 +362,19 @@ export default function PageDomaine({
         {/* Des onze captures du gabarit, seule celle de
             `/expertises/types-de-maintenance/` porte cet écran, tableau
             compris. Sans donnée, rien n'est rendu. */}
+        {/* Au téléphone, la carte « 01 La réponse directe » de la V3, ouverte,
+            qui finit sur « Les chiffres Migen » ; rien ne bouge sur bureau. */}
         {contenu.complementTypes?.length ? (
-          <ComplementsDomaine blocs={contenu.complementTypes} />
+          <PliMobile pleinePage toujoursOuvert titre="La réponse directe">
+            <ComplementsDomaine
+              blocs={contenu.complementTypes}
+              corpus={chemin ? REPONSE_DIRECTE[chemin] : undefined}
+            />
+            <ChiffresCarteMobile
+              chiffres={chiffres}
+              valeurs={chemin ? REPONSE_DIRECTE[chemin]?.chiffres : undefined}
+            />
+          </PliMobile>
         ) : null}
 
         {/* ------------------------------------------ 4. « 03 Problème » */}
@@ -363,7 +394,11 @@ export default function PageDomaine({
         <>
         {/* --------------------------------------------- 5. « 04 Offre » */}
 
-        {offre ? <PointsOffre section={offre} /> : null}
+        {/* `proseMobile` : la prose que le corpus écrit sous le tableau, DANS
+            la carte au téléphone (V3 : « Un besoin durable se couvre… »). */}
+        {offre ? (
+          <PointsOffre section={{ ...offre, prose: offre.prose ?? proseOffre }} proseMobile />
+        ) : null}
 
         {/* ------------------------------------------- 6. Appel · offre */}
 
@@ -394,7 +429,11 @@ export default function PageDomaine({
 
         {/* ----------------------------------------- 9. « 06 Garanties » */}
 
-        {garanties ? <GarantiesOffre section={garanties} /> : null}
+        {/* L'appel du corpus sous les garanties, dans la carte au téléphone
+            (`AppelCarteMobile`, V3). */}
+        {garanties ? (
+          <GarantiesOffre section={garanties} apres={<AppelCarteMobile cta={appel} />} />
+        ) : null}
 
         {/* Secteurs, offres, marques et références : une section pour la
             cadence, celle des références. */}
@@ -410,7 +449,7 @@ export default function PageDomaine({
         {/* ------------------------------- 12. « Marques maintenues » */}
 
         {contenu.marquesFamille ? (
-          <MarquesRepliees
+          <MarquesOffre
             famille={contenu.marquesFamille}
             familles={contenu.marquesFamilles}
           />

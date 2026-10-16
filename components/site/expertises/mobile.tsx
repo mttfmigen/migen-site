@@ -3,7 +3,6 @@ import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 
 import { FilArianeVue } from "@/components/cocon/FilAriane";
-import { LARGEUR } from "@/components/site/blocs/habillage";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
 import {
@@ -12,17 +11,15 @@ import {
   gabaritDe,
   parentDe,
 } from "@/components/site/cocon/maillage-mobile";
-import MarquesOffre, {
-  type ProprietesMarquesOffre,
-} from "@/components/site/offre/MarquesOffre";
-import { TELEPHONE_SITE } from "@/components/site/entete-donnees";
 import { accrocheDeLOffre } from "@/components/site/offre/PointsOffre";
 import { CIBLE_CONTACT } from "@/components/site/mobile/conversion-donnees";
+import { IconeFleche } from "@/components/site/mobile/BarreCollanteMobile";
 import { altPhoto } from "@/lib/descriptions-photos";
-import type { Paragraphe, SectionOffre } from "@/types/contenu";
+import type { SectionCta, SectionOffre } from "@/types/contenu";
 import type { BlocComplement } from "@/types/offre";
 
 import s from "./mobile.module.css";
+import v3 from "./mobile-v3.module.css";
 
 /**
  * LA COUCHE MOBILE DES GABARITS EXPERTISES (05 Spécialité, 09 Domaine, 10 hub
@@ -146,8 +143,9 @@ export function FilArianeMobile({ chemin }: { chemin: string }) {
 
 /* --------------------------------------------------------- les classes */
 
-/** La racine des trois gabarits : `--sec` à 120 px, 64 px sous 881 px. */
-export const RACINE_MOBILE = s.racine;
+/** La racine des trois gabarits : `--sec` à 120 px, 64 px sous 881 px. Elle
+    porte aussi la racine des dessins V3 (`mobile-v3.module.css`). */
+export const RACINE_MOBILE = `${s.racine} ${v3.racine}`;
 
 /** Le héros compact (G2), posé sur la `<section>` du héros. */
 export const HERO_COMPACT = s.heroCompact;
@@ -293,10 +291,9 @@ export const APPEL_FINAL = s.appelFinal;
  * LA QUESTION DE L'APPEL FINAL, 7E CARTE DE LA FAQ AU TÉLÉPHONE (maquette
  * mobile v2 : « Besoin d'un seul interlocuteur… ? » sous les questions). Le
  * H2 de « 10 Appel final » qui la porte sur bureau n'est plus à l'écran sous
- * 881 px (`APPEL_FINAL`). Réponse : le bouton et le téléphone de la page,
- * puis la phrase de rappel du corpus quand il en a une ; même montage que
- * `secteur/MobileSecteur.tsx`. Dessin des cartes de FAQ du socle
- * (`data-faq-liste`, `app/globals.css`).
+ * 881 px (`APPEL_FINAL`). Réponse : le bouton orange à pastille flèche de la
+ * V3, puis la phrase de rappel du corpus quand il en a une (`BoutonEtRappel`).
+ * Dessin des cartes de FAQ du socle (`data-faq-liste`, `app/globals.css`).
  */
 export function QuestionFinaleMobile({
   cta,
@@ -315,14 +312,8 @@ export function QuestionFinaleMobile({
             +
           </span>
         </summary>
-        <div className={s.reponseFinale}>
-          <p>
-            <a href={cta.href && !cta.href.startsWith("#") ? cta.href : CIBLE_CONTACT}>
-              {cta.bouton}
-            </a>{" "}
-            · <a href={TELEPHONE_SITE.href}>{TELEPHONE_SITE.affichage}</a>
-          </p>
-          {cta.rappel ? <p>{cta.rappel}</p> : null}
+        <div className={`${s.reponseFinale} ${v3.appelCarte}`}>
+          <BoutonEtRappel cta={cta} />
         </div>
       </details>
     </div>
@@ -342,8 +333,8 @@ export const QUEUE_MAILLAGE = s.queueMaillage;
 export const SANS_NUMERO = s.sansNumero;
 /** Une liste mobile de la carte 01 (domaines, types, chiffres). */
 export const LISTE_MOBILE = s.listeMobile;
-/** La phrase qui ouvre une liste de la carte 01 (dc.html `isP`, liens soulignés). */
-export const INTRO_MOBILE = s.introMobile;
+/** Le titre en gras d'une liste de la carte 01 (V3 : « Les huit domaines… : »). */
+export const TITRE_LISTE = s.titreListe;
 /** Première lettre en minuscule (« roulements, réducteurs… » de la maquette). */
 export const MINUSCULE = s.minuscule;
 
@@ -367,32 +358,94 @@ export function phraseAvecLien(texte: string, nom: string, href: string): ReactN
   );
 }
 
+/** « + 120 » de la capture de bureau, « +120 » de la V3 au téléphone. */
+const valeurMobile = (valeur: string) => valeur.replace(/^\+\s+/, "+");
+
 /**
- * « Les chiffres Migen », EN FIN DE CARTE 01 au téléphone (maquette mobile
- * v2) : une sous-carte numérotée par chiffre, la valeur en gras puis son
- * libellé. Mêmes mots que la section des chiffres du bureau, qui, elle, sort
- * de l'écran sous 881 px (`CACHE_MOBILE`).
+ * LA VALEUR D'UN CHIFFRE CLÉ, pour les tuiles des trois gabarits : telle que
+ * la capture l'écrit au-dessus de 880 px, telle que la V3 l'écrit en dessous
+ * (`valeurMobile`). Une valeur que la règle ne change pas reste un seul texte.
+ */
+export function ValeurChiffre({ valeur }: { valeur: string }) {
+  const mobile = valeurMobile(valeur);
+  if (mobile === valeur) return valeur;
+  return (
+    <>
+      <span data-doublon-mobile="">{valeur}</span>
+      <span data-mobile-seulement="">{mobile}</span>
+    </>
+  );
+}
+
+/**
+ * « Les chiffres Migen », EN FIN DE CARTE 01 au téléphone : les tuiles 2 x 2
+ * de la maquette V3 (valeur orange, libellé dessous), et non plus les
+ * sous-cartes numérotées de la v2. Mêmes mots que la section des chiffres du
+ * bureau, qui, elle, sort de l'écran sous 881 px (`CACHE_MOBILE`).
  */
 export function ChiffresCarteMobile({
   chiffres,
+  valeurs,
 }: {
   chiffres: readonly { valeur: string; libelle: string }[];
+  /** Les valeurs que la fiche garde (`REPONSE_DIRECTE.chiffres`) : les autres
+      chiffres de la page restent hors de la carte. */
+  valeurs?: readonly string[];
 }) {
-  if (chiffres.length === 0) return null;
+  const retenus = valeurs
+    ? chiffres.filter((chiffre) => valeurs.includes(valeurMobile(chiffre.valeur)))
+    : chiffres;
+  if (retenus.length === 0) return null;
   return (
     <div data-mobile-seulement="" className={s.listeMobile}>
       <p className={s.titreListe}>Les chiffres Migen</p>
-      <div data-mm-kv="" data-mm-compteur="">
-        {chiffres.map((chiffre) => (
+      <div className={s.tuilesCarte}>
+        {retenus.map((chiffre) => (
           <div key={`${chiffre.valeur}-${chiffre.libelle}`}>
-            <div data-mm-kv-titre="">{chiffre.valeur}</div>
-            <p data-mm-kv-texte="" className={s.minuscule}>
+            <div data-tuile-valeur="">{valeurMobile(chiffre.valeur)}</div>
+            <p data-tuile-libelle="" className={s.minuscule}>
               {chiffre.libelle}
             </p>
           </div>
         ))}
       </div>
     </div>
+  );
+}
+
+/**
+ * L'APPEL QUI CLÔT « Ce que nous garantissons » AU TÉLÉPHONE (maquette V3) :
+ * la question du bloc d'appel que le corpus écrit sous les garanties
+ * (section `cta`), le bouton à pastille flèche vers `/contact/`, puis la
+ * phrase de rappel. Le bureau ne rend pas ce bloc (capture), d'où
+ * `data-mobile-seulement` ; posé par `GarantiesOffre.apres`, dans la carte.
+ */
+export function AppelCarteMobile({ cta }: { cta?: SectionCta }) {
+  if (!cta?.question) return null;
+  return (
+    <div data-mobile-seulement="" className={v3.appelCarte}>
+      <p data-appel-question="">
+        <TexteRiche texte={cta.question} />
+      </p>
+      <BoutonEtRappel cta={cta} />
+    </div>
+  );
+}
+
+/** Le bouton orange à pastille flèche de la V3 (`/contact/` par défaut), puis
+    la phrase de rappel du corpus quand il y en a une. */
+function BoutonEtRappel({ cta }: { cta: Omit<SectionCta, "type"> }) {
+  const href = cta.href && !cta.href.startsWith("#") ? cta.href : CIBLE_CONTACT;
+  return (
+    <>
+      <Link href={href} prefetch={false} data-appel-bouton="">
+        <span>{cta.bouton}</span>
+        <span data-appel-fleche="">
+          <IconeFleche />
+        </span>
+      </Link>
+      {cta.rappel ? <p data-appel-rappel="">{cta.rappel}</p> : null}
+    </>
   );
 }
 
@@ -572,28 +625,6 @@ export function PliMobile({
   );
 }
 
-/**
- * G3, « MARQUES ET CONSTRUCTEURS » REPLIÉ AU TÉLÉPHONE. Section de bureau du
- * gabarit 03 (`offre/MarquesOffre`), absente de la maquette mobile : 1 150 px
- * de cartes de logos à 390 px. Le bloc partagé n'a pas de repli sur demande ;
- * il est donc enveloppé ICI, pour nos trois gabarits seulement. L'étiquette
- * reprend son surtitre et son H2 mot pour mot : c'est un doublon du titre de
- * la section, et la bascule est retirée du bureau.
- */
-export function MarquesRepliees(props: ProprietesMarquesOffre) {
-  return (
-    <PliMobile
-      pleinePage
-      numero={false}
-      apresSections
-      surtitre="Marques et constructeurs"
-      titre="Les équipements que nous maintenons déjà"
-    >
-      <MarquesOffre {...props} />
-    </PliMobile>
-  );
-}
-
 /* -------------------------------------------- la prose de « L'offre » */
 
 /**
@@ -610,42 +641,4 @@ export function resumeOffre(
   complements: readonly BlocComplement[] | undefined,
 ): string | undefined {
   return accrocheDeLOffre(offre, [complements?.[0]?.texte]);
-}
-
-/* dc.html L130, paragraphe de section (`isP`) : 400 15px/1.6, encre seconde. */
-const PARAGRAPHE: CSSProperties = {
-  margin: "14px 0 0",
-  font: "400 15px/1.6 var(--fb)",
-  color: "var(--ink1)",
-  maxWidth: "66ch",
-  textWrap: "pretty",
-};
-
-/**
- * LA PROSE DE « L'offre » D'UNE SPÉCIALITÉ, AU TÉLÉPHONE SEULEMENT (M2).
- *
- * Chaque fiche du gabarit 05 écrit sous le tableau de l'offre un paragraphe de
- * maillage, trois à cinq liens internes. Le relais l'avait perdu ; il est
- * remis verbatim par `scripts/restaure-corpus-expertises.mjs`.
- *
- * Les deux références ne disent pas la même chose, et `data-mobile-seulement`
- * les sert toutes les deux : la capture de BUREAU ne rend pas ce paragraphe
- * (`offre/PointsOffre.tsx` le déclare), la maquette MOBILE le rend, liens
- * compris. Le texte est donc dans le DOM à toutes les largeurs, visible sous
- * 881 px seulement, et le bureau ne bouge pas d'un pixel.
- */
-export function ProseOffreMobile({ prose }: { prose: readonly Paragraphe[] }) {
-  const pleins = prose.filter((p) => p.texte.trim() !== "");
-  if (pleins.length === 0) return null;
-  return (
-    <section data-mobile-seulement="" data-prose-offre-mobile="">
-      <div className={s.prose} style={LARGEUR}>
-        {pleins.map((paragraphe) => (
-          <p key={paragraphe.texte} style={PARAGRAPHE}>
-            <TexteRiche texte={paragraphe.texte} />
-          </p>
-        ))}
-      </div>
-    </section>
-  );
 }

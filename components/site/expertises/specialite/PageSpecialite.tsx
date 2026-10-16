@@ -5,13 +5,15 @@ import TexteRiche from "@/components/site/blocs/TexteRiche";
 import PastillesCocon from "@/components/site/cocon/PastillesCocon";
 import {
   APPEL_FINAL,
+  AppelCarteMobile,
+  CACHE_MOBILE,
+  ChiffresCarteMobile,
   FilArianeMobile,
   HERO_COMPACT,
-  MarquesRepliees,
   PANNEAU_HEROS,
   photoDeTete,
   PhotoTeteMobile,
-  ProseOffreMobile,
+  PliMobile,
   PuceParent,
   QuestionFinaleMobile,
   QUEUE_MAILLAGE,
@@ -21,10 +23,12 @@ import {
   SurtitreHerosMobile,
   TitreChiffresMobile,
   TUILES_CHIFFRES,
+  ValeurChiffre,
 } from "@/components/site/expertises/mobile";
 import TelephoneHeros from "@/components/site/offre/TelephoneHeros";
 import OffresDomaine from "@/components/site/expertises/domaine/OffresDomaine";
 import ProblemeDomaine from "@/components/site/expertises/domaine/ProblemeDomaine";
+import ComplementsDomaine from "@/components/site/expertises/domaine/ComplementsDomaine";
 import SecteursDomaine from "@/components/site/expertises/domaine/SecteursDomaine";
 import AppelFinal from "@/components/site/offre/AppelFinal";
 import ComplementsOffre from "@/components/site/offre/ComplementsOffre";
@@ -32,6 +36,7 @@ import DerouleOffre from "@/components/site/offre/DerouleOffre";
 import GarantiesOffre from "@/components/site/offre/GarantiesOffre";
 import { liensSurs } from "@/components/site/offre/LiensOffre";
 import LogosClients from "@/components/site/offre/LogosClients";
+import MarquesOffre from "@/components/site/offre/MarquesOffre";
 import OuvreLaCible from "@/components/site/implantation/OuvreLaCible";
 import PanneauHerosRepliable from "@/components/site/implantation/PanneauHerosRepliable";
 import PointsOffre from "@/components/site/offre/PointsOffre";
@@ -62,7 +67,8 @@ import { CIBLE_CONTACT } from "@/components/site/mobile/conversion-donnees";
 import type { Section, TypeSection } from "@/types/contenu";
 import type { ContenuSpecialite } from "@/types/specialite";
 
-import ComplementSpecialite from "./ComplementSpecialite";
+import { APPELS_GARANTIES, REPONSE_DIRECTE } from "../corpus-mobile";
+
 import DomainesSpecialite from "./DomainesSpecialite";
 import styles from "./PageSpecialite.module.css";
 
@@ -81,7 +87,7 @@ import styles from "./PageSpecialite.module.css";
  *  —  02 Domaines    absent des pilotes, rendu si la donnée le porte
  *                    (conditionnelle, préventive, prévisionnelle : 17 sections)
  *  —  Complément 2   absent des pilotes, la prose à tableaux de six types de
- *                    maintenance                     → `ComplementSpecialite`
+ *                    maintenance                     → `ComplementsDomaine`
  *  4. 03 Problème    « Votre problématique », puces 01-04     ← corpus
  *                    trois dessins, `variante`        → `ProblemeDomaine`
  *  5. 04 Offre       « L'offre », 7 points                     ← corpus
@@ -161,6 +167,9 @@ export default function PageSpecialite({
   const offre = sectionDeType(sections, "offre");
   const deroule = sectionDeType(sections, "deroule");
   const garanties = sectionDeType(sections, "garanties");
+  /* L'appel que la V3 lit dans la fiche et que le relais n'a pas
+     (`../corpus-mobile`), au téléphone seulement. */
+  const appel = chemin ? APPELS_GARANTIES[chemin] : undefined;
   const preuves = sectionDeType(sections, "preuves");
   const objections = sectionDeType(sections, "objections");
   const ctaFinal = sectionDeType(sections, "ctaFinal");
@@ -176,6 +185,15 @@ export default function PageSpecialite({
   const aReponseDirecte =
     !!(contenu.domainesTitre && contenu.domaines?.length) ||
     !!contenu.complementTypes?.length;
+
+  /* Au téléphone, la V3 range les chiffres EN FIN de la carte « 01 La réponse
+     directe » (« Les chiffres Migen », tuiles) : ceux des cartes photo de
+     « 02 Domaines » quand la page en a, sinon ceux de la page. Les deux écrans
+     de bureau sortent alors de l'écran sous 881 px (`CACHE_MOBILE`). */
+  const aComplement = !!contenu.complementTypes?.length;
+  const chiffresCarte = contenu.domaines?.length
+    ? contenu.domaines.map((d) => ({ valeur: d.valeur, libelle: d.texte ?? "" }))
+    : chiffres;
 
   /* Le bouton du photo + CTA mobile : le CTA de la fiche (dc.html L412,
      `P.cta`), le libellé du bouton du héros, vers `/contact/` comme dans la
@@ -305,7 +323,11 @@ export default function PageSpecialite({
             accompagnés » compris (README de passation : +200, jamais
             « réguliers »). `g3-hs`, comme la capture : une colonne sous 620 px. */}
         {chiffres.length > 0 ? (
-          <section data-chiffres-mobile="" style={SECTION_CHIFFRES}>
+          <section
+            data-chiffres-mobile=""
+            className={aComplement ? CACHE_MOBILE : undefined}
+            style={SECTION_CHIFFRES}
+          >
             <TitreChiffresMobile />
             <div
               className={`g3-hs ${TUILES_CHIFFRES}`}
@@ -324,7 +346,9 @@ export default function PageSpecialite({
                       : CARTE_CHIFFRE
                   }
                 >
-                  <div style={CHIFFRE_VALEUR}>{chiffre.valeur}</div>
+                  <div style={CHIFFRE_VALEUR}>
+                    <ValeurChiffre valeur={chiffre.valeur} />
+                  </div>
                   <div style={CHIFFRE_LIBELLE}>{chiffre.libelle}</div>
                 </div>
               ))}
@@ -362,7 +386,7 @@ export default function PageSpecialite({
         {/* ------------------- 3 bis et 3 ter. « 02 Domaines », « Complément 2 » */}
 
         {/* Absents des pilotes. Rendus par les types de maintenance : voir
-            `DomainesSpecialite.tsx` et `ComplementSpecialite.tsx`. C'est « La
+            `DomainesSpecialite.tsx` et `domaine/ComplementsDomaine.tsx`. C'est « La
             réponse directe » du corpus : UNE section pour la cadence, ouverte
             au téléphone comme la première section de la maquette. */}
         {aReponseDirecte ? (
@@ -371,10 +395,20 @@ export default function PageSpecialite({
               <DomainesSpecialite
                 titre={contenu.domainesTitre}
                 cartes={contenu.domaines}
+                className={aComplement ? CACHE_MOBILE : undefined}
               />
             ) : null}
-            {contenu.complementTypes?.length ? (
-              <ComplementSpecialite blocs={contenu.complementTypes} />
+            {aComplement ? (
+              <PliMobile pleinePage toujoursOuvert titre="La réponse directe">
+                <ComplementsDomaine
+                  blocs={contenu.complementTypes ?? []}
+                  corpus={chemin ? REPONSE_DIRECTE[chemin] : undefined}
+                />
+                <ChiffresCarteMobile
+                  chiffres={chiffresCarte}
+                  valeurs={chemin ? REPONSE_DIRECTE[chemin]?.chiffres : undefined}
+                />
+              </PliMobile>
             ) : null}
           </>
         ) : null}
@@ -406,12 +440,10 @@ export default function PageSpecialite({
           <PointsOffre
             section={offre}
             resume={resumeOffre(offre, contenu.complementOffre)}
+            proseMobile
           />
         ) : null}
 
-        {/* La prose de l'offre et ses liens internes, au téléphone seulement :
-            voir `ProseOffreMobile`. */}
-        {offre?.prose?.length ? <ProseOffreMobile prose={offre.prose} /> : null}
 
         {/* ------------------------------------------- 6. Appel · offre */}
 
@@ -512,7 +544,11 @@ export default function PageSpecialite({
 
         {/* ----------------------------------------- 8. « 06 Garanties » */}
 
-        {garanties ? <GarantiesOffre section={garanties} /> : null}
+        {/* L'appel du corpus sous les garanties, dans la carte au téléphone
+            (`AppelCarteMobile`, V3). */}
+        {garanties ? (
+          <GarantiesOffre section={garanties} apres={<AppelCarteMobile cta={appel} />} />
+        ) : null}
 
         {/* Secteurs, offres, marques et références : une section pour la
             cadence, celle des références (voir plus haut). */}
@@ -532,7 +568,7 @@ export default function PageSpecialite({
             monte, et sans lui la section est celle de fanuc, une famille
             seule. Les comptes viennent de `marques-donnees.ts`, pas d'ici. */}
         {contenu.marquesFamille ? (
-          <MarquesRepliees
+          <MarquesOffre
             famille={contenu.marquesFamille}
             familles={contenu.marquesFamilles}
           />

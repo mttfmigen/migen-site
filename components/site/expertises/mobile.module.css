@@ -80,15 +80,17 @@
   }
 }
 
-/* Les liens de la prose de « L'offre » : soulignés, graisse 600, encre du
-   texte (dc.html L130, liens des paragraphes `isP`). */
-.prose a {
-  color: var(--ink);
-  font-weight: 600;
-  text-decoration: underline;
-  text-decoration-color: rgba(28, 27, 25, 0.28);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
+/* Les liens d'un paragraphe de carte (la prose de « L'offre ») : soulignés,
+   graisse 600, encre du texte (dc.html L130, liens des paragraphes `isP`). */
+@media (max-width: 880px) {
+  .racine [data-mm-paragraphe] a {
+    color: var(--ink);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: rgba(28, 27, 25, 0.28);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
 }
 
 /*
@@ -271,56 +273,18 @@
   }
 }
 
-/* ============================ la prose de « L'offre », dans sa carte
+/* ====================== « Complément 4 » replié avec la carte « L'offre »
 
-   La maquette range la prose de l'offre d'une spécialité DANS la carte
-   « L'offre » (`ProseOffreMobile`, juste après `offre/PointsOffre`). Carte
-   fermée, la prose est repliée avec elle ; ouverte, elle en prolonge le
-   corps : même fond, même filet, coins du bas reportés sur elle. */
-/* Même repli pour « Complément 4 » (`offre/ComplementsOffre`), la phrase
-   que la maquette met en tête de cette même carte : la section sans repli
-   qui suit la bande d'appel (masquée au téléphone), hors ajouts mobiles.
-   Carte ouverte, elle reste sa propre carte dessous (pas de `:has()`
-   imbriqué pour la souder). */
+   La phrase que la maquette met en tête de cette même carte
+   (`offre/ComplementsOffre`) : la section sans repli qui suit la bande
+   d'appel (masquée au téléphone), hors ajouts mobiles. Carte fermée, elle
+   est repliée avec elle ; ouverte, elle reste sa propre carte dessous. */
 @media (max-width: 880px) {
-  .racine section:has(> div > details[data-carte-numerotee]:not([open])) + [data-prose-offre-mobile],
   .racine
     section:has(> div > details[data-carte-numerotee]:not([open]))
-    + [data-bande-appel]
-    + section:not([data-mobile-seulement]):not(:has(details)),
-  .racine
-    section:has(> div > details[data-carte-numerotee]:not([open]))
-    + [data-prose-offre-mobile]
     + [data-bande-appel]
     + section:not([data-mobile-seulement]):not(:has(details)) {
     display: none !important;
-  }
-
-  /* Ouverte : la carte reporte ses coins du bas sur la prose qui la suit. */
-  .racine section:has(> div > details[data-carte-numerotee][open]):has(+ [data-prose-offre-mobile]) {
-    padding-bottom: 0 !important;
-  }
-  .racine
-    section:has(> div > details[data-carte-numerotee][open]):has(+ [data-prose-offre-mobile])
-    details[data-carte-numerotee]
-    > summary
-    ~ :last-child {
-    border-bottom: 0 !important;
-    border-radius: 0 !important;
-  }
-  .racine section:has(> div > details[data-carte-numerotee][open]) + [data-prose-offre-mobile] {
-    padding: 0 18px !important;
-  }
-  .racine section:has(> div > details[data-carte-numerotee][open]) + [data-prose-offre-mobile] > div {
-    /* garde la marge haute du premier paragraphe dans la carte */
-    display: flow-root;
-    max-width: none !important;
-    margin: 0 !important;
-    padding: 0 16px 14px !important;
-    border: 1px solid var(--mm-filet);
-    border-top: 0;
-    border-radius: 0 0 var(--mm-rayon-carte) var(--mm-rayon-carte);
-    background: var(--card);
   }
 }
 
@@ -423,7 +387,7 @@
   .racine [data-reponse-directe] [data-mm-texte] {
     display: inline !important;
     margin: 0 !important;
-    font: 400 16px/1.6 var(--fb) !important;
+    font: 500 16px/1.6 var(--fb) !important;
     letter-spacing: 0 !important;
     text-transform: none !important;
     color: var(--ink) !important;
@@ -447,20 +411,48 @@
   .listeMobile {
     margin: 4px 0 0;
   }
+  /* V3, paragraphe de carte (`isP`) : 15 px, encre seconde, tête en gras. */
   .introMobile {
     margin: 0 0 12px;
-    font: 400 16px/1.6 var(--fb);
-    color: var(--ink);
+    font: 400 15px/1.65 var(--fb);
+    color: var(--ink1);
     text-wrap: pretty;
   }
   .introMobile strong {
     font-weight: 600;
-  }
-  .titreListe {
-    margin: 4px 0 12px;
-    font: 600 17px/1.35 var(--ft);
-    letter-spacing: -0.02em;
     color: var(--ink);
+  }
+  /* V3, phrase en gras qui ouvre une liste (« Les huit domaines… : »,
+     « Les chiffres Migen »). */
+  .titreListe {
+    margin: 6px 0 14px;
+    font: 600 17px/1.45 var(--ft);
+    color: var(--ink);
+    text-wrap: pretty;
+  }
+  /* V3, « Les chiffres Migen » en tuiles 2 x 2 : valeur orange, libellé dessous. */
+  .tuilesCarte {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin: 4px 0 14px;
+  }
+  .tuilesCarte > div {
+    min-width: 0;
+    padding: 14px 14px 13px;
+    border-radius: 16px;
+    background: var(--mm-fond-doux);
+    border: 1px solid var(--mm-bord-doux);
+  }
+  .tuilesCarte [data-tuile-valeur] {
+    font: 700 24px/1 var(--ft);
+    letter-spacing: -0.045em;
+    color: var(--acc);
+  }
+  .tuilesCarte [data-tuile-libelle] {
+    margin: 7px 0 0;
+    font: 400 12.5px/1.45 var(--fb);
+    color: var(--ink1);
   }
   .introMobile a,
   .listeMobile [data-mm-kv-texte] a {
@@ -528,17 +520,18 @@
   .questionFinale {
     margin: 8px 18px 0;
   }
+  /* Le corps de la carte de FAQ de la V3 (padding 0 16 6) ; le bouton et
+     le rappel sont ceux de `.appelCarte` (`mobile-v3.module.css`). */
   .reponseFinale {
-    padding: 0 16px 15px;
-    font: 400 14px/1.6 var(--fb);
-    color: var(--ink1);
+    padding: 0 16px 6px;
   }
-  .reponseFinale p {
-    margin: 0 0 6px;
-  }
-  .reponseFinale a {
-    color: var(--mm-lien);
-    font-weight: 600;
+  /* LA RÉPONSE D'UNE QUESTION DE FAQ (`offres/QuestionsPhoto`), dessin de la
+     V3 : 16 px en 500, encre pleine, à 16 px du bord de la carte comme le
+     titre (la règle des cartes de bureau la décalait à 26 px). */
+  .racine :global(details.cx-faq) > summary ~ div:not(.reponseFinale) {
+    padding: 0 16px 18px !important;
+    font: 500 16px/1.6 var(--fb) !important;
+    color: var(--ink) !important;
   }
 }
 
@@ -568,8 +561,14 @@
   .racine [data-panneau-mobile-clair] [data-mm-surtitre] {
     display: none !important;
   }
-  .racine [data-panneau-mobile-clair] [data-mm-kv] {
+  .racine [data-panneau-mobile-clair] [data-mm-kv]:not([data-mm-compteur]) {
     margin-top: 14px !important;
+  }
+  /* Les garanties (`data-mm-compteur`) : l'écart de 8 px de la V3 entre deux
+     sous-cartes, que `details[data-carte-numerotee] .mg-r2` (socle) ramenait
+     à 4 px. */
+  :root .racine details[data-carte-numerotee] [data-mm-kv][data-mm-compteur] {
+    gap: 8px !important;
   }
   .racine [data-entete-probleme] [data-mm-lead],
   .racine [data-entete-probleme] [data-mm-texte],

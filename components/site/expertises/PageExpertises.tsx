@@ -5,12 +5,12 @@ import TexteRiche from "@/components/site/blocs/TexteRiche";
 import PastillesCocon from "@/components/site/cocon/PastillesCocon";
 import {
   APPEL_FINAL,
+  AppelCarteMobile,
   AVANT_CHIFFRES,
   CACHE_MOBILE,
   ChiffresCarteMobile,
   FilArianeMobile,
   HERO_COMPACT,
-  MarquesRepliees,
   PANNEAU_HEROS,
   photoDeTete,
   PhotoTeteMobile,
@@ -23,6 +23,7 @@ import {
   SurtitreHerosMobile,
   TitreChiffresMobile,
   TUILES_CHIFFRES,
+  ValeurChiffre,
 } from "@/components/site/expertises/mobile";
 import TelephoneHeros from "@/components/site/offre/TelephoneHeros";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
@@ -35,6 +36,7 @@ import DerouleOffre from "@/components/site/offre/DerouleOffre";
 import GarantiesOffre from "@/components/site/offre/GarantiesOffre";
 import { liensSurs } from "@/components/site/offre/LiensOffre";
 import LogosClients from "@/components/site/offre/LogosClients";
+import MarquesOffre from "@/components/site/offre/MarquesOffre";
 import PagesLiees from "@/components/site/offre/PagesLiees";
 import OuvreLaCible from "@/components/site/implantation/OuvreLaCible";
 import PanneauHerosRepliable from "@/components/site/implantation/PanneauHerosRepliable";
@@ -69,7 +71,12 @@ import {
 } from "@/types/expertises";
 
 import Domaines from "./Domaines";
-import { CONTENU_HUB_EXPERTISES, TITRE_HUB_EXPERTISES } from "./expertises-donnees";
+import { APPELS_GARANTIES } from "./corpus-mobile";
+import {
+  CONTENU_HUB_EXPERTISES,
+  PROBLEME_MOBILE_HUB,
+  TITRE_HUB_EXPERTISES,
+} from "./expertises-donnees";
 import ReponseDirecte from "./ReponseDirecte";
 import TypesMaintenance from "./TypesMaintenance";
 
@@ -319,7 +326,9 @@ export default function PageExpertises({
                       : CARTE_CHIFFRE
                   }
                 >
-                  <div style={CHIFFRE_VALEUR}>{chiffre.valeur}</div>
+                  <div style={CHIFFRE_VALEUR}>
+                    <ValeurChiffre valeur={chiffre.valeur} />
+                  </div>
                   <div style={CHIFFRE_LIBELLE}>{chiffre.libelle}</div>
                 </div>
               ))}
@@ -378,7 +387,14 @@ export default function PageExpertises({
 
         {/* 02 de la maquette, après « La réponse directe » : replié au
             téléphone (`pli`, repli sur demande du gabarit 03). */}
-        {probleme ? <ProblemeOffre section={probleme} altPhoto={h1} pli="replie" /> : null}
+        {probleme ? (
+          <ProblemeOffre
+            section={probleme}
+            altPhoto={h1}
+            pli="replie"
+            mobile={PROBLEME_MOBILE_HUB}
+          />
+        ) : null}
 
         {offre || hub.mention || hub.appelBouton || hub.complementOffre?.length ? (
           <>
@@ -405,11 +421,15 @@ export default function PageExpertises({
             V3 : la première étape du corpus (`accrocheDuDeroule`), que la v2
             ne lisait pas. */}
         {deroule ? <DerouleOffre section={deroule} pli="replie" /> : null}
-        {garanties ? <GarantiesOffre section={garanties} /> : null}
+        {/* L'appel du corpus sous les garanties, dans la carte au téléphone
+            (`AppelCarteMobile`, V3). */}
+        {garanties ? (
+          <GarantiesOffre section={garanties} apres={<AppelCarteMobile cta={APPELS_GARANTIES["/expertises/"]} />} />
+        ) : null}
         {hub.marquesFamille || preuves ? (
           <>
             {hub.marquesFamille ? (
-              <MarquesRepliees
+              <MarquesOffre
                 famille={hub.marquesFamille}
                 familles={hub.marquesFamilles}
               />
