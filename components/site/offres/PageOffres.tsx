@@ -19,8 +19,10 @@ import HerosMobile from "@/components/site/offre/HerosMobile";
 import Reassurance from "@/components/site/offre/Reassurance";
 import ReferencesOffre from "@/components/site/offre/ReferencesOffre";
 import offre from "@/components/site/offre/PageOffre.module.css";
+import { appliqueDecisions } from "@/lib/decisions-copie";
 import {
   FIN_GARANTIES_PAR_DEFAUT,
+  finFaq,
   FINS_GARANTIES,
   OFFRES_MOBILE,
 } from "@/components/site/offre/maquette-mobile-offre";
@@ -431,7 +433,11 @@ export default function PageOffres({
               photo: "/assets/web/faq-offre.jpg",
               questions: objections.questions,
             }}
-            questionFinale={ctaFinal}
+            questionFinale={
+              ctaFinal
+                ? { ...ctaFinal, fin: finFaq(chemin, (texte) => appliqueDecisions(texte, chemin)) }
+                : undefined
+            }
           />
         ) : null}
 

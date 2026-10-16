@@ -76,10 +76,13 @@ export interface ProprietesPointsOffre {
 export function accrocheDeLOffre(
   section: SectionOffre,
   apres: readonly (string | undefined)[] = [],
+  /** Le chapô que l'appelant rend avant la liste (`decoupeComplement`). */
+  avant: readonly (string | undefined)[] = [],
 ): string | undefined {
   const premiere = section.lignes[0]?.prestation;
   return accrocheDe([
     { paragraphe: section.intro },
+    ...avant.map((texte) => ({ paragraphe: texte })),
     { cellule: premiere ? ligneDuCorpus(premiere) : undefined },
     ...(section.prose ?? []).map((p) => ({ paragraphe: ligneDuCorpus(p) })),
     ...apres.map((texte) => ({ paragraphe: texte })),

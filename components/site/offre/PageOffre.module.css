@@ -577,6 +577,39 @@
     text-underline-offset: 3px;
   }
 
+  /* Le chapô d'une carte, avant sa liste (`ComplementsDansCarte chapo`) : le
+     premier paragraphe en `lead` de la V3, 500 16px/1.6 encre ; ses liens en
+     600 encre, soulignés d'un filet gris. */
+  .gabaritOffre [data-mm-chapo] > [data-mm-paragraphe]:first-child {
+    font: 500 16px/1.6 var(--fb) !important;
+    color: var(--ink) !important;
+  }
+
+  .gabaritOffre [data-mm-chapo] a {
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: rgba(28, 27, 25, 0.28);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  /* La phrase de la V3 sous le rail, en texte courant (`phraseMobile`) :
+     400 15px/1.65 `--ink1`, 12 px dessous, son lien en 600 encre. */
+  .phraseReferences {
+    margin: 0 0 12px;
+    font: 400 15px/1.65 var(--fb);
+    color: var(--ink1);
+  }
+
+  .phraseReferences a {
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration-color: rgba(28, 27, 25, 0.28);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
   /* « DÉCRIRE MON BESOIN EN DÉTAIL », DEUX FOIS DE SUITE : le lien de la carte
      « Être rappelé » et, juste dessous, la bascule du formulaire complet. La
      maquette passe de la carte au pied de page. Le formulaire complet reste
@@ -601,8 +634,10 @@
    - filet vertical de 2 px rgba(255,124,60,.22) jusqu'à l'étape suivante,
      4 px d'écart, aucun sous la dernière ;
    - titre 600 15px/1.35, texte 400 13.5px/1.55 `--ink1`, 18 px sous l'étape.
-   Le texte reste dans le document (la carte d'en-tête aussi, hors écran) ;
-   au-dessus de 880 px, aucune de ces règles n'existe. */
+   La carte d'en-tête (`derouleTitre`, « Démarrer par l'audit ») sort du rendu
+   au téléphone (`display: none`), donc aussi de l'arbre d'accessibilité : le
+   nom de la carte est déjà dans sa bascule. Au-dessus de 880 px, aucune de
+   ces règles n'existe. */
 @media (max-width: 880px) {
   :root .friseV3 > [data-mm-entete-carte] {
     display: none !important;

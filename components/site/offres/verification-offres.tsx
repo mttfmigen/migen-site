@@ -88,8 +88,16 @@ function normaliseStyle(texte: string): string {
 
 /* -------------------------------------------------- la capture, relue */
 
-/** Décisions de copie appliquées (lib/decisions-copie.ts) : la donnée les porte. */
-const CAPTURE = appliqueDecisions(lit("maquette", "rendu", "offres.html"));
+/**
+ * Décisions de copie appliquées (lib/decisions-copie.ts) : la donnée les porte.
+ * Et le compteur « 5 points » de « L'offre », retiré du rendu partout à la
+ * demande de Mehdi (3122307, « compteurs N points retirés partout ») : il
+ * sort de la capture, lui seul, au lieu de déclarer le mot « points » hors page.
+ */
+const COMPTEUR_POINTS = /<span data-dc-tpl="523"><span class="sc-interp">\d+<\/span> points<\/span>/;
+const CAPTURE_BRUTE = appliqueDecisions(lit("maquette", "rendu", "offres.html"));
+assert.ok(COMPTEUR_POINTS.test(CAPTURE_BRUTE), "le compteur « N points » n'est plus dans la capture");
+const CAPTURE = CAPTURE_BRUTE.replace(COMPTEUR_POINTS, "");
 const ECRANS_CAPTURE = CAPTURE.split(/(?=<section)/).slice(1);
 assert.equal(ECRANS_CAPTURE.length, 18, "la capture du hub compte 18 écrans");
 
@@ -105,10 +113,7 @@ const CAPTURE_STYLE = normaliseStyle(CAPTURE);
  * sélecteur d'indicatif et les astérisques du formulaire partagé
  * (`PanneauFormulaire`), qui ne sont pas de ce périmètre.
  */
-/* « points » : le libellé du compteur « N points » de « L'offre », retiré du
-   rendu à la demande de Mehdi (3122307, « compteurs N points retirés
-   partout »). La capture le porte encore ; ce n'est pas un texte perdu. */
-const HORS_PAGE = new Set(["FR +33", "BE +32", "CH +41", "ES +34", "CA +1", "AE +971", "*", "points"]);
+const HORS_PAGE = new Set(["FR +33", "BE +32", "CH +41", "ES +34", "CA +1", "AE +971", "*"]);
 
 /** Le titre repère de chaque écran, dans l'ordre de la capture. */
 const REPERES = [

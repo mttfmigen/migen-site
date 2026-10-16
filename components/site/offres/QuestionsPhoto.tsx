@@ -6,7 +6,8 @@ import styles from "./QuestionsPhoto.module.css";
 
 import { LARGEUR, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
-import { BoutonFleche } from "@/components/site/offre/AppelOffre";
+import { BoutonFleche, CorpsAppel } from "@/components/site/offre/AppelOffre";
+import type { FinFaq } from "@/components/site/offre/maquette-mobile-offre";
 import FermeAuTelephone from "@/components/site/ressource/FermeAuTelephone";
 import type { QuestionsPhotoOffres } from "@/types/offres";
 import { altPhoto } from "@/lib/descriptions-photos";
@@ -168,11 +169,57 @@ export interface QuestionFinale {
   bouton?: string;
   rappel?: string;
   /**
+   * LA RÉPONSE DESSINÉE COMME LA V3 (`FINS_FAQ`, 16/10) : bouton à pastille
+   * flèche, encart orangé ou phrase d'appel, puis « À lire aussi ». Absente,
+   * la réponse du site : le lien et le numéro, puis le rappel.
+   */
+  fin?: FinFaq;
+  /**
    * Le sur-titre de la CARTE SOMBRE (« Passer à l’action ») : quand le corpus
    * porte une section « ## CTA », la maquette rend la question de clôture en
    * carte après la FAQ (dc.html L475, `C_DARK`), pas en dernière question.
    */
   surtitre?: string;
+}
+
+/** dc.html : « [Demander un profil pour mon site](/contact/) · 04 78 33 72 05 ». */
+const TELEPHONE = "04 78 33 72 05";
+
+/** La réponse de la dernière question, au téléphone seulement. */
+function ReponseFinale({ q }: { q: QuestionFinale }) {
+  const fin = q.fin;
+  if (!fin) {
+    return (
+      <>
+        {q.bouton ? (
+          <p>
+            <Link href="/contact/">{q.bouton}</Link> · {TELEPHONE}
+          </p>
+        ) : null}
+        {q.rappel ? <p>{q.rappel}</p> : null}
+      </>
+    );
+  }
+  return (
+    <>
+      <CorpsAppel
+        fin={{ ...fin, textes: fin.textes ?? (q.rappel ? [q.rappel] : undefined) }}
+        bouton={q.bouton ? { href: "/contact/", libelle: q.bouton } : undefined}
+      />
+      {fin.aLire?.length ? (
+        <div className={styles.lireAussi}>
+          <div className={styles.lireAussiLibelle}>À lire aussi</div>
+          <div className={styles.lireAussiPastilles}>
+            {fin.aLire.map((l) => (
+              <Link key={l.href} href={l.href} prefetch={false} className={styles.pastilleLire}>
+                {l.libelle} <span aria-hidden="true">›</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      ) : null}
+    </>
+  );
 }
 
 /* La carte sombre de dc.html L131 (`isPlain`, `C_DARK`, `pad: 22px 20px`,
@@ -342,14 +389,8 @@ export default function QuestionsPhoto({
                       +
                     </span>
                   </summary>
-                  <div className={styles.texteAvecLiens} style={REPONSE}>
-                    {/* V3 « Site mobile » (16/10) : le bouton orange à
-                        pastille flèche, sans le numéro accolé, que la phrase
-                        de rappel donne juste dessous. */}
-                    {questionFinale.bouton ? (
-                      <BoutonFleche href="/contact/" libelle={questionFinale.bouton} />
-                    ) : null}
-                    {questionFinale.rappel ? <p>{questionFinale.rappel}</p> : null}
+                  <div data-faq-fin="" className={styles.texteAvecLiens} style={REPONSE}>
+                    <ReponseFinale q={questionFinale} />
                   </div>
                 </details>
               ) : null}

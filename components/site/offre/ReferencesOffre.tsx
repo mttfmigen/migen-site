@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 
 import { LARGEUR, SECTION, SURTITRE } from "@/components/site/blocs/habillage";
-import { enTexteNu, estCheminInterne } from "@/components/site/blocs/TexteRiche";
+import TexteRiche, { enTexteNu, estCheminInterne } from "@/components/site/blocs/TexteRiche";
 import type { SectionPreuves } from "@/types/contenu";
 
 import { photoDuCasMaquette } from "./maquette-mobile-offre";
@@ -65,6 +65,8 @@ export interface ProprietesReferencesOffre {
   photosMaquette?: boolean;
   /** L'encart « Toutes nos réalisations documentées » sous le rail (dc.html `isQ`). */
   encartMobile?: { texte: string; lien: string; href: string };
+  /** La phrase de la V3 sous le rail, en texte courant (Markdown en ligne). */
+  phraseMobile?: string;
   /** Le titre de la carte propre à la page (V3) ; « Nos références » en devient le sur-titre. */
   titreCarte?: string;
 }
@@ -366,6 +368,7 @@ export default function ReferencesOffre({
   toujoursOuvert = false,
   photosMaquette = false,
   encartMobile,
+  phraseMobile,
   titreCarte,
 }: ProprietesReferencesOffre) {
   const preuves = section.preuves.filter(
@@ -562,14 +565,18 @@ export default function ReferencesOffre({
                 )}
                 <div data-mm-rail-pied="" style={PIED_CARTE}>
                   {/* LE LIEN DE LA MAQUETTE V3 « SITE MOBILE » (16/10) : « Lire
-                      le cas → », sur chaque carte. La v2 y écrivait le libellé
-                      du corpus (« Étude de cas CLIENT : sujet »), que la V3 a
-                      retiré : le client est sur la photo, le sujet dans le
-                      titre de la carte. Au bureau, « Lire l'étude de cas » et
-                      sa pastille, comme la capture. */}
+                      le cas → » sur la carte d'une étude de cas. La v2 y
+                      écrivait le libellé du corpus (« Étude de cas CLIENT :
+                      sujet »), que la V3 a retiré : le client est sur la
+                      photo, le sujet dans le titre de la carte. Une carte qui
+                      n'est pas une étude de cas (un partenaire : « DimoMaint »,
+                      « Savoye ») garde son libellé. Au bureau, « Lire l'étude
+                      de cas » et sa pastille, comme la capture. */}
                   {preuve.lienLibelle ? (
                     <span data-mobile-seulement="" data-mm-rail-lien="">
-                      Lire le cas
+                      {/^Étude de cas\b/i.test(enTexteNu(preuve.lienLibelle))
+                        ? "Lire le cas"
+                        : enTexteNu(preuve.lienLibelle)}
                     </span>
                   ) : null}
                   <span
@@ -588,6 +595,11 @@ export default function ReferencesOffre({
         </div>
           </>
         )}
+        {phraseMobile ? (
+          <p data-mobile-seulement="" className={`${styles.phraseReferences} ${styles.texteAvecLiens}`}>
+            <TexteRiche texte={phraseMobile} />
+          </p>
+        ) : null}
         {encartMobile ? (
           <p data-mobile-seulement="" className={styles.encartReferences}>
             {encartMobile.texte}{" "}

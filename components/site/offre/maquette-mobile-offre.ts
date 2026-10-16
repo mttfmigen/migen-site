@@ -294,6 +294,150 @@ export const FINS_GARANTIES: Readonly<Record<string, FinGaranties>> = {
   "/travaux-industriels/levage-manutention/": {
     textes: [`[Faire chiffrer mon levage](/contact/) ${HORAIRES_ASTREINTE}`, RAPPEL_VISITE],
   },
+  /* Quatre pages que le routeur de la V3 détourne vers une voisine : pas de
+     rendu à relever. Leur corpus écrit sous les garanties un appel de la même
+     forme que leurs voisines ; il reçoit le même dessin. */
+  "/offres/chantier/": {
+    textes: [`[Faire chiffrer mon transfert](/contact/) ${HORAIRES_ASTREINTE}`, RAPPEL_VISITE],
+  },
+  "/offres/retrofit/": {
+    textes: [
+      `[Faire diagnostiquer ma machine](/contact/) ${HORAIRES_ASTREINTE}`,
+      "Un chargé d'affaires vous rappelle dans l'heure. Le diagnostic tranche, pas l'intuition.",
+    ],
+  },
+  "/offres/depannage-industriel/": {
+    bouton: true,
+    textes: ["Ou appelez le 04 78 33 72 05. Astreinte en dehors des heures ouvrées."],
+  },
+  "/offres/audit-conseil-maintenance/": {
+    encart: "[Demander mon diagnostic gratuit](/contact/) · 04 78 33 72 05, rappel dans l'heure",
+    textes: [
+      "Le premier état des lieux ne coûte rien et vous dit s'il y a matière à aller plus loin.",
+    ],
+  },
+};
+
+/**
+ * LA RÉPONSE DE LA DERNIÈRE QUESTION DE LA FAQ DANS LA V3 : la question de
+ * clôture du corpus, puis son appel, dans l'un des trois dessins de
+ * `FinGaranties`, et les pastilles « À lire aussi » du corpus. Sans `textes`,
+ * la phrase de rappel de la fiche suit le bouton. Une page absente de la
+ * table garde la réponse du site : le lien et le numéro, puis le rappel.
+ *
+ * Les cibles des pastilles sont celles du corpus : le routeur de la V3 en
+ * détourne trois vers une voisine (`/offres/construction/`,
+ * `/offres/audit-conseil-maintenance/`, `/offres/retrofit/`), le site les sert.
+ */
+export interface FinFaq extends FinGaranties {
+  aLire?: readonly { libelle: string; href: string }[];
+}
+
+const APPEL_TRAVAUX = "[Parler à un chargé d'affaires](/contact/) · 04 78 33 72 05, astreinte.";
+const RAPPEL_SEMAINE = "Rappel dans l'heure du lundi au vendredi de 8h00 à 18h30.";
+const LIRE_TRAVAUX = { libelle: "travaux industriels", href: "/travaux-industriels/" };
+const LIRE_TRANSFERT = {
+  libelle: "transfert industriel",
+  href: "/travaux-industriels/transfert-industriel/",
+};
+const LIRE_LEVAGE = {
+  libelle: "levage et manutention lourde",
+  href: "/travaux-industriels/levage-manutention/",
+};
+const LIRE_MONTAGE = {
+  libelle: "montage industriel",
+  href: "/travaux-industriels/montage-industriel/",
+};
+
+export const FINS_FAQ: Readonly<Record<string, FinFaq>> = {
+  "/offres/": {
+    bouton: true,
+    textes: ["ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."],
+  },
+  "/secteurs/": { bouton: true },
+  "/offres/residence/": { bouton: true },
+  "/offres/arret-technique/": { bouton: true },
+  "/offres/zero-arret/": { bouton: true },
+  "/entreprise-maintenance-industrielle/": {
+    bouton: true,
+    textes: [
+      "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés, astreinte en dehors.",
+    ],
+    aLire: [
+      { libelle: "toutes nos offres de maintenance", href: "/offres/" },
+      { libelle: "conseil en maintenance industrielle", href: "/offres/audit-conseil-maintenance/" },
+    ],
+  },
+  "/offres/bureau-etudes/": {
+    encart:
+      "[Faire chiffrer mon étude](/contact/) · 04 78 33 72 05 Rappel dans l'heure du lundi au vendredi, 8h00 à 18h30.",
+    aLire: [
+      { libelle: "montage industriel", href: "/offres/construction/" },
+      { libelle: "entreprise de maintenance industrielle", href: "/offres/" },
+    ],
+  },
+  "/travaux-industriels/": {
+    textes: [APPEL_TRAVAUX, RAPPEL_SEMAINE],
+    aLire: [LIRE_TRANSFERT, { libelle: "arrêt technique", href: "/offres/arret-technique/" }],
+  },
+  "/travaux-industriels/transfert-industriel/": {
+    textes: [APPEL_TRAVAUX, RAPPEL_SEMAINE],
+    aLire: [
+      LIRE_TRAVAUX,
+      {
+        libelle: "démantèlement industriel",
+        href: "/travaux-industriels/demantelement-industriel/",
+      },
+      LIRE_MONTAGE,
+      { libelle: "retrofit machine industrielle", href: "/offres/retrofit/" },
+    ],
+  },
+  "/travaux-industriels/demantelement-industriel/": {
+    textes: [APPEL_TRAVAUX, RAPPEL_SEMAINE],
+    aLire: [LIRE_TRANSFERT, LIRE_LEVAGE, LIRE_TRAVAUX],
+  },
+  "/travaux-industriels/montage-industriel/": {
+    textes: [APPEL_TRAVAUX, RAPPEL_SEMAINE],
+    aLire: [LIRE_TRANSFERT, LIRE_LEVAGE, LIRE_TRAVAUX],
+  },
+  "/travaux-industriels/levage-manutention/": {
+    textes: [APPEL_TRAVAUX, RAPPEL_SEMAINE],
+    aLire: [LIRE_TRANSFERT, LIRE_MONTAGE, LIRE_TRAVAUX],
+  },
+};
+
+/** La fin de FAQ d'une page, ses mots passés par les décisions de copie. */
+export function finFaq(
+  chemin: string | undefined,
+  copie: (texte: string) => string,
+): FinFaq | undefined {
+  const fin = chemin ? FINS_FAQ[chemin] : undefined;
+  if (!fin) return undefined;
+  return {
+    ...fin,
+    encart: fin.encart ? copie(fin.encart) : undefined,
+    textes: fin.textes?.map(copie),
+    aLire: fin.aLire?.map((lien) => ({ ...lien, libelle: copie(lien.libelle) })),
+  };
+}
+
+/**
+ * LE CHAPÔ ENTIER D'UNE CARTE « L'OFFRE », quand la fiche l'a tronqué : sur
+ * `/entreprise-maintenance-industrielle/`, elle commence à « Elle devrait
+ * partir… », sans la phrase qui porte son sujet. La V3 rend les deux
+ * paragraphes du corpus avant la liste.
+ */
+export const CHAPOS_OFFRE_MOBILE: Readonly<Record<string, readonly string[]>> = {
+  "/entreprise-maintenance-industrielle/": [
+    "Une entreprise de maintenance industrielle ne devrait pas vous vendre son catalogue. Elle devrait partir de votre situation, puis proposer la formule la moins chère qui règle le problème. Avant de choisir, notre [guide pour choisir une entreprise de maintenance](/guides/choisir-une-entreprise-de-maintenance/) liste les questions à poser en rendez-vous.",
+    "Nos six modalités de travail répondent chacune à un moment différent de la vie de votre parc. Vous n'avez pas à choisir avant d'appeler : nous vous orientons.",
+  ],
+};
+
+/** La phrase que la V3 rend sous le rail des références, en texte courant. */
+export const PHRASES_REFERENCES_MOBILE: Readonly<Record<string, string>> = {
+  "/entreprise-maintenance-industrielle/":
+    "Voir l'ensemble de nos [Preuves : nos réalisations](/preuves/).",
 };
 
 /* ------------------------------------------- la photo d'une étude de cas */

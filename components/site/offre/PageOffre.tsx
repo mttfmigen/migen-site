@@ -18,7 +18,11 @@ import {
   Formules,
   PremierMois,
 } from "./BlocsZeroArret";
-import ComplementsOffre, { ComplementsDansCarte, premierTexte } from "./ComplementsOffre";
+import ComplementsOffre, {
+  ComplementsDansCarte,
+  decoupeComplement,
+  premierTexte,
+} from "./ComplementsOffre";
 import DerouleOffre, { accrocheDuDeroule } from "./DerouleOffre";
 import DomainesEtudes from "./DomainesEtudes";
 import GarantiesOffre from "./GarantiesOffre";
@@ -48,9 +52,12 @@ import TelephoneHeros from "./TelephoneHeros";
 import TypesMaintenance from "./TypesMaintenance";
 import { cibleSure, liensSurs } from "./LiensOffre";
 import {
+  CHAPOS_OFFRE_MOBILE,
   FIN_GARANTIES_PAR_DEFAUT,
+  finFaq,
   FINS_GARANTIES,
   OFFRES_MOBILE,
+  PHRASES_REFERENCES_MOBILE,
   PROBLEMES_MOBILE,
   TITRES_CARTES_MOBILE,
 } from "./maquette-mobile-offre";
@@ -265,6 +272,12 @@ export default function PageOffre({
      seule la maquette mobile rend. Sous 881 px seulement. */
   const titres = chemin ? TITRES_CARTES_MOBILE[chemin] : undefined;
   const problemeMobile = chemin ? PROBLEMES_MOBILE[chemin] : undefined;
+  /* V3 : le chapô de la section « L'offre » avant sa liste, le reste après ;
+     le chapô entier de la V3 quand la fiche l'a tronqué. */
+  const complementOffre = decoupeComplement(contenu.complementOffre, titres?.offre);
+  const chapoV3 = chemin ? CHAPOS_OFFRE_MOBILE[chemin] : undefined;
+  const chapoOffre = chapoV3 ? chapoV3.map((texte) => ({ texte: copie(texte) })) : complementOffre.chapo;
+  const phraseReferences = chemin ? PHRASES_REFERENCES_MOBILE[chemin] : undefined;
   /* dc.html L224 `IMG[u]` : la maquette pose sa propre photo de tête sur
      quelques offres ; sinon, celle que la page porte déjà sur bureau. */
   const photoHeros = mobile?.photoTete ?? photoProbleme ?? (faqAPhoto ? PHOTO_FAQ : null);
@@ -648,13 +661,18 @@ export default function PageOffre({
                   section={offre}
                   proseMobile
                   titreCarte={titres?.offre}
-                  apres={
-                    <ComplementsDansCarte blocs={contenu.complementOffre} sansIntitule={!!titres?.offre} />
+                  avant={
+                    <ComplementsDansCarte chapo blocs={chapoOffre} />
                   }
+                  apres={<ComplementsDansCarte blocs={complementOffre.suite} />}
                   resume={
                     mobile?.resumes?.offre
                       ? copie(mobile.resumes.offre)
-                      : accrocheDeLOffre(offre, [premierTexte(contenu.complementOffre)])
+                      : accrocheDeLOffre(
+                          offre,
+                          [premierTexte(complementOffre.suite)],
+                          chapoOffre.map((bloc) => bloc.texte),
+                        )
                   }
                 />
               ) : null}
@@ -707,7 +725,7 @@ export default function PageOffre({
                   apres={
                     <ComplementsDansCarte
                       blocs={contenu.complementDeroule}
-                      sansIntitule={!!titres?.deroule}
+                      titreCarte={titres?.deroule}
                     />
                   }
                   resume={
@@ -746,7 +764,7 @@ export default function PageOffre({
                     <>
                       <ComplementsDansCarte
                         blocs={contenu.complementGaranties}
-                        sansIntitule={!!titres?.garanties}
+                        titreCarte={titres?.garanties}
                       />
                       {/* La fin de la carte dans la V3 : la question de
                           l'appel « 07 », puis son appel. Téléphone seulement ;
@@ -842,6 +860,7 @@ export default function PageOffre({
                       ? { ...mobile.encartReferences, texte: copie(mobile.encartReferences.texte) }
                       : undefined
                   }
+                  phraseMobile={phraseReferences ? copie(phraseReferences) : undefined}
                 />
               ) : null}
 
@@ -904,6 +923,8 @@ export default function PageOffre({
                       rappel: copie(mobile.carteFinale.rappel),
                     }
                   : ctaFinal
+                    ? { ...ctaFinal, fin: finFaq(chemin, copie) }
+                    : undefined
               }
             />
           )

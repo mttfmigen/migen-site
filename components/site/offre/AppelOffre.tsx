@@ -201,19 +201,45 @@ export function AppelDansCarte({
       <p data-appel-question="">
         <TexteRiche texte={question} />
       </p>
-      {fin.bouton && bouton?.libelle && cible && cibleSure(cible) ? (
-        <BoutonFleche href={cible} libelle={bouton.libelle} />
-      ) : null}
+      <CorpsAppel
+        fin={fin}
+        bouton={bouton?.libelle && cible && cibleSure(cible) ? { href: cible, libelle: bouton.libelle } : undefined}
+      />
+    </div>
+  );
+}
+
+/** Le numéro ne se coupe pas en fin de ligne (« 04 78 33 72 » puis « 05 »). */
+function numeroInsecable(texte: string): string {
+  return texte.replace(/04 78 33 72 05/g, "04\u00a078\u00a033\u00a072\u00a005");
+}
+
+/**
+ * LE CORPS D'UN APPEL DE LA V3, dans l'un de ses trois dessins
+ * (`FinGaranties`) : le bouton orange à pastille flèche, l'encart orangé, puis
+ * les phrases du corpus. Servi par la fin des garanties (`AppelDansCarte`) et
+ * par la réponse de la dernière question de la FAQ (`offres/QuestionsPhoto`).
+ */
+export function CorpsAppel({
+  fin,
+  bouton,
+}: {
+  fin: FinGaranties;
+  bouton?: { href: string; libelle: string };
+}) {
+  return (
+    <>
+      {fin.bouton && bouton ? <BoutonFleche href={bouton.href} libelle={bouton.libelle} /> : null}
       {fin.encart ? (
-        <p className={styles.encartReferences}>
-          <TexteRiche texte={fin.encart} />
-        </p>
+        <blockquote data-mm-encart="" className={styles.encartReferences}>
+          <TexteRiche texte={numeroInsecable(fin.encart)} />
+        </blockquote>
       ) : null}
       {fin.textes?.map((texte) => (
         <p key={texte} data-mm-texte="">
-          <TexteRiche texte={texte} />
+          <TexteRiche texte={numeroInsecable(texte)} />
         </p>
       ))}
-    </div>
+    </>
   );
 }
