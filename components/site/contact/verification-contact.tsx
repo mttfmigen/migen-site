@@ -333,6 +333,9 @@ const GRILLES_TENUES = [
   "grid-template-columns:1.1fr .9fr;gap:56px;align-items:end",
   // Les trois étapes.
   "grid-template-columns:repeat(3,minmax(0,1fr));gap:12px",
+  // Nos agences : carte de France à gauche, liste à droite. Tenue depuis le
+  // 16/10, la carte est un tracé figé (scripts/genere-carte-france.mjs).
+  "grid-template-columns:1.15fr .85fr;gap:14px;align-items:stretch",
 ];
 
 for (const grille of GRILLES_TENUES) {
@@ -365,18 +368,6 @@ const COLONNES: readonly {
   readonly fichier: string;
   readonly motif: string;
 }[] = [
-  {
-    nom: "Nos agences",
-    // Carte de France à gauche, liste des adresses à droite.
-    grilleMaquette: "grid-template-columns:1.15fr .85fr;gap:14px;align-items:stretch",
-    grillesMaquette: 2,
-    grillesRendu: 1,
-    rendu: RENDU_AGENCES,
-    fichier: "Agences.tsx",
-    motif:
-      "la carte de la maquette (x-import MigenAgences) tient sur d3, topojson " +
-      "et un atlas mondial téléchargé depuis un CDN à l'exécution",
-  },
   {
     nom: "Vous êtes technicien",
     // Une seule carte dans une grille de deux : la moitié droite reste vide.
@@ -601,10 +592,81 @@ verifieSiege(rendu);
 assert.ok(
   rendu.includes("Dubaï") && rendu.includes("Montréal") && rendu.includes("Madrid"),
 );
-for (const ancienne of ["Strasbourg", "Toulouse", "Nantes"]) {
+
+/* LA CARTE DE FRANCE, revenue le 16/10. Elle nomme les dix hubs du site et met
+   le siège en avant ; elle ne charge RIEN : ni script, ni adresse externe, ni
+   image. Les hubs vivent sur la carte, jamais dans la liste des agences. */
+const HUBS_ATTENDUS = [
+  "Lyon",
+  "Paris",
+  "Lille",
+  "Marseille",
+  "Strasbourg",
+  "Nantes",
+  "Toulouse",
+  "Bordeaux",
+  "Metz",
+  "Dijon",
+];
+
+function verifieCarte(renduAgences: string): void {
+  const svg = /<svg\b[\s\S]*?<\/svg>/.exec(renduAgences);
+  assert.ok(svg, "la carte de France n'est plus rendue dans « Nos agences »");
+  const carte = svg[0];
   assert.ok(
-    !rendu.includes(ancienne),
-    `« ${ancienne} » est un hub ou une ancienne adresse, pas une agence`,
+    /role="img"/.test(carte) && /aria-label="[^"]+"/.test(carte),
+    "la carte nomme les hubs : elle doit porter role=img et un aria-label",
+  );
+  assert.ok(
+    !/https?:|<script|<image|<use\b|href=/.test(carte),
+    "la carte charge une ressource externe : le tracé doit rester figé dans le dépôt",
+  );
+  assert.ok(
+    (carte.match(/<path\b[^>]*\sd="M/g) ?? []).length >= 2,
+    "la carte n'a plus ses tracés (France et voisins)",
+  );
+  const etiquettes = [...carte.matchAll(/<text\b[^>]*>([\s\S]*?)<\/text>/g)]
+    .map((m) => normalise(m[1].replace(/<[^>]+>/g, " ")).trim());
+  for (const hub of HUBS_ATTENDUS) {
+    assert.equal(
+      etiquettes.filter((e) => e.startsWith(hub)).length,
+      1,
+      `le hub « ${hub} » doit être nommé une fois sur la carte`,
+    );
+  }
+  assert.equal(
+    etiquettes.length,
+    HUBS_ATTENDUS.length,
+    `la carte nomme ${etiquettes.length} lieux, les hubs du site sont ${HUBS_ATTENDUS.length}`,
+  );
+  assert.ok(
+    etiquettes.some((e) => e.startsWith("Lyon") && e.includes("Siège, Écully")),
+    "le siège d'Écully n'est plus mis en avant sur la carte",
+  );
+  const liste = renduAgences.replace(carte, "");
+  for (const hub of ["Strasbourg", "Toulouse", "Nantes"]) {
+    assert.ok(
+      !liste.includes(hub),
+      `« ${hub} » est un hub, pas une agence : sa place est sur la carte`,
+    );
+  }
+}
+verifieCarte(normalise(RENDU_AGENCES));
+
+// Au téléphone, le SVG de 420 unités tient dans environ 318 px : sans
+// agrandissement, les étiquettes tombent à 9 px et « Siège, Écully » à 8 px.
+const cssContact = readFileSync(
+  new URL("./Contact.module.css", import.meta.url),
+  "utf8",
+);
+const blocMobile = cssContact.slice(cssContact.indexOf("@media (max-width: 880px)"));
+for (const [balise, minimum] of [["text", 15], ["tspan", 13]] as const) {
+  const taille = blocMobile.match(
+    new RegExp(`\\.carteAgences ${balise} \\{\\s*font-size: (\\d+)px`),
+  );
+  assert.ok(
+    taille && Number(taille[1]) >= minimum,
+    `au téléphone, les étiquettes <${balise}> de la carte doivent passer à ${minimum} px au moins`,
   );
 }
 
@@ -748,20 +810,26 @@ controle("étiquette revenue à « Les cinq offres » dans le rendu", () =>
   verifiePorte(source, rendu.replace("Les six offres", "Les cinq offres")),
 );
 
-// 8. L'écart de la carte de France effacé du commentaire sans réparation.
-controle(
-  "écart de disposition des agences retiré de Agences.tsx sans réparation",
-  () => verifieColonnes(COLONNES[0], source, RENDU_AGENCES, "aucune déclaration"),
+// 8. La carte de France retirée, ou rechargée depuis un CDN.
+const AGENCES_N = normalise(RENDU_AGENCES);
+controle("carte de France retirée de « Nos agences »", () =>
+  verifieCarte(AGENCES_N.replace(/<svg\b[\s\S]*?<\/svg>/, "")),
+);
+controle("carte chargée depuis un CDN", () =>
+  verifieCarte(
+    AGENCES_N.replace(
+      "</svg>",
+      '<image href="https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json"/></svg>',
+    ),
+  ),
 );
 
-// 9. La grille à deux colonnes rendue sans mise à jour de l'écart déclaré.
-controle("deux grilles rendues dans « Nos agences » sans mise à jour", () =>
-  verifieColonnes(
-    COLONNES[0],
-    source,
-    `${RENDU_AGENCES}<div style="display:grid;${COLONNES[0].grilleMaquette}"></div>`,
-    fichierSource("Agences.tsx"),
-  ),
+// 9. Un hub perdu, ou Strasbourg remis dans la liste des agences.
+controle("hub de Dijon perdu sur la carte", () =>
+  verifieCarte(AGENCES_N.replace(/>Dijon</, "><")),
+);
+controle("Strasbourg remis dans la liste des agences", () =>
+  verifieCarte(`${AGENCES_N}<div>Strasbourg</div>`),
 );
 
 // 10. La carte candidature remise au milieu du parcours client.
@@ -785,4 +853,4 @@ controle("agence d'Écully remise à côté du siège", () =>
   verifieSiege(`${rendu} Agence, Écully 129 chemin du Moulin Carron, 69130 Écully`),
 );
 
-console.log("\nLa porte sait échouer : 14 contrôles négatifs tenus.");
+console.log("\nLa porte sait échouer : chaque contrôle négatif est tenu.");

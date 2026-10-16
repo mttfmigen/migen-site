@@ -251,6 +251,29 @@
   .listeAgencesMobile > div {
     padding: 12px 0 !important;
   }
+  /* La carte de France passe au-dessus de la liste, dans le même repli, et
+     perd sa carte de verre comme la liste. */
+  .grilleAgences.grilleAgences {
+    gap: 4px !important;
+  }
+  .carteAgences.carteAgences {
+    padding: 4px 0 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  /* Le SVG de 420 unités tient dans environ 318 px : les étiquettes de 12 et
+     10,5 unités tomberaient à 9 et 8 px à l'écran. Agrandies, elles restent
+     vers 11 et 10 px. Le style en ligne du composant impose le `!important`. */
+  .carteAgences text {
+    font-size: 15px !important;
+  }
+  .carteAgences tspan {
+    font-size: 13px !important;
+  }
   /* La bande technicien : la même carte, un lien et non un repli. */
   .sectionFin .carteLien {
     gap: 12px !important;

@@ -5,6 +5,13 @@ import SectionPliableMobile, {
   ENTETE_DANS_BASCULE,
 } from "@/components/site/blocs/SectionPliableMobile";
 
+import {
+  HAUTEUR_CARTE,
+  HUBS_CARTE,
+  LARGEUR_CARTE,
+  TRACE_FRANCE,
+  TRACE_VOISINS,
+} from "./carte-france";
 import styles from "./Contact.module.css";
 
 /**
@@ -21,24 +28,15 @@ import styles from "./Contact.module.css";
  *    16/10 : LE SIÈGE EST À ÉCULLY, décision de Mehdi (« Le siège est à
  *    Ecully mets le de partout ») qui renverse celle du 09/10. Il n'y a plus
  *    d'agence d'Écully distincte du siège, ni de ligne Limonest.
- * 2. La carte interactive de la maquette (`x-import MigenAgences`) demande une
- *    bibliothèque de cartographie que le contrat interdit d'installer. La liste
- *    prend donc toute la largeur, et le lien vers les implantations tient le
- *    rôle de navigation que la carte assurait.
- *
- *    ÉCART DE DISPOSITION MESURÉ LE 12/10, ET IL N'EST PAS RÉPARABLE SANS
- *    ARBITRAGE. La maquette vivante dispose cette section sur DEUX colonnes,
- *    `grid-template-columns:1.15fr .85fr;gap:14px;align-items:stretch` : la
- *    carte de France à gauche (hauteur 440px), la liste à droite. Le site rend
- *    UNE colonne de 1120px. Le composant de la maquette
- *    (`maquette/MigenAgences.jsx`) tient sur `d3`, `topojson` et un atlas
- *    mondial téléchargé depuis un CDN à l'exécution : trois choses que le
- *    contrat refuse (§3.1, aucun chargement de contenu côté navigateur).
- *    Remplir cette colonne gauche par autre chose serait inventer un bloc que
- *    la maquette ne décrit pas. L'écart est donc DÉCLARÉ, mesuré, et rendu
- *    visible par la porte, qui échoue si quelqu'un le supprime du commentaire
- *    sans l'avoir réparé. À Mehdi de trancher : carte reconstruite sans CDN,
- *    ou une colonne assumée.
+ * 2. LA CARTE DE FRANCE EST REVENUE LE 16/10, sans d3 ni CDN. La maquette
+ *    dispose la section sur deux colonnes, `1.15fr .85fr` : la carte à
+ *    gauche, la liste à droite. Son composant (`MigenAgences`) téléchargeait un
+ *    atlas mondial à chaque affichage ; le tracé est désormais figé une fois
+ *    par `scripts/genere-carte-france.mjs` dans `carte-france.ts`, la page ne
+ *    charge rien. La carte porte les dix hubs du site, le siège d'Écully mis en
+ *    avant au nom de Lyon, et non les cinq villes de la maquette.
+ *    Ses étiquettes sont lues par le lecteur d'écran via `aria-label`, car la
+ *    liste à droite ne nomme pas les hubs.
  *
  * 3. CE QUI FERME LA PAGE A CHANGÉ LE 12/10. Cette section portait
  *    `padding:var(--sec) 0 var(--sec)`, la fermeture de page de la maquette,
@@ -52,8 +50,11 @@ import styles from "./Contact.module.css";
  *    demande » : l'écran contact de la maquette mobile v2 n'a pas de liste
  *    d'agences, et « replier, jamais retirer » la garde, fermée. L'en-tête
  *    passe tel quel dans la bascule, le bureau ne bouge pas. Voir
- *    `ApresDemande.tsx` et `Contact.module.css`.
+ *    `ApresDemande.tsx` et `Contact.module.css`. La V3 mobile n'a pas de bloc
+ *    agences non plus : la carte reste dans le repli, au-dessus de la liste.
  */
+
+const LIBELLE_SIEGE = "Siège, Écully";
 
 interface Agence {
   readonly nom: string;
@@ -62,11 +63,114 @@ interface Agence {
 }
 
 const AGENCES: readonly Agence[] = [
-  { nom: "Siège, Écully", adresse: "129 chemin du Moulin Carron, 69130 Écully" },
+  { nom: LIBELLE_SIEGE, adresse: "129 chemin du Moulin Carron, 69130 Écully" },
   { nom: "Dubaï", adresse: "Level 20, 48 Burj Tower, Downtown" },
   { nom: "Montréal", adresse: "2020 route Transcanadienne, Dorval, Québec" },
   { nom: "Madrid", adresse: "" },
 ];
+
+/** La carte de verre de la maquette, partagée par la carte et la liste. */
+const VERRE: CSSProperties = {
+  background: "rgba(255,255,255,var(--gl-a))",
+  backdropFilter: "blur(var(--gl-b)) saturate(150%)",
+  WebkitBackdropFilter: "blur(var(--gl-b)) saturate(150%)",
+  border: "1px solid var(--gbd)",
+  boxShadow: "0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3)",
+  borderRadius: "var(--rad)",
+};
+
+const DESCRIPTION_CARTE = `Carte de France des hubs de techniciens : ${HUBS_CARTE.map(
+  (hub) => (hub.siege ? `${hub.nom}, siège à Écully` : hub.nom),
+).join(", ")}.`;
+
+/** Le dessin de `MigenAgences` (maquette V3), sur un tracé figé. */
+/** Décalage de l'étiquette par rapport au point, et son ancrage, selon `cote`. */
+const PLACE_ETIQUETTE = {
+  d: [13, 4, "start"],
+  g: [-12, 4, "end"],
+  h: [0, -12, "middle"],
+  b: [0, 20, "middle"],
+} as const;
+
+function CarteFrance() {
+  return (
+    <svg
+      viewBox={`0 0 ${LARGEUR_CARTE} ${HAUTEUR_CARTE}`}
+      role="img"
+      aria-label={DESCRIPTION_CARTE}
+      style={{ width: "100%", height: "auto", display: "block" }}
+    >
+      <defs>
+        <clipPath id="carte-agences-cadre">
+          <rect x="0" y="0" width={LARGEUR_CARTE} height={HAUTEUR_CARTE} />
+        </clipPath>
+        <linearGradient id="carte-agences-france" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="var(--map-a)" />
+          <stop offset="100%" stopColor="var(--map-b)" />
+        </linearGradient>
+      </defs>
+      <g clipPath="url(#carte-agences-cadre)">
+        <path
+          d={TRACE_VOISINS}
+          fill="var(--chip)"
+          stroke="var(--line)"
+          strokeWidth="1"
+        />
+        <path
+          d={TRACE_FRANCE}
+          fill="url(#carte-agences-france)"
+          stroke="var(--ink4)"
+          strokeWidth="1.2"
+          vectorEffect="non-scaling-stroke"
+        />
+      </g>
+      {HUBS_CARTE.map((hub) => {
+        const [dx, dy, ancre] = PLACE_ETIQUETTE[hub.cote];
+        const xTexte = hub.x + dx;
+        return (
+          <g key={hub.nom}>
+            <circle
+              cx={hub.x}
+              cy={hub.y}
+              r={hub.siege ? 17 : 13}
+              fill="var(--acc)"
+              opacity=".1"
+            />
+            <circle
+              cx={hub.x}
+              cy={hub.y}
+              r={hub.siege ? 6.5 : 4.5}
+              fill="var(--acc)"
+              stroke="var(--card)"
+              strokeWidth="2"
+            />
+            <text
+              x={xTexte}
+              y={hub.y + dy}
+              textAnchor={ancre}
+              style={{
+                font: "600 12px var(--ft)",
+                fill: hub.siege ? "var(--ink)" : "var(--ink2)",
+                letterSpacing: "-.01em",
+              }}
+            >
+              {hub.nom}
+              {hub.siege ? (
+                <tspan
+                  x={xTexte}
+                  dy="14"
+                  style={{ font: "500 10.5px var(--fb)", fill: "var(--ink3)" }}
+                >
+                  {LIBELLE_SIEGE}
+                </tspan>
+              ) : null}
+            </text>
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
 
 const RANGEE: CSSProperties = {
   padding: "16px 0",
@@ -121,8 +225,7 @@ export default function Agences() {
           maxWidth: "46ch",
         }}
       >
-        Le technicien part du hub le plus proche de votre site, jamais du
-        siège.
+        Le technicien part du hub le plus proche de votre site, jamais du siège.
       </p>
     </div>
   );
@@ -136,58 +239,65 @@ export default function Agences() {
         <div data-reveal="">
           <SectionPliableMobile enTete={enTete}>
             <div
-              className={styles.listeAgencesMobile}
+              className={`mg-r2 ${styles.grilleAgences}`}
               style={{
-                background: "rgba(255,255,255,var(--gl-a))",
-                backdropFilter: "blur(var(--gl-b)) saturate(150%)",
-                WebkitBackdropFilter: "blur(var(--gl-b)) saturate(150%)",
-                border: "1px solid var(--gbd)",
-                boxShadow:
-                  "0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3)",
-                borderRadius: "var(--rad)",
-                padding: "12px 30px 18px",
+                display: "grid",
+                gridTemplateColumns: "1.15fr .85fr",
+                gap: 14,
+                alignItems: "stretch",
               }}
             >
-              {AGENCES.map((agence) => (
-                <div key={agence.nom} style={RANGEE}>
-                  <div
-                    style={{
-                      font: "600 15px var(--ft)",
-                      letterSpacing: "-.02em",
-                      color: "var(--ink)",
-                    }}
-                  >
-                    {agence.nom}
-                  </div>
-                  {agence.adresse ? (
+              <div
+                className={styles.carteAgences}
+                style={{ ...VERRE, padding: 22 }}
+              >
+                <CarteFrance />
+              </div>
+              <div
+                className={styles.listeAgencesMobile}
+                style={{ ...VERRE, padding: "12px 30px 18px" }}
+              >
+                {AGENCES.map((agence) => (
+                  <div key={agence.nom} style={RANGEE}>
                     <div
                       style={{
-                        font: "400 13.5px/1.55 var(--fb)",
-                        color: "var(--ink3)",
-                        marginTop: 3,
+                        font: "600 15px var(--ft)",
+                        letterSpacing: "-.02em",
+                        color: "var(--ink)",
                       }}
                     >
-                      {agence.adresse}
+                      {agence.nom}
                     </div>
-                  ) : null}
+                    {agence.adresse ? (
+                      <div
+                        style={{
+                          font: "400 13.5px/1.55 var(--fb)",
+                          color: "var(--ink3)",
+                          marginTop: 3,
+                        }}
+                      >
+                        {agence.adresse}
+                      </div>
+                    ) : null}
+                  </div>
+                ))}
+                <div style={RANGEE}>
+                  <Link
+                    href="/implantations/"
+                    style={{
+                      font: "600 13.5px var(--fb)",
+                      color: "var(--acc)",
+                      // Seul dans sa rangée, donc une cible tactile à lui : mesuré
+                      // à 19 px de haut sur téléphone, sous les 24 px du critère
+                      // 2.5.8 de la WCAG 2.2. Le remplissage agrandit la zone de
+                      // contact sans déplacer le texte.
+                      display: "inline-block",
+                      padding: "3px 0",
+                    }}
+                  >
+                    Toutes les implantations et les hubs
+                  </Link>
                 </div>
-              ))}
-              <div style={RANGEE}>
-                <Link
-                  href="/implantations/"
-                  style={{
-                    font: "600 13.5px var(--fb)",
-                    color: "var(--acc)",
-                    // Seul dans sa rangée, donc une cible tactile à lui : mesuré
-                    // à 19 px de haut sur téléphone, sous les 24 px du critère
-                    // 2.5.8 de la WCAG 2.2. Le remplissage agrandit la zone de
-                    // contact sans déplacer le texte.
-                    display: "inline-block",
-                    padding: "3px 0",
-                  }}
-                >
-                  Toutes les implantations et les hubs
-                </Link>
               </div>
             </div>
           </SectionPliableMobile>

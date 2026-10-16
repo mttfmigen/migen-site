@@ -1,4 +1,15 @@
-# `MigenAgences.jsx` : ce qu'il contient, et pourquoi il n'apporte rien
+# `MigenAgences.jsx` : ce qu'il contient, et sa carte portée sur /contact/
+
+> **16/10 : la carte est portée sur /contact/.** Demande de Mehdi, d'après la
+> maquette V3. Le tracé (`world-atlas@2.0.2`, projection de `MigenAgences`) est
+> figé une fois par `scripts/genere-carte-france.mjs` dans
+> `components/site/contact/carte-france.ts` : ni d3, ni topojson, ni CDN au
+> chargement. La carte porte les dix hubs du site aux coordonnées de leur
+> commune, le siège d'Écully mis en avant, et non les cinq villes du tableau
+> ci-dessous. Au téléphone, la carte passe au-dessus de la liste, dans le
+> repli « Nos agences » fermé par défaut, car la V3 mobile n'a pas ce bloc.
+> Le reste de cette note décrit l'état du 07/10, quand le verdict était « il
+> n'apporte rien ».
 
 Importé le 07/10 depuis la racine du projet Claude Design, à la demande de
 Mehdi. Écrit tel quel dans `maquette/MigenAgences.jsx` (3 393 octets, taille
