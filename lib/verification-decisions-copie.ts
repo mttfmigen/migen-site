@@ -106,8 +106,28 @@ assert.equal(
   appliqueDecisions("De 500 à 2 000 € par heure, et personne ne vous signe un délai."),
   "Et personne ne vous signe un délai.",
 );
-assert.equal(appliqueDecisions("500 à 2 000 €").trim(), "");
-assert.equal(appliqueDecisions("environ 2 500 à 2 750 € par mois"), "environ 2 500 à 2 750 € par mois");
+assert.equal(
+  appliqueDecisions(
+    '<span class="sc-interp">500 à 2 000 €</span></div><div style="margin-top: 8px;"><span class="sc-interp">De production perdue par heure d\'arrêt, le coût que Zéro arrêt évite</span>',
+  ),
+  '<span class="sc-interp"></span></div><div style="margin-top: 8px;"><span class="sc-interp"></span>',
+);
+assert.equal(
+  appliqueDecisions("- **500 à 2 000 €** : de production perdue par heure d'arrêt"),
+  "- **** : de production perdue par heure d'arrêt",
+);
+/* La capture elle-même : plus un seul montant après les décisions. */
+assert.doesNotMatch(
+  appliqueDecisions(readFileSync(new URL("../maquette/rendu/offres--zero-arret.html", import.meta.url), "utf8")),
+  /500\s?à\s?2\s?000\s?€/,
+);
+/* Témoins négatifs : un montant sans la légende de la carte reste, salaire en tête. */
+for (const salaire of [
+  "Un salaire de 1 500 à 2 000 € par mois.",
+  "1 500 à 2 000 €",
+  "500 à 2 000 €",
+  "environ 2 500 à 2 750 € par mois",
+]) assert.equal(appliqueDecisions(salaire), salaire);
 for (const [avant, apres] of TEL) assert.equal(appliqueDecisions(avant), apres);
 for (const texte of TEL_INCHANGE) assert.equal(appliqueDecisions(texte), texte);
 
