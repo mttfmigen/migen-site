@@ -14,6 +14,8 @@ import { renderToStaticMarkup } from "react-dom/server";
 import Entete from "@/components/site/Entete";
 import MegaMenu from "@/components/site/MegaMenu";
 import type { PanneauId } from "@/components/site/entete-donnees";
+import { BarreLP } from "@/components/lp/BarreLP";
+import { estLandingPage, numeroLpPermis } from "@/lib/lp/adresses";
 
 /**
  * L'INVENTAIRE DU NOUVEAU SITE, et non celui de l'ancien.
@@ -53,6 +55,10 @@ function routesStatiques(dossier = "app", prefixe = "/"): string[] {
     // Un segment dynamique n'est pas une adresse : la route attrape-tout est
     // servie par l'index des 248 pages, pas par l'arborescence.
     if (entree.name.startsWith("[")) continue;
+    // Un emplacement de route parallèle (`@pied`, `@lecteur`) n'est pas un
+    // segment d'adresse : ses pages doublent celles des routes, comme dans
+    // `app/verification-plan.tsx`. Lu comme un dossier, il inventait « /@pied/ ».
+    if (entree.name.startsWith("@")) continue;
     /* UN GROUPE DE ROUTE, `(nom)`, NE PARAÎT PAS DANS L'ADRESSE mais contient
        bien des pages. Première version : je sautais le dossier entier, donc
        `/lp` restait introuvable et la porte refusait la barre de la landing
@@ -80,10 +86,14 @@ const statiques = routesStatiques();
  * que le pied de page sert déjà et que `verification-pied-de-page.tsx`
  * demande à chaque exécution.
  */
+/* Lues DANS `rewrites()` seulement, depuis le 16/10 : `headers()` porte
+   aussi des sources de la forme « /lp/:chemin* » (l'en-tête noindex des
+   landing pages), et les lire ici faisait de /lp/ une adresse « connue », donc
+   un lien permis dans la navigation du site. C'est l'inverse de la règle. */
+const blocReecritures =
+  /async rewrites\(\)[\s\S]*?\n {2}\},/.exec(readFileSync("next.config.ts", "utf8"))?.[0] ?? "";
 const reecrites = [
-  ...readFileSync("next.config.ts", "utf8").matchAll(
-    /source:\s*"(\/[^":]+)\/:[^"]*"/g,
-  ),
+  ...blocReecritures.matchAll(/source:\s*"(\/[^":]+)\/:[^"]*"/g),
 ].map((trouve) => `${trouve[1]}/`);
 assert.ok(
   reecrites.includes("/diagnostic-zero-arret/"),
@@ -98,6 +108,20 @@ assert.ok(
   /<Entete\s+hrefDiagnostic="\/diagnostic-zero-arret\/"\s*\/>/.test(miseEnPage),
   "l'en-tête du site ne reçoit plus la cible du « Diagnostic gratuit » : la pastille du méga-menu Offres a disparu",
 );
+
+/* LES LANDING PAGES (/lp/) N'ONT NI L'EN-TÊTE NI LA BARRE BASSE DU SITE : la
+   mise en page les enveloppe dans `HorsLandingPage`, qui ne rend rien sous
+   /lp/. Sorties de l'enveloppe, elles reviendraient sur chaque LP avec le
+   numéro du site et toute la navigation, devant un visiteur venu d'une annonce. */
+const enveloppe = /<HorsLandingPage>([\s\S]*?)<\/HorsLandingPage>/.exec(miseEnPage)?.[1] ?? "";
+for (const composant of ["Entete", "BarreCollanteParChemin"]) {
+  assert.ok(
+    new RegExp(`<${composant}\\b`).test(enveloppe),
+    `<${composant}> n'est plus dans <HorsLandingPage> : il s'afficherait sur les landing pages`,
+  );
+}
+assert.ok(estLandingPage("/lp/maintenance-industrielle-lyon/") && estLandingPage("/lp/"), "la règle /lp/ ne reconnaît plus une LP");
+assert.ok(!estLandingPage("/") && !estLandingPage("/lpx/") && !estLandingPage("/offres/lp/"), "la règle /lp/ prend une page du site pour une LP");
 
 const connues = new Set<string>([
   "/",
@@ -183,10 +207,24 @@ for (const lien of liensDonnees) {
 // Interdit de copie non négociable. Les deux variantes partagent le même
 // composant : une erreur de condition ferait fuiter le numéro publicitaire sur
 // les 222 pages du site, ou l'inverse.
+// Depuis le 16/10, les LP sont servies sous /lp/ : le numéro y est PERMIS
+// (`numeroLpPermis`, lib/lp/adresses.ts), et seulement là. L'en-tête du site
+// est celui de toutes les autres adresses ; la barre des LP, `BarreLP`.
 assert.ok(site.includes("04 78 33 72 05"), "numéro du site absent");
-assert.ok(!site.includes("04 11 78 95 97"), "numéro de la LP sorti de la LP");
+assert.ok(!numeroLpPermis("/") && !site.includes("04 11 78 95 97"), "numéro de la LP sorti de la LP");
 assert.ok(lp.includes("04 11 78 95 97"), "numéro de la LP absent de la LP");
 assert.ok(!lp.includes("04 78 33 72 05"), "numéro du site présent sur la LP");
+const barreLp = renderToStaticMarkup(
+  <BarreLP logo="/assets/logo-migen-mark.png" ancres={[]} libelleCta="Devis" hrefCta="#lp-contact" />,
+);
+assert.ok(numeroLpPermis("/lp/devis/") && barreLp.includes("04 11 78 95 97"), "numéro de la LP absent de la barre des LP");
+assert.ok(!barreLp.includes("04 78 33 72 05"), "numéro du site dans la barre des LP");
+
+// AUCUN LIEN DU SITE VERS /lp/ : les LP ne s'indexent pas, et un lien du site
+// les ferait découvrir et suivre. Leur seule entrée est l'annonce.
+for (const lien of liens) {
+  assert.ok(!estLandingPage(lien), `lien du site vers une landing page : ${lien}`);
+}
 
 // ------------------------------- le rond téléphone de la barre mobile (V3)
 // Validé par Mehdi le 16/10 : un lien `tel:` rond de 44 px dans la barre sous

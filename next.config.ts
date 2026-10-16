@@ -93,9 +93,27 @@ const nextConfig: NextConfig = {
     ];
   },
 
+  /**
+   * Les landing pages publicitaires (/lp/) : `/lp/` seul n'est pas une page,
+   * il mène à la LP France. Redirection TEMPORAIRE (307) : un navigateur garde
+   * une 308 pour toujours, et `/lp/` pourra devenir une page un jour.
+   */
+  async redirects() {
+    return [
+      { source: "/lp", destination: "/lp/maintenance-industrielle-france/", permanent: false },
+    ];
+  },
+
   async headers() {
-    // `/:chemin*` couvre la racine comme tous les sous-chemins.
-    return [{ source: "/:chemin*", headers: ENTETES_SECURITE }];
+    return [
+      // `/:chemin*` couvre la racine comme tous les sous-chemins.
+      { source: "/:chemin*", headers: ENTETES_SECURITE },
+      // LES LANDING PAGES NE S'INDEXENT PAS. En plus du `<meta name="robots">`
+      // de chaque page (app/lp/[[...slug]]/page.tsx), l'en-tête couvre toute
+      // réponse sous /lp/, y compris ce qu'un `<meta>` ne peut pas porter.
+      // `robots.txt` ne bloque pas /lp/ : Google doit pouvoir lire ce refus.
+      { source: "/lp/:chemin*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] },
+    ];
   },
 };
 

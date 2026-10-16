@@ -1,0 +1,101 @@
+/* Formulaire et pages de service des landing pages (/lp/).
+   Valeurs relevées dans MigenLPForm et MigenLP de la maquette V3 ; seuls les
+   états (survol, focus, désactivé) et le repli au téléphone vivent ici, le
+   reste est posé en ligne comme dans la maquette. */
+
+/* La maquette pose `outline:none` sur ses champs : non repris, le focus
+   visible global de `globals.css` reste la marque du champ actif au clavier.
+   Seule la bordure se renforce, pour désigner la cible. */
+.champ:hover:not(:disabled),
+.champ:focus {
+  border-color: rgba(28, 27, 25, 0.32);
+}
+
+.champ:disabled {
+  opacity: 0.6;
+}
+
+.enveloppeTel:hover,
+.enveloppeTel:focus-within {
+  border-color: rgba(28, 27, 25, 0.32) !important;
+}
+
+/* Le bouton coche de « Votre demande concerne » prend l'orange de marque. */
+.choix input {
+  accent-color: #ff7c3c;
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin: 1px 0 0;
+}
+
+.choix:hover {
+  border-color: rgba(28, 27, 25, 0.32) !important;
+}
+
+/* Maquette : `style-hover="background:#e8692b"` sur les boutons orange. */
+.envoi:hover:not(:disabled) {
+  background: #e8692b !important;
+}
+
+.envoi:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.retour:hover {
+  color: #1c1b19 !important;
+}
+
+/* Jauge de l'étape : sans animation pour qui l'a demandé. */
+.jauge {
+  transition: transform 0.25s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jauge {
+    transition: none;
+  }
+}
+
+/* ------------------------------------------- héros des pages de service */
+
+/* Repli de la maquette, `@container (max-width:760px)` : une colonne, 18 px
+   de gouttière, titre à 34 px, et 96 px au-dessus pour la barre flottante.
+   Requête de CONTENEUR (`.racine` de PageLP.module.css), comme les sections :
+   une requête média se déclencherait 15 px plus tôt avec une barre de
+   défilement classique, et le héros se replierait à une autre largeur
+   qu'elles. */
+@container (max-width: 760px) {
+  .grilleHeros {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 28px !important;
+    padding: 96px 18px 64px !important;
+  }
+
+  .titreHeros {
+    font-size: 34px !important;
+  }
+
+  /* Les quatre chiffres du héros : deux par ligne. La maquette les laissait
+     en `auto-fit`, ce qui donnait trois puis un, « 10 % » seul sur sa ligne
+     (défaut relevé à l'inventaire). */
+  .chiffresHeros {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  /* En une colonne, le texte court sur toute la largeur : le dégradé
+     horizontal de la maquette (.92 à .52) laissait sa partie droite sous
+     3,9:1. Le voile devient uniforme, au niveau de son milieu. */
+  .voile {
+    background: rgba(18, 17, 16, 0.8) !important;
+  }
+
+  /* 16 px au moins dans les champs : en dessous, Safari zoome sur iPhone à
+     chaque focus et décale la carte. */
+  .champ,
+  .enveloppeTel input,
+  .enveloppeTel select {
+    font-size: 16px !important;
+  }
+}

@@ -45,6 +45,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 
 import { TELEPHONE_LP, TELEPHONE_SITE } from "@/components/site/entete-donnees";
 import { FINALITES, LIBELLES, LIEN_CONFIDENTIALITE } from "@/lib/consentement";
+import { numeroLpPermis } from "@/lib/lp/adresses";
 import PolitiqueConfidentialite, {
   CHEMIN_CONTACT,
   CHEMIN_MENTIONS,
@@ -396,8 +397,10 @@ assert.ok(
   texteRendu.includes(TELEPHONE_SITE.affichage),
   "le numéro du site n'est plus donné comme second moyen de contact",
 );
-assert.ok(
-  !texteRendu.includes(TELEPHONE_LP.affichage),
+// Permis sous /lp/ seulement (lib/lp/adresses.ts) : cette page n'en est pas.
+assert.equal(
+  texteRendu.includes(TELEPHONE_LP.affichage),
+  numeroLpPermis("/confidentialite/"),
   "le numéro de la landing page est rendu sur le site",
 );
 /* 09/10 : LE BANDEAU DE CONSENTEMENT DOIT VISER CETTE PAGE, PAS SA 301.
