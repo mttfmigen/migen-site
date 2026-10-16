@@ -13,6 +13,8 @@
  * `components/site/mobile/conversion-donnees.ts`.
  */
 
+import type { ProblemeMobile } from "./ProblemeOffre";
+
 export interface PointMobile {
   titre: string;
   texte: string;
@@ -125,6 +127,172 @@ export const OFFRES_MOBILE: Readonly<Record<string, OffreMobile>> = {
       lien: "Preuves : nos réalisations",
       href: "/preuves/",
     },
+  },
+};
+
+/* ------------------------------------- maquette V3 « Site mobile » (16/10)
+
+   DEUX TABLES À PART, et non deux champs de `OffreMobile` : une entrée dans
+   `OFFRES_MOBILE` a des effets de bord (les photos du rail des références,
+   `photosMaquette`), qu'aucune de ces pages ne doit recevoir avec son texte.
+   Mots du corpus que la V3 rend (`maquette/contenu/site/Offres/<page>.md`),
+   relevés mot pour mot et passés au filtre des règles : rien n'est rédigé ici.
+   Rendus sous 881 px seulement ; une page absente ne change pas. */
+
+/**
+ * LE TEXTE DU PROBLÈME QUE LA MAQUETTE MOBILE REND ET QUE LE BUREAU NE REND
+ * PAS : la phrase clé, les paragraphes qui précèdent les puces (`### ` : un
+ * intertitre ; `> ` : un encart) et ceux qui les suivent. `/offres/bureau-etudes/` vient de la
+ * v2 ; les pages des travaux industriels, de la V3, dont la fiche de bureau
+ * n'a pas de phrase clé.
+ */
+export const PROBLEMES_MOBILE: Readonly<Record<string, ProblemeMobile>> = {
+  "/offres/bureau-etudes/": {
+    titre: "Un plan dessiné loin de l'atelier finit toujours par se payer au montage.",
+    avant: [
+      "**Le constat.** Le projet est clair dans votre tête. Personne en interne n'a le temps de le dessiner.",
+    ],
+    apres: [
+      "**Le coût de l'inaction.** Embaucher un ingénieur ou un projeteur pour un seul projet n'a pas de sens économique. Alors le projet glisse, ou il part au montage avec des plans que personne n'a confrontés au terrain.",
+      "**La réponse.** Une équipe d'études disponible au bon moment, qui voit ensuite ses conceptions tourner, vieillir et tomber en panne.",
+    ],
+  },
+  "/travaux-industriels/": {
+    titre: "Un chantier industriel se joue rarement sur la technique. Il se joue sur qui tient le planning.",
+    avant: [
+      "Déplacer une ligne, vider un atelier ou monter un équipement neuf n'arrive qu'une fois tous les cinq ou dix ans. Le savoir-faire n'existe presque jamais en interne.",
+      "Ce qui arrive quand personne ne pilote :",
+    ],
+    apres: ["Un transporteur dépose au pied du camion. Il ne rebranche pas un automatisme."],
+  },
+  "/travaux-industriels/demantelement-industriel/": {
+    titre: "Un démantèlement mal fait se paie deux fois : à l'enlèvement, puis à la remise des clés.",
+    avant: [
+      "La zone est vide, mais le bailleur relève des réserves. Les réseaux ont été coupés sans plan. Personne ne sait ce qui est parti en benne ni sous quel bordereau.",
+      "Ce qui dérape le plus souvent :",
+    ],
+  },
+  "/travaux-industriels/montage-industriel/": {
+    titre: "Une machine livrée n'est pas une machine qui produit.",
+    avant: [
+      "Entre la palette au quai et le premier bon produit, il y a des semaines de montage que personne n'avait mises au planning. Pendant ce temps, votre équipe interne est déjà saturée.",
+      "Ce qui bloque, dans l'ordre :",
+    ],
+  },
+  "/travaux-industriels/transfert-industriel/": {
+    titre: "Un transfert improvisé, ce sont des semaines d'arrêt que personne n'avait budgétées.",
+    avant: [
+      "Déplacer une ligne n'arrive qu'une ou deux fois dans la vie d'une équipe. Le savoir-faire n'existe donc presque jamais en interne.",
+      "### Ce que coûte l'improvisation, dans l'ordre où ça arrive",
+    ],
+    apres: [
+      "### Le vrai piège : croire que c'est un problème de transport",
+      "Un transporteur dépose la machine au pied du camion et repart. Un déménageur généraliste sait transporter des caisses.",
+      "Ni l'un ni l'autre ne consigne une armoire, ne sauvegarde un programme, ne réaligne un convoyeur ni ne rebranche un automatisme. Le transport représente une fraction du chantier. Le reste, c'est de la maintenance.",
+    ],
+  },
+  "/entreprise-maintenance-industrielle/": {
+    avant: [
+      "Ce qui vous coûte cher n'est presque jamais la pièce. C'est le temps perdu entre l'arrêt et le bon geste.",
+    ],
+    apres: [
+      "> Le vrai coût d'un mauvais choix ne se lit pas sur le devis. Il se lit sur le compteur de production.",
+    ],
+  },
+  "/travaux-industriels/levage-manutention/": {
+    titre: "Une machine s'abîme rarement en tournant. Elle s'abîme en bougeant.",
+    avant: [
+      "Le bâti qui se vrille, le carter qui prend appui au mauvais endroit, l'arbre qui se désaligne. Rien ne se voit sans attendre. Tout se voit au redémarrage.",
+      "Ce qui fait rater une manutention lourde :",
+    ],
+  },
+};
+
+/**
+ * LES TITRES DE CARTE PROPRES À UNE PAGE DANS LA V3 : le corpus y donne à
+ * chaque section un second titre (« ## Le problème » puis « ## Se tromper de
+ * prestataire… »), que la V3 rend en titre de carte, le nom du bloc en
+ * sur-titre. Les trois du milieu sont aussi l'intitulé de tête des
+ * compléments de bureau, qui ne le répètent donc pas dans la carte.
+ */
+export interface TitresCartes {
+  probleme?: string;
+  offre?: string;
+  deroule?: string;
+  garanties?: string;
+  references?: string;
+}
+
+export const TITRES_CARTES_MOBILE: Readonly<Record<string, TitresCartes>> = {
+  "/entreprise-maintenance-industrielle/": {
+    probleme: "Se tromper de prestataire coûte plus cher que la panne",
+    offre: "Six façons de nous confier vos machines",
+    deroule: "Ce qui se passe après votre appel",
+    garanties: "Trois engagements écrits au contrat",
+    references: "Des sites qui tournent avec nous",
+  },
+};
+
+/**
+ * LA FIN DE LA CARTE « CE QUE NOUS GARANTISSONS » DE LA V3 : la question de
+ * l'appel « 07 » (`brefBande`), puis l'appel que le corpus écrit sous les
+ * garanties. Trois dessins, ceux de la V3 : le bouton orange à pastille
+ * flèche (`bouton`, libellé et cible de `brefBouton`), l'encart orangé
+ * (`encart`), ou une simple phrase avec son lien (`textes`). Une page absente
+ * de la table reçoit la question et le bouton, ses propres mots.
+ *
+ * FILTRÉ : sur `/offres/zero-arret/`, la V3 écrit ensuite « Votre code
+ * postal, une réponse écrite sous 48h. », un délai chiffré que le contrat
+ * interdit. La phrase est retirée, pas réécrite.
+ */
+export interface FinGaranties {
+  bouton?: boolean;
+  /** Markdown en ligne. */
+  encart?: string;
+  /** Markdown en ligne, un paragraphe par entrée. */
+  textes?: readonly string[];
+}
+
+const RAPPEL_HORAIRES =
+  "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.";
+const RAPPEL_VISITE =
+  "Un chargé d'affaires vous rappelle dans l'heure, avec les bonnes questions et une date de visite.";
+const HORAIRES_ASTREINTE = "· 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30, astreinte.";
+
+export const FIN_GARANTIES_PAR_DEFAUT: FinGaranties = { bouton: true };
+
+export const FINS_GARANTIES: Readonly<Record<string, FinGaranties>> = {
+  "/offres/": { bouton: true, textes: [RAPPEL_HORAIRES] },
+  "/offres/residence/": { bouton: true, textes: [RAPPEL_HORAIRES] },
+  "/offres/full-service/": { bouton: true, textes: [RAPPEL_HORAIRES] },
+  "/offres/arret-technique/": { bouton: true, textes: [RAPPEL_HORAIRES] },
+  "/offres/zero-arret/": { bouton: true, textes: ["Ou appelez le 04 78 33 72 05."] },
+  "/offres/bureau-etudes/": {
+    encart: "[Faire chiffrer mon étude](/contact/) · 04 78 33 72 05, rappel dans l'heure",
+    textes: [
+      "Le devis décrit le périmètre, les livrables, les jalons et le budget. Un seul échange suffit pour savoir où vous allez.",
+    ],
+  },
+  "/entreprise-maintenance-industrielle/": {
+    bouton: true,
+    textes: [
+      "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Nous vous rappelons dans l'heure. En dehors, l'astreinte prend le relais.",
+    ],
+  },
+  "/travaux-industriels/": {
+    textes: [`[Faire chiffrer mes travaux](/contact/) ${HORAIRES_ASTREINTE}`, RAPPEL_VISITE],
+  },
+  "/travaux-industriels/demantelement-industriel/": {
+    textes: [`[Faire chiffrer mon démantèlement](/contact/) ${HORAIRES_ASTREINTE}`, RAPPEL_VISITE],
+  },
+  "/travaux-industriels/montage-industriel/": {
+    textes: [`[Faire chiffrer mon montage](/contact/) ${HORAIRES_ASTREINTE}`, RAPPEL_VISITE],
+  },
+  "/travaux-industriels/transfert-industriel/": {
+    textes: [`[Faire chiffrer mon transfert](/contact/) ${HORAIRES_ASTREINTE}`, RAPPEL_VISITE],
+  },
+  "/travaux-industriels/levage-manutention/": {
+    textes: [`[Faire chiffrer mon levage](/contact/) ${HORAIRES_ASTREINTE}`, RAPPEL_VISITE],
   },
 };
 

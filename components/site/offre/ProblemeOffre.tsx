@@ -60,6 +60,8 @@ export type Pli = "ouvert" | "replie";
  */
 export interface ProblemeMobile {
   titre?: string;
+  /** Le titre de la carte propre à la page (V3) ; « Le problème » en devient le sur-titre. */
+  titreCarte?: string;
   /** Paragraphes avant les puces, en Markdown en ligne (`**gras**`). */
   avant?: readonly string[];
   /** Paragraphes après les puces. */
@@ -75,12 +77,43 @@ function ParagraphesMobile({ textes }: { textes?: readonly string[] }) {
   if (!textes?.length) return null;
   return (
     <div data-mobile-seulement="">
-      {textes.map((texte) => (
-        <p key={texte} data-mm-paragraphe="">
-          <TexteRiche texte={texte} />
-        </p>
-      ))}
+      {/* `### ` : un intertitre du corpus, que la V3 rend en tête de bloc,
+          filet au-dessus (`/travaux-industriels/transfert-industriel/`). */}
+      {/* `> ` : un encart du corpus, rendu comme celui des références. */}
+      {textes.map((texte) =>
+        texte.startsWith("### ") ? (
+          <p key={texte} className={styles.intertitreMobile}>
+            {texte.slice(4)}
+          </p>
+        ) : texte.startsWith("> ") ? (
+          <p key={texte} className={styles.encartReferences}>
+            <TexteRiche texte={texte.slice(2)} />
+          </p>
+        ) : (
+          <p key={texte} data-mm-paragraphe="">
+            <TexteRiche texte={texte} />
+          </p>
+        ),
+      )}
     </div>
+  );
+}
+
+/**
+ * LA PHRASE CLÉ ET LES PARAGRAPHES D'AVANT LES PUCES, au téléphone, quand la
+ * fiche de bureau n'a pas de phrase clé (V3 : pages des travaux industriels,
+ * aux trois dessins du bloc).
+ */
+function TeteMobile({ titre, mobile }: { titre?: string; mobile?: ProblemeMobile }) {
+  return (
+    <>
+      {!titre && mobile?.titre ? (
+        <p data-mobile-seulement="" data-mm-lead="">
+          {mobile.titre}
+        </p>
+      ) : null}
+      <ParagraphesMobile textes={mobile?.avant} />
+    </>
   );
 }
 
@@ -198,7 +231,7 @@ const CARTE_SOMBRE: CSSProperties = {
   alignItems: "baseline",
 };
 
-function Sombre({ section, pli }: { section: SectionProbleme; pli?: Pli }) {
+function Sombre({ section, pli, mobile }: { section: SectionProbleme; pli?: Pli; mobile?: ProblemeMobile }) {
   const { titre, suite } = coupePunchline(section.punchline);
   return (
     <section data-screen-label="03 Problème" style={SECTION}>
@@ -209,12 +242,13 @@ function Sombre({ section, pli }: { section: SectionProbleme; pli?: Pli }) {
             {/* Au téléphone, le panneau anthracite s'efface
                 (`data-panneau-mobile-clair`) : la carte est blanche comme
                 les autres, et ses textes reprennent l'encre de la maquette. */}
-            <PliMobile pli={pli} section={section} titre={titre}>
+            <PliMobile pli={pli} section={section} titre={titre} titreCarte={mobile?.titreCarte}>
             <div data-doublon-mobile="" style={{ ...SURTITRE, marginBottom: 16 }}>
               Votre problématique
             </div>
             {titre ? <h2 data-mm-lead="" {...phrase(suite)} style={TITRE_SOMBRE}>{titre}</h2> : null}
             <p data-mm-texte="" data-mm-suite="" style={SOUS_PHRASE_SOMBRE}>{suite}</p>
+            <TeteMobile titre={titre} mobile={mobile} />
             <div
               data-mm-kv=""
               className="mg-rmulti"
@@ -245,6 +279,7 @@ function Sombre({ section, pli }: { section: SectionProbleme; pli?: Pli }) {
                 </div>
               ))}
             </div>
+            <ParagraphesMobile textes={mobile?.apres} />
             </PliMobile>
           </div>
         </div>
@@ -287,12 +322,12 @@ const RANGEE_CARTE: CSSProperties = {
   flexDirection: "column",
 };
 
-function Rangee({ section, pli }: { section: SectionProbleme; pli?: Pli }) {
+function Rangee({ section, pli, mobile }: { section: SectionProbleme; pli?: Pli; mobile?: ProblemeMobile }) {
   const { titre, suite } = coupePunchline(section.punchline);
   return (
     <section data-screen-label="03 Problème" style={SECTION}>
       <div className={styles.blocPliablePartage} style={LARGEUR}>
-        <PliMobile pli={pli} section={section} titre={titre}>
+        <PliMobile pli={pli} section={section} titre={titre} titreCarte={mobile?.titreCarte}>
         <div className="mg-r2" data-mm-cellules="" style={RANGEE_ENTETE}>
           <div>
             <div data-doublon-mobile="" style={{ ...SURTITRE, marginBottom: 18 }}>
@@ -302,6 +337,7 @@ function Rangee({ section, pli }: { section: SectionProbleme; pli?: Pli }) {
           </div>
           {suite ? <p data-mm-texte="" data-mm-suite="" style={RANGEE_SOUS_PHRASE}>{suite}</p> : null}
         </div>
+        <TeteMobile titre={titre} mobile={mobile} />
         <div
           data-mm-kv=""
           className="g3-pbgrid mg-rmulti"
@@ -344,6 +380,7 @@ function Rangee({ section, pli }: { section: SectionProbleme; pli?: Pli }) {
             </div>
           ))}
         </div>
+        <ParagraphesMobile textes={mobile?.apres} />
         </PliMobile>
       </div>
     </section>
@@ -366,10 +403,12 @@ function Rangee({ section, pli }: { section: SectionProbleme; pli?: Pli }) {
 function PliMobile({
   pli,
   section,
+  titreCarte,
   children,
 }: {
   pli?: Pli;
   section: SectionProbleme;
+  titreCarte?: string;
   /** Le H2 de la capture, quand elle en porte un ; la carte ne s'en sert pas. */
   titre?: string;
   children: ReactNode;
@@ -381,7 +420,12 @@ function PliMobile({
   return (
     <SectionPliableMobile
       toujoursOuvert={pli === "ouvert"}
-      enTete={<EtiquettePli titre={TITRE_CARTE} />}
+      enTete={
+        <EtiquettePli
+          surtitre={titreCarte ? TITRE_CARTE : undefined}
+          titre={titreCarte ?? TITRE_CARTE}
+        />
+      }
       /* LA PHRASE CLÉ D'ABORD, comme la maquette (V3 `teaseOf` : le premier
          paragraphe de la section, « Votre maintenance tient sur deux
          personnes et un tableur… ») ; sans elle, la première puce. */
@@ -413,8 +457,8 @@ export default function ProblemeOffre({
   pli,
   mobile,
 }: ProprietesProblemeOffre) {
-  if (section.variante === "panneau-sombre") return <Sombre section={section} pli={pli} />;
-  if (section.variante === "rangee") return <Rangee section={section} pli={pli} />;
+  if (section.variante === "panneau-sombre") return <Sombre section={section} pli={pli} mobile={mobile} />;
+  if (section.variante === "rangee") return <Rangee section={section} pli={pli} mobile={mobile} />;
 
   const { titre, suite } = coupePunchline(section.punchline);
   const source = photoDuProbleme(section, photo);
@@ -435,12 +479,7 @@ export default function ProblemeOffre({
             </div>
             {titre ? <h2 data-mm-lead="" {...phrase(suite)} style={TITRE}>{titre}</h2> : null}
             {suite ? <p data-mm-texte="" data-mm-suite="" style={SOUS_PHRASE}>{suite}</p> : null}
-            {!titre && mobile?.titre ? (
-              <p data-mobile-seulement="" data-mm-lead="">
-                {mobile.titre}
-              </p>
-            ) : null}
-            <ParagraphesMobile textes={mobile?.avant} />
+            <TeteMobile titre={titre} mobile={mobile} />
             {source ? (
               <div data-photo-probleme="" style={CADRE_PHOTO}>
                 <Image
@@ -484,7 +523,7 @@ export default function ProblemeOffre({
   return (
     <section data-screen-label="03 Problème" style={SECTION}>
       <div className={styles.blocPliablePartage} style={LARGEUR}>
-        <PliMobile pli={pli} section={section} titre={titre}>
+        <PliMobile pli={pli} section={section} titre={titre} titreCarte={mobile?.titreCarte}>
           {corps}
         </PliMobile>
       </div>

@@ -7,6 +7,8 @@ import { majusculeInitiale } from "./texte-offre";
 import { ligneDuCorpus } from "../blocs/resume-de-section";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
+import EtiquettePli from "./EtiquettePli";
+
 import styles from "./PageOffre.module.css";
 
 /**
@@ -26,6 +28,12 @@ export interface ProprietesGarantiesOffre {
   apres?: ReactNode;
   /** Le résumé de la carte repliée, voir `PointsOffre.resume`. */
   resume?: string;
+  /**
+   * LE TITRE DE LA CARTE AU TÉLÉPHONE, quand la V3 en écrit un propre à la
+   * page (`TITRES_CARTES_MOBILE`) : il devient le titre, et le nom du bloc son
+   * sur-titre. Absent, la carte garde son nom.
+   */
+  titreCarte?: string;
 }
 
 /**
@@ -91,6 +99,7 @@ export default function GarantiesOffre({
   avant,
   apres,
   resume,
+  titreCarte,
 }: ProprietesGarantiesOffre) {
   return (
     <section data-gouttiere-mobile="" style={{ padding: "var(--sec) 24px 0" }}>
@@ -126,9 +135,17 @@ export default function GarantiesOffre({
                 >
                   Notre parti pris
                 </span>
-                <h2 data-carte-titre="" style={TITRE}>
+                {/* Avec un titre de carte propre à la page, le titre de
+                    bureau cède la place à l'étiquette au téléphone. */}
+                <h2
+                  {...(titreCarte ? { "data-doublon-mobile": "" } : { "data-carte-titre": "" })}
+                  style={TITRE}
+                >
                   Ce que nous garantissons
                 </h2>
+                {titreCarte ? (
+                  <EtiquettePli surtitre="Ce que nous garantissons" titre={titreCarte} />
+                ) : null}
               </span>
             }
             /* LE RESUME SUIT LA REGLE DE LA MAQUETTE MOBILE V2, et jamais une

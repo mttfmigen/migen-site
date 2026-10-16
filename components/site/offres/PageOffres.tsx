@@ -4,7 +4,7 @@ import { Fragment, type ReactNode } from "react";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
 import PastillesCocon from "@/components/site/cocon/PastillesCocon";
 import AppelFinal from "@/components/site/offre/AppelFinal";
-import AppelOffre from "@/components/site/offre/AppelOffre";
+import AppelOffre, { AppelDansCarte } from "@/components/site/offre/AppelOffre";
 import BandeAppel from "@/components/site/offre/BandeAppel";
 import CadenceOffre, { RappelFinalOffre } from "@/components/site/offre/CadenceOffre";
 import TelephoneHeros from "@/components/site/offre/TelephoneHeros";
@@ -19,7 +19,11 @@ import HerosMobile from "@/components/site/offre/HerosMobile";
 import Reassurance from "@/components/site/offre/Reassurance";
 import ReferencesOffre from "@/components/site/offre/ReferencesOffre";
 import offre from "@/components/site/offre/PageOffre.module.css";
-import { OFFRES_MOBILE } from "@/components/site/offre/maquette-mobile-offre";
+import {
+  FIN_GARANTIES_PAR_DEFAUT,
+  FINS_GARANTIES,
+  OFFRES_MOBILE,
+} from "@/components/site/offre/maquette-mobile-offre";
 import {
   BOUTON_HERO,
   CARTE_CHIFFRE,
@@ -358,7 +362,20 @@ export default function PageOffres({
 
           {garanties || contenu.brefBande ? (
             <Fragment key="garanties">
-              {garanties ? <GarantiesOffre section={garanties} /> : null}
+              {/* La fin de la carte dans la V3 : la question de l'appel
+                  « 07 », puis son appel (téléphone seulement). */}
+              {garanties ? (
+                <GarantiesOffre
+                  section={garanties}
+                  apres={
+                    <AppelDansCarte
+                      question={contenu.brefBande}
+                      bouton={contenu.brefBouton}
+                      fin={(chemin && FINS_GARANTIES[chemin]) || FIN_GARANTIES_PAR_DEFAUT}
+                    />
+                  }
+                />
+              ) : null}
 
               {/* ----------------------------------- 10 à 12. Appel, références */}
 

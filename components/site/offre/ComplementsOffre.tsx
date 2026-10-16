@@ -75,33 +75,50 @@ export interface ProprietesComplementsOffre {
  */
 export function ComplementsDansCarte({
   blocs,
+  sansIntitule = false,
 }: {
   blocs?: readonly BlocComplement[];
+  /**
+   * L'intitulé de tête est déjà le titre de la carte (V3, `etiquette` des
+   * blocs) : il n'est pas répété dans son corps.
+   */
+  sansIntitule?: boolean;
 }) {
-  const retenus = (blocs ?? []).filter(
+  const tous = (blocs ?? []).filter(
     (bloc) => !!bloc.titre || !!bloc.texte || !!bloc.puces?.length,
   );
+  const retenus = sansIntitule && tous[0] && estCourt(tous[0]) ? tous.slice(1) : tous;
   if (retenus.length === 0) return null;
-  const intitule = intituleEnTete(retenus);
+  const intitule = !sansIntitule && intituleEnTete(retenus);
   return (
+    /* V3 « Site mobile » (16/10) : un intertitre du corpus prend le filet et
+       la typographie des intertitres de carte (`intertitreMobile`), une liste
+       devient les petites cartes numérotées des points (`data-mm-kv`). */
     <div data-mobile-seulement="">
       {retenus.map((bloc, rang) => (
         <Fragment key={bloc.titre ?? `${rang}`}>
-          {bloc.titre || (rang === 0 && intitule) ? (
-            <p data-mm-lead="">{bloc.titre ?? bloc.texte}</p>
+          {bloc.titre ? (
+            <p className={styles.intertitreMobile}>{bloc.titre}</p>
+          ) : rang === 0 && intitule && !sansIntitule ? (
+            <p data-mm-lead="">{bloc.texte}</p>
           ) : null}
           {bloc.texte && !(rang === 0 && intitule && !bloc.titre) ? (
             <p data-mm-paragraphe="">
               <TexteRiche texte={bloc.texte} />
             </p>
           ) : null}
-          {bloc.puces?.map((puce) => (
-            <p key={puce.accroche ?? puce.texte} data-mm-paragraphe="">
-              {puce.accroche ? <strong>{puce.accroche}</strong> : null}
-              {puce.accroche ? " " : null}
-              <TexteRiche texte={puce.texte} />
-            </p>
-          ))}
+          {bloc.puces?.length ? (
+            <div data-mm-kv="" data-mm-compteur="">
+              {bloc.puces.map((puce) => (
+                <div key={puce.accroche ?? puce.texte}>
+                  {puce.accroche ? <p data-mm-kv-titre="">{puce.accroche}</p> : null}
+                  <p data-mm-kv-texte="">
+                    <TexteRiche texte={puce.texte} />
+                  </p>
+                </div>
+              ))}
+            </div>
+          ) : null}
         </Fragment>
       ))}
     </div>
@@ -115,13 +132,16 @@ export function ComplementsDansCarte({
  * `ComplementsOffre`, `LONGUEUR_ETIQUETTE`.
  */
 function intituleEnTete(retenus: readonly BlocComplement[]): boolean {
-  const premier = retenus[0];
+  return retenus.length > 1 && estCourt(retenus[0]);
+}
+
+/** Une phrase courte, seule dans son bloc : la forme d'un intitulé. */
+function estCourt(bloc: BlocComplement): boolean {
   return (
-    retenus.length > 1 &&
-    !premier.titre &&
-    !premier.puces?.length &&
-    !!premier.texte &&
-    premier.texte.length <= LONGUEUR_ETIQUETTE
+    !bloc.titre &&
+    !bloc.puces?.length &&
+    !!bloc.texte &&
+    bloc.texte.length <= LONGUEUR_ETIQUETTE
   );
 }
 

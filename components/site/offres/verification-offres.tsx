@@ -105,7 +105,10 @@ const CAPTURE_STYLE = normaliseStyle(CAPTURE);
  * sélecteur d'indicatif et les astérisques du formulaire partagé
  * (`PanneauFormulaire`), qui ne sont pas de ce périmètre.
  */
-const HORS_PAGE = new Set(["FR +33", "BE +32", "CH +41", "ES +34", "CA +1", "AE +971", "*"]);
+/* « points » : le libellé du compteur « N points » de « L'offre », retiré du
+   rendu à la demande de Mehdi (3122307, « compteurs N points retirés
+   partout »). La capture le porte encore ; ce n'est pas un texte perdu. */
+const HORS_PAGE = new Set(["FR +33", "BE +32", "CH +41", "ES +34", "CA +1", "AE +971", "*", "points"]);
 
 /** Le titre repère de chaque écran, dans l'ordre de la capture. */
 const REPERES = [

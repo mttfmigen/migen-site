@@ -6,6 +6,7 @@ import styles from "./QuestionsPhoto.module.css";
 
 import { LARGEUR, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
+import { BoutonFleche } from "@/components/site/offre/AppelOffre";
 import FermeAuTelephone from "@/components/site/ressource/FermeAuTelephone";
 import type { QuestionsPhotoOffres } from "@/types/offres";
 import { altPhoto } from "@/lib/descriptions-photos";
@@ -174,9 +175,6 @@ export interface QuestionFinale {
   surtitre?: string;
 }
 
-/** dc.html : « [Demander un profil pour mon site](/contact/) · 04 78 33 72 05 ». */
-const TELEPHONE = "04 78 33 72 05";
-
 /* La carte sombre de dc.html L131 (`isPlain`, `C_DARK`, `pad: 22px 20px`,
    `rad: 24px`), ses boutons `isBtnQ` et son bouton `hasBtn`. */
 const CARTE_FINALE: CSSProperties = {
@@ -203,8 +201,6 @@ const QUESTION_FINALE: CSSProperties = {
   textWrap: "pretty",
 };
 
-const RANGEE_FINALE: CSSProperties = { display: "flex", gap: 8, margin: "6px 0 14px" };
-
 const BOUTON_FINAL: CSSProperties = {
   flex: 1,
   display: "flex",
@@ -217,21 +213,6 @@ const BOUTON_FINAL: CSSProperties = {
   color: "#fff",
   font: "600 14px/1.25 var(--fb)",
   textAlign: "center",
-  textDecoration: "none",
-};
-
-const TELEPHONE_FINAL: CSSProperties = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  minHeight: 48,
-  padding: "0 14px",
-  borderRadius: 999,
-  background: "rgba(255,255,255,.06)",
-  border: "1px solid rgba(255,255,255,.12)",
-  color: "#fff",
-  font: "600 13px var(--fb)",
-  whiteSpace: "nowrap",
   textDecoration: "none",
 };
 
@@ -256,12 +237,9 @@ function CarteFinale({ q }: { q: QuestionFinale }) {
     <section data-mobile-seulement="" style={CARTE_FINALE}>
       <div style={SURTITRE_FINAL}>{q.surtitre}</div>
       <p style={QUESTION_FINALE}>{q.question}</p>
-      {q.bouton ? (
-        <div style={RANGEE_FINALE}>
-          <Link href="/contact/" style={BOUTON_FINAL}>{q.bouton}</Link>
-          <a href={`tel:${TELEPHONE.replace(/\s/g, "")}`} style={TELEPHONE_FINAL}>{TELEPHONE}</a>
-        </div>
-      ) : null}
+      {/* V3 « Site mobile » (16/10) : un seul bouton à pastille flèche, à la
+          place du bouton et du numéro côte à côte de la v2. */}
+      {q.bouton ? <BoutonFleche href="/contact/" libelle={q.bouton} /> : null}
       {q.rappel ? <p style={RAPPEL_FINAL}>{q.rappel}</p> : null}
       {q.bouton ? (
         <Link href="/contact/" style={GRAND_BOUTON_FINAL}>{q.bouton}</Link>
@@ -342,7 +320,7 @@ export default function QuestionsPhoto({
                       +
                     </span>
                   </summary>
-                  <div className={styles.texteAvecLiens} style={REPONSE}>
+                  <div data-faq-reponse="" className={styles.texteAvecLiens} style={REPONSE}>
                     <TexteRiche texte={q.reponse} />
                   </div>
                 </details>
@@ -365,10 +343,11 @@ export default function QuestionsPhoto({
                     </span>
                   </summary>
                   <div className={styles.texteAvecLiens} style={REPONSE}>
+                    {/* V3 « Site mobile » (16/10) : le bouton orange à
+                        pastille flèche, sans le numéro accolé, que la phrase
+                        de rappel donne juste dessous. */}
                     {questionFinale.bouton ? (
-                      <p>
-                        <Link href="/contact/">{questionFinale.bouton}</Link> · {TELEPHONE}
-                      </p>
+                      <BoutonFleche href="/contact/" libelle={questionFinale.bouton} />
                     ) : null}
                     {questionFinale.rappel ? <p>{questionFinale.rappel}</p> : null}
                   </div>

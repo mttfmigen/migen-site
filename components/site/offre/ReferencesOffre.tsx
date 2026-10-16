@@ -65,6 +65,8 @@ export interface ProprietesReferencesOffre {
   photosMaquette?: boolean;
   /** L'encart « Toutes nos réalisations documentées » sous le rail (dc.html `isQ`). */
   encartMobile?: { texte: string; lien: string; href: string };
+  /** Le titre de la carte propre à la page (V3) ; « Nos références » en devient le sur-titre. */
+  titreCarte?: string;
 }
 
 type Preuve = SectionPreuves["preuves"][number];
@@ -364,6 +366,7 @@ export default function ReferencesOffre({
   toujoursOuvert = false,
   photosMaquette = false,
   encartMobile,
+  titreCarte,
 }: ProprietesReferencesOffre) {
   const preuves = section.preuves.filter(
     (preuve) => !!preuve.lienHref && estCheminInterne(preuve.lienHref),
@@ -383,7 +386,12 @@ export default function ReferencesOffre({
             tabulation muet. */}
         <SectionPliableMobile
           toujoursOuvert={toujoursOuvert}
-          enTete={<EtiquettePli titre="Nos références" />}
+          enTete={
+            <EtiquettePli
+              surtitre={titreCarte ? "Nos références" : undefined}
+              titre={titreCarte ?? "Nos références"}
+            />
+          }
           resume={section.preuves
             .map((preuve) => preuve.titre)
             .filter(Boolean)
@@ -425,7 +433,9 @@ export default function ReferencesOffre({
             défilement de `Moteurs.tsx` (0,45 px par image), comme dans la
             maquette : sans elle, le rail du site restait immobile là où celui
             de la capture défile seul. */}
-        <div data-mm-rail="" className="g3-refrail" style={RAIL}>
+        {/* `railV3` : au téléphone, les cartes de la V3 (252 px, photo de
+            118 px, « Lire le cas → »), voir `PageOffre.module.css`. */}
+        <div data-mm-rail="" className={`g3-refrail ${styles.railV3}`} style={RAIL}>
           {preuves.map((preuve, rang) => (
             <Link
               key={preuve.lienHref}
@@ -551,12 +561,15 @@ export default function ReferencesOffre({
                   </>
                 )}
                 <div data-mm-rail-pied="" style={PIED_CARTE}>
-                  {/* LE LIEN DE LA MAQUETTE MOBILE V2 : « Étude de cas CLIENT :
-                      sujet → », le libellé du corpus. Au bureau, « Lire
-                      l'étude de cas » et sa pastille, comme la capture. */}
+                  {/* LE LIEN DE LA MAQUETTE V3 « SITE MOBILE » (16/10) : « Lire
+                      le cas → », sur chaque carte. La v2 y écrivait le libellé
+                      du corpus (« Étude de cas CLIENT : sujet »), que la V3 a
+                      retiré : le client est sur la photo, le sujet dans le
+                      titre de la carte. Au bureau, « Lire l'étude de cas » et
+                      sa pastille, comme la capture. */}
                   {preuve.lienLibelle ? (
                     <span data-mobile-seulement="" data-mm-rail-lien="">
-                      {enTexteNu(preuve.lienLibelle)}
+                      Lire le cas
                     </span>
                   ) : null}
                   <span

@@ -114,3 +114,17 @@
     font: 600 14px var(--fb) !important;
   }
 }
+
+/* LA RÉPONSE D'UNE QUESTION AU TÉLÉPHONE, maquette V3 « Site mobile »
+   (16/10) : un seul paragraphe, rendu en chapô (dc.html `blockV`, `lead` :
+   500 16px/1.6, encre), 12 px sous le texte. Le corpus n'y écrit pas de
+   `<p>` : la règle partagée du premier paragraphe (`app/globals.css`) ne le
+   trouvait pas, et la réponse restait en texte courant. La dernière question
+   (bouton et rappel) n'est pas concernée. */
+@media (max-width: 880px) {
+  .section [data-faq-liste] > details > [data-faq-reponse] {
+    padding-bottom: 18px !important;
+    font: 500 16px/1.6 var(--fb) !important;
+    color: var(--ink) !important;
+  }
+}

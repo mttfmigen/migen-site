@@ -1,10 +1,13 @@
+import Link from "next/link";
 import type { CSSProperties } from "react";
 
 import { LARGEUR, SECTION } from "@/components/site/blocs/habillage";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
+import { IconeFleche } from "@/components/site/mobile/BarreCollanteMobile";
 import type { LienOffre } from "@/types/offre";
 
 import { cibleSure } from "./LiensOffre";
+import type { FinGaranties } from "./maquette-mobile-offre";
 import styles from "./PageOffre.module.css";
 
 /**
@@ -116,5 +119,101 @@ export default function AppelOffre({
         </div>
       </div>
     </section>
+  );
+}
+
+/* ----------------------------------------------- maquette V3 (16/10) */
+
+/* V3 `data-cta`, relevé à 402 px : 50 px de haut, 0 6px 0 20px, 600 14.5px,
+   pastille flèche de 38 px à droite. Même dessin que le photo + CTA
+   (`mobile/PhotoCtaMobile`). */
+const BOUTON_FLECHE: CSSProperties = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  gap: 12,
+  minHeight: 50,
+  margin: "8px 0 14px",
+  padding: "0 6px 0 20px",
+  borderRadius: 999,
+  background: "#ff7c3c",
+  color: "#fff",
+  font: "600 14.5px/1.25 var(--fb)",
+  boxShadow: "0 12px 26px -14px rgba(255,124,60,.9)",
+  textDecoration: "none",
+};
+
+const PASTILLE_FLECHE: CSSProperties = {
+  flex: "none",
+  width: 38,
+  height: 38,
+  borderRadius: 999,
+  background: "rgba(255,255,255,.2)",
+  display: "grid",
+  placeItems: "center",
+};
+
+/**
+ * LE BOUTON ORANGE À PASTILLE FLÈCHE DE LA V3, dans une carte du téléphone
+ * (fin des garanties, réponse de la dernière question). L'appelant le pose
+ * dans un élément `data-mobile-seulement`.
+ */
+export function BoutonFleche({ href, libelle }: { href: string; libelle: string }) {
+  const contenu = (
+    <>
+      <span>{libelle}</span>
+      <span aria-hidden="true" style={PASTILLE_FLECHE}>
+        <IconeFleche />
+      </span>
+    </>
+  );
+  return href.startsWith("#") ? (
+    <a href={href} style={BOUTON_FLECHE}>
+      {contenu}
+    </a>
+  ) : (
+    <Link href={href} prefetch={false} style={BOUTON_FLECHE}>
+      {contenu}
+    </Link>
+  );
+}
+
+/**
+ * L'APPEL « 07 » DANS LA CARTE « CE QUE NOUS GARANTISSONS », comme la V3 :
+ * la question (`brefBande`), puis l'appel du corpus (`FinGaranties`). Au
+ * téléphone seulement : l'appel « 07 » de bureau y est masqué
+ * (`[data-appel-offre]`), il dit les mêmes mots. `#besoin`, le panneau du
+ * héros, devient `#mgx-form`, comme le photo + CTA (`CadenceOffre`).
+ */
+export function AppelDansCarte({
+  question,
+  bouton,
+  fin,
+}: {
+  question?: string;
+  bouton?: LienOffre;
+  fin: FinGaranties;
+}) {
+  if (!question) return null;
+  const cible = bouton?.href === "#besoin" ? "#mgx-form" : bouton?.href;
+  return (
+    <div data-mobile-seulement="" className={`${styles.appelDansCarte} ${styles.texteAvecLiens}`}>
+      <p data-appel-question="">
+        <TexteRiche texte={question} />
+      </p>
+      {fin.bouton && bouton?.libelle && cible && cibleSure(cible) ? (
+        <BoutonFleche href={cible} libelle={bouton.libelle} />
+      ) : null}
+      {fin.encart ? (
+        <p className={styles.encartReferences}>
+          <TexteRiche texte={fin.encart} />
+        </p>
+      ) : null}
+      {fin.textes?.map((texte) => (
+        <p key={texte} data-mm-texte="">
+          <TexteRiche texte={texte} />
+        </p>
+      ))}
+    </div>
   );
 }

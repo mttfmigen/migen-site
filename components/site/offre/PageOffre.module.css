@@ -147,6 +147,12 @@
   .gabarit :is([data-pastilles-cocon] details, details[data-repli-formulaire]) > div {
     padding-left: 0 !important;
   }
+  /* Ni les cartes de la FAQ (`data-faq-liste`) : la réponse garde le
+     rembourrage de sa carte, 16 px des deux côtés, comme la V3 (relevé le
+     16/10 à 402 px), au lieu de 26 px à gauche. */
+  .gabarit [data-faq-liste] > details > div {
+    padding-left: 16px !important;
+  }
 }
 
 @media (max-width: 560px) {
@@ -582,6 +588,169 @@
     section[id="etre-rappele"]
     ~ [data-appel-final]:not(:target):not(:has(> details[open][data-monte])) {
     display: none;
+  }
+}
+
+/* « LE DÉROULÉ » EN FRISE SIMPLE, MAQUETTE V3 « SITE MOBILE » (16/10), sur
+   toutes les pages qui montent `DerouleOffre` : la V3 dessine ainsi chaque
+   liste numérotée. Valeurs relevées dans la V3 à 402 px :
+   - pas de carte d'en-tête : ni « Notre méthode », ni son titre, ni le
+     compteur « N étapes » (retiré par Mehdi), ni « Démarrer par l'audit » ;
+     le titre de la carte est déjà dans sa bascule (« 03 Le déroulé ») ;
+   - pastille de 28 px, fond rgba(255,124,60,.12), chiffre 600 11.5px #b4490f ;
+   - filet vertical de 2 px rgba(255,124,60,.22) jusqu'à l'étape suivante,
+     4 px d'écart, aucun sous la dernière ;
+   - titre 600 15px/1.35, texte 400 13.5px/1.55 `--ink1`, 18 px sous l'étape.
+   Le texte reste dans le document (la carte d'en-tête aussi, hors écran) ;
+   au-dessus de 880 px, aucune de ces règles n'existe. */
+@media (max-width: 880px) {
+  :root .friseV3 > [data-mm-entete-carte] {
+    display: none !important;
+  }
+
+  :root .friseV3 > [data-mm-etape] {
+    grid-template-columns: auto minmax(0, 1fr) !important;
+    column-gap: 12px !important;
+    row-gap: 0 !important;
+    padding: 0 !important;
+  }
+
+  :root .friseV3 > [data-mm-etape] > :first-child {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    align-self: stretch;
+    gap: 0 !important;
+  }
+
+  :root .friseV3 > [data-mm-etape] [data-mm-num] {
+    box-sizing: border-box;
+    width: auto !important;
+    min-width: 28px;
+    height: 28px !important;
+    padding: 0 8px;
+    border-radius: 999px !important;
+    background: rgba(255, 124, 60, 0.12) !important;
+    color: #b4490f !important;
+    font: 600 11.5px var(--fb) !important;
+  }
+
+  :root .friseV3 > [data-mm-etape] [data-mm-filet] {
+    display: block !important;
+    flex: 1 1 auto !important;
+    width: 2px;
+    height: auto !important;
+    margin: 4px 0;
+    border-radius: 2px;
+    background: rgba(255, 124, 60, 0.22) !important;
+  }
+
+  :root .friseV3 > [data-mm-etape]:last-child [data-mm-filet] {
+    display: none !important;
+  }
+
+  :root .friseV3 > [data-mm-etape] [data-mm-etape-titre] {
+    padding-top: 4px;
+    font: 600 15px/1.35 var(--ft) !important;
+    letter-spacing: -0.015em !important;
+    color: var(--ink) !important;
+    text-wrap: balance;
+  }
+
+  :root .friseV3 > [data-mm-etape] [data-mm-etape-texte] {
+    margin: 3px 0 0 !important;
+    padding-bottom: 18px;
+    font: 400 13.5px/1.55 var(--fb) !important;
+    color: var(--ink1) !important;
+    text-wrap: pretty;
+  }
+
+  /* Une étape dont le texte continue la phrase du titre : un seul
+     paragraphe, qui prend aussi l'aération du titre. */
+  :root .friseV3 > [data-mm-etape] > [data-mm-etape-texte]:nth-child(2) {
+    margin-top: 0 !important;
+    padding-top: 4px;
+  }
+
+  :root .friseV3 > [data-mm-etape] > [data-mm-etape-texte]:nth-child(2) > span:first-child {
+    font: 600 15px/1.35 var(--ft) !important;
+    letter-spacing: -0.015em !important;
+    color: var(--ink) !important;
+  }
+}
+
+/* LE RAIL DES RÉFÉRENCES DE LA V3 « SITE MOBILE », relevé à 402 px le 16/10
+   sur toutes les pages qui montent `ReferencesOffre` : cartes de 252 px,
+   photo de 118 px, corps 13px 14px 14px à 6 px d'écart, titre 600 14.5px/1.4,
+   texte 400 13.5px/1.55 `--ink1`, lien « Lire le cas → » 600 13px collé à sa
+   flèche (6 px), en pied de carte. Au-dessus de 880 px, rien. */
+@media (max-width: 880px) {
+  :root .railV3[data-mm-rail] > * {
+    width: 252px !important;
+  }
+
+  :root .railV3[data-mm-rail] [data-mm-rail-photo] {
+    height: 118px !important;
+  }
+
+  :root .railV3[data-mm-rail] [data-mm-rail-corps] {
+    gap: 6px !important;
+    padding: 13px 14px 14px !important;
+  }
+
+  :root .railV3[data-mm-rail] [data-mm-rail-titre] {
+    margin: 0 !important;
+    font: 600 14.5px/1.4 var(--ft) !important;
+    letter-spacing: -0.015em !important;
+  }
+
+  :root .railV3[data-mm-rail] [data-mm-rail-texte] {
+    margin: 0 !important;
+    font: 400 13.5px/1.55 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+
+  :root .railV3[data-mm-rail] [data-mm-rail-pied] {
+    justify-content: flex-start !important;
+    gap: 6px !important;
+    padding-top: 4px !important;
+  }
+
+  :root .railV3[data-mm-rail] [data-mm-rail-pied] > [data-mm-rail-lien] {
+    font: 600 13px/1.4 var(--fb) !important;
+  }
+}
+
+/* LA FIN DE « CE QUE NOUS GARANTISSONS » DANS LA V3 (`AppelDansCarte`) : la
+   question en phrase clé, 600 17px/1.45, 6 px 0 14 px ; le bouton, l'encart et
+   le texte portent leur propre dessin. Et l'intertitre d'un bloc de problème
+   (`### ` du corpus) : 600 16px/1.35, filet au-dessus, 14 px dessous le filet,
+   18 px 0 8 px. Ces éléments n'existent que sous 881 px. */
+@media (max-width: 880px) {
+  .appelDansCarte > [data-appel-question] {
+    margin: 6px 0 14px;
+    font: 600 17px/1.45 var(--ft);
+    color: var(--ink);
+    text-wrap: pretty;
+  }
+
+  /* Le lien d'une phrase d'appel (« Faire chiffrer mes travaux · 04… ») :
+     celui de l'encart de la V3, encre et filet gris. */
+  .appelDansCarte [data-mm-texte] a {
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration-color: rgba(28, 27, 25, 0.28);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .intertitreMobile {
+    margin: 18px 0 8px;
+    padding-top: 14px;
+    border-top: 1px solid var(--mm-bord-doux);
+    font: 600 16px/1.35 var(--ft);
+    letter-spacing: -0.02em;
+    color: var(--ink);
   }
 }
 
