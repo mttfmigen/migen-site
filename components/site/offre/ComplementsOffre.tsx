@@ -1,6 +1,6 @@
 import { Fragment, type CSSProperties } from "react";
 
-import { LARGEUR, VERRE } from "@/components/site/blocs/habillage";
+import { LARGEUR } from "@/components/site/blocs/habillage";
 import type { Tableau } from "@/types/contenu";
 import type { BlocComplement } from "@/types/offre";
 
@@ -194,8 +194,6 @@ export function premierTexte(
   return reste.map((bloc) => bloc.texte?.trim()).find(Boolean) || undefined;
 }
 
-const SECTION_COMPLEMENT: CSSProperties = { padding: "48px 0 0" };
-
 /** La bande d'une ligne de clôture : elle ferme, elle n'ouvre pas. */
 const SECTION_CLOTURE: CSSProperties = { padding: "18px 0 0" };
 
@@ -208,23 +206,6 @@ const TEXTE_CLOTURE: CSSProperties = {
   textWrap: "pretty",
 };
 
-/** Bloc 542 : la carte en verre, en colonnes qui se replient à 420 px. */
-const CARTE: CSSProperties = {
-  ...VERRE,
-  padding: "30px 34px 14px",
-  display: "grid",
-  gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,420px),1fr))",
-  gap: "4px 44px",
-};
-
-/** Bloc 546 : le filet orange et le titre, alignés sur la ligne de base. */
-const RANGEE_TITRE: CSSProperties = {
-  display: "flex",
-  gap: 10,
-  alignItems: "baseline",
-  marginBottom: 10,
-};
-
 const FILET: CSSProperties = {
   width: 16,
   height: 3,
@@ -234,32 +215,6 @@ const FILET: CSSProperties = {
   transform: "translateY(-4px)",
 };
 
-const TITRE: CSSProperties = {
-  font: "600 17px/1.35 var(--ft)",
-  letterSpacing: "-.02em",
-  margin: 0,
-};
-
-const TEXTE: CSSProperties = {
-  font: "400 15.5px/1.7 var(--fb)",
-  color: "var(--ink1)",
-  margin: 0,
-  maxWidth: "66ch",
-  textWrap: "pretty",
-};
-
-/* Blocs 628 à 639 : la variante À COCHES du même bloc, relevée le 07/10 sur
-   `maquette/rendu/offres--residence--cahier-des-charges.html` (« Complément 5 »,
-   « Les 4 erreurs qui coûtent cher »). Même carte, même titre, corps en liste. */
-const LISTE: CSSProperties = { display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10 };
-
-const PUCE: CSSProperties = {
-  display: "flex",
-  gap: 11,
-  font: "400 15px/1.6 var(--fb)",
-  color: "var(--ink1)",
-};
-
 const COCHE: CSSProperties = {
   color: "var(--acc)",
   flex: "0 0 auto",
@@ -267,6 +222,28 @@ const COCHE: CSSProperties = {
 };
 
 const ACCROCHE: CSSProperties = { fontWeight: 600, color: "var(--ink)" };
+
+/** V3 `listMod` : une phrase de 140 caractères au plus, juste avant une liste
+ *  sans titre, est l'intitulé de cette liste. */
+const LONGUEUR_TETE_V3 = 140;
+
+/** V3 `mgx-cd` : 4 cartes sur deux colonnes, sinon jusqu'à trois. */
+function colonnesV3(nombre: number): number {
+  return nombre === 4 ? 2 : Math.min(nombre, 3);
+}
+
+/** Le paragraphe seul, sans titre, qui annonce la liste du bloc suivant. */
+function estTeteV3(bloc: BlocComplement, suivant?: BlocComplement): boolean {
+  return (
+    !bloc.titre &&
+    !bloc.puces?.length &&
+    !bloc.tableau &&
+    !!bloc.texte &&
+    bloc.texte.length <= LONGUEUR_TETE_V3 &&
+    !!suivant?.puces?.length &&
+    !suivant.titre
+  );
+}
 
 export default function ComplementsOffre({
   blocs,
@@ -348,25 +325,31 @@ export default function ComplementsOffre({
           : undefined)
       : undefined;
 
+  /* V3 « Site PC » (16/10) : au bureau, le complément quitte sa carte en
+     verre (paragraphes nus, comme la V3), ses titres passent à l'échelle des
+     sections et chaque point d'une liste devient une carte numérotée
+     (`PageOffre.module.css`, `.complementV3`). La ligne de clôture, plus
+     haut, garde sa forme. Sous 881 px, rien ne change. */
   const carte = (
-    <div style={CARTE}>
+    /* La carte en verre (bloc 542), le bloc, la liste à coches (blocs 628 à
+       639) et la puce sont dessinés par le module (`.complementCarte`…), pas
+       en ligne : le dessin V3 de bureau les remplace sans `!important`. */
+    <div className={`${styles.complementCarte} ${styles.complementV3}`}>
       {retenus.map((bloc, rang) => (
         <div
           key={bloc.titre ?? `${rang}`}
           {...(rang === 0 && etiquette && !bloc.titre ? { "data-doublon-mobile": "" } : {})}
-          style={{
-            minWidth: 0,
-            paddingBottom: 18,
-            ...(bloc.tableau ? { gridColumn: "1 / -1" } : {}),
-          }}
+          {...(estTeteV3(bloc, retenus[rang + 1]) ? { "data-v3-tete": "" } : {})}
+          className={styles.complementBloc}
+          style={bloc.tableau ? { gridColumn: "1 / -1" } : undefined}
         >
           {bloc.titre ? (
             <div
               {...(rang === 0 && etiquette ? { "data-doublon-mobile": "" } : {})}
-              style={RANGEE_TITRE}
+              className={styles.titreV3}
             >
               <span aria-hidden="true" style={FILET} />
-              <h3 style={TITRE}>{bloc.titre}</h3>
+              <h3>{bloc.titre}</h3>
             </div>
           ) : null}
           {/* Le tableau suit le titre : le corpus écrit sa conclusion APRÈS lui
@@ -377,25 +360,44 @@ export default function ComplementsOffre({
               pages existantes ne change donc pas ; le comparatif de
               prestataire-ou-salarie y garde son lien vers le guide. */}
           {bloc.texte ? (
-            <p style={TEXTE}>
+            <p className={styles.complementTexte}>
               <TexteRiche texte={bloc.texte} />
             </p>
           ) : null}
           {bloc.puces?.length ? (
-            <div style={LISTE}>
-              {bloc.puces.map((puce) => (
-                <div key={puce.accroche ?? puce.texte} style={PUCE}>
+            <div
+              className={`${styles.complementListe} ${styles.cartesV3}`}
+              data-colonnes={colonnesV3(bloc.puces.length)}
+            >
+              {bloc.puces.map((puce, numero) => (
+                <div key={puce.accroche ?? puce.texte} className={styles.complementPuce}>
+                  <span aria-hidden="true" className={styles.numeroV3}>
+                    {String(numero + 1).padStart(2, "0")}
+                  </span>
                   {/* Masquée aux technologies d'assistance : la coche est
                       un ornement de liste, elle n'énonce rien. */}
-                  <span aria-hidden="true" style={COCHE}>
+                  <span aria-hidden="true" className={styles.cocheV3} style={COCHE}>
                     ✓
                   </span>
+                  {/* Au bureau, l'accroche devient le titre de la carte et le
+                      texte son corps, capitale initiale comprise (V3 `cap`).
+                      Sauf quand le texte CONTINUE la phrase de l'accroche
+                      (`suitAccroche`, « **Transfert industriel** est le mot
+                      que… ») : la couper en deux la viderait de son sens, la
+                      carte garde la phrase entière. */}
                   <span>
                     {puce.accroche ? (
-                      <strong style={ACCROCHE}>{puce.accroche}</strong>
+                      <strong
+                        style={ACCROCHE}
+                        className={puce.suitAccroche ? undefined : styles.titreCarteV3}
+                      >
+                        {puce.accroche}
+                      </strong>
                     ) : null}
                     {puce.accroche ? " " : null}
-                    <TexteRiche texte={puce.texte} />
+                    <span className={puce.suitAccroche ? undefined : styles.corpsCarteV3}>
+                      <TexteRiche texte={puce.texte} />
+                    </span>
                   </span>
                 </div>
               ))}
@@ -407,7 +409,10 @@ export default function ComplementsOffre({
   );
 
   return (
-    <section {...masque} className={styles.complementMobile} style={SECTION_COMPLEMENT}>
+    <section
+      {...masque}
+      className={`${styles.complementMobile} ${styles.sectionV3}`}
+    >
       <div style={LARGEUR}>
         {etiquette ? (
           <SectionPliableMobile

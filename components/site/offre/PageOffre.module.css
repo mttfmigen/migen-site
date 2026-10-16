@@ -871,3 +871,213 @@
     color: var(--mm-encre-3, #77736d);
   }
 }
+
+/* LA CARTE « COMPLÉMENT » (`ComplementsOffre`), toutes largeurs : le verre
+   de `VERRE` (bloc 542) en colonnes qui se replient à 420 px, chaque bloc,
+   la liste à coches (blocs 628 à 639) et sa puce, le titre à filet orange
+   aligné sur la ligne de base (bloc 546). Ici plutôt qu'en ligne, pour que
+   le dessin V3 de bureau, plus bas, les remplace sans `!important`. */
+.sectionV3 {
+  padding: 48px 0 0;
+}
+
+.complementCarte {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+  gap: 4px 44px;
+  padding: 30px 34px 14px;
+  border-radius: var(--rad);
+  background: rgba(255, 255, 255, var(--gl-a));
+  -webkit-backdrop-filter: blur(var(--gl-b)) saturate(150%);
+  backdrop-filter: blur(var(--gl-b)) saturate(150%);
+  border: 1px solid var(--gbd);
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.04),
+    0 22px 50px -32px rgba(0, 0, 0, 0.3);
+}
+
+.complementBloc {
+  min-width: 0;
+  padding-bottom: 18px;
+}
+
+.titreV3 {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+
+.titreV3 > h3 {
+  margin: 0;
+  font: 600 17px/1.35 var(--ft);
+  letter-spacing: -0.02em;
+}
+
+.complementTexte {
+  margin: 0;
+  max-width: 66ch;
+  font: 400 15.5px/1.7 var(--fb);
+  color: var(--ink1);
+  text-wrap: pretty;
+}
+
+.complementListe {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+}
+
+.complementPuce {
+  display: flex;
+  gap: 11px;
+  font: 400 15px/1.6 var(--fb);
+  color: var(--ink1);
+}
+
+/* LES COMPLÉMENTS, DESSIN DE LA V3 « Site PC » (16/10) : `Complément N`,
+   `listMod` → `isCards`, `isP`. Au bureau seulement : la carte en verre
+   s'efface (paragraphes nus), les titres prennent l'échelle des sections
+   (`h3` V3, 22 à 28 px), et chaque point d'une liste devient une carte
+   numérotée (01, 02…), sur deux colonnes pour quatre points, sinon jusqu'à
+   trois. Sous 881 px, le lot mobile du 16/10 reste tel quel ; le numéro n'y
+   existe pas. */
+.numeroV3 {
+  display: none;
+}
+
+@media (min-width: 881px) {
+  .sectionV3 {
+    padding-top: 64px;
+  }
+
+  .complementV3 {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .complementV3 > div {
+    padding-bottom: 0;
+  }
+
+  /* Les écarts de la V3 entre blocs : 44 px, 18 px d'un intitulé à sa liste,
+     12 px entre des paragraphes qui se suivent sans titre (un seul bloc). */
+  .complementV3 > div + div {
+    margin-top: 44px;
+  }
+
+  .complementV3 > [data-v3-tete] + div {
+    margin-top: 18px;
+  }
+
+  .complementV3 > div:has(> p:last-child) + div:not([data-v3-tete]):has(> p:only-child) {
+    margin-top: 12px;
+  }
+
+  .titreV3 {
+    margin-bottom: 18px;
+  }
+
+  .titreV3 > span {
+    display: none;
+  }
+
+  .titreV3 > h3,
+  .complementV3 > [data-v3-tete] > p {
+    max-width: 34ch;
+    font: 600 calc(clamp(22px, 2.2vw, 28px) * var(--ts)) / 1.2 var(--ft);
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+
+  .complementV3 > div > p {
+    max-width: 760px;
+    font: 400 16px/1.7 var(--fb);
+  }
+
+  .cartesV3 {
+    gap: 12px;
+  }
+
+  .cartesV3[data-colonnes="2"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cartesV3[data-colonnes="3"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  p + .cartesV3 {
+    margin-top: 18px;
+  }
+
+  .cartesV3 > div {
+    min-width: 0;
+    flex-direction: column;
+    gap: 12px;
+    padding: 26px 26px 24px;
+    border-radius: var(--rad);
+    background: rgba(255, 255, 255, var(--gl-a));
+    -webkit-backdrop-filter: blur(var(--gl-b)) saturate(150%);
+    backdrop-filter: blur(var(--gl-b)) saturate(150%);
+    border: 1px solid var(--gbd);
+    box-shadow:
+      0 1px 1px rgba(0, 0, 0, 0.04),
+      0 22px 50px -34px rgba(0, 0, 0, 0.3);
+    font: 400 14.5px/1.65 var(--fb);
+    color: var(--ink2);
+    text-wrap: pretty;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .cartesV3 > div:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 26px 50px -30px rgba(0, 0, 0, 0.35);
+  }
+
+  .numeroV3 {
+    display: block;
+    font: 600 12px ui-monospace, Menlo, monospace;
+    color: #b4490f;
+  }
+
+  .cocheV3 {
+    display: none;
+  }
+
+  .titreCarteV3 {
+    display: block;
+    margin-bottom: 12px;
+    font: 600 calc(19px * var(--ts)) / 1.3 var(--ft);
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+
+  /* V3 `cap` : le corps d'une carte titrée ouvre par une capitale, même quand
+     la donnée suit son titre sans deux-points (« programmation, … »). */
+  .corpsCarteV3 {
+    display: block;
+  }
+
+  .corpsCarteV3::first-letter {
+    text-transform: uppercase;
+  }
+}
+
+/* V3 : trois cartes par rangée au-delà de 1100 px seulement, deux en deçà. */
+@media (min-width: 881px) and (max-width: 1100px) {
+  .cartesV3[data-colonnes="3"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
