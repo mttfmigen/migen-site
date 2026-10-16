@@ -256,13 +256,12 @@ const INTERDITS: readonly [RegExp, string][] = [
   [/découvrez/iu, "« découvrez »"],
   [/\b(?:5|cinq) agences/iu, "quatre agences, pas cinq"],
   [/\b(?:clients|80)\s+r[ée]guliers\b/iu, "« +200 clients », jamais « réguliers »"],
-  /* 09/10 : « Limonest » n'est plus un interdit, c'est le SIÈGE. Décision de
-     Mehdi qui renverse la sienne du 07/10, et qui revient au texte de la
-     maquette. C'est l'adresse d'Écully présentée COMME LE SIÈGE qui devient
-     fausse : Écully est l'agence. Le motif cherche donc les deux mots
-     ensemble, et laisse passer « siège à Limonest et bureaux à Écully », qui
-     est la phrase de la maquette. */
-  [/si[èe]ge(?:(?!Limonest)[^.]){0,60}Écully/iu, "le siège est à Limonest ; Écully est l'agence"],
+  /* 16/10 : « Limonest » REDEVIENT UN INTERDIT. Décision de Mehdi, « Le siège
+     est à Ecully mets le de partout », qui renverse celle du 09/10 (siège à
+     Limonest, agence à Écully). La capture écrit encore « siège à Limonest et
+     bureaux à Écully » ; la règle SIÈGE de lib/decisions-copie.ts la réécrit
+     en « siège à Écully » avant comparaison, et c'est ce que le rendu porte. */
+  [/Limonest/u, "le siège est à Écully (décision du 16/10)"],
 ];
 
 /* ------------------------------------------- le dessin des écrans de la ville */
@@ -784,17 +783,16 @@ const ALTERATIONS: [string, PageRelais, RegExp, ((html: string) => string)?][] =
     altere((p) => (p.contenu.chapeau = `${p.contenu.chapeau} Nos techniciens sont les meilleurs.`)),
     /texte rendu absent de la capture/,
   ],
-  /* 09/10 : ce témoin testait la décision du 07/10 et vérifiait que la phrase
-     de la maquette était REFUSÉE. Mehdi l'a renversée, la phrase de la maquette
-     est désormais la bonne, et le témoin est retourné avec elle : c'est Écully
-     présentée comme le siège qui doit tomber, pas Limonest. */
+  /* 16/10 : ce témoin a été retourné une seconde fois. Le 09/10 il faisait
+     tomber Écully présentée comme le siège ; depuis la décision du 16/10, c'est
+     la phrase de la maquette, Limonest compris, qui doit tomber. */
   [
-    "Écully présentée comme le siège, alors que c'est l'agence",
+    "la phrase du siège rendue telle que la maquette l'écrit, sans sa décision",
     altere(
       (p) =>
         (p.contenu.chapeau = p.contenu.chapeau!.replace(
-          "siège à Limonest et bureaux à Écully",
           "siège à Écully",
+          "siège à Limonest et bureaux à Écully",
         )),
     ),
     /interdit rendu/,

@@ -109,8 +109,8 @@
         "type": "deroule",
         "etapes": [
           {
-            "titre": "Vous appelez ou remplissez 4 champs.",
-            "texte": "Site, équipement, symptôme, téléphone. Rien de plus."
+            "titre": "Vous appelez ou remplissez le formulaire : 6 champs.",
+            "texte": "Société, nom, prénom, courriel, téléphone, message. Rien de plus."
           },
           {
             "titre": "Un technicien qualifie l'urgence.",

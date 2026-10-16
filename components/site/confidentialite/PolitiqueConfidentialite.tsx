@@ -160,7 +160,7 @@ const PARTIES: readonly Partie[] = [
          L'ADRESSE, elle, reste celle de la maquette mot pour mot, et le contrôle
          continue de l'exiger ainsi. */
       <p style={P}>
-        MIGEN SERVICE (migen©), 1 rue des Vergers, Bâtiment 3, 69760 Limonest.
+        MIGEN SERVICE (migen©), 129 chemin du Moulin Carron, 69130 Écully.
         Pour toute question sur vos données,{" "}
         {/* Souligné, comme la mention RGPD du formulaire : le style global des
             liens ne pose ni soulignement ni couleur distincte. */}

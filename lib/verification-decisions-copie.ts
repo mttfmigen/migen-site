@@ -22,19 +22,75 @@ const CHANGE: [string, string][] = [
   ["Entretien technique et comportemental pour chaque candidat, 10 % retenus", "Entretien technique et comportemental pour chaque technicien, 10 % retenus"],
   ["Nous évaluons chaque candidat en entretien technique", "Nous évaluons chaque technicien en entretien technique"],
 ];
-/* 09/10 : le siège est revenu à Limonest, donc le texte de la maquette ne doit
-   plus être touché du tout. Ces six phrases étaient réécrites jusqu'au 08/10 ;
-   elles doivent désormais passer intactes, et c'est ce qui le prouve. */
-const SIEGE_INTACT = [
-  "Migen est née ici en 2021, siège à Limonest et bureaux à Écully, et nos techniciens",
-  "Quatre agences, Lyon (siège, à Limonest et Écully), Montréal",
-  "Le siège est à Lyon, sur Limonest et Écully, et le groupe",
-  "Notre siège est à Lyon (Limonest, bureaux à Écully), et nos hubs",
-  "l’entreprise pilote son activité depuis Limonest, avec des bureaux à Écully.",
-  "Lyon Siège · Limonest et Écully Montréal",
-  "Maintenance industrielle Lyon : siège Migen à Limonest, dépannage.",
+/* 16/10 : LE SIÈGE EST À ÉCULLY, décision de Mehdi (« Le siège est à Ecully
+   mets le de partout »), qui renverse celle du 09/10. Ces phrases de la
+   maquette passaient intactes depuis le 09/10 ; elles sont désormais
+   réécrites, et c'est ce qui le prouve. Aucune ne doit garder « Limonest ». */
+const SIEGE: [string, string][] = [
+  ["Siège 1 rue des Vergers, 69760 Limonest", "Siège 129 chemin du Moulin Carron, 69130 Écully"],
+  ["migen©, 1 rue des Vergers, Bâtiment 3, 69760 Limonest.", "migen©, 129 chemin du Moulin Carron, 69130 Écully."],
+  ["1 rue des Vergers, Bât. 3 — 69760 Limonest", "129 chemin du Moulin Carron, 69130 Écully"],
+  ["Migen est née ici en 2021, siège à Limonest et bureaux à Écully, et nos techniciens", "Migen est née ici en 2021, siège à Écully, et nos techniciens"],
+  ["Quatre agences, Lyon (siège, à Limonest et Écully), Montréal", "Quatre agences, Lyon (siège à Écully), Montréal"],
+  ["Nous avons quatre agences, Lyon (siège, Limonest et Écully), Montréal", "Nous avons quatre agences, Lyon (siège à Écully), Montréal"],
+  ["Le siège est à Lyon, sur Limonest et Écully, et le groupe", "Le siège est à Lyon, à Écully, et le groupe"],
+  ["Notre siège est à Lyon (Limonest, bureaux à Écully), et nos hubs", "Notre siège est à Lyon (Écully), et nos hubs"],
+  [
+    "Notre siège est à Lyon, avec deux implantations à Limonest et Écully, et trois autres agences à Montréal, Dubaï et Madrid.",
+    "Notre siège est à Lyon, à Écully, avec trois autres agences à Montréal, Dubaï et Madrid.",
+  ],
+  ["l’entreprise pilote son activité depuis Limonest, avec des bureaux à Écully.", "l’entreprise pilote son activité depuis son siège d’Écully."],
+  ["Lyon Siège · Limonest et Écully Montréal", "Lyon Siège · Écully Montréal"],
+  ["Maintenance industrielle Lyon : siège Migen à Limonest, dépannage.", "Maintenance industrielle Lyon : siège Migen à Écully, dépannage."],
+  ["Le siège du groupe est à Limonest, près de Lyon.", "Le siège du groupe est à Écully, près de Lyon."],
+  ["Migen Travaux, qui partage notre siège de Limonest.", "Migen Travaux, qui partage notre siège d’Écully."],
+  ["Chemin du Moulin Carron, bâtiment principal, 69130 Écully, près de Lyon.", "129 chemin du Moulin Carron, 69130 Écully, près de Lyon."],
 ];
-for (const texte of SIEGE_INTACT) assert.equal(appliqueDecisions(texte), texte);
+for (const [avant, apres] of SIEGE) {
+  assert.equal(appliqueDecisions(avant), apres, `siège à Écully : « ${avant} »`);
+  assert.equal(appliqueDecisions(apres), apres, `siège à Écully, non idempotent : « ${apres} »`);
+}
+/* 16/10 : LE FORMULAIRE A SIX CHAMPS (société, nom, prénom, courriel,
+   téléphone, message). Les annonces « 4 champs » de la maquette sont rendues
+   justes, et une liste de champs que le formulaire n'a pas est remplacée par
+   la vraie ou retirée. */
+const CHAMPS: [string, string][] = [
+  ["Vous appelez ou remplissez 4 champs.", "Vous appelez ou remplissez le formulaire : 6 champs."],
+  ["Site, équipement, symptôme, téléphone. Rien de plus.", "Société, nom, prénom, courriel, téléphone, message. Rien de plus."],
+  ["Vous décrivez la panne en 4 champs. Un technicien", "Vous décrivez la panne en 6 champs. Un technicien"],
+  ["domaine, niveau d'urgence, lieu, créneau. Quatre champs, pas un formulaire de treize lignes.", "six champs, pas un formulaire de treize lignes."],
+  ["Circuit, symptôme, pression relevée. Quatre champs, ou un appel par téléphone.", "Circuit, symptôme, pression relevée. Un formulaire de 6 champs, ou un appel par téléphone."],
+  ["Équipement, bruit. Quatre champs suffisent, ou un appel par téléphone.", "Équipement, bruit. Un formulaire de 6 champs suffit, ou un appel par téléphone."],
+  ["Le formulaire prend 4 champs et un choix d'intention. Vous", "Le formulaire prend 6 champs. Vous"],
+  ["4 champs et un choix d'intention dans le formulaire, ou un appel direct.", "6 champs dans le formulaire, ou un appel direct."],
+  ["Le formulaire tient en quatre champs.", "Le formulaire tient en six champs."],
+];
+for (const [avant, apres] of CHAMPS) {
+  assert.equal(appliqueDecisions(avant), apres, `formulaire à six champs : « ${avant} »`);
+  assert.equal(appliqueDecisions(apres), apres, `formulaire à six champs, non idempotent : « ${apres} »`);
+}
+assert.equal(appliqueDecisions("Six champs, le nécessaire"), "Six champs, le nécessaire", "un « six champs » qui n'est pas le formulaire est touché");
+
+/* LA DONNÉE AUSSI : aucune fiche du relais ne garde « Limonest » ni une
+   annonce « 4 champs » hors de ses champs déclaratifs (`_reference`…), qui
+   citent la maquette. */
+const DEFAUTS_FICHE = /Limonest|\b4 champs|[Qq]uatre champs|Site, équipement, symptôme, téléphone/;
+const SANS_LIMONEST = (nom: string, valeur: unknown, ou = ""): string[] =>
+  typeof valeur === "string"
+    ? DEFAUTS_FICHE.test(valeur) ? [`${nom} ${ou}`] : []
+    : Array.isArray(valeur)
+      ? valeur.flatMap((v, i) => SANS_LIMONEST(nom, v, `${ou}[${i}]`))
+      : valeur && typeof valeur === "object"
+        ? Object.entries(valeur).flatMap(([cle, v]) => (cle.startsWith("_") ? [] : SANS_LIMONEST(nom, v, `${ou}.${cle}`)))
+        : [];
+const FICHES_SIEGE = fileURLToPath(new URL("../supabase/import/gabarits-maquette", import.meta.url));
+const limonestRestants = readdirSync(FICHES_SIEGE)
+  .filter((n) => n.endsWith(".json"))
+  .flatMap((n) => SANS_LIMONEST(n, JSON.parse(readFileSync(join(FICHES_SIEGE, n), "utf8"))));
+assert.deepEqual(limonestRestants, [], `« Limonest » ou « 4 champs » encore dans les fiches : siège à Écully, formulaire à six champs (16/10)`);
+for (const temoin of ["siège à Limonest", "Vous remplissez 4 champs.", "Quatre champs, ou un appel"])
+  assert.ok(SANS_LIMONEST("témoin", { contenu: { chapeau: temoin } }).length === 1, `témoin : « ${temoin} » n'est pas vu dans une fiche`);
+assert.ok(SANS_LIMONEST("témoin", { _reference: "siège à Limonest" }).length === 0, "témoin : un champ déclaratif est lu");
 
 const INCHANGE = [
   "Rareté des candidats, coût de la vie",
@@ -145,7 +201,9 @@ for (const [avant, apres] of ORTHUS_FRANCAIS) {
 
 console.log(
   `décisions de copie : ${CHANGE.length} réécritures, ${PHOTOS.length} crédits de photo retirés, ` +
-    `${TEL.length} téléphones rendus, ${INCHANGE.length + TEL_INCHANGE.length + SIEGE_INTACT.length} phrases laissées intactes, conformes`,
+    `${TEL.length} téléphones rendus, ${SIEGE.length} phrases du siège à Écully, ${CHAMPS.length} annonces du formulaire à six champs, ` +
+    `${limonestRestants.length} « Limonest » ou « 4 champs » dans les fiches, ` +
+    `${INCHANGE.length + TEL_INCHANGE.length} phrases laissées intactes, conformes`,
 );
 
 /* ======================================================================== */

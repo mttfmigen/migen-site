@@ -44,7 +44,7 @@ const BASE = process.argv[2] ?? process.env.DEPLOIEMENT_URL ?? URL_PAR_DEFAUT;
 const PAGES = [
   { chemin: "/", gabarit: "accueil", marqueur: /data-reveal/ },
   { chemin: "/expertises/", gabarit: "expertises", marqueur: /data-bar|Expertises/ },
-  { chemin: "/implantations/", gabarit: "implantations", marqueur: /Limonest|implantation/i },
+  { chemin: "/implantations/", gabarit: "implantations", marqueur: /Écully|implantation/i },
   { chemin: "/preuves/eiffage/", gabarit: "fiche", marqueur: /EIFFAGE/ },
   /* CES DEUX LIGNES DISAIENT « vente », ET ELLES AVAIENT DEUX FOIS TORT.
      Corrigées le 13/10 après mesure sur le déploiement.
@@ -78,7 +78,7 @@ const PAGES = [
   { chemin: "/contact/", gabarit: "route", marqueur: /name="entreprise"/ },
   { chemin: "/mentions-legales/", gabarit: "route", marqueur: /ublication|égales/ },
   { chemin: "/confidentialite/", gabarit: "route", marqueur: /CNIL|onfidentialité/ },
-  { chemin: "/nous-connaitre/", gabarit: "route", marqueur: /Limonest|migen/ },
+  { chemin: "/nous-connaitre/", gabarit: "route", marqueur: /Écully|migen/ },
   { chemin: "/plan-du-site/", gabarit: "route", marqueur: /href="\/offres\//, },
 ];
 

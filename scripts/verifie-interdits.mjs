@@ -93,6 +93,9 @@ const INTERDITS = [
   ["Découvrez", "un verbe qui dit ce que la page fait"],
   // Mehdi, 16/10, question 5 : « prix mensuel fixe », « Tu ne mets pas ».
   ["prix mensuel fixe", "ne rien annoncer du prix : le chiffrage se remet avec le devis"],
+  // Mehdi, 16/10 : « Le siège est à Ecully mets le de partout ». Les CGV, copie
+  // juridique signée, n'y sont pas soumises (voir COPIE_JURIDIQUE).
+  ["Limonest", "le siège est à Écully, 129 chemin du Moulin Carron, 69130 Écully"],
   // Typographie.
   ["—", "virgule, parenthèses ou deux-points, jamais de tiret cadratin"],
 ];
@@ -183,6 +186,9 @@ const attendus = [
   [`<p>Tarif : / sur mesure / jour</p>`, ["sur mesure"]],
   [`const t = "Accès (/ sur mesure /)";`, ["sur mesure"]],
   [`<p>Options : /sur mesure/ ou standard</p>`, ["sur mesure"]],
+  // Le siège : Limonest dans une chaîne tombe, dans le seul motif d'une règle non.
+  [`const SIEGE = "1 rue des Vergers, 69760 Limonest";`, ["Limonest"]],
+  [`const R = [[/siège à Limonest et bureaux à Écully/g, () => "siège à Écully"]];`, []],
 ];
 for (const [ligne, attendu] of attendus) {
   const lu = temoin(ligne);

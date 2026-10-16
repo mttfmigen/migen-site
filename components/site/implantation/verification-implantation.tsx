@@ -199,8 +199,9 @@ for (const fichier of MES_FICHIERS) {
 
 /**
  * Ils GAGNENT contre la maquette. « Écully », « +200 » et « 200 clients » ne
- * sont plus interdits : le client a tranché le 07/10 (siège à Limonest, +200
- * clients sans « réguliers »), voir CLAUDE.md §1 et la passation.
+ * sont plus interdits : le client a tranché (siège à Écully le 16/10, +200
+ * clients sans « réguliers »), voir CLAUDE.md §1 et la passation. « Limonest »
+ * l'est, le siège n'y est plus.
  */
 const INTERDITS: readonly string[] = [
   "sous 24",

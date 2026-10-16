@@ -30,6 +30,15 @@ L'extrait tranche donc le débat du 07 au 09/10 : **le siège est à Limonest**,
 Écully est un établissement secondaire. C'est exactement ce que Mehdi a décidé
 le 09/10 et ce que la maquette écrivait déjà.
 
+> **16/10 : le site affiche le siège à Écully.** Décision de Mehdi : « Le siège
+> est à Ecully mets le de partout ». Les mentions légales écrivent donc
+> « Siège social : 129 chemin du Moulin Carron, 69130 Écully, France ».
+> **À confirmer par Mehdi** : l'extrait ci-dessus (09/10) inscrit encore le
+> siège social à Limonest, et le SIRET du siège publié (898 436 910 00027) est
+> celui de l'établissement de Limonest. Tant que le transfert de siège n'est
+> pas inscrit au RCS, la page et le registre ne disent pas la même chose. Les
+> valeurs de l'extrait, elles, ne sont pas modifiées : c'est la pièce.
+
 ## Ce que l'extrait NE donne PAS, et qu'il faut demander à Mehdi
 
 - **Directeur de la publication** : à désigner nommément. Le représentant légal

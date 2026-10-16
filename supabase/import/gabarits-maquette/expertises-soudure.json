@@ -128,7 +128,7 @@
         "etapes": [
           {
             "titre": "Vous décrivez la casse et vous envoyez une photo.",
-            "texte": "Matériau, épaisseur estimée, accès à la zone, contexte. Quatre champs, ou un appel par téléphone."
+            "texte": "Matériau, épaisseur estimée, accès à la zone, contexte. Un formulaire de 6 champs, ou un appel par téléphone."
           },
           {
             "titre": "Un technicien vous rappelle dans l'heure",

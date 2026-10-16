@@ -19,6 +19,8 @@ interface Contexte {
 
 interface Adresse {
   "@type": "PostalAddress";
+  streetAddress: string;
+  postalCode: string;
   addressLocality: string;
   addressRegion: string;
   addressCountry: "FR";
@@ -73,14 +75,14 @@ export interface ArticleJsonLd extends Contexte {
 }
 
 /**
- * ADRESSE PROVISOIRE, À COMPLÉTER PAR MIGEN.
- *
- * Seule la commune est connue avec certitude. La voie et le code postal ne sont
- * volontairement pas renseignés : publier une adresse postale inventée dans des
- * données structurées serait une fausse donnée servie à Google.
+ * L'ADRESSE DU SIÈGE, ÉCULLY : décision de Mehdi du 16/10 (« Le siège est à
+ * Ecully mets le de partout »), la même que le pied de page et les mentions
+ * légales. Voir CLAUDE.md § 1.
  */
-const ADRESSE_PLACEHOLDER: Adresse = {
+const ADRESSE_SIEGE: Adresse = {
   "@type": "PostalAddress",
+  streetAddress: "129 chemin du Moulin Carron",
+  postalCode: "69130",
   addressLocality: "Écully",
   addressRegion: "Auvergne-Rhône-Alpes",
   addressCountry: "FR",
@@ -104,7 +106,7 @@ function corpsOrganisation(): CorpsOrganisation {
     url: urlAbsolue("/"),
     logo: urlAbsolue(LOGO),
     telephone: TELEPHONE,
-    address: ADRESSE_PLACEHOLDER,
+    address: ADRESSE_SIEGE,
   };
 }
 

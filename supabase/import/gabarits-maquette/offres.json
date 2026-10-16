@@ -108,7 +108,7 @@
         "etapes": [
           {
             "titre": "Vous décrivez la situation",
-            "texte": "Le formulaire prend 4 champs et un choix d'intention. Vous n'avez pas besoin de savoir quelle offre vous convient."
+            "texte": "Le formulaire prend 6 champs. Vous n'avez pas besoin de savoir quelle offre vous convient."
           },
           {
             "titre": "Rappel dans l'heure",

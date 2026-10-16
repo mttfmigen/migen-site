@@ -166,10 +166,27 @@ assert.equal(
 );
 
 // ------------------------------------- substitutions imposées par le client
-/* 09/10 : LE SIÈGE EST REVENU À LIMONEST, décision de Mehdi qui renverse la
-   sienne du 07/10. Cette table réécrivait la capture pour en chasser Limonest ;
-   la capture avait raison, elle est donc laissée telle quelle et la table est
-   vide. Écully reste, nommée comme la maquette la nomme : « bureaux ». */
+/* 16/10 : LE SIÈGE EST À ÉCULLY, décision de Mehdi (« Le siège est à Ecully
+   mets le de partout »), qui renverse celle du 09/10. La capture écrit encore
+   « Siège · Limonest et Écully » et « depuis Limonest, avec des bureaux à
+   Écully » : la règle SIÈGE de lib/decisions-copie.ts la réécrit, puisque
+   `SECTIONS_CAPTURE` passe par `appliqueDecisions`. Les deux côtés sont tenus :
+   la capture brute porte encore Limonest, le rendu porte la phrase décidée. */
+const SIEGE_DECIDE: [string, string][] = [
+  ["Siège · Limonest et Écully", "Siège · Écully"],
+  [
+    "l'entreprise pilote son activité depuis Limonest, avec des bureaux à Écully.",
+    "l'entreprise pilote son activité depuis son siège d'Écully.",
+  ],
+];
+const aplatit = (s: string) => s.replace(/[’]/g, "'");
+for (const [capture, decide] of SIEGE_DECIDE) {
+  assert.ok(
+    aplatit(texte(CAPTURE)).includes(capture),
+    `la capture ne porte plus « ${capture} » : l'écart du 16/10 n'a plus d'objet, le relire`,
+  );
+  assert.ok(aplatit(TEXTE).includes(decide), `« ${decide} » (décision du 16/10) manque dans le rendu`);
+}
 const SUBSTITUTIONS: [string, string][] = [];
 for (const [capture, rendu] of SUBSTITUTIONS) {
   assert.ok(
@@ -337,11 +354,14 @@ for (const interdit of [
   "7j/7",
   "7 j/7",
   "Teamtailor",
+  "Limonest",
   "—",
   "–",
 ]) {
   assert.ok(!TEXTE.includes(interdit), `copie interdite : ${interdit}`);
 }
+// Témoin : la phrase de la capture rendue telle quelle doit tomber sur l'interdit.
+assert.ok(texte(CAPTURE).includes("Limonest") && !TEXTE.includes("Limonest"), "témoin du siège : la capture ne porte plus Limonest, ou le rendu le porte");
 assert.ok(/\+200\b/.test(TEXTE), "le compte « +200 » de la capture manque");
 
 // -------------------------------- rien d'invisible, le CSS fait l'apparition

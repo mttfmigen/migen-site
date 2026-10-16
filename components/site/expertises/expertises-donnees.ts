@@ -297,7 +297,7 @@ const CONTENU_HUB_EXPERTISES_DECLARE: ContenuHubExpertises = {
       etapes: [
         {
           titre: "Vous décrivez la situation.",
-          texte: "Quatre champs, ou un appel par téléphone. Dites ce qui se passe, on vous met sur la bonne offre.",
+          texte: "Un formulaire de 6 champs, ou un appel par téléphone. Dites ce qui se passe, on vous met sur la bonne offre.",
         },
         {
           titre: "Nous qualifions le besoin.",
