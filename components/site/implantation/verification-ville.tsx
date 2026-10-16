@@ -31,11 +31,12 @@
  *     rangée, questions, maillage) : des valeurs relevées, présentes dans la
  *     capture ET dans le rendu, relues dans la capture à chaque passage.
  *  9. LES QUESTIONS SE REPLIENT : autant de `<details>` que la capture, un
- *     seul `name` partagé (accordéon exclusif natif), et AUCUNE OUVERTE au
- *     chargement. La capture, elle, ouvre la première ; c'est un écart assumé,
- *     arbitré par Mehdi le 11/10 pour raccourcir les pages au téléphone. La
- *     porte garde sa capacité à refuser : une question ouverte la fait tomber,
- *     et son témoin le prouve.
+ *     seul `name` partagé (accordéon exclusif natif), et LES MÊMES OUVERTES au
+ *     chargement que la capture, soit la première. L'écart du 11/10 (aucune
+ *     ouverte) est levé par la maquette V3 du 16/10 ; au téléphone,
+ *     `FermeAuTelephone` la referme après montage. La porte garde sa capacité
+ *     à refuser : des questions toutes ouvertes la font tomber, et son témoin
+ *     le prouve.
  * 10. LA PHOTO DU HUB LOCAL vient de la maquette OU de la répartition (écart
  *     du 09/10, déclaré plus bas) : soit exactement ce que calcule la règle de
  *     la maquette (`cityVals` de `MigenExpertise.dc.html`, voir
@@ -717,14 +718,18 @@ function controle(page: PageRelais, captureBrute: string, htmlBrut: string): str
   if (plis.length !== plisCapture) ecarts.push(`${plis.length} question(s) repliable(s) au lieu de ${plisCapture}`);
   const noms = new Set(plis.map((a) => (a.match(/\sname="([^"]*)"/) ?? [])[1] ?? ""));
   if (plis.length > 0 && (noms.size !== 1 || noms.has(""))) ecarts.push("les questions ne partagent pas un même `name` : l'accordéon n'est pas exclusif");
-  /* ÉCART ASSUMÉ DU 11/10 : aucune question n'est ouverte au chargement.
-     La capture ouvre la première (`<details open="">` sur la première, rien
-     sur les suivantes) ; Mehdi a tranché l'inverse pour raccourcir les pages.
-     La porte continue de refuser toute question ouverte, donc elle sait
-     toujours échouer : son témoin « des questions toutes ouvertes » en fait
-     la preuve à chaque passage. */
-  const ouverts = plis.map((a, i) => (/\sopen(?:=""|\s|$)/.test(a) ? i : -1)).filter((i) => i >= 0);
-  if (ouverts.length > 0) ecarts.push(`questions ouvertes au chargement : [${ouverts.join(", ")}] alors qu'aucune ne doit l'être (arbitrage du 11/10)`);
+  /* LES QUESTIONS OUVERTES AU CHARGEMENT SONT CELLES DE LA CAPTURE, la
+     première (V3 du 16/10, qui lève l'écart du 11/10). Le témoin « des
+     questions toutes ouvertes » prouve à chaque passage que la porte refuse. */
+  const ouvertes = (attributs: string[]) =>
+    attributs.map((a, i) => (/\sopen(?:=""|\s|$)/.test(a) ? i : -1)).filter((i) => i >= 0);
+  const ouverts = ouvertes(plis);
+  const ouvertsCapture = ouvertes([...capture.matchAll(/<details\b([^>]*)>/g)].map((m) => m[1]));
+  if (ouverts.join(",") !== ouvertsCapture.join(",")) {
+    ecarts.push(
+      `questions ouvertes au chargement : [${ouverts.join(", ")}] au lieu de [${ouvertsCapture.join(", ")}] dans la capture`,
+    );
+  }
 
   return ecarts;
 }

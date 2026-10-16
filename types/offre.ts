@@ -143,79 +143,35 @@ export interface FormuleOffre {
   bouton?: LienOffre;
 }
 
-/* ---------------------------------- « Les prestations regroupées ici » */
+/* ---------------------------------- « Les prestations liées à cette offre » */
 
 /**
- * Un bloc du pli d'une prestation absorbée : son titre, et SOIT des puces,
- * SOIT le tableau « Ce que nous faisons / Ce que ça change pour vous ».
- * La capture rend les deux formes, selon le bloc.
+ * Une prestation regroupée sous l'offre : une carte-lien vers SA page.
+ * Depuis la maquette V3 (16/10), la carte ne recopie plus le contenu de la
+ * page cible, elle y renvoie. Voir `components/site/offre/PrestationsRegroupees.tsx`.
  */
-export interface BlocPrestation {
-  /**
-   * Le H3 du bloc. OPTIONNEL depuis le 07/10 (`/travaux-industriels/`) : la
-   * capture intercale, entre deux blocs titrés, des paragraphes du corpus qui
-   * n'ont pas de titre à eux (« Un transporteur dépose la machine au pied du
-   * camion et repart… »). Sans ce champ, ce texte payé disparaissait du pli.
-   */
-  titre?: string;
-  /**
-   * Les paragraphes du bloc, AVANT ses puces ou son tableau, dans l'ordre de
-   * la capture. Ajouté le 07/10 avec `titre` optionnel, même raison.
-   */
-  prose?: string[];
-  puces?: { accroche?: string; texte: string }[];
-  tableau?: {
-    entetes: [string, string];
-    lignes: [string, string][];
-  };
-}
-
-/** Une prestation absorbée par la page, repliée dans sa carte. */
 export interface PrestationRegroupee {
-  /** L'intitulé de la carte : « Dépannage industriel ». */
+  /** L'intitulé de la carte : le H1 de la page cible. */
   titre: string;
   /**
-   * La ligne de résumé sous l'intitulé, tronquée à une ligne au rendu.
-   *
-   * OPTIONNEL DEPUIS LE 12/10. Mesuré ce jour-là : quatre des prestations que
-   * ce bloc doit lister n'écrivent AUCUNE accroche sur leur propre page en
-   * production (`/travaux-industriels/` : démantèlement, levage, montage,
-   * transfert, dont la section « Le problème » porte une `punchline` vide).
-   * Leur corpus en a bien une, le site ne la sert pas : la recopier ici
-   * mettrait dans ce bloc un texte que la page cible n'écrit pas.
-   * « Vide plutôt que faux » (CLAUDE.md §13) : la carte porte alors son
-   * intitulé et son lien, sans ligne de résumé inventée.
+   * L'accroche sous l'intitulé : celle de la V3 pour cette carte, sinon celle
+   * que la page cible écrit en production. Absente, la carte porte son seul
+   * intitulé : « vide plutôt que faux » (CLAUDE.md §13).
    */
   resume?: string;
-  blocs?: BlocPrestation[];
-  questions?: { question: string; reponse: string }[];
-  /**
-   * La page que cette prestation a sur LE SITE, et son libellé de lien.
-   *
-   * AJOUTÉS LE 07/10 en portant `/offres/bureau-etudes/`, et c'est un ÉCART
-   * ASSUMÉ à la maquette, déclaré ici parce qu'il vaut pour toute page qui
-   * regroupe une prestation : la maquette REDIRIGE `/offres/retrofit/` et
-   * `/offres/audit-conseil-maintenance/` vers cette page (`remapOffer`), donc
-   * elle replie leur contenu entier dans le pli. Le site, lui, SERT ces deux
-   * URL (elles répondent 200 et ont leur propre fichier de contenu) : recopier
-   * leur texte ici produirait deux fois la même page, exactement la
-   * cannibalisation que la console doit surveiller (CLAUDE.md §10). Le pli
-   * porte donc le lien vers la page réelle, et non sa copie.
-   *
-   * Sans ces champs, rien n'est rendu de plus : les pages qui replient un
-   * contenu absent du site gardent leurs `blocs`.
-   */
-  href?: string;
-  hrefLibelle?: string;
+  /** La page de la prestation sur le site. Une carte sans lien sûr n'est pas rendue. */
+  href: string;
 }
 
 /**
- * Section « Offres regroupées » de la capture. AJOUTÉE LE 07/10 pour
- * `/offres/zero-arret/`, dont la capture porte 18 sections là où la page
- * pilote `/offres/residence/` en porte 17 : c'est l'unique écart de structure
- * entre les deux. Le champ est optionnel, donc inerte sur les autres pages.
+ * Section « Offres regroupées » de la maquette. Le champ est optionnel, donc
+ * inerte sur les pages qui ne le portent pas.
  */
 export interface PrestationsRegroupees {
+  /** Le surtitre : « Nos prestations » par défaut (V3). */
+  surtitre?: string;
+  /** Le H2 : « Les prestations liées à cette offre » par défaut (V3). */
+  titre?: string;
   /** Le lien de droite : « Décrire mon besoin → » vers `#besoin`. */
   lien?: LienOffre;
   prestations: PrestationRegroupee[];

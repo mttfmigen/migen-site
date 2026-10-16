@@ -740,22 +740,39 @@ const photosDeLaSection = (html: string): Set<string> =>
 const sectionAvec = (html: string, titre: string): string =>
   html.split(/<section\b/).find((s) => s.includes(titre)) ?? "";
 let railsControles = 0;
-for (const nom of ["offres-chantier.json", "offres-depannage-industriel.json", "offres-retrofit.json"]) {
-  const page = litPage(nom);
-  const html = renderToStaticMarkup(
+/* DEPUIS LE 16/10 (V3), CES TROIS OFFRES SECONDAIRES PORTENT « Pour aller plus
+   loin » et non plus le bento « Un autre besoin ? » : le rail ne doit
+   resservir aucune photo du maillage RÉELLEMENT rendu. Le cas du bento, qui a
+   motivé ce contrôle, est rejoué sur la même page avec le bento des offres
+   nommées : le rail doit l'éviter, et son témoin sans `photosPrises` doit y
+   retomber. */
+const BENTO = litPage("offres-arret-technique.json").contenu.autres;
+const rendPage = (page: PageRelais) =>
+  renderToStaticMarkup(
     <PageOffre titre={page.titre_h1 ?? page.url} contenu={page.contenu} formulaire="controle" chemin={page.url} />,
   );
-  const maillage = photosDeLaSection(sectionAvec(html, "Un autre besoin ?"));
+for (const nom of ["offres-chantier.json", "offres-depannage-industriel.json", "offres-retrofit.json"]) {
+  const page = litPage(nom);
+  const html = rendPage(page);
+  const maillage = photosDeLaSection(sectionAvec(html, "Pour aller plus loin"));
   const rail = photosDeLaSection(sectionAvec(html, "Nos références"));
   assert.ok(maillage.size > 0 && rail.size > 0, `${nom} : rail ou maillage introuvable, contrôle vide`);
+  const communes = [...rail].filter((f) => maillage.has(f));
+  assert.equal(communes.length, 0, `${nom} : le rail ressert ${communes.join(", ")}, déjà au maillage`);
+
+  const avecBento = { ...page, contenu: { ...page.contenu, autres: BENTO, pagesLiees: undefined } };
+  const htmlBento = rendPage(avecBento);
+  const bento = photosDeLaSection(sectionAvec(htmlBento, "Un autre besoin ?"));
+  const railBento = photosDeLaSection(sectionAvec(htmlBento, "Nos références"));
+  assert.ok(bento.size > 0 && railBento.size > 0, `${nom} : rail ou bento introuvable, contrôle vide`);
   const preuves = page.contenu.sections?.find((s) => s.type === "preuves") as SectionPreuves;
   const temoin = photosDeLaSection(renderToStaticMarkup(<ReferencesOffre section={preuves} />));
   assert.ok(
-    [...temoin].some((f) => maillage.has(f)),
-    `${nom} : sans photosPrises, le rail ne ressert plus le maillage ; le témoin n'a plus d'objet`,
+    [...temoin].some((f) => bento.has(f)),
+    `${nom} : sans photosPrises, le rail ne ressert plus le bento ; le témoin n'a plus d'objet`,
   );
-  const communes = [...rail].filter((f) => maillage.has(f));
-  assert.equal(communes.length, 0, `${nom} : le rail ressert ${communes.join(", ")}, déjà au maillage`);
+  const communesBento = [...railBento].filter((f) => bento.has(f));
+  assert.equal(communesBento.length, 0, `${nom} : le rail ressert ${communesBento.join(", ")}, déjà au bento`);
   railsControles += 1;
 }
 

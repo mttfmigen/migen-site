@@ -2,6 +2,7 @@ import { useId, type CSSProperties } from "react";
 
 import { LARGEUR, SECTION, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
+import FermeAuTelephone from "@/components/site/ressource/FermeAuTelephone";
 import stylesOffre from "@/components/site/offre/PageOffre.module.css";
 import type { SectionObjections } from "@/types/contenu";
 
@@ -142,9 +143,11 @@ export default function QuestionsVille({
               Poser ma question
             </a>
           </div>
-          <div data-faq-liste="" style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10 }}>
+          {/* LA PREMIÈRE QUESTION EST OUVERTE AU BUREAU, comme la capture et
+              la maquette V3 (16/10) ; `FermeAuTelephone` la referme sous 881 px. */}
+          <FermeAuTelephone faqListe style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10 }}>
             {section.questions.map((q, rang) => (
-       <details key={q.question} className={styles.pli} style={PLI} name={groupe} >
+              <details key={q.question} className={styles.pli} style={PLI} name={groupe} open={rang === 0 && !!q.reponse}>
                 <summary style={RESUME}>
                   <span className={styles.texteAvecLiens} style={QUESTION}>
                     <TexteRiche texte={q.question} />
@@ -178,7 +181,7 @@ export default function QuestionsVille({
                 </div>
               </details>
             ) : null}
-          </div>
+          </FermeAuTelephone>
         </div>
       </div>
     </section>

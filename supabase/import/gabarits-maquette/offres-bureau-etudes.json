@@ -80,45 +80,33 @@
       "prestations": [
         {
           "titre": "Retrofit machine industrielle",
-          "resume": "Arrêtez de payer des dépannages sur une machine que personne ne remet vraiment à niveau.",
-          "href": "/offres/retrofit/",
-          "hrefLibelle": "Retrofit machine industrielle"
+          "resume": "Votre machine peut produire plusieurs années de plus, pour un coût total très inférieur à celui du neuf.",
+          "href": "/offres/retrofit/"
         },
         {
           "titre": "Conseil en maintenance industrielle : sachez où part le budget",
-          "resume": "Dans beaucoup d'usines, la maintenance s'est construite par sédimentation.",
-          "href": "/offres/audit-conseil-maintenance/",
-          "hrefLibelle": "Conseil en maintenance industrielle : sachez où part le budget"
+          "resume": "Un référent technique passe du vrai temps sur votre site et croise la GMAO, les historiques, les contrats et les entretiens terrain.",
+          "href": "/offres/audit-conseil-maintenance/"
         },
         {
           "titre": "Bureau d'étude électrique : du schéma à l'armoire qui tourne",
           "resume": "Une installation électrique industrielle dérive plus vite que sa documentation.",
-          "href": "/bureau-etudes/bureau-etude-electrique/",
-          "hrefLibelle": "Bureau d'étude électrique : du schéma à l'armoire qui tourne"
+          "href": "/bureau-etudes/bureau-etude-electrique/"
         },
         {
           "titre": "Bureau d'étude électronique : une carte pensée pour être réparée",
           "resume": "La mécanique tient vingt ans. L'électronique de commande, non.",
-          "href": "/bureau-etudes/bureau-etude-electronique/",
-          "hrefLibelle": "Bureau d'étude électronique : une carte pensée pour être réparée"
+          "href": "/bureau-etudes/bureau-etude-electronique/"
         },
         {
           "titre": "Mise en conformité machine : fixez le calendrier avant l'inspection",
           "resume": "La conformité d'un parc n'est jamais acquise une fois pour toutes.",
-          "href": "/bureau-etudes/mise-en-conformite-machine/",
-          "hrefLibelle": "Mise en conformité machine : fixez le calendrier avant l'inspection"
-        },
-        {
-          "titre": "Mise en conformité des machines : fixez le calendrier avant l'inspection",
-          "resume": "La conformité d'un parc n'est jamais acquise une fois pour toutes.",
-          "href": "/offres/retrofit/mise-en-conformite-machine/",
-          "hrefLibelle": "Mise en conformité des machines : fixez le calendrier avant l'inspection"
+          "href": "/bureau-etudes/mise-en-conformite-machine/"
         },
         {
           "titre": "Remise en état machine industrielle",
           "resume": "Une machine fatiguée n'est pas une machine finie.",
-          "href": "/offres/retrofit/remise-en-etat/",
-          "hrefLibelle": "Remise en état machine industrielle"
+          "href": "/offres/retrofit/remise-en-etat/"
         }
       ]
     },

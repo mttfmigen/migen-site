@@ -20,6 +20,7 @@ import {
 } from "./BlocsZeroArret";
 import ComplementsOffre, { ComplementsDansCarte, premierTexte } from "./ComplementsOffre";
 import DerouleOffre from "./DerouleOffre";
+import DomainesEtudes from "./DomainesEtudes";
 import GarantiesOffre from "./GarantiesOffre";
 import LogosClients from "./LogosClients";
 import MaillageOffres, { photosDuMaillage } from "./MaillageOffres";
@@ -83,6 +84,7 @@ import { etapesFilAriane } from "@/components/site/expertises/mobile";
  *  1. 01 Chiffres      quatre cellules dans UNE carte en verre, sans en-tête
  *  2. 02 Logos         « Ils nous font confiance », défilement des logos
  *  3. Réassurance      « Certifications » + « Qui intervient chez vous »
+ *  3 bis. Domaines     « Nos domaines d’études », bureau d’études seulement (V3, 16/10)
  *  4. Appel            bande horaires + bouton            → `BandeAppel`
  *  5. 03 Problème      « Votre problématique », puces 01-04 ← corpus
  *  6. 04 Offre         « L'offre », 7 points fusionnés      ← corpus
@@ -90,10 +92,11 @@ import { etapesFilAriane } from "@/components/site/expertises/mobile";
  *  8. 05 Déroulé       « Notre méthode », étapes 01-06      ← corpus
  *  9. 06 Garanties     « Notre parti pris », panneau sombre ← corpus
  * 10. 07 Appel         bande-question autonome              ← `brefBande`
- * 11. Regroupées       « Les prestations regroupées ici »   ← `prestationsRegroupees`
+ * 11. Regroupées       « Les prestations liées à cette offre », cartes-liens (V3, 16/10) ← `prestationsRegroupees`
  * 12. 08 Références    « Nos références », cartes client    ← corpus
  * 13. Appel            même bande                          → `BandeAppel`
- * 14. 09 Questions     « Vos questions avant de nous appeler » ← corpus
+ * 14. 09 Questions     « Vos questions avant de nous appeler » ← corpus, la
+ *                      première ouverte au bureau (V3, 16/10)
  * 15. Maillage         « Un autre besoin ? Il a son offre. » bento 5 cartes
  * 16. Réalisations     « Ils nous ont confié une mission comparable » ← casLies
  * 17. 10 Appel final   question du corpus + panneau de formulaire
@@ -539,6 +542,11 @@ export default function PageOffre({
         {/* --------------------------------------------- 3. Réassurance */}
 
         <Reassurance reperes={contenu.reperesReassurance} chemin={chemin} />
+
+        {/* ------------------- 3 bis. « Nos domaines d’études » (V3, 16/10) */}
+
+        {/* Bureau d’études seulement : rien ailleurs. Voir `DomainesEtudes`. */}
+        <DomainesEtudes chemin={chemin} />
 
         {/* 3 bis à 4 ter : rendus ici, HORS cadence, sauf sur une page dont la
             maquette mobile v2 fait de ces écrans ses cartes « 01 » et « 02 »

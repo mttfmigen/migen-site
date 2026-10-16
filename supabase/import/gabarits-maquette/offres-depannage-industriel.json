@@ -234,40 +234,45 @@
         "bouton": "Demander une intervention"
       }
     ],
-    "autresSurtitre": "Un autre besoin ?",
-    "autresTitre": "Chaque situation a son offre.",
-    "autres": [
+    "pastille": "Nos offres",
+    "pagesLiees": [
       {
-        "phrase": "« J'ai besoin d'un renfort maintenance sur mon site. »",
-        "libelle": "Résidence",
-        "href": "/offres/residence/"
+        "titre": "Astreinte de maintenance",
+        "phrase": "Une astreinte la nuit, le week-end et les jours fériés avec un circuit d'appel convenu à l'avance. Voir l'astreinte de maintenance.",
+        "href": "/offres/depannage-industriel/astreinte/",
+        "photo": "/assets/photos/agro-mains-vanne-sanitaire.jpg"
       },
       {
-        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
-        "libelle": "Périmètre complet",
-        "href": "/offres/maintenance-externalisee/"
+        "titre": "Entreprise de maintenance industrielle",
+        "phrase": "Migen est une entreprise de maintenance industrielle née à Lyon et présente partout en France.",
+        "href": "/entreprise-maintenance-industrielle/",
+        "photo": "/assets/photos/il-technicien-maintenance-portrait-1600.jpg"
       },
       {
-        "phrase": "« Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. »",
-        "libelle": "Zéro arrêt",
-        "href": "/offres/zero-arret/"
+        "titre": "Panne machine industrielle",
+        "phrase": "En attendant notre arrivée, notre guide sur la panne machine industrielle liste les vérifications utiles et les erreurs à éviter.",
+        "href": "/offres/depannage-industriel/panne-machine/",
+        "photo": "/assets/photos/elec-mesure-multimetre-faisceau.jpg"
       },
       {
-        "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",
-        "libelle": "Arrêt technique",
-        "href": "/offres/arret-technique/"
+        "titre": "Zéro arrêt",
+        "phrase": "Si les pannes se répètent sur le même équipement, nous vous montrons le calcul face à l'abonnement Zéro arrêt, et vous décidez : après la troisième intervention, l'abonnement coûte moins cher.",
+        "href": "/offres/zero-arret/",
+        "photo": "/assets/photos/elec-schema-lampe-frontale.jpg"
       },
       {
-        "phrase": "« Mon installation n'est plus conforme et je n'ai plus les schémas. »",
-        "libelle": "Bureau d'études",
-        "href": "/offres/bureau-etudes/"
+        "titre": "Technicien en résidence",
+        "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
+        "href": "/offres/residence/",
+        "photo": "/assets/photos/env-inspection-ligne-production-automatique.jpg"
       },
       {
-        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
-        "libelle": "Toutes les offres",
-        "href": "/offres/"
+        "titre": "Arrêt technique",
+        "phrase": "Vos arrêts planifiés, tenus à la date annoncée.",
+        "href": "/offres/arret-technique/",
+        "photo": "/assets/photos/ciment-inspection-binome-harnais.jpg"
       }
     ],
-    "pastille": "Nos offres"
+    "pagesLieesTitre": "Les offres et prestations voisines"
   }
 }

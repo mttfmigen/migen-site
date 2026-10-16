@@ -208,14 +208,6 @@ const AGENCES_FRANCE =
   "Montréal, Madrid, Dubaï) et, en France, des hubs, pas des agences (README " +
   "de passation, verifie-interdits « 5 agences ») ; le repère est retiré, " +
   "jamais reformulé";
-const FAQ_FERMEE =
-  "réponse de la FAQ : aucune question n'est ouverte au chargement, arbitrage " +
-  "de Mehdi du 11/10 posé dans components/site/offre/QuestionsOffre.tsx, alors " +
-  "que la capture ouvre la première (1 <details open> sur 4 dans cette " +
-  "section) ; la réponse reste SERVIE dans le HTML, donc lue par Google, elle " +
-  "n'est qu'invisible tant que le visiteur n'a pas cliqué. Déclaré avec " +
-  "`dansLeHtml`, donc vérifié : le jour où la phrase quitte le HTML, la porte " +
-  "le dit";
 const PLI_REDUIRE =
   "libellé « Réduire » du pli « Lire la suite » : masqué tant que le pli est " +
   "fermé, sur le site comme dans la maquette (feuille `.cx-more`) ; la capture, " +
@@ -596,15 +588,9 @@ const TROUS_DECLARES = [
     { section: 0, ligne: "agences en France", pourquoi: AGENCES_FRANCE },
   ]],
   ["/offres/audit-conseil-maintenance/", []],
-  ["/offres/residence/", [
-    {
-      section: 13,
-      ligne:
-        "La mission est chiffrée sur devis, sous forme de taux horaire homogène dans toute la France. Trois éléments font le montant : le profil requis et ses spécialités, le rythme de présence (temps plein ou partagé) et les contraintes de vos installations. Tout est présenté ligne par ligne, pour une comparaison honnête avec un poste interne.",
-      pourquoi: FAQ_FERMEE,
-      dansLeHtml: true,
-    },
-  ]],
+  /* « réponse de la FAQ » n'est plus un trou depuis le 16/10 : la première
+     question est ouverte au bureau, comme la capture et la maquette V3. */
+  ["/offres/residence/", []],
 ];
 
 const TROUS_PAR_PAGE = {};

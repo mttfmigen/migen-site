@@ -217,40 +217,50 @@
         "rappel": "04 78 33 72 05, astreinte."
       }
     ],
-    "autresSurtitre": "Un autre besoin ?",
-    "autresTitre": "Chaque situation a son offre.",
-    "autres": [
+    "pastille": "Nos offres",
+    "pagesLiees": [
       {
-        "phrase": "« J'ai besoin d'un renfort maintenance sur mon site. »",
-        "libelle": "Résidence",
-        "href": "/offres/residence/"
+        "titre": "Déménagement de machines industrielles",
+        "phrase": "À l'arrivée, votre machine ne fait pas que voyager : elle produit. Remise en service comprise.",
+        "href": "/offres/chantier/demenagement-machines/",
+        "photo": "/assets/photos/il-interieur-de-chantier-naval-24-mars-2026-1600.jpg"
       },
       {
-        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
-        "libelle": "Périmètre complet",
-        "href": "/offres/maintenance-externalisee/"
+        "titre": "Transfert de production",
+        "phrase": "Vos clients ne doivent rien voir. Une ligne, un atelier ou une usine entière qui change d'adresse, sans rupture de livraison.",
+        "href": "/offres/chantier/transfert-de-production/",
+        "photo": "/assets/photos/env-industrie-au-crepuscule-2.jpg"
       },
       {
-        "phrase": "« Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. »",
-        "libelle": "Zéro arrêt",
-        "href": "/offres/zero-arret/"
+        "titre": "Technicien en résidence",
+        "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
+        "href": "/offres/residence/",
+        "photo": "/assets/photos/automatisme-coffret-cartes-portable.jpg"
       },
       {
-        "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",
-        "libelle": "Arrêt technique",
-        "href": "/offres/arret-technique/"
+        "titre": "Zéro arrêt",
+        "phrase": "La maintenance en abonnement, au forfait mensuel.",
+        "href": "/offres/zero-arret/",
+        "photo": "/assets/photos/il-hydrau-verin-godet-engin.jpg"
       },
       {
-        "phrase": "« Mon installation n'est plus conforme et je n'ai plus les schémas. »",
-        "libelle": "Bureau d'études",
-        "href": "/offres/bureau-etudes/"
+        "titre": "Arrêt technique",
+        "phrase": "Vos arrêts planifiés, tenus à la date annoncée.",
+        "href": "/offres/arret-technique/",
+        "photo": "/assets/photos/elec-porte-armoire-voyants-sectionneurs.jpg"
       },
       {
-        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
-        "libelle": "Toutes les offres",
-        "href": "/offres/"
+        "titre": "Full service",
+        "phrase": "Toute votre maintenance, un seul partenaire.",
+        "href": "/offres/full-service/",
+        "photo": "/assets/photos/env-industrie.jpg"
       }
     ],
-    "pastille": "Nos offres"
+    "pagesLieesTitre": "Les offres et prestations voisines",
+    "complementOffre": [
+      {
+        "texte": "Ce que nous ne faisons pas. Ni bureaux, ni archives, ni parc informatique, ni vente de machines. Quand un équipement ne mérite pas le voyage, nous le disons et nous orientons vers un retrofit de la machine."
+      }
+    ]
   }
 }

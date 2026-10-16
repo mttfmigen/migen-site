@@ -6,6 +6,7 @@ import styles from "./QuestionsPhoto.module.css";
 
 import { LARGEUR, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
+import FermeAuTelephone from "@/components/site/ressource/FermeAuTelephone";
 import type { QuestionsPhotoOffres } from "@/types/offres";
 import { altPhoto } from "@/lib/descriptions-photos";
 
@@ -321,18 +322,17 @@ export default function QuestionsPhoto({
                 </a>
               )}
             </div>
-            <div data-faq-liste="" style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10, alignContent: "start" }}>
+            <FermeAuTelephone faqListe style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10, alignContent: "start" }}>
               {donnees.questions.map((q, i) => (
                 <details
                   key={q.question}
                   className="cx-faq"
                   style={PLI}
                   name={groupe}
-                  // AUCUNE QUESTION N'EST OUVERTE AU CHARGEMENT, arbitrage de
-                  // Mehdi du 11/10. La maquette ouvre la première, et ce
-                  // composant le faisait, sauf quand la réponse était vide.
-                  // C'est donc un écart assumé, demandé pour raccourcir les
-                  // pages au téléphone.
+                  // LA PREMIÈRE QUESTION EST OUVERTE AU BUREAU, sauf réponse
+                  // vide, comme la maquette V3 (16/10) : l'arbitrage du 11/10
+                  // est levé. Au téléphone, `FermeAuTelephone` la referme.
+                  open={i === 0 && !!q.reponse}
                 >
                   <summary style={QUESTION}>
                     <span className={styles.texteAvecLiens} style={INTITULE}>
@@ -374,7 +374,7 @@ export default function QuestionsPhoto({
                   </div>
                 </details>
               ) : null}
-            </div>
+            </FermeAuTelephone>
           </div>
         </div>
       </div>

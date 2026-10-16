@@ -40,6 +40,18 @@
  *     les liens (`cibleSure`) et ne monte rien sans donnée : une régression du
  *     composant viderait le bloc sans toucher une seule fiche.
  *
+ * DEPUIS LA MAQUETTE V3 (16/10), LE BLOC EST EN CARTES-LIENS (« Voir la
+ * prestation → ») et non plus en accordéons recopiés : une carte est un `<a
+ * data-carte-prestation>` dans la section `data-prestations-regroupees`. Deux
+ * refus s'ajoutent : DEUX CARTES VERS LA MÊME PAGE (le doublon que Mehdi a
+ * relevé sur /offres/bureau-etudes/), et une carte dont le lien servi n'est pas
+ * celui de la fiche.
+ *
+ * UN SEUL DOUBLON DE PAGE EST DÉCLARÉ, `DOUBLONS` plus bas : deux adresses qui
+ * servent la même prestation (même titre, même accroche). Le groupe réclame
+ * l'une OU l'autre, jamais les deux. Une adresse déclarée qui quitterait
+ * l'index ferait échouer la porte : l'exception ne survit pas à sa raison.
+ *
  * CE QU'ELLE NE FAIT PAS, volontairement : elle n'exige le bloc sur aucune
  * page. Les offres qui regroupent plusieurs prestations SANS porter le bloc
  * sont seulement listées en fin de passage, pour arbitrage. Imposer le bloc
@@ -107,9 +119,22 @@ export function groupeOffre(url, pages, remap) {
   return [...attendues.values()].sort((a, b) => a.url.localeCompare(b.url));
 }
 
-/** Les cartes de premier niveau du bloc, dans le HTML servi. */
+/**
+ * Les adresses qui servent la MÊME prestation qu'une autre : la clé est le
+ * doublon, la valeur la page que le bloc liste. « Mise en conformité des
+ * machines » (/offres/retrofit/…) et « Mise en conformité machine »
+ * (/bureau-etudes/…) ont le même titre à un mot près et la même accroche ; la
+ * V3 et Mehdi n'en veulent qu'une sur /offres/bureau-etudes/ (16/10). Celle du
+ * bureau d'études est gardée : c'est aussi la tuile « Mise en conformité
+ * machine » de « Nos domaines d'études ».
+ */
+export const DOUBLONS = {
+  "/offres/retrofit/mise-en-conformite-machine/": "/bureau-etudes/mise-en-conformite-machine/",
+};
+
+/** Les cartes-liens du bloc, dans le HTML servi. */
 export function cartesServies(html) {
-  const i = html.indexOf("Les prestations regroup");
+  const i = html.indexOf("data-prestations-regroupees");
   if (i < 0) return null;
   const debut = html.lastIndexOf("<section", i);
   const re = /<section\b|<\/section>/g;
@@ -128,32 +153,18 @@ export function cartesServies(html) {
   }
   const bloc = html.slice(debut, fin);
   const cartes = [];
-  const r2 = /<details\b|<\/details>/g;
-  let p2 = 0;
-  let depart = -1;
-  let m2;
-  while ((m2 = r2.exec(bloc))) {
-    if (m2[0] === "</details>") {
-      p2 -= 1;
-      if (p2 === 0) {
-        const corps = bloc.slice(depart, m2.index);
-        const tete = (/<summary\b[\s\S]*?<\/summary>/.exec(corps) ?? [""])[0];
-        /* Le troisième segment de texte du résumé est l'intitulé : le premier
-           est le numéro de la pastille, le « + » n'a pas de texte propre. */
-        const morceaux = tete
-          .replace(/<[^>]+>/g, SEP)
-          .split(SEP)
-          .map((x) => norme(x))
-          .filter(Boolean);
-        cartes.push({
-          intitule: morceaux[1] ?? "",
-          liens: [...corps.matchAll(/href="(\/[^"#?]*\/)"/g)].map((x) => x[1]),
-        });
-      }
-    } else {
-      if (p2 === 0) depart = m2.index;
-      p2 += 1;
-    }
+  for (const m2 of bloc.matchAll(/<a\b([^>]*\bdata-carte-prestation\b[^>]*)>([\s\S]*?)<\/a>/g)) {
+    /* Le deuxième segment de texte est l'intitulé : le premier est le numéro
+       de la pastille. */
+    const morceaux = m2[2]
+      .replace(/<[^>]+>/g, SEP)
+      .split(SEP)
+      .map((x) => norme(x))
+      .filter(Boolean);
+    cartes.push({
+      intitule: morceaux[1] ?? "",
+      liens: [...m2[1].matchAll(/href="(\/[^"#?]*\/)"/g)].map((x) => x[1]),
+    });
   }
   return cartes;
 }
@@ -168,7 +179,9 @@ export function juge({ url, attendues, cartesFiche, cartesRendu, urlsConnues }) 
   for (const a of attendues) {
     const parTitre = titresFiche.includes(norme(a.h1));
     const parLien = cartesFiche.some((c) => c.href === a.url);
-    if (!parTitre && !parLien) {
+    /* Un doublon déclaré est couvert par la page qu'il double. */
+    const parJumelle = !!DOUBLONS[a.url] && cartesFiche.some((c) => c.href === DOUBLONS[a.url]);
+    if (!parTitre && !parLien && !parJumelle) {
       fautes.push(`${url} : « ${a.h1} » (${a.url}, ${a.role}) n'est pas dans le bloc`);
     }
   }
@@ -195,6 +208,22 @@ export function juge({ url, attendues, cartesFiche, cartesRendu, urlsConnues }) 
     if (c.href && !urlsConnues.has(c.href)) {
       fautes.push(`${url} : la carte « ${c.titre} » renvoie vers ${c.href}, inconnue de l'index`);
     }
+  }
+  const vus = new Set();
+  for (const c of cartesFiche) {
+    const cle = DOUBLONS[c.href] ?? c.href;
+    if (c.href && vus.has(cle)) {
+      fautes.push(`${url} : « ${c.titre} » mène à une page déjà listée (${cle}). Une prestation, une carte.`);
+    }
+    vus.add(cle);
+  }
+  if (cartesRendu !== null) {
+    cartesRendu.forEach((servie, rang) => {
+      const attendu = cartesFiche[rang]?.href;
+      if (attendu && !servie.liens.includes(attendu)) {
+        fautes.push(`${url} : la carte servie n° ${rang + 1} ne mène pas à ${attendu}, le lien de la fiche.`);
+      }
+    });
   }
   if (cartesFiche.length < 2) {
     fautes.push(
@@ -240,16 +269,18 @@ if (CONTROLE) {
   const uneSeule = [complet[0]];
   const inventee = [...complet, { titre: "Prestation qui n'existe pas", href: "/offres/truc/nulle-part/" }];
   const rendu = (n) => Array.from({ length: n }, (_, k) => ({ intitule: `c${k}`, liens: [] }));
-  const cas = (cartesFiche, cartesRendu = rendu(cartesFiche.length)) =>
+  const servi = (cartes) => cartes.map((c) => ({ intitule: c.titre, liens: [c.href] }));
+  const cas = (cartesFiche, cartesRendu = servi(cartesFiche)) =>
     juge({ url: "/offres/truc/", attendues, cartesFiche, cartesRendu, urlsConnues });
 
   const htmlBloc =
-    '<section><div><div>Également dans cette offre</div><h2>Les prestations regroupées ici</h2></div>' +
-    '<div><details><summary><span>01</span><span><span>Machin absorbé</span><span>Son accroche.</span></span><span>+</span></summary>' +
-    '<div><a href="/offres/machin/">Machin absorbé →</a><details><summary>Une question ?</summary><p>Oui.</p></details></div></details>' +
-    '<details><summary><span>02</span><span><span>La fille A</span></span><span>+</span></summary>' +
-    '<div><a href="/offres/truc/fille-a/">La fille A →</a></div></details></div></section>' +
+    '<section data-prestations-regroupees=""><div><div>Nos prestations</div><h2>Les prestations liées à cette offre</h2></div>' +
+    '<div><a data-carte-prestation="" href="/offres/machin/"><span>01</span><span>Machin absorbé</span><span>Son accroche.</span><span>Voir la prestation →</span></a>' +
+    '<a href="/offres/truc/fille-a/" data-carte-prestation=""><span>02</span><span>La fille A</span><span>Voir la prestation →</span></a>' +
+    '<a href="#besoin">Décrire mon besoin →</a></div></section>' +
     "<section>La suite de la page</section>";
+  const doublonDeLien = [...complet, { titre: "Machin absorbé, encore", href: "/offres/machin/" }];
+  const renduQuiDevie = complet.map((c, k) => ({ intitule: c.titre, liens: [k === 1 ? "/ailleurs/" : c.href] }));
 
   const servies = cartesServies(htmlBloc);
   const remapLu = litRemap(
@@ -286,10 +317,19 @@ if (CONTROLE) {
       cas(complet, rendu(complet.length - 1)).some((f) => f.includes("en perd en route")),
     ],
     ["POSITIF un bloc servi vide est vu", cas(complet, []).some((f) => f.includes("servi vide"))],
+    [
+      "POSITIF deux cartes vers la même page sont vues",
+      cas(doublonDeLien).some((f) => f.includes("déjà listée")),
+    ],
+    [
+      "POSITIF une carte servie qui ne mène pas au lien de la fiche est vue",
+      cas(complet, renduQuiDevie).some((f) => f.includes("ne mène pas à /offres/truc/fille-a/")),
+    ],
     /* --- la lecture du rendu et de la table de la maquette --- */
     ["le rendu est découpé en cartes de premier niveau", servies?.length === 2],
     ["l'intitulé de la première carte est lu", norme(servies?.[0]?.intitule) === "Machin absorbé"],
-    ["la question repliée DANS une carte n'est pas comptée comme carte", servies?.length === 2],
+    ["le lien de chaque carte servie est lu", servies?.[1]?.liens?.[0] === "/offres/truc/fille-a/"],
+    ["le lien « Décrire mon besoin » n'est pas compté comme carte", servies?.length === 2],
     ["le groupe attendu est bien de 5 prestations", attendues.length === 5],
     ["la table remapOffer de la maquette est lue", remapLu?.["/offres/chantier/"] === "/travaux-industriels/"],
   ];
@@ -303,6 +343,13 @@ if (CONTROLE) {
 const index = JSON.parse(readFileSync(join(RACINE, "maquette/contenu/site/index.json"), "utf8"));
 const pages = (Array.isArray(index) ? index : (index.pages ?? index)).filter((p) => p?.url);
 const urlsConnues = new Map(pages.map((p) => [p.url, p.h1 ?? ""]));
+
+for (const [doublon, gardee] of Object.entries(DOUBLONS)) {
+  if (!urlsConnues.has(doublon) || !urlsConnues.has(gardee)) {
+    console.log(`DOUBLON DÉCLARÉ CADUC : ${doublon} ou ${gardee} n'est plus dans l'index. Retirer l'exception.`);
+    process.exit(1);
+  }
+}
 
 const remap = litRemap(readFileSync(join(RACINE, "maquette/site-final-autonome.html"), "utf8"));
 if (!remap) {
@@ -320,7 +367,7 @@ for (const nom of readdirSync(dossier).filter((f) => f.endsWith(".json"))) {
 }
 
 if (fiches.length === 0) {
-  console.log("aucune fiche ne porte « Les prestations regroupées ici » : rien à mesurer.");
+  console.log("aucune fiche ne porte « Les prestations liées à cette offre » : rien à mesurer.");
   process.exit(1);
 }
 
@@ -397,7 +444,7 @@ console.log(
      affiche 25, la plus fournie en montre 8. Mehdi se plaint page par page, le
      verdict doit donc se lire page par page. Un relecteur adverse a relevé que
      la somme laissait croire a une richesse qu'aucune page ne porte. */
-  `blocs « Les prestations regroupées ici » conformes : ${fiches.length} bloc(s) ` +
+  `blocs « Les prestations liées à cette offre » conformes : ${fiches.length} bloc(s) ` +
     `(${new Set(fiches.map((f) => f.prestations.map((x) => x.titre).join("|"))).size} page(s) distincte(s)), de ` +
     `${Math.min(...fiches.map((f) => f.prestations.length))} à ${Math.max(...fiches.map((f) => f.prestations.length))} prestations par page, ` +
     `${prestationsVues} prestation(s) listées, chacune rattachée à une page réelle, ` +

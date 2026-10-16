@@ -235,40 +235,53 @@
         "rappel": "04 78 33 72 05"
       }
     ],
-    "autresSurtitre": "Un autre besoin ?",
-    "autresTitre": "Chaque situation a son offre.",
-    "autres": [
+    "pastille": "Nos offres",
+    "pagesLiees": [
       {
-        "phrase": "« J'ai besoin d'un renfort maintenance sur mon site. »",
-        "libelle": "Résidence",
-        "href": "/offres/residence/"
+        "titre": "Technicien en résidence",
+        "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
+        "href": "/offres/residence/",
+        "photo": "/assets/photos/env-industrie-chimie-2.jpg"
       },
       {
-        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
-        "libelle": "Périmètre complet",
-        "href": "/offres/maintenance-externalisee/"
+        "titre": "Zéro arrêt",
+        "phrase": "La maintenance en abonnement, au forfait mensuel.",
+        "href": "/offres/zero-arret/",
+        "photo": "/assets/photos/hydrau-centrale-hydraulique-technicien.jpg"
       },
       {
-        "phrase": "« Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. »",
-        "libelle": "Zéro arrêt",
-        "href": "/offres/zero-arret/"
+        "titre": "Arrêt technique",
+        "phrase": "Vos arrêts planifiés, tenus à la date annoncée.",
+        "href": "/offres/arret-technique/",
+        "photo": "/assets/photos/elec-porte-armoire-voyants-sectionneurs.jpg"
       },
       {
-        "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",
-        "libelle": "Arrêt technique",
-        "href": "/offres/arret-technique/"
+        "titre": "Full service",
+        "phrase": "Toute votre maintenance, un seul partenaire.",
+        "href": "/offres/full-service/",
+        "photo": "/assets/photos/env-infrastructure-usine-acier-avec-tuyaux.jpg"
       },
       {
-        "phrase": "« Mon installation n'est plus conforme et je n'ai plus les schémas. »",
-        "libelle": "Bureau d'études",
-        "href": "/offres/bureau-etudes/"
+        "titre": "Travaux industriels",
+        "phrase": "Transfert, démantèlement, démontage et montage.",
+        "href": "/travaux-industriels/",
+        "photo": "/assets/photos/il-photo-usine-ciment-mars-17-2026-1600.jpg"
       },
       {
-        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
-        "libelle": "Toutes les offres",
-        "href": "/offres/"
+        "titre": "Bureau d’études",
+        "phrase": "Conception, retrofit et mise en conformité.",
+        "href": "/offres/bureau-etudes/",
+        "photo": "/assets/photos/chaudro-technicienne-plan-etabli.jpg"
       }
     ],
-    "pastille": "Nos offres"
+    "pagesLieesTitre": "Les offres et prestations voisines",
+    "complementOffre": [
+      {
+        "texte": "Ce que nous ne faisons pas. Nous ne vendons ni machine ni équipement. Le gros œuvre et la construction de bâtiments restent l'affaire des entreprises générales. Notre seul intérêt est que votre installation fonctionne."
+      },
+      {
+        "texte": "Deux postures possibles. Assistance technique au metteur en route du fabricant, ou responsabilité complète de l'opération. Le partage des rôles est écrit dans le devis, ligne par ligne."
+      }
+    ]
   }
 }
