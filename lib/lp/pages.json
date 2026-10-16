@@ -8478,9 +8478,9 @@
    "h1": "Le technicien de maintenance qu'il vous manque, opérationnel à Lyon.",
    "h1a": "",
    "h1b": "Le technicien de maintenance qu'il vous manque, opérationnel à Lyon.",
-   "chapo": "À Lyon et dans le Rhône, vos installations doivent rester opérationnelles. Siège à Écully, 129 chemin du Moulin Carron.",
+   "chapo": "À Lyon et dans le Rhône, vos installations doivent rester opérationnelles. Agence à Écully, 129 chemin du Moulin Carron.",
    "badges": [
-    "Siège Lyon · Écully",
+    "Agence Lyon · Écully",
     "Techniciens qualifiés",
     "Remplacement garanti"
    ],
@@ -8724,7 +8724,7 @@
      "checks": [],
      "badges": [],
      "floats": [],
-     "h2": "Siège Lyon · Écully",
+     "h2": "Agence Lyon · Écully",
      "kind": "features",
      "img": "/assets/web/team-electric.jpg"
     },

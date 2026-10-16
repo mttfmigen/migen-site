@@ -71,10 +71,6 @@ const CORRECTIONS = [
   { kind: "case", de: /\s+deux années consécutives/g, vers: "", motif: "durée retirée de la carte « Cas client »", nom: "durée retirée d\'une carte « Cas client »" },
   { kind: "case", de: /\s+2 ans(?=\s+·)/g, vers: "", motif: "durée chiffrée retirée de la carte « Cas client »", nom: "durée retirée d\'une carte « Cas client »" },
   { kind: "case", de: /\s+·\s+(?:12|18) mois$/g, vers: "", motif: "durée chiffrée retirée de la carte « Cas client »", nom: "durée retirée d\'une carte « Cas client »" },
-  /* 16/10, Mehdi : « Le siège est à Ecully mets le de partout ». L'agence
-     lyonnaise de la V3, à Écully, est le siège. */
-  { de: /\bAgence à Écully, 129 chemin du Moulin Carron\./g, vers: "Siège à Écully, 129 chemin du Moulin Carron.", motif: "le siège est à Écully (Mehdi, 16/10)", nom: "siège à Écully" },
-  { de: /^Agence Lyon · Écully$/g, vers: "Siège Lyon · Écully", motif: "le siège est à Écully (Mehdi, 16/10)", nom: "siège à Écully" },
   // « +200 clients », sans qualificatif.
   { de: /(200 clients) satisfaits/g, vers: "$1", motif: "« +200 clients » sans le qualificatif « satisfaits »", nom: "« satisfaits » retiré de « +200 clients »" },
   /* Fautes de français de la V3 : la préposition devant un nom de ville ou de
@@ -366,7 +362,7 @@ function compteRendu(src, sortie) {
     "Le texte que les composants de `components/lp/` écrivent eux-mêmes, et ce qui y diffère de la V3 :",
     "",
     "- Formulaire (`FormulaireLP.tsx`) : la mention de la V3 « Gratuit et sans engagement. Vos données servent uniquement à traiter votre demande · Confidentialité » (deux fois par page) porte « sans engagement » ; elle est remplacée par la mention RGPD du formulaire du site, mot pour mot (`MentionsRgpd`).",
-    "- Formulaire : celui de la V3 (`MigenLPForm`), au héros comme en bas de page, sur un seul écran : titre de la page, « Rappel dans l’heure », six champs obligatoires, bouton « On me rappelle dans l’heure ». Il envoie comme le formulaire du site (`/api/lead`, formulaire HubSpot du site, attribution de la visite) ; rien de la LP en ligne n'y est ajouté, ni champ ni étape.",
+    "- Formulaire : celui de la V3 (`MigenLPForm`), au héros comme en bas de page, sur un seul écran : titre de la page, « Rappel dans l’heure », six champs obligatoires, bouton « On me rappelle dans l’heure ». Il envoie comme le formulaire du site (`/api/lead`, formulaire HubSpot du site), avec le pays de l'indicatif (`country`, champ caché de la V3) ; rien de la LP en ligne n'y est ajouté, ni champ ni étape. L'attribution de la visite (UTM, page d'entrée, identifiant de la LP) est gardée dans la table `leads` ; dans HubSpot, une demande de LP se reconnaît à son adresse (`pageUri`), car `formulaire_migen`, `utm_*`, `page_entree` et `gclid` n'existent pas comme propriétés du portail (relevé du 16/10) : les créer et les poser sur le formulaire du site pour qu'elles y arrivent.",
     "- Pied : « © 2026 Migen · migengroup.com » devient « © <année> Migen » ; « Mentions légales » est ajouté à côté de la politique de confidentialité, les deux vers les pages du site ; « Préférences cookies » rouvre le bandeau du site.",
     "- /lp/rendez-vous/ : le faux agenda de la V3 (cinq jours et six créneaux écrits en dur, « Confirmer le rendez-vous », « Visio ou téléphone · sans engagement ») disparaît. À sa place, le titre de carte de la V3 sans sa durée chiffrée, « Choisissez votre créneau », et un bouton qui ouvre l'agenda Calendly de la LP en ligne, « Réservez votre échange », les mots du titre de la page. Surtitre, titre et chapô sont lus dans la donnée.",
     "- /lp/merci/ : tout est lu dans la donnée (surtitre, titre, chapô, points, bouton `mainCta` vers `mainHref`).",

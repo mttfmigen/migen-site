@@ -23,6 +23,8 @@
  *   · un montant, sauf « +10 M€ de chiffre d'affaires » que l'accueil affiche ;
  *   · « 4,9/5 » (le site affiche 4,6 / 5) et « clients satisfaits » ;
  *   · une agence locale en France (seule Lyon, à Écully, en est une) ;
+ *   · une phrase qui place le siège à Écully : c'est l'agence, le siège est
+ *     à Limonest (Mehdi, 16/10 au soir, qui rétablit sa décision du 09/10) ;
  *   · un « Hub X » hors des dix hubs, une ville-hub rattachée à un autre hub,
  *     ou une ville sans hub rattachée à un autre hub que le plus proche (la
  *     V3 envoyait Le Havre à Nantes quand Rouen, même département, allait à
@@ -45,6 +47,7 @@ import { join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 import { TELEPHONE_LP } from "../components/site/entete-donnees.ts";
+import { SIEGE_A_ECULLY } from "../lib/decisions-copie.ts";
 
 const RACINE = fileURLToPath(new URL("..", import.meta.url));
 export const FICHIER_LP = join(RACINE, "lib", "lp", "pages.json");
@@ -140,6 +143,9 @@ export function motifsDuTexte(texte, ctx = {}) {
   const ville = villeDe(ctx.page);
   if (/\bagences?\b/i.test(t) && !(ville === "lyon" && (/[ÉE]cully/.test(t) || t === "Pourquoi notre agence locale"))) {
     motifs.push(`${MOTIF_AGENCE} (4 agences : Lyon, Montréal, Dubaï, Madrid)`);
+  }
+  if (SIEGE_A_ECULLY.test(t)) {
+    motifs.push("siège placé à Écully : le siège est à Limonest, Écully est l'agence");
   }
   for (const [, nom] of t.matchAll(HUB_NOMME)) {
     const hub = enSlug(nom);
@@ -254,6 +260,8 @@ function temoins(reelles) {
     ["4,9/5", (d) => (page(d).hs = [{ v: "4,9/5", l: "satisfaction client" }])],
     ["clients satisfaits", (d) => (sec(d).t = "Plus de 200 clients satisfaits")],
     ["agence locale", (d) => (parPage(d, "maintenance-industrielle-paris/").badges = ["Agence Paris · La Défense"])],
+    ["siège à Écully", (d) => (parPage(d, "maintenance-industrielle-lyon/").badges = ["Siège Lyon · Écully"])],
+    ["siège à l'adresse d'Écully", (d) => (parPage(d, "maintenance-industrielle-lyon/").chapo = "Siège à Écully, 129 chemin du Moulin Carron.")],
     ["hub hors liste", (d) => (page(d).chapo = "Hub Migen à Grenoble.")],
     ["ville-hub rattachée ailleurs", (d) => (parPage(d, "maintenance-industrielle-bordeaux/").badges = ["Intervention Bordeaux · Hub Toulouse"])],
     ["ville sans hub rattachée à un hub lointain", (d) => (parPage(d, "maintenance-industrielle-le-havre/").chapo = "Techniciens déployés depuis notre hub Migen de Nantes.")],

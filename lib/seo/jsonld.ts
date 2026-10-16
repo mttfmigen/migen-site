@@ -75,15 +75,16 @@ export interface ArticleJsonLd extends Contexte {
 }
 
 /**
- * L'ADRESSE DU SIÈGE, ÉCULLY : décision de Mehdi du 16/10 (« Le siège est à
- * Ecully mets le de partout »), la même que le pied de page et les mentions
- * légales. Voir CLAUDE.md § 1.
+ * L'ADRESSE DU SIÈGE, LIMONEST : celle de l'extrait du registre
+ * (docs/IDENTITE-LEGALE.md), du pied de page et des mentions légales. Décision
+ * de Mehdi du 09/10, rétablie le 16/10 au soir (« L'agence est à Ecully, siège
+ * à Limonest ») ; voir CLAUDE.md § 1. Écully est l'agence, pas le siège.
  */
 const ADRESSE_SIEGE: Adresse = {
   "@type": "PostalAddress",
-  streetAddress: "129 chemin du Moulin Carron",
-  postalCode: "69130",
-  addressLocality: "Écully",
+  streetAddress: "1 rue des Vergers",
+  postalCode: "69760",
+  addressLocality: "Limonest",
   addressRegion: "Auvergne-Rhône-Alpes",
   addressCountry: "FR",
 };

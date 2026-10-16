@@ -157,12 +157,10 @@ const PARTIES: readonly Partie[] = [
          morale : on ne sait pas à qui on écrit. La dénomination vient de
          `docs/IDENTITE-LEGALE.md` (extrait Pappers transmis par Mehdi, recoupé
          avec l'annuaire des entreprises de l'État, voir les mentions légales).
-         16/10 : L'ADRESSE S'ÉCARTE DE LA MAQUETTE, qui écrit encore « 1 rue des
-         Vergers, Bâtiment 3, 69760 Limonest ». Le siège est à Écully (décision
-         de Mehdi, règle SIÈGE de lib/decisions-copie.ts), et le contrôle exige
-         l'adresse décidée en refusant Limonest. */
+         L'ADRESSE, elle, reste celle de la maquette mot pour mot, et le contrôle
+         continue de l'exiger ainsi. */
       <p style={P}>
-        MIGEN SERVICE (migen©), 129 chemin du Moulin Carron, 69130 Écully.
+        MIGEN SERVICE (migen©), 1 rue des Vergers, Bâtiment 3, 69760 Limonest.
         Pour toute question sur vos données,{" "}
         {/* Souligné, comme la mention RGPD du formulaire : le style global des
             liens ne pose ni soulignement ni couleur distincte. */}

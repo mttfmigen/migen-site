@@ -16,9 +16,7 @@
  * la correction a traitées une par une :
  *  - elle INTERDISAIT « Limonest » au motif que le siège serait à Écully, soit
  *    l'inverse de la décision du 09/10, et l'inverse de sa propre capture.
- *    L'interdit a été retourné : c'est « siège à Écully » qui est refusé.
- *    (16/10 : retourné encore, le siège est à Écully, « Limonest » est refusé
- *    et la capture passe par la règle SIÈGE de lib/decisions-copie.ts) ;
+ *    L'interdit a été retourné : c'est « siège à Écully » qui est refusé ;
  *  - elle réclamait la réponse « chiffré sur devis » comme absente du rendu
  *    alors que le site la sert mot pour mot. La capture, elle, affiche du
  *    MARKDOWN BRUT (« **Nous avons déjà un prestataire…** »), l'un des

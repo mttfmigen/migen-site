@@ -22,9 +22,10 @@
  * 4. Chaque lien interne répond 200 sur le site : un lien de pied de page en
  *    404 est vu par tout le crawl. Une entrée du maillage sans page reste du
  *    texte, et « Habilitations » n'a aucun lien.
- * 5. L'adresse du siège est celle d'ÉCULLY (décision de Mehdi du 16/10),
- *    « Limonest » n'est jamais rendu, et aucun tiret cadratin non plus. Le
- *    pied de la landing porte la même adresse.
+ * 5. L'adresse du siège est celle de LIMONEST (décision de Mehdi du 09/10,
+ *    rétablie le 16/10 au soir), aucune phrase ne place le siège à Écully, et
+ *    aucun tiret cadratin n'est rendu. Le pied de la landing porte la même
+ *    adresse.
  * 6. REPLIER, JAMAIS RETIRER (maquette mobile v2, 14/10) : les sept colonnes
  *    sont des `<details data-pied-pliable>` servis OUVERTS (le repli vient du
  *    navigateur, sous 881 px seulement), chaque lien vit dans le corps de son
@@ -42,6 +43,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 
 import SansPiedDuSite from "@/app/@pied/lp/[[...slug]]/page";
 import PiedDePage from "@/components/site/PiedDePage";
+import { SIEGE_A_ECULLY } from "@/lib/decisions-copie";
 import { TELEPHONE_LP } from "@/components/site/entete-donnees";
 import { numeroLpPermis } from "@/lib/lp/adresses";
 
@@ -252,24 +254,25 @@ const habilitations = rendu.slice(rendu.indexOf(">Habilitations<"), rendu.indexO
 assert.ok(habilitations.length > 0 && !habilitations.includes("<a "), "un lien a été posé dans la colonne Habilitations");
 
 // 5 · le siège, et aucun tiret cadratin.
-/* 16/10 : LE SIÈGE EST À ÉCULLY, décision de Mehdi (« Le siège est à Ecully
-   mets le de partout »), qui renverse celle du 09/10. Cette assertion a changé
-   de sens trois fois : elle exige Écully et refuse Limonest, sur le pied du
-   site comme sur celui de la landing. La maquette écrit encore « Siège, 1 rue
-   des Vergers, 69760 Limonest » : écart assumé, règle SIÈGE de
-   lib/decisions-copie.ts. */
-const SIEGE_PIED = "129 chemin du Moulin Carron, 69130 Écully";
+/* LE SIÈGE EST À LIMONEST, L'AGENCE À ÉCULLY : décision de Mehdi du 09/10,
+   renversée le matin du 16/10 puis rétablie le soir (« L'agence est à Ecully,
+   siège à Limonest »). C'est le texte de la maquette, « Siège, 1 rue des
+   Vergers, 69760 Limonest », sur 96 de ses 244 captures. Le pied ne nomme que
+   le siège, comme la maquette : l'adresse d'Écully n'y a pas sa place, et une
+   phrase qui place le siège à Écully tombe (SIEGE_A_ECULLY). */
+const SIEGE_PIED = "1 rue des Vergers, 69760 Limonest";
 function controleSiege(html: string, prefixe: string): void {
   const lu = lisible(html.replace(/<[^>]*>/g, " "));
-  assert.ok(lu.includes(`${prefixe}${SIEGE_PIED}`), "adresse du siège d'Écully absente du pied de page");
-  assert.ok(!/Limonest|rue des Vergers|—|mise à disposition/.test(lu), "Limonest, un tiret cadratin ou un interdit dans le pied de page");
+  assert.ok(lu.includes(`${prefixe}${SIEGE_PIED}`), "adresse du siège de Limonest absente du pied de page");
+  assert.ok(!SIEGE_A_ECULLY.test(lu), "le pied de page place le siège à Écully : c'est l'agence, le siège est à Limonest");
+  assert.ok(!/Moulin Carron|—|mise à disposition/.test(lu), "l'adresse d'Écully, un tiret cadratin ou un interdit dans le pied de page");
 }
 controleSiege(rendu, "Siège ");
 const landingRendu = renderToStaticMarkup(<PiedDePage landingPage />);
 controleSiege(landingRendu, "migen© · ");
 for (const [defaut, html] of [
-  ["l'adresse de Limonest remise", rendu.replace(SIEGE_PIED, "1 rue des Vergers, 69760 Limonest")],
-  ["« Limonest » ajouté à côté du siège d'Écully", rendu.replace(SIEGE_PIED, `${SIEGE_PIED}, bureaux à Limonest`)],
+  ["le siège remis à Écully", rendu.replace(SIEGE_PIED, "129 chemin du Moulin Carron, 69130 Écully")],
+  ["« Siège, Écully » ajouté au pied", rendu.replace(SIEGE_PIED, `${SIEGE_PIED}. Siège, Écully`)],
 ] as const) {
   assert.notEqual(html, rendu, `témoin mal construit : ${defaut}`);
   assert.throws(() => controleSiege(html, "Siège "), `le contrôle du siège laisse passer ${defaut}`);
@@ -321,7 +324,7 @@ if (CONTROLE) {
   console.log(
     `pied de page, mode témoins : ${relevesNav} libellés de navigation et ${maillageMaquette.length} colonnes de ` +
       "maillage conformes à l'autonome ; 7 dépliants servis ouverts, titres seuls dans les <summary> ; " +
-      "carte du téléphone conforme à la maquette mobile v2 ; siège d'Écully ; 11 témoins d'échec tombés. Réseau non joué : relancer sans --controle, le site démarré.",
+      "carte du téléphone conforme à la maquette mobile v2 ; siège de Limonest ; 11 témoins d'échec tombés. Réseau non joué : relancer sans --controle, le site démarré.",
   );
   process.exit(0);
 }
@@ -374,5 +377,5 @@ console.log(
     `colonnes de maillage, mot pour mot et dans l'ordre ; carte du téléphone aux ${carteMaquette.length} liens de la maquette mobile v2 ; 7 dépliants servis ouverts, titres seuls dans les <summary> ; ` +
     `« Toutes nos pages » au dessin de la maquette ; ` +
     `${internes.length} liens internes à 200 sur ${SITE} ; ${SANS_PAGE.length} libellé(s) sans page, revérifié(s) : ` +
-    `${SANS_PAGE.map((m) => `« ${m.libelle} » (${m.raison})`).join(", ")} ; siège d'Écully ; témoins d'échec tombés.`,
+    `${SANS_PAGE.map((m) => `« ${m.libelle} » (${m.raison})`).join(", ")} ; siège de Limonest ; témoins d'échec tombés.`,
 );

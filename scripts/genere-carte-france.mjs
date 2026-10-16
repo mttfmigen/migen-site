@@ -13,8 +13,8 @@
  * bibliothèque ni donnée externe : elle rend des chaînes `d`.
  *
  * Les hubs sont les dix du site (`components/site/equipe/equipe-donnees.ts`,
- * `HUBS`), placés aux coordonnées de leur commune. Le siège, Écully, est le
- * point mis en avant, au nom du hub de Lyon.
+ * `HUBS`), placés aux coordonnées de leur commune. Le hub de Lyon est le point
+ * mis en avant, avec la mention du siège à Limonest (`Agences.tsx`).
  */
 
 import { readFileSync, writeFileSync } from "node:fs";
@@ -32,12 +32,13 @@ const BOITE = { ouest: -5.4, sud: 41.2, est: 9.9, nord: 51.3 };
 const DEBORD = 12;
 
 /**
- * Coordonnées des communes (latitude, longitude). Le point du siège est celui
- * d'Écully, à 5 km du centre de Lyon : un pixel d'écart à cette échelle.
+ * Coordonnées des communes (latitude, longitude). Le point de Lyon est celui
+ * de l'agence d'Écully, à 5 km du centre de Lyon et de Limonest, le siège : un
+ * pixel d'écart à cette échelle.
  * `cote` place l'étiquette : « d » à droite du point, « g » à gauche, « h »
  * au-dessus, « b » en dessous. Chaque côté est choisi pour que l'étiquette
  * reste dans la France sans couper un trait ni une autre étiquette, aussi
- * dans la taille agrandie du téléphone : Lyon et son « Siège, Écully » à
+ * dans la taille agrandie du téléphone : Lyon et son « Siège à Limonest », posé au-dessus, à
  * gauche (à droite, la frontière italienne les coupait), Marseille et Toulouse
  * au-dessus (la côte), Lille en dessous (la Belgique), Paris à gauche
  * (Strasbourg).

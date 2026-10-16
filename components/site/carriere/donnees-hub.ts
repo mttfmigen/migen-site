@@ -34,10 +34,10 @@ import type { BandeFiche, CarteFiche, HerosFiche, SectionFiche } from "@/types/m
  * la même photo en plus grand (empreinte perceptuelle 0 et 1).
  *
  * LES DÉCISIONS DE COPIE (lib/decisions-copie.ts) sont appliquées à cette
- * donnée : « 10 % des techniciens retenus », et la réponse « Où sont les
- * agences Migen ? » commence par « Notre siège est à Lyon (Écully) », forme
- * décidée de la phrase de la capture qui citait Limonest (siège à Écully,
- * décision de Mehdi du 16/10).
+ * donnée : « 10 % des techniciens retenus », et le « Siège » des
+ * informations pratiques est celui de Limonest. La réponse « Où sont les
+ * agences Migen ? » garde la phrase de la capture, « Notre siège est à Lyon
+ * (Limonest, bureaux à Écully) » (décision du 09/10, rétablie le 16/10).
  */
 
 /** Une étape, la série des « Cinq façons » à cinq, les autres à quatre. */
@@ -490,7 +490,7 @@ export const HUB_CARRIERE: ContenuHubCarriere = {
         },
         {
           "titre": "Siège",
-          "texte": "129 chemin du Moulin Carron, 69130 Écully, près de Lyon."
+          "texte": "1 rue des Vergers, 69760 Limonest, près de Lyon."
         },
         {
           "titre": "Couverture",
@@ -573,7 +573,7 @@ export const HUB_CARRIERE: ContenuHubCarriere = {
         },
         {
           "question": "Où sont les agences Migen ?",
-          "reponse": "Notre siège est à Lyon (Écully), et nos hubs de techniciens couvrent les grandes villes de France. Cette couverture nationale nous permet de recruter et d'intervenir partout dans le pays."
+          "reponse": "Notre siège est à Lyon (Limonest, bureaux à Écully), et nos hubs de techniciens couvrent les grandes villes de France. Cette couverture nationale nous permet de recruter et d'intervenir partout dans le pays."
         }
       ]
     },
