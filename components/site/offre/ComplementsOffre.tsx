@@ -268,6 +268,28 @@ const COCHE: CSSProperties = {
 
 const ACCROCHE: CSSProperties = { fontWeight: 600, color: "var(--ink)" };
 
+/** V3 `listMod` : une phrase de 140 caractères au plus, juste avant une liste
+ *  sans titre, est l'intitulé de cette liste. */
+const LONGUEUR_TETE_V3 = 140;
+
+/** V3 `mgx-cd` : 4 cartes sur deux colonnes, sinon jusqu'à trois. */
+function colonnesV3(nombre: number): number {
+  return nombre === 4 ? 2 : Math.min(nombre, 3);
+}
+
+/** Le paragraphe seul, sans titre, qui annonce la liste du bloc suivant. */
+function estTeteV3(bloc: BlocComplement, suivant?: BlocComplement): boolean {
+  return (
+    !bloc.titre &&
+    !bloc.puces?.length &&
+    !bloc.tableau &&
+    !!bloc.texte &&
+    bloc.texte.length <= LONGUEUR_TETE_V3 &&
+    !!suivant?.puces?.length &&
+    !suivant.titre
+  );
+}
+
 export default function ComplementsOffre({
   blocs,
   suit = "section",
@@ -348,12 +370,18 @@ export default function ComplementsOffre({
           : undefined)
       : undefined;
 
+  /* V3 « Site PC » (16/10) : au bureau, le complément quitte sa carte en
+     verre (paragraphes nus, comme la V3), ses titres passent à l'échelle des
+     sections et chaque point d'une liste devient une carte numérotée
+     (`PageOffre.module.css`, `.complementV3`). La ligne de clôture, plus
+     haut, garde sa forme. Sous 881 px, rien ne change. */
   const carte = (
-    <div style={CARTE}>
+    <div style={CARTE} className={styles.complementV3}>
       {retenus.map((bloc, rang) => (
         <div
           key={bloc.titre ?? `${rang}`}
           {...(rang === 0 && etiquette && !bloc.titre ? { "data-doublon-mobile": "" } : {})}
+          {...(estTeteV3(bloc, retenus[rang + 1]) ? { "data-v3-tete": "" } : {})}
           style={{
             minWidth: 0,
             paddingBottom: 18,
@@ -363,6 +391,7 @@ export default function ComplementsOffre({
           {bloc.titre ? (
             <div
               {...(rang === 0 && etiquette ? { "data-doublon-mobile": "" } : {})}
+              className={styles.titreV3}
               style={RANGEE_TITRE}
             >
               <span aria-hidden="true" style={FILET} />
@@ -382,12 +411,19 @@ export default function ComplementsOffre({
             </p>
           ) : null}
           {bloc.puces?.length ? (
-            <div style={LISTE}>
-              {bloc.puces.map((puce) => (
+            <div
+              style={LISTE}
+              className={styles.cartesV3}
+              data-colonnes={colonnesV3(bloc.puces.length)}
+            >
+              {bloc.puces.map((puce, numero) => (
                 <div key={puce.accroche ?? puce.texte} style={PUCE}>
+                  <span aria-hidden="true" className={styles.numeroV3}>
+                    {String(numero + 1).padStart(2, "0")}
+                  </span>
                   {/* Masquée aux technologies d'assistance : la coche est
                       un ornement de liste, elle n'énonce rien. */}
-                  <span aria-hidden="true" style={COCHE}>
+                  <span aria-hidden="true" className={styles.cocheV3} style={COCHE}>
                     ✓
                   </span>
                   <span>
@@ -407,7 +443,11 @@ export default function ComplementsOffre({
   );
 
   return (
-    <section {...masque} className={styles.complementMobile} style={SECTION_COMPLEMENT}>
+    <section
+      {...masque}
+      className={`${styles.complementMobile} ${styles.sectionV3}`}
+      style={SECTION_COMPLEMENT}
+    >
       <div style={LARGEUR}>
         {etiquette ? (
           <SectionPliableMobile
