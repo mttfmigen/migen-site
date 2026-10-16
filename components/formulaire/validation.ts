@@ -28,8 +28,7 @@ export type ChampContact = (typeof CHAMPS_CONTACT)[number];
 
 export type Contact = Record<ChampContact, string>;
 
-/** `demande` : « Votre demande concerne », exigé des seules landing pages (components/lp/lead-lp.ts). */
-export type Erreurs = Partial<Record<ChampContact | "formulaire" | "demande", string>>;
+export type Erreurs = Partial<Record<ChampContact | "formulaire", string>>;
 
 /**
  * La clé de la fiche du registre dans la charge envoyée. JAMAIS `entreprise` :

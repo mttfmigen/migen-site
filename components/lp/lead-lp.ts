@@ -1,58 +1,38 @@
 /**
- * Le formulaire des landing pages publicitaires (/lp/), partagé par le
- * navigateur et par la route `/api/lead`.
+ * Le formulaire des landing pages publicitaires (/lp/) : ce que le navigateur
+ * en partage avec la page de rendez-vous et la vérification.
  *
- * Pur, sans `"use client"` ni `server-only`, comme `formulaire/validation.ts` :
- * la route revalide avec les mêmes listes fermées que celles que la page
- * affiche. La validation du contact (nom, courriel, téléphone...) reste celle
- * du site, `formulaire/validation.ts` : une seule règle pour tous les
- * formulaires.
+ * L'ENVOI EST CELUI DU SITE. Une LP poste à `/api/lead` la charge de
+ * `FormulaireContact` (`chargeUtile`), avec ses protections, et la route la
+ * dépose dans le formulaire HubSpot du site (`HUBSPOT_FORM_ID`), dont les
+ * champs sont ceux de `MigenLPForm` de la V3. Rien ici ne parle à HubSpot :
+ * la LP n'a ni formulaire HubSpot ni champ à elle. Dans HubSpot, une demande
+ * de LP se reconnaît à son adresse (`pageUri`) ; son identifiant d'analyse
+ * (`formulaireLp`) et l'attribution sont dans la table `leads`.
  *
- * Tout ce qui touche à HubSpot est RELEVÉ sur la LP en ligne, jamais supposé :
- * `migen-forge-nucleus/src/components/form-slot.tsx` (variante C, forcée par
- * `hooks/use-ab.ts` depuis le test A/B/C clos), `lib/lead-redirect.ts` et
- * `routes/fr.rendez-vous.tsx`, lus le 16/10.
+ * Ce qui touche à la LP en ligne (l'événement de conversion, l'agenda) est
+ * RELEVÉ sur go.migengroup.com, jamais supposé :
+ * `migen-forge-nucleus/src/components/form-slot.tsx`, `lib/lead-redirect.ts`
+ * et `routes/fr.rendez-vous.tsx`, lus le 16/10.
  */
 
-import type { Attribution } from "@/lib/utm";
-
-/** Identifiant du formulaire HubSpot « variante C » de la LP en ligne
-    (`FORM_IDS.C`), sur le portail 148000737. Écrit en dur là-bas aussi, et
-    public : il part dans le code servi au navigateur (l'événement de
-    conversion le porte). Les demandes des LP de migen.fr arrivent ainsi au
-    même endroit que celles de go.migengroup.com. La route le remplace par
-    `HUBSPOT_FORM_ID_LP` quand cette variable est posée : une préproduction
-    ou un aperçu peut viser un formulaire d'essai sans redéploiement. */
-export const FORMULAIRE_HUBSPOT_LP = "00bc3a3e-d900-40fe-8995-1e5ff2b684eb";
-
-/** Clé et valeur qui, dans la charge envoyée à `/api/lead`, désignent une LP. */
-export const CHAMP_SOURCE = "source";
-export const SOURCE_LP = "lp";
-
-/** Clé de la réponse à « Votre demande concerne » dans la charge envoyée. */
-export const CHAMP_DEMANDE = "demande";
+import { INDICATIFS } from "@/components/formulaire/validation";
 
 /**
- * Les deux réponses de « Votre demande concerne », AU CARACTÈRE PRÈS : c'est
- * une énumération HubSpot (`votre_demande_concerne`), et une valeur qui n'en
- * fait pas partie fait refuser la soumission entière. Identiques dans
- * `form-slot.tsx` (TYPE_OPTIONS) et dans `__LP.form.q[0].o` de la maquette V3.
+ * Le `form_id` de l'événement `hubspot_form_submit`, TEL QUE LA LP EN LIGNE
+ * LE POUSSE (`FORM_IDS.C`). Ce n'est plus le formulaire qui reçoit la
+ * demande (celui du site, voir plus haut) : c'est la valeur que le conteneur
+ * Tag Manager reçoit depuis toujours, gardée telle quelle pour qu'aucun
+ * déclencheur des conversions Google Ads qui la lirait ne se taise.
  */
-export const DEMANDES_LP = [
-  "Une présence quotidienne de nos techniciens de maintenance sur votre site",
-  "Une réponse à vos besoins ponctuels : arrêts techniques, shutdowns, etc.",
-] as const;
-
-export const ERREUR_DEMANDE = "Votre demande concerne : choisissez une réponse.";
-
-export function estDemandeLp(valeur: unknown): valeur is (typeof DEMANDES_LP)[number] {
-  return typeof valeur === "string" && (DEMANDES_LP as readonly string[]).includes(valeur);
-}
+export const FORM_ID_CONVERSION_LP = "00bc3a3e-d900-40fe-8995-1e5ff2b684eb";
 
 export type VarianteLP = "heros" | "contact";
 
 /** L'identifiant d'analyse du formulaire, en slug : `lp-maintenance-ind-electrique-heros`.
-    Il est écrit dans la table `leads`, qui ne reçoit que lui et l'attribution. */
+    C'est lui, avec l'attribution, que reçoit la table `leads`. La route
+    l'envoie aussi à HubSpot dans `formulaire_migen`, propriété absente du
+    portail au 16/10 : HubSpot l'ignore tant qu'elle n'y est pas créée. */
 export function formulaireLp(page: string, variante: VarianteLP): string {
   const chemin = page
     .toLowerCase()
@@ -63,58 +43,12 @@ export function formulaireLp(page: string, variante: VarianteLP): string {
 }
 
 /**
- * Les champs propres à la LP, ajoutés à l'identité (entreprise, prénom, nom,
- * courriel, téléphone, message) que la route envoie pour tous les formulaires.
- *
- *   · `requis` : ce que la LP en ligne envoie au formulaire C, donc ce qu'il
- *     accepte à coup sûr : « Votre demande concerne » et le code pays « FR »
- *     (`hidden = { hs_country_region_code: "FR" }` de `landing-city.tsx` et
- *     `landing-sector.tsx`). HubSpot refuse la soumission ENTIÈRE dès qu'un
- *     champ n'est pas sur le formulaire, d'où l'absence de `formulaire_migen`.
- *   · `facultatifs` : les champs cachés de la maquette (`lp_url`, UTM,
- *     `gclid`), que la LP en ligne n'envoie pas. Personne n'a pu vérifier que
- *     le formulaire C les porte : la route les envoie, et si HubSpot répond
- *     400 elle renvoie la demande sans eux, code pays compris toujours. Un
- *     lead ne se perd pas pour un champ d'attribution.
- *
- * Les UTM et le `gclid` mesurent la campagne : ils ne partent qu'avec la
- * finalité publicitaire accordée, comme les UTM du site. `lp_url` est le
- * chemin seul, sans chaîne de requête, donc sans rien de la campagne.
+ * Le pays de l'indicatif choisi, en code à deux lettres : le champ caché
+ * `country` de `MigenLPForm` (« +33 » donne « FR »). Le code est le début du
+ * libellé de la liste fermée des indicatifs (« FR +33 »).
  */
-export function champsHubspotLp(entrees: {
-  demande: string;
-  attribution: Attribution;
-  /** URL complète de la page, telle que le navigateur l'a envoyée. */
-  urlPage: string | null;
-  publicite: boolean;
-}): { requis: Record<string, string>; facultatifs: Record<string, string> } {
-  const { attribution, publicite } = entrees;
-  const campagne = publicite
-    ? {
-        utm_source: attribution.utm_source,
-        utm_medium: attribution.utm_medium,
-        utm_campaign: attribution.utm_campaign,
-        gclid: gclidDe(entrees.urlPage),
-      }
-    : {};
-  const facultatifs = Object.fromEntries(
-    Object.entries({
-      lp_url: attribution.page_conversion,
-      ...campagne,
-    }).filter((paire): paire is [string, string] => Boolean(paire[1])),
-  );
-  return { requis: { votre_demande_concerne: entrees.demande, hs_country_region_code: "FR" }, facultatifs };
-}
-
-/** Le `gclid` de l'adresse de la page, borné : Google en émet d'une centaine de caractères. */
-function gclidDe(url: string | null): string | undefined {
-  if (!url) return undefined;
-  try {
-    const valeur = new URL(url).searchParams.get("gclid")?.trim();
-    return valeur && /^[\w-]{1,200}$/.test(valeur) ? valeur : undefined;
-  } catch {
-    return undefined;
-  }
+export function paysDeLIndicatif(indicatif: string): string {
+  return INDICATIFS.find((i) => i.code === indicatif)?.libelle.split(" ")[0] ?? "";
 }
 
 /**
