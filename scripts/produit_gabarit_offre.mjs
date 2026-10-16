@@ -141,21 +141,18 @@ function construit(entree) {
   ajoute(contenu, "mention", heros?.phraseDelai);
   ajoute(contenu, "chapeau", heros?.mecanisme);
 
-  /* LE BOUTON DU HÉROS, et pourquoi il n'y en a qu'un.
-     La maquette n'en rend qu'un (l. 4720, « Les cinq offres »), le héros
-     portant déjà son formulaire dans la colonne de droite. On a d'abord ajouté
-     l'appel du corpus (`heros.cta`) à côté : mesure faite, il porte le MÊME
-     libellé que `cta.bouton` sur les DIX-HUIT pages, et `cta.bouton` est déjà
-     le bouton de la bande « En bref » juste dessous. Le même mot se lisait
-     donc deux fois en un écran et demi. L'appel du corpus reste là où la
-     maquette le place, dans la bande ; le héros garde son unique bouton. */
-  ajoute(contenu, "actions", [
-    { libelle: "Les cinq offres", href: "/offres/" },
-  ]);
+  /* LE BOUTON DU HÉROS EST L'APPEL DE LA PAGE (V3 du 16/10), et le panneau
+     de formulaire porte le même en-tête, comme sur les six offres
+     principales. L'ancienne maquette rendait « Les cinq offres » (l. 4720),
+     un lien vers /offres/ au mauvais compte (il y en a six) : retiré des
+     neuf fiches qui le portaient. L'appel est celui du corpus (`cta.bouton`,
+     le même libellé que `heros.cta`), sinon celui de la maquette. */
+  const appel = pose(cta?.bouton) ? cta.bouton : "Décrire mon besoin";
+  ajoute(contenu, "actions", [{ libelle: appel, href: "#besoin" }]);
 
-  /* Le panneau de formulaire du héros (l. 4741). Son en-tête est celui de la
-     maquette, et « Rappel dans l'heure » est le seul délai autorisé. */
-  contenu.formulaireHeroTitre = "Décrire mon besoin";
+  /* Le panneau de formulaire du héros (l. 4741). « Rappel dans l'heure » est
+     le seul délai autorisé. */
+  contenu.formulaireHeroTitre = appel;
   contenu.formulaireHeroMention = "Rappel dans l'heure";
 
   /* ---- 2. « EN BREF » (l. 4762) -----------------------------------------

@@ -11,8 +11,11 @@
  *    Lyon siège, Montréal, Dubaï, Madrid, aucune autre en France) : la valeur
  *    par défaut est corrigée ici ;
  * 2. la maquette affiche « +120 collaborateurs » DEUX fois, dans la carte de
- *    droite et dans la carte large. La structure est reproduite telle quelle,
- *    mais les props permettent de corriger sans toucher au composant.
+ *    droite et dans la carte large. Au bureau, la structure est reproduite
+ *    telle quelle (la V3 du 16/10 la garde). Au téléphone, la grille passe
+ *    sur une colonne et les deux « +120 » se suivaient : la carte de droite
+ *    y est masquée, ce qui donne les quatre chiffres de la V3 mobile
+ *    (+10 M€, 4 agences, +120 collaborateurs, +200 clients industriels).
  *
  * Les compteurs animés de `support.js` ne sont pas portés : les valeurs sont
  * dans le HTML, lisibles sans JavaScript.
@@ -184,7 +187,7 @@ export default function ChiffresCroissance({
             <div style={LEGENDE}>{secondaire.libelle}</div>
           </div>
 
-          <div style={CARTE}>
+          <div className={styles.doublonMobile} style={CARTE}>
             <div style={NOMBRE}>
               <span>{tertiaire.valeur}</span>
             </div>

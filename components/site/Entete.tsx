@@ -24,8 +24,9 @@ export interface EnteteProps {
    */
   landingPage?: boolean;
   /**
-   * Cible du « Diagnostic gratuit » du panneau Offres. Aucune URL de ce nom
-   * n'existe dans l'inventaire : sans valeur, l'entrée ne s'affiche pas.
+   * Cible du « Diagnostic gratuit » du panneau Offres : l'outil réécrit par
+   * `next.config.ts`, passé par `app/layout.tsx`. Sans valeur, l'entrée ne
+   * s'affiche pas.
    */
   hrefDiagnostic?: string;
 }

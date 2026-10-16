@@ -10,11 +10,11 @@
     "chapeau": "Vous décrivez la panne en 4 champs. Un technicien vous rappelle dans l'heure et lance le diagnostic à distance. Un intervenant évalué part ensuite sur votre site avec un ordre d'intervention précis.",
     "actions": [
       {
-        "libelle": "Les cinq offres",
-        "href": "/offres/"
+        "libelle": "Demander une intervention",
+        "href": "#besoin"
       }
     ],
-    "formulaireHeroTitre": "Décrire mon besoin",
+    "formulaireHeroTitre": "Demander une intervention",
     "formulaireHeroMention": "Rappel dans l'heure",
     "brefSurtitre": "En bref",
     "chiffres": [

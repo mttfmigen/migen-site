@@ -166,6 +166,10 @@ function enteteDe(lignes: readonly PrestationBenefice[]): readonly string[] | un
 function premiereCellule({ prestation }: PrestationBenefice): string {
   const texte = (prestation.texte ?? "").trim().replace(/^\*\*([\s\S]+)\*\*$/, "$1");
   if (!prestation.accroche) return texte;
+  /* Une suite qui s'ouvre sur sa ponctuation (« **Un technicien évalué,
+     présent au rythme convenu**, temps plein ou partagé ») se recolle telle
+     que le corpus l'écrit : le séparateur donnait « convenu : , temps plein ». */
+  if (/^[,;.)]/.test(texte)) return `${prestation.accroche}${texte}`;
   return texte ? `${prestation.accroche} : ${texte}` : prestation.accroche;
 }
 

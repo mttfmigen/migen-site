@@ -555,7 +555,22 @@ const TOURNAIRE: Regle[] = [[/(conçues) sur mesure/gi, (_m, c: string) => `${c}
    maquette, passe par ici : la même correction, pour la cellule seule. */
 const LEVIER: Regle[] = [[/^Levier$/g, () => "Ce qui fait la différence"]];
 
-const REGLES = [...SELECTION, ...SIEGE, ...PHOTOS_VILLE, ...TELEPHONE, ...ORTHUS, ...META_REDACTION, ...NOTAMMENT, ...ASTREINTE, ...NOUS_REJOINDRE, ...TOURNAIRE, ...LEVIER];
+/* 16/10, AUCUN MONTANT : « 500 à 2 000 € » de production perdue par heure
+   (/offres/zero-arret/, chiffres et problématique). CLAUDE.md §9 : « un
+   MONTANT reste interdit ». La V3 le garde sans le reformuler : la carte de
+   chiffres qui le porte n'est plus rendue, et la puce garde sa seconde moitié,
+   mot pour mot. La puce passe AVANT la carte, qui la viderait.
+   La valeur de la carte n'est retirée QUE suivie de sa légende (balises de la
+   capture, gras et deux-points du corpus entre les deux), et jamais en queue
+   d'un plus grand nombre : un montant nu peut être un salaire, et « 1 500 à
+   2 000 € par mois » ne perd rien. */
+const MONTANTS: Regle[] = [
+  [/De 500\s?à\s?2\s?000\s?€ par heure, et personne/g, () => "Et personne"],
+  [/(?<!\d\s?)500\s?à\s?2\s?000\s?€(?=(?:\s|<[^>]*>|\*|:)*[Dd]e production perdue par heure d['’]arrêt)/g, () => ""],
+  [/De production perdue par heure d['’]arrêt, le coût que Zéro arrêt évite/g, () => ""],
+];
+
+const REGLES = [...SELECTION, ...SIEGE, ...PHOTOS_VILLE, ...TELEPHONE, ...ORTHUS, ...META_REDACTION, ...NOTAMMENT, ...ASTREINTE, ...NOUS_REJOINDRE, ...TOURNAIRE, ...LEVIER, ...MONTANTS];
 
 /** Les règles qui s'appliquent à cette page : les globales, plus les siennes. */
 function reglesDe(page?: string): Regle[] {

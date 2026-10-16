@@ -64,11 +64,28 @@ interface Rubrique {
 }
 
 /**
- * « bureau-etudes » devient « bureau etudes ». Les capitales sont en CSS.
- * L'accueil (segment vide) reprend le libellé du lien « Accueil » du menu.
+ * Les segments dont l'écriture d'URL perd ses accents ou son nom. Le segment
+ * seul affichait « A PROPOS », « CONFIDENTIALITE », « MENTIONS LEGALES »
+ * (relevé du 16/10). « carriere » prend le libellé du site, « Nous
+ * rejoindre », jamais « Carrière ».
+ */
+const LIBELLES_RUBRIQUE: Readonly<Record<string, string>> = {
+  "a-propos": "à propos",
+  "bureau-etudes": "bureau d’études",
+  carriere: "nous rejoindre",
+  confidentialite: "confidentialité",
+  "mentions-legales": "mentions légales",
+  "nous-connaitre": "nous connaître",
+};
+
+/**
+ * « offres » reste « offres », « bureau-etudes » devient « bureau d’études ».
+ * Les capitales sont en CSS. L'accueil (segment vide) reprend le libellé du
+ * lien « Accueil » du menu.
  */
 function libelleRubrique(segment: string): string {
-  return segment ? segment.replace(/-/g, " ") : TIROIR_ACCUEIL.libelle;
+  if (!segment) return TIROIR_ACCUEIL.libelle;
+  return LIBELLES_RUBRIQUE[segment] ?? segment.replace(/-/g, " ");
 }
 
 /**

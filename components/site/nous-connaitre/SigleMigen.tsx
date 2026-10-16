@@ -43,8 +43,32 @@ const RANGEE: CSSProperties = {
 const SIGLE: readonly [string, string][] = [
   ["M", "aintenance"],
   ["I", "ndustrielle"],
-  ["GEN", "éral"],
+  /* « érale » et non « éral » depuis la V3 du 16/10 : le mot est celui de la
+     couverture, « Maintenance industrielle générale ». */
+  ["GEN", "érale"],
 ];
+
+/* La quatrième rangée de la V3 (16/10) : le nom entier, sous un filet. Elle
+   ne redit pas « EN » comme l'ancienne, elle donne le résultat de l'épellation. */
+const RANGEE_NOM: CSSProperties = {
+  display: "flex",
+  alignItems: "baseline",
+  gap: 14,
+  marginTop: 10,
+  paddingTop: 14,
+  borderTop: "1px solid rgba(255,255,255,.14)",
+};
+
+const NOM: CSSProperties = {
+  font: "700 calc(clamp(40px,5vw,64px) * var(--ts))/.9 var(--ft)",
+  letterSpacing: "-.05em",
+  color: "#fff",
+};
+
+const NOM_LEGENDE: CSSProperties = {
+  font: "400 14px var(--fb)",
+  color: "rgba(255,255,255,.5)",
+};
 
 export default function SigleMigen() {
   return (
@@ -115,7 +139,7 @@ export default function SigleMigen() {
           <em style={{ fontStyle: "normal", color: "#fff" }}>
             Maintenance industrielle générale
           </em>
-          . Trois mots, et de chacun ce qu’il faut pour que ça se prononce, réponse
+          . M pour Maintenance, I pour Industrielle, GEN pour Générale&nbsp;: réponse
           immédiate.
         </p>
       </div>
@@ -126,9 +150,13 @@ export default function SigleMigen() {
             <span style={SUITE}>{suite}</span>
           </div>
         ))}
-        {/* LA QUATRIÈME RANGÉE EST RETIRÉE. Elle épelait « EN, pour que ça se
-            dise », comme si ces deux lettres venaient d'ailleurs. Elles sont
-            dans « général », et le sigle le montre maintenant : GEN-éral. */}
+        {/* L'ANCIENNE QUATRIÈME RANGÉE est restée retirée : elle épelait
+            « EN, pour que ça se dise », comme si ces deux lettres venaient
+            d'ailleurs. Celle-ci donne le nom entier, comme la V3. */}
+        <div style={RANGEE_NOM}>
+          <span style={NOM}>migen</span>
+          <span style={NOM_LEGENDE}>le nom de la société</span>
+        </div>
       </div>
     </div>
   </div>

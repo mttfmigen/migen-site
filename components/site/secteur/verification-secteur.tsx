@@ -104,23 +104,10 @@ const LOGO_ECARTE = "logo écarté par marques-donnees.ts (fichier d'une autre s
 
 /** Dans la capture, absent du rendu, avec sa raison. Les retraits de copie passent par `retoucheCarte`. */
 /* La grille statique est retirée le 09/10 : « il faut que la barre qui défile »
-   (Mehdi). Son titre partait avec elle, il n'appartenait qu'à elle. */
-const GRILLE_RETIREE =
-  "la grille statique de « 02 Logos » est retirée depuis le 09/10, seule la barre défilante reste ; son titre partait avec elle";
+   (Mehdi). Son titre, lui, est revenu le 16/10 avec la V3, au-dessus de la
+   barre : il n'est plus un trou, il est comparé à la capture comme le reste. */
 
 const TROUS: readonly Ecart[] = [
-  { url: "/secteurs/aeronautique/", section: "02 Logos", texte: "Ils nous confient leurs sites industriels", pourquoi: GRILLE_RETIREE },
-  { url: "/secteurs/agroalimentaire/", section: "02 Logos", texte: "Ils nous confient leurs lignes agroalimentaires", pourquoi: GRILLE_RETIREE },
-  { url: "/secteurs/automobile/", section: "02 Logos", texte: "Ils nous confient leurs usines automobiles", pourquoi: GRILLE_RETIREE },
-  { url: "/secteurs/chimie/", section: "02 Logos", texte: "Ils nous confient leurs sites industriels", pourquoi: GRILLE_RETIREE },
-  { url: "/secteurs/industrie-lourde/", section: "02 Logos", texte: "Ils nous confient leurs sites industriels", pourquoi: GRILLE_RETIREE },
-  { url: "/secteurs/industrie-metallique/", section: "02 Logos", texte: "Ils nous confient leurs sites industriels", pourquoi: GRILLE_RETIREE },
-  { url: "/secteurs/logistique/", section: "02 Logos", texte: "Ils nous confient leurs sites logistiques", pourquoi: GRILLE_RETIREE },
-  { url: "/secteurs/logistique/maintenance-convoyeur/", section: "02 Logos", texte: "Ils nous confient leurs sites logistiques", pourquoi: GRILLE_RETIREE },
-  { url: "/secteurs/logistique/peak-season/", section: "02 Logos", texte: "Ils nous confient leurs sites logistiques", pourquoi: GRILLE_RETIREE },
-  { url: "/secteurs/menuiserie-industrielle/", section: "02 Logos", texte: "Ils nous confient leurs ateliers", pourquoi: GRILLE_RETIREE },
-  { url: "/secteurs/nucleaire/", section: "02 Logos", texte: "Ils nous confient leurs sites industriels", pourquoi: GRILLE_RETIREE },
-  { url: "/secteurs/pharmaceutique/", section: "02 Logos", texte: "Ils nous confient leurs sites industriels", pourquoi: GRILLE_RETIREE },
   { url: "/secteurs/aeronautique/", section: "Marques maintenues", texte: "9", pourquoi: MARQUES },
   { url: "/secteurs/automobile/", section: "Marques maintenues", texte: "9", pourquoi: MARQUES },
 ];
@@ -538,8 +525,8 @@ function juge(page: PageRelais): { fautes: string[]; cas: number } {
          grille à la maquette, puisqu'il n'y a plus de grille ; c'est la barre
          qui porte les logos de la fiche, et `ecartsBandeUnique` vérifie qu'elle
          les porte tous et qu'elle est bien la seule bande de la page. Le titre
-         « Ils nous confient leurs sites … » disparaît avec la grille : il
-         appartenait à elle, pas à la barre. */
+         « Ils nous confient leurs sites … » est revenu le 16/10 (V3), posé
+         au-dessus de la barre. */
       for (const e of ecartsBandeUnique(ici, page.contenu.logos ?? [])) faute(`${libelle} : ${e}`);
       /* ET CONTRE LA MAQUETTE, pas seulement contre la fiche. La barre est
          désormais alimentée par la fiche : la comparer à la fiche seule ne peut

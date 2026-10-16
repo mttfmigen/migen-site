@@ -6,11 +6,11 @@
     "chapeau": "Vous écrivez le périmètre, nous le tenons en entier : la gestion de la maintenance préventive, le dépannage, les pièces consultées au prix du marché puis posées, et votre GMAO renseignée à chaque passage. Externaliser votre maintenance industrielle, ce n'est pas acheter des heures, c'est acheter une expertise technique disponible et des coûts maîtrisés. Le but tient en une ligne : réduire les arrêts non planifiés et optimiser la disponibilité des équipements qui portent votre production.",
     "actions": [
       {
-        "libelle": "Les cinq offres",
-        "href": "/offres/"
+        "libelle": "Faire chiffrer ma maintenance",
+        "href": "#besoin"
       }
     ],
-    "formulaireHeroTitre": "Décrire mon besoin",
+    "formulaireHeroTitre": "Faire chiffrer ma maintenance",
     "formulaireHeroMention": "Rappel dans l'heure",
     "brefSurtitre": "En bref",
     "brefTitre": "Le cadre, en quatre chiffres.",
