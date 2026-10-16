@@ -7,9 +7,11 @@ import PastillesCocon from "@/components/site/cocon/PastillesCocon";
 import { appliqueDecisions } from "@/lib/decisions-copie";
 
 import CadenceOffre, { AncreRappel } from "../CadenceOffre";
+import DomainesEtudes, { domainesPour } from "../DomainesEtudes";
 import EtiquettePli from "../EtiquettePli";
 import offre from "../PageOffre.module.css";
 import TelephoneHeros from "../TelephoneHeros";
+import FermeAuTelephone from "@/components/site/ressource/FermeAuTelephone";
 
 import { BlocLecture, GRAS, LIEN } from "./BlocsLecture";
 import { BlocVente } from "./BlocsVente";
@@ -397,9 +399,11 @@ function Questions({ v }: { v: Vue }) {
             <h2 style={css(`${TITRE_SECTION};max-width:14ch;margin-bottom:22px`)}>Ce qu’on nous demande avant de signer</h2>
             <a className={h.bouton} href="#cx-form" style={css(BOUTON)}>Poser ma question</a>
           </div>
-          <div style={css("display:grid;gap:10px")}>
+          {/* LA PREMIÈRE QUESTION EST OUVERTE AU BUREAU, comme la maquette V3
+              (16/10) ; `FermeAuTelephone` la referme sous 881 px. */}
+          <FermeAuTelephone style={css("display:grid;gap:10px")}>
             {v.spFaq.items.map((fq, i) => (
-              <details key={i} name="sp-faq" className={h.question} style={css(`border-radius:var(--rad-s);${VERRE}`)}>
+              <details key={i} name="sp-faq" open={i === 0} className={h.question} style={css(`border-radius:var(--rad-s);${VERRE}`)}>
                 <summary style={css("display:flex;align-items:center;justify-content:space-between;gap:18px;width:100%;padding:20px 24px;background:transparent;border:none;cursor:pointer;text-align:left;list-style:none")}>
                   <span style={css("font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)")}><span>{fq.q}</span></span>
                   <span className={h.plus} style={css("display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:999px;flex:none;font:400 20px/1 var(--fb);transition:transform var(--tr),background var(--tr);background:var(--chip);color:var(--ink2)")}>+</span>
@@ -411,7 +415,7 @@ function Questions({ v }: { v: Vue }) {
                 </div>
               </details>
             ))}
-          </div>
+          </FermeAuTelephone>
         </div>
       </div>
     </section>
@@ -441,9 +445,21 @@ function Appel({ v }: { v: Vue }) {
 export default function PageVente({ v, formulaire, chemin }: { v: Vue; formulaire: string } & AvecChemin) {
   return (
     <div className={`mg-site ${h.racineMobile}`}>
-      <main style={css("padding-top:96px")}>
+      {/* `data-ordre-mobile` (socle de `app/globals.css`, § 12) SUR LES SEULES
+          PAGES QUI PORTENT « Nos autres domaines d’études » : au téléphone, ce
+          bloc absent de la maquette mobile passe replié après ses sections,
+          comme sur `PageOffre`, au lieu de s’intercaler sous le héros. L’ordre
+          du DOM, celui du bureau et de Google, ne change pas ; les autres pages
+          de vente gardent leur `main` tel quel. */}
+      <main
+        data-ordre-mobile={domainesPour(chemin).length > 0 ? "" : undefined}
+        style={css("padding-top:96px")}
+      >
         <Heros v={v} chemin={chemin} />
         <Bandeau v={v} />
+        {/* « Nos autres domaines d’études » de la V3 (16/10), sur les pages
+            `/bureau-etudes/…` seulement ; ailleurs, rien. */}
+        <DomainesEtudes chemin={chemin} />
         {/* LA CADENCE DE CONVERSION MOBILE entre les sections de contenu
             (voir `offre/CadenceOffre`). Chaque enfant compte pour une section :
             les blocs qui ne rendent rien sans donnée sont donc testés ICI, un

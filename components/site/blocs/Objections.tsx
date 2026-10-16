@@ -6,6 +6,7 @@ import { LARGEUR, SECTION, SURTITRE, TITRE2, VERRE } from "./habillage";
 import SectionPliableMobile from "./SectionPliableMobile";
 import { resumeDe } from "./resume-de-section";
 import TexteRiche from "./TexteRiche";
+import FermeAuTelephone from "@/components/site/ressource/FermeAuTelephone";
 
 /**
  * Section 9 du gabarit : les objections, en dépliants.
@@ -60,12 +61,15 @@ export default function Objections({ section }: { section: SectionObjections }) 
             kicker="Questions fréquentes"
             resume={resumeDe(section.questions.map((question) => question.question))}
           >
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10 }}>
-            {section.questions.map((question) => (
+          {/* LA PREMIÈRE QUESTION EST OUVERTE AU BUREAU, comme la maquette V3
+              (16/10) ; `FermeAuTelephone` la referme sous 881 px. */}
+          <FermeAuTelephone style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10 }}>
+            {section.questions.map((question, rang) => (
               <details
                 key={question.question}
                 className="cx-faq"
                 name={groupe}
+                open={rang === 0 && !!question.reponse}
                 style={{ ...VERRE, borderRadius: "var(--rad-s)" }}
               >
                 <summary className={styles.questionFaq}>
@@ -94,7 +98,7 @@ export default function Objections({ section }: { section: SectionObjections }) 
                 </div>
               </details>
             ))}
-          </div>
+          </FermeAuTelephone>
           </SectionPliableMobile>
         </div>
       </div>

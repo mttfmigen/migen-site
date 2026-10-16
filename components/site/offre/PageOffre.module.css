@@ -500,7 +500,7 @@
   }
 }
 
-/* « Les prestations regroupées ici », REPLIÉ EN CARTE AU TÉLÉPHONE, prend
+/* « Les prestations liées à cette offre », REPLIÉ EN CARTE AU TÉLÉPHONE, prend
    l'écart des cartes voisines (12 px, porté par la carte) au lieu des 64 px
    de section du bureau. */
 @media (max-width: 880px) {
@@ -583,5 +583,45 @@
     section[id="etre-rappele"]
     ~ [data-appel-final]:not(:target):not(:has(> details[open][data-monte])) {
     display: none;
+  }
+}
+
+/* Les cartes-liens « Voir la prestation → » de la section « Offres
+   regroupées » (maquette V3, 16/10) :
+   style-hover="transform:translateY(-3px);box-shadow:0 26px 50px -30px rgba(0,0,0,.35)". */
+.cartePrestation:hover,
+.cartePrestation:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 26px 50px -30px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* « Nos domaines d’études » (maquette V3, 16/10, `.mgx-bedom`) :
+   style-hover="transform:translateY(-3px);box-shadow:0 26px 56px -30px rgba(0,0,0,.45)",
+   deux colonnes sous 901 px (la première tuile sur toute la largeur), une
+   seule sous 601 px. */
+.tuileDomaine:hover,
+.tuileDomaine:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 26px 56px -30px rgba(0, 0, 0, 0.45);
+}
+
+@media (max-width: 900px) {
+  .domainesEtudes {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .domainesEtudes > a {
+    grid-row: auto !important;
+    grid-column: auto !important;
+  }
+
+  .domainesEtudes > a:first-child {
+    grid-column: 1/-1 !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .domainesEtudes {
+    grid-template-columns: 1fr !important;
   }
 }

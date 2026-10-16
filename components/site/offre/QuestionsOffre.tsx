@@ -2,6 +2,7 @@ import { useId, type CSSProperties } from "react";
 
 import { LARGEUR, SECTION, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
+import FermeAuTelephone from "@/components/site/ressource/FermeAuTelephone";
 import type { Question, SectionObjections } from "@/types/contenu";
 
 import { numerote } from "./texte-offre";
@@ -131,15 +132,17 @@ function Pli({
   rang: number;
   groupe: string;
 }) {
-  /* AUCUNE QUESTION N'EST OUVERTE AU CHARGEMENT, arbitrage de Mehdi du 11/10.
-     La maquette, elle, ouvre la première : `<details open="">` sur la première
-     et rien sur les suivantes, vérifié le 11/10 dans les captures figées.
-     C'est donc un écart assumé, demandé pour raccourcir les pages. */
+  /* LA PREMIÈRE QUESTION EST OUVERTE AU BUREAU, comme la maquette V3 (16/10,
+     nouvelle référence de Mehdi) et les captures figées. L'arbitrage du 11/10
+     (« aucune ouverte ») est levé par la V3. Au téléphone, `FermeAuTelephone`
+     la referme après montage : la maquette mobile sert toutes les questions
+     repliées. */
   return (
     <details
       className={styles.pliQuestion}
       style={PLI}
       name={groupe}
+      open={rang === 0 && !!question.reponse}
     >
       <summary style={RESUME}>
         <span style={NUMERO}>{numerote(rang)}</span>
@@ -190,7 +193,7 @@ export default function QuestionsOffre({ section }: ProprietesQuestionsOffre) {
             </a>
           )}
         </div>
-        <div
+        <FermeAuTelephone
           className="mg-r2"
           style={{
             display: "grid",
@@ -219,7 +222,7 @@ export default function QuestionsOffre({ section }: ProprietesQuestionsOffre) {
               />
             ))}
           </div>
-        </div>
+        </FermeAuTelephone>
       </div>
     </section>
   );

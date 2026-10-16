@@ -54,7 +54,8 @@
     ],
     "complementOffre": [
       {
-        "texte": "Ce que nous ne faisons pas. Ni bureaux, ni archives, ni parc informatique. Nous ne concevons pas de machines et nous n'en vendons pas. Quand un équipement ne mérite pas le voyage, nous vous orientons vers le retrofit machine industrielle."
+        "texte": "Ce que nous ne faisons pas. Ni bureaux, ni archives, ni parc informatique. Nous ne concevons pas de machines et nous n'en vendons pas. Quand un équipement ne mérite pas le voyage, nous vous orientons vers le retrofit machine industrielle.",
+        "horsResume": true
       }
     ],
     "brefBande": "Besoin de savoir ce que coûteraient vos travaux industriels ?",
@@ -64,318 +65,42 @@
       "href": "#besoin"
     },
     "prestationsRegroupees": {
+      "surtitre": "Nos travaux industriels",
+      "titre": "Une page par prestation",
       "lien": {
         "libelle": "Décrire mon besoin",
         "href": "#besoin"
       },
       "prestations": [
         {
-          "titre": "Transfert industriel",
-          "resume": "Un transfert improvisé, ce sont des semaines d'arrêt que personne n'avait budgétées.",
-          "blocs": [
-            {
-              "titre": "Le problème",
-              "prose": [
-                "Déplacer une ligne n'arrive qu'une ou deux fois dans la vie d'une équipe. Le savoir-faire n'existe donc presque jamais en interne.",
-                "Ce que coûte l'improvisation, dans l'ordre où ça arrive :"
-              ],
-              "puces": [
-                {
-                  "accroche": "Équipement endommagé",
-                  "texte": "au levage, parce que les points d'élingage n'ont pas été relevés avant la dépose."
-                },
-                {
-                  "accroche": "Câblage et tuyauterie raccordés à la hâte",
-                  "texte": ", sans repérage : la panne apparaît après le redémarrage."
-                },
-                {
-                  "accroche": "Chaîne qui repart en retard",
-                  "texte": "vos clients, eux, ne décalent pas leurs commandes."
-                }
-              ]
-            },
-            {
-              "prose": [
-                "Un transporteur dépose la machine au pied du camion et repart. Un déménageur généraliste sait transporter des caisses. Ni l'un ni l'autre ne rebranche un automatisme."
-              ]
-            },
-            {
-              "titre": "L'offre",
-              "tableau": {
-                "entetes": [
-                  "Prestation",
-                  "Ce que ça change pour vous"
-                ],
-                "lignes": [
-                  [
-                    "Audit de faisabilité et plan d'implantation",
-                    "Vous savez avant de signer ce qui passe, ce qui ne passe pas, et où chaque machine se pose sur le site d'arrivée."
-                  ],
-                  [
-                    "Pilotage complet du projet",
-                    "Un chef de projet, un numéro, un compte rendu. Vous décidez, au lieu d'arbitrer entre trois prestataires."
-                  ],
-                  [
-                    "Déménagement de machines industrielles",
-                    "Une machine ou un parc entier déplacés par des experts techniques qui savent ce qu'ils démontent, et pourquoi."
-                  ],
-                  [
-                    "Transfert de production",
-                    "Des lignes complètes phasées pour que vos livraisons ne s'arrêtent pas pendant le chantier."
-                  ],
-                  [
-                    "Travaux de maintenance à l'occasion de la dépose",
-                    "La machine part révisée plutôt qu'usée. Vous gagnez une remise à niveau sans second arrêt."
-                  ]
-                ]
-              }
-            },
-            {
-              "prose": [
-                "Ce que nous ne faisons pas. Ni bureaux, ni archives, ni parc informatique, ni vente de machines. Quand un équipement ne mérite pas le voyage, nous le disons et nous orientons vers un retrofit de la machine."
-              ]
-            },
-            {
-              "titre": "Le déroulé",
-              "puces": [
-                {
-                  "accroche": "Plan d'implantation et planning.",
-                  "texte": "Place de chaque machine, circulation des matières, réseaux et énergies. Le phasage est calé sur vos dates de livraison, pas sur les nôtres."
-                },
-                {
-                  "accroche": "Démontage et conditionnement.",
-                  "texte": "Consignation, repérage du câblage, dépose, calage, conditionnement adapté à la fragilité de chaque équipement. Chaque repère servira au remontage."
-                },
-                {
-                  "accroche": "Transport et logistique.",
-                  "texte": "Moyens de levage dimensionnés, transporteurs spécialisés quand le gabarit l'exige."
-                },
-                {
-                  "accroche": "Remontage et raccordements.",
-                  "texte": "Mise à niveau, calage, raccordement mécanique, électrique, automatisme, hydraulique, pneumatique, tuyauterie."
-                }
-              ]
-            },
-            {
-              "titre": "Nos garanties",
-              "puces": [
-                {
-                  "accroche": "Vous savez qui entre sur votre site.",
-                  "texte": "Les intervenants sont retenus après un entretien technique et un entretien comportemental : seuls 10 % des experts techniques passent cette sélection."
-                }
-              ]
-            }
-          ],
-          "questions": [
-            {
-              "question": "Combien coûte un transfert industriel ?",
-              "reponse": "Le montant dépend du nombre d'équipements, des contraintes d'accès, de la distance et du niveau de prestation retenu. Le chiffrage est établi après un audit gratuit, et il détaille chaque poste. Un prix annoncé sans visite est un prix qui bougera."
-            },
-            {
-              "question": "Peut-on transférer une usine sans arrêter la production ?",
-              "reponse": "Rarement en totalité, mais l'arrêt se réduit fortement par le phasage : transfert par tronçons, stocks anticipés, site d'arrivée préparé à l'avance, équipements critiques basculés en dernier. C'est l'objet du plan de transfert."
-            },
-            {
-              "question": "Qui est responsable en cas de casse pendant le transfert ?",
-              "reponse": "Le sujet est traité avant le chantier. Le devis et le cahier des charges précisent les responsabilités de chaque partie, les garanties et l'assurance mobilisée. Vous savez qui répond de quoi avant le premier câble débranché."
-            }
-          ],
-          "href": "/travaux-industriels/transfert-industriel/",
-          "hrefLibelle": "Transfert industriel"
-        },
-        {
-          "titre": "Montage industriel : votre machine produit à la date prévue",
-          "resume": "Trois acteurs autour de votre investissement, et un trou au milieu.",
-          "blocs": [
-            {
-              "titre": "Le problème",
-              "puces": [
-                {
-                  "accroche": "Le fabricant livre et supervise",
-                  "texte": ", il ne monte pas toujours."
-                },
-                {
-                  "accroche": "L'entreprise générale s'arrête au bâtiment.",
-                  "texte": "Le gros œuvre n'est pas l'installation d'une ligne."
-                },
-                {
-                  "accroche": "Votre équipe de maintenance connaît les machines en exploitation",
-                  "texte": ", pas la logistique d'une opération de montage : réception, stockage, levage lourd, assemblage de précision, raccordements, montée en cadence."
-                }
-              ]
-            },
-            {
-              "prose": [
-                "Le site fonctionne en dégradé pendant des semaines. La production démarre en retard, et l'investissement dort.",
-                "Une société unique, responsable de l'ingénierie de montage, des équipes, du planning et du résultat, en coordination avec le fabricant et votre bureau d'études."
-              ]
-            },
-            {
-              "titre": "L'offre",
-              "tableau": {
-                "entetes": [
-                  "Prestation",
-                  "Ce que vous y gagnez"
-                ],
-                "lignes": [
-                  [
-                    "Ingénierie de réalisation : méthodes, ordre d'assemblage, moyens de levage, planning, gestion des interfaces avec le fabricant et le bâtiment",
-                    "La durée du montage se joue avant le premier boulon. Sans méthode, un montage n'est qu'un empilement d'heures facturées"
-                  ],
-                  [
-                    "Logistique et réception du matériel : contrôle des colis, zone de stockage, flux internes, manutentions lourdes préparées",
-                    "Plus de pièces égarées ni de colis ouverts trop tôt. Une aire rangée est une aire rapide et sûre"
-                  ],
-                  [
-                    "Assemblage mécanique et structures : implantation au sol, châssis, sous-ensembles, alignement de précision des machines tournantes",
-                    "Les alignements se voient à la première montée en cadence. Ils se traitent au montage, pas après"
-                  ],
-                  [
-                    "Chaudronnerie et soudure par nos propres experts techniques : passerelles, supports, trémies, tuyauterie",
-                    "Pas de sous-traitance en cascade sur les adaptations de dernière minute"
-                  ],
-                  [
-                    "Raccordements électriques, pneumatiques, hydrauliques et fluides du site, contrôlés et documentés avant essai",
-                    "Chaque point est tracé. Les essais partent sur une base saine"
-                  ],
-                  [
-                    "Tests, mise en service, montée en cadence : essais à vide puis en charge, formation de vos opérateurs, assistance au démarrage",
-                    "Vos équipes savent conduire la machine le jour où nous partons"
-                  ],
-                  [
-                    "Dossier de fin d'opération : plans conformes à l'exécution, rapports d'essais, réserves levées",
-                    "Votre maintenance hérite d'une installation documentée, pas d'une boîte noire"
-                  ],
-                  [
-                    "Opérations associées : démontage, déplacement de machines, intégration dans une ligne existante, transfert entre deux sites",
-                    "Un seul prestataire du démontage à la remise en route"
-                  ]
-                ]
-              }
-            },
-            {
-              "prose": [
-                "Nous ne vendons ni machine ni équipement. Le gros œuvre et la construction de bâtiments restent l'affaire des entreprises générales. Notre seul intérêt est que votre installation fonctionne.",
-                "Deux postures possibles. Assistance technique au metteur en route du fabricant, ou responsabilité complète de l'opération. Le partage des rôles est écrit dans le devis, ligne par ligne."
-              ]
-            },
-            {
-              "titre": "Le déroulé",
-              "puces": [
-                {
-                  "accroche": "Ingénierie et préparation.",
-                  "texte": "Plans d'implantation, notices du fabricant, cahier des charges. Sortie : méthode, ordre d'assemblage, moyens de levage, calendrier, interfaces."
-                },
-                {
-                  "accroche": "Logistique et réception.",
-                  "texte": "Équipements réceptionnés, colis contrôlés, zones de travail et de stockage organisées."
-                },
-                {
-                  "accroche": "Assemblage mécanique et structures.",
-                  "texte": "Implantation, châssis, sous-ensembles, alignements, réglages géométriques."
-                },
-                {
-                  "accroche": "Raccordements.",
-                  "texte": "Armoires, réseaux, pneumatique, hydraulique, fluides du site. Contrôle point par point avant tout essai."
-                },
-                {
-                  "accroche": "Tests et mise en service.",
-                  "texte": "Essais à vide puis en charge, démarrage avec le fabricant ou en autonomie, formation des opérateurs."
-                },
-                {
-                  "accroche": "Montée en cadence et clôture.",
-                  "texte": "Assistance jusqu'à la production stabilisée, puis remise du dossier de fin d'opération."
-                }
-              ]
-            },
-            {
-              "prose": [
-                "Un ingénieur chargé de projet est votre point d'entrée unique du premier document à la levée des réserves."
-              ]
-            },
-            {
-              "titre": "Nos garanties",
-              "puces": [
-                {
-                  "accroche": "Un rappel dans l'heure",
-                  "texte": "du lundi au vendredi, 8h00 à 18h30, par téléphone, et une astreinte pendant toute la durée du chantier."
-                },
-                {
-                  "accroche": "Des monteurs évalués",
-                  "texte": "chaque monteur, mécanicien, électricien ou chaudronnier a passé une évaluation technique et comportementale. Seuls 10 % des experts techniques sont retenus, et la compétence se voit tout de suite en montage."
-                },
-                {
-                  "accroche": "La sécurité comme condition de départ",
-                  "texte": "plan de prévention, accueil sécurité sur votre site, permis de travail, modes opératoires de levage, coactivité gérée avec les autres intervenants."
-                },
-                {
-                  "accroche": "Une sécurité attestée, pas déclarée",
-                  "texte": "notre démarche MASE, pour la sécurité des interventions, et notre évaluation EcoVadis, pour la performance RSE, donnent lieu à des attestations transmises avec chaque plan de prévention. Les habilitations des experts techniques affectés à votre chantier sont à jour et vérifiables par votre service sécurité avant la première intervention."
-                }
-              ]
-            },
-            {
-              "prose": [
-                "heures passées et tâches soldées, pas un ressenti."
-              ]
-            }
-          ],
-          "questions": [
-            {
-              "question": "Combien coûte un montage industriel ?",
-              "reponse": "Le devis est établi après analyse de vos documents et, si nécessaire, une visite de site. Périmètre, méthode, planning et conditions y figurent, poste par poste. La qualité d'un devis de montage annonce la qualité du montage."
-            },
-            {
-              "question": "Pouvez-vous reprendre un chantier commencé par un autre prestataire ?",
-              "reponse": "Oui. Nous établissons un état des lieux de ce qui est monté, raccordé et contrôlé, puis nous chiffrons le reste à faire. Le dossier de fin d'opération couvre alors l'ensemble."
-            },
-            {
-              "question": "Montez-vous des machines de toutes marques ?",
-              "reponse": "Oui, machines de série comme machines spéciales, en lien avec les notices du fabricant et, si besoin, son assistance. Nous ne vendons aucun équipement : aucune préférence de marque ni de fournisseur."
-            },
-            {
-              "question": "Qui intervient sur mon site ?",
-              "reponse": "Des équipes complètes d'experts techniques salariés Migen, pas des renforts isolés à encadrer par vos soins. Chacun est évalué à l'entrée en entretien technique et comportemental, 10 % des experts techniques retenus, puis passé par votre accueil sécurité."
-            },
-            {
-              "question": "Intervenez-vous pendant un arrêt de production ?",
-              "reponse": "Oui, c'est fréquent. Beaucoup de montages et d'intégrations se réalisent pendant un arrêt technique planifié, nuits et week-ends compris. L'accès aux zones et la coactivité sont alors gérés avec une rigueur renforcée."
-            }
-          ],
-          "href": "/travaux-industriels/montage-industriel/",
-          "hrefLibelle": "Montage industriel : votre machine produit à la date prévue"
-        },
-        {
           "titre": "Démantèlement industriel",
-          "href": "/travaux-industriels/demantelement-industriel/",
-          "hrefLibelle": "Démantèlement industriel"
+          "resume": "Une zone rendue libre, propre et documentée. Pas un tas de ferraille et trois bennes non tracées.",
+          "href": "/travaux-industriels/demantelement-industriel/"
         },
         {
           "titre": "Levage industriel et manutention lourde",
-          "href": "/travaux-industriels/levage-manutention/",
-          "hrefLibelle": "Levage industriel et manutention lourde"
+          "resume": "La machine arrive à sa place, intacte, sans que l'atelier s'arrête autour.",
+          "href": "/travaux-industriels/levage-manutention/"
         },
         {
           "titre": "Montage industriel : machines, lignes et équipements de production",
-          "href": "/travaux-industriels/montage-industriel/",
-          "hrefLibelle": "Montage industriel : machines, lignes et équipements de production"
+          "resume": "Votre équipement neuf produit, il n'attend pas. Monté, calé, raccordé, essayé.",
+          "href": "/travaux-industriels/montage-industriel/"
         },
         {
           "titre": "Transfert industriel et déménagement de machines industrielles",
-          "href": "/travaux-industriels/transfert-industriel/",
-          "hrefLibelle": "Transfert industriel et déménagement de machines industrielles"
+          "resume": "Votre outil de production redémarre à la date prévue.",
+          "href": "/travaux-industriels/transfert-industriel/"
         },
         {
           "titre": "Déménagement de machines industrielles",
-          "resume": "À l'arrivée, votre machine ne fait pas que voyager : elle produit.",
-          "href": "/offres/chantier/demenagement-machines/",
-          "hrefLibelle": "Déménagement de machines industrielles"
+          "resume": "À l'arrivée, votre machine ne fait pas que voyager : elle produit. Remise en service comprise.",
+          "href": "/offres/chantier/demenagement-machines/"
         },
         {
           "titre": "Transfert de production",
-          "resume": "Vos clients ne doivent rien voir.",
-          "href": "/offres/chantier/transfert-de-production/",
-          "hrefLibelle": "Transfert de production"
+          "resume": "Vos clients ne doivent rien voir. Une ligne, un atelier ou une usine entière qui change d'adresse, sans rupture de livraison.",
+          "href": "/offres/chantier/transfert-de-production/"
         }
       ]
     },

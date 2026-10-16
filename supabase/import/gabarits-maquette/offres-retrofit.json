@@ -202,40 +202,51 @@
         "rappel": "04 78 33 72 05, astreinte."
       }
     ],
-    "autresSurtitre": "Un autre besoin ?",
-    "autresTitre": "Chaque situation a son offre.",
-    "autres": [
+    "pastille": "Nos offres",
+    "pagesLiees": [
       {
-        "phrase": "« J'ai besoin d'un renfort maintenance sur mon site. »",
-        "libelle": "Résidence",
-        "href": "/offres/residence/"
+        "titre": "Mise en conformité des machines",
+        "phrase": "La conformité d'un parc n'est jamais acquise une fois pour toutes.",
+        "href": "/offres/retrofit/mise-en-conformite-machine/",
+        "photo": "/assets/photos/pneu-pince-axe-lineaire.jpg"
       },
       {
-        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
-        "libelle": "Périmètre complet",
-        "href": "/offres/maintenance-externalisee/"
+        "titre": "Remise en état machine industrielle",
+        "phrase": "Une machine fatiguée n'est pas une machine finie.",
+        "href": "/offres/retrofit/remise-en-etat/",
+        "photo": "/assets/photos/env-inspection-metal-22-sept-2026-1.jpg"
       },
       {
-        "phrase": "« Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. »",
-        "libelle": "Zéro arrêt",
-        "href": "/offres/zero-arret/"
+        "titre": "Technicien en résidence",
+        "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
+        "href": "/offres/residence/",
+        "photo": "/assets/photos/env-ingenieurs-inspectant-site-industriel.jpg"
       },
       {
-        "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",
-        "libelle": "Arrêt technique",
-        "href": "/offres/arret-technique/"
+        "titre": "Zéro arrêt",
+        "phrase": "La maintenance en abonnement, au forfait mensuel.",
+        "href": "/offres/zero-arret/",
+        "photo": "/assets/photos/il-hydrau-verin-godet-engin.jpg"
       },
       {
-        "phrase": "« Mon installation n'est plus conforme et je n'ai plus les schémas. »",
-        "libelle": "Bureau d'études",
-        "href": "/offres/bureau-etudes/"
+        "titre": "Arrêt technique",
+        "phrase": "Vos arrêts planifiés, tenus à la date annoncée.",
+        "href": "/offres/arret-technique/",
+        "photo": "/assets/photos/tuyau-soudure-reseau-usine.jpg"
       },
       {
-        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
-        "libelle": "Toutes les offres",
-        "href": "/offres/"
+        "titre": "Full service",
+        "phrase": "Toute votre maintenance, un seul partenaire.",
+        "href": "/offres/full-service/",
+        "photo": "/assets/photos/env-photo-industrie-chimie.jpg"
       }
     ],
-    "pastille": "Nos offres"
+    "pagesLieesTitre": "Les offres et prestations voisines",
+    "complementOffre": [
+      {
+        "texte": "Ce que nous ne vendons pas. Ni machines neuves, ni matériel d'occasion. Si l'achat d'une machine neuve est réellement plus économique pour votre cas, nous vous le disons, calcul à l'appui.",
+        "horsResume": true
+      }
+    ]
   }
 }

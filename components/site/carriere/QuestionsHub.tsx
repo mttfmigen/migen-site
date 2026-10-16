@@ -6,6 +6,7 @@ import { SURTITRE, VERRE } from "@/components/site/blocs/habillage";
 import styles from "./HubCarriere.module.css";
 import { Enveloppe, Paragraphe } from "./SectionsHub";
 import { altPhoto } from "@/lib/descriptions-photos";
+import FermeAuTelephone from "@/components/site/ressource/FermeAuTelephone";
 
 /* -------------------------------------------------------------- questions */
 
@@ -136,8 +137,10 @@ export default function QuestionsHub({
               }}
             />
           ))}
-          <div
-            data-faq-liste=""
+          {/* LA PREMIÈRE QUESTION EST OUVERTE AU BUREAU, comme la maquette V3
+              (16/10) ; `FermeAuTelephone` la referme sous 881 px. */}
+          <FermeAuTelephone
+            faqListe
             style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10, marginTop: 8 }}
           >
             {questions.map((q, i) => (
@@ -145,6 +148,7 @@ export default function QuestionsHub({
                 key={q.question}
                 className={styles.pli}
                 name={groupe}
+                open={i === 0 && !!q.reponse}
                 style={{ ...VERRE, borderRadius: "var(--rad-s)" }}
               >
                 <summary
@@ -199,7 +203,7 @@ export default function QuestionsHub({
                 </div>
               </details>
             ))}
-          </div>
+          </FermeAuTelephone>
         </div>
       </div>
     </Enveloppe>

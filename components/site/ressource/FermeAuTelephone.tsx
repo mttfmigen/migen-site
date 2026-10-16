@@ -6,7 +6,9 @@ import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
  * LA LISTE DE LA FAQ, QUI REFERME SES QUESTIONS AU TÉLÉPHONE SEULEMENT.
  *
  * La FAQ du gabarit 01 ouvre sa première question, et c'est la capture de
- * BUREAU qui le dit (voir `Questions` dans `PageRessource`). La maquette
+ * BUREAU qui le dit (voir `Questions` dans `PageRessource`). Depuis la
+ * maquette V3 (16/10), TOUTES les FAQ du site ouvrent leur première question
+ * au bureau et passent par ce conteneur. La maquette
  * mobile v2, elle, sert toutes les questions repliées (questions de la FAQ en
  * `<details name="faq">`, aucune ouverte) : sous 880 px, la première réponse
  * ouverte coûtait 300 à 400 px d'écran avant la deuxième question.
@@ -23,10 +25,13 @@ import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
  */
 export default function FermeAuTelephone({
   style,
+  className,
   faqListe = false,
   children,
 }: {
   style: CSSProperties;
+  /** La classe du conteneur qu'il remplace (`mg-r2` des FAQ à deux colonnes). */
+  className?: string;
   /** Pose `data-faq-liste` : la liste de cartes partagée de la maquette mobile v2. */
   faqListe?: boolean;
   children: ReactNode;
@@ -41,7 +46,7 @@ export default function FermeAuTelephone({
   }, []);
 
   return (
-    <div ref={liste} style={style} {...(faqListe ? { "data-faq-liste": "" } : {})}>
+    <div ref={liste} className={className} style={style} {...(faqListe ? { "data-faq-liste": "" } : {})}>
       {children}
     </div>
   );
