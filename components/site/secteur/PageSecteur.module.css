@@ -191,19 +191,16 @@
     text-wrap: balance;
   }
 
-  /* Le H1 de la maquette (`# …` du corpus), puis l'accroche du bureau au
-     dessin de `hero.punch` (dc.html L108 : 600 16px/1.4, -0.02em). */
+  /* Le H1 de la maquette (`# …` du corpus), seul : la V3 ne pose aucune
+     accroche (`hero.punch`) sous le titre d'un secteur, son corpus n'en a
+     pas. L'accroche du bureau quitte l'écran du téléphone ; au-dessus de
+     880 px, c'est elle le H1. */
   .h1Maquette {
     display: block;
   }
 
   .gabarit .h1Accroche {
-    display: block;
-    margin: 10px 0 0;
-    font: 600 16px/1.4 var(--ft);
-    letter-spacing: -0.02em;
-    color: var(--ink);
-    text-wrap: pretty;
+    display: none;
   }
 
   /* Le fil d'Ariane de la maquette tient sur UNE ligne qui défile, 12 px

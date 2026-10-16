@@ -983,6 +983,12 @@
   .racine .titreCarrousel {
     font-size: 20px !important;
   }
+  /* Hors de l'étude de cas (hub /preuves/), le carrousel n'a pas la racine du
+     gabarit : sans cette règle, `.mg-site h2` le portait à 29 px. */
+  :global(.mg-site) .titreCarrousel {
+    font-size: 20px !important;
+    line-height: 1.2 !important;
+  }
 }
 
 :global(:root[data-theme="sombre"]) .racine {
@@ -1011,6 +1017,12 @@
    d'une étude de cas tenait sur trois lignes à 390 px. La rangée n'existe
    que sous 881 px (`data-mobile-seulement`), la règle aussi. Posée hors de
    `.racine` : le hub /preuves/ monte le même fil. */
+/* Le fil tombe 24 px plus haut que le rembourrage de 40 px de son bloc :
+   à 84 px du haut, comme sur les autres gabarits du téléphone (secteur,
+   carrière), au lieu de 108. Le bloc ne se peint que sous 881 px. */
+.filMobile {
+  margin-top: -24px;
+}
 .filMobile ol {
   flex-wrap: nowrap !important;
   overflow-x: auto;
@@ -1047,29 +1059,31 @@
   .racine .carteFormulaire {
     display: none !important;
   }
-  .racine .boutonsBesoin {
-    display: flex !important;
-    gap: 8px;
-    margin-top: 14px;
-  }
-  .racine .boutonsBesoin > a {
-    min-height: 50px;
-    justify-content: center;
-    text-align: center;
-    padding: 0 16px !important;
-    font: 600 14px/1.25 var(--fb) !important;
-  }
-  .racine .boutonsBesoin > a:first-child {
-    flex: 1 1 0%;
-  }
-  .racine .telephoneBesoin {
-    display: inline-flex;
+  /* Le bouton plein du panneau « Passer à l'action » (V3 `isBtnQ`) :
+     pilule orange, pastille flèche à droite. */
+  .racine .boutonFleche {
+    display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 14px;
+    min-height: 50px;
+    padding: 0 6px 0 20px;
     border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    background: rgba(255, 255, 255, 0.06);
+    background: #ff7c3c;
     color: #fff;
-    white-space: nowrap;
+    font: 600 14.5px/1.25 var(--fb);
+    text-decoration: none;
+    box-shadow: 0 12px 26px -14px rgba(255, 124, 60, 0.9);
+  }
+  .racine .pastilleFleche {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.2);
   }
   /* Les paragraphes du résultat : 400 15px/1.7 dans l'encre 1 du panneau
      sombre, comme tout paragraphe d'une étude dans la maquette V3

@@ -178,7 +178,7 @@ export default function PageSecteur({
      La maquette le fait viser `/contact/`, comme le corpus l'écrit
      (« [Étudier…](/contact/) · 04 78 33 72 05 »). */
   const boutonMobile = actions[0] ? { libelle: actions[0].libelle, href: CIBLE_CONTACT } : undefined;
-  const photo = photoDeTete(contenu);
+  const photo = photoDeTete(contenu, chemin);
   const entree = chemin ? entreeDe(chemin) : undefined;
   const titreMobile = entree ? appliqueDecisions(entree.h1.replace(/\s+/g, " ").trim(), entree.url) : undefined;
 

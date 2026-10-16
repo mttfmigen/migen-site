@@ -19,6 +19,7 @@ import { altPhoto } from "@/lib/descriptions-photos";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import { accrocheDe, ligneDuCorpus } from "@/components/site/blocs/resume-de-section";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
+import { IconeFleche } from "@/components/site/mobile/BarreCollanteMobile";
 import RappelFinalMobile from "@/components/site/mobile/RappelFinalMobile";
 import BandeauRappelMobile from "@/components/site/mobile/BandeauRappelMobile";
 import { varianteDe } from "@/components/site/mobile/conversion-donnees";
@@ -1723,19 +1724,18 @@ export default function PagePreuve({
                     })}
                   </div>
                 ) : null}
-                {/* La maquette MOBILE ferme ce panneau sur ses deux boutons
-                    (corpus, `## CTA` : « Demander un technicien sur site »
-                    vers /contact/ · le téléphone) ; le formulaire en trois
-                    étapes reste au bureau, le rappel final le relaie en bas
-                    de page. */}
-                <div data-mobile-seulement="" className={styles.boutonsBesoin}>
-                  <Link href="/contact/" prefetch={false} className={styles.boutonPrincipal} style={BOUTON_ORANGE}>
-                    {contenu.bouton}
-                  </Link>{" "}
-                  <a href={TELEPHONE_HREF} className={styles.telephoneBesoin}>
-                    {TELEPHONE}
-                  </a>
-                </div>
+                {/* La maquette MOBILE V3 ferme ce panneau sur un bouton plein,
+                    pastille flèche (`isBtnQ` : « Demander un technicien sur
+                    site » vers /contact/), sans la pastille du téléphone que
+                    l'en-tête et la barre collante portent déjà ; le
+                    formulaire en trois étapes reste au bureau, le rappel
+                    final le relaie en bas de page. */}
+                <Link data-mobile-seulement="" href="/contact/" prefetch={false} className={styles.boutonFleche}>
+                  <span>{contenu.bouton}</span>
+                  <span className={styles.pastilleFleche}>
+                    <IconeFleche />
+                  </span>
+                </Link>
                 {/* Le pied du panneau dans la maquette MOBILE (corpus, `## CTA`) :
                     « Offre et secteur concernés : … », « À lire aussi », puis
                     le bouton plein « Décrire mon besoin » (dc.html L203). Les
