@@ -11,7 +11,11 @@
 - Ne jamais interroger migen.fr en masse (défi anti-robot de Vercel sur notre IP). Pour une vérification ponctuelle : `curl --resolve migen.fr:443:216.150.1.1 https://migen.fr/...`.
 - Ne jamais faire `pkill` / `killall` sur Next : d'autres serveurs tournent (arrêter par port, `lsof -ti tcp:PORT | xargs kill`).
 
-## Ce qui reste : trois branches à finir, vérifier, fusionner, pousser
+## TERMINÉ le 16/10 au soir (3771c74, en ligne)
+
+Les trois branches ci-dessous ont été fusionnées et mises en ligne : siège à Limonest et agence à Écully, agenda Calendly intégré, photos industrielles des pages villes. Le contrôle propre à l'agenda dans `scripts/verifie-lp.mjs` n'a pas été repris à la fusion (conflit) : l'agenda est en ligne, sa porte dédiée reste à rebrancher si besoin. Le reste de ce document est l'historique.
+
+## Ce qui restait : trois branches à finir, vérifier, fusionner, pousser
 
 Trois chantiers lancés par la session précédente, chacun dans son arbre (`$S` = `/private/tmp/claude-501/-Users-mehdi-Landing-lovable/5ac5b3b5-7606-4b39-a9d7-aa12e571c373/scratchpad`). Leurs agents ont pu ajouter des commits après ce relais : prendre la tête de branche.
 
