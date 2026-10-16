@@ -194,8 +194,8 @@
 
   /* ------------------------------------------- les étapes en frise
      Maquette V3 « Site mobile » (16/10), relevée au navigateur sur
-     /carriere/automaticien/ : 30px | 1fr à 12 px d'écart, pastille pêche de
-     28 px (fond orange à 12 %, chiffre #b4490f), puis un filet vertical de
+     /carriere/automaticien/ : 28px | 1fr à 12 px d'écart, pastille pêche
+     ronde de 28 × 28 px (fond orange à 12 %, chiffre #b4490f), puis un filet vertical de
      2 px (orange à 22 %) qui descend jusqu'à l'étape suivante, absent sous la
      dernière. Le trait horizontal de bureau (`data-mc-deco`) devient ce filet :
      aucun élément ajouté. */
@@ -208,7 +208,7 @@
 
   .mobileV2 [data-mc-etape] {
     display: grid !important;
-    grid-template-columns: 30px minmax(0, 1fr) !important;
+    grid-template-columns: 28px minmax(0, 1fr) !important;
     column-gap: 12px !important;
     row-gap: 0 !important;
     align-items: start !important;
@@ -239,7 +239,7 @@
   .mobileV2 [data-mc-etape-tete] > :first-child {
     display: block !important;
     flex: none !important;
-    width: 30px !important;
+    width: 28px !important;
     height: 28px !important;
     border-radius: 999px !important;
     background: rgba(255, 124, 60, 0.12) !important;
@@ -346,26 +346,17 @@
 
   /* L'ORDRE DU CORPUS (dc.html `blockV`, pages salaire) : le chapô, le
      tableau, PUIS les paragraphes qui le commentent. La donnée les range tous
-     avant le tableau ; ici seul l'ordre visuel change, le DOM reste intact. */
-  .mobileV2 [data-mc-tableau-corps] {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .mobileV2 [data-mc-tableau-corps] > [data-mc-intro] ~ [data-mc-intro] {
-    order: 2;
-  }
-
-  /* Même ordre pour la grille (vrai tableau HTML) : relevé le 16/10, les deux
+     avant le tableau ; ici seul l'ordre visuel change, le DOM reste intact.
+     Même ordre pour la grille (vrai tableau HTML) : relevé le 16/10, les deux
      grilles des fiches (Alternance, Formation) écrivent leur commentaire
-     après le tableau dans le corpus, comme la V3 le rend. */
+     après le tableau dans le corpus, comme la V3 le rend. Seule exception,
+     `TEXTE_AVANT_TABLEAU` de `pli-mobile.tsx` (`="texte-avant"`), dont le
+     corpus écrit tout le texte avant le tableau. Le `order: 2` est commun
+     avec les sections `APRES_LISTE`, plus bas. */
+  .mobileV2 [data-mc-tableau-corps],
   .mobileV2 details[data-carte-numerotee] div:has(> [data-mc-grille]) {
     display: flex;
     flex-direction: column;
-  }
-
-  .mobileV2 details[data-carte-numerotee] div:has(> [data-mc-grille]) > [data-mc-intro] ~ [data-mc-intro] {
-    order: 2;
   }
 
   .mobileV2 [data-mc-libelle]::before {
@@ -809,7 +800,10 @@
     margin: 4px 0 14px !important;
   }
 
-  .mobileV2 [data-mc-hubs] > a {
+  /* Une petite carte claire : celle des hubs et celle des métiers recrutés
+     (plus bas), même dessin, même rangée de tableau de la V3. */
+  .mobileV2 [data-mc-hubs] > a,
+  .mobileV2 [data-mc-rail-carte] {
     height: auto !important;
     padding: 14px 15px !important;
     border: 1px solid var(--mc-bord);
@@ -824,40 +818,55 @@
     display: none !important;
   }
 
+  /* La pastille « Siège » quitte la photo pour la carte claire : le blanc
+     sur orange y lisait à 2,6:1. Elle prend le pêche de l'encart
+     « Candidature spontanée » (fond orange à 9 %, chiffre --mc-lien),
+     4,6:1. */
   .mobileV2 [data-mc-hubs] > a > span {
     top: 12px !important;
     right: 12px;
     left: auto !important;
     padding: 4px 10px !important;
+    background: rgba(255, 124, 60, 0.09) !important;
+    color: var(--mc-lien) !important;
     font: 600 10.5px var(--fb) !important;
   }
 
-  .mobileV2 [data-mc-hubs] > a > div:last-child {
+  .mobileV2 [data-mc-hubs] > a > div:last-child,
+  .mobileV2 [data-mc-rail-carte] > div:last-child {
     position: static !important;
     display: grid;
     gap: 8px;
   }
 
-  .mobileV2 [data-mc-hubs] > a > div:last-child > div:nth-child(2) {
+  /* Le nom (hub, métier), puis la valeur sous son libellé, puis le lien. */
+  .mobileV2 [data-mc-hubs] > a > div:last-child > div:nth-child(2),
+  .mobileV2 [data-mc-rail-carte] > div:last-child > div:first-child {
     margin: 0 !important;
     font: 600 14.5px/1.45 var(--fb) !important;
     letter-spacing: 0 !important;
   }
 
-  .mobileV2 [data-mc-hubs] > a > div:last-child > div:nth-child(3) {
+  .mobileV2 [data-mc-hubs] > a > div:last-child > div:nth-child(3),
+  .mobileV2 [data-mc-rail-carte] > div:last-child > div:nth-child(2) {
     margin: 0 !important;
     font: 400 14px/1.55 var(--fb) !important;
     color: var(--ink1) !important;
   }
 
-  .mobileV2 [data-mc-hubs] > a > div:last-child > span {
+  .mobileV2 [data-mc-hubs] > a > div:last-child > span,
+  .mobileV2 [data-mc-rail-carte] > div:last-child > span {
     font: 600 13px var(--fb) !important;
     color: var(--mc-lien) !important;
   }
 
   /* Les avis : les petites cartes claires de la V3, numérotées comme toute
      liste. Le guillemet de bureau, décor `aria-hidden`, cède sa place au
-     compteur ; la citation puis son libellé gardent l'ordre du DOM. */
+     compteur. LE LIBELLÉ EN TITRE, PUIS LA CITATION, comme la V3 (« Un avis
+     sur l'accompagnement » en gras, la citation en texte courant) et comme
+     les cartes `data-mc-carte` : seul l'ordre visuel change, le DOM lit la
+     citation puis son libellé, ce qui garde son sens. Le libellé est celui du
+     site (« Avis sur… », sans le « Un » de la V3). */
   .mobileV2 [data-mc-avis] {
     grid-template-columns: minmax(0, 1fr) !important;
     gap: 8px !important;
@@ -895,16 +904,22 @@
     color: var(--acc);
   }
 
-  .mobileV2 [data-mc-avis] > * > p {
+  .mobileV2 [data-mc-avis] > * > div {
     grid-column: 2;
-    margin: 0 0 6px !important;
-    font: 500 14.5px/1.5 var(--fb) !important;
+    grid-row: 1;
+    font: 600 14.5px/1.4 var(--ft) !important;
+    letter-spacing: -0.015em !important;
+    text-transform: none !important;
     color: var(--ink) !important;
   }
 
-  .mobileV2 [data-mc-avis] > * > div {
+  .mobileV2 [data-mc-avis] > * > p {
     grid-column: 2;
-    color: var(--mc-encre3) !important;
+    grid-row: 2;
+    margin: 4px 0 0 !important;
+    font: 400 14px/1.55 var(--fb) !important;
+    color: var(--ink1) !important;
+    text-wrap: wrap !important;
   }
 
   /* La conclusion des avis : un paragraphe de la carte, comme dans la V3. Son
@@ -948,6 +963,17 @@
     color: var(--ink1) !important;
   }
 
+  /* L'en-tête de la liste, dessiné comme celui d'un tableau
+     (`data-mc-tableau-tete`) : « Poste · Ce que nous cherchons » de la V3,
+     en contenu généré (`data-mc-tete` de `MetiersRecrutes.tsx`). */
+  .mobileV2 [data-mc-rail][data-mc-tete]::before {
+    content: attr(data-mc-tete);
+    font: 600 10.5px/1.4 var(--fb);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mc-encre3);
+  }
+
   .mobileV2 [data-mc-rail] {
     display: grid !important;
     grid-template-columns: minmax(0, 1fr);
@@ -960,41 +986,12 @@
 
   .mobileV2 [data-mc-rail-carte] {
     width: auto !important;
-    height: auto !important;
-    padding: 14px 15px !important;
-    border: 1px solid var(--mc-bord);
-    border-radius: 16px !important;
-    background: var(--mc-fond) !important;
-    color: var(--ink) !important;
   }
 
   .mobileV2 [data-mc-rail-carte] > img,
   .mobileV2 [data-mc-rail-carte]:has(> img) > span,
   .mobileV2 [data-mc-rail-carte] > div:not(:last-child) {
     display: none !important;
-  }
-
-  .mobileV2 [data-mc-rail-carte] > div:last-child {
-    position: static !important;
-    display: grid;
-    gap: 8px;
-  }
-
-  .mobileV2 [data-mc-rail-carte] > div:last-child > div:first-child {
-    margin: 0 !important;
-    font: 600 14.5px/1.45 var(--fb) !important;
-    letter-spacing: 0 !important;
-  }
-
-  .mobileV2 [data-mc-rail-carte] > div:last-child > div:nth-child(2) {
-    margin: 0 !important;
-    font: 400 14px/1.55 var(--fb) !important;
-    color: var(--ink1) !important;
-  }
-
-  .mobileV2 [data-mc-rail-carte] > div:last-child > span {
-    font: 600 13px var(--fb) !important;
-    color: var(--mc-lien) !important;
   }
 
   /* « Candidature spontanée » (vers #postuler) : l'encart orange clair de la
@@ -1027,9 +1024,13 @@
      (`display: contents`), ses paragraphes rejoignent la colonne de la carte,
      et seul l'ordre visuel change, comme au tableau plus haut ; le DOM et le
      bureau restent intacts. Étapes, liste, bento et duo partagent ce dessin. */
+  /* `stretch` : le `align-items: start` écrit en ligne pour le bureau
+     réduisait chaque bloc à la largeur de son texte, et le filet d'une
+     sous-partie à celle de son titre (187 px au lieu de 320). */
   .mobileV2 details[data-carte-numerotee] [data-mc-apres-liste] :is([data-mc-pile], div:has(> [data-mc-entete] + :is([data-mc-frise], [data-mc-cartes]))) {
     display: flex !important;
     flex-direction: column;
+    align-items: stretch !important;
   }
 
   .mobileV2 details[data-carte-numerotee] [data-mc-apres-liste] [data-mc-entete],
@@ -1037,7 +1038,9 @@
     display: contents !important;
   }
 
-  .mobileV2 [data-mc-apres-liste] [data-mc-intro] ~ [data-mc-intro] {
+  .mobileV2 [data-mc-apres-liste] [data-mc-intro] ~ [data-mc-intro],
+  .mobileV2 [data-mc-tableau-corps=""] > [data-mc-intro] ~ [data-mc-intro],
+  .mobileV2 details[data-carte-numerotee] div:has(> [data-mc-grille]) > [data-mc-intro] ~ [data-mc-intro] {
     order: 2;
   }
 }

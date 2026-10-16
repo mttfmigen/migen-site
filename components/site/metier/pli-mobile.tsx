@@ -1,5 +1,6 @@
-import type { ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
 
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import { ligneDuCorpus } from "@/components/site/blocs/resume-de-section";
 import { enTexteNu } from "@/components/site/blocs/TexteRiche";
 
@@ -169,6 +170,18 @@ export const APRES_LISTE: ReadonlySet<string> = new Set([
 ]);
 
 /**
+ * LES TABLEAUX DONT TOUT LE TEXTE PRÉCÈDE. Au téléphone, les paragraphes qui
+ * suivent le chapô d'un tableau passent après lui (`data-mc-tableau-corps`,
+ * `MobileV2.module.css`), l'ordre du corpus. Une seule section des 13 fiches
+ * écrit au contraire son deuxième paragraphe AVANT le tableau
+ * (`carriere--technicien-de-maintenance.md` : chapô, liste, « Avant de
+ * postuler… », tableau, citation), et la V3 la rend ainsi.
+ */
+export const TEXTE_AVANT_TABLEAU: ReadonlySet<string> = new Set([
+  "Conditions, outils et technologies",
+]);
+
+/**
  * Au téléphone seulement, l'ordre VISUEL de ces sections suit la V3 : chapô,
  * liste, puis les paragraphes suivants (`data-mc-apres-liste`,
  * `MobileV2.module.css`, comme l'ordre déjà rendu au tableau). Le DOM et le
@@ -215,6 +228,47 @@ export const SOUS_PARTIES: ReadonlySet<string> = new Set([
   "Une technicienne ou un technicien",
   "Vérifier avant de s'inscrire",
 ]);
+
+/**
+ * UNE SECTION ET SES SOUS-PARTIES, au hub comme aux fiches. Avec `pli`, la
+ * section se replie au téléphone dans sa carte numérotée, sous-parties
+ * comprises ; sans, elle reste nue, enveloppée d'un `<div>` seulement quand
+ * elle porte des sous-parties. `rend` dessine une section (`Section` du hub,
+ * `SectionFicheMetier` des fiches).
+ */
+export function rendAvecSuite<S extends object>(
+  cle: string,
+  section: S,
+  sous: S[],
+  rend: (s: S) => ReactNode,
+  pli: { etiquette: { surtitre: string; titre: string }; ouverte: boolean } | null,
+): ReactNode {
+  const suite = sous.map((sp, k) => (
+    <div key={`${cle}-sous-${k}`} data-sous-partie="">
+      <OrdreMobile section={sp}>{rend(sp)}</OrdreMobile>
+    </div>
+  ));
+  if (!pli)
+    return suite.length ? (
+      <div key={cle}>
+        {rend(section)}
+        {suite}
+      </div>
+    ) : (
+      <Fragment key={cle}>{rend(section)}</Fragment>
+    );
+  return (
+    <SectionPliableMobile
+      key={cle}
+      toujoursOuvert={pli.ouverte}
+      resume={amorceDe(section)}
+      enTete={<EtiquettePli surtitre={pli.etiquette.surtitre} titre={pli.etiquette.titre} />}
+    >
+      <OrdreMobile section={section}>{rend(section)}</OrdreMobile>
+      {suite}
+    </SectionPliableMobile>
+  );
+}
 
 /** Les sections de contenu, chacune avec ses sous-parties (`SOUS_PARTIES`). */
 export function regroupe<S extends object>(contenus: S[], premier: number) {

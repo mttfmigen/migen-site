@@ -9,9 +9,8 @@ import styles from "./FicheMetier.module.css";
 import PostulerMetier from "./PostulerMetier";
 import SectionFicheMetier, { BoutonPostuler } from "./SectionsFicheMetier";
 import { altPhoto } from "@/lib/descriptions-photos";
-import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import mv from "./MobileV2.module.css";
-import { EncartAppel, EtiquettePli, OrdreMobile, amorceDe, regroupe } from "./pli-mobile";
+import { EncartAppel, regroupe, rendAvecSuite } from "./pli-mobile";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
 import PastillesCocon from "@/components/site/cocon/PastillesCocon";
 import { courtLibelle, enfantsDe } from "@/components/site/cocon/maillage-mobile";
@@ -191,39 +190,16 @@ function rendSection(
   sousParties: SectionFiche[] = [],
 ): ReactNode {
   if (section.type === "postuler") return <PostulerMetier key={`postuler-${i}`} />;
-  // L'index suffit comme clé : l'ordre du tableau EST le gabarit.
-  const cle = `${section.type}-${i}`;
   const etiquette = i === 0 || HORS_PLI.has(section.type) ? null : etiquetteDe(section);
   /* Les sous-parties (`SOUS_PARTIES` de `pli-mobile.tsx`) s'ouvrent dans la
-     carte d'avant, comme sur le hub. */
-  const suite = sousParties.map((sp, k) => (
-    <div key={`${cle}-sous-${k}`} data-sous-partie="">
-      <OrdreMobile section={sp}>
-        <SectionFicheMetier section={sp} />
-      </OrdreMobile>
-    </div>
-  ));
-  if (!etiquette)
-    return suite.length ? (
-      <div key={cle}>
-        <SectionFicheMetier section={section} />
-        {suite}
-      </div>
-    ) : (
-      <SectionFicheMetier key={cle} section={section} />
-    );
-  return (
-    <SectionPliableMobile
-      key={cle}
-      toujoursOuvert={ouverte}
-      resume={amorceDe(section)}
-      enTete={<EtiquettePli surtitre={etiquette.surtitre} titre={etiquette.titre} />}
-    >
-      <OrdreMobile section={section}>
-        <SectionFicheMetier section={section} />
-      </OrdreMobile>
-      {suite}
-    </SectionPliableMobile>
+     carte d'avant, comme sur le hub. L'index suffit comme clé : l'ordre du
+     tableau EST le gabarit. */
+  return rendAvecSuite(
+    `${section.type}-${i}`,
+    section,
+    sousParties,
+    (s) => <SectionFicheMetier section={s} />,
+    etiquette && { etiquette, ouverte },
   );
 }
 

@@ -46,7 +46,7 @@ import { estMetier, type ContenuFicheMetier } from "@/types/metier";
 import { HUB_CARRIERE } from "@/components/site/carriere/donnees-hub";
 
 import PageFicheMetier from "./PageFicheMetier";
-import { APRES_LISTE, SOUS_PARTIES } from "./pli-mobile";
+import { APRES_LISTE, SOUS_PARTIES, TEXTE_AVANT_TABLEAU } from "./pli-mobile";
 
 const RACINE = fileURLToPath(new URL("../../..", import.meta.url));
 const RENDU_MAQUETTE = join(RACINE, "maquette", "rendu");
@@ -523,12 +523,19 @@ const TITRES_SERVIS = new Set<string>(
     .map((section) => ("titre" in section && typeof section.titre === "string" ? section.titre : ""))
     .filter(Boolean),
 );
-assert.ok(!TITRES_SERVIS.has("Titre que nulle page ne sert"), "le relevé des titres servis accepte n'importe quoi");
+const orphelinsDe = (ensemble: Iterable<string>) => [...ensemble].filter((titre) => !TITRES_SERVIS.has(titre));
+// Le contrôle sait échouer : un titre inventé est rendu orphelin, un titre servi ne l'est pas.
+assert.deepEqual(
+  orphelinsDe(["Titre que nulle page ne sert", "Nos informations pratiques", "Conditions, outils et technologies"]),
+  ["Titre que nulle page ne sert"],
+  "le relevé des titres servis ne distingue plus un titre servi d'un titre inventé",
+);
 for (const [nom, ensemble] of [
   ["SOUS_PARTIES", SOUS_PARTIES],
   ["APRES_LISTE", APRES_LISTE],
+  ["TEXTE_AVANT_TABLEAU", TEXTE_AVANT_TABLEAU],
 ] as const) {
-  const orphelins = [...ensemble].filter((titre) => !TITRES_SERVIS.has(titre));
+  const orphelins = orphelinsDe(ensemble);
   assert.deepEqual(orphelins, [], `${nom} nomme des sections qu'aucune page ne sert : ${orphelins.join(" | ")}`);
 }
 

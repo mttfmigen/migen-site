@@ -19,15 +19,8 @@ import {
   Refus,
 } from "./SectionsHub";
 import { altPhoto } from "@/lib/descriptions-photos";
-import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import mv from "@/components/site/metier/MobileV2.module.css";
-import {
-  EncartAppel,
-  EtiquettePli,
-  OrdreMobile,
-  amorceDe,
-  regroupe,
-} from "@/components/site/metier/pli-mobile";
+import { EncartAppel, regroupe, rendAvecSuite } from "@/components/site/metier/pli-mobile";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
 import PastillesCocon from "@/components/site/cocon/PastillesCocon";
 import CarrouselRealisations from "@/components/site/preuve/CarrouselRealisations";
@@ -145,37 +138,14 @@ function etiquetteDe(section: SectionHub): { surtitre: string; titre: string } |
  * (dc.html L451, `nOpen = 1` sur le gabarit 10).
  */
 function rendSection(section: SectionHub, i: number, ouverte = false, sousParties: SectionHub[] = []) {
-  // L'index suffit comme clé : l'ordre du tableau EST celui de la capture.
-  const cle = `${section.type}-${i}`;
   const etiquette = i === 0 ? null : etiquetteDe(section);
-  const suite = sousParties.map((sp, k) => (
-    <div key={`${cle}-sous-${k}`} data-sous-partie="">
-      <OrdreMobile section={sp}>
-        <Section section={sp} />
-      </OrdreMobile>
-    </div>
-  ));
-  if (!etiquette)
-    return suite.length ? (
-      <div key={cle}>
-        <Section section={section} />
-        {suite}
-      </div>
-    ) : (
-      <Section key={cle} section={section} />
-    );
-  return (
-    <SectionPliableMobile
-      key={cle}
-      toujoursOuvert={ouverte}
-      resume={amorceDe(section)}
-      enTete={<EtiquettePli surtitre={etiquette.surtitre} titre={etiquette.titre} />}
-    >
-      <OrdreMobile section={section}>
-        <Section section={section} />
-      </OrdreMobile>
-      {suite}
-    </SectionPliableMobile>
+  // L'index suffit comme clé : l'ordre du tableau EST celui de la capture.
+  return rendAvecSuite(
+    `${section.type}-${i}`,
+    section,
+    sousParties,
+    (s) => <Section section={s} />,
+    etiquette && { etiquette, ouverte },
   );
 }
 

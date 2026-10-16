@@ -157,6 +157,9 @@ export default function MetiersRecrutes({
       <div
         ref={rail}
         data-mc-rail=""
+        /* L'en-tête de la liste de la V3, dessiné au téléphone seulement
+           (`MobileV2.module.css`). */
+        data-mc-tete="Poste · Ce que nous cherchons"
         className={styles.rail}
         style={{
           display: "flex",
