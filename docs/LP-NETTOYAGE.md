@@ -202,7 +202,7 @@ Aucune règle ne les retire, mais aucune source du site ne les atteste mot pour 
 - chapo : « Techniciens déployés depuis notre hub Migen de Toulouse. » retiré. Motif : phrase retirée : ville-hub rattachée au hub de Toulouse.
 - badges[0] : « Hub Toulouse » retiré. Motif : segment retiré : ville-hub rattachée au hub de Toulouse.
 - hs[0] : « 4,9/5 · satisfaction client » devient « 4,6 / 5 · avis Google ». Motif : la note du site est 4,6 / 5 sur Google (TemoignagesClients.tsx, libellé de CHIFFRES dans entete-donnees.ts) ; 4,9/5 n'a pas de source.
-- img : « photo de ville, aperçu Envato E10OSPM (CDN d'Envato, filigrané) » devient « /assets/photos/agro-panneau-vannes-nep.jpg ». Motif : le fond ville fait « agence immo » (Mehdi, 16/10) : la photo de maintenance industrielle du hub local de /implantations/bordeaux/.
+- img : « photo de ville, aperçu Envato E10OSPM (CDN d'Envato, filigrané) » devient « /assets/photos/env-photos-industrie-agro-alimentaire.jpg ». Motif : le fond ville fait « agence immo » (Mehdi, 16/10) : une machine sans personne au centre, Bordeaux : viticole et agroalimentaire.
 - section « Plus de 200 clients satisfaits » · t : « Plus de 200 clients satisfaits » devient « Plus de 200 clients ». Motif : « +200 clients » sans le qualificatif « satisfaits ».
 - section « Nos expertises » · items[3].h : « Renfort d'équipe en régie » retiré. Motif : phrase retirée : régie.
 - section « Nos expertises » · items[3] : « Des techniciens autonomes intégrés à vos équipes, en ponctuel ou sur la durée. » retiré. Motif : la description part avec son titre, l'élément entier est retiré.
@@ -279,7 +279,7 @@ Aucune règle ne les retire, mais aucune source du site ne les atteste mot pour 
 - chapo : « Techniciens déployés depuis notre hub Migen de Nantes. » retiré. Motif : phrase retirée : rattachement au hub de Nantes, qui n'est pas le plus proche.
 - badges[0] : « Hub Nantes » retiré. Motif : segment retiré : rattachement au hub de Nantes, qui n'est pas le plus proche.
 - hs[0] : « 4,9/5 · satisfaction client » devient « 4,6 / 5 · avis Google ». Motif : la note du site est 4,6 / 5 sur Google (TemoignagesClients.tsx, libellé de CHIFFRES dans entete-donnees.ts) ; 4,9/5 n'a pas de source.
-- img : « photo de ville, aperçu Envato E10N758 (CDN d'Envato, filigrané) » devient « /assets/photos/tuyau-vanne-volant-rack.jpg ». Motif : le fond ville fait « agence immo » (Mehdi, 16/10) : la photo de maintenance industrielle du hub local de /implantations/maintenance-industrielle-le-havre/.
+- img : « photo de ville, aperçu Envato E10N758 (CDN d'Envato, filigrané) » devient « /assets/photos/env-photo-industrie.jpg ». Motif : le fond ville fait « agence immo » (Mehdi, 16/10) : une machine sans personne au centre, Le Havre : pétrochimie et raffinerie.
 - section « Plus de 200 clients satisfaits » · t : « Plus de 200 clients satisfaits » devient « Plus de 200 clients ». Motif : « +200 clients » sans le qualificatif « satisfaits ».
 - section « Nos expertises » · items[3].h : « Renfort d'équipe en régie » retiré. Motif : phrase retirée : régie.
 - section « Nos expertises » · items[3] : « Des techniciens autonomes intégrés à vos équipes, en ponctuel ou sur la durée. » retiré. Motif : la description part avec son titre, l'élément entier est retiré.
@@ -316,7 +316,7 @@ Aucune règle ne les retire, mais aucune source du site ne les atteste mot pour 
 - chapo : « Migen met à disposition des techniciens de maintenance industrielle pour intervenir sur vos sites, en renfort ponctuel ou en présence continue. » retiré. Motif : phrase retirée : mise à disposition.
 - badges[0] : « Agence Lyon · Écully » devient « Siège Lyon · Écully ». Motif : le siège est à Écully (Mehdi, 16/10).
 - hs[0] : « 4,9/5 · satisfaction client » devient « 4,6 / 5 · avis Google ». Motif : la note du site est 4,6 / 5 sur Google (TemoignagesClients.tsx, libellé de CHIFFRES dans entete-donnees.ts) ; 4,9/5 n'a pas de source.
-- img : « photo de ville, aperçu Envato E10QDY1 (CDN d'Envato, filigrané) » devient « /assets/photos/chimie-cuve-melange-flexible.jpg ». Motif : le fond ville fait « agence immo » (Mehdi, 16/10) : la photo de maintenance industrielle du hub local de /implantations/lyon/.
+- img : « photo de ville, aperçu Envato E10QDY1 (CDN d'Envato, filigrané) » devient « /assets/photos/chimie-reacteurs-agites-passerelle.jpg ». Motif : le fond ville fait « agence immo » (Mehdi, 16/10) : une machine sans personne au centre, Lyon : chimie et pharmaceutique de la Vallée de la chimie.
 - section « Plus de 200 clients satisfaits » · t : « Plus de 200 clients satisfaits » devient « Plus de 200 clients ». Motif : « +200 clients » sans le qualificatif « satisfaits ».
 - section « Nos expertises » · items[3].h : « Renfort d'équipe en régie » retiré. Motif : phrase retirée : régie.
 - section « Nos expertises » · items[3] : « Des techniciens autonomes intégrés à vos équipes, en ponctuel ou sur la durée. » retiré. Motif : la description part avec son titre, l'élément entier est retiré.
@@ -335,7 +335,7 @@ Aucune règle ne les retire, mais aucune source du site ne les atteste mot pour 
 - chapo : « Techniciens déployés depuis notre hub Migen de Lyon. » retiré. Motif : phrase retirée : ville-hub rattachée au hub de Lyon.
 - badges[0] : « Hub Lyon » retiré. Motif : segment retiré : ville-hub rattachée au hub de Lyon.
 - hs[0] : « 4,9/5 · satisfaction client » devient « 4,6 / 5 · avis Google ». Motif : la note du site est 4,6 / 5 sur Google (TemoignagesClients.tsx, libellé de CHIFFRES dans entete-donnees.ts) ; 4,9/5 n'a pas de source.
-- img : « photo de ville, aperçu Envato E108N92Z (CDN d'Envato, filigrané) » devient « /assets/photos/meca-senior-rouleuse-combinaison.jpg ». Motif : le fond ville fait « agence immo » (Mehdi, 16/10) : la photo de maintenance industrielle du hub local de /implantations/marseille/.
+- img : « photo de ville, aperçu Envato E108N92Z (CDN d'Envato, filigrané) » devient « /assets/photos/env-usine-metallique.jpg ». Motif : le fond ville fait « agence immo » (Mehdi, 16/10) : une machine sans personne au centre, Marseille : sidérurgie et pétrochimie de Fos.
 - section « Plus de 200 clients satisfaits » · t : « Plus de 200 clients satisfaits » devient « Plus de 200 clients ». Motif : « +200 clients » sans le qualificatif « satisfaits ».
 - section « Nos expertises » · items[3].h : « Renfort d'équipe en régie » retiré. Motif : phrase retirée : régie.
 - section « Nos expertises » · items[3] : « Des techniciens autonomes intégrés à vos équipes, en ponctuel ou sur la durée. » retiré. Motif : la description part avec son titre, l'élément entier est retiré.
@@ -366,7 +366,7 @@ Aucune règle ne les retire, mais aucune source du site ne les atteste mot pour 
 - meta : « Migen met à disposition des techniciens qualifiés à Nantes pour renforcer votre maintenance industrielle : urgences, absences, pics d'activité et arrêts techniques. » retiré. Motif : phrase retirée : mise à disposition.
 - chapo : « Migen met à disposition des techniciens de maintenance industrielle pour intervenir sur vos sites, en renfort ponctuel ou en présence continue. » retiré. Motif : phrase retirée : mise à disposition.
 - hs[0] : « 4,9/5 · satisfaction client » devient « 4,6 / 5 · avis Google ». Motif : la note du site est 4,6 / 5 sur Google (TemoignagesClients.tsx, libellé de CHIFFRES dans entete-donnees.ts) ; 4,9/5 n'a pas de source.
-- img : « photo de ville, aperçu Envato E10OW8U (CDN d'Envato, filigrané) » devient « /assets/photos/agro-remplisseuse-cle-plate.jpg ». Motif : le fond ville fait « agence immo » (Mehdi, 16/10) : la photo de maintenance industrielle du hub local de /implantations/nantes/.
+- img : « photo de ville, aperçu Envato E10OW8U (CDN d'Envato, filigrané) » devient « /assets/photos/tuyau-vanne-volant-conserverie.jpg ». Motif : le fond ville fait « agence immo » (Mehdi, 16/10) : une machine sans personne au centre, Nantes : agroalimentaire (les photos d'aéronautique sont hors industrie).
 - section « Plus de 200 clients satisfaits » · t : « Plus de 200 clients satisfaits » devient « Plus de 200 clients ». Motif : « +200 clients » sans le qualificatif « satisfaits ».
 - section « Nos expertises » · items[3].h : « Renfort d'équipe en régie » retiré. Motif : phrase retirée : régie.
 - section « Nos expertises » · items[3] : « Des techniciens autonomes intégrés à vos équipes, en ponctuel ou sur la durée. » retiré. Motif : la description part avec son titre, l'élément entier est retiré.
@@ -404,7 +404,7 @@ Aucune règle ne les retire, mais aucune source du site ne les atteste mot pour 
 - chapo : « Agence à La Défense, 16 place de l'Iris à Courbevoie. » retiré. Motif : phrase retirée : agence locale (4 agences : Lyon, Montréal, Dubaï, Madrid).
 - badges[0] : « Agence Paris · La Défense » retiré. Motif : phrase retirée : agence locale (4 agences : Lyon, Montréal, Dubaï, Madrid).
 - hs[0] : « 4,9/5 · satisfaction client » devient « 4,6 / 5 · avis Google ». Motif : la note du site est 4,6 / 5 sur Google (TemoignagesClients.tsx, libellé de CHIFFRES dans entete-donnees.ts) ; 4,9/5 n'a pas de source.
-- img : « photo de ville, aperçu Envato E10QF8J (CDN d'Envato, filigrané) » devient « /assets/photos/elec-binome-coffret-chaufferie.jpg ». Motif : le fond ville fait « agence immo » (Mehdi, 16/10) : la photo de maintenance industrielle du hub local de /implantations/paris/.
+- img : « photo de ville, aperçu Envato E10QF8J (CDN d'Envato, filigrané) » devient « /assets/photos/robot-cellules-grillagees.jpg ». Motif : le fond ville fait « agence immo » (Mehdi, 16/10) : une machine sans personne au centre, Paris : automobile, logistique, agroalimentaire, ferroviaire.
 - section « Plus de 200 clients satisfaits » · t : « Plus de 200 clients satisfaits » devient « Plus de 200 clients ». Motif : « +200 clients » sans le qualificatif « satisfaits ».
 - section « Nos expertises » · items[3].h : « Renfort d'équipe en régie » retiré. Motif : phrase retirée : régie.
 - section « Nos expertises » · items[3] : « Des techniciens autonomes intégrés à vos équipes, en ponctuel ou sur la durée. » retiré. Motif : la description part avec son titre, l'élément entier est retiré.
@@ -452,7 +452,7 @@ Aucune règle ne les retire, mais aucune source du site ne les atteste mot pour 
 - chapo : « À Strasbourg et en Bas-Rhin, vos installations doivent rester opérationnelles. Migen met à disposition des techniciens de maintenance industrielle pour intervenir sur vos sites, en renfort ponctuel ou en présence continue. Hub Migen à Strasbourg. » devient « À Strasbourg et dans le Bas-Rhin, vos installations doivent rester opérationnelles. Migen met à disposition des techniciens de maintenance industrielle pour intervenir sur vos sites, en renfort ponctuel ou en présence continue. Hub Migen à Strasbourg. ». Motif : faute de français de la V3 : « dans le Bas-Rhin ».
 - chapo : « Migen met à disposition des techniciens de maintenance industrielle pour intervenir sur vos sites, en renfort ponctuel ou en présence continue. » retiré. Motif : phrase retirée : mise à disposition.
 - hs[0] : « 4,9/5 · satisfaction client » devient « 4,6 / 5 · avis Google ». Motif : la note du site est 4,6 / 5 sur Google (TemoignagesClients.tsx, libellé de CHIFFRES dans entete-donnees.ts) ; 4,9/5 n'a pas de source.
-- img : « photo de ville, aperçu Envato E10DWX6 (CDN d'Envato, filigrané) » devient « /assets/photos/meca-presses-volants-technicienne.jpg ». Motif : le fond ville fait « agence immo » (Mehdi, 16/10) : la photo de maintenance industrielle du hub local de /implantations/strasbourg/.
+- img : « photo de ville, aperçu Envato E10DWX6 (CDN d'Envato, filigrané) » devient « /assets/photos/pharma-blistereuse-mecanisme.jpg ». Motif : le fond ville fait « agence immo » (Mehdi, 16/10) : une machine sans personne au centre, Strasbourg : pharmaceutique, automobile, agroalimentaire.
 - section « Plus de 200 clients satisfaits » · t : « Plus de 200 clients satisfaits » devient « Plus de 200 clients ». Motif : « +200 clients » sans le qualificatif « satisfaits ».
 - section « Nos expertises » · items[3].h : « Renfort d'équipe en régie » retiré. Motif : phrase retirée : régie.
 - section « Nos expertises » · items[3] : « Des techniciens autonomes intégrés à vos équipes, en ponctuel ou sur la durée. » retiré. Motif : la description part avec son titre, l'élément entier est retiré.

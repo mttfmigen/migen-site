@@ -18,7 +18,7 @@ const DESCRIPTIONS: Record<string, string> = {
   "aero-reacteur-capot-combinaison.jpg": "Technicien en combinaison au capot d'un réacteur",
   "agro-atelier-inox-plan-large.jpg": "Atelier agroalimentaire inox en plan large",
   "agro-ihm-ligne-conditionnement-senior.jpg": "Technicien senior sur l'IHM d'une ligne de conditionnement",
-  "agro-mains-vanne-sanitaire.jpg": "Mains réglant une vanne sanitaire inox au tournevis",
+  "agro-mains-vanne-sanitaire.jpg": "Mains manœuvrant les poignées de vannes sanitaires inox",
   "agro-panneau-vannes-nep.jpg": "Changement de circuit sur un panneau de vannes sanitaires",
   "agro-remplisseuse-cle-plate.jpg": "Intervention à la clé plate sur une remplisseuse rotative",
   "agro-technicienne-raccord-clamp.jpg": "Technicienne en charlotte contrôlant une tuyauterie de process inox",

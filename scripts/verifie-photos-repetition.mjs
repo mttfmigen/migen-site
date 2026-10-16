@@ -52,11 +52,11 @@
  * logistique : la répétition la plus voyante du site était celle qu'aucune
  * porte ne voyait.
  *
- * `/assets/villes/` N'EST PAS VISÉE, et ce n'est pas un oubli : les douze
- * photos de hub local montrent LEUR ville, et aucune photo du registre ne peut
- * les remplacer. Refuser Bordeaux parce qu'elle n'a pas de thème industriel
- * serait demander de poser une photo générique à la place d'une photo juste.
- * Leur texte alternatif, lui, reste à écrire, et c'est un autre sujet.
+ * `/assets/villes/` N'EST PAS VISÉE : il n'y reste que les vignettes des dix
+ * hubs. Depuis le 16/10 (« le fond ville fait très agence immo »), les quatorze
+ * hubs locaux qui montraient leur ville montrent une photo du registre, que
+ * cette porte compte comme les autres ; le retour d'une photo de ville dans un
+ * hub local est refusé par `scripts/verifie-lp-donnees.mjs`.
  *
  * CE QU'ELLE NE MESURE PAS, et il faut le dire : les photos posées EN DUR dans
  * les composants (`/assets/web/` côté `components/`). Elle lit les fiches, qui

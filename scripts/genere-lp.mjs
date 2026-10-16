@@ -11,9 +11,9 @@
  * gabarit les lit telles quelles. Seules les VALEURS changent :
  *   · les adresses passent de `/fr/x` à `/lp/x/` (chemins et `mainHref`) ;
  *   · les images deviennent absolues (`/assets/...`) ; les aperçus Envato (des
- *     photos de ville en fond de héros) sont remplacés par la photo de
- *     maintenance industrielle de la page ville du site, et les vignettes de
- *     hub absentes du site par les photos de hub sous licence qu'il sert déjà ;
+ *     photos de ville en fond de héros) sont remplacés par une photo de
+ *     maintenance industrielle du registre (`PHOTOS_ENVATO`), et les vignettes
+ *     de hub absentes du site par les photos de hub sous licence qu'il sert déjà ;
  *   · la copie passe par les décisions du site (`lib/decisions-copie.ts`), par
  *     les corrections nommées plus bas, puis par le filtre : toute phrase (ou
  *     tout segment « · » d'un libellé) qui porte un interdit est RETIRÉE, pas
@@ -43,31 +43,27 @@ const PAGES_RETIREES = {
 };
 
 /* LES APERÇUS ENVATO, reconnus à leur identifiant. Ce sont les photos de VILLE
-   (monuments, panoramas) que la V3 pose en fond du héros de sept LP villes, les
-   mêmes que le bloc « Votre hub local » des pages /implantations/ de la maquette.
+   (monuments, panoramas) que la V3 pose en fond du héros de sept LP villes.
    16/10, Mehdi : « sur les pages villes, le fond ville fait très agence immo, et
-   pas assez maintenance ». Chacune cède la place à la photo de maintenance
-   industrielle que la page ville du site sert dans ce bloc (`hubLocal.photo` de
-   sa fiche, lue ici) : une seule photo par ville, site et LP. La table ville,
-   photo, motif : `docs/PHOTOS-VILLES.md`. */
-const PHOTOS_ENVATO = {
-  E10QDY1: "implantations-lyon.json",
-  E10QF8J: "implantations-paris.json",
-  E108N92Z: "implantations-marseille.json",
-  E10DWX6: "implantations-strasbourg.json",
-  E10OW8U: "implantations-nantes.json",
-  E10N758: "implantations-maintenance-industrielle-le-havre.json",
-  E10OSPM: "implantations-bordeaux.json",
-};
-const FICHES = join(RACINE, "supabase", "import", "gabarits-maquette");
+   pas assez maintenance ». Chacune cède la place à une photo de maintenance
+   industrielle du registre, choisie sur le secteur que la LP écrit elle-même.
 
-/** La photo du hub local de la page ville du site : une photo du registre, jamais une photo de ville. */
-function photoDuHubLocal(fiche) {
-  const { url, contenu } = JSON.parse(readFileSync(join(FICHES, fiche), "utf8"));
-  const photo = contenu?.hubLocal?.photo;
-  if (!photo?.startsWith("/assets/photos/")) throw new Error(`${url} : hub local sans photo industrielle (${photo})`);
-  return { url, photo };
-}
+   UNE PHOTO PROPRE AU HÉROS, PAS CELLE DU HUB LOCAL DU SITE. Le héros fait
+   1440 x 873 au bureau, le texte de 160 à 739 px, le formulaire de 820 à
+   1280 : un visage tombe sous l'un ou sous l'autre. Au téléphone il ne montre
+   qu'une bande centrale, un sixième de la largeur. La photo du panneau « Votre
+   hub local » (498 x 420, sujet en haut) y mettait le visage sous le
+   formulaire (relecture du 16/10). Ici : une machine, une ligne, un process,
+   sans personne au centre. La table ville, photo, motif : `docs/PHOTOS-VILLES.md`. */
+const PHOTOS_ENVATO = {
+  E10QDY1: { photo: "chimie-reacteurs-agites-passerelle.jpg", motif: "Lyon : chimie et pharmaceutique de la Vallée de la chimie" },
+  E10N758: { photo: "env-photo-industrie.jpg", motif: "Le Havre : pétrochimie et raffinerie" },
+  E10QF8J: { photo: "robot-cellules-grillagees.jpg", motif: "Paris : automobile, logistique, agroalimentaire, ferroviaire" },
+  E10OSPM: { photo: "env-photos-industrie-agro-alimentaire.jpg", motif: "Bordeaux : viticole et agroalimentaire" },
+  E108N92Z: { photo: "env-usine-metallique.jpg", motif: "Marseille : sidérurgie et pétrochimie de Fos" },
+  E10OW8U: { photo: "tuyau-vanne-volant-conserverie.jpg", motif: "Nantes : agroalimentaire (les photos d'aéronautique sont hors industrie)" },
+  E10DWX6: { photo: "pharma-blistereuse-mecanisme.jpg", motif: "Strasbourg : pharmaceutique, automobile, agroalimentaire" },
+};
 
 /* LES CORRECTIONS NOMMÉES, et rien d'autre ne réécrit la copie. Chacune garde
    les mots de la V3 et ne fait que retirer ce qui est interdit ou rendre une
@@ -140,11 +136,11 @@ function image(src, ctx) {
   const envato = /envato/.test(src) ? /\/(E[0-9A-Z]+)\.jpg/.exec(src)?.[1] : null;
   const vignette = /^assets\/villes\/([a-z-]+?)(?:-760)?\.jpg$/.exec(src)?.[1];
   if (envato) {
-    if (!PHOTOS_ENVATO[envato]) throw new Error(`${ctx.page} : aperçu Envato ${envato} sans page ville connue`);
-    const { url, photo } = photoDuHubLocal(PHOTOS_ENVATO[envato]);
-    chemin = photo;
+    if (!PHOTOS_ENVATO[envato]) throw new Error(`${ctx.page} : aperçu Envato ${envato} sans photo de remplacement`);
+    const { photo, motif } = PHOTOS_ENVATO[envato];
+    chemin = `/assets/photos/${photo}`;
     consigne(ctx, `photo de ville, aperçu Envato ${envato} (CDN d'Envato, filigrané)`, chemin,
-      `le fond ville fait « agence immo » (Mehdi, 16/10) : la photo de maintenance industrielle du hub local de ${url}`,
+      `le fond ville fait « agence immo » (Mehdi, 16/10) : une machine sans personne au centre, ${motif}`,
       "photo de ville remplacée par une photo de maintenance industrielle");
   } else if (vignette) {
     chemin = `/assets/villes/hub-${vignette}.jpg`;
