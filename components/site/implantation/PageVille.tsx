@@ -409,12 +409,12 @@ export default function PageVille({
         {chemin ? <RappelFinalMobile /> : null}
 
         {/* 16 · 10 Appel final : la capture pose l'ancre `#mgx-form` sur la
-            section. Au téléphone, le formulaire complet se REPLIE derrière
-            « Décrire mon besoin en détail », le repli que porte `AppelFinal`
-            lui-même : la carte « Être rappelé » ci-dessus le remplace, et
-            l'ouvre en lui passant sa saisie. Plus de second repli autour
-            (16/10) : il ne laissait, ouvert, qu'un chevron seul au-dessus du
-            premier, et le formulaire demandait deux touches. Sur bureau, la
+            section. Au téléphone, la carte « Être rappelé » ci-dessus le
+            remplace : il est masqué à côté d'elle (`PageVille.module.css`) et
+            reparaît ouvert, sans bascule, quand on le demande (`#mgx-form`,
+            ou la carte qui lui passe sa saisie). Son repli est celui que porte
+            `AppelFinal` lui-même ; plus de second repli autour (16/10), qui
+            faisait demander le formulaire en deux touches. Sur bureau, la
             bascule n'existe pas et le bloc est rendu tel quel. */}
         <div id={chemin ? undefined : "etre-rappele"} className={stylesVille.appelFinal} style={{ scrollMarginTop: 90 }}>
           <div id="mgx-form" style={{ scrollMarginTop: 90 }}>
@@ -429,7 +429,7 @@ export default function PageVille({
         ) : null}
 
         {/* En dernier : son effet passe après ceux qui replient les blocs. */}
-        <OuvreLaCible />
+        <OuvreLaCible deplieLesFormulaires />
       </main>
     </div>
   );

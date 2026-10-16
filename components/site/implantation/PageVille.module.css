@@ -241,8 +241,15 @@
 }
 
 @media (max-width: 880px) {
+  /* Hors de l'écran, pas hors du document : le chevron, `aria-hidden`, est
+     alors seul à l'écran, et la bascule garde son nom pour qui l'entend. */
   .repliFormulaire[open] > summary > .etiquettePanneau {
-    display: none;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
   .repliFormulaire[open] > summary {
     margin-bottom: 8px;
@@ -461,15 +468,13 @@
   .appelFinal [id="mgx-form"] > section {
     padding: 0 !important;
   }
-}
 
-/* =========================================================================
-   MAQUETTE V3 « SITE MOBILE » (16/10), villes, départements et hub
-   `/implantations/` (les trois posent `.racineVille`). Tout est sous 881 px :
-   le bureau ne bouge pas. Valeurs relevées dans le code de la V3
-   (`blockV` et le bloc `isTl`).
-   ========================================================================= */
-@media (max-width: 880px) {
+  /* -----------------------------------------------------------------------
+     MAQUETTE V3 « SITE MOBILE » (16/10), villes, départements et hub
+     `/implantations/` (les trois posent `.racineVille`). Valeurs relevées
+     dans le code de la V3 (`blockV` et le bloc `isTl`).
+     ----------------------------------------------------------------------- */
+
   /* « Questions fréquentes », réponse ouverte : la carte garde 16 px des deux
      côtés (V3 `padding:0 16px 6px`). La règle des questions de bureau du
      gabarit d'offre (`PageOffre.module.css`, retrait de 26 px à gauche) ne
@@ -486,15 +491,19 @@
     color: var(--ink) !important;
   }
 
-  /* « 03 Le déroulé » ouvert : pas de compteur « 6 étapes » (décision de
-     Mehdi, aucun compteur au téléphone). Le chiffre reste au bureau. */
-  :root .racineVille span:has(> [data-mm-compte]) {
+  /* « 03 Le déroulé » ouvert : la frise seule, comme la V3. La carte
+     d'en-tête de bureau (« Notre méthode », son titre, le compteur
+     « N étapes » que Mehdi a fait retirer, « Démarrer par l'audit »)
+     s'efface ; son texte reste dans le DOM. Même règle que la famille offre
+     (`.friseV3`, `PageOffre.module.css`). */
+  :root .racineVille [data-mm-frise] > [data-mm-entete-carte] {
     display: none !important;
   }
 
   /* La frise de la V3 (`isTl`) : pastille numérotée orange pâle, filet
      vertical qui relie les étapes, titre 15 px, texte 13,5 px. Le filet
-     horizontal de bureau (`data-mm-filet`) devient ce fil vertical. */
+     horizontal de bureau (`data-mm-filet`) devient ce fil vertical. Mêmes
+     jetons que la frise de l'accueil (`accueil-v3.module.css`). */
   :root .racineVille [data-mm-frise] {
     margin: 6px 0 10px !important;
   }
@@ -513,8 +522,8 @@
     flex: none;
     width: 28px !important;
     height: 28px !important;
-    background: rgba(255, 124, 60, 0.12) !important;
-    color: #b4490f !important;
+    background: var(--acc-w) !important;
+    color: var(--mm-lien) !important;
     font: 600 11.5px var(--fb) !important;
   }
   :root .racineVille [data-mm-etape]:not(:last-child) [data-mm-filet] {
@@ -538,6 +547,16 @@
     margin-top: 3px !important;
     font: 400 13.5px/1.55 var(--fb) !important;
   }
+
+  /* « 01 Le problème » en panneau sombre (`ProblemePanneau`, dix pages) : le
+     panneau s'efface (socle, `data-panneau-mobile-clair`) et ses jetons de
+     texte clairs reviennent à ceux de la page, pour la carte blanche de la
+     V3. `!important` : les jetons sont posés en ligne sur le panneau. */
+  .panneauProbleme {
+    --ink: inherit !important;
+    --ink2: inherit !important;
+  }
+
   /* L'appel final, une fois son formulaire déplié : le panneau sombre
      (`.mg-pad`) garde ses 24 px à gauche. La règle du gabarit d'offre qui
      annule le retrait des replis de formulaire (`PageOffre.module.css`) les
@@ -545,10 +564,38 @@
   :root .racineVille details[data-repli-formulaire] > :global(.mg-pad) {
     padding-left: 24px !important;
   }
+
+  /* UN FORMULAIRE REPLIÉ (héros, appel final), UNE FOIS OUVERT, N'A PLUS DE
+     BASCULE : la V3 montre le formulaire sans bascule, et le panneau porte son
+     propre titre. Ouvert, il ne restait au-dessus qu'un chevron de 22 px sans
+     nom (l'étiquette s'efface) ; et le refermer faisait disparaître l'appel
+     final sous le doigt (règle suivante). */
+  :root .racineVille details[data-repli-formulaire][open] > summary {
+    display: none;
+  }
+
+  /* LE FORMULAIRE COMPLET À CÔTÉ DE LA CARTE « ÊTRE RAPPELÉ ». La V3 finit
+     sur le formulaire complet, en carte blanche « Décrire mon besoin », et
+     son « Être rappelé » y mène. Le site finit sur la carte sombre courte de
+     la maquette v2 (`RappelFinalMobile`, commune à toutes les familles), dont
+     le lien « Décrire mon besoin en détail » était suivi, juste dessous, de la
+     bascule au même libellé de l'appel final. Celui-ci est donc masqué à côté
+     de la carte, comme dans la famille offre (`PageOffre.module.css`,
+     `.gabaritOffre`). Il reste dans le DOM et reparaît quand on le demande :
+     l'ancre `#mgx-form` (FAQ, « Passer à l'action »), que `OuvreLaCible`
+     déplie, ou la carte, qui l'ouvre en lui passant sa saisie
+     (`RepliFormulaireMobile`, `data-monte` puis `open`). Seulement quand la
+     carte est là (`section#etre-rappele`). */
+  :root .racineVille section[id="etre-rappele"] ~ .appelFinal:not(:has(:target)):not(:has(details[data-repli-formulaire][open][data-monte])) {
+    display: none;
+  }
 }
 
 /* La dernière question (téléphone seulement, `data-mobile-seulement`) : son
-   lien est le bouton de la V3 (`isBtnQ`), pastille flèche comprise. */
+   lien est le bouton de la V3 (`isBtnQ`), pastille flèche comprise. Libellé
+   en encre sur l'orange, comme l'accueil (`accueil-v3.module.css`,
+   `.bouton`) : le blanc de la V3 y tombe à 2,6:1. L'encre du thème clair,
+   fixe : l'orange ne change pas avec le thème sombre, son libellé non plus. */
 .boutonQuestion {
   display: flex;
   align-items: center;
@@ -558,11 +605,16 @@
   min-height: 50px;
   padding: 0 6px 0 20px;
   border-radius: 999px;
-  background: #ff7c3c;
-  color: #fff;
+  background: var(--acc);
+  color: #1c1b19;
   font: 600 14.5px/1.25 var(--fb);
   text-decoration: none;
-  box-shadow: 0 12px 26px -14px rgba(255, 124, 60, 0.9);
+}
+
+/* Le survol des liens du site (`a:hover`, orange) l'emporte sinon : libellé
+   orange sur l'orange. */
+.boutonQuestion:hover {
+  color: #1c1b19;
 }
 
 .flecheQuestion {
@@ -572,30 +624,5 @@
   width: 38px;
   height: 38px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.2);
-}
-
-/* « 01 Le problème » en panneau sombre (`ProblemePanneau`, dix pages) : au
-   téléphone, le panneau s'efface (socle, `data-panneau-mobile-clair`) et ses
-   jetons de texte clairs reviennent à ceux de la page, pour la carte blanche
-   de la V3. `!important` : les jetons sont posés en ligne sur le panneau. */
-@media (max-width: 880px) {
-  .panneauProbleme {
-    --ink: inherit !important;
-    --ink2: inherit !important;
-  }
-}
-
-/* « Décrire mon besoin en détail », DEUX FOIS DE SUITE : le lien de la carte
-   « Être rappelé » puis, juste dessous, la bascule de l'appel final. La V3
-   passe de la carte au pied de page ; même règle que l'offre
-   (`PageOffre.module.css`, `.gabaritOffre`). Le formulaire complet reste dans
-   le DOM et reparaît quand on le demande : l'ancre `#mgx-form` (FAQ, « Passer
-   à l'action ») ou la carte « Être rappelé », qui l'ouvre en lui passant sa
-   saisie (`RepliFormulaireMobile`, `data-monte` puis `open`). Seulement quand
-   la carte est là (`section#etre-rappele`). */
-@media (max-width: 880px) {
-  :root .racineVille section[id="etre-rappele"] ~ .appelFinal:not(:has(:target)):not(:has(details[data-repli-formulaire][open][data-monte])) {
-    display: none;
-  }
+  background: rgba(255, 255, 255, 0.35);
 }
