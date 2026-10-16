@@ -233,7 +233,10 @@ export default function MetiersRecrutes({
                 >
                   {m.titre}
                 </div>
+                {/* `data-mc-libelle` : l'étiquette « Ce que nous cherchons » de
+                    la V3, dessinée au téléphone seulement (`MobileV2.module.css`). */}
                 <div
+                  data-mc-libelle="Ce que nous cherchons"
                   style={{
                     font: "400 13.5px/1.5 var(--fb)",
                     color: "rgba(255,255,255,.78)",

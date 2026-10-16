@@ -952,14 +952,18 @@ const TEMOINS = [
     marque: "TEMOIN-VIDE",
     /* Le vide est posé en `margin-top` sur un div, et non en `padding-top` sur
        une `<section>` : la correction de ce défaut remet justement ce padding à
-       zéro, et un témoin que la correction efface ne prouverait plus rien. */
+       zéro, et un témoin que la correction efface ne prouverait plus rien.
+       `data-monte`, comme tout bloc monté par `SectionPliableMobile` : sans
+       lui, `app/globals.css` masque le contenu d'un bloc pas encore monté
+       (« sans décalage au chargement »), le témoin n'avait plus d'encre à
+       mesurer et la porte refusait de conclure (relevé le 16/10). */
     faute: `
-      <details data-pliable-mobile open>
+      <details data-pliable-mobile data-monte open>
         <summary style="display:flex;align-items:center;gap:12px"><span>TEMOIN-VIDE bascule</span></summary>
         <div><div style="margin-top:130px"><p style="color:#111;font-size:15px;margin:0">TEMOIN-VIDE contenu</p></div></div>
       </details>`,
     conforme: `
-      <details data-pliable-mobile open>
+      <details data-pliable-mobile data-monte open>
         <summary style="display:flex;align-items:center;gap:12px"><span>TEMOIN-VIDE bascule</span></summary>
         <div><div style="margin-top:12px"><p style="color:#111;font-size:15px;margin:0">TEMOIN-VIDE contenu</p></div></div>
       </details>`,

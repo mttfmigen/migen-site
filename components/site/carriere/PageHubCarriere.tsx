@@ -21,7 +21,7 @@ import {
 import { altPhoto } from "@/lib/descriptions-photos";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import mv from "@/components/site/metier/MobileV2.module.css";
-import { EncartAppel, EtiquettePli, amorceDe } from "@/components/site/metier/pli-mobile";
+import { EncartAppel, EtiquettePli, OrdreMobile, amorceDe } from "@/components/site/metier/pli-mobile";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
 import PastillesCocon from "@/components/site/cocon/PastillesCocon";
 import CarrouselRealisations from "@/components/site/preuve/CarrouselRealisations";
@@ -182,7 +182,9 @@ function rendSection(section: SectionHub, i: number, ouverte = false, sousPartie
       resume={amorceDe(section)}
       enTete={<EtiquettePli surtitre={etiquette.surtitre} titre={etiquette.titre} />}
     >
-      <Section section={section} />
+      <OrdreMobile section={section}>
+        <Section section={section} />
+      </OrdreMobile>
       {suite}
     </SectionPliableMobile>
   );

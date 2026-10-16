@@ -11,7 +11,7 @@ import SectionFicheMetier, { BoutonPostuler } from "./SectionsFicheMetier";
 import { altPhoto } from "@/lib/descriptions-photos";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import mv from "./MobileV2.module.css";
-import { EncartAppel, EtiquettePli, amorceDe } from "./pli-mobile";
+import { EncartAppel, EtiquettePli, OrdreMobile, amorceDe } from "./pli-mobile";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
 import PastillesCocon from "@/components/site/cocon/PastillesCocon";
 import { courtLibelle, enfantsDe } from "@/components/site/cocon/maillage-mobile";
@@ -197,7 +197,9 @@ function rendSection(section: SectionFiche, i: number, ouverte = false): ReactNo
       resume={amorceDe(section)}
       enTete={<EtiquettePli surtitre={etiquette.surtitre} titre={etiquette.titre} />}
     >
-      <SectionFicheMetier section={section} />
+      <OrdreMobile section={section}>
+        <SectionFicheMetier section={section} />
+      </OrdreMobile>
     </SectionPliableMobile>
   );
 }

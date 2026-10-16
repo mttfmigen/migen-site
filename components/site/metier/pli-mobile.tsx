@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 import { ligneDuCorpus } from "@/components/site/blocs/resume-de-section";
 import { enTexteNu } from "@/components/site/blocs/TexteRiche";
 
@@ -122,4 +124,61 @@ export function amorceDe(section: object): string | undefined {
   const texte = enTexteNu(brut).replace(/\s+/g, " ").trim();
   if (!texte) return undefined;
   return texte.length > 104 ? `${texte.slice(0, texte.lastIndexOf(" ", 100))}…` : texte;
+}
+
+/**
+ * LES SECTIONS DONT LE COMMENTAIRE SUIT LA LISTE. Le corpus
+ * (`maquette/contenu/site/Metiers-Carriere/*.md`), et la maquette V3 « Site
+ * mobile » qui le suit (16/10), écrivent ces sections chapô, liste, PUIS le
+ * paragraphe qui la commente ; la donnée de bureau range tous les paragraphes
+ * avant la liste. Relevé section par section le 16/10, chaque titre cherché
+ * sous son `##` dans le corpus : sur les 40 sections à deux paragraphes ou
+ * plus des 13 fiches, 27 placent leur suite après la liste, toujours à partir
+ * du deuxième paragraphe, et un même titre ne change jamais de règle d'une
+ * fiche à l'autre. S'y ajoute une section du hub (`carriere.md`).
+ */
+const APRES_LISTE: ReadonlySet<string> = new Set([
+  "Automaticien chez Migen : le cadre et les moyens",
+  "Bien mener sa recherche d'emploi",
+  "Ce que fait un agent de maintenance industrielle au quotidien",
+  "Ce que fait un alternant au quotidien",
+  "Ce que fait un responsable maintenance au quotidien",
+  "Ce que fait un roboticien au quotidien",
+  "Comment rejoindre nos équipes",
+  "Comment évolue un roboticien",
+  "Devenir agent de maintenance industrielle : formation et parcours",
+  "Devenir automaticien : formation et parcours",
+  "Devenir roboticien : formation et parcours",
+  "Devenir technicien de maintenance itinérant : formation et parcours",
+  "Devenir électromécanicien : formation et parcours",
+  "Du bac pro à l'expertise : le parcours et la paie",
+  "Du stage à l'alternance : les voies d'accès",
+  "Du terrain vers l'ingénieur",
+  "Emploi et recrutement : qui cherche un agent de maintenance",
+  "Emploi et recrutement : qui recrute un technicien itinérant",
+  "Formation et parcours pour devenir responsable maintenance",
+  "La vie chez Migen au quotidien",
+  "Le process de recrutement en 4 étapes",
+  "Les compétences et qualités qui font la différence",
+  "Les compétences qui font la différence",
+  "Responsable maintenance chez Migen : le cadre et les moyens",
+  "Salaire et évolution du responsable maintenance",
+  "Salaire, formation et contrat",
+  "Technicien de maintenance chez Migen : le cadre et les moyens",
+  "Évolution de carrière du technicien itinérant",
+]);
+
+/**
+ * Au téléphone seulement, l'ordre VISUEL de ces sections suit la V3 : chapô,
+ * liste, puis les paragraphes suivants (`data-mc-apres-liste`,
+ * `MobileV2.module.css`, comme l'ordre déjà rendu au tableau). Le DOM et le
+ * bureau ne changent pas.
+ */
+export function OrdreMobile({ section, children }: { section: object; children: ReactNode }) {
+  const titre = (section as { titre?: unknown }).titre;
+  return typeof titre === "string" && APRES_LISTE.has(titre) ? (
+    <div data-mc-apres-liste="">{children}</div>
+  ) : (
+    children
+  );
 }
