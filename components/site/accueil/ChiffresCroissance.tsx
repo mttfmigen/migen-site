@@ -11,11 +11,12 @@
  *    Lyon siège, Montréal, Dubaï, Madrid, aucune autre en France) : la valeur
  *    par défaut est corrigée ici ;
  * 2. la maquette affiche « +120 collaborateurs » DEUX fois, dans la carte de
- *    droite et dans la carte large. Au bureau, la structure est reproduite
- *    telle quelle (la V3 du 16/10 la garde). Au téléphone, la grille passe
- *    sur une colonne et les deux « +120 » se suivaient : la carte de droite
- *    y est masquée, ce qui donne les quatre chiffres de la V3 mobile
- *    (+10 M€, 4 agences, +120 collaborateurs, +200 clients industriels).
+ *    droite et dans la carte large. Signalé par Mehdi le 19/10 : au bureau,
+ *    la carte de droite porte à la place les dix hubs de techniciens, chiffre
+ *    du contrat de projet, déjà écrit dans la maquette. Au téléphone, la V3
+ *    du 16/10 masque cette carte, ce qui donne les quatre chiffres de la V3
+ *    mobile (+10 M€, 4 agences, +120 collaborateurs, +200 clients
+ *    industriels).
  *
  * Les compteurs animés de `support.js` ne sont pas portés : les valeurs sont
  * dans le HTML, lisibles sans JavaScript.
@@ -72,7 +73,9 @@ const SECONDAIRE: Chiffre = {
   libelle: "agences : Lyon, Montréal, Dubaï, Madrid",
 };
 
-const TERTIAIRE: Chiffre = { valeur: "+120", libelle: "collaborateurs" };
+// Corrigé par rapport à la maquette : elle répète ici « +120 collaborateurs »,
+// déjà porté par la carte large du bas.
+const TERTIAIRE: Chiffre = { valeur: "10", libelle: "hubs de techniciens" };
 
 const BAS: readonly [Chiffre, Chiffre] = [
   { valeur: "+120", libelle: "collaborateurs" },
