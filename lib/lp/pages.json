@@ -19317,6 +19317,33 @@
    "mainCta": "Demander un devis",
    "mainHref": "/lp/devis/",
    "isRdv": false
+  },
+  {
+   "path": "/lp/prendre-rendez-vous/",
+   "title": "Prendre rendez-vous, Migen",
+   "meta": "Choisissez un créneau avec Romain Troech, responsable du développement commercial de Migen.",
+   "short": "Prendre rendez-vous, Migen",
+   "grp": "Pages de service",
+   "kick": "Prendre rendez-vous",
+   "h1": "Réservez votre échange avec Migen.",
+   "h1a": "",
+   "h1b": "Réservez votre échange avec Migen.",
+   "chapo": "Choisissez le créneau qui vous arrange avec un expert Migen.",
+   "badges": [],
+   "hs": [],
+   "more": [],
+   "form": null,
+   "hasForm": false,
+   "tel": "04 11 78 95 97",
+   "anchors": [],
+   "ctaNav": "Demander un devis",
+   "img": "/assets/web/team-grind-sparks.jpg",
+   "sticky": null,
+   "secs": [],
+   "legal": false,
+   "mainCta": "Demander un devis",
+   "mainHref": "/lp/devis/",
+   "isRdv": true
   }
  ]
 }

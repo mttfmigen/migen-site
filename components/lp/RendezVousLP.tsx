@@ -8,7 +8,9 @@ import { BOUTON_HEROS, HerosServiceLP } from "./HerosServiceLP";
 import { CLE_RENDEZ_VOUS, prerempliDe, urlCalendly } from "./lead-lp";
 
 /**
- * /lp/rendez-vous/ : là où le formulaire mène après l'envoi.
+ * /lp/rendez-vous/ : là où le formulaire mène après l'envoi. Et
+ * /lp/prendre-rendez-vous/, la même page sans « Demande bien reçue », où mène
+ * le bouton « Réserver un créneau avec Romain Troech » des dossiers clients.
  *
  * L'AGENDA EST CELUI DE ROMAIN TROECH (`CALENDLY_LP` de lead-lp.ts, depuis le
  * 23/11 ; avant, celui de Thomas), prérempli du nom et du courriel saisis.

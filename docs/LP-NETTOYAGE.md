@@ -20,7 +20,7 @@ Interdits : intérim, régie, mise (met, mettre) à disposition, sans engagement
 
 ## En chiffres
 
-- 39 pages portées sur 41 ; 2 non portées.
+- 39 pages portées sur 41 ; 2 non portées ; 40 LP en tout avec /lp/prendre-rendez-vous/, ajoutée au site.
 - 387 retraits ou remplacements, dont :
   - 49 : retiré : mise à disposition
   - 41 : question de FAQ retirée avec sa réponse : intérim
@@ -586,3 +586,7 @@ Aucune règle ne les retire, mais aucune source du site ne les atteste mot pour 
 - section « Questions fréquentes » · faq[0] : « En quoi êtes-vous différents d'une agence d'intérim ? / Nous ne plaçons pas du volume. Migen est spécialisé exclusivement dans les techniciens de maintenance : chaque profil est sélectionné, qualifié et habilité, et nous nous engageons sur la continuité, pas seulement sur un CV envoyé. » retiré. Motif : question retirée avec sa réponse : intérim, agence locale (4 agences : Lyon, Montréal, Dubaï, Madrid).
 - section « Questions fréquentes » · faq[2] : « C'est plus cher qu'un intérim classique ? / Le coût d'un poste non pourvu ou d'un arrêt de ligne dépasse largement l'écart de prix. Vous payez une compétence rare, fiable et immédiatement productive, pas un profil de volume. » retiré. Motif : question retirée avec sa réponse : intérim.
 - section « Nos implantations » · hubImg : « 10 vignettes assets/villes/<ville>.jpg (absentes du site) » devient « /assets/villes/hub-<ville>.jpg ». Motif : les photos des dix hubs sous licence, servies par l'accueil et /implantations/ (photos-hubs.ts).
+
+### `/lp/prendre-rendez-vous/`
+
+Aucun retrait ni remplacement.

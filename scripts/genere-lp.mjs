@@ -300,6 +300,23 @@ for (const page of source.pages) {
   }
   pages.push(propre);
 }
+/* /lp/prendre-rendez-vous/ : l'agenda de Romain hors du parcours des annonces,
+   cible du bouton « Réserver un créneau avec Romain Troech » des dossiers clients
+   (Mehdi, 23/11 : « la page devrait renvoyer vers une page Migen »). La page de
+   rendez-vous sans son « Demande bien reçue », qui suppose un formulaire envoyé. */
+const rendezVous = pages.find((p) => p.path === "/lp/rendez-vous/");
+if (rendezVous) {
+  pages.push({
+    ...rendezVous,
+    path: "/lp/prendre-rendez-vous/",
+    title: "Prendre rendez-vous, Migen",
+    short: "Prendre rendez-vous, Migen",
+    meta: "Choisissez un créneau avec Romain Troech, responsable du développement commercial de Migen.",
+    kick: "Prendre rendez-vous",
+    h1: "Réservez votre échange avec Migen.",
+    h1b: "Réservez votre échange avec Migen.",
+  });
+}
 const meta = nettoie(source.meta, { page: "meta", ou: "meta", compte: { vignettes: 0 } }, "meta");
 const donnees = { meta, pages };
 
@@ -360,7 +377,7 @@ function compteRendu(src, sortie) {
     "",
     "## En chiffres",
     "",
-    `- ${sortie.pages.length} pages portées sur ${src.pages.length} ; ${Object.keys(PAGES_RETIREES).length} non portées.`,
+    `- ${src.pages.length - Object.keys(PAGES_RETIREES).length} pages portées sur ${src.pages.length} ; ${Object.keys(PAGES_RETIREES).length} non portées ; ${sortie.pages.length} LP en tout avec /lp/prendre-rendez-vous/, ajoutée au site.`,
     `- ${journal.length} retraits ou remplacements, dont :`,
     ...[...parMotif].sort((a, b) => b[1] - a[1]).map(([m, n]) => `  - ${n} : ${m}`),
     "",
