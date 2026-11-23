@@ -68,8 +68,11 @@ export function numeroE164(contact: { indicatif: string; telephone: string }): s
 
 export const PAGE_RENDEZ_VOUS_LP = "/lp/rendez-vous/";
 
-/** L'agenda de la LP en ligne (`routes/fr.rendez-vous.tsx`, CAL_BASE). */
-const CALENDLY_LP = "https://calendly.com/thomas-puthod-migen/30min";
+/**
+ * L'agenda de Romain Troech, responsable du développement commercial
+ * (Mehdi, 23/11 : « change le calendrier de Thomas par celui de Romain »).
+ */
+const CALENDLY_LP = "https://calendly.com/romain-troech-migen/rencontre-romain-migen";
 
 /**
  * Où le formulaire laisse le nom et le courriel pour préremplir l'agenda.

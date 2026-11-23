@@ -130,6 +130,58 @@
   border: 0;
 }
 
+/* La carte de visite de Romain, sous le chapô : le verre du surtitre sur le
+   héros sombre, et son portrait noir et blanc cerclé de l'orange de marque,
+   le filet décollé de la photo. L'orange en lettres sur ce fond passe 6:1. */
+.interlocuteur {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  margin: 32px 0 0;
+  padding: 12px 28px 12px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  text-align: left;
+}
+
+.portrait {
+  flex: none;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  outline: 2px solid #ff7c3c;
+  outline-offset: 3px;
+}
+
+.surtitreInterlocuteur,
+.nomInterlocuteur,
+.posteInterlocuteur {
+  display: block;
+}
+
+.surtitreInterlocuteur {
+  font: 600 11px/1 var(--fb);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ff7c3c;
+}
+
+.nomInterlocuteur {
+  margin-top: 6px;
+  font: 700 18px/1.2 var(--ft);
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.posteInterlocuteur {
+  margin-top: 3px;
+  font: 400 13.5px/1.4 var(--fb);
+  color: rgba(255, 255, 255, 0.78);
+}
+
 /* ------------------------------------------- héros des pages de service */
 
 /* Repli de la maquette, `@container (max-width:760px)` : une colonne, 18 px
@@ -173,6 +225,20 @@
 
   .zoneAgenda {
     padding: 0 18px 32px;
+  }
+
+  /* Au téléphone, le poste passe sur deux lignes : la pilule devient une
+     carte arrondie, et le portrait se resserre. */
+  .interlocuteur {
+    gap: 14px;
+    margin-top: 24px;
+    padding: 12px 20px 12px 12px;
+    border-radius: 24px;
+  }
+
+  .portrait {
+    width: 56px;
+    height: 56px;
   }
 
   /* Sous 650 px de cadre, Calendly sert une page blanche pleine, sans bord ni

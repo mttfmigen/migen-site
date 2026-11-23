@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 
 import styles from "./conversion-lp.module.css";
@@ -9,10 +10,12 @@ import { CLE_RENDEZ_VOUS, prerempliDe, urlCalendly } from "./lead-lp";
 /**
  * /lp/rendez-vous/ : là où le formulaire mène après l'envoi.
  *
- * L'AGENDA EST CELUI DE LA LP EN LIGNE, Calendly `thomas-puthod-migen/30min`,
- * prérempli du nom et du courriel saisis, comme `routes/fr.rendez-vous.tsx` de
- * migen-forge-nucleus. Jamais le faux agenda de la maquette V3 (cinq jours
- * écrits en dur, « Confirmer le rendez-vous » qui ne réservait rien).
+ * L'AGENDA EST CELUI DE ROMAIN TROECH (`CALENDLY_LP` de lead-lp.ts, depuis le
+ * 23/11 ; avant, celui de Thomas), prérempli du nom et du courriel saisis.
+ * Jamais le faux agenda de la maquette V3 (cinq jours écrits en dur,
+ * « Confirmer le rendez-vous » qui ne réservait rien). Sous le chapô, sa carte
+ * de visite avec sa photo (Mehdi, 23/11 : « intègre la photo de Romain »),
+ * puisque l'adresse cache l'en-tête de Calendly (`hide_event_type_details`).
  *
  * Il est intégré dans la page (Mehdi, 16/10 : « intègre mieux l'agenda ») :
  * un simple `<iframe>`, sans le script de Calendly, dans la carte des LP qui
@@ -55,6 +58,20 @@ function hauteurAnnoncee(evenement: MessageEvent): number | null {
 const SECOURS_DISCRET: CSSProperties = { marginTop: 8, padding: "0 12px" };
 const SECOURS_VISIBLE: CSSProperties = { ...BOUTON_HEROS, marginTop: 16, border: "none", cursor: "pointer" };
 
+/** Celui avec qui le visiteur réserve : sa carte de visite, sous le chapô du héros. */
+function Interlocuteur() {
+  return (
+    <figure className={styles.interlocuteur}>
+      <Image src="/assets/web/romain-troech.jpg" alt="" width={64} height={64} className={styles.portrait} />
+      <figcaption>
+        <span className={styles.surtitreInterlocuteur}>Votre interlocuteur</span>
+        <span className={styles.nomInterlocuteur}>Romain Troech</span>
+        <span className={styles.posteInterlocuteur}>Responsable du développement commercial</span>
+      </figcaption>
+    </figure>
+  );
+}
+
 export function RendezVousLP({ photo, surtitre, titre, chapo }: { photo: string; surtitre: string; titre: string; chapo: string }) {
   const cadre = useRef<HTMLIFrameElement>(null);
   /* `null` tant que Calendly n'a rien annoncé : la hauteur de départ est celle du CSS. */
@@ -78,7 +95,7 @@ export function RendezVousLP({ photo, surtitre, titre, chapo }: { photo: string;
   const muet = attenteEcoulee && hauteur === null;
   return (
     <div className={styles.rendezVous}>
-      <HerosServiceLP photo={photo} surtitre={surtitre} titre={titre} chapo={chapo} />
+      <HerosServiceLP photo={photo} surtitre={surtitre} titre={titre} chapo={chapo} actions={<Interlocuteur />} />
       <div className={styles.zoneAgenda}>
         <div className={styles.carteAgenda}>
           {hauteur === null ? (

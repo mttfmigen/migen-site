@@ -371,7 +371,7 @@ assert.equal(formulaireLp("/lp/", "heros"), "lp-heros");
 assert.match(formulaireLp("/lp/secteurs/chimie/", "heros"), /^[a-z0-9-]{2,120}$/);
 
 const agenda = new URL(urlCalendly(prerempliDe(JSON.stringify({ nom: "Camille Rivière", email: CONTACT.email }))));
-assert.equal(`${agenda.origin}${agenda.pathname}`, "https://calendly.com/thomas-puthod-migen/30min");
+assert.equal(`${agenda.origin}${agenda.pathname}`, "https://calendly.com/romain-troech-migen/rencontre-romain-migen");
 assert.equal(agenda.searchParams.get("name"), "Camille Rivière");
 assert.equal(agenda.searchParams.get("email"), CONTACT.email);
 assert.equal(new URL(urlCalendly(prerempliDe("illisible"))).searchParams.get("name"), null, "rien de lisible : agenda vide");
