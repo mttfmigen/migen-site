@@ -1,51 +1,63 @@
 "use client";
 
-import Script from "next/script";
+import { useEffect } from "react";
 
 import type { Choix } from "@/lib/consentement";
 
 import { useConsentement } from "./etat";
 
 /**
- * Google Tag Manager, chargé seulement après un accord.
+ * Google Tag Manager, chargé DÈS L'ARRIVÉE, en mode consentement « avancé ».
  *
- * Trois gardes, dans cet ordre :
- *   · l'identifiant du conteneur vient de NEXT_PUBLIC_GTM_ID. Vide, rien ne se
- *     charge et ce n'est pas une erreur : tant que Mehdi n'a pas donné le
- *     conteneur, le site part sans lui. Mal formé, rien ne se charge non plus,
- *     et la console le dit (une faute de frappe ne doit pas passer en silence).
- *   · un choix doit exister. Sans réponse au bandeau, aucun script.
- *   · les trois finalités que le conteneur sert doivent être accordées
- *     (`FINALITES_CONTENEUR`).
+ * Demande de l'agence Ads (25/11), comme sur l'ancien site go.migengroup.com :
+ * le conteneur part sur chaque page avant tout choix. Consent Mode
+ * (ConsentMode.tsx) a posé avant lui `default` à `denied` : GA4 et Google Ads
+ * n'écrivent aucun cookie et n'envoient que des signaux sans cookie, ce qui
+ * permet à Google de modéliser les conversions des visiteurs qui ignorent ou
+ * refusent le bandeau. Chaque choix pousse ensuite un `update`.
  *
- * PAS D'IFRAME GTM EN NOSCRIPT, et ce n'est pas un oubli : l'iframe part
- * sans JavaScript, donc sans bandeau ni choix, et chargerait le conteneur
- * avant tout consentement.
+ * LES BALISES NON GOOGLE RESTENT DERRIÈRE LE CONSENTEMENT, et c'est le site qui
+ * le garantit, pas le conteneur. Relevé dans le gtm.js publié (version 28,
+ * 25/11) : LinkedIn Insight (deux fois), Microsoft Ads (UET), le script de suivi
+ * HubSpot, le pixel OpenAI et le chat Wonderchat y partent sur toutes les pages
+ * SANS AUCUNE condition de consentement. Tant que le visiteur n'a pas accordé
+ * `FINALITES_TIERS`, le conteneur est chargé avec une liste de blocage
+ * (`gtm.blocklist`) qui écarte toute balise non Google, présente ou future.
  *
- * Consent Mode (ConsentMode.tsx) reste la seconde ceinture : son `default`
- * à `denied` est posé avant ce script, et chaque choix pousse un `update` puis
- * l'événement `migen_consentement` auquel les déclencheurs du conteneur
- * s'accrochent.
+ * Tag Manager lit cette liste UNE FOIS, au chargement du conteneur, et ne la
+ * relit plus. Un accord donné ensuite ne peut donc pas débloquer ces balises
+ * dans le même document : la page est rechargée, comme pour un retrait
+ * (etat.ts). C'est le prix d'une garantie qui ne dépend pas du réglage de
+ * chaque balise dans le conteneur.
+ *
+ * PAS D'IFRAME GTM EN NOSCRIPT : sans JavaScript, ni Consent Mode ni liste de
+ * blocage, et le conteneur partirait sans aucune garde.
  */
 
 const FORMAT = /^GTM-[A-Z0-9]+$/;
 
 /**
- * LES FINALITÉS EXIGÉES, TOUTES À LA FOIS. Le conteneur GTM-53LHN66 posé le
- * 15/10 porte GA4 (mesure d'audience), Google Ads et LinkedIn Insight
- * (publicité), et le script de suivi HubSpot (suivi commercial). GA4 et Ads
- * lisent Consent Mode ; les balises LinkedIn et HubSpot sont du HTML
- * personnalisé SANS condition de consentement, et aucun déclencheur n'écoute
- * `migen_consentement` (relevé dans le gtm.js publié). Chargé sur une seule
- * finalité, le conteneur les aurait fait partir sans l'accord correspondant.
- * Tant que ces deux balises n'ont pas leurs vérifications de consentement
- * dans GTM, il ne se charge que si les trois finalités sont accordées.
+ * Ce qu'exigent les balises non Google du conteneur : LinkedIn, Microsoft Ads
+ * et OpenAI relèvent de la publicité, HubSpot du suivi commercial. Elles
+ * partagent les mêmes classes de blocage, d'où l'exigence des deux.
  */
-const FINALITES_CONTENEUR = [
-  "mesure_audience",
+const FINALITES_TIERS = [
   "publicite",
   "suivi_commercial",
 ] as const satisfies readonly (keyof Choix)[];
+
+/**
+ * Les classes de Tag Manager qui couvrent toute balise non Google : HTML
+ * personnalisé, modèles tiers (LinkedIn, Microsoft) et pixels. Les balises
+ * Google (GA4, Google Ads, l'association de conversions) n'en font pas partie.
+ */
+export const BALISES_TIERS = [
+  "customScripts",
+  "customPixels",
+  "nonGoogleScripts",
+  "nonGooglePixels",
+  "nonGoogleIframes",
+] as const;
 
 /** L'identifiant s'il est utilisable, `null` sinon. Un format faux est signalé. */
 export function identifiantConteneur(brut: string | undefined): string | null {
@@ -59,31 +71,47 @@ export function identifiantConteneur(brut: string | undefined): string | null {
   return brut;
 }
 
-/** L'adresse du conteneur à charger pour ce choix, ou `null` : rien ne part. */
-export function sourceConteneur(
-  identifiant: string | null,
-  choix: Choix | null,
-): string | null {
-  if (!identifiant || !choix) return null;
-  if (!FINALITES_CONTENEUR.every((finalite) => choix[finalite])) return null;
-  return `https://www.googletagmanager.com/gtm.js?id=${identifiant}`;
+/** Les balises non Google peuvent partir : toutes leurs finalités sont accordées. */
+export function tiersAutorises(choix: Choix | null): boolean {
+  return choix !== null && FINALITES_TIERS.every((finalite) => choix[finalite]);
 }
 
 /** Lu une fois : Tags.tsx s'en sert pour ne pas charger deux fois GA4, Ads et LinkedIn. */
 export const CONTENEUR = identifiantConteneur(process.env.NEXT_PUBLIC_GTM_ID);
 
-export default function TagManager() {
-  const { choix } = useConsentement();
-  const source = sourceConteneur(CONTENEUR, choix?.choix ?? null);
-  if (!source) return null;
+/**
+ * Comment le conteneur a été chargé dans ce document. Un état de module et non
+ * de composant : le conteneur ne se charge qu'une fois par document, et sa
+ * liste de blocage est figée à ce moment-là.
+ */
+let chargement: "aucun" | "complet" | "sans-tiers" = "aucun";
 
-  return (
-    <>
-      <Script id="gtm-debut" strategy="afterInteractive">
-        {`window.dataLayer=window.dataLayer||[];
-window.dataLayer.push({'gtm.start':Date.now(),event:'gtm.js'});`}
-      </Script>
-      <Script id="gtm" src={source} strategy="afterInteractive" />
-    </>
-  );
+function chargeConteneur(identifiant: string, choix: Choix | null): void {
+  const couche = (window.dataLayer = window.dataLayer ?? []);
+  // Avant l'événement gtm.js : c'est à son chargement que Tag Manager la lit.
+  if (!tiersAutorises(choix)) couche.push({ "gtm.blocklist": [...BALISES_TIERS] });
+  couche.push({ "gtm.start": Date.now(), event: "gtm.js" });
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtm.js?id=${identifiant}`;
+  document.head.appendChild(script);
+}
+
+export default function TagManager() {
+  const { choix, pret } = useConsentement();
+
+  useEffect(() => {
+    // `pret` : le cookie de choix est lu. Au même rendu, ConsentMode (monté
+    // avant) pousse l'`update` d'un visiteur qui revient : il précède gtm.js.
+    if (!pret || !CONTENEUR) return;
+    const actuel = choix?.choix ?? null;
+    if (chargement === "aucun") {
+      chargement = tiersAutorises(actuel) ? "complet" : "sans-tiers";
+      chargeConteneur(CONTENEUR, actuel);
+      return;
+    }
+    if (chargement === "sans-tiers" && tiersAutorises(actuel)) location.reload();
+  }, [pret, choix]);
+
+  return null;
 }

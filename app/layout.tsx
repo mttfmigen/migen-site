@@ -178,9 +178,9 @@ export default function RootLayout({ children, pied }: LayoutProps<"/">) {
           le dispositif ne protègerait plus rien.
         */}
         <ConsentMode />
-        {/* Le conteneur Tag Manager, juste après le `default` à `denied` : il ne
-            rend rien sans identifiant, sans choix ou sans finalité Google
-            accordée. */}
+        {/* Le conteneur Tag Manager, juste après le `default` à `denied` : il part
+            dès l'arrivée (mode avancé), ses balises non Google bloquées tant que
+            publicité et suivi commercial ne sont pas accordés. */}
         <TagManager />
         {/* Attribution de la visite, mémorisée dès la page d'entrée. Pas un
             traceur : rien ne sort du navigateur avant l'envoi d'un formulaire. */}

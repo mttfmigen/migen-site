@@ -1380,6 +1380,14 @@ toutes les pages, porter la maquette mobile v2) restent sous D1 et D16.
       Ads et LinkedIn dans le conteneur avec les contrôles de consentement,
       puis le test des deux parcours avec Google Tag Assistant (CLAUDE.md
       section 8).
+      MODIFIÉ LE 25/11 (mode consentement avancé, décision de Mehdi) : le
+      conteneur part dès l'arrivée, balises non Google bloquées par
+      `gtm.blocklist` jusqu'à l'accord publicité et suivi commercial, puis
+      rechargement. La porte navigateur rend désormais
+      GOOGLE_AVANCE_TIERS_APRES_ACCORD. Contre le vrai conteneur (v28), mesuré :
+      refus et blocage, 4 signaux GA4 `gcs=G100`, 0 requête non Google, 0
+      cookie ; sans blocage, LinkedIn, Bing, HubSpot, OpenAI et Wonderchat
+      partent malgré le refus.
       CHECK: f=$(test -f components/consentement/TagManager.tsx && echo 1 || echo 0); t=$(grep -s -c 'TagManager' app/layout.tsx); e=$(git ls-files .env.example | wc -l | tr -d ' '); g=$(grep -s -c '^NEXT_PUBLIC_GTM_ID=' .env.example); v=$(test -f components/consentement/verification-tag-manager.ts && bun components/consentement/verification-tag-manager.ts >/dev/null 2>&1 && echo ok || echo ko); h=$(curl -s https://migen-site.vercel.app/ | grep -o 'googletagmanager.com/gtm.js' | wc -l | tr -d ' '); echo "composant : $f, monte : ${t:-0}, .env.example versionne : $e, variable documentee : ${g:-0}, assertions du lot : $v, gtm.js dans l accueil servi : $h"; [ "$f" = 1 ] && [ "${t:-0}" -ge 1 ] && [ "$e" = 1 ] && [ "${g:-0}" -ge 1 ] && [ "$v" = ok ] && [ "$h" = 0 ] && echo TAG_MANAGER_DERRIERE_LE_CONSENTEMENT
       EXPECT: TAG_MANAGER_DERRIERE_LE_CONSENTEMENT
 

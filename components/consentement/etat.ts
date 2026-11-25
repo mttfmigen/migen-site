@@ -11,6 +11,7 @@ import {
   litConsentement,
   supprimeCookies,
 } from "@/lib/consentement";
+import { conserveAttribution } from "@/lib/utm";
 
 /**
  * État partagé du consentement.
@@ -87,6 +88,7 @@ export function ferme(): void {
 export function enregistre(choix: Choix): void {
   const retirees = finalitesRetirees(etat.choix?.choix ?? null, choix);
   const trace = ecritConsentement(choix);
+  conserveAttribution();
   deposePreuve(trace, choix);
 
   if (retirees.length > 0) {

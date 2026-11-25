@@ -11,7 +11,7 @@ import {
 } from "@/components/formulaire/validation";
 import { empreinteIp, tropDeDepots } from "@/components/formulaire/debit";
 import { enregistreCopieLead } from "@/lib/leads";
-import { attributionNettoyee, type Attribution } from "@/lib/utm";
+import { CLES_CLIC, attributionNettoyee, type Attribution } from "@/lib/utm";
 
 /**
  * Dépôt d'un lead : HubSpot reçoit l'identité, Supabase reçoit l'attribution.
@@ -264,6 +264,7 @@ async function deposeChezHubspot(depot: Depot): Promise<Resultat> {
           utm_term: depot.attribution.utm_term,
           utm_content: depot.attribution.utm_content,
           page_entree: depot.attribution.page_entree,
+          ...identifiantsDeClic(depot.attribution),
         }
       : {}),
   };
@@ -339,12 +340,15 @@ async function deposeChezHubspot(depot: Depot): Promise<Resultat> {
          demande sans eux : le contact arrive, l'enrichissement manque, et le
          journal dit exactement ce qui a été refusé pour que Mehdi ajoute les
          champs au formulaire. */
-      const enrichi = Object.keys(depot.entreprise).length > 0;
-      if (enrichi && reponseHubspot.status === 400) {
-        console.error(`[lead] HubSpot refuse l'enrichissement entreprise : ${detail.slice(0, 300)}`);
+      const facultatifs = new Set([
+        ...Object.keys(depot.entreprise),
+        ...(depot.publicite ? Object.keys(identifiantsDeClic(depot.attribution)) : []),
+      ]);
+      if (facultatifs.size > 0 && reponseHubspot.status === 400) {
+        console.error(`[lead] HubSpot refuse un champ facultatif (entreprise ou clic Ads) : ${detail.slice(0, 300)}`);
         const sansEnrichissement = {
           ...corps,
-          fields: corps.fields.filter((c) => !(c.name in depot.entreprise)),
+          fields: corps.fields.filter((c) => !facultatifs.has(c.name)),
         };
         const second = await fetch(
           `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAIL_HUBSPOT}/${formulaireHubspot}`,
@@ -370,6 +374,19 @@ async function deposeChezHubspot(depot: Depot): Promise<Resultat> {
   } catch (erreur) {
     return { ok: false, detail: String(erreur) };
   }
+}
+
+/**
+ * Les identifiants de clic Google Ads de la visite, sous leur propre nom :
+ * `gclid`, `gbraid`, `wbraid`, propriétés de contact DÉDIÉES (demande de
+ * l'agence Ads, 25/11). ABSENTES DU PORTAIL AU 25/11, comme les `utm_*` :
+ * HubSpot les ignore tant qu'elles n'y sont pas créées. On n'écrit pas dans
+ * `hs_google_click_id`, que HubSpot remplit lui-même.
+ */
+function identifiantsDeClic(attribution: Attribution): Record<string, string> {
+  return Object.fromEntries(
+    CLES_CLIC.flatMap((cle) => (attribution[cle] ? [[cle, attribution[cle]]] : [])),
+  );
 }
 
 /**

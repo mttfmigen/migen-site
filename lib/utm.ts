@@ -24,7 +24,17 @@ export const CLES_UTM = [
   "utm_content",
 ] as const;
 
-export type CleUtm = (typeof CLES_UTM)[number];
+/**
+ * Les identifiants de clic Google Ads, gardés avec les UTM (demande de l'agence
+ * Ads, 25/11) : `gclid`, et `gbraid` / `wbraid` qui le remplacent sur iOS. Ils
+ * permettent de rattacher un lead à son clic pour importer les conversions
+ * hors ligne dans Google Ads.
+ */
+export const CLES_CLIC = ["gclid", "gbraid", "wbraid"] as const;
+
+const CLES_CAMPAGNE = [...CLES_UTM, ...CLES_CLIC] as const;
+
+export type CleUtm = (typeof CLES_CAMPAGNE)[number];
 
 export type Utm = Partial<Record<CleUtm, string>>;
 
@@ -42,11 +52,11 @@ const LONGUEUR_MAX_CHEMIN = 300;
 
 const CLE_STOCKAGE = "migen.attribution";
 
-/** Les UTM présents dans une chaîne de requête, nettoyés et bornés. */
+/** Les UTM et identifiants de clic présents dans une chaîne de requête, nettoyés et bornés. */
 export function utmDepuisRequete(search: string): Utm {
   const params = new URLSearchParams(search);
   const trouves: Utm = {};
-  for (const cle of CLES_UTM) {
+  for (const cle of CLES_CAMPAGNE) {
     const valeur = nettoie(params.get(cle), LONGUEUR_MAX_UTM);
     if (valeur) trouves[cle] = valeur;
   }
@@ -85,7 +95,7 @@ export function attributionNettoyee(brut: unknown): Attribution {
   if (typeof brut !== "object" || brut === null) return {};
   const source = brut as Record<string, unknown>;
   const propre: Attribution = {};
-  for (const cle of CLES_UTM) {
+  for (const cle of CLES_CAMPAGNE) {
     const valeur = nettoie(source[cle], LONGUEUR_MAX_UTM);
     if (valeur) propre[cle] = valeur;
   }
@@ -139,4 +149,14 @@ function ecrit(attribution: Attribution): void {
   } catch {
     // Sans rien faire : le formulaire part quand même, sans attribution.
   }
+}
+
+/**
+ * À l'enregistrement d'un choix : l'attribution gardée en mémoire vive passe
+ * dans le `sessionStorage` si la publicité vient d'être accordée. Sans cela,
+ * le rechargement qui suit un « Tout accepter » (TagManager.tsx) perdrait le
+ * gclid d'un visiteur qui a déjà quitté sa page d'arrivée.
+ */
+export function conserveAttribution(): void {
+  if (enMemoire) ecrit(enMemoire);
 }

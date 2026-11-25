@@ -178,10 +178,10 @@ assert.deepEqual(Object.keys(charge.contact).sort(), [
   "telephone",
 ]);
 
-// Les cinq UTM sont lus, le reste de la requête est ignoré.
+// Les cinq UTM et les identifiants de clic Ads sont lus, le reste est ignoré.
 assert.deepEqual(
-  utmDepuisRequete("?utm_source=google&utm_medium=cpc&gclid=xyz&utm_term=&page=2"),
-  { utm_source: "google", utm_medium: "cpc" },
+  utmDepuisRequete("?utm_source=google&utm_medium=cpc&gclid=xyz&wbraid=w1&utm_term=&page=2"),
+  { utm_source: "google", utm_medium: "cpc", gclid: "xyz", wbraid: "w1" },
 );
 
 // Une attribution reçue est réduite aux clés connues et bornée en longueur.

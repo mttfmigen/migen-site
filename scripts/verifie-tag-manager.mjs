@@ -1,21 +1,24 @@
 /**
- * Aucun tag avant le consentement, et Tag Manager après « Tout accepter ».
+ * Mode consentement avancé : Tag Manager dès l'arrivée, balises non Google
+ * bloquées jusqu'à l'accord (TagManager.tsx, 25/11).
  *
- *   node scripts/verifie-tag-manager.mjs http://localhost:4431/
+ *   node scripts/verifie-tag-manager.mjs http://localhost:3000/
  *
- * À lancer sur un build fait avec NEXT_PUBLIC_GTM_ID=GTM-TEST0000 : sans
- * identifiant, le conteneur ne part jamais et la troisième étape échoue.
+ * Toute requête de mesure est INTERCEPTÉE, notée puis annulée : seuls gtm.js et
+ * gtag/js se chargent vraiment. On peut donc la jouer contre le vrai conteneur
+ * (NEXT_PUBLIC_GTM_ID=GTM-53LHN66) sans rien envoyer à GA4, Ads ou LinkedIn.
+ * Avec un identifiant de test, gtm.js répond 404 et les contrôles qui exigent
+ * des balises en action sont sautés (le script le dit).
  *
- * QUATRE ÉTAPES, en deux navigateurs neufs :
- *   1. l'arrivée : aucune requête vers un domaine de traceur, et le premier
- *      élément du dataLayer est le `consent default` à `denied` ;
- *   2. « Tout refuser » : toujours aucune requête ;
- *   3. « Tout accepter » : gtm.js est demandé, et le dataLayer porte dans
- *      l'ordre le `default` à `denied`, l'événement gtm.js, et autour de lui
- *      le `consent update` accordé et l'événement `migen_consentement` ;
- *   4. le retour du même visiteur : default toujours premier, gtm.js une fois.
+ * TROIS ÉTAPES, en deux navigateurs neufs :
+ *   1. l'arrivée : `default` à `denied` premier, la liste de blocage avant
+ *      l'événement gtm.js, gtm.js demandé une fois, des signaux Google, et
+ *      aucune requête non Google ;
+ *   2. « Tout refuser » : toujours aucune requête non Google ;
+ *   3. « Tout accepter » : la page se recharge, plus de liste de blocage,
+ *      l'`update` accordé avant gtm.js, et les balises non Google partent.
  *
- * Imprime AUCUN_TAG_AVANT_CONSENTEMENT et sort à 0 si tout tient, sort à 1 sinon.
+ * Imprime GOOGLE_AVANCE_TIERS_APRES_ACCORD et sort à 0 si tout tient, à 1 sinon.
  */
 import { chromium } from "playwright";
 
@@ -25,25 +28,40 @@ if (!SITE) {
   process.exit(2);
 }
 
-/** Tout domaine de traceur que le site sait charger. */
-const TRACEURS = [
-  "googletagmanager.com",
+/** Mesure Google : les signaux du mode avancé, notés puis annulés. */
+const GOOGLE = [
   "google-analytics.com",
+  "analytics.google.com",
   "doubleclick.net",
   "googleadservices.com",
-  "licdn.com",
-  "hs-scripts.com",
+  "googlesyndication.com",
+  "google.com",
+  "google.fr",
 ];
-/** Le temps laissé aux scripts `afterInteractive` pour partir, s'ils devaient. */
-const ATTENTE_MS = 2500;
+/** Ce que le conteneur publié (version 28) porte hors Google. */
+const TIERS = [
+  "licdn.com",
+  "linkedin.com",
+  "bing.com",
+  "hs-scripts.com",
+  "hs-analytics.net",
+  "hs-banner.com",
+  "hscollectedforms.net",
+  "hubspot.com",
+  "wonderchat.io",
+  "openai.com",
+  "oaiusercontent.com",
+];
+const ATTENTE_MS = 4000;
 
 const navigateur = await chromium.launch({ channel: "chrome" });
 const echecs = [];
 const verifie = (condition, message) => {
   if (!condition) echecs.push(message);
 };
+const sur = (hote, domaines) =>
+  domaines.some((d) => hote === d || hote.endsWith(`.${d}`));
 
-/** Le dataLayer lisible : les `arguments` de gtag deviennent des tableaux. */
 const litDataLayer = (page) =>
   page.evaluate(() =>
     Array.from(window.dataLayer ?? [], (entree) =>
@@ -63,99 +81,87 @@ const estDefautRefuse = (entree) =>
 
 async function ouvre() {
   const contexte = await navigateur.newContext();
+  const releve = { gtm: [], google: [], tiers: [], conteneurReel: false };
+  await contexte.route("**/*", (route) => {
+    const url = new URL(route.request().url());
+    if (url.hostname === "www.googletagmanager.com") {
+      if (url.pathname === "/gtm.js") releve.gtm.push(url.href);
+      return route.continue();
+    }
+    if (sur(url.hostname, GOOGLE)) {
+      releve.google.push(url.href);
+      return route.abort();
+    }
+    if (sur(url.hostname, TIERS)) {
+      releve.tiers.push(url.href);
+      return route.abort();
+    }
+    return route.continue();
+  });
   const page = await contexte.newPage();
-  const traceurs = [];
-  page.on("request", (requete) => {
-    const hote = new URL(requete.url()).hostname;
-    if (TRACEURS.some((domaine) => hote === domaine || hote.endsWith(`.${domaine}`))) {
-      traceurs.push(requete.url());
+  page.on("response", (reponse) => {
+    if (reponse.url().includes("googletagmanager.com/gtm.js") && reponse.ok()) {
+      releve.conteneurReel = true;
     }
   });
-  const reponse = await page.goto(SITE, { waitUntil: "load", timeout: 60_000 });
+  const reponse = await page.goto(SITE, { waitUntil: "load", timeout: 90_000 });
   if (!reponse?.ok()) throw new Error(`${SITE} répond ${reponse?.status()}`);
   await page.waitForTimeout(ATTENTE_MS);
-  return { contexte, page, traceurs };
+  return { contexte, page, releve };
 }
 
+const estBlocage = (entree) => Array.isArray(entree?.["gtm.blocklist"]);
+const rangDe = (couche, test) => couche.findIndex(test);
+
 try {
-  // -------------------------------------------- 1 et 2. arrivée, puis refus
+  // ------------------------------------------------- 1 et 2. arrivée, refus
   {
-    const { contexte, page, traceurs } = await ouvre();
-    verifie(traceurs.length === 0, `à l'arrivée, requêtes de traceur : ${traceurs.join(", ")}`);
+    const { contexte, page, releve } = await ouvre();
     const couche = await litDataLayer(page);
-    verifie(
-      estDefautRefuse(couche[0]),
-      `dataLayer[0] n'est pas le consent default denied : ${JSON.stringify(couche[0])}`,
-    );
+    const blocage = rangDe(couche, estBlocage);
+    const debut = rangDe(couche, (e) => e?.event === "gtm.js");
+    verifie(estDefautRefuse(couche[0]), `dataLayer[0] n'est pas le consent default denied : ${JSON.stringify(couche[0])}`);
+    verifie(releve.gtm.length === 1, `à l'arrivée, gtm.js demandé ${releve.gtm.length} fois, attendu 1`);
+    verifie(blocage > 0 && blocage < debut, `liste de blocage au rang ${blocage}, gtm.js au rang ${debut}`);
+    verifie(releve.tiers.length === 0, `à l'arrivée, requêtes non Google : ${releve.tiers.join(", ")}`);
+    if (releve.conteneurReel) {
+      verifie(releve.google.length > 0, "à l'arrivée, aucun signal Google : le mode avancé ne part pas");
+      verifie(
+        releve.google.some((u) => /[?&]gcs=G100/.test(u)),
+        "à l'arrivée, aucun signal Google en consentement refusé (gcs=G100)",
+      );
+    }
+    console.log(`arrivée : ${releve.google.length} signaux Google, ${releve.tiers.length} non Google, conteneur ${releve.conteneurReel ? "réel" : "de test"}`);
 
     await page.getByRole("button", { name: "Tout refuser" }).click();
     await page.waitForTimeout(ATTENTE_MS);
-    verifie(traceurs.length === 0, `après « Tout refuser », requêtes de traceur : ${traceurs.join(", ")}`);
+    verifie(releve.tiers.length === 0, `après « Tout refuser », requêtes non Google : ${releve.tiers.join(", ")}`);
+    verifie(releve.gtm.length === 1, "après « Tout refuser », la page s'est rechargée");
     await contexte.close();
   }
 
-  // ------------------------------------------------------- 3. tout accepter
+  // --------------------------------------------- 3. tout accepter, rechargement
   {
-    const { contexte, page, traceurs } = await ouvre();
-    const conteneur = page.waitForRequest(
-      (requete) => requete.url().startsWith("https://www.googletagmanager.com/gtm.js?id=GTM-"),
-      { timeout: 15_000 },
-    );
+    const { contexte, page, releve } = await ouvre();
+    const recharge = page.waitForEvent("load", { timeout: 20_000 });
     await page.getByRole("button", { name: "Tout accepter" }).click();
-    const demande = await conteneur.catch(() => null);
-    verifie(demande !== null, "après « Tout accepter », gtm.js n'est pas demandé");
+    verifie((await recharge.catch(() => null)) !== null, "après « Tout accepter », la page ne s'est pas rechargée");
     await page.waitForTimeout(ATTENTE_MS);
 
     const couche = await litDataLayer(page);
-    const rang = (test) => couche.findIndex(test);
-    const defaut = rang(estDefautRefuse);
-    const debut = rang((entree) => entree?.event === "gtm.js");
-    const accord = rang(
-      (entree) =>
-        Array.isArray(entree) &&
-        entree[0] === "consent" &&
-        entree[1] === "update" &&
-        entree[2]?.analytics_storage === "granted",
+    const accord = rangDe(
+      couche,
+      (e) => Array.isArray(e) && e[0] === "consent" && e[1] === "update" && e[2]?.ad_storage === "granted",
     );
-    const choix = rang(
-      (entree) =>
-        entree?.event === "migen_consentement" &&
-        entree.mesure_audience === true &&
-        entree.publicite === true &&
-        entree.personnalisation === true &&
-        entree.suivi_commercial === true,
-    );
-    verifie(defaut === 0, `consent default denied au rang ${defaut}, attendu 0`);
-    verifie(debut > defaut, `événement gtm.js au rang ${debut}, attendu après le default`);
-    verifie(accord > defaut, `consent update granted au rang ${accord}, attendu après le default`);
-    verifie(choix > defaut, `migen_consentement au rang ${choix}, attendu après le default`);
-    verifie(
-      couche.filter((entree) => entree?.event === "gtm.js").length === 1,
-      "l'événement gtm.js n'est pas poussé exactement une fois",
-    );
-    verifie(
-      traceurs.filter((url) => url.includes("/gtm.js?")).length === 1,
-      `gtm.js demandé ${traceurs.filter((url) => url.includes("/gtm.js?")).length} fois, attendu 1`,
-    );
-    verifie(
-      !traceurs.some((url) => url.includes("/gtag/js") || url.includes("licdn.com")),
-      `avec un conteneur, gtag.js ou LinkedIn chargés en direct : ${traceurs.join(", ")}`,
-    );
-    console.log(
-      `dataLayer après « Tout accepter » : default ${defaut}, update ${accord}, migen_consentement ${choix}, gtm.js ${debut}`,
-    );
-
-    // 4. Le visiteur qui revient : le choix est lu dans le cookie, le default
-    //    reste premier et le conteneur repart une seule fois.
-    traceurs.length = 0;
-    await page.reload({ waitUntil: "load" });
-    await page.waitForTimeout(ATTENTE_MS);
-    const retour = await litDataLayer(page);
-    verifie(estDefautRefuse(retour[0]), "au retour, dataLayer[0] n'est pas le consent default denied");
-    verifie(
-      traceurs.filter((url) => url.includes("/gtm.js?")).length === 1,
-      "au retour, gtm.js n'est pas demandé exactement une fois",
-    );
+    const debut = rangDe(couche, (e) => e?.event === "gtm.js");
+    verifie(estDefautRefuse(couche[0]), "après accord, dataLayer[0] n'est pas le consent default denied");
+    verifie(rangDe(couche, estBlocage) === -1, "après accord, la liste de blocage est encore posée");
+    verifie(accord > 0 && accord < debut, `update accordé au rang ${accord}, gtm.js au rang ${debut}`);
+    verifie(couche.filter((e) => e?.event === "gtm.js").length === 1, "après accord, gtm.js n'est pas poussé exactement une fois");
+    if (releve.conteneurReel) {
+      verifie(releve.tiers.length > 0, "après accord, aucune balise non Google ne part");
+    }
+    console.log(`après « Tout accepter » : update ${accord}, gtm.js ${debut}, ${releve.tiers.length} requêtes non Google`);
     await contexte.close();
   }
 } finally {
@@ -166,4 +172,4 @@ if (echecs.length > 0) {
   for (const echec of echecs) console.error(`ÉCHEC : ${echec}`);
   process.exit(1);
 }
-console.log("AUCUN_TAG_AVANT_CONSENTEMENT");
+console.log("GOOGLE_AVANCE_TIERS_APRES_ACCORD");

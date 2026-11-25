@@ -103,7 +103,12 @@ projet existe.
 4. **Aucun secret côté client.** `service_role` ne sort pas du serveur.
    `lib/supabase.ts` porte `import "server-only"` : le build échoue si un
    composant client l'importe.
-5. **Aucun traceur avant consentement.**
+5. **Aucun cookie ni traceur tiers avant consentement.** Décision de Mehdi le
+   25/11 (demande de l'agence Ads) : Tag Manager part dès l'arrivée en mode
+   consentement **avancé**, GA4 et Google Ads n'envoient que des signaux sans
+   cookie tant que rien n'est accordé. Toute balise non Google du conteneur
+   reste bloquée par le site (`gtm.blocklist`, `TagManager.tsx`) jusqu'à
+   l'accord publicité et suivi commercial.
 6. **Copie en français, jamais de tiret cadratin.** Virgule, parenthèses ou
    deux-points.
 
