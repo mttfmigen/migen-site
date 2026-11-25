@@ -84,6 +84,9 @@ async function ouvre() {
   const releve = { gtm: [], google: [], tiers: [], conteneurReel: false };
   await contexte.route("**/*", (route) => {
     const url = new URL(route.request().url());
+    // Les clics du bandeau déposent une preuve dans consent_logs : un test
+    // n'a pas à y laisser de trace.
+    if (url.pathname === "/api/consentement") return route.fulfill({ status: 204 });
     if (url.hostname === "www.googletagmanager.com") {
       if (url.pathname === "/gtm.js") releve.gtm.push(url.href);
       return route.continue();
